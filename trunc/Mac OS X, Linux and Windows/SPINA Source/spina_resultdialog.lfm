@@ -5,6 +5,8 @@ object ResultForm: TResultForm
   Width = 441
   HorzScrollBar.Page = 440
   VertScrollBar.Page = 138
+  AlphaBlend = True
+  AlphaBlendValue = 230
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = '   Ergebnis'
@@ -14,7 +16,8 @@ object ResultForm: TResultForm
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   Position = poMainFormCenter
-  LCLVersion = '0.9.28.2'
+  LCLVersion = '0.9.30.4RC2'
+  Visible = True
   object Image1: TImage
     Left = 24
     Height = 105

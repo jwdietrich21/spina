@@ -311,7 +311,7 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu
   OnActivate = FormActivate
   OnCreate = FormCreate
-  LCLVersion = '0.9.28.2'
+  LCLVersion = '0.9.30.4RC2'
   object Image1: TImage
     Left = 0
     Height = 243
@@ -3375,10 +3375,9 @@ object Hauptschirm: THauptschirm
     BorderSpacing.CellAlignHorizontal = ccaLeftTop
     BorderSpacing.CellAlignVertical = ccaLeftTop
     Caption = 'Hinweis:'
-    ClientHeight = 113
+    ClientHeight = 115
     ClientWidth = 145
     Color = clNone
-    Font.Color = clDefault
     Font.Height = -10
     Font.Name = 'Geneva'
     ParentColor = False
@@ -3390,7 +3389,6 @@ object Hauptschirm: THauptschirm
       Hint = 'Das Ergebnis Ihrer Berechnung'
       Top = 1
       Width = 144
-      Font.Color = clDefault
       Font.Height = -10
       Font.Name = 'Geneva'
       Lines.Strings = (
@@ -3405,28 +3403,25 @@ object Hauptschirm: THauptschirm
   end
   object TSH_Text: TEdit
     Left = 123
-    Height = 22
+    Height = 21
     Top = 31
     Width = 50
-    AutoSelect = True
     TabOrder = 2
     Text = '0'
   end
   object FT4_Text: TEdit
     Left = 216
-    Height = 22
+    Height = 21
     Top = 195
     Width = 50
-    AutoSelect = True
     TabOrder = 3
     Text = '0'
   end
   object FT3_Text: TEdit
     Left = 314
-    Height = 22
+    Height = 21
     Top = 32
     Width = 50
-    AutoSelect = True
     TabOrder = 4
     Text = '0'
   end
@@ -3723,7 +3718,6 @@ object Hauptschirm: THauptschirm
     top = 128
   end
   object PrintDialog1: TPrintDialog
-    Copies = 1
     left = 344
     top = 160
   end

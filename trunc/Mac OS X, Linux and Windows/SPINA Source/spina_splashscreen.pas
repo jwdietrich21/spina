@@ -18,17 +18,46 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Grids, SPINA_UserInterface;
+  ExtCtrls, Grids, Menus, SPINA_UserInterface;
 
 type
 
   { TSplashScreen }
 
   TSplashScreen = class(TForm)
+    AboutMenuItem: TMenuItem;
+    AppleAboutMenuItem: TMenuItem;
+    AppleMenu: TMenuItem;
+    CloseMenuItem: TMenuItem;
+    CopyMenuItem: TMenuItem;
+    CopyResultMenuItem: TMenuItem;
+    CutMenuItem: TMenuItem;
+    DeleteMenuItem: TMenuItem;
+    EditMenu: TMenuItem;
+    FileMenu: TMenuItem;
+    HelpMenu: TMenuItem;
     Image1: TImage;
+    MainMenu: TMainMenu;
+    MenuItem10: TMenuItem;
+    MenuItem13: TMenuItem;
+    MenuItem16: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem5: TMenuItem;
+    NewMenuItem: TMenuItem;
+    PageSetupMenuItem: TMenuItem;
+    PasteMenuItem: TMenuItem;
+    PrintMenuItem: TMenuItem;
+    QuitMenuItem: TMenuItem;
     Timer1: TTimer;
+    UndoMenuItem: TMenuItem;
+    procedure CloseMenuItemClick(Sender: TObject);
+    procedure CopyResultMenuItemClick(Sender: TObject);
+    procedure HandleAbout(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
+    procedure PageSetupMenuItemClick(Sender: TObject);
+    procedure PrintMenuItemClick(Sender: TObject);
+    procedure QuitMenuItemClick(Sender: TObject);
     procedure TimerEvent(Sender: TObject);
   private
     { private declarations }
@@ -59,9 +88,39 @@ begin
 
 end;
 
+procedure TSplashScreen.HandleAbout(Sender: TObject);
+begin
+  Hauptschirm.HandleAbout(Sender);
+end;
+
+procedure TSplashScreen.CloseMenuItemClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TSplashScreen.CopyResultMenuItemClick(Sender: TObject);
+begin
+  Hauptschirm.Ergebniskopieren1Click(Sender);
+end;
+
 procedure TSplashScreen.Image1Click(Sender: TObject);
 begin
 
+end;
+
+procedure TSplashScreen.PageSetupMenuItemClick(Sender: TObject);
+begin
+  Hauptschirm.PageSetupMenuItemClick(Sender);
+end;
+
+procedure TSplashScreen.PrintMenuItemClick(Sender: TObject);
+begin
+  Hauptschirm.PrintMenuItemClick(Sender);
+end;
+
+procedure TSplashScreen.QuitMenuItemClick(Sender: TObject);
+begin
+  Hauptschirm.Beenden1Click(Sender);
 end;
 
 initialization

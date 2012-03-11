@@ -206,6 +206,8 @@ procedure SavePreferences;
 
 implementation
 
+uses SPINA_SplashScreen;
+
 function GetOSLanguage: string;
   var
     {$IFDEF win32}
@@ -552,6 +554,7 @@ end;
 procedure AdaptMenus;
 var
   modifierKey: TShiftState;
+  theForm: TForm;
 begin
   {$IFDEF LCLcarbon}
     modifierKey := [ssMeta];
@@ -571,6 +574,23 @@ begin
   Hauptschirm.CopyMenuItem.ShortCut:=ShortCut(VK_C, modifierKey);
   Hauptschirm.PasteMenuItem.ShortCut:=ShortCut(VK_V, modifierKey);
   Hauptschirm.CopyResultMenuItem.ShortCut:=ShortCut(VK_R, modifierKey);
+
+  {$IFDEF LCLcarbon}
+    SplashScreen.HelpMenu.Visible:=false;
+    SplashScreen.AppleMenu.Visible:=true;
+  {$ELSE}
+    SplashScreen.HelpMenu.Visible:=true;
+    SplashScreen.AppleMenu.Visible:=false;
+  {$ENDIF}
+  SplashScreen.NewMenuItem.ShortCut:=ShortCut(VK_N, modifierKey);
+  SplashScreen.CloseMenuItem.ShortCut:=ShortCut(VK_W, modifierKey);
+  SplashScreen.PrintMenuItem.ShortCut:=ShortCut(VK_P, modifierKey);
+  SplashScreen.QuitMenuItem.ShortCut:=ShortCut(VK_Q, modifierKey);
+  SplashScreen.UndoMenuItem.ShortCut:=ShortCut(VK_Z, modifierKey);
+  SplashScreen.CutMenuItem.ShortCut:=ShortCut(VK_X, modifierKey);
+  SplashScreen.CopyMenuItem.ShortCut:=ShortCut(VK_C, modifierKey);
+  SplashScreen.PasteMenuItem.ShortCut:=ShortCut(VK_V, modifierKey);
+  SplashScreen.CopyResultMenuItem.ShortCut:=ShortCut(VK_R, modifierKey);
 end;
 
 procedure AdaptLanguages;

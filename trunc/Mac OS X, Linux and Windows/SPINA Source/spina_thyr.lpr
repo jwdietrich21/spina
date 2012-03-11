@@ -36,6 +36,7 @@ begin
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TResultForm, ResultForm);
+  ResultForm.Close;
   Application.Run;
   if (SplashScreen<>nil) then begin
     SplashScreen.Free;

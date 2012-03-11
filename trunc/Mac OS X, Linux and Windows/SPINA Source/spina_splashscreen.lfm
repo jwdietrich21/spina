@@ -1,9 +1,9 @@
 object SplashScreen: TSplashScreen
   Cursor = crHourGlass
-  Left = 441
-  Height = 257
-  Top = 383
-  Width = 397
+  Left = 637
+  Height = 264
+  Top = 133
+  Width = 401
   HorzScrollBar.Page = 396
   HorzScrollBar.Range = 392
   VertScrollBar.Page = 256
@@ -11,15 +11,15 @@ object SplashScreen: TSplashScreen
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'SPINA Thyr'
-  ClientHeight = 257
-  ClientWidth = 397
+  ClientHeight = 264
+  ClientWidth = 401
   Color = clWhite
   FormStyle = fsSplash
+  Menu = MainMenu
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stNever
-  LCLVersion = '0.9.28.2'
-  Visible = True
+  LCLVersion = '0.9.30.4RC2'
   object Image1: TImage
     Left = 8
     Height = 251
@@ -2685,5 +2685,87 @@ object SplashScreen: TSplashScreen
     OnTimer = TimerEvent
     left = 336
     top = 216
+  end
+  object MainMenu: TMainMenu
+    left = 80
+    top = 88
+    object AppleMenu: TMenuItem
+      Caption = ''
+      object AppleAboutMenuItem: TMenuItem
+        Caption = 'Über SPINA'
+        OnClick = HandleAbout
+      end
+      object MenuItem3: TMenuItem
+        Caption = '-'
+      end
+    end
+    object FileMenu: TMenuItem
+      Caption = 'Ablage'
+      object NewMenuItem: TMenuItem
+        Caption = 'Neue Berechnung…'
+        Enabled = False
+        ShortCut = 4174
+      end
+      object CloseMenuItem: TMenuItem
+        Caption = 'Schließen'
+        ShortCut = 4183
+        OnClick = CloseMenuItemClick
+      end
+      object MenuItem10: TMenuItem
+        Caption = '-'
+      end
+      object PageSetupMenuItem: TMenuItem
+        Caption = 'Papierformat'
+        OnClick = PageSetupMenuItemClick
+      end
+      object PrintMenuItem: TMenuItem
+        Caption = 'Drucken'
+        ShortCut = 4176
+        OnClick = PrintMenuItemClick
+      end
+      object MenuItem13: TMenuItem
+        Caption = '-'
+      end
+      object QuitMenuItem: TMenuItem
+        Caption = 'Beenden'
+        ShortCut = 4177
+        OnClick = QuitMenuItemClick
+      end
+    end
+    object EditMenu: TMenuItem
+      Caption = 'Bearbeiten'
+      object UndoMenuItem: TMenuItem
+        Action = Hauptschirm.EditUndo1
+      end
+      object MenuItem5: TMenuItem
+        Caption = '-'
+      end
+      object CutMenuItem: TMenuItem
+        Action = Hauptschirm.EditCut1
+      end
+      object CopyMenuItem: TMenuItem
+        Action = Hauptschirm.EditCopy1
+      end
+      object PasteMenuItem: TMenuItem
+        Action = Hauptschirm.EditPaste1
+      end
+      object DeleteMenuItem: TMenuItem
+        Action = Hauptschirm.EditDelete1
+      end
+      object MenuItem16: TMenuItem
+        Caption = '-'
+      end
+      object CopyResultMenuItem: TMenuItem
+        Caption = 'Ergebnis kopieren'
+        ShortCut = 4178
+        OnClick = CopyResultMenuItemClick
+      end
+    end
+    object HelpMenu: TMenuItem
+      Caption = '?'
+      object AboutMenuItem: TMenuItem
+        Caption = 'Über SPINA'
+      end
+    end
   end
 end
