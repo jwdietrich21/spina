@@ -27,6 +27,20 @@ interface
 uses
   Classes, SysUtils;
 
+const
+  SPINA_GLOBAL_ID = 'net.sf.spina';
+
+type
+Str255 = String[255];
+tCodeList = set of 0..255;
+tLabMethod = (freeHormone, totalHormone);
+tPreferences = record
+       T4Method, T3Method: tLabMethod;
+       TSHUnitFactor, T4UnitFactor, T3UnitFactor: real;
+       TSHPopUpItem, T4PopUpItem, T3PopUpItem: integer;
+       T4MethodPopUpItem, T3MethodPopUpItem: integer;
+       end;
+
 var
   gStartup: boolean;
   gTSHTherapy, gT4Therapy, gT3Therapy: boolean;

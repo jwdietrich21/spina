@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
-  SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog, SPINA_Types
+  SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog, HandlePreferences
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -195,7 +195,6 @@ type
 var
   TSH, T4, T3: real;
   Hauptschirm: THauptschirm;
-  Startup:Boolean;
   gInterfaceLanguage: tInterfaceLanguage;
   Language, UserName: array[0..128] of char;
   gSysLanguage, gUserName: String;
@@ -704,7 +703,6 @@ Hauptschirm.VertScrollBar.Visible := false;
 Hauptschirm.AutoScroll := false;
 Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
 GetPreferences;
-Startup:=true;
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
@@ -738,9 +736,8 @@ end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
- if Startup then
+ if gStartup then
  begin
- Startup := False;
  Hauptschirm.TSH_Text.SetFocus;
  Hauptschirm.VertScrollBar.Visible := false;
  Hauptschirm.AutoScroll := false;
@@ -954,8 +951,8 @@ initialization
   gInterfaceLanguage := German;
   gGermanCodes := [3, 19, 70, 92];
 
-  gPrefsDir:=GetAppConfigDir(false);
-  gPrefsFileName:=GetAppConfigFile(false);
+  gPrefsDir:=GetPreferencesFolder;
+  gPrefsFileName:=GetPreferencesFile;
 
   gAppName := ApplicationName;
   gAppPath := ParamStr(0);

@@ -47,20 +47,12 @@ BETA31 = 8e-6;
 KM1 = 5e-7;
 
 type
-  Str255 = String[255];
-  tLabMethod = (freeHormone, totalHormone);
   tCaseRecord = record
 	TSH, T4, T3, GT, GD: real;
         GTs, GDs: Str255;
 	MessageString: String[255];
         end;
-  tCodeList = set of 0..255;
-  tPreferences = record
-         T4Method, T3Method: tLabMethod;
-         TSHUnitFactor, T4UnitFactor, T3UnitFactor: real;
-         TSHPopUpItem, T4PopUpItem, T3PopUpItem: integer;
-         T4MethodPopUpItem, T3MethodPopUpItem: integer;
-         end;
+
 
 var
   gNotCalculatable: String;
