@@ -1,13 +1,21 @@
 { SPINA-Thyr }
+
+{ Application for calculating structure parameters }
+{ of thyrotropic feedback control }
+
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
-{ Version 3.2 }
 
-{ J. W. Dietrich, Klinikum der LMU München 1997-2001 }
-{ J. W. Dietrich, Universitätsklinikum Ulm 2002-2004 }
-{ J. W. Dietrich, Universitätsklinikum Bergmannsheil 2005-2010 }
+{ Version 3.3 }
 
-{ This software is provided via a BSD licence }
+{ (c) J. W. Dietrich, 1994 - 2012 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2012 }
+
+{ This unit implements the GUI }
+
+{ Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
 
 unit SPINA_UserInterface;
@@ -446,15 +454,19 @@ gResultDialogString1 := concat('TSH: ',TSH_String,' ',gTSHUnit,kCR,kLF,sT4Label,
 gResultDialogString2 := concat(gMessageString);
 end;
 
-procedure bell;
+procedure bell; {platform-independent implementation of acustical warning}
+var s:longint;
 begin
   {$IFDEF win32}
-    MessageBeep(0);
+  MessageBeep(0);
   {$ELSE}
     {$IFDEF LCLCarbon}
-      SysBeep(30);
+  SysBeep(30);
     {$ELSE}
-      beep;
+  s := Shell('echo -ne ''\007''');
+  {s := fpSystem('echo -ne "\a"');}
+  {s := fpSystem('tput bel');}
+  {beep;}
     {$ENDIF}
   {$ENDIF}
 end;

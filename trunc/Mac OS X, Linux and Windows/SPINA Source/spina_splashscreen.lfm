@@ -19,7 +19,7 @@ object SplashScreen: TSplashScreen
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stNever
-  LCLVersion = '0.9.30.4RC2'
+  LCLVersion = '0.9.30.4'
   object Image1: TImage
     Left = 8
     Height = 251

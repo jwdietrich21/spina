@@ -1,13 +1,21 @@
 { SPINA-Thyr }
+
+{ Application for calculating structure parameters }
+{ of thyrotropic feedback control }
+
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
-{ Version 3.2 }
 
-{ J. W. Dietrich, Klinikum der LMU München 1997-2001 }
-{ J. W. Dietrich, Universitätsklinikum Ulm 2002-2004 }
-{ J. W. Dietrich, Universitätsklinikum Bergmannsheil 2005-2010 }
+{ Version 3.3 }
 
-{ This software is provided via a BSD licence }
+{ (c) J. W. Dietrich, 1994 - 2012 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2012 }
+
+{ Main unit }
+
+{ Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
 
 program spina_thyr;
@@ -19,15 +27,16 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, LResources
-  { you can add units after this },
+  Forms,
 SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox, SPINA_ResultDialog,
-SPINA_Engine, Printer4Lazarus;
+SPINA_Engine, Printer4Lazarus, SPINA_Types;
 
 {$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}
 
+{$R *.res}
+
 begin
-  {$I spina_thyr.lrs}
+  gStartup := true;
   Application.Title:='SPINA Thyr';
   Application.Initialize;
   SplashScreen := TSplashScreen.Create(nil);
@@ -36,7 +45,9 @@ begin
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TResultForm, ResultForm);
+  AboutBox.Close;
   ResultForm.Close;
+  gStartup := false;
   Application.Run;
   if (SplashScreen<>nil) then begin
     SplashScreen.Free;

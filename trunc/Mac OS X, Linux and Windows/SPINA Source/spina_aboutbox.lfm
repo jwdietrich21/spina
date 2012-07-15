@@ -305,7 +305,8 @@ object AboutBox: TAboutBox
     FF07F8F9FF87FCFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
   }
   Position = poScreenCenter
-  LCLVersion = '0.9.26.2'
+  LCLVersion = '0.9.30.4'
+  Visible = True
   object Image1: TImage
     Cursor = crHandPoint
     Left = 8
@@ -2978,4 +2979,4 @@ object AboutBox: TAboutBox
     OnClick = CloseAboutBox
     TabOrder = 0
   end
-end
+end

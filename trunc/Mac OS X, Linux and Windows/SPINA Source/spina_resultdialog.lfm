@@ -1,7 +1,7 @@
 object ResultForm: TResultForm
-  Left = 347
+  Left = 418
   Height = 139
-  Top = 149
+  Top = 22
   Width = 441
   HorzScrollBar.Page = 440
   VertScrollBar.Page = 138
@@ -16,7 +16,7 @@ object ResultForm: TResultForm
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   Position = poMainFormCenter
-  LCLVersion = '0.9.30.4RC2'
+  LCLVersion = '0.9.30.4'
   Visible = True
   object Image1: TImage
     Left = 24

@@ -311,7 +311,7 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu
   OnActivate = FormActivate
   OnCreate = FormCreate
-  LCLVersion = '0.9.30.4RC2'
+  LCLVersion = '0.9.30.4'
   object Image1: TImage
     Left = 0
     Height = 243

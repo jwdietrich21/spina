@@ -1,13 +1,21 @@
 { SPINA-Thyr }
+
+{ Application for calculating structure parameters }
+{ of thyrotropic feedback control }
+
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
-{ Version 3.2 }
 
-{ J. W. Dietrich, Klinikum der LMU München 1997-2001 }
-{ J. W. Dietrich, Universitätsklinikum Ulm 2002-2004 }
-{ J. W. Dietrich, Universitätsklinikum Bergmannsheil 2005-2010 }
+{ Version 3.3 }
 
-{ This software is provided via a BSD licence }
+{ (c) J. W. Dietrich, 1994 - 2012 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2012 }
+
+{ This unit implements a splash screen }
+
+{ Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
 
 unit SPINA_SplashScreen;
