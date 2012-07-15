@@ -46,8 +46,10 @@ TEXT_WIDTH=10;
 TSH_UNIT=' mU/l';
 FT4_UNIT=' ng/dl';
 FT3_UNIT=' pg/ml';
-kAnleitung1='Bitte geben Sie die gemessenen Werte für TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
-kAnleitung2='Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".';
+kAnleitung01 = '';
+kAnleitung02 = '';
+kAnleitung11='Bitte geben Sie die gemessenen Werte für TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
+kAnleitung12='Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".';
 kVerhaltensparameter1='Verhaltensparameter:';
 kVerhaltensparameter2='Behavioural parameters:';
 kStrukturparameter1='Strukturparameter:';
@@ -70,6 +72,8 @@ kBenutzername1='Benutzerkennung: ';
 kBenutzername2='User name: ';
 kResultHint1='Ergebnis:';
 kResultHint2='Result:';
+kHintCaption1 = 'Hinweis:';
+kHintCaption2 = 'Hint:';
 kMarginSpaces='                                    ';
 AnInch = 2.54;
 
@@ -82,6 +86,7 @@ type
 
   THauptschirm = class(TForm)
     ActionList1: TActionList;
+    Bevel1: TBevel;
     EditMenu: TMenuItem;
     Calculate_Button: TButton;
     FileMenu: TMenuItem;
@@ -92,7 +97,9 @@ type
     EditUndo1: TEditUndo;
     FT3ComboBox: TComboBox;
     FT4ComboBox: TComboBox;
-    HintResultGroupBox: TGroupBox;
+    ValuesGroupBox: TGroupBox;
+    HintGroupBox: TGroupBox;
+    ResultGroupBox: TGroupBox;
     Image1: TImage;
     Image2: TImage;
     ImageList1: TImageList;
@@ -104,6 +111,7 @@ type
     MenuItem10: TMenuItem;
     AppleAboutMenuItem: TMenuItem;
     MenuItem3: TMenuItem;
+    ResultField: TMemo;
     PageSetupDialog1: TPageSetupDialog;
     PrintDialog1: TPrintDialog;
     PrinterSetupDialog1: TPrinterSetupDialog;
@@ -139,7 +147,7 @@ type
     TSH_Text: TEdit;
     FT3_Text: TEdit;
     FT4_Text: TEdit;
-    MessageField: TMemo;
+    HintField: TMemo;
     TSHComboBox: TComboBox;
     Logo: TImage;
     Drucken1: TMenuItem;
@@ -188,7 +196,7 @@ var
   gSysLanguage, gUserName: String;
   arraySize: DWord;
   gAnleitung, gVerhaltensparameter, gStrukturparameter: String;
-  gResultHint, gBenutzername: String;
+  gResultHint, gHintCaption, gBenutzername: String;
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: String;
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
   gcalcTitle, gcalcString, gnotcalculatableString: Str255;
@@ -448,7 +456,7 @@ else
   end;
   vhString:=concat(gVerhaltensparameter,kCR,kLF,'   TSH: ',TSH_String,' ',gTSHUnit,kCR,kLF,T4Label,T4_String,' ',gT4Unit,kCR,kLF,T3Label,T3_String,' ',gT3Unit);
 theString:=concat(vhString,kCR,kLF,kCR,kLF,gStrukturparameter,kCR,kLF,gMessageString);
-Hauptschirm.MessageField.text:=theString;
+Hauptschirm.ResultField.text := theString;
 gResultString:=theString;
 gResultDialogString1 := concat('TSH: ',TSH_String,' ',gTSHUnit,kCR,kLF,sT4Label,T4_String,' ',gT4Unit,kCR,kLF,sT3Label,T3_String,' ',gT3Unit);
 gResultDialogString2 := concat(gMessageString);
@@ -558,9 +566,10 @@ end;
 
 procedure THauptschirm.Calculate_ButtonClick(Sender: TObject);
 begin
-  Hauptschirm.HintResultGroupBox.Caption := gResultHint;
+  Hauptschirm.ResultGroupBox.Caption := gResultHint;
   HandleInput;
   ResultForm.Visible:=true;
+  ResultForm.AlphaBlendValue := 220;
 end;
 
 procedure AdaptMenus;
@@ -609,11 +618,12 @@ procedure AdaptLanguages;
 begin
    if gInterfaceLanguage = English then
    begin
-      gAnleitung := kAnleitung2;
+      gAnleitung := kAnleitung12;
       gVerhaltensparameter := kVerhaltensparameter2;
       gStrukturparameter := kStrukturparameter2;
       gNotCalculatable := kNotCalculatable2;
       gResultHint := kResultHint2;
+      gHintCaption := kHintCaption2;
       gPatientenname := kPatientenname2;
       gGeburtsdatum := kGeburtsdatum2;
       gUntersuchungsdatum := kUntersuchungsdatum2;
@@ -621,7 +631,7 @@ begin
       gBenutzername := kBenutzername2;
       gDruckdatum := kDruckdatum2;
       Hauptschirm.Calculate_Button.Caption := 'Calculate';
-      Hauptschirm.HintResultGroupBox.Caption := 'Hint:';
+      Hauptschirm.HintGroupBox.Caption := 'Hint:';
       Hauptschirm.FileMenu.Caption := 'File';
       Hauptschirm.NewMenuItem.Caption := 'New Calculation...';
       Hauptschirm.CloseMenuItem.Caption := 'Close';
@@ -646,11 +656,12 @@ begin
       Hauptschirm.FileMenu.Caption:='Datei';
       Hauptschirm.UndoMenuItem.Caption:='Rückgängig';
       {$ENDIF}
-      gAnleitung := kAnleitung1;
+      gAnleitung := kAnleitung11;
       gVerhaltensparameter := kVerhaltensparameter1;
       gStrukturparameter := kStrukturparameter1;
       gNotCalculatable := kNotCalculatable1;
       gResultHint := kResultHint1;
+      gHintCaption := kHintCaption1;
       gPatientenname := kPatientenname1;
       gGeburtsdatum := kGeburtsdatum1;
       gUntersuchungsdatum := kUntersuchungsdatum1;
@@ -659,13 +670,16 @@ begin
       gDruckdatum := kDruckdatum1;
    end;
    AdaptMenus;
+   Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
+   Hauptschirm.HintGroupBox.Caption := gHintCaption;
+   Hauptschirm.ResultGroupBox.Caption := gResultHint;
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
 AdaptLanguages;
 AdjustUnitFactors;
-Hauptschirm.MessageField.text:=gAnleitung;
+Hauptschirm.HintField.text:=gAnleitung;
 Hauptschirm.HorzScrollBar.Visible := false;
 Hauptschirm.VertScrollBar.Visible := false;
 Hauptschirm.AutoScroll := false;
@@ -675,8 +689,8 @@ end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
 begin
-Hauptschirm.MessageField.SelectAll;
-Hauptschirm.MessageField.CopyToClipboard
+Hauptschirm.ResultField.SelectAll;
+Hauptschirm.ResultField.CopyToClipboard
 end;
 
 procedure THauptschirm.FT4ItemsChange(Sender: TObject);
@@ -861,7 +875,7 @@ begin
     currentX := marginX;
     Printer.BeginDoc;
     try
-      Printer.Canvas.Font := MessageField.Font;
+      Printer.Canvas.Font := HintField.Font;
       Printer.Canvas.Font.Size := 9;
       Printer.Canvas.Font.Style := [];
       Printer.Canvas.Pen.Color := clBlack;

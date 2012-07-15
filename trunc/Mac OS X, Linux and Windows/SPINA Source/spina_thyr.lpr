@@ -40,7 +40,7 @@ begin
   Application.Title:='SPINA Thyr';
   Application.Initialize;
   SplashScreen := TSplashScreen.Create(nil);
-  SplashScreen.Show;
+  SplashScreen.ShowOnTop;
   Application.ProcessMessages;
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TAboutBox, AboutBox);
@@ -48,6 +48,7 @@ begin
   AboutBox.Close;
   ResultForm.Close;
   gStartup := false;
+  Hauptschirm.AlphaBlendValue := 255;
   Application.Run;
   if (SplashScreen<>nil) then begin
     SplashScreen.Free;

@@ -55,7 +55,10 @@ begin
   if gStartup then
     AboutBox.Hide
   else
-    AboutBox.ShowModal;
+    begin
+      AboutBox.AlphaBlendValue := 255;
+      AboutBox.ShowModal;
+    end;
 end;
 
 { TAboutBox }
