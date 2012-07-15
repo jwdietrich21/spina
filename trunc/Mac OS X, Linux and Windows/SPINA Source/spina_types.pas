@@ -29,6 +29,7 @@ uses
 
 var
   gStartup: boolean;
+  gTSHTherapy, gT4Therapy, gT3Therapy: boolean;
 
 implementation
 

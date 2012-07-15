@@ -1,8 +1,8 @@
 object ResultForm: TResultForm
-  Left = 393
-  Height = 143
+  Left = 295
+  Height = 149
   Top = 22
-  Width = 491
+  Width = 687
   HorzScrollBar.Page = 440
   VertScrollBar.Page = 138
   AlphaBlend = True
@@ -10,8 +10,8 @@ object ResultForm: TResultForm
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = '   Ergebnis'
-  ClientHeight = 143
-  ClientWidth = 491
+  ClientHeight = 149
+  ClientWidth = 687
   Color = clWhite
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
@@ -201,7 +201,7 @@ object ResultForm: TResultForm
     Left = 112
     Height = 65
     Top = 32
-    Width = 152
+    Width = 232
     Font.Height = -12
     Lines.Strings = (
       'Memo1'
@@ -213,10 +213,10 @@ object ResultForm: TResultForm
     WordWrap = False
   end
   object MessageField2: TMemo
-    Left = 272
+    Left = 360
     Height = 65
     Top = 32
-    Width = 200
+    Width = 312
     Font.Height = -12
     Lines.Strings = (
       'Memo1'
@@ -227,7 +227,7 @@ object ResultForm: TResultForm
     TabStop = False
   end
   object Button1: TButton
-    Left = 400
+    Left = 597
     Height = 24
     Top = 104
     Width = 75

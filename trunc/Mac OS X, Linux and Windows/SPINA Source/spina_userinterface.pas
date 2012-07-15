@@ -26,7 +26,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog
+  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
+  SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog, SPINA_Types
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -72,6 +73,8 @@ kBenutzername1='Benutzerkennung: ';
 kBenutzername2='User name: ';
 kResultHint1='Ergebnis:';
 kResultHint2='Result:';
+kTherapyHint1 = 'Therapie:';
+kTherapyHint2 = 'Therapy:';
 kHintCaption1 = 'Hinweis:';
 kHintCaption2 = 'Hint:';
 kMarginSpaces='                                    ';
@@ -87,6 +90,8 @@ type
   THauptschirm = class(TForm)
     ActionList1: TActionList;
     Bevel1: TBevel;
+    SPINAThyrLabel: TLabel;
+    TherapyCheckGroup: TCheckGroup;
     EditMenu: TMenuItem;
     Calculate_Button: TButton;
     FileMenu: TMenuItem;
@@ -196,7 +201,7 @@ var
   gSysLanguage, gUserName: String;
   arraySize: DWord;
   gAnleitung, gVerhaltensparameter, gStrukturparameter: String;
-  gResultHint, gHintCaption, gBenutzername: String;
+  gResultHint, gHintCaption, gTherapyHint, gBenutzername: String;
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: String;
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
   gcalcTitle, gcalcString, gnotcalculatableString: Str255;
@@ -550,6 +555,18 @@ begin
     T3_String := FloatToStrF(T3, ffFixed, 3,2);
     T3 := T3 * UFT3;
     T3 := T3 * gT3UnitFactor;
+    if Hauptschirm.TherapyCheckGroup.Checked[0] then
+      gTSHTherapy := true
+    else
+      gTSHTherapy := false;
+    if Hauptschirm.TherapyCheckGroup.Checked[1] then
+      gT4Therapy := true
+    else
+      gT4Therapy := false;
+    if Hauptschirm.TherapyCheckGroup.Checked[2] then
+      gT3Therapy := true
+    else
+      gT3Therapy := false;
   except
     on ex: exception do
       begin
@@ -566,7 +583,6 @@ end;
 
 procedure THauptschirm.Calculate_ButtonClick(Sender: TObject);
 begin
-  Hauptschirm.ResultGroupBox.Caption := gResultHint;
   HandleInput;
   ResultForm.Visible:=true;
   ResultForm.AlphaBlendValue := 220;
@@ -624,6 +640,7 @@ begin
       gNotCalculatable := kNotCalculatable2;
       gResultHint := kResultHint2;
       gHintCaption := kHintCaption2;
+      gTherapyHint := kTherapyHint2;
       gPatientenname := kPatientenname2;
       gGeburtsdatum := kGeburtsdatum2;
       gUntersuchungsdatum := kUntersuchungsdatum2;
@@ -662,6 +679,7 @@ begin
       gNotCalculatable := kNotCalculatable1;
       gResultHint := kResultHint1;
       gHintCaption := kHintCaption1;
+      gTherapyHint := kTherapyHint1;
       gPatientenname := kPatientenname1;
       gGeburtsdatum := kGeburtsdatum1;
       gUntersuchungsdatum := kUntersuchungsdatum1;
@@ -673,6 +691,7 @@ begin
    Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
    Hauptschirm.HintGroupBox.Caption := gHintCaption;
    Hauptschirm.ResultGroupBox.Caption := gResultHint;
+   Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
@@ -683,6 +702,7 @@ Hauptschirm.HintField.text:=gAnleitung;
 Hauptschirm.HorzScrollBar.Visible := false;
 Hauptschirm.VertScrollBar.Visible := false;
 Hauptschirm.AutoScroll := false;
+Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
 GetPreferences;
 Startup:=true;
 end;

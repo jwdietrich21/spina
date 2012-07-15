@@ -25,7 +25,7 @@ unit SPINA_Engine;
 interface
 
 uses
-  Classes, SysUtils; 
+  Classes, SysUtils, SPINA_Types;
 
 const
 UFT4 = 1.28e-11;
@@ -75,7 +75,7 @@ var
   FT4, TT4, TT3: real;
   tempRecord: tCaseRecord;
 begin
-if TSH > 0 then
+if (TSH > 0) and not gT4Therapy then
    begin
    case gPreferences.T4Method of
    freeHormone:
@@ -89,7 +89,7 @@ if TSH > 0 then
     end
 else
    tempRecord.GTs := gNotCalculatable;
-if T4 > 0 then
+if (T4 > 0) and not gT3Therapy then
    begin
    case gPreferences.T4Method of
    freeHormone:

@@ -31,7 +31,7 @@ uses
 SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox, SPINA_ResultDialog,
 SPINA_Engine, Printer4Lazarus, SPINA_Types;
 
-{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}
+{{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 
 {$R *.res}
 
