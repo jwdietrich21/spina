@@ -38,53 +38,9 @@ uses
   , Printers, ComCtrls, PrintersDlgs;
 
 const
-  kTAB = chr(9);
-  kLF = chr(10);
-  kCR = chr(13);
-  DEC_POINT = '.';
-  DEC_COMMA = ',';
-  TEXT_WIDTH = 10;
-  TSH_UNIT = ' mU/l';
-  FT4_UNIT = ' ng/dl';
-  FT3_UNIT = ' pg/ml';
-  kAnleitung01 = '';
-  kAnleitung02 = '';
-  kAnleitung11 =
-    'Bitte geben Sie die gemessenen Werte f??r TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
-  kAnleitung12 =
-    'Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".';
-  kVerhaltensparameter1 = 'Verhaltensparameter:';
-  kVerhaltensparameter2 = 'Behavioural parameters:';
-  kStrukturparameter1 = 'Strukturparameter:';
-  kStrukturparameter2 = 'Structure parameters:';
-  kReferenzbereiche1 = 'Referenzbereiche:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
-  kReferenzbereiche2 = 'Reference ranges:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
-  kNotCalculatable1 = '<Nicht berechenbar>';
-  kNotCalculatable2 = '<Not calculatable>';
-  kPatientenname1 = 'Patientenname: ';
-  kPatientenname2 = 'Patient name: ';
-  kUntersuchungsdatum1 = 'Untersuchungsdatum: ';
-  kUntersuchungsdatum2 = 'Examination Date: ';
-  kGeburtsdatum1 = 'Geburtsdatum: ';
-  kGeburtsdatum2 = 'Birth date: ';
-  kEinsender1 = 'Einsender: ';
-  kEinsender2 = 'Sender: ';
-  kDruckdatum1 = 'Druckdatum: ';
-  kDruckdatum2 = 'Printing Date: ';
-  kBenutzername1 = 'Benutzerkennung: ';
-  kBenutzername2 = 'User name: ';
-  kResultHint1 = 'Ergebnis:';
-  kResultHint2 = 'Result:';
-  kTherapyHint1 = 'Therapie:';
-  kTherapyHint2 = 'Therapy:';
-  kHintCaption1 = 'Hinweis:';
-  kHintCaption2 = 'Hint:';
-  kMarginSpaces = '                                    ';
   AnInch = 2.54;
 
-
 type
-  tInterfaceLanguage = (English, German);
 
   { THauptschirm }
 
@@ -196,20 +152,11 @@ type
 var
   TSH, T4, T3: real;
   Hauptschirm: THauptschirm;
-  gInterfaceLanguage: tInterfaceLanguage;
   Language, UserName: array[0..128] of char;
   gSysLanguage, gUserName: string;
   arraySize: DWord;
-  gAnleitung, gVerhaltensparameter, gStrukturparameter: string;
-  gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
-  gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
-  gcalcTitle, gcalcString, gnotcalculatableString: Str255;
-  gExplanationString, gMessageString, TSH_String, T4_String, T3_String: Str255;
-  gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;
-  gTSHUnit, gT4Unit, gT3Unit, gResultString: Str255;
   gcalcCounter: longint;
-  gResultDialogString1, gResultDialogString2: Str255;
   gAppPath, gAppDir, gAppName: string;
   gSysLocale: TSysLocale;
   gGermanCodes: tCodeList;
@@ -220,6 +167,7 @@ var
   gTopMargin, gBottomMargin, gLeftMargin, gRightMargin: double;
   gLineSpacing: integer;
 
+procedure AdaptMenus;
 
 implementation
 
@@ -227,28 +175,23 @@ uses SPINA_SplashScreen;
 
 function GetOSLanguage: string;
 var
-    {$IFDEF win32}
+    {$IFDEF MSWINDOWS}
   LanguageID: LangID;
     {$ENDIF}
   Len: integer;
+  theCode: string;
 begin
-    {$IFDEF win32}
+    {$IFDEF MSWINDOWS}
   SetLength(Result, 255);
   LanguageID := GetSystemDefaultLangID;
   Len := VerLanguageName(LanguageID, PChar(Result), Length(Result));
   SetLength(Result, Len);
     {$ELSE}
-           {$IFDEF LCLCarbon}
-  gItl0Handle := Intl0Hndl(GetIntlResource(0));
-  gRegion := BitAnd(gItl0Handle^^.intl0Vers, $FF00);
-  gRegion := BitShift(gRegion, -8);
-  if gRegion in gGermanCodes then
+  theCode := SysUtils.GetEnvironmentVariable('LANG');
+  if copy(theCode, 1, 2) = 'de' then
     Result := 'Deutsch'
   else
     Result := 'English';
-           {$ELSE}
-  Result := 'English';
-           {$ENDIF}
     {$ENDIF}
   gSysLocale := SysLocale;
 end;
@@ -266,9 +209,9 @@ begin
   end
   else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
   begin
-    if Hauptschirm.FT4ComboBox.Text = '??g/l' then
+    if Hauptschirm.FT4ComboBox.Text = 'µg/l' then
       gT4UnitFactor := 100
-    else if Hauptschirm.FT4ComboBox.Text = '??g/dl' then
+    else if Hauptschirm.FT4ComboBox.Text = 'µg/dl' then
       gT4UnitFactor := 1000
     else if Hauptschirm.FT4ComboBox.Text = 'nmol/l' then
       gT4UnitFactor := 1 / UFT4 / 1e9;
@@ -284,7 +227,7 @@ begin
   end
   else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
   begin
-    if Hauptschirm.FT3ComboBox.Text = '??g/l' then
+    if Hauptschirm.FT3ComboBox.Text = 'µg/l' then
       gT3UnitFactor := 1000
     else if Hauptschirm.FT3ComboBox.Text = 'ng/dl' then
       gT3UnitFactor := 10
@@ -572,75 +515,9 @@ begin
 
 end;
 
-procedure AdaptLanguages;
-begin
-  if gInterfaceLanguage = English then
-  begin
-    gAnleitung := kAnleitung12;
-    gVerhaltensparameter := kVerhaltensparameter2;
-    gStrukturparameter := kStrukturparameter2;
-    gNotCalculatable := kNotCalculatable2;
-    gResultHint := kResultHint2;
-    gHintCaption := kHintCaption2;
-    gTherapyHint := kTherapyHint2;
-    gPatientenname := kPatientenname2;
-    gGeburtsdatum := kGeburtsdatum2;
-    gUntersuchungsdatum := kUntersuchungsdatum2;
-    gEinsender := kEinsender2;
-    gBenutzername := kBenutzername2;
-    gDruckdatum := kDruckdatum2;
-    Hauptschirm.Calculate_Button.Caption := 'Calculate';
-    Hauptschirm.HintGroupBox.Caption := 'Hint:';
-    Hauptschirm.FileMenu.Caption := 'File';
-    Hauptschirm.NewMenuItem.Caption := 'New Calculation...';
-    Hauptschirm.CloseMenuItem.Caption := 'Close';
-    Hauptschirm.PrintMenuItem.Caption := 'Print';
-    Hauptschirm.PageSetupMenuItem.Caption := 'Page Setup...';
-    Hauptschirm.QuitMenuItem.Caption := 'Quit';
-    Hauptschirm.EditMenu.Caption := 'Edit';
-    Hauptschirm.UndoMenuItem.Caption := 'Undo';
-    Hauptschirm.CutMenuItem.Caption := 'Cut';
-    Hauptschirm.CopyMenuItem.Caption := 'Copy';
-    Hauptschirm.PasteMenuItem.Caption := 'Paste';
-    Hauptschirm.DeleteMenuItem.Caption := 'Clear';
-    Hauptschirm.CopyResultMenuItem.Caption := 'Copy Result';
-    Hauptschirm.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
-  end
-  else
-  begin
-      {$IFDEF LCLcarbon}
-    Hauptschirm.FileMenu.Caption := 'Ablage';
-    Hauptschirm.UndoMenuItem.Caption := 'Widerrufen';
-      {$ELSE}
-    Hauptschirm.FileMenu.Caption := 'Datei';
-    Hauptschirm.UndoMenuItem.Caption := 'R??ckg??ngig';
-      {$ENDIF}
-    gAnleitung := kAnleitung11;
-    gVerhaltensparameter := kVerhaltensparameter1;
-    gStrukturparameter := kStrukturparameter1;
-    gNotCalculatable := kNotCalculatable1;
-    gResultHint := kResultHint1;
-    gHintCaption := kHintCaption1;
-    gTherapyHint := kTherapyHint1;
-    gPatientenname := kPatientenname1;
-    gGeburtsdatum := kGeburtsdatum1;
-    gUntersuchungsdatum := kUntersuchungsdatum1;
-    gEinsender := kEinsender1;
-    gBenutzername := kBenutzername1;
-    gDruckdatum := kDruckdatum1;
-  end;
-  AdaptMenus;
-  Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
-  Hauptschirm.HintGroupBox.Caption := gHintCaption;
-  Hauptschirm.ResultGroupBox.Caption := gResultHint;
-  Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
-end;
-
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
-  AdaptLanguages;
   AdjustUnitFactors;
-  Hauptschirm.HintField.Text := gAnleitung;
   Hauptschirm.HorzScrollBar.Visible := False;
   Hauptschirm.VertScrollBar.Visible := False;
   Hauptschirm.AutoScroll := False;
@@ -893,7 +770,6 @@ initialization
 
   arraySize := SizeOf(UserName);
   gInterfaceLanguage := German;
-  gGermanCodes := [3, 19, 70, 92];
 
   gPrefsDir := GetPreferencesFolder;
   gPrefsFileName := GetPreferencesFile;

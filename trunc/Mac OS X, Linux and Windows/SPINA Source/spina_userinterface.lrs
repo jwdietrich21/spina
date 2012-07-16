@@ -349,7 +349,7 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +#255#255#255#255#255#255#255#255#255#255#255#255#255#255#4'Menu'#7#8'MainMen'
   +'u'#10'OnActivate'#7#12'FormActivate'#8'OnCreate'#7#10'FormCreate'#10'LCLVer'
   +'sion'#6#8'0.9.30.4'#7'Visible'#9#0#7'TButton'#16'Calculate_Button'#4'Left'#3
-  +#156#2#6'Height'#2#24#3'Top'#3'8'#1#5'Width'#2'\'#7'Caption'#6#9'Berechnen'#7
+  +#144#2#6'Height'#2#24#3'Top'#3'8'#1#5'Width'#2'\'#7'Caption'#6#9'Berechnen'#7
   +'Default'#9#7'OnClick'#7#21'Calculate_ButtonClick'#8'TabOrder'#2#0#0#0#9'TCo'
   +'mboBox'#8'FT4Items'#4'Left'#3#128#0#6'Height'#2#21#3'Top'#3#176#0#5'Width'#2
   +')'#7'Enabled'#8#10'ItemHeight'#2#0#13'Items.Strings'#1#6#5'ng/dl'#6#4'ng/l'

@@ -28,6 +28,49 @@ uses
   Classes, SysUtils;
 
 const
+  kTAB = chr(9);
+  kLF = chr(10);
+  kCR = chr(13);
+  DEC_POINT = '.';
+  DEC_COMMA = ',';
+  TEXT_WIDTH = 10;
+  TSH_UNIT = ' mU/l';
+  FT4_UNIT = ' ng/dl';
+  FT3_UNIT = ' pg/ml';
+  kAnleitung01 = '';
+  kAnleitung02 = '';
+  kAnleitung11 =
+    'Bitte geben Sie die gemessenen Werte f??r TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
+  kAnleitung12 =
+    'Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".';
+  kVerhaltensparameter1 = 'Verhaltensparameter:';
+  kVerhaltensparameter2 = 'Behavioural parameters:';
+  kStrukturparameter1 = 'Strukturparameter:';
+  kStrukturparameter2 = 'Structure parameters:';
+  kReferenzbereiche1 = 'Referenzbereiche:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
+  kReferenzbereiche2 = 'Reference ranges:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
+  kNotCalculatable1 = '<Nicht berechenbar>';
+  kNotCalculatable2 = '<Not calculatable>';
+  kPatientenname1 = 'Patientenname: ';
+  kPatientenname2 = 'Patient name: ';
+  kUntersuchungsdatum1 = 'Untersuchungsdatum: ';
+  kUntersuchungsdatum2 = 'Examination Date: ';
+  kGeburtsdatum1 = 'Geburtsdatum: ';
+  kGeburtsdatum2 = 'Birth date: ';
+  kEinsender1 = 'Einsender: ';
+  kEinsender2 = 'Sender: ';
+  kDruckdatum1 = 'Druckdatum: ';
+  kDruckdatum2 = 'Printing Date: ';
+  kBenutzername1 = 'Benutzerkennung: ';
+  kBenutzername2 = 'User name: ';
+  kResultHint1 = 'Ergebnis:';
+  kResultHint2 = 'Result:';
+  kTherapyHint1 = 'Therapie:';
+  kTherapyHint2 = 'Therapy:';
+  kHintCaption1 = 'Hinweis:';
+  kHintCaption2 = 'Hint:';
+  kMarginSpaces = '                                    ';
+
   BASE_URL = 'http://spina.medical-cybernetics.de';
   SPINA_GLOBAL_ID = 'net.sf.spina';
 
@@ -48,6 +91,7 @@ tPreferences = record
        T4MethodPopUpItem, T3MethodPopUpItem: integer;
        end;
 tPrefsFile = file of tPreferences;
+tInterfaceLanguage = (English, German);
 
 var
   gStartup: boolean;
@@ -55,7 +99,15 @@ var
   gPrefsDir, gPrefsFileName: String;
   gPreferences: tPreferences;
   gPrefsFile: tPrefsFile;
-
+  gAnleitung, gVerhaltensparameter, gStrukturparameter: string;
+  gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
+  gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
+  gcalcTitle, gcalcString, gnotcalculatableString: Str255;
+  gExplanationString, gMessageString, TSH_String, T4_String, T3_String: Str255;
+  gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;
+  gTSHUnit, gT4Unit, gT3Unit, gResultString: Str255;
+  gInterfaceLanguage: tInterfaceLanguage;
+  gResultDialogString1, gResultDialogString2: Str255;
 
 implementation
 

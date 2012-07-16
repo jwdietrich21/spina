@@ -59,6 +59,7 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'ToolButton6'
       ImageIndex = 4
+      OnClick = ToolButton6Click
     end
     object ToolButton7: TToolButton
       Left = 120

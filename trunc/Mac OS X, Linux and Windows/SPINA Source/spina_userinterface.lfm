@@ -318,7 +318,7 @@ object Hauptschirm: THauptschirm
   LCLVersion = '0.9.30.4'
   Visible = True
   object Calculate_Button: TButton
-    Left = 668
+    Left = 656
     Height = 24
     Top = 312
     Width = 92

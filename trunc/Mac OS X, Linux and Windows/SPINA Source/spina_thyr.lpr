@@ -55,12 +55,13 @@ begin
     left := 0;
     top := 20;
     width := Screen.Width;
+    height := Toolbar1.Height + 3;
     {$ELSE}
     left := 1;
     top := 0;
     width := Screen.Width - 3;
+    height := Toolbar1.Height + 26;
     {$ENDIF}
-    height := Toolbar1.Height + 3;
     WindowState := wsNormal;
     AlphaBlend := false;
   end;

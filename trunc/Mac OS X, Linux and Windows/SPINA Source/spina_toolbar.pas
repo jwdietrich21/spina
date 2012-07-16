@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls,
-  SPINA_AboutBox, SPINA_Userinterface, VersionSupport;
+  SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface, VersionSupport;
 
 type
 
@@ -61,6 +61,7 @@ type
     procedure QuitMenuItemClick(Sender: TObject);
     procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
+    procedure ToolButton6Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -79,11 +80,96 @@ begin
 
 end;
 
+procedure AdaptLanguages;
+begin
+  if gInterfaceLanguage = English then
+  begin
+    gAnleitung := kAnleitung12;
+    gVerhaltensparameter := kVerhaltensparameter2;
+    gStrukturparameter := kStrukturparameter2;
+    gNotCalculatable := kNotCalculatable2;
+    gResultHint := kResultHint2;
+    gHintCaption := kHintCaption2;
+    gTherapyHint := kTherapyHint2;
+    gPatientenname := kPatientenname2;
+    gGeburtsdatum := kGeburtsdatum2;
+    gUntersuchungsdatum := kUntersuchungsdatum2;
+    gEinsender := kEinsender2;
+    gBenutzername := kBenutzername2;
+    gDruckdatum := kDruckdatum2;
+    Hauptschirm.Calculate_Button.Caption := 'Calculate';
+    Hauptschirm.HintGroupBox.Caption := 'Hint:';
+    Hauptschirm.FileMenu.Caption := 'File';
+    Hauptschirm.NewMenuItem.Caption := 'New Calculation...';
+    Hauptschirm.CloseMenuItem.Caption := 'Close';
+    Hauptschirm.PrintMenuItem.Caption := 'Print';
+    Hauptschirm.PageSetupMenuItem.Caption := 'Page Setup...';
+    Hauptschirm.QuitMenuItem.Caption := 'Quit';
+    Hauptschirm.EditMenu.Caption := 'Edit';
+    Hauptschirm.UndoMenuItem.Caption := 'Undo';
+    Hauptschirm.CutMenuItem.Caption := 'Cut';
+    Hauptschirm.CopyMenuItem.Caption := 'Copy';
+    Hauptschirm.PasteMenuItem.Caption := 'Paste';
+    Hauptschirm.DeleteMenuItem.Caption := 'Clear';
+    Hauptschirm.CopyResultMenuItem.Caption := 'Copy Result';
+    Hauptschirm.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
+    Hauptschirm.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
+    SPINAToolbar.FileMenu.Caption := 'File';
+    SPINAToolbar.NewMenuItem.Caption := 'New Calculation...';
+    SPINAToolbar.CloseMenuItem.Caption := 'Close';
+    SPINAToolbar.PrintMenuItem.Caption := 'Print';
+    SPINAToolbar.PageSetupMenuItem.Caption := 'Page Setup...';
+    SPINAToolbar.QuitMenuItem.Caption := 'Quit';
+    SPINAToolbar.EditMenu.Caption := 'Edit';
+    SPINAToolbar.UndoMenuItem.Caption := 'Undo';
+    SPINAToolbar.CutMenuItem.Caption := 'Cut';
+    SPINAToolbar.CopyMenuItem.Caption := 'Copy';
+    SPINAToolbar.PasteMenuItem.Caption := 'Paste';
+    SPINAToolbar.DeleteMenuItem.Caption := 'Clear';
+    SPINAToolbar.CopyResultMenuItem.Caption := 'Copy Result';
+    SPINAToolbar.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
+    SPINAToolbar.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
+  end
+  else
+  begin
+      {$IFDEF LCLcarbon}
+    Hauptschirm.FileMenu.Caption := 'Ablage';
+    Hauptschirm.UndoMenuItem.Caption := 'Widerrufen';
+    SPINAToolbar.FileMenu.Caption := 'Ablage';
+    SPINAToolbar.UndoMenuItem.Caption := 'Widerrufen';
+      {$ELSE}
+    Hauptschirm.FileMenu.Caption := 'Datei';
+    Hauptschirm.UndoMenuItem.Caption := 'Rückgängig';
+    SPINAToolbar.FileMenu.Caption := 'Datei';
+    SPINAToolbar.UndoMenuItem.Caption := 'Rückgängig';
+      {$ENDIF}
+    gAnleitung := kAnleitung11;
+    gVerhaltensparameter := kVerhaltensparameter1;
+    gStrukturparameter := kStrukturparameter1;
+    gNotCalculatable := kNotCalculatable1;
+    gResultHint := kResultHint1;
+    gHintCaption := kHintCaption1;
+    gTherapyHint := kTherapyHint1;
+    gPatientenname := kPatientenname1;
+    gGeburtsdatum := kGeburtsdatum1;
+    gUntersuchungsdatum := kUntersuchungsdatum1;
+    gEinsender := kEinsender1;
+    gBenutzername := kBenutzername1;
+    gDruckdatum := kDruckdatum1;
+  end;
+  AdaptMenus;
+  Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
+  Hauptschirm.HintGroupBox.Caption := gHintCaption;
+  Hauptschirm.ResultGroupBox.Caption := gResultHint;
+  Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
+end;
+
 procedure TSPINAToolbar.FormCreate(Sender: TObject);
 var
   modifierKey: TShiftState;
 begin
   SPINAToolbar.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
+  AdaptLanguages;
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];
   SPINAToolbar.HelpMenu.Visible := False;
@@ -102,6 +188,7 @@ begin
   SPINAToolbar.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
   SPINAToolbar.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   SPINAToolbar.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
+  Hauptschirm.HintField.Text := gAnleitung;
 end;
 
 procedure TSPINAToolbar.PageSetupMenuItemClick(Sender: TObject);
@@ -142,6 +229,11 @@ end;
 procedure TSPINAToolbar.ToolButton2Click(Sender: TObject);
 begin
 
+end;
+
+procedure TSPINAToolbar.ToolButton6Click(Sender: TObject);
+begin
+  Hauptschirm.PrintMenuItemClick(Sender);
 end;
 
 initialization
