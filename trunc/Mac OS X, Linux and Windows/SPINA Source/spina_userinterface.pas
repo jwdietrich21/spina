@@ -32,58 +32,59 @@ uses
   , Windows
   {$ELSE}
     {$IFDEF LCLCarbon}
-      , MacOSAll
+  , MacOSAll
     {$ENDIF}
   {$ENDIF}
   , Printers, ComCtrls, PrintersDlgs;
 
 const
-kTAB=chr(9);
-kLF=chr(10);
-kCR=chr(13);
-DEC_POINT='.';
-DEC_COMMA=',';
-TEXT_WIDTH=10;
-TSH_UNIT=' mU/l';
-FT4_UNIT=' ng/dl';
-FT3_UNIT=' pg/ml';
-kAnleitung01 = '';
-kAnleitung02 = '';
-kAnleitung11='Bitte geben Sie die gemessenen Werte für TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
-kAnleitung12='Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".';
-kVerhaltensparameter1='Verhaltensparameter:';
-kVerhaltensparameter2='Behavioural parameters:';
-kStrukturparameter1='Strukturparameter:';
-kStrukturparameter2='Structure parameters:';
-kReferenzbereiche1='Referenzbereiche:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
-kReferenzbereiche2='Reference ranges:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
-kNotCalculatable1='<Nicht berechenbar>';
-kNotCalculatable2='<Not calculatable>';
-kPatientenname1='Patientenname: ';
-kPatientenname2='Patient name: ';
-kUntersuchungsdatum1='Untersuchungsdatum: ';
-kUntersuchungsdatum2='Examination Date: ';
-kGeburtsdatum1='Geburtsdatum: ';
-kGeburtsdatum2='Birth date: ';
-kEinsender1='Einsender: ';
-kEinsender2='Sender: ';
-kDruckdatum1='Druckdatum: ';
-kDruckdatum2='Printing Date: ';
-kBenutzername1='Benutzerkennung: ';
-kBenutzername2='User name: ';
-kResultHint1='Ergebnis:';
-kResultHint2='Result:';
-kTherapyHint1 = 'Therapie:';
-kTherapyHint2 = 'Therapy:';
-kHintCaption1 = 'Hinweis:';
-kHintCaption2 = 'Hint:';
-kMarginSpaces='                                    ';
-AnInch = 2.54;
+  kTAB = chr(9);
+  kLF = chr(10);
+  kCR = chr(13);
+  DEC_POINT = '.';
+  DEC_COMMA = ',';
+  TEXT_WIDTH = 10;
+  TSH_UNIT = ' mU/l';
+  FT4_UNIT = ' ng/dl';
+  FT3_UNIT = ' pg/ml';
+  kAnleitung01 = '';
+  kAnleitung02 = '';
+  kAnleitung11 =
+    'Bitte geben Sie die gemessenen Werte f??r TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
+  kAnleitung12 =
+    'Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".';
+  kVerhaltensparameter1 = 'Verhaltensparameter:';
+  kVerhaltensparameter2 = 'Behavioural parameters:';
+  kStrukturparameter1 = 'Strukturparameter:';
+  kStrukturparameter2 = 'Structure parameters:';
+  kReferenzbereiche1 = 'Referenzbereiche:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
+  kReferenzbereiche2 = 'Reference ranges:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
+  kNotCalculatable1 = '<Nicht berechenbar>';
+  kNotCalculatable2 = '<Not calculatable>';
+  kPatientenname1 = 'Patientenname: ';
+  kPatientenname2 = 'Patient name: ';
+  kUntersuchungsdatum1 = 'Untersuchungsdatum: ';
+  kUntersuchungsdatum2 = 'Examination Date: ';
+  kGeburtsdatum1 = 'Geburtsdatum: ';
+  kGeburtsdatum2 = 'Birth date: ';
+  kEinsender1 = 'Einsender: ';
+  kEinsender2 = 'Sender: ';
+  kDruckdatum1 = 'Druckdatum: ';
+  kDruckdatum2 = 'Printing Date: ';
+  kBenutzername1 = 'Benutzerkennung: ';
+  kBenutzername2 = 'User name: ';
+  kResultHint1 = 'Ergebnis:';
+  kResultHint2 = 'Result:';
+  kTherapyHint1 = 'Therapie:';
+  kTherapyHint2 = 'Therapy:';
+  kHintCaption1 = 'Hinweis:';
+  kHintCaption2 = 'Hint:';
+  kMarginSpaces = '                                    ';
+  AnInch = 2.54;
 
 
 type
   tInterfaceLanguage = (English, German);
-  tPrefsFile = file of tPreferences;
 
   { THauptschirm }
 
@@ -186,139 +187,118 @@ type
     procedure T3MethodComboBoxAdjust(Sender: TObject);
     procedure T4MethodComboBoxChange(Sender: TObject);
     procedure T3MethodComboBoxChange(Sender: TObject);
-   private
+  private
     { private declarations }
   public
     { public declarations }
-  end; 
+  end;
 
 var
   TSH, T4, T3: real;
   Hauptschirm: THauptschirm;
   gInterfaceLanguage: tInterfaceLanguage;
   Language, UserName: array[0..128] of char;
-  gSysLanguage, gUserName: String;
+  gSysLanguage, gUserName: string;
   arraySize: DWord;
-  gAnleitung, gVerhaltensparameter, gStrukturparameter: String;
-  gResultHint, gHintCaption, gTherapyHint, gBenutzername: String;
-  gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: String;
+  gAnleitung, gVerhaltensparameter, gStrukturparameter: string;
+  gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
+  gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
   gcalcTitle, gcalcString, gnotcalculatableString: Str255;
   gExplanationString, gMessageString, TSH_String, T4_String, T3_String: Str255;
   gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;
   gTSHUnit, gT4Unit, gT3Unit, gResultString: Str255;
   gcalcCounter: longint;
-  gPrefsFile: tPrefsFile;
   gResultDialogString1, gResultDialogString2: Str255;
-  gPrefsDir, gPrefsFileName: String;
-  gAppPath, gAppDir, gAppName: String;
+  gAppPath, gAppDir, gAppName: string;
   gSysLocale: TSysLocale;
   gGermanCodes: tCodeList;
 {$IFDEF LCLCarbon}
   gItl0Handle: Intl0Hndl;
   gRegion: integer;
 {$ENDIF}
-  gTopMargin, gBottomMargin, gLeftMargin, gRightMargin: Double;
+  gTopMargin, gBottomMargin, gLeftMargin, gRightMargin: double;
   gLineSpacing: integer;
 
-
-procedure SavePreferences;
 
 implementation
 
 uses SPINA_SplashScreen;
 
 function GetOSLanguage: string;
-  var
+var
     {$IFDEF win32}
-    LanguageID:LangID;
+  LanguageID: LangID;
     {$ENDIF}
-    Len: Integer;
-  begin
+  Len: integer;
+begin
     {$IFDEF win32}
-    SetLength(Result, 255);
-    LanguageID:=GetSystemDefaultLangID;
-    Len:=VerLanguageName(LanguageID,PChar(Result), Length(Result));
-    SetLength(Result, Len);
+  SetLength(Result, 255);
+  LanguageID := GetSystemDefaultLangID;
+  Len := VerLanguageName(LanguageID, PChar(Result), Length(Result));
+  SetLength(Result, Len);
     {$ELSE}
            {$IFDEF LCLCarbon}
-           gItl0Handle := Intl0Hndl(GetIntlResource(0));
-	   gRegion := BitAnd(gItl0Handle^^.intl0Vers, $FF00);
-	   gRegion := BitShift(gRegion, -8);
-           if gRegion in gGermanCodes then
-              Result:='Deutsch'
-           else
-              Result:='English';
+  gItl0Handle := Intl0Hndl(GetIntlResource(0));
+  gRegion := BitAnd(gItl0Handle^^.intl0Vers, $FF00);
+  gRegion := BitShift(gRegion, -8);
+  if gRegion in gGermanCodes then
+    Result := 'Deutsch'
+  else
+    Result := 'English';
            {$ELSE}
-           Result:='English';
+  Result := 'English';
            {$ENDIF}
     {$ENDIF}
-    gSysLocale:=SysLocale;
-  end;
+  gSysLocale := SysLocale;
+end;
 
 procedure AdjustUnitFactors;
 begin
-if Hauptschirm.T4MethodComboBox.text='FT4'
-then
+  if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
   begin
-  if Hauptschirm.FT4ComboBox.text='ng/dl'
-  then
-    gT4UnitFactor:=1
-  else if Hauptschirm.FT4ComboBox.text='ng/l'
-  then
-    gT4UnitFactor:=0.1
-  else if Hauptschirm.FT4ComboBox.text='pmol/l'
-  then
-    gT4UnitFactor:=1/UFT4/1e12;
+    if Hauptschirm.FT4ComboBox.Text = 'ng/dl' then
+      gT4UnitFactor := 1
+    else if Hauptschirm.FT4ComboBox.Text = 'ng/l' then
+      gT4UnitFactor := 0.1
+    else if Hauptschirm.FT4ComboBox.Text = 'pmol/l' then
+      gT4UnitFactor := 1 / UFT4 / 1e12;
   end
-else if Hauptschirm.T4MethodComboBox.text='T4'
-then
+  else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
   begin
-  if Hauptschirm.FT4ComboBox.text='µg/l'
-  then
-    gT4UnitFactor:=100
-  else if Hauptschirm.FT4ComboBox.text='µg/dl'
-  then
-    gT4UnitFactor:=1000
-  else if Hauptschirm.FT4ComboBox.text='nmol/l'
-  then
-    gT4UnitFactor:=1/UFT4/1e9;
+    if Hauptschirm.FT4ComboBox.Text = '??g/l' then
+      gT4UnitFactor := 100
+    else if Hauptschirm.FT4ComboBox.Text = '??g/dl' then
+      gT4UnitFactor := 1000
+    else if Hauptschirm.FT4ComboBox.Text = 'nmol/l' then
+      gT4UnitFactor := 1 / UFT4 / 1e9;
   end;
-if Hauptschirm.T3MethodComboBox.text='FT3'
-then
+  if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
   begin
-  if Hauptschirm.FT3ComboBox.text='pg/ml'
-  then
-    gT3UnitFactor:=1
-  else if Hauptschirm.FT3ComboBox.text='ng/l'
-  then
-    gT3UnitFactor:=1
-  else if Hauptschirm.FT3ComboBox.text='pmol/l'
-  then
-    gT3UnitFactor:=1/UFT3/1e12;
+    if Hauptschirm.FT3ComboBox.Text = 'pg/ml' then
+      gT3UnitFactor := 1
+    else if Hauptschirm.FT3ComboBox.Text = 'ng/l' then
+      gT3UnitFactor := 1
+    else if Hauptschirm.FT3ComboBox.Text = 'pmol/l' then
+      gT3UnitFactor := 1 / UFT3 / 1e12;
   end
-else if Hauptschirm.T3MethodComboBox.text='T3'
-then
+  else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
   begin
-  if Hauptschirm.FT3ComboBox.text='µg/l'
-  then
-    gT3UnitFactor:=1000
-  else if Hauptschirm.FT3ComboBox.text='ng/dl'
-  then
-    gT3UnitFactor:=10
-  else if Hauptschirm.FT3ComboBox.text='nmol/l'
-  then
-    gT3UnitFactor:=1/UFT3/1e9;
+    if Hauptschirm.FT3ComboBox.Text = '??g/l' then
+      gT3UnitFactor := 1000
+    else if Hauptschirm.FT3ComboBox.Text = 'ng/dl' then
+      gT3UnitFactor := 10
+    else if Hauptschirm.FT3ComboBox.Text = 'nmol/l' then
+      gT3UnitFactor := 1 / UFT3 / 1e9;
   end;
-if Hauptschirm.TSHComboBox.text='mU/l'
-then
-   gTSHUnitFactor:=1
-else
-   gTSHUnitFactor:=1;
-gTSHUnit := Hauptschirm.TSHComboBox.text;
-gT4Unit := Hauptschirm.FT4ComboBox.text;
-gT3Unit := Hauptschirm.FT3ComboBox.text;
-with gPreferences do
+  if Hauptschirm.TSHComboBox.Text = 'mU/l' then
+    gTSHUnitFactor := 1
+  else
+    gTSHUnitFactor := 1;
+  gTSHUnit := Hauptschirm.TSHComboBox.Text;
+  gT4Unit := Hauptschirm.FT4ComboBox.Text;
+  gT3Unit := Hauptschirm.FT3ComboBox.Text;
+  with gPreferences do
   begin
     TSHUnitFactor := gTSHUnitFactor;
     T4UnitFactor := gT4UnitFactor;
@@ -328,90 +308,59 @@ end;
 
 procedure THauptschirm.T4MethodComboBoxAdjust(Sender: TObject);
 begin
-if Hauptschirm.T4MethodComboBox.text='FT4'
-then
-begin
-gPreferences.T4Method := freeHormone;
-Hauptschirm.FT4ComboBox.Items.Assign(FT4Items.Items);
-Hauptschirm.FT4ComboBox.text:=Hauptschirm.FT4ComboBox.Items.Strings[gPreferences.T4PopUpItem];
-end
-else if Hauptschirm.T4MethodComboBox.text='T4'
-then
-begin
-gPreferences.T4Method := totalHormone;
-Hauptschirm.FT4ComboBox.Items.Assign(T4Items.Items);
-Hauptschirm.FT4ComboBox.text:=Hauptschirm.FT4ComboBox.Items.Strings[gPreferences.T4PopUpItem];
-end;
-AdjustUnitFactors;
+  if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
+  begin
+    gPreferences.T4Method := freeHormone;
+    Hauptschirm.FT4ComboBox.Items.Assign(FT4Items.Items);
+    Hauptschirm.FT4ComboBox.Text :=
+      Hauptschirm.FT4ComboBox.Items.Strings[gPreferences.T4PopUpItem];
+  end
+  else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
+  begin
+    gPreferences.T4Method := totalHormone;
+    Hauptschirm.FT4ComboBox.Items.Assign(T4Items.Items);
+    Hauptschirm.FT4ComboBox.Text :=
+      Hauptschirm.FT4ComboBox.Items.Strings[gPreferences.T4PopUpItem];
+  end;
+  AdjustUnitFactors;
 end;
 
 procedure THauptschirm.T3MethodComboBoxAdjust(Sender: TObject);
 begin
-if Hauptschirm.T3MethodComboBox.text='FT3'
-then
-begin
-gPreferences.T3Method := freeHormone;
-Hauptschirm.FT3ComboBox.Items.Assign(FT3Items.Items);
-Hauptschirm.FT3ComboBox.text:=Hauptschirm.FT3ComboBox.Items.Strings[gPreferences.T3PopUpItem];
-end
-else if Hauptschirm.T3MethodComboBox.text='T3'
-then
-begin
-gPreferences.T3Method := totalHormone;
-Hauptschirm.FT3ComboBox.Items.Assign(T3Items.Items);
-Hauptschirm.FT3ComboBox.text:=Hauptschirm.FT3ComboBox.Items.Strings[gPreferences.T3PopUpItem];
-end;
-AdjustUnitFactors;
+  if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
+  begin
+    gPreferences.T3Method := freeHormone;
+    Hauptschirm.FT3ComboBox.Items.Assign(FT3Items.Items);
+    Hauptschirm.FT3ComboBox.Text :=
+      Hauptschirm.FT3ComboBox.Items.Strings[gPreferences.T3PopUpItem];
+  end
+  else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
+  begin
+    gPreferences.T3Method := totalHormone;
+    Hauptschirm.FT3ComboBox.Items.Assign(T3Items.Items);
+    Hauptschirm.FT3ComboBox.Text :=
+      Hauptschirm.FT3ComboBox.Items.Strings[gPreferences.T3PopUpItem];
+  end;
+  AdjustUnitFactors;
 end;
 
 { THauptschirm }
 
-procedure SavePreferences;
-begin
-  CreateDir(gPrefsDir);
-  assignFile(gPrefsFile, gPrefsFileName);
-  rewrite(gPrefsFile);
-  write(gPrefsFile, gPreferences);
-  CloseFile(gPrefsFile);
-end;
-
 procedure GetPreferences;
 begin
-  assignFile(gPrefsFile, gPrefsFileName);
-  try
-    reset(gPrefsFile);
-    read(gPrefsFile,gPreferences);
-    CloseFile(gPrefsFile);
-    with gPreferences do
-      begin
-        Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodPopUpItem;
-        Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodPopUpItem;
-        Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
-        Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
-        Hauptschirm.TSHComboBox.ItemIndex := TSHPopUpItem;
-        Hauptschirm.FT4ComboBox.ItemIndex := T4PopUpItem;
-        Hauptschirm.FT3ComboBox.ItemIndex := T3PopUpItem;
-        gTSHUnitFactor:=TSHUnitFactor;
-        gT4UnitFactor:=T4UnitFactor;
-        gT3UnitFactor:=T3UnitFactor;
-      end;
-    except
-  on Ex: EInOutError do
-    begin
-      with gPreferences do
-      begin
-        T4Method:=freeHormone;
-        T3Method:=freeHormone;
-        TSHUnitFactor:=1;
-        T4UnitFactor:=1;
-        T3UnitFactor:=1;
-        Hauptschirm.TSHComboBox.ItemIndex := 1;
-        Hauptschirm.FT4ComboBox.ItemIndex := 1;
-        Hauptschirm.FT3ComboBox.ItemIndex := 1;
-        Hauptschirm.T4MethodComboBox.ItemIndex := 1;
-        Hauptschirm.T3MethodComboBox.ItemIndex := 1;
-      end;
-    end;
+  ReadPreferences;
+  with gPreferences do
+  begin
+    Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodPopUpItem;
+    Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodPopUpItem;
+    Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
+    Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
+    Hauptschirm.TSHComboBox.ItemIndex := TSHPopUpItem;
+    Hauptschirm.FT4ComboBox.ItemIndex := T4PopUpItem;
+    Hauptschirm.FT3ComboBox.ItemIndex := T3PopUpItem;
+    gTSHUnitFactor := TSHUnitFactor;
+    gT4UnitFactor := T4UnitFactor;
+    gT3UnitFactor := T3UnitFactor;
   end;
 end;
 
@@ -423,51 +372,53 @@ end;
 
 procedure ShowMessage;
 const
-kTSH_Label = '   TSH: ';
-kFT4_Label = '   FT4: ';
-ksFT4_Label = 'FT4: ';
-kT4_Label = '   T4: ';
-ksT4_Label = 'T4: ';
-kFT3_Label = '   FT3: ';
-ksFT3_Label = 'FT3: ';
-kT3_Label = '   T3: ';
-ksT3_Label = 'T3: ';
+  kTSH_Label = '   TSH: ';
+  kFT4_Label = '   FT4: ';
+  ksFT4_Label = 'FT4: ';
+  kT4_Label = '   T4: ';
+  ksT4_Label = 'T4: ';
+  kFT3_Label = '   FT3: ';
+  ksFT3_Label = 'FT3: ';
+  kT3_Label = '   T3: ';
+  ksT3_Label = 'T3: ';
 var
-theString,vhString: Str255;
-T4Label,T3Label,sT4Label,sT3Label: Str255;
+  theString, vhString: Str255;
+  T4Label, T3Label, sT4Label, sT3Label: Str255;
 begin
-if gPreferences.T4Method = freeHormone
-then
+  if gPreferences.T4Method = freeHormone then
   begin
-  T4Label := kFT4_Label;
-  sT4Label := ksFT4_Label;
+    T4Label := kFT4_Label;
+    sT4Label := ksFT4_Label;
   end
-else
+  else
   begin
-  T4Label := kT4_Label;
-  sT4Label := ksT4_Label;
+    T4Label := kT4_Label;
+    sT4Label := ksT4_Label;
   end;
-if gPreferences.T3Method = freeHormone
-then
+  if gPreferences.T3Method = freeHormone then
   begin
-  T3Label := kFT3_Label;
-  sT3Label := ksFT3_Label;
+    T3Label := kFT3_Label;
+    sT3Label := ksFT3_Label;
   end
-else
+  else
   begin
-  T3Label := kT3_Label;
-  sT3Label := ksT3_Label;
+    T3Label := kT3_Label;
+    sT3Label := ksT3_Label;
   end;
-  vhString:=concat(gVerhaltensparameter,kCR,kLF,'   TSH: ',TSH_String,' ',gTSHUnit,kCR,kLF,T4Label,T4_String,' ',gT4Unit,kCR,kLF,T3Label,T3_String,' ',gT3Unit);
-theString:=concat(vhString,kCR,kLF,kCR,kLF,gStrukturparameter,kCR,kLF,gMessageString);
-Hauptschirm.ResultField.text := theString;
-gResultString:=theString;
-gResultDialogString1 := concat('TSH: ',TSH_String,' ',gTSHUnit,kCR,kLF,sT4Label,T4_String,' ',gT4Unit,kCR,kLF,sT3Label,T3_String,' ',gT3Unit);
-gResultDialogString2 := concat(gMessageString);
+  vhString := concat(gVerhaltensparameter, kCR, kLF, '   TSH: ', TSH_String,
+    ' ', gTSHUnit, kCR, kLF, T4Label, T4_String, ' ', gT4Unit, kCR, kLF, T3Label,
+    T3_String, ' ', gT3Unit);
+  theString := concat(vhString, kCR, kLF, kCR, kLF, gStrukturparameter, kCR, kLF, gMessageString);
+  Hauptschirm.ResultField.Text := theString;
+  gResultString := theString;
+  gResultDialogString1 := concat('TSH: ', TSH_String, ' ', gTSHUnit, kCR,
+    kLF, sT4Label, T4_String, ' ', gT4Unit, kCR, kLF, sT3Label, T3_String, ' ', gT3Unit);
+  gResultDialogString2 := concat(gMessageString);
 end;
 
 procedure bell; {platform-independent implementation of acustical warning}
-var s:longint;
+var
+  s: longint;
 begin
   {$IFDEF win32}
   MessageBeep(0);
@@ -483,107 +434,116 @@ begin
   {$ENDIF}
 end;
 
-function ValidKey (theKey: char): boolean;
-{Beschränkt Texteingabe auf zulässige Zeichen}
+function ValidKey(theKey: char): boolean;
+  {Beschr??nkt Texteingabe auf zul??ssige Zeichen}
 type
-format1 = set of char;
+  format1 = set of char;
 var
-theformatn, theformatd, theformate, theformato, theformatc, thevalidformat: format1;
+  theformatn, theformatd, theformate, theformato, theformatc, thevalidformat: format1;
 begin
-     ValidKey := false;
-     theformatn := ['1'..'9', '0', kTAB];
-     theformatd := ['.', ','];
-     theformate := ['e', 'E'];
-     theformato := ['+', '-'];
-     theformatc := [char($1c), char($1d), char($1e), char($1f), char($08)];
-     thevalidformat := theformatn + theformatd + theformate + theformatc;
-     if thekey in thevalidformat then
-        ValidKey := true
-     else
-       bell;
-     end;
+  ValidKey := False;
+  theformatn := ['1'..'9', '0', kTAB];
+  theformatd := ['.', ','];
+  theformate := ['e', 'E'];
+  theformato := ['+', '-'];
+  theformatc := [char($1c), char($1d), char($1e), char($1f), char($08)];
+  thevalidformat := theformatn + theformatd + theformate + theformatc;
+  if thekey in thevalidformat then
+    ValidKey := True
+  else
+    bell;
+end;
 
 procedure HandleInput;
 var
   Buffer: PChar;
-  Size: Byte;
+  Size: byte;
   resultRecord: tCaseRecord;
 begin
   try
-    Size := Hauptschirm.TSH_Text.GetTextLen;              {Länge des Strings in Edit1 ermitteln}
+    Size := Hauptschirm.TSH_Text.GetTextLen;
+    {L??nge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
       TSH := 0
     else
-      begin
-        Inc(Size);                                        {Platz für NULL-Zeichen hinzufügen}
-        GetMem(Buffer, Size);                             {Buffer als dynamische Variable definieren}
-        Hauptschirm.TSH_Text.GetTextBuf(Buffer,Size);     {Edit1.Text in Buffer ablegen}
-        TSH_String := StrPas(Buffer);
-        FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
-        TSH := StrToFloat(TSH_String);
-        TSH := TSH * gTSHUnitFactor;
-      end;
-    TSH_String := FloatToStrF(TSH, ffFixed, 3,2);
-    Size := Hauptschirm.FT4_Text.GetTextLen;              {Länge des Strings in Edit1 ermitteln}
+    begin
+      Inc(Size);
+      {Platz f??r NULL-Zeichen hinzuf??gen}
+      GetMem(Buffer, Size);
+      {Buffer als dynamische Variable definieren}
+      Hauptschirm.TSH_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
+      TSH_String := StrPas(Buffer);
+      FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
+      TSH := StrToFloat(TSH_String);
+      TSH := TSH * gTSHUnitFactor;
+    end;
+    TSH_String := FloatToStrF(TSH, ffFixed, 3, 2);
+    Size := Hauptschirm.FT4_Text.GetTextLen;
+    {L??nge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
       T4 := 0
     else
-      begin
-        Inc(Size);                                        {Platz für NULL-Zeichen hinzufügen}
-        GetMem(Buffer, Size);                             {Buffer als dynamische Variable definieren}
-        Hauptschirm.FT4_Text.GetTextBuf(Buffer,Size);     {Edit1.Text in Buffer ablegen}
-        T4_String := StrPas(Buffer);
-        FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
-        T4 := StrToFloat(T4_String);
-      end;
-    T4_String := FloatToStrF(T4, ffFixed, 3,2);
+    begin
+      Inc(Size);
+      {Platz f??r NULL-Zeichen hinzuf??gen}
+      GetMem(Buffer, Size);
+      {Buffer als dynamische Variable definieren}
+      Hauptschirm.FT4_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
+      T4_String := StrPas(Buffer);
+      FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
+      T4 := StrToFloat(T4_String);
+    end;
+    T4_String := FloatToStrF(T4, ffFixed, 3, 2);
     T4 := T4 * UFT4;
     T4 := T4 * gT4UnitFactor;
-    Size := Hauptschirm.FT3_Text.GetTextLen;              {Länge des Strings in Edit1 ermitteln}
+    Size := Hauptschirm.FT3_Text.GetTextLen;
+    {L??nge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
       T3 := 0
     else
-      begin
-        Inc(Size);                                        {Platz für NULL-Zeichen hinzufügen}
-        GetMem(Buffer, Size);                             {Buffer als dynamische Variable definieren}
-        Hauptschirm.FT3_Text.GetTextBuf(Buffer,Size);     {Edit1.Text in Buffer ablegen}
-        T3_String := StrPas(Buffer);
-        FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
-        T3 := StrToFloat(T3_String);
-      end;
-    T3_String := FloatToStrF(T3, ffFixed, 3,2);
+    begin
+      Inc(Size);
+      {Platz f??r NULL-Zeichen hinzuf??gen}
+      GetMem(Buffer, Size);
+      {Buffer als dynamische Variable definieren}
+      Hauptschirm.FT3_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
+      T3_String := StrPas(Buffer);
+      FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
+      T3 := StrToFloat(T3_String);
+    end;
+    T3_String := FloatToStrF(T3, ffFixed, 3, 2);
     T3 := T3 * UFT3;
     T3 := T3 * gT3UnitFactor;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
-      gTSHTherapy := true
+      gTSHTherapy := True
     else
-      gTSHTherapy := false;
+      gTSHTherapy := False;
     if Hauptschirm.TherapyCheckGroup.Checked[1] then
-      gT4Therapy := true
+      gT4Therapy := True
     else
-      gT4Therapy := false;
+      gT4Therapy := False;
     if Hauptschirm.TherapyCheckGroup.Checked[2] then
-      gT3Therapy := true
+      gT3Therapy := True
     else
-      gT3Therapy := false;
+      gT3Therapy := False;
   except
-    on ex: exception do
-      begin
-        bell;
-        TSH := 0;
-        T4 := 0;
-        T3 := 0;
-      end;
+    on ex: Exception do
+    begin
+      bell;
+      TSH := 0;
+      T4 := 0;
+      T3 := 0;
     end;
+  end;
   resultRecord := Calculate(TSH, T4, T3);
-  gMessageString:=concat('   GT: ',resultRecord.GTs,kCR,kLF,'   GD: ',resultRecord.GDs);
+  gMessageString := concat('   GT: ', resultRecord.GTs, kCR, kLF, '   GD: ', resultRecord.GDs);
   ShowMessage;
 end;
 
 procedure THauptschirm.Calculate_ButtonClick(Sender: TObject);
 begin
   HandleInput;
-  ResultForm.Visible:=true;
+  ResultForm.Visible := True;
   ResultForm.AlphaBlendValue := 220;
 end;
 
@@ -593,122 +553,122 @@ var
   theForm: TForm;
 begin
   {$IFDEF LCLcarbon}
-    modifierKey := [ssMeta];
-    Hauptschirm.HelpMenu.Visible:=false;
-    Hauptschirm.AppleMenu.Visible:=true;
+  modifierKey := [ssMeta];
+  Hauptschirm.HelpMenu.Visible := False;
+  Hauptschirm.AppleMenu.Visible := True;
   {$ELSE}
-    modifierKey := [ssCtrl];
-    Hauptschirm.HelpMenu.Visible:=true;
-    Hauptschirm.AppleMenu.Visible:=false;
+  modifierKey := [ssCtrl];
+  Hauptschirm.HelpMenu.Visible := True;
+  Hauptschirm.AppleMenu.Visible := False;
   {$ENDIF}
-  Hauptschirm.NewMenuItem.ShortCut:=ShortCut(VK_N, modifierKey);
-  Hauptschirm.CloseMenuItem.ShortCut:=ShortCut(VK_W, modifierKey);
-  Hauptschirm.PrintMenuItem.ShortCut:=ShortCut(VK_P, modifierKey);
-  Hauptschirm.QuitMenuItem.ShortCut:=ShortCut(VK_Q, modifierKey);
-  Hauptschirm.UndoMenuItem.ShortCut:=ShortCut(VK_Z, modifierKey);
-  Hauptschirm.CutMenuItem.ShortCut:=ShortCut(VK_X, modifierKey);
-  Hauptschirm.CopyMenuItem.ShortCut:=ShortCut(VK_C, modifierKey);
-  Hauptschirm.PasteMenuItem.ShortCut:=ShortCut(VK_V, modifierKey);
-  Hauptschirm.CopyResultMenuItem.ShortCut:=ShortCut(VK_R, modifierKey);
+  Hauptschirm.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
+  Hauptschirm.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
+  Hauptschirm.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
+  Hauptschirm.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
+  Hauptschirm.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
+  Hauptschirm.CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
+  Hauptschirm.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
+  Hauptschirm.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
+  Hauptschirm.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
 
   {$IFDEF LCLcarbon}
-    SplashScreen.HelpMenu.Visible:=false;
-    SplashScreen.AppleMenu.Visible:=true;
+  SplashScreen.HelpMenu.Visible := False;
+  SplashScreen.AppleMenu.Visible := True;
   {$ELSE}
-    SplashScreen.HelpMenu.Visible:=true;
-    SplashScreen.AppleMenu.Visible:=false;
+  SplashScreen.HelpMenu.Visible := True;
+  SplashScreen.AppleMenu.Visible := False;
   {$ENDIF}
-  SplashScreen.NewMenuItem.ShortCut:=ShortCut(VK_N, modifierKey);
-  SplashScreen.CloseMenuItem.ShortCut:=ShortCut(VK_W, modifierKey);
-  SplashScreen.PrintMenuItem.ShortCut:=ShortCut(VK_P, modifierKey);
-  SplashScreen.QuitMenuItem.ShortCut:=ShortCut(VK_Q, modifierKey);
-  SplashScreen.UndoMenuItem.ShortCut:=ShortCut(VK_Z, modifierKey);
-  SplashScreen.CutMenuItem.ShortCut:=ShortCut(VK_X, modifierKey);
-  SplashScreen.CopyMenuItem.ShortCut:=ShortCut(VK_C, modifierKey);
-  SplashScreen.PasteMenuItem.ShortCut:=ShortCut(VK_V, modifierKey);
-  SplashScreen.CopyResultMenuItem.ShortCut:=ShortCut(VK_R, modifierKey);
+  SplashScreen.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
+  SplashScreen.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
+  SplashScreen.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
+  SplashScreen.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
+  SplashScreen.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
+  SplashScreen.CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
+  SplashScreen.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
+  SplashScreen.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
+  SplashScreen.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
 end;
 
 procedure AdaptLanguages;
 begin
-   if gInterfaceLanguage = English then
-   begin
-      gAnleitung := kAnleitung12;
-      gVerhaltensparameter := kVerhaltensparameter2;
-      gStrukturparameter := kStrukturparameter2;
-      gNotCalculatable := kNotCalculatable2;
-      gResultHint := kResultHint2;
-      gHintCaption := kHintCaption2;
-      gTherapyHint := kTherapyHint2;
-      gPatientenname := kPatientenname2;
-      gGeburtsdatum := kGeburtsdatum2;
-      gUntersuchungsdatum := kUntersuchungsdatum2;
-      gEinsender := kEinsender2;
-      gBenutzername := kBenutzername2;
-      gDruckdatum := kDruckdatum2;
-      Hauptschirm.Calculate_Button.Caption := 'Calculate';
-      Hauptschirm.HintGroupBox.Caption := 'Hint:';
-      Hauptschirm.FileMenu.Caption := 'File';
-      Hauptschirm.NewMenuItem.Caption := 'New Calculation...';
-      Hauptschirm.CloseMenuItem.Caption := 'Close';
-      Hauptschirm.PrintMenuItem.Caption := 'Print';
-      Hauptschirm.PageSetupMenuItem.Caption := 'Page Setup...';
-      Hauptschirm.QuitMenuItem.Caption := 'Quit';
-      Hauptschirm.EditMenu.Caption := 'Edit';
-      Hauptschirm.UndoMenuItem.Caption := 'Undo';
-      Hauptschirm.CutMenuItem.Caption := 'Cut';
-      Hauptschirm.CopyMenuItem.Caption := 'Copy';
-      Hauptschirm.PasteMenuItem.Caption := 'Paste';
-      Hauptschirm.DeleteMenuItem.Caption := 'Clear';
-      Hauptschirm.CopyResultMenuItem.Caption := 'Copy Result';
-      Hauptschirm.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
-   end
-   else
-   begin
+  if gInterfaceLanguage = English then
+  begin
+    gAnleitung := kAnleitung12;
+    gVerhaltensparameter := kVerhaltensparameter2;
+    gStrukturparameter := kStrukturparameter2;
+    gNotCalculatable := kNotCalculatable2;
+    gResultHint := kResultHint2;
+    gHintCaption := kHintCaption2;
+    gTherapyHint := kTherapyHint2;
+    gPatientenname := kPatientenname2;
+    gGeburtsdatum := kGeburtsdatum2;
+    gUntersuchungsdatum := kUntersuchungsdatum2;
+    gEinsender := kEinsender2;
+    gBenutzername := kBenutzername2;
+    gDruckdatum := kDruckdatum2;
+    Hauptschirm.Calculate_Button.Caption := 'Calculate';
+    Hauptschirm.HintGroupBox.Caption := 'Hint:';
+    Hauptschirm.FileMenu.Caption := 'File';
+    Hauptschirm.NewMenuItem.Caption := 'New Calculation...';
+    Hauptschirm.CloseMenuItem.Caption := 'Close';
+    Hauptschirm.PrintMenuItem.Caption := 'Print';
+    Hauptschirm.PageSetupMenuItem.Caption := 'Page Setup...';
+    Hauptschirm.QuitMenuItem.Caption := 'Quit';
+    Hauptschirm.EditMenu.Caption := 'Edit';
+    Hauptschirm.UndoMenuItem.Caption := 'Undo';
+    Hauptschirm.CutMenuItem.Caption := 'Cut';
+    Hauptschirm.CopyMenuItem.Caption := 'Copy';
+    Hauptschirm.PasteMenuItem.Caption := 'Paste';
+    Hauptschirm.DeleteMenuItem.Caption := 'Clear';
+    Hauptschirm.CopyResultMenuItem.Caption := 'Copy Result';
+    Hauptschirm.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
+  end
+  else
+  begin
       {$IFDEF LCLcarbon}
-      Hauptschirm.FileMenu.Caption:='Ablage';
-      Hauptschirm.UndoMenuItem.Caption:='Widerrufen';
+    Hauptschirm.FileMenu.Caption := 'Ablage';
+    Hauptschirm.UndoMenuItem.Caption := 'Widerrufen';
       {$ELSE}
-      Hauptschirm.FileMenu.Caption:='Datei';
-      Hauptschirm.UndoMenuItem.Caption:='Rückgängig';
+    Hauptschirm.FileMenu.Caption := 'Datei';
+    Hauptschirm.UndoMenuItem.Caption := 'R??ckg??ngig';
       {$ENDIF}
-      gAnleitung := kAnleitung11;
-      gVerhaltensparameter := kVerhaltensparameter1;
-      gStrukturparameter := kStrukturparameter1;
-      gNotCalculatable := kNotCalculatable1;
-      gResultHint := kResultHint1;
-      gHintCaption := kHintCaption1;
-      gTherapyHint := kTherapyHint1;
-      gPatientenname := kPatientenname1;
-      gGeburtsdatum := kGeburtsdatum1;
-      gUntersuchungsdatum := kUntersuchungsdatum1;
-      gEinsender := kEinsender1;
-      gBenutzername := kBenutzername1;
-      gDruckdatum := kDruckdatum1;
-   end;
-   AdaptMenus;
-   Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
-   Hauptschirm.HintGroupBox.Caption := gHintCaption;
-   Hauptschirm.ResultGroupBox.Caption := gResultHint;
-   Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
+    gAnleitung := kAnleitung11;
+    gVerhaltensparameter := kVerhaltensparameter1;
+    gStrukturparameter := kStrukturparameter1;
+    gNotCalculatable := kNotCalculatable1;
+    gResultHint := kResultHint1;
+    gHintCaption := kHintCaption1;
+    gTherapyHint := kTherapyHint1;
+    gPatientenname := kPatientenname1;
+    gGeburtsdatum := kGeburtsdatum1;
+    gUntersuchungsdatum := kUntersuchungsdatum1;
+    gEinsender := kEinsender1;
+    gBenutzername := kBenutzername1;
+    gDruckdatum := kDruckdatum1;
+  end;
+  AdaptMenus;
+  Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
+  Hauptschirm.HintGroupBox.Caption := gHintCaption;
+  Hauptschirm.ResultGroupBox.Caption := gResultHint;
+  Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
-AdaptLanguages;
-AdjustUnitFactors;
-Hauptschirm.HintField.text:=gAnleitung;
-Hauptschirm.HorzScrollBar.Visible := false;
-Hauptschirm.VertScrollBar.Visible := false;
-Hauptschirm.AutoScroll := false;
-Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
-GetPreferences;
+  AdaptLanguages;
+  AdjustUnitFactors;
+  Hauptschirm.HintField.Text := gAnleitung;
+  Hauptschirm.HorzScrollBar.Visible := False;
+  Hauptschirm.VertScrollBar.Visible := False;
+  Hauptschirm.AutoScroll := False;
+  Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
+  GetPreferences;
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
 begin
-Hauptschirm.ResultField.SelectAll;
-Hauptschirm.ResultField.CopyToClipboard
+  Hauptschirm.ResultField.SelectAll;
+  Hauptschirm.ResultField.CopyToClipboard;
 end;
 
 procedure THauptschirm.FT4ItemsChange(Sender: TObject);
@@ -718,30 +678,30 @@ end;
 
 procedure THauptschirm.TSHComboBoxChange(Sender: TObject);
 begin
-   gPreferences.TSHPopUpItem := Hauptschirm.TSHComboBox.ItemIndex;
-   AdjustUnitFactors;
+  gPreferences.TSHPopUpItem := Hauptschirm.TSHComboBox.ItemIndex;
+  AdjustUnitFactors;
 end;
 
 procedure THauptschirm.FT3ComboBoxChange(Sender: TObject);
 begin
-   gPreferences.T3PopUpItem := Hauptschirm.FT3ComboBox.ItemIndex;
-   AdjustUnitFactors;
+  gPreferences.T3PopUpItem := Hauptschirm.FT3ComboBox.ItemIndex;
+  AdjustUnitFactors;
 end;
 
 procedure THauptschirm.FT4ComboBoxChange(Sender: TObject);
 begin
-   gPreferences.T4PopUpItem := Hauptschirm.FT4ComboBox.ItemIndex;
-   AdjustUnitFactors;
+  gPreferences.T4PopUpItem := Hauptschirm.FT4ComboBox.ItemIndex;
+  AdjustUnitFactors;
 end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
- if gStartup then
- begin
- Hauptschirm.TSH_Text.SetFocus;
- Hauptschirm.VertScrollBar.Visible := false;
- Hauptschirm.AutoScroll := false;
- end;
+  if gStartup then
+  begin
+    Hauptschirm.TSH_Text.SetFocus;
+    Hauptschirm.VertScrollBar.Visible := False;
+    Hauptschirm.AutoScroll := False;
+  end;
 end;
 
 
@@ -770,26 +730,26 @@ begin
   Close;
 end;
 
-function DoPageSetup: Boolean;
+function DoPageSetup: boolean;
 var
   D: TPageSetupDialog;
 begin
-  D:=TPageSetupDialog.Create(nil);
-  Try
-    Result:=D.Execute;
-  Finally
+  D := TPageSetupDialog.Create(nil);
+  try
+    Result := D.Execute;
+  finally
     D.Free;
   end;
 end;
 
-function DoPrintSetup: Boolean;
+function DoPrintSetup: boolean;
 var
   D: TPrintDialog;
 begin
-  D:=TPrintDialog.Create(nil);
-  Try
-    Result:=D.Execute;
-  Finally
+  D := TPrintDialog.Create(nil);
+  try
+    Result := D.Execute;
+  finally
     D.Free;
   end;
 end;
@@ -804,26 +764,26 @@ function GetLinesPerPage(ACanvas: TCanvas; ACanvasHeight, ADPI: integer): intege
 var
   H, DPC: integer;
 begin
-  DPC := Round(ADPI/AnInch);
+  DPC := Round(ADPI / AnInch);
   H := ACanvas.TextHeight('X') + gLineSpacing;
-  Result := Round((ACanvasHeight-DPC*(gTopMargin-gBottomMargin))/H-3);
+  Result := Round((ACanvasHeight - DPC * (gTopMargin - gBottomMargin)) / H - 3);
 end;
 
-function GetPoints(AUnits: Double; ADPI: integer): integer    ;
+function GetPoints(AUnits: double; ADPI: integer): integer;
 begin
-  Result := Round(AUnits*(ADPI/AnInch));
+  Result := Round(AUnits * (ADPI / AnInch));
 end;
 
-procedure PrinterWriteln(H: integer; var currentX, currentY: integer; theString:String);
-  begin
-    Printer.Canvas.TextOut(currentX,currentY,theString);
-    Inc(currentY,H);
-  end;
+procedure PrinterWriteln(H: integer; var currentX, currentY: integer; theString: string);
+begin
+  Printer.Canvas.TextOut(currentX, currentY, theString);
+  Inc(currentY, H);
+end;
 
 procedure PrintCaption(H: integer; var currentX, currentY, marginX: integer);
-  var
-    theSize: integer;
-  begin
+var
+  theSize: integer;
+begin
   theSize := Printer.Canvas.Font.Size;
   Printer.Canvas.Font.Size := trunc(Printer.Canvas.Font.Size * 1.7);
   Printer.Canvas.Font.Style := [fsBold];
@@ -859,7 +819,7 @@ end;
 
 procedure PrintFooter(H: integer; var currentX, currentY, marginX: integer);
 var
-  theDate, theTime: String;
+  theDate, theTime: string;
 begin
   DateTimeToString(theDate, 'dddd"," dd mmmm yyyy', date);
   DateTimeToString(theTime, '"," t', time);
@@ -867,15 +827,16 @@ begin
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - marginX, currentY - H div 2);
   Printer.Canvas.Font.Color := clGray;
-  PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName, '  |  ', gDruckdatum, theDate, theTime));
+  PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName,
+    '  |  ', gDruckdatum, theDate, theTime));
   PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.Font.Color := clBlack;
 end;
 
 procedure THauptschirm.PrintMenuItemClick(Sender: TObject);
-  var
-H, ADPI, marginX, currentX, currentY, returnPos, lastPos: integer;
-resultLine, remainder: Str255;
+var
+  H, ADPI, marginX, currentX, currentY, returnPos, lastPos: integer;
+  resultLine, remainder: Str255;
 
 begin
   if DoPrintSetup then
@@ -897,30 +858,30 @@ begin
       Printer.Canvas.Font.Style := [];
       Printer.Canvas.Pen.Color := clBlack;
       Printer.Canvas.Pen.Width := 2;
-      H := (Printer.Canvas.TextHeight('X') + gLineSpacing) ;
+      H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
       PrintCaption(H, currentX, currentY, marginX);
-      lastPos:=1;
+      lastPos := 1;
       remainder := gResultString;
       repeat
-        returnPos:=pos(kCR, remainder);
+        returnPos := pos(kCR, remainder);
         if returnPos > 0 then
-          resultLine := copy(remainder, 1, returnPos-1)
+          resultLine := copy(remainder, 1, returnPos - 1)
         else
           resultLine := remainder;
         remainder := copy(remainder, returnPos + 2, length(remainder));
-        PrinterWriteln(H, currentX,currentY,resultLine);
+        PrinterWriteln(H, currentX, currentY, resultLine);
       until returnPos = 0;
       currentX := marginX;
       currentY := Printer.PageHeight - 4 * H;
       PrintFooter(H, currentX, currentY, marginX);
       Printer.EndDoc;
     except
-      on E:Exception do
-        begin
-          Printer.Abort;
-          raise;
-        end;
+      on E: Exception do
+      begin
+        Printer.Abort;
+        raise;
       end;
+    end;
   end;
 end;
 
@@ -931,16 +892,16 @@ end;
 
 procedure THauptschirm.T4MethodComboBoxChange(Sender: TObject);
 begin
-   gPreferences.T4MethodPopUpItem := Hauptschirm.T4MethodComboBox.ItemIndex;
-   gPreferences.T4PopUpItem := 0;
-   Hauptschirm.T4MethodComboBoxAdjust(Sender);
+  gPreferences.T4MethodPopUpItem := Hauptschirm.T4MethodComboBox.ItemIndex;
+  gPreferences.T4PopUpItem := 0;
+  Hauptschirm.T4MethodComboBoxAdjust(Sender);
 end;
 
 procedure THauptschirm.T3MethodComboBoxChange(Sender: TObject);
 begin
-   gPreferences.T3MethodPopUpItem := Hauptschirm.T3MethodComboBox.ItemIndex;
-   gPreferences.T3PopUpItem := 0;
-   Hauptschirm.T3MethodComboBoxAdjust(Sender);
+  gPreferences.T3MethodPopUpItem := Hauptschirm.T3MethodComboBox.ItemIndex;
+  gPreferences.T3PopUpItem := 0;
+  Hauptschirm.T3MethodComboBoxAdjust(Sender);
 end;
 
 
@@ -951,30 +912,30 @@ initialization
   gInterfaceLanguage := German;
   gGermanCodes := [3, 19, 70, 92];
 
-  gPrefsDir:=GetPreferencesFolder;
-  gPrefsFileName:=GetPreferencesFile;
+  gPrefsDir := GetPreferencesFolder;
+  gPrefsFileName := GetPreferencesFile;
 
   gAppName := ApplicationName;
   gAppPath := ParamStr(0);
   gAppPath := Application.Location;
 
-  gSysLanguage:=GetOSLanguage;
+  gSysLanguage := GetOSLanguage;
   {$IFDEF UNIX}
   gUserName := GetEnvironmentVariable('USER');
   {$ELSE}
   GetUserName(UserName, arraySize);
-  gUserName := String(UserName);
+  gUserName := string(UserName);
   {$ENDIF}
-  if pos('Deutsch', gSysLanguage)>0 then
-    begin
-      gInterfaceLanguage := German;
-      DecimalSeparator := DEC_COMMA;
-    end
+  if pos('Deutsch', gSysLanguage) > 0 then
+  begin
+    gInterfaceLanguage := German;
+    DecimalSeparator := DEC_COMMA;
+  end
   else
-    begin
-      gInterfaceLanguage := English;
-      DecimalSeparator := DEC_POINT;
-    end;
+  begin
+    gInterfaceLanguage := English;
+    DecimalSeparator := DEC_POINT;
+  end;
 
 finalization
 

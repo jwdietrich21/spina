@@ -37,7 +37,8 @@ uses
 
 function GetPreferencesFolder: String;
 function GetPreferencesFile: String;
-{procedure ReadPreferences;}
+procedure ReadPreferences;
+procedure SavePreferences;
 
 implementation
 
@@ -83,69 +84,192 @@ begin
   {$ENDIF}
 end;
 
-{procedure ReadPreferences; {should not be called before PreferencesDialog has been created}
+function EncodeGreek(theString: string): string;
+var
+  theFlags: TReplaceFlags;
+begin
+  theFlags := [rfReplaceAll, rfIgnoreCase];
+  Result := StringReplace(theString, #194#181, 'mc', theFlags);
+end;
+
+function DecodeGreek(theString: string): string;
+begin
+  {result := UTF8Decode(StringReplace(theString, 'mc', PrefixLabel[4], [rfReplaceAll, rfIgnoreCase]));}
+end;
+
+function NodeContent(theRoot: TDOMNode; Name: string): string;
+  {supports XML routines, gets the contents of a node in a file}
+var
+  theNode: TDOMNode;
+begin
+  if assigned(theRoot) then
+    theNode := theRoot.FindNode(Name);
+  if assigned(theNode) then
+  begin
+    try
+      Result := UTF8Encode(theNode.TextContent);
+    except
+      Result := 'NA';
+    end;
+  end
+  else
+    Result := 'NA';
+end;
+
+procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: real);
+{supports XML routines}
+var
+  theString: string;
+begin
+  theString := NodeContent(theRoot, Name);
+  if theString <> 'NA' then
+    theVar := StrToFloat(theString);
+end;
+
+function SimpleNode(Doc: TXMLDocument; Name, Value: string): TDOMNode;
+  {supports XML routines, creates an XML node from the contents of a string}
+var
+  ItemNode, TextNode: TDOMNode;
+begin
+  ItemNode := Doc.CreateElement(Name);
+  TextNode := Doc.CreateTextNode(UTF8Decode(Value));
+  ItemNode.AppendChild(TextNode);
+  Result := ItemNode;
+end;
+
+procedure ReadPreferences;
 var
   Doc: TXMLDocument;
   RootNode, theNode: TDOMNode;
   theFileName, theString: String;
 begin
+  {assignFile(gPrefsFile, gPrefsFileName);
+  try
+    reset(gPrefsFile);
+    read(gPrefsFile,gPreferences);
+    CloseFile(gPrefsFile);
+  except
+  on Ex: EInOutError do
+      with gPreferences do
+      begin
+        T4Method:=freeHormone;
+        T3Method:=freeHormone;
+        TSHUnitFactor:=1;
+        T4UnitFactor:=1;
+        T3UnitFactor:=1;
+      end;
+   end;}
   theFileName := GetPreferencesFile;
   if FileExists(theFileName) then
   try
     Doc := TXMLDocument.Create();
     ReadXMLFile(Doc, theFileName);
-    RootNode := Doc.DocumentElement.FindNode('formats');
-    gNumberFormat := NodeContent(RootNode, 'numbers');
-    gDateTimeFormat := NodeContent(RootNode, 'time');
+
+    RootNode := Doc.DocumentElement.FindNode('methods');
+    theString := NodeContent(RootNode, 'T4');
+    if theString = 'free' then
+      gPreferences.T4Method := freeHormone
+    else
+      gPreferences.T4Method := totalHormone;
+    theString := NodeContent(RootNode, 'T3');
+    if theString = 'free' then
+      gPreferences.T3Method := freeHormone
+    else
+      gPreferences.T3Method := totalHormone;
+
+    RootNode := Doc.DocumentElement.FindNode('factors');
+    theString := NodeContent(RootNode, 'TSH');
+    gPreferences.TSHUnitFactor := StrToFloat(theString);
+    theString := NodeContent(RootNode, 'T4');
+    gPreferences.T4UnitFactor := StrToFloat(theString);
+    theString := NodeContent(RootNode, 'T3');
+    gPreferences.T3UnitFactor := StrToFloat(theString);
+
+    RootNode := Doc.DocumentElement.FindNode('unititems');
+    theString := NodeContent(RootNode, 'TSH');
+    gPreferences.TSHPopUpItem := StrToInt(theString);
+    theString := NodeContent(RootNode, 'T4');
+    gPreferences.T4PopUpItem := StrToInt(theString);
+    theString := NodeContent(RootNode, 'T3');
+    gPreferences.T3PopUpItem := StrToInt(theString);
+
+    RootNode := Doc.DocumentElement.FindNode('methoditems');
+    theString := NodeContent(RootNode, 'T4');
+    gPreferences.T4MethodPopUpItem := StrToInt(theString);
+    theString := NodeContent(RootNode, 'T3');
+    gPreferences.T3MethodPopUpItem := StrToInt(theString);
+
   finally
     Doc.Free;
   end
   else  {Standards from dialog, if preference file does not exist}
-  if PreferencesDialog <> nil then begin
-    gNumberFormat := PreferencesDialog.NumberFormatEdit.Text;
-    gDateTimeFormat := PreferencesDialog.DateTimeFormatEdit.Text;
-  end
-  else
-  begin  {fall-back solution, if neither file nor dialog exist}
-    gNumberFormat := '###,###.00##';
-    gDateTimeFormat := '"d"D hh:nn:ss';
+  begin  {fall-back solution, if file does not exist}
+    with gPreferences do
+    begin
+      T4Method := freeHormone;
+      T3Method := freeHormone;
+      TSHUnitFactor := 1;
+      T4UnitFactor := 1;
+      T3UnitFactor := 1;
+      TSHPopUpItem := 0;
+      T4PopUpItem := 0;
+      T3PopUpItem := 0;
+      T4MethodPopUpItem := 0;
+      T3MethodPopUpItem := 0;
+    end;
   end;
-end; }
+end;
 
-{procedure SavePreferences;
+procedure SavePreferences;
 var
   theFileName, PreferencesFolder: String;
   Doc: TXMLDocument;
   StartComment: TDOMComment;
   RootNode, ElementNode, ItemNode, TextNode: TDOMNode;
 begin
+  {CreateDir(gPrefsDir);
+  assignFile(gPrefsFile, gPrefsFileName);
+  rewrite(gPrefsFile);
+  write(gPrefsFile, gPreferences);
+  CloseFile(gPrefsFile);}
   theFileName := GetPreferencesFile;
   PreferencesFolder := GetPreferencesFolder;
   try
     Doc := TXMLDocument.Create;
 
-    {StartComment := Doc.CreateComment('SimThyr Preferences');
+    {StartComment := Doc.CreateComment('SPINA Preferences');
     RootNode.AppendChild(StartComment);}
 
     RootNode := Doc.CreateElement('preferences');
     Doc.Appendchild(RootNode);
-    RootNode:= Doc.DocumentElement;
+    RootNode := Doc.DocumentElement;
 
-    ElementNode:=Doc.CreateElement('units');
-
-    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', EncodeGreek(gParameterUnit[pTSH_pos])));
-    ElementNode.AppendChild(SimpleNode(Doc, 'TT4', EncodeGreek(gParameterUnit[TT4_pos])));
-    ElementNode.AppendChild(SimpleNode(Doc, 'FT4', EncodeGreek(gParameterUnit[FT4_pos])));
-    ElementNode.AppendChild(SimpleNode(Doc, 'TT3', EncodeGreek(gParameterUnit[TT3_pos])));
-    ElementNode.AppendChild(SimpleNode(Doc, 'FT3', EncodeGreek(gParameterUnit[FT3_pos])));
-
+    ElementNode := Doc.CreateElement('methods');
+    if gPreferences.T4Method = freeHormone then
+      ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'free'))
+    else
+      ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'total'));
+    if gPreferences.T3Method = freeHormone then
+      ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'free'))
+    else
+      ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'total'));
     RootNode.AppendChild(ElementNode);
 
-    ElementNode:=Doc.CreateElement('formats');
+    ElementNode:=Doc.CreateElement('factors');
+    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', FloatToStr(gPreferences.TSHUnitFactor)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4UnitFactor)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3UnitFactor)));
+    RootNode.AppendChild(ElementNode);
 
-    ElementNode.AppendChild(SimpleNode(Doc, 'numbers', gNumberFormat));
-    ElementNode.AppendChild(SimpleNode(Doc, 'time', gDateTimeFormat));
+    ElementNode:=Doc.CreateElement('unititems');
+    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', FloatToStr(gPreferences.TSHPopUpItem)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4PopUpItem)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3PopUpItem)));
+    RootNode.AppendChild(ElementNode);
 
+    ElementNode:=Doc.CreateElement('methoditems');
+    ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4MethodPopUpItem)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3MethodPopUpItem)));
     RootNode.AppendChild(ElementNode);
 
     if not DirectoryExists(PreferencesFolder) then
@@ -160,7 +284,7 @@ begin
   finally
     Doc.Free;
   end;
-end; }
+end;
 
 end.
 

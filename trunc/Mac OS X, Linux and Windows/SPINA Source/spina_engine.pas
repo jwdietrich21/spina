@@ -56,7 +56,6 @@ type
 
 var
   gNotCalculatable: String;
-  gPreferences: tPreferences;
 
 function Calculate(TSH, T4, T3: real): tCaseRecord;
 

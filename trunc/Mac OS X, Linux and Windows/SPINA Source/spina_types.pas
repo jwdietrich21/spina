@@ -28,7 +28,14 @@ uses
   Classes, SysUtils;
 
 const
+  BASE_URL = 'http://spina.medical-cybernetics.de';
   SPINA_GLOBAL_ID = 'net.sf.spina';
+
+  IMPLEMENTATION_MESSAGE = 'This function is not implemented in this version of SPINA Thyr.';
+  FORMAT_MESSAGE = 'Please check your input.';
+  SAVE_ERROR_MESSAGE = 'Error saving the file';
+  PREFERENCES_SAVE_ERROR_MESSAGE = 'The preferences could not be saved permanently, however, they are valid for this session';
+
 
 type
 Str255 = String[255];
@@ -40,10 +47,15 @@ tPreferences = record
        TSHPopUpItem, T4PopUpItem, T3PopUpItem: integer;
        T4MethodPopUpItem, T3MethodPopUpItem: integer;
        end;
+tPrefsFile = file of tPreferences;
 
 var
   gStartup: boolean;
   gTSHTherapy, gT4Therapy, gT3Therapy: boolean;
+  gPrefsDir, gPrefsFileName: String;
+  gPreferences: tPreferences;
+  gPrefsFile: tPrefsFile;
+
 
 implementation
 

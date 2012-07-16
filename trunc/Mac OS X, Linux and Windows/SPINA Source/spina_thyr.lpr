@@ -29,7 +29,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms,
 SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox, SPINA_ResultDialog,
-SPINA_Engine, Printer4Lazarus, SPINA_Types;
+SPINA_Engine, Printer4Lazarus, SPINA_Types, HandlePreferences;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 

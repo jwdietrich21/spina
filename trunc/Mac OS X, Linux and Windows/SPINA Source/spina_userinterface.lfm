@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
   Left = 279
   Height = 349
-  Top = 121
+  Top = 120
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -333,7 +333,7 @@ object Hauptschirm: THauptschirm
     ClientWidth = 264
     TabOrder = 7
     object Image1: TImage
-      Left = -108
+      Left = -116
       Height = 243
       Top = 0
       Width = 378
@@ -3050,23 +3050,23 @@ object Hauptschirm: THauptschirm
       Transparent = True
     end
     object FT4_Text: TEdit
-      Left = 105
+      Left = 97
       Height = 21
-      Top = 196
+      Top = 194
       Width = 56
       TabOrder = 1
       Text = '0'
     end
     object FT3_Text: TEdit
-      Left = 204
-      Height = 21
+      Left = 196
+      Height = 22
       Top = 30
-      Width = 52
+      Width = 54
       TabOrder = 2
       Text = '0'
     end
     object TSHComboBox: TComboBox
-      Left = 12
+      Left = 4
       Height = 21
       Hint = 'Maßeinheit'
       Top = 54
@@ -3084,11 +3084,11 @@ object Hauptschirm: THauptschirm
       Text = 'mU/l'
     end
     object FT4ComboBox: TComboBox
-      Left = 105
+      Left = 97
       Height = 21
       Hint = 'Maßeinheit'
       Top = 220
-      Width = 56
+      Width = 67
       Font.Height = -11
       ItemHeight = 0
       ItemIndex = 0
@@ -3103,11 +3103,11 @@ object Hauptschirm: THauptschirm
       Text = 'ng/dl'
     end
     object FT3ComboBox: TComboBox
-      Left = 204
+      Left = 196
       Height = 21
       Hint = 'Maßeinheit'
       Top = 54
-      Width = 56
+      Width = 66
       Font.Height = -11
       ItemHeight = 0
       ItemIndex = 0
@@ -3122,7 +3122,7 @@ object Hauptschirm: THauptschirm
       Text = 'pg/ml'
     end
     object T3MethodComboBox: TComboBox
-      Left = 204
+      Left = 196
       Height = 21
       Hint = 'Maßeinheit'
       Top = 6
@@ -3140,7 +3140,7 @@ object Hauptschirm: THauptschirm
       Text = 'FT3'
     end
     object T4MethodComboBox: TComboBox
-      Left = 105
+      Left = 97
       Height = 21
       Hint = 'Maßeinheit'
       Top = 172
@@ -3158,7 +3158,7 @@ object Hauptschirm: THauptschirm
       Text = 'FT4'
     end
     object TSH_Text: TEdit
-      Left = 12
+      Left = 4
       Height = 21
       Top = 30
       Width = 56
