@@ -33,31 +33,8 @@ type
   { TSplashScreen }
 
   TSplashScreen = class(TForm)
-    AboutMenuItem: TMenuItem;
-    AppleAboutMenuItem: TMenuItem;
-    AppleMenu: TMenuItem;
-    CloseMenuItem: TMenuItem;
-    CopyMenuItem: TMenuItem;
-    CopyResultMenuItem: TMenuItem;
-    CutMenuItem: TMenuItem;
-    DeleteMenuItem: TMenuItem;
-    EditMenu: TMenuItem;
-    FileMenu: TMenuItem;
-    HelpMenu: TMenuItem;
     Image1: TImage;
-    MainMenu: TMainMenu;
-    MenuItem10: TMenuItem;
-    MenuItem13: TMenuItem;
-    MenuItem16: TMenuItem;
-    MenuItem3: TMenuItem;
-    MenuItem5: TMenuItem;
-    NewMenuItem: TMenuItem;
-    PageSetupMenuItem: TMenuItem;
-    PasteMenuItem: TMenuItem;
-    PrintMenuItem: TMenuItem;
-    QuitMenuItem: TMenuItem;
     Timer1: TTimer;
-    UndoMenuItem: TMenuItem;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure HandleAbout(Sender: TObject);

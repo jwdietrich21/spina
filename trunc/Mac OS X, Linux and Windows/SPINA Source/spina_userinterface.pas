@@ -89,8 +89,9 @@ type
   { THauptschirm }
 
   THauptschirm = class(TForm)
+    MainMenu: TMainMenu;
     ActionList1: TActionList;
-    Bevel1: TBevel;
+    Panel1: TPanel;
     SPINAThyrLabel: TLabel;
     TherapyCheckGroup: TCheckGroup;
     EditMenu: TMenuItem;
@@ -109,7 +110,6 @@ type
     Image1: TImage;
     Image2: TImage;
     ImageList1: TImageList;
-    MainMenu: TMainMenu;
     ffnen1: TMenuItem;
     HelpMenu: TMenuItem;
     AboutMenuItem: TMenuItem;
@@ -366,7 +366,6 @@ end;
 
 procedure THauptschirm.Beenden1Click(Sender: TObject);
 begin
-  {SavePreferences;}
   application.Terminate;
 end;
 
@@ -571,22 +570,6 @@ begin
   Hauptschirm.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   Hauptschirm.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
 
-  {$IFDEF LCLcarbon}
-  SplashScreen.HelpMenu.Visible := False;
-  SplashScreen.AppleMenu.Visible := True;
-  {$ELSE}
-  SplashScreen.HelpMenu.Visible := True;
-  SplashScreen.AppleMenu.Visible := False;
-  {$ENDIF}
-  SplashScreen.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
-  SplashScreen.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
-  SplashScreen.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
-  SplashScreen.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
-  SplashScreen.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
-  SplashScreen.CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
-  SplashScreen.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
-  SplashScreen.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
-  SplashScreen.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
 end;
 
 procedure AdaptLanguages;

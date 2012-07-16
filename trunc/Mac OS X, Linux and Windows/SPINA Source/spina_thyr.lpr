@@ -27,27 +27,47 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms,
+  Forms, Controls,
 SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox, SPINA_ResultDialog,
-SPINA_Engine, Printer4Lazarus, SPINA_Types, HandlePreferences;
+SPINA_Engine, Printer4Lazarus, SPINA_Types, HandlePreferences, spina_toolbar;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 
 {$R *.res}
 
 begin
-  gStartup := true;
   Application.Title:='SPINA Thyr';
   Application.Initialize;
+  Application.CreateForm(THauptschirm, Hauptschirm);
   SplashScreen := TSplashScreen.Create(nil);
   SplashScreen.ShowOnTop;
+  SplashScreen.FormStyle := fsSplash;
+  SplashScreen.AlphaBlendValue := 200;
   Application.ProcessMessages;
-  Application.CreateForm(THauptschirm, Hauptschirm);
+  gStartup := true;
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TResultForm, ResultForm);
+  Application.CreateForm(TSPINAToolbar, SPINAToolbar);
+  with SPINAToolbar do
+  begin
+    hide;
+    {$IFDEF LCLCarbon}
+    left := 0;
+    top := 20;
+    width := Screen.Width;
+    {$ELSE}
+    left := 1;
+    top := 0;
+    width := Screen.Width - 3;
+    {$ENDIF}
+    height := Toolbar1.Height + 3;
+    WindowState := wsNormal;
+    AlphaBlend := false;
+  end;
   AboutBox.Close;
   ResultForm.Close;
   gStartup := false;
+  SPINAToolbar.Show;
   Hauptschirm.AlphaBlendValue := 255;
   Application.Run;
   if (SplashScreen<>nil) then begin
