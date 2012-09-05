@@ -1,14 +1,14 @@
 object SPINAToolbar: TSPINAToolbar
-  Left = 395
+  Left = 144
   Height = 45
-  Top = 881
+  Top = 134
   Width = 862
   Caption = 'SPINA'
   ClientHeight = 45
   ClientWidth = 862
   Menu = MainMenu
   OnCreate = FormCreate
-  LCLVersion = '0.9.30.4'
+  LCLVersion = '1.0.1.3'
   Visible = True
   object ToolBar1: TToolBar
     Left = 0
@@ -50,44 +50,44 @@ object SPINAToolbar: TSPINAToolbar
     object ToolButton5: TToolButton
       Left = 93
       Top = 2
-      Width = 4
+      Width = 5
       Caption = 'ToolButton5'
       Style = tbsDivider
     end
     object ToolButton6: TToolButton
-      Left = 97
+      Left = 98
       Top = 2
       Caption = 'ToolButton6'
       ImageIndex = 4
       OnClick = ToolButton6Click
     end
     object ToolButton7: TToolButton
-      Left = 120
+      Left = 121
       Top = 2
-      Width = 4
+      Width = 5
       Caption = 'ToolButton7'
       Style = tbsDivider
     end
     object ToolButton8: TToolButton
-      Left = 124
+      Left = 126
       Top = 2
       Caption = 'ToolButton8'
       ImageIndex = 5
     end
     object ToolButton9: TToolButton
-      Left = 147
+      Left = 149
       Top = 2
       Caption = 'ToolButton9'
       ImageIndex = 6
     end
     object ToolButton10: TToolButton
-      Left = 170
+      Left = 172
       Top = 2
       Caption = 'ToolButton10'
       ImageIndex = 7
     end
     object ToolButton11: TToolButton
-      Left = 193
+      Left = 195
       Top = 2
       Caption = 'ToolButton11'
       ImageIndex = 8

@@ -1,10 +1,10 @@
 { This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('TSPINAToolbar','FORMDATA',[
-  'TPF0'#13'TSPINAToolbar'#12'SPINAToolbar'#4'Left'#3#139#1#6'Height'#2'-'#3'To'
-  +'p'#3'q'#3#5'Width'#3'^'#3#7'Caption'#6#5'SPINA'#12'ClientHeight'#2'-'#11'Cl'
-  +'ientWidth'#3'^'#3#4'Menu'#7#8'MainMenu'#8'OnCreate'#7#10'FormCreate'#10'LCL'
-  +'Version'#6#8'0.9.30.4'#7'Visible'#9#0#8'TToolBar'#8'ToolBar1'#4'Left'#2#0#6
+  'TPF0'#13'TSPINAToolbar'#12'SPINAToolbar'#4'Left'#3#144#0#6'Height'#2'-'#3'To'
+  +'p'#3#134#0#5'Width'#3'^'#3#7'Caption'#6#5'SPINA'#12'ClientHeight'#2'-'#11'C'
+  +'lientWidth'#3'^'#3#4'Menu'#7#8'MainMenu'#8'OnCreate'#7#10'FormCreate'#10'LC'
+  +'LVersion'#6#7'1.0.1.3'#7'Visible'#9#0#8'TToolBar'#8'ToolBar1'#4'Left'#2#0#6
   +'Height'#2#26#3'Top'#2#0#5'Width'#3'^'#3#7'Caption'#6#8'ToolBar1'#6'Images'#7
   +#10'ImageList1'#8'TabOrder'#2#0#0#11'TToolButton'#11'ToolButton1'#4'Left'#2#1
   +#3'Top'#2#2#7'Caption'#6#11'ToolButton1'#7'Enabled'#8#10'ImageIndex'#2#0#7'O'
@@ -14,16 +14,16 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +#2'/'#3'Top'#2#2#7'Caption'#6#11'ToolButton3'#7'Enabled'#8#10'ImageIndex'#2#2
   +#0#0#11'TToolButton'#11'ToolButton4'#4'Left'#2'F'#3'Top'#2#2#7'Caption'#6#11
   +'ToolButton4'#10'ImageIndex'#2#3#0#0#11'TToolButton'#11'ToolButton5'#4'Left'
-  +#2']'#3'Top'#2#2#5'Width'#2#4#7'Caption'#6#11'ToolButton5'#5'Style'#7#10'tbs'
-  +'Divider'#0#0#11'TToolButton'#11'ToolButton6'#4'Left'#2'a'#3'Top'#2#2#7'Capt'
+  +#2']'#3'Top'#2#2#5'Width'#2#5#7'Caption'#6#11'ToolButton5'#5'Style'#7#10'tbs'
+  +'Divider'#0#0#11'TToolButton'#11'ToolButton6'#4'Left'#2'b'#3'Top'#2#2#7'Capt'
   +'ion'#6#11'ToolButton6'#10'ImageIndex'#2#4#7'OnClick'#7#16'ToolButton6Click'
-  +#0#0#11'TToolButton'#11'ToolButton7'#4'Left'#2'x'#3'Top'#2#2#5'Width'#2#4#7
+  +#0#0#11'TToolButton'#11'ToolButton7'#4'Left'#2'y'#3'Top'#2#2#5'Width'#2#5#7
   +'Caption'#6#11'ToolButton7'#5'Style'#7#10'tbsDivider'#0#0#11'TToolButton'#11
-  +'ToolButton8'#4'Left'#2'|'#3'Top'#2#2#7'Caption'#6#11'ToolButton8'#10'ImageI'
-  +'ndex'#2#5#0#0#11'TToolButton'#11'ToolButton9'#4'Left'#3#147#0#3'Top'#2#2#7
+  +'ToolButton8'#4'Left'#2'~'#3'Top'#2#2#7'Caption'#6#11'ToolButton8'#10'ImageI'
+  +'ndex'#2#5#0#0#11'TToolButton'#11'ToolButton9'#4'Left'#3#149#0#3'Top'#2#2#7
   +'Caption'#6#11'ToolButton9'#10'ImageIndex'#2#6#0#0#11'TToolButton'#12'ToolBu'
-  +'tton10'#4'Left'#3#170#0#3'Top'#2#2#7'Caption'#6#12'ToolButton10'#10'ImageIn'
-  +'dex'#2#7#0#0#11'TToolButton'#12'ToolButton11'#4'Left'#3#193#0#3'Top'#2#2#7
+  +'tton10'#4'Left'#3#172#0#3'Top'#2#2#7'Caption'#6#12'ToolButton10'#10'ImageIn'
+  +'dex'#2#7#0#0#11'TToolButton'#12'ToolButton11'#4'Left'#3#195#0#3'Top'#2#2#7
   +'Caption'#6#12'ToolButton11'#10'ImageIndex'#2#8#0#0#0#6'TLabel'#14'SPINAThyr'
   +'Label'#4'Left'#3#8#3#6'Height'#2#13#3'Top'#2#8#5'Width'#2'6'#9'Alignment'#7
   +#14'taRightJustify'#7'Anchors'#11#5'akTop'#7'akRight'#0#7'Caption'#6#10'SPIN'
