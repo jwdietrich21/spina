@@ -40,7 +40,7 @@ const
   kAnleitung01 = '';
   kAnleitung02 = '';
   kAnleitung11 =
-    'Bitte geben Sie die gemessenen Werte f??r TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
+    'Bitte geben Sie die gemessenen Werte für TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".';
   kAnleitung12 =
     'Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".';
   kVerhaltensparameter1 = 'Verhaltensparameter:';

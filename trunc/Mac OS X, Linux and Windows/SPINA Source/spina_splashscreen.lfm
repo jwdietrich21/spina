@@ -1,9 +1,9 @@
 object SplashScreen: TSplashScreen
   Cursor = crHourGlass
   Left = 637
-  Height = 256
+  Height = 308
   Top = 133
-  Width = 394
+  Width = 438
   HorzScrollBar.Page = 396
   HorzScrollBar.Range = 392
   HorzScrollBar.Visible = False
@@ -14,14 +14,14 @@ object SplashScreen: TSplashScreen
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'SPINA Thyr'
-  ClientHeight = 256
-  ClientWidth = 394
+  ClientHeight = 308
+  ClientWidth = 438
   Color = clWhite
   FormStyle = fsSplash
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stNever
-  LCLVersion = '0.9.30.4'
+  LCLVersion = '1.0.2.0'
   object Image1: TImage
     Left = 8
     Height = 251

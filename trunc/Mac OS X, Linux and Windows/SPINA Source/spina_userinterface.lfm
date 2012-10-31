@@ -5,6 +5,7 @@ object Hauptschirm: THauptschirm
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
+  ActiveControl = TSH_Text
   AlphaBlend = True
   AlphaBlendValue = 0
   BorderIcons = [biSystemMenu]
@@ -315,7 +316,7 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu
   OnActivate = FormActivate
   OnCreate = FormCreate
-  LCLVersion = '0.9.30.4'
+  LCLVersion = '1.0.2.0'
   Visible = True
   object Calculate_Button: TButton
     Left = 656
@@ -420,6 +421,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
+      ClientHeight = 77
+      ClientWidth = 209
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'

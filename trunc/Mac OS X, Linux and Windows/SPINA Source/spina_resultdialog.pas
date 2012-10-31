@@ -57,6 +57,10 @@ uses SPINA_UserInterface;
 
 procedure TResultForm.UpdateResultDisplay(Sender: TObject);
 begin
+  if gInterfaceLanguage = German then
+    Label1.Caption := kResultHint1
+  else
+    Label1.Caption := kResultHint2;
   ResultForm.MessageField1.text := gResultDialogString1;
   ResultForm.messageField2.text := gResultDialogString2;
 end;

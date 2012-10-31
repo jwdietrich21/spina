@@ -27,7 +27,8 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
-  SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog, HandlePreferences
+  gettext, SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog,
+  HandlePreferences
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -158,7 +159,6 @@ var
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
   gcalcCounter: longint;
   gAppPath, gAppDir, gAppName: string;
-  gSysLocale: TSysLocale;
   gGermanCodes: tCodeList;
 {$IFDEF LCLCarbon}
   gItl0Handle: Intl0Hndl;
@@ -175,25 +175,37 @@ uses SPINA_SplashScreen;
 
 function GetOSLanguage: string;
 var
-    {$IFDEF MSWINDOWS}
-  LanguageID: LangID;
-    {$ENDIF}
-  Len: integer;
-  theCode: string;
+  l, fbl: String;
+  {$IFDEF LCLCarbon}
+    theLocaleRef: CFLocaleRef;
+    locale: CFStringRef;
+    buffer: StringPtr;
+    bufferSize: CFIndex;
+    encoding: CFStringEncoding;
+    success: boolean;
+  {$ENDIF}
 begin
-    {$IFDEF MSWINDOWS}
-  SetLength(Result, 255);
-  LanguageID := GetSystemDefaultLangID;
-  Len := VerLanguageName(LanguageID, PChar(Result), Length(Result));
-  SetLength(Result, Len);
+  {$IFDEF LCLCarbon}
+    theLocaleRef := CFLocaleCopyCurrent;
+    locale := CFLocaleGetIdentifier(theLocaleRef);
+    encoding := 0;
+    bufferSize := 256;
+    buffer := new(StringPtr);
+    success := CFStringGetPascalString(locale, buffer, bufferSize, encoding);
+    if success then
+      l := string(buffer^)
+    else
+      l := '';
+    fbl := Copy(l, 1, 2);
+    dispose(buffer);
+  {$ELSE}
+  {$IFDEF LINUX}
+      fbl := Copy(GetEnvironmentVariable('LC_CTYPE'), 1, 2);
     {$ELSE}
-  theCode := SysUtils.GetEnvironmentVariable('LANG');
-  if copy(theCode, 1, 2) = 'de' then
-    Result := 'Deutsch'
-  else
-    Result := 'English';
+      GetLanguageIDs(l,fbl);
     {$ENDIF}
-  gSysLocale := SysLocale;
+  {$ENDIF}
+  Result := fbl;
 end;
 
 procedure AdjustUnitFactors;
@@ -785,7 +797,7 @@ initialization
   GetUserName(UserName, arraySize);
   gUserName := string(UserName);
   {$ENDIF}
-  if pos('Deutsch', gSysLanguage) > 0 then
+  if gSysLanguage = 'de' then
   begin
     gInterfaceLanguage := German;
     DecimalSeparator := DEC_COMMA;
