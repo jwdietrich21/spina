@@ -50,7 +50,7 @@ const
   kReferenzbereiche1 = 'Referenzbereiche:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
   kReferenzbereiche2 = 'Reference ranges:'#13#10'   GT~: 1,41 - 8,67 pmol/s'#13#10'   GD~: 20,4-39,4 nmol/s';
   kNotCalculatable1 = '<Nicht berechenbar>';
-  kNotCalculatable2 = '<Not calculatable>';
+  kNotCalculatable2 = '<Not computable>';
   kPatientenname1 = 'Patientenname: ';
   kPatientenname2 = 'Patient name: ';
   kUntersuchungsdatum1 = 'Untersuchungsdatum: ';
