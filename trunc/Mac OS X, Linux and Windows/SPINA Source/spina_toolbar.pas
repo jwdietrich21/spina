@@ -56,6 +56,7 @@ type
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure NewMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
@@ -189,6 +190,11 @@ begin
   SPINAToolbar.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   SPINAToolbar.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
   Hauptschirm.HintField.Text := gAnleitung;
+end;
+
+procedure TSPINAToolbar.NewMenuItemClick(Sender: TObject);
+begin
+
 end;
 
 procedure TSPINAToolbar.PageSetupMenuItemClick(Sender: TObject);

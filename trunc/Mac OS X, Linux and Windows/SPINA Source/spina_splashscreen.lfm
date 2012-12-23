@@ -16,7 +16,7 @@ object SplashScreen: TSplashScreen
   Caption = 'SPINA Thyr'
   ClientHeight = 308
   ClientWidth = 438
-  Color = clWhite
+  Color = 15132390
   FormStyle = fsSplash
   OnCreate = FormCreate
   Position = poScreenCenter
@@ -655,6 +655,7 @@ object SplashScreen: TSplashScreen
     Transparent = True
   end
   object Timer1: TTimer
+    Interval = 2000
     OnTimer = TimerEvent
     left = 336
     top = 216

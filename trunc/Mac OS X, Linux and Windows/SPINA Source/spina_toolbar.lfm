@@ -1,7 +1,7 @@
 object SPINAToolbar: TSPINAToolbar
-  Left = 144
+  Left = 260
   Height = 45
-  Top = 134
+  Top = 121
   Width = 862
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -23,32 +23,44 @@ object SPINAToolbar: TSPINAToolbar
     TabOrder = 0
     object ToolButton1: TToolButton
       Left = 1
+      Hint = 'New Calculation...'
       Top = 2
       Caption = 'ToolButton1'
       Enabled = False
       ImageIndex = 0
       OnClick = ToolButton1Click
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton2: TToolButton
       Left = 24
+      Hint = 'Open file...'
       Top = 2
       Caption = 'ToolButton2'
       Enabled = False
       ImageIndex = 1
       OnClick = ToolButton2Click
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton3: TToolButton
       Left = 47
+      Hint = 'Save'
       Top = 2
       Caption = 'ToolButton3'
       Enabled = False
       ImageIndex = 2
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton4: TToolButton
       Left = 70
+      Hint = 'Save as...'
       Top = 2
       Caption = 'ToolButton4'
       ImageIndex = 3
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton5: TToolButton
       Left = 93
@@ -59,10 +71,13 @@ object SPINAToolbar: TSPINAToolbar
     end
     object ToolButton6: TToolButton
       Left = 98
+      Hint = 'Print results'
       Top = 2
       Caption = 'ToolButton6'
       ImageIndex = 4
       OnClick = ToolButton6Click
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton7: TToolButton
       Left = 121
@@ -73,38 +88,50 @@ object SPINAToolbar: TSPINAToolbar
     end
     object ToolButton8: TToolButton
       Left = 126
+      Hint = 'Undo'
       Top = 2
       Caption = 'ToolButton8'
       ImageIndex = 5
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton9: TToolButton
       Left = 149
+      Hint = 'Cut'
       Top = 2
       Caption = 'ToolButton9'
       ImageIndex = 6
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton10: TToolButton
       Left = 172
+      Hint = 'Copy'
       Top = 2
       Caption = 'ToolButton10'
       ImageIndex = 7
+      ShowCaption = False
     end
     object ToolButton11: TToolButton
       Left = 195
+      Hint = 'Paste'
       Top = 2
       Caption = 'ToolButton11'
       ImageIndex = 8
+      ParentShowHint = False
+      ShowHint = True
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 776
-    Height = 13
-    Top = 8
-    Width = 54
+    Left = 760
+    Height = 17
+    Top = 7
+    Width = 70
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
-    Font.Height = -10
+    Font.Color = clGray
+    Font.Height = -13
     ParentColor = False
     ParentFont = False
   end
@@ -127,6 +154,7 @@ object SPINAToolbar: TSPINAToolbar
         Caption = 'Neue Berechnung…'
         Enabled = False
         ShortCut = 4174
+        OnClick = NewMenuItemClick
       end
       object CloseMenuItem: TMenuItem
         Caption = 'Schließen'
