@@ -1,3 +1,5 @@
+program spina_thyr;
+
 { SPINA-Thyr }
 
 { Application for calculating structure parameters }
@@ -17,8 +19,6 @@
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
-
-program spina_thyr;
 
 {$mode objfpc}{$H+}
 

@@ -1,3 +1,5 @@
+unit SPINA_Engine;
+
 { SPINA-Thyr }
 
 { Application for calculating structure parameters }
@@ -17,8 +19,6 @@
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
-
-unit SPINA_Engine;
 
 {$mode objfpc}{$H+}
 
@@ -55,7 +55,7 @@ type
 
 
 var
-  gNotCalculatable: String;
+  gNotCalculable: String;
 
 function Calculate(TSH, T4, T3: real): tCaseRecord;
 
@@ -79,7 +79,7 @@ if (TSH > 0) and not gT4Therapy then
    tempRecord.GTs:=concat(tempRecord.GTs,' pmol/s');
     end
 else
-   tempRecord.GTs := gNotCalculatable;
+   tempRecord.GTs := gNotCalculable;
 if (T4 > 0) and not gT3Therapy then
    begin
    case gPreferences.T4Method of
@@ -99,7 +99,7 @@ if (T4 > 0) and not gT3Therapy then
    tempRecord.GDs:=concat(tempRecord.GDs,' nmol/s');
    end
 else
-   tempRecord.GDs := gNotCalculatable;
+   tempRecord.GDs := gNotCalculable;
   Calculate := tempRecord;
 end;
 

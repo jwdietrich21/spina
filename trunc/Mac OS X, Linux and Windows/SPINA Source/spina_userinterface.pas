@@ -1,3 +1,5 @@
+unit SPINA_UserInterface;
+
 { SPINA-Thyr }
 
 { Application for calculating structure parameters }
@@ -17,8 +19,6 @@
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
-
-unit SPINA_UserInterface;
 
 {$mode objfpc}{$H+}
 

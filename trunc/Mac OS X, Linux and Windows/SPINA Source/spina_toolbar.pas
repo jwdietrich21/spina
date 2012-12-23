@@ -1,5 +1,25 @@
 unit spina_toolbar;
 
+{ SPINA-Thyr }
+
+{ Application for calculating structure parameters }
+{ of thyrotropic feedback control }
+
+{ Programm zur Berechnung von Strukturparametern }
+{ des thyreotropen Regelkreises }
+
+{ Version 3.3 }
+
+{ (c) J. W. Dietrich, 1994 - 2012 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2012 }
+
+{ This unit implements a common toolbar, a menu bar and localization routines }
+
+{ Source code released under the BSD License }
+{ See http://spina.medical-cybernetics.de for details }
+
 {$mode objfpc}
 
 interface
@@ -90,7 +110,7 @@ begin
     gAnleitung2 := kAnleitung22;
     gVerhaltensparameter := kVerhaltensparameter2;
     gStrukturparameter := kStrukturparameter2;
-    gNotCalculatable := kNotCalculatable2;
+    gNotCalculable := kNotCalculatable2;
     gResultHint := kResultHint2;
     gHintCaption := kHintCaption2;
     gTherapyHint := kTherapyHint2;
@@ -150,7 +170,7 @@ begin
     gAnleitung2 := kAnleitung21;
     gVerhaltensparameter := kVerhaltensparameter1;
     gStrukturparameter := kStrukturparameter1;
-    gNotCalculatable := kNotCalculatable1;
+    gNotCalculable := kNotCalculatable1;
     gResultHint := kResultHint1;
     gHintCaption := kHintCaption1;
     gTherapyHint := kTherapyHint1;

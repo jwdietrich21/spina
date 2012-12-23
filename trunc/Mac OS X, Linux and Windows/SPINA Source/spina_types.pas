@@ -1,3 +1,5 @@
+unit SPINA_Types;
+
 { SPINA-Thyr }
 
 { Application for calculating structure parameters }
@@ -17,8 +19,6 @@
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
-
-unit SPINA_Types;
 
 {$mode objfpc}
 
@@ -104,7 +104,7 @@ var
   gAnleitung1, gAnleitung2, gVerhaltensparameter, gStrukturparameter: string;
   gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
-  gcalcTitle, gcalcString, gnotcalculatableString: Str255;
+  gcalcTitle, gcalcString, gNotCalculableString: Str255;
   gExplanationString, gMessageString, TSH_String, T4_String, T3_String: Str255;
   gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;
   gTSHUnit, gT4Unit, gT3Unit, gResultString: Str255;
