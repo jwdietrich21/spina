@@ -499,6 +499,7 @@ begin
   HandleInput;
   ResultForm.Visible := True;
   ResultForm.AlphaBlendValue := 220;
+  Hauptschirm.HintField.Text := gAnleitung2;
 end;
 
 procedure AdaptMenus;

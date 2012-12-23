@@ -86,7 +86,8 @@ procedure AdaptLanguages;
 begin
   if gInterfaceLanguage = English then
   begin
-    gAnleitung := kAnleitung12;
+    gAnleitung1 := kAnleitung12;
+    gAnleitung2 := kAnleitung22;
     gVerhaltensparameter := kVerhaltensparameter2;
     gStrukturparameter := kStrukturparameter2;
     gNotCalculatable := kNotCalculatable2;
@@ -145,7 +146,8 @@ begin
     SPINAToolbar.FileMenu.Caption := 'Datei';
     SPINAToolbar.UndoMenuItem.Caption := 'Rückgängig';
       {$ENDIF}
-    gAnleitung := kAnleitung11;
+    gAnleitung1 := kAnleitung11;
+    gAnleitung2 := kAnleitung21;
     gVerhaltensparameter := kVerhaltensparameter1;
     gStrukturparameter := kStrukturparameter1;
     gNotCalculatable := kNotCalculatable1;
@@ -190,7 +192,7 @@ begin
   SPINAToolbar.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
   SPINAToolbar.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   SPINAToolbar.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
-  Hauptschirm.HintField.Text := gAnleitung;
+  Hauptschirm.HintField.Text := gAnleitung1;
 end;
 
 procedure TSPINAToolbar.NewMenuItemClick(Sender: TObject);
