@@ -134,6 +134,7 @@ object SPINAToolbar: TSPINAToolbar
     Font.Height = -13
     ParentColor = False
     ParentFont = False
+    OnClick = SPINAThyrLabelClick
   end
   object MainMenu: TMainMenu
     left = 8

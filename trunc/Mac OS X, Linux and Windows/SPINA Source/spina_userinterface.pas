@@ -652,44 +652,51 @@ begin
   Inc(currentY, H);
 end;
 
-procedure PrintCaption(H: integer; var currentX, currentY, marginX: integer);
+procedure PrinterWrite(H: integer; var currentX, currentY: integer; theString: string);
+begin
+  Printer.Canvas.TextOut(currentX, currentY, theString);
+end;
+
+procedure PrintCaption(H: integer; var currentX, currentY, rightMargin: integer);
 var
   theSize: integer;
+  tabX: integer;
 begin
   theSize := Printer.Canvas.Font.Size;
-  Printer.Canvas.Font.Size := trunc(Printer.Canvas.Font.Size * 1.7);
+  Printer.Canvas.Font.Size := trunc(theSize * 1.7);
   Printer.Canvas.Font.Style := [fsBold];
   PrinterWriteln(H, currentX, currentY, 'SPINA Thyr Report');
   PrinterWriteln(H, currentX, currentY, '');
   PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
-  Printer.Canvas.LineTo(Printer.PageWidth - marginX, currentY - H div 2);
+  Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.Font.Style := [];
   Printer.Canvas.Font.Size := theSize;
+  tabX := Printer.PageWidth - rightMargin - 200;
   if gInterfaceLanguage = German then
   begin
-    PrinterWriteln(H, currentX, currentY, kPatientenname1);
-    PrinterWriteln(H, currentX, currentY, kGeburtsdatum1);
-    PrinterWriteln(H, currentX, currentY, kEinsender1);
-    PrinterWriteln(H, currentX, currentY, kUntersuchungsdatum1);
+    PrinterWrite(H, currentX, currentY, kPatientenname1);
+    PrinterWriteln(H, tabX, currentY, kEinsender1);
+    PrinterWrite(H, currentX, currentY, kGeburtsdatum1);
+    PrinterWriteln(H, tabX, currentY, kUntersuchungsdatum1);
     PrinterWriteln(H, currentX, currentY, '');
     PrinterWriteln(H, currentX, currentY, '');
     PrinterWriteln(H, currentX, currentY, '');
   end
   else
   begin
-    PrinterWriteln(H, currentX, currentY, kPatientenname2);
-    PrinterWriteln(H, currentX, currentY, kGeburtsdatum2);
-    PrinterWriteln(H, currentX, currentY, kEinsender2);
-    PrinterWriteln(H, currentX, currentY, kUntersuchungsdatum2);
+    PrinterWrite(H, currentX, currentY, kPatientenname2);
+    PrinterWriteln(H, tabX, currentY, kEinsender2);
+    PrinterWrite(H, currentX, currentY, kGeburtsdatum2);
+    PrinterWriteln(H, tabX, currentY, kUntersuchungsdatum2);
     PrinterWriteln(H, currentX, currentY, '');
     PrinterWriteln(H, currentX, currentY, '');
     PrinterWriteln(H, currentX, currentY, '');
   end;
 end;
 
-procedure PrintFooter(H: integer; var currentX, currentY, marginX: integer);
+procedure PrintFooter(H: integer; var currentX, currentY, rightMargin: integer);
 var
   theDate, theTime: string;
 begin
@@ -697,19 +704,19 @@ begin
   DateTimeToString(theTime, '"," t', time);
   PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
-  Printer.Canvas.LineTo(Printer.PageWidth - marginX, currentY - H div 2);
+  Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   Printer.Canvas.Font.Color := clGray;
   PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName,
     '  |  ', gDruckdatum, theDate, theTime));
+  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + GetFileVersion);
   PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.Font.Color := clBlack;
 end;
 
 procedure THauptschirm.PrintMenuItemClick(Sender: TObject);
 var
-  H, ADPI, marginX, currentX, currentY, returnPos, lastPos: integer;
+  H, ADPI, marginX, marginXr, currentX, currentY, returnPos, lastPos: integer;
   resultLine, remainder: Str255;
-
 begin
   if DoPrintSetup then
   begin
@@ -721,6 +728,7 @@ begin
     ADPI := Printer.YDPI;
     currentY := GetPoints(gTopMargin, ADPI);
     marginX := GetPoints(gLeftMargin, ADPI);
+    marginXr := GetPoints(gRightMargin, ADPI) div 2;
     Printer.Title := 'SPINA Thyr Report';
     currentX := marginX;
     Printer.BeginDoc;
@@ -731,7 +739,7 @@ begin
       Printer.Canvas.Pen.Color := clBlack;
       Printer.Canvas.Pen.Width := 2;
       H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
-      PrintCaption(H, currentX, currentY, marginX);
+      PrintCaption(H, currentX, currentY, marginXr);
       lastPos := 1;
       remainder := gResultString;
       repeat
@@ -744,8 +752,8 @@ begin
         PrinterWriteln(H, currentX, currentY, resultLine);
       until returnPos = 0;
       currentX := marginX;
-      currentY := Printer.PageHeight - 4 * H;
-      PrintFooter(H, currentX, currentY, marginX);
+      currentY := Printer.PageHeight - 5 * H;
+      PrintFooter(H, currentX, currentY, marginXr);
       Printer.EndDoc;
     except
       on E: Exception do

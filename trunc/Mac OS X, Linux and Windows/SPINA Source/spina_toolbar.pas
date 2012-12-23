@@ -60,6 +60,7 @@ type
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
+    procedure SPINAThyrLabelClick(Sender: TObject);
     procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure ToolButton6Click(Sender: TObject);
@@ -210,6 +211,11 @@ end;
 procedure TSPINAToolbar.QuitMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure TSPINAToolbar.SPINAThyrLabelClick(Sender: TObject);
+begin
+
 end;
 
 procedure TSPINAToolbar.AppleAboutMenuItemClick(Sender: TObject);
