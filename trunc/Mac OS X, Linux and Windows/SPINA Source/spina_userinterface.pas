@@ -161,7 +161,7 @@ var
   gcalcCounter: longint;
   gAppPath, gAppDir, gAppName: string;
   gGermanCodes: tCodeList;
-  tabX : integer;
+  tabX: integer;
 {$IFDEF LCLCarbon}
   gItl0Handle: Intl0Hndl;
   gRegion: integer;
@@ -326,6 +326,57 @@ begin
   application.Terminate;
 end;
 
+procedure ComposeRRHints;
+begin
+  if gPreferences.T4Method = freeHormone then
+  begin
+    if gPreferences.T3Method = freeHormone then
+    begin
+      gReferenceValueString1 :=
+        concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
+        kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR);
+      gReferenceValueString2 :=
+        concat(gReferenzbereiche, kCR, kLF, 'TSH: ', gTSHRR, kCR, kLF,
+        'FT4: ', gFT4RR, kCR, kLF, 'FT3: ', gFT3RR, kCR, kLF, kCR,
+        kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
+    end
+    else if gPreferences.T3Method = totalHormone then
+    begin
+      gReferenceValueString1 :=
+        concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
+        kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR);
+      gReferenceValueString2 :=
+        concat(gReferenzbereiche, kCR, kLF, 'TSH: ', gTSHRR, kCR, kLF,
+        'FT4: ', gFT4RR, kCR, kLF, 'TT3: ', gTT3RR, kCR, kLF, kCR,
+        kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
+    end;
+  end
+  else
+  begin
+    if gPreferences.T3Method = freeHormone then
+    begin
+      gReferenceValueString1 :=
+        concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
+        kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR);
+      gReferenceValueString2 :=
+        concat(gReferenzbereiche, kCR, kLF, 'TSH: ', gTSHRR, kCR, kLF,
+        'TT4: ', gFT4RR, kCR, kLF, 'FT3: ', gFT3RR, kCR, kLF, kCR,
+        kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
+    end
+    else if gPreferences.T3Method = totalHormone then
+    begin
+      gReferenceValueString1 :=
+        concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
+        kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR);
+      gReferenceValueString2 :=
+        concat(gReferenzbereiche, kCR, kLF, 'TSH: ', gTSHRR, kCR, kLF,
+        'TT4: ', gFT4RR, kCR, kLF, 'TT3: ', gTT3RR, kCR, kLF, kCR,
+        kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
+    end;
+  end;
+  Hauptschirm.ResultField.Hint := gReferenceValueString2;
+end;
+
 procedure ShowMessage;
 const
   kTSH_Label = '   TSH: ';
@@ -370,11 +421,7 @@ begin
   gResultString := theString;
   gResultDialogString1 := vhString;
   gResultDialogString2 := concat(gStrukturparameter, kCR, kLF, gMessageString);
-  gReferenceValueString1 := concat(gReferenzbereiche, kCR, kLF, kCR, kLF, kCR,
-    kLF, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR);
-  gReferenceValueString2 := concat(gReferenzbereiche, kCR, kLF, kCR, kLF, kCR,
-    kLF, kCR, kLF, kCR, kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
-  Hauptschirm.ResultField.Hint := gReferenceValueString2;
+  ComposeRRHints;
 end;
 
 procedure bell; {platform-independent implementation of acustical warning}
@@ -801,6 +848,7 @@ begin
   gPreferences.T4MethodPopUpItem := Hauptschirm.T4MethodComboBox.ItemIndex;
   gPreferences.T4PopUpItem := 0;
   Hauptschirm.T4MethodComboBoxAdjust(Sender);
+  ComposeRRHints;
 end;
 
 procedure THauptschirm.T3MethodComboBoxChange(Sender: TObject);
@@ -808,6 +856,7 @@ begin
   gPreferences.T3MethodPopUpItem := Hauptschirm.T3MethodComboBox.ItemIndex;
   gPreferences.T3PopUpItem := 0;
   Hauptschirm.T3MethodComboBoxAdjust(Sender);
+  ComposeRRHints;
 end;
 
 

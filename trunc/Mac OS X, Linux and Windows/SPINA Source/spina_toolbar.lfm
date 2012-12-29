@@ -1,15 +1,15 @@
 object SPINAToolbar: TSPINAToolbar
   Left = 260
-  Height = 687
+  Height = 42
   Top = 121
-  Width = 745
+  Width = 753
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 687
-  ClientWidth = 745
+  ClientHeight = 42
+  ClientWidth = 753
   Menu = MainMenu
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
@@ -17,7 +17,7 @@ object SPINAToolbar: TSPINAToolbar
     Left = 0
     Height = 26
     Top = 0
-    Width = 745
+    Width = 753
     Caption = 'ToolBar1'
     Images = ImageList1
     TabOrder = 0
@@ -123,7 +123,7 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 643
+    Left = 651
     Height = 17
     Top = 7
     Width = 70

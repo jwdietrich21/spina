@@ -3327,7 +3327,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 97
-        Height = 21
+        Height = 22
         Top = 194
         Width = 56
         TabOrder = 1
@@ -3335,7 +3335,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 196
-        Height = 21
+        Height = 22
         Top = 30
         Width = 54
         TabOrder = 2
@@ -3435,7 +3435,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = 4
-        Height = 21
+        Height = 22
         Top = 30
         Width = 56
         TabOrder = 0

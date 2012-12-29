@@ -96,7 +96,7 @@ tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
        end;
 tReferenceValues = record
-       GT, GD: tReferenceAlerts;
+       TSH, FT4, FT3, TT4, TT3, GT, GD: tReferenceAlerts;
 end;
 
 tPrefsFile = file of tPreferences;
@@ -106,7 +106,7 @@ var
   gStartup: boolean;
   gTSHTherapy, gT4Therapy, gT3Therapy, gUseReferenceRanges: boolean;
   gPrefsDir, gPrefsFileName: String;
-  gGTRR, gGDRR: string;
+  gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR: string;
   gCDISC_RR: TStrings;
   gPreferences: tPreferences;
   gPrefsFile: tPrefsFile;
