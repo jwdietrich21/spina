@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<CONFIG>
-  <Compiler Value="/usr/local/bin/ppcppc" Date="1324569333"/>
-  <Params Value=" -MObjFPC -Sgi -CX -Cro -O1 -gs -gl -XX  -k-framework -kCarbon -k-framework -kOpenGL -k-dylib_file -k/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib:/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib -vewnhi -l -Fu/Developer/lazarus/components/printers/lib/powerpc-darwin/carbon -Fu/Developer/lazarus/lcl/units/powerpc-darwin/carbon -Fu/Developer/lazarus/lcl/units/powerpc-darwin -Fu/Developer/lazarus/components/lazutils/lib/powerpc-darwin -Fu/Developer/lazarus/packager/units/powerpc-darwin &quot;-Fu/Volumes/G5 Dokumente/Projekte/SPINA/Software und Webdienste/SPINA Thyr ab 3.0/SPINA-Thyr Lazarus/3.3.0/SPINA Source/&quot; &quot;-oSPINA Thyr&quot; -dLCL -dLCLcarbon -k-macosx_version_min -k10.4 -XR/Developer/SDKs/MacOSX10.4u.sdk/ spina_thyr.lpr"/>
-</CONFIG>
