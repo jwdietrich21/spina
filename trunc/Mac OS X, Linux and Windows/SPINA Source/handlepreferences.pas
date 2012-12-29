@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, SPINA_Types, DOM, XMLRead, XMLWrite
+  StdCtrls, SPINA_Types, DOM, XMLRead, XMLWrite, Math
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -144,6 +144,21 @@ begin
   Result := ItemNode;
 end;
 
+function AttributeValue(theNode: TDOMNode; theName: String): String;
+{this functions finds an attribute of an XML tag and delivers its value}
+var
+  i: integer;
+  foundValue: String;
+begin
+  foundValue := '';
+  for i := 0 to theNode.Attributes.Length - 1 do
+  begin
+    if theNode.Attributes[i].NodeName = theName then
+      foundValue := theNode.Attributes[i].NodeValue;
+  end;
+  result := foundValue;
+end;
+
 procedure ReadPreferences;
 var
   Doc: TXMLDocument;
@@ -169,7 +184,6 @@ begin
   theFileName := GetPreferencesFile;
   if FileExists(theFileName) then
   try
-    Doc := TXMLDocument.Create();
     ReadXMLFile(Doc, theFileName);
 
     RootNode := Doc.DocumentElement.FindNode('methods');
@@ -230,14 +244,94 @@ end;
 procedure GetReferenceValues;
 var
   Doc: TXMLDocument;
-  RootNode, theNode: TDOMNode;
+  RootNode, theNode, BaseTestNode, FlagUOMNode, NormalNode, NormalDefinitionNode: TDOMNode;
   theFileName, theString: String;
+  theStream: TStringStream;
+  oldSeparator: Char;
 begin
+  oldSeparator := DecimalSeparator;
+  DecimalSeparator := DEC_POINT;
   theFileName := GetRRFile;
-  if FileExists(theFileName) then
+  if not FileExists(theFileName) then
+    gCDISC_RR.SaveToFile(theFileName);
+  if FileExists(theFileName) then {could this file be created?}
   try
-    Doc := TXMLDocument.Create();
     ReadXMLFile(Doc, theFileName);
+    RootNode := Doc.DocumentElement.FindNode('Study');
+    if assigned(RootNode) then
+      if AttributeValue(RootNode, 'ID') = 'SPIt' then
+        begin
+          theNode := RootNode.FindNode('BaseBattery');
+          if assigned(theNode) then
+            if AttributeValue(theNode, 'ID') = 'SPIt' then
+              begin
+                BaseTestNode := theNode.FindNode('BaseTest');
+                while assigned(BaseTestNode) do
+                begin
+                  theNode := BaseTestNode.FindNode('LabTest');
+                  if assigned(theNode) then
+                    if AttributeValue(theNode, 'ID') = 'GT' then
+                      begin
+                        theNode := theNode.NextSibling;
+                        while assigned(theNode) do
+                          begin
+                            if theNode.NodeName = 'SubjectCharacteristics' then
+                              begin
+                                FlagUOMNode := theNode.FindNode('FlagUOM');
+                                if assigned(FlagUOMNode) then
+                                  begin
+                                    NormalNode := FlagUOMNode.FindNode('Normal');
+                                    if assigned(NormalNode) then
+                                    begin
+                                      NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                      while assigned(NormalDefinitionNode) do
+                                        begin
+                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                             gReferenceRanges.GT.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e12;
+                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                             gReferenceRanges.GT.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e12;
+                                          NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                        end;
+                                      break;
+                                    end;
+                                  end;
+                              end;
+                            theNode := theNode.NextSibling;
+                          end;
+                      end
+                     else if (AttributeValue(theNode, 'ID') = 'GD') or (AttributeValue(theNode, 'ID') = 'GD1') then
+                      begin
+                        theNode := theNode.NextSibling;
+                        while assigned(theNode) do
+                          begin
+                            if theNode.NodeName = 'SubjectCharacteristics' then
+                              begin
+                                FlagUOMNode := theNode.FindNode('FlagUOM');
+                                if assigned(FlagUOMNode) then
+                                  begin
+                                    NormalNode := FlagUOMNode.FindNode('Normal');
+                                    if assigned(NormalNode) then
+                                    begin
+                                      NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                      while assigned(NormalDefinitionNode) do
+                                        begin
+                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                             gReferenceRanges.GD.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e9;
+                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                             gReferenceRanges.GD.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e9;
+                                          NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                        end;
+                                      break;
+                                    end;
+                                  end;
+                              end;
+                            theNode := theNode.NextSibling;
+                          end;
+                      end;
+                  BaseTestNode := BaseTestNode.NextSibling;
+                end;
+              end;
+        end;
     ;
   finally
     Doc.Free;
@@ -245,12 +339,22 @@ begin
   else
   begin  {fall-back solution, if file does not exist}
     with gReferenceRanges do
-    begin
-      GT.ln := 1.41 / 1e12;
-      GT.hn := 8.67 / 1e12;
-      GD.ln := 20 / 1e9;
-      GD.hn := 40 / 1e9;
-    end;
+      begin
+        TSH.ln := 0.4;
+        TSH.hn := 4;
+        FT4.ln := 13;
+        FT4.hn := 20;
+        TT4.ln := 70;
+        TT4.hn := 130;
+        FT3.ln := 3.9;
+        FT3.hn := 6.7;
+        TT3.ln := 1.3;
+        TT3.hn := 2.8;
+        GT.ln := 1.41 / 1e12;
+        GT.hn := 8.67 / 1e12;
+        GD.ln := 20 / 1e9;
+        GD.hn := 40 / 1e9;
+      end;
   end;
   gTSHRR := 'N/A';
   gFT4RR := 'N/A';
@@ -259,6 +363,7 @@ begin
   gTT3RR := 'N/A';
   gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
   gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
+  DecimalSeparator := oldSeparator;
 end;
 
 procedure SavePreferences;
