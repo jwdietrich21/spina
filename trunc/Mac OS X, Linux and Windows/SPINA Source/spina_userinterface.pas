@@ -732,6 +732,7 @@ begin
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   PrinterWriteln(H, currentX, currentY, '');
+  PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.Font.Style := [];
   Printer.Canvas.Font.Size := theSize;
   if gInterfaceLanguage = German then
@@ -799,7 +800,7 @@ begin
       Printer.Canvas.Pen.Color := clBlack;
       Printer.Canvas.Pen.Width := 2;
       H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
-      tabX := Printer.PageWidth - marginXr - 200;
+      tabX := Printer.PageWidth - marginXr - trunc(2.5 * Printer.Canvas.TextWidth(gUntersuchungsdatum));
       PrintCaption(H, currentX, currentY, marginXr);
       lastPos := 1;
       lastY := currentY;

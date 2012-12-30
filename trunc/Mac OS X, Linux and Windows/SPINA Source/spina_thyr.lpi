@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="3"/>
-      <BuildNr Value="163"/>
+      <BuildNr Value="165"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.3.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -44,7 +44,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="35">
+    <Units Count="33">
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -64,10 +64,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="581"/>
-        <CursorPos X="1" Y="599"/>
+        <TopLine Value="722"/>
+        <CursorPos X="1" Y="736"/>
         <UsageCount Value="130"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -248,7 +249,7 @@
         <UnitName Value="SPINA_Types"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="77"/>
+        <TopLine Value="101"/>
         <CursorPos X="29" Y="32"/>
         <UsageCount Value="46"/>
         <Loaded Value="True"/>
@@ -273,7 +274,6 @@
       <Unit26>
         <Filename Value="handlepreferences.pas"/>
         <UnitName Value="HandlePreferences"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="346"/>
@@ -320,158 +320,142 @@
         <UsageCount Value="10"/>
       </Unit30>
       <Unit31>
-        <Filename Value="..\..\..\..\..\..\..\..\Developer\lazarus\lcl\lcltype.pp"/>
-        <UnitName Value="LCLType"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="2968"/>
-        <CursorPos X="1" Y="2985"/>
-        <UsageCount Value="11"/>
-      </Unit31>
-      <Unit32>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\fcl-xml\src\xmlread.pp"/>
+        <Filename Value="C:\usr\local\share\fpcsrc\packages\fcl-xml\src\xmlread.pp"/>
         <UnitName Value="XMLRead"/>
         <WindowIndex Value="0"/>
         <TopLine Value="29"/>
         <CursorPos X="11" Y="44"/>
         <UsageCount Value="10"/>
-      </Unit32>
-      <Unit33>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\fcl-xml\src\dom.pp"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="C:\usr\local\share\fpcsrc\packages\fcl-xml\src\dom.pp"/>
         <UnitName Value="DOM"/>
         <WindowIndex Value="0"/>
         <TopLine Value="875"/>
         <CursorPos X="27" Y="1019"/>
         <UsageCount Value="10"/>
-      </Unit33>
-      <Unit34>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Developer\lazarus\lcl\lcltype.pp"/>
-        <UnitName Value="LCLType"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="2972"/>
-        <CursorPos X="1" Y="2985"/>
-        <UsageCount Value="11"/>
-      </Unit34>
+      </Unit32>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="284" Column="1" TopLine="258"/>
+        <Caret Line="286" Column="1" TopLine="258"/>
       </Position1>
       <Position2>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="286" Column="1" TopLine="258"/>
+        <Caret Line="287" Column="1" TopLine="259"/>
       </Position2>
       <Position3>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="287" Column="1" TopLine="259"/>
+        <Caret Line="288" Column="1" TopLine="260"/>
       </Position3>
       <Position4>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="288" Column="1" TopLine="260"/>
+        <Caret Line="290" Column="1" TopLine="262"/>
       </Position4>
       <Position5>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="290" Column="1" TopLine="262"/>
+        <Caret Line="286" Column="1" TopLine="262"/>
       </Position5>
       <Position6>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="286" Column="1" TopLine="262"/>
+        <Caret Line="288" Column="1" TopLine="262"/>
       </Position6>
       <Position7>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="288" Column="1" TopLine="262"/>
+        <Caret Line="289" Column="1" TopLine="262"/>
       </Position7>
       <Position8>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="289" Column="1" TopLine="262"/>
+        <Caret Line="290" Column="1" TopLine="262"/>
       </Position8>
       <Position9>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="290" Column="1" TopLine="262"/>
+        <Caret Line="286" Column="1" TopLine="262"/>
       </Position9>
       <Position10>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="286" Column="1" TopLine="262"/>
+        <Caret Line="288" Column="1" TopLine="262"/>
       </Position10>
       <Position11>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="288" Column="1" TopLine="262"/>
+        <Caret Line="290" Column="1" TopLine="262"/>
       </Position11>
       <Position12>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="290" Column="1" TopLine="262"/>
+        <Caret Line="292" Column="1" TopLine="264"/>
       </Position12>
       <Position13>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="292" Column="1" TopLine="264"/>
+        <Caret Line="328" Column="1" TopLine="311"/>
       </Position13>
       <Position14>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="328" Column="1" TopLine="311"/>
+        <Caret Line="268" Column="1" TopLine="251"/>
       </Position14>
       <Position15>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="268" Column="1" TopLine="251"/>
+        <Caret Line="269" Column="1" TopLine="251"/>
       </Position15>
       <Position16>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="269" Column="1" TopLine="251"/>
+        <Caret Line="270" Column="1" TopLine="251"/>
       </Position16>
       <Position17>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="270" Column="1" TopLine="251"/>
+        <Caret Line="299" Column="1" TopLine="282"/>
       </Position17>
       <Position18>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="299" Column="1" TopLine="282"/>
+        <Caret Line="328" Column="1" TopLine="311"/>
       </Position18>
       <Position19>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="328" Column="1" TopLine="311"/>
+        <Caret Line="334" Column="1" TopLine="314"/>
       </Position19>
       <Position20>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="334" Column="1" TopLine="314"/>
+        <Caret Line="254" Column="1" TopLine="236"/>
       </Position20>
       <Position21>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="254" Column="1" TopLine="236"/>
+        <Caret Line="299" Column="109" TopLine="283"/>
       </Position21>
       <Position22>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="299" Column="109" TopLine="283"/>
+        <Caret Line="254" Column="1" TopLine="236"/>
       </Position22>
       <Position23>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="254" Column="1" TopLine="236"/>
+        <Caret Line="255" Column="37" TopLine="232"/>
       </Position23>
       <Position24>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="255" Column="37" TopLine="232"/>
+        <Caret Line="342" Column="19" TopLine="325"/>
       </Position24>
       <Position25>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="342" Column="19" TopLine="325"/>
+        <Caret Line="29" Column="54" TopLine="1"/>
       </Position25>
       <Position26>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="29" Column="54" TopLine="1"/>
+        <Caret Line="349" Column="22" TopLine="328"/>
       </Position26>
       <Position27>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="349" Column="22" TopLine="328"/>
+        <Caret Line="336" Column="1" TopLine="330"/>
       </Position27>
       <Position28>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="336" Column="1" TopLine="330"/>
+        <Caret Line="365" Column="1" TopLine="348"/>
       </Position28>
       <Position29>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="365" Column="1" TopLine="348"/>
+        <Caret Line="321" Column="9" TopLine="296"/>
       </Position29>
       <Position30>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="321" Column="9" TopLine="296"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="802" Column="49" TopLine="785"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
