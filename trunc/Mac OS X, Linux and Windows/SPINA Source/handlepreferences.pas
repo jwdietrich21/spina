@@ -356,6 +356,7 @@ begin
         GD.hn := 40 / 1e9;
       end;
   end;
+  DecimalSeparator := oldSeparator;
   gTSHRR := 'N/A';
   gFT4RR := 'N/A';
   gFT3RR := 'N/A';
@@ -363,7 +364,6 @@ begin
   gTT3RR := 'N/A';
   gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
   gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
-  DecimalSeparator := oldSeparator;
 end;
 
 procedure SavePreferences;
