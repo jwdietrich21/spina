@@ -92,6 +92,7 @@ end;
 tLabMethod = (freeHormone, totalHormone);
 tPreferences = record
        T4Method, T3Method: tLabMethod;
+       TSHUnit, T4Unit, T3Unit: string;
        TSHUnitFactor, T4UnitFactor, T3UnitFactor: real;
        TSHPopUpItem, T4PopUpItem, T3PopUpItem: integer;
        T4MethodPopUpItem, T3MethodPopUpItem: integer;

@@ -257,6 +257,9 @@ begin
   gT3Unit := Hauptschirm.FT3ComboBox.Text;
   with gPreferences do
   begin
+    TSHUnit := Hauptschirm.TSHComboBox.Caption;
+    T4Unit := Hauptschirm.FT4ComboBox.Caption;
+    T3Unit := Hauptschirm.FT3ComboBox.Caption;
     TSHUnitFactor := gTSHUnitFactor;
     T4UnitFactor := gT4UnitFactor;
     T3UnitFactor := gT3UnitFactor;

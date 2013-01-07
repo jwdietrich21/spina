@@ -389,6 +389,12 @@ begin
       ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'total'));
     RootNode.AppendChild(ElementNode);
 
+    ElementNode:=Doc.CreateElement('units');
+    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', gPreferences.TSHUnit));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T4', gPreferences.T4Unit));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T3', gPreferences.T3Unit));
+    RootNode.AppendChild(ElementNode);
+
     ElementNode:=Doc.CreateElement('factors');
     ElementNode.AppendChild(SimpleNode(Doc, 'TSH', FloatToStr(gPreferences.TSHUnitFactor)));
     ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4UnitFactor)));
