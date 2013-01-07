@@ -219,6 +219,7 @@ begin
     theString := NodeContent(RootNode, 'T3');
     gPreferences.T3MethodPopUpItem := StrToInt(theString);
 
+    gPreferences.new := false;
   finally
     Doc.Free;
   end
@@ -236,6 +237,7 @@ begin
       T3PopUpItem := 0;
       T4MethodPopUpItem := 0;
       T3MethodPopUpItem := 0;
+      gPreferences.new := true;
     end;
   end;
 end;

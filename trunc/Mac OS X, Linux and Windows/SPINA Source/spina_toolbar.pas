@@ -121,6 +121,7 @@ begin
     gEinsender := kEinsender2;
     gBenutzername := kBenutzername2;
     gDruckdatum := kDruckdatum2;
+    gPreferencesHint := kPreferencesHint2;
     Hauptschirm.Calculate_Button.Caption := 'Calculate';
     Hauptschirm.HintGroupBox.Caption := 'Hint:';
     Hauptschirm.FileMenu.Caption := 'File';
@@ -182,12 +183,14 @@ begin
     gEinsender := kEinsender1;
     gBenutzername := kBenutzername1;
     gDruckdatum := kDruckdatum1;
+    gPreferencesHint := kPreferencesHint1;
   end;
   AdaptMenus;
   Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
   Hauptschirm.HintGroupBox.Caption := gHintCaption;
   Hauptschirm.ResultGroupBox.Caption := gResultHint;
   Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
+  if gPreferences.new then ShowMessage(gPreferencesHint);
 end;
 
 procedure TSPINAToolbar.FormCreate(Sender: TObject);

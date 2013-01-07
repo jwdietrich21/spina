@@ -71,6 +71,8 @@ const
   kTherapyHint2 = 'Therapy:';
   kHintCaption1 = 'Hinweis:';
   kHintCaption2 = 'Hint:';
+  kPreferencesHint1 = 'Die Voreinstellungsdatei wurde neu angelegt. Bitte überprüfen Sie Parameter und Maßeinheiten.';
+  kPreferencesHint2 = 'A new preferences file has been created. Please check parameters and measurement units.';
   kMarginSpaces = '                                    ';
 
   BASE_URL = 'http://spina.medical-cybernetics.de';
@@ -91,6 +93,7 @@ end;
 
 tLabMethod = (freeHormone, totalHormone);
 tPreferences = record
+       new: boolean;
        T4Method, T3Method: tLabMethod;
        TSHUnit, T4Unit, T3Unit: string;
        TSHUnitFactor, T4UnitFactor, T3UnitFactor: real;
@@ -118,6 +121,7 @@ var
   gAnleitung1, gAnleitung2, gVerhaltensparameter, gStrukturparameter, gReferenzbereiche: string;
   gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
+  gPreferencesHint: string;
   gcalcTitle, gcalcString, gNotCalculableString: Str255;
   gExplanationString, gMessageString, TSH_String, T4_String, T3_String: Str255;
   gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;
