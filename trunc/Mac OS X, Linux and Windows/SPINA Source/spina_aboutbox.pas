@@ -10,10 +10,10 @@ unit SPINA_AboutBox;
 
 { Version 3.3 }
 
-{ (c) J. W. Dietrich, 1994 - 2012 }
+{ (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2012 }
+{ (c) Ruhr University of Bochum 2005 - 2013 }
 
 { This unit displays an information dialog }
 
@@ -78,4 +78,3 @@ initialization
 
 
 end.
-

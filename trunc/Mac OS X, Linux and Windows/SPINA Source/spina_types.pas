@@ -10,10 +10,10 @@ unit SPINA_Types;
 
 { Version 3.3 }
 
-{ (c) J. W. Dietrich, 1994 - 2012 }
+{ (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2012 }
+{ (c) Ruhr University of Bochum 2005 - 2013 }
 
 { Common globals and types that are used by multiple units }
 
@@ -85,6 +85,10 @@ const
 type
 Str255 = String[255];
 tCodeList = set of 0..255;
+tUnitElements = record
+       MassPrefix, MassUnit, VolumePrefix, VolumeUnit: String;
+end;
+
 tLabMethod = (freeHormone, totalHormone);
 tPreferences = record
        T4Method, T3Method: tLabMethod;
@@ -124,4 +128,3 @@ var
 implementation
 
 end.
-

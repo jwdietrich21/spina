@@ -10,10 +10,10 @@ unit HandlePreferences;
 
 { Version 3.3 }
 
-{ (c) J. W. Dietrich, 1994 - 2012 }
+{ (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2012 }
+{ (c) Ruhr University of Bochum 2005 - 2013 }
 
 { This unit handles global application preferences }
 
@@ -78,6 +78,7 @@ begin
 end;
 
 function GetPreferencesFile: String;
+{delivers path to preferences file}
 begin
   {$IFDEF LCLCarbon}
     GetPreferencesFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.xml';
@@ -87,11 +88,13 @@ begin
 end;
 
 function GetRRFile: String;
+{delivers path to XML file with reference values}
 begin
    GetRRFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
 function EncodeGreek(theString: string): string;
+{encodes greek mu letter}
 var
   theFlags: TReplaceFlags;
 begin
@@ -100,8 +103,11 @@ begin
 end;
 
 function DecodeGreek(theString: string): string;
+var
+  theFlags: TReplaceFlags;
 begin
-  {result := UTF8Decode(StringReplace(theString, 'mc', PrefixLabel[4], [rfReplaceAll, rfIgnoreCase]));}
+  theFlags := [rfReplaceAll, rfIgnoreCase];
+  result := UTF8Decode(StringReplace(theString, 'mc', #194#181, theFlags));
 end;
 
 function NodeContent(theRoot: TDOMNode; Name: string): string;
@@ -160,27 +166,12 @@ begin
 end;
 
 procedure ReadPreferences;
+{reads preferences file}
 var
   Doc: TXMLDocument;
   RootNode, theNode: TDOMNode;
   theFileName, theString: String;
 begin
-  {assignFile(gPrefsFile, gPrefsFileName);
-  try
-    reset(gPrefsFile);
-    read(gPrefsFile,gPreferences);
-    CloseFile(gPrefsFile);
-  except
-  on Ex: EInOutError do
-      with gPreferences do
-      begin
-        T4Method:=freeHormone;
-        T3Method:=freeHormone;
-        TSHUnitFactor:=1;
-        T4UnitFactor:=1;
-        T3UnitFactor:=1;
-      end;
-   end;}
   theFileName := GetPreferencesFile;
   if FileExists(theFileName) then
   try
@@ -242,6 +233,7 @@ begin
 end;
 
 procedure GetReferenceValues;
+{reads reference values from a CDISC LAB model-compliant XML file}
 var
   Doc: TXMLDocument;
   RootNode, theNode, BaseTestNode, FlagUOMNode, NormalNode, NormalDefinitionNode: TDOMNode;
@@ -367,17 +359,13 @@ begin
 end;
 
 procedure SavePreferences;
+{save preferences file}
 var
   theFileName, PreferencesFolder: String;
   Doc: TXMLDocument;
   StartComment: TDOMComment;
   RootNode, ElementNode, ItemNode, TextNode: TDOMNode;
 begin
-  {CreateDir(gPrefsDir);
-  assignFile(gPrefsFile, gPrefsFileName);
-  rewrite(gPrefsFile);
-  write(gPrefsFile, gPreferences);
-  CloseFile(gPrefsFile);}
   theFileName := GetPreferencesFile;
   PreferencesFolder := GetPreferencesFolder;
   try
@@ -433,4 +421,3 @@ begin
 end;
 
 end.
-
