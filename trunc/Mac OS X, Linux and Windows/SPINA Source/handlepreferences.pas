@@ -189,6 +189,14 @@ begin
     else
       gPreferences.T3Method := totalHormone;
 
+    RootNode := Doc.DocumentElement.FindNode('units');
+    theString := NodeContent(RootNode, 'TSH');
+    gPreferences.TSHUnit := theString;
+    theString := NodeContent(RootNode, 'T4');
+    gPreferences.T4Unit := theString;
+    theString := NodeContent(RootNode, 'T3');
+    gPreferences.T3Unit := theString;
+
     RootNode := Doc.DocumentElement.FindNode('factors');
     theString := NodeContent(RootNode, 'TSH');
     gPreferences.TSHUnitFactor := StrToFloat(theString);

@@ -60,8 +60,8 @@ type
     EditDelete1: TEditDelete;
     EditPaste1: TEditPaste;
     EditUndo1: TEditUndo;
-    FT3ComboBox: TComboBox;
-    FT4ComboBox: TComboBox;
+    T3UnitComboBox: TComboBox;
+    T4UnitComboBox: TComboBox;
     ValuesGroupBox: TGroupBox;
     HintGroupBox: TGroupBox;
     ResultGroupBox: TGroupBox;
@@ -112,7 +112,7 @@ type
     FT3_Text: TEdit;
     FT4_Text: TEdit;
     HintField: TMemo;
-    TSHComboBox: TComboBox;
+    TSHUnitComboBox: TComboBox;
     Logo: TImage;
     Drucken1: TMenuItem;
     Seiteneinrichtung1: TMenuItem;
@@ -138,9 +138,9 @@ type
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure T3ItemsChange(Sender: TObject);
-    procedure TSHComboBoxChange(Sender: TObject);
-    procedure FT3ComboBoxChange(Sender: TObject);
-    procedure FT4ComboBoxChange(Sender: TObject);
+    procedure TSHUnitComboBoxChange(Sender: TObject);
+    procedure T3UnitComboBoxChange(Sender: TObject);
+    procedure T4UnitComboBoxChange(Sender: TObject);
     procedure T4MethodComboBoxAdjust(Sender: TObject);
     procedure T3MethodComboBoxAdjust(Sender: TObject);
     procedure T4MethodComboBoxChange(Sender: TObject);
@@ -214,52 +214,52 @@ procedure AdjustUnitFactors;
 begin
   if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
   begin
-    if Hauptschirm.FT4ComboBox.Text = 'ng/dl' then
+    if Hauptschirm.T4UnitCombobox.Text = 'ng/dl' then
       gT4UnitFactor := 1
-    else if Hauptschirm.FT4ComboBox.Text = 'ng/l' then
+    else if Hauptschirm.T4UnitCombobox.Text = 'ng/l' then
       gT4UnitFactor := 0.1
-    else if Hauptschirm.FT4ComboBox.Text = 'pmol/l' then
+    else if Hauptschirm.T4UnitCombobox.Text = 'pmol/l' then
       gT4UnitFactor := 1 / UFT4 / 1e12;
   end
   else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
   begin
-    if Hauptschirm.FT4ComboBox.Text = 'µg/l' then
+    if Hauptschirm.T4UnitCombobox.Text = 'µg/l' then
       gT4UnitFactor := 100
-    else if Hauptschirm.FT4ComboBox.Text = 'µg/dl' then
+    else if Hauptschirm.T4UnitCombobox.Text = 'µg/dl' then
       gT4UnitFactor := 1000
-    else if Hauptschirm.FT4ComboBox.Text = 'nmol/l' then
+    else if Hauptschirm.T4UnitCombobox.Text = 'nmol/l' then
       gT4UnitFactor := 1 / UFT4 / 1e9;
   end;
   if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
   begin
-    if Hauptschirm.FT3ComboBox.Text = 'pg/ml' then
+    if Hauptschirm.T3UnitCombobox.Text = 'pg/ml' then
       gT3UnitFactor := 1
-    else if Hauptschirm.FT3ComboBox.Text = 'ng/l' then
+    else if Hauptschirm.T3UnitCombobox.Text = 'ng/l' then
       gT3UnitFactor := 1
-    else if Hauptschirm.FT3ComboBox.Text = 'pmol/l' then
+    else if Hauptschirm.T3UnitCombobox.Text = 'pmol/l' then
       gT3UnitFactor := 1 / UFT3 / 1e12;
   end
   else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
   begin
-    if Hauptschirm.FT3ComboBox.Text = 'µg/l' then
+    if Hauptschirm.T3UnitCombobox.Text = 'µg/l' then
       gT3UnitFactor := 1000
-    else if Hauptschirm.FT3ComboBox.Text = 'ng/dl' then
+    else if Hauptschirm.T3UnitCombobox.Text = 'ng/dl' then
       gT3UnitFactor := 10
-    else if Hauptschirm.FT3ComboBox.Text = 'nmol/l' then
+    else if Hauptschirm.T3UnitCombobox.Text = 'nmol/l' then
       gT3UnitFactor := 1 / UFT3 / 1e9;
   end;
-  if Hauptschirm.TSHComboBox.Text = 'mU/l' then
+  if Hauptschirm.TSHUnitCombobox.Text = 'mU/l' then
     gTSHUnitFactor := 1
   else
     gTSHUnitFactor := 1;
-  gTSHUnit := Hauptschirm.TSHComboBox.Text;
-  gT4Unit := Hauptschirm.FT4ComboBox.Text;
-  gT3Unit := Hauptschirm.FT3ComboBox.Text;
+  gTSHUnit := Hauptschirm.TSHUnitCombobox.Text;
+  gT4Unit := Hauptschirm.T4UnitCombobox.Text;
+  gT3Unit := Hauptschirm.T3UnitCombobox.Text;
   with gPreferences do
   begin
-    TSHUnit := Hauptschirm.TSHComboBox.Caption;
-    T4Unit := Hauptschirm.FT4ComboBox.Caption;
-    T3Unit := Hauptschirm.FT3ComboBox.Caption;
+    TSHUnit := Hauptschirm.TSHUnitCombobox.Caption;
+    T4Unit := Hauptschirm.T4UnitCombobox.Caption;
+    T3Unit := Hauptschirm.T3UnitCombobox.Caption;
     TSHUnitFactor := gTSHUnitFactor;
     T4UnitFactor := gT4UnitFactor;
     T3UnitFactor := gT3UnitFactor;
@@ -271,16 +271,16 @@ begin
   if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
   begin
     gPreferences.T4Method := freeHormone;
-    Hauptschirm.FT4ComboBox.Items.Assign(FT4Items.Items);
-    Hauptschirm.FT4ComboBox.Text :=
-      Hauptschirm.FT4ComboBox.Items.Strings[gPreferences.T4PopUpItem];
+    Hauptschirm.T4UnitCombobox.Items.Assign(FT4Items.Items);
+    Hauptschirm.T4UnitCombobox.Text :=
+      Hauptschirm.T4UnitCombobox.Items.Strings[gPreferences.T4PopUpItem];
   end
   else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
   begin
     gPreferences.T4Method := totalHormone;
-    Hauptschirm.FT4ComboBox.Items.Assign(T4Items.Items);
-    Hauptschirm.FT4ComboBox.Text :=
-      Hauptschirm.FT4ComboBox.Items.Strings[gPreferences.T4PopUpItem];
+    Hauptschirm.T4UnitCombobox.Items.Assign(T4Items.Items);
+    Hauptschirm.T4UnitCombobox.Text :=
+      Hauptschirm.T4UnitCombobox.Items.Strings[gPreferences.T4PopUpItem];
   end;
   AdjustUnitFactors;
 end;
@@ -290,16 +290,16 @@ begin
   if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
   begin
     gPreferences.T3Method := freeHormone;
-    Hauptschirm.FT3ComboBox.Items.Assign(FT3Items.Items);
-    Hauptschirm.FT3ComboBox.Text :=
-      Hauptschirm.FT3ComboBox.Items.Strings[gPreferences.T3PopUpItem];
+    Hauptschirm.T3UnitCombobox.Items.Assign(FT3Items.Items);
+    Hauptschirm.T3UnitCombobox.Text :=
+      Hauptschirm.T3UnitCombobox.Items.Strings[gPreferences.T3PopUpItem];
   end
   else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
   begin
     gPreferences.T3Method := totalHormone;
-    Hauptschirm.FT3ComboBox.Items.Assign(T3Items.Items);
-    Hauptschirm.FT3ComboBox.Text :=
-      Hauptschirm.FT3ComboBox.Items.Strings[gPreferences.T3PopUpItem];
+    Hauptschirm.T3UnitCombobox.Items.Assign(T3Items.Items);
+    Hauptschirm.T3UnitCombobox.Text :=
+      Hauptschirm.T3UnitCombobox.Items.Strings[gPreferences.T3PopUpItem];
   end;
   AdjustUnitFactors;
 end;
@@ -315,9 +315,9 @@ begin
     Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodPopUpItem;
     Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
     Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
-    Hauptschirm.TSHComboBox.ItemIndex := TSHPopUpItem;
-    Hauptschirm.FT4ComboBox.ItemIndex := T4PopUpItem;
-    Hauptschirm.FT3ComboBox.ItemIndex := T3PopUpItem;
+    Hauptschirm.TSHUnitCombobox.ItemIndex := TSHPopUpItem;
+    Hauptschirm.T4UnitCombobox.ItemIndex := T4PopUpItem;
+    Hauptschirm.T3UnitCombobox.ItemIndex := T3PopUpItem;
     gTSHUnitFactor := TSHUnitFactor;
     gT4UnitFactor := T4UnitFactor;
     gT3UnitFactor := T3UnitFactor;
@@ -437,32 +437,12 @@ begin
     {$IFDEF LCLCarbon}
   SysBeep(30);
     {$ELSE}
-  s := Shell('echo -ne ''\007''');
+  s := fpSystem('echo -ne ''\007''');
   {s := fpSystem('echo -ne "\a"');}
   {s := fpSystem('tput bel');}
   {beep;}
     {$ENDIF}
   {$ENDIF}
-end;
-
-function ValidKey(theKey: char): boolean;
-  {Beschr??nkt Texteingabe auf zul??ssige Zeichen}
-type
-  format1 = set of char;
-var
-  theformatn, theformatd, theformate, theformato, theformatc, thevalidformat: format1;
-begin
-  ValidKey := False;
-  theformatn := ['1'..'9', '0', kTAB];
-  theformatd := ['.', ','];
-  theformate := ['e', 'E'];
-  theformato := ['+', '-'];
-  theformatc := [char($1c), char($1d), char($1e), char($1f), char($08)];
-  thevalidformat := theformatn + theformatd + theformate + theformatc;
-  if thekey in thevalidformat then
-    ValidKey := True
-  else
-    bell;
 end;
 
 procedure HandleInput;
@@ -613,21 +593,24 @@ begin
 
 end;
 
-procedure THauptschirm.TSHComboBoxChange(Sender: TObject);
+procedure THauptschirm.TSHUnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.TSHPopUpItem := Hauptschirm.TSHComboBox.ItemIndex;
+  gPreferences.TSHUnit := Hauptschirm.TSHUnitComboBox.Caption;
+  gPreferences.TSHPopUpItem := Hauptschirm.TSHUnitCombobox.ItemIndex;
   AdjustUnitFactors;
 end;
 
-procedure THauptschirm.FT3ComboBoxChange(Sender: TObject);
+procedure THauptschirm.T3UnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T3PopUpItem := Hauptschirm.FT3ComboBox.ItemIndex;
+  gPreferences.T3Unit := Hauptschirm.T3UnitComboBox.Caption;
+  gPreferences.T3PopUpItem := Hauptschirm.T3UnitCombobox.ItemIndex;
   AdjustUnitFactors;
 end;
 
-procedure THauptschirm.FT4ComboBoxChange(Sender: TObject);
+procedure THauptschirm.T4UnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T4PopUpItem := Hauptschirm.FT4ComboBox.ItemIndex;
+  gPreferences.T4Unit := Hauptschirm.T4UnitComboBox.Caption;
+  gPreferences.T4PopUpItem := Hauptschirm.T4UnitCombobox.ItemIndex;
   AdjustUnitFactors;
 end;
 
