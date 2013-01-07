@@ -45,6 +45,7 @@ begin
   SplashScreen.AlphaBlendValue := 200;
   Application.ProcessMessages;
   gStartup := true;
+  InitConversionFactors;
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TResultForm, ResultForm);
   Application.CreateForm(TSPINAToolbar, SPINAToolbar);

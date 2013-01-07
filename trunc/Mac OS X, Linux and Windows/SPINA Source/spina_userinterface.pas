@@ -211,43 +211,47 @@ begin
 end;
 
 procedure AdjustUnitFactors;
+var unitElements: TUnitElements;
 begin
+  UnitElements := ParsedUnitString(Hauptschirm.T4UnitComboBox.Text);
   if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
   begin
     if Hauptschirm.T4UnitCombobox.Text = 'ng/dl' then
-      gT4UnitFactor := 1
+      gT4UnitFactor := UFT4
     else if Hauptschirm.T4UnitCombobox.Text = 'ng/l' then
-      gT4UnitFactor := 0.1
+      gT4UnitFactor := 0.1 * UFT4
     else if Hauptschirm.T4UnitCombobox.Text = 'pmol/l' then
-      gT4UnitFactor := 1 / UFT4 / 1e12;
+      gT4UnitFactor := 1 / 1e12;
   end
   else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
   begin
     if Hauptschirm.T4UnitCombobox.Text = 'µg/l' then
-      gT4UnitFactor := 100
+      gT4UnitFactor := 100 * UFT4
     else if Hauptschirm.T4UnitCombobox.Text = 'µg/dl' then
-      gT4UnitFactor := 1000
+      gT4UnitFactor := 1000 * UFT4
     else if Hauptschirm.T4UnitCombobox.Text = 'nmol/l' then
-      gT4UnitFactor := 1 / UFT4 / 1e9;
+      gT4UnitFactor := 1 / 1e9;
   end;
+  UnitElements := ParsedUnitString(Hauptschirm.T3UnitComboBox.Text);
   if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
   begin
     if Hauptschirm.T3UnitCombobox.Text = 'pg/ml' then
-      gT3UnitFactor := 1
+      gT3UnitFactor := UFT3
     else if Hauptschirm.T3UnitCombobox.Text = 'ng/l' then
-      gT3UnitFactor := 1
+      gT3UnitFactor := UFT3
     else if Hauptschirm.T3UnitCombobox.Text = 'pmol/l' then
-      gT3UnitFactor := 1 / UFT3 / 1e12;
+      gT3UnitFactor := 1 / 1e12;
   end
   else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
   begin
     if Hauptschirm.T3UnitCombobox.Text = 'µg/l' then
-      gT3UnitFactor := 1000
+      gT3UnitFactor := 1000 * UFT3
     else if Hauptschirm.T3UnitCombobox.Text = 'ng/dl' then
-      gT3UnitFactor := 10
+      gT3UnitFactor := 10 * UFT3
     else if Hauptschirm.T3UnitCombobox.Text = 'nmol/l' then
-      gT3UnitFactor := 1 / UFT3 / 1e9;
+      gT3UnitFactor := 1 / 1e9;
   end;
+  UnitElements := ParsedUnitString(Hauptschirm.TSHUnitComboBox.Text);
   if Hauptschirm.TSHUnitCombobox.Text = 'mU/l' then
     gTSHUnitFactor := 1
   else
@@ -485,7 +489,6 @@ begin
       T4 := StrToFloat(T4_String);
     end;
     T4_String := FloatToStrF(T4, ffFixed, 3, 2);
-    T4 := T4 * UFT4;
     T4 := T4 * gT4UnitFactor;
     Size := Hauptschirm.FT3_Text.GetTextLen;
     {L??nge des Strings in Edit1 ermitteln}
@@ -503,7 +506,6 @@ begin
       T3 := StrToFloat(T3_String);
     end;
     T3_String := FloatToStrF(T3, ffFixed, 3, 2);
-    T3 := T3 * UFT3;
     T3 := T3 * gT3UnitFactor;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
       gTSHTherapy := True

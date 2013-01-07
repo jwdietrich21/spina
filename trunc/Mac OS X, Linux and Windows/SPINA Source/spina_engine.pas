@@ -28,8 +28,6 @@ uses
   Classes, SysUtils, SPINA_Types;
 
 const
-  UFT4 = 1.28e-11;
-  UFT3 = 1.54e-12;
   ALPHAT = 0.1;
   BETAT = 1.1e-6;
   THY = 1;

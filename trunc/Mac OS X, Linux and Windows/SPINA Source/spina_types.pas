@@ -28,6 +28,8 @@ uses
   Classes, SysUtils;
 
 const
+  UFT4 = 1.28e-11;
+  UFT3 = 1.54e-12;
   kTAB = chr(9);
   kLF = chr(10);
   kCR = chr(13);
@@ -83,8 +85,10 @@ const
   SAVE_ERROR_MESSAGE = 'Error saving the file';
   PREFERENCES_SAVE_ERROR_MESSAGE = 'The preferences could not be saved permanently, however, they are valid for this session';
 
+  MAXFACTORS = 10; {for measurement units and preferences}
 
 type
+Str3 = string[3];
 Str255 = String[255];
 tCodeList = set of 0..255;
 tUnitElements = record
@@ -112,6 +116,8 @@ tInterfaceLanguage = (English, German);
 
 var
   gStartup: boolean;
+  PrefixLabel, T4UnitLabel, T3UnitLabel: array[0..MAXFACTORS - 1] of Str3;
+  PrefixFactor, T4UnitFactor, T3UnitFactor: array[0..MAXFACTORS - 1] of real;
   gTSHTherapy, gT4Therapy, gT3Therapy, gUseReferenceRanges: boolean;
   gPrefsDir, gPrefsFileName: String;
   gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR: string;
