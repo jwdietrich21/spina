@@ -283,11 +283,11 @@ begin
     theString := NodeContent(RootNode, 'T3');
     gPreferences.T3PopUpItem := StrToInt(theString); }
 
-    RootNode := Doc.DocumentElement.FindNode('methoditems');
+    {RootNode := Doc.DocumentElement.FindNode('methoditems');
     theString := NodeContent(RootNode, 'T4');
     gPreferences.T4MethodPopUpItem := StrToInt(theString);
     theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3MethodPopUpItem := StrToInt(theString);
+    gPreferences.T3MethodPopUpItem := StrToInt(theString);}
 
     gPreferences.new := false;
   finally
@@ -490,10 +490,10 @@ begin
     ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3PopUpItem)));
     RootNode.AppendChild(ElementNode);}
 
-    ElementNode:=Doc.CreateElement('methoditems');
+    {ElementNode:=Doc.CreateElement('methoditems');
     ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4MethodPopUpItem)));
     ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3MethodPopUpItem)));
-    RootNode.AppendChild(ElementNode);
+    RootNode.AppendChild(ElementNode);}
 
     if not DirectoryExists(PreferencesFolder) then
       if not CreateDir(PreferencesFolder) then

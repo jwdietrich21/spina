@@ -61,6 +61,7 @@ implementation
 
 function Calculate(TSH, T4, T3: real): tCaseRecord;
 {main calculation function}
+{TSH is expected in mU/l, T4 and T3 in mol/l}
 var
   FT4, TT4, TT3: real;
   tempRecord: tCaseRecord;

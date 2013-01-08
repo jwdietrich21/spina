@@ -211,6 +211,7 @@ begin
 end;
 
 procedure AdjustUnitFactors;
+{calculates conversion factors from parsed unit strings}
 var
   unitElements: TUnitElements;
   i, mpIndex, muIndex, vpIndex, j4: integer;
@@ -256,7 +257,7 @@ begin
     T3UnitFactor := gT3UnitFactor;
   end;
   gT4UnitFactor := tempT4Factor;
-  gT3UnitFactor := tempT3Factor
+  gT3UnitFactor := tempT3Factor;
 end;
 
 procedure THauptschirm.T4MethodComboBoxAdjust(Sender: TObject);
@@ -305,15 +306,30 @@ var
   i: integer;
 begin
   ReadPreferences;
+  if gPreferences.T4Method = freeHormone then
+    Hauptschirm.T4MethodComboBox.ItemIndex := 0
+  else
+    begin
+      Hauptschirm.T4MethodComboBox.ItemIndex := 1;
+      Hauptschirm.T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
+    end;
+  if gPreferences.T3Method = freeHormone then
+    Hauptschirm.T3MethodComboBox.ItemIndex := 0
+  else
+    begin
+      Hauptschirm.T3MethodComboBox.ItemIndex := 1;
+      Hauptschirm.T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
+    end;
   found := false;
   with gPreferences do
   begin
-    for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count -1 do
+    for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count - 1 do
       begin
         if TSHUnit = Hauptschirm.TSHUnitComboBox.Items[i] then
           begin
             found := true;
             Hauptschirm.TSHUnitComboBox.ItemIndex := i;
+            break;
           end;
       end;
     if found = false then
@@ -322,12 +338,13 @@ begin
         Hauptschirm.TSHUnitComboBox.ItemIndex := i + 1;
       end;
     TSHPopupItem := Hauptschirm.TSHUnitComboBox.ItemIndex;
-    for i := 0 to Hauptschirm.T4UnitComboBox.Items.Count -1 do
+    for i := 0 to Hauptschirm.T4UnitComboBox.Items.Count - 1 do
       begin
         if T4Unit = Hauptschirm.T4UnitComboBox.Items[i] then
           begin
             found := true;
             Hauptschirm.T4UnitComboBox.ItemIndex := i;
+            break;
           end;
       end;
     if found = false then
@@ -336,12 +353,13 @@ begin
         Hauptschirm.T4UnitComboBox.ItemIndex := i + 1;
       end;
     T4PopUpItem := Hauptschirm.T4UnitComboBox.ItemIndex;
-    for i := 0 to Hauptschirm.T3UnitComboBox.Items.Count -1 do
+    for i := 0 to Hauptschirm.T3UnitComboBox.Items.Count - 1 do
       begin
         if T3Unit = Hauptschirm.T3UnitComboBox.Items[i] then
           begin
             found := true;
             Hauptschirm.T3UnitComboBox.ItemIndex := i;
+            break;
           end;
       end;
     if found = false then
@@ -350,8 +368,8 @@ begin
         Hauptschirm.T3UnitComboBox.ItemIndex := i + 1;
       end;
     T3PopUpItem := Hauptschirm.T3UnitComboBox.ItemIndex;
-    Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodPopUpItem;
-    Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodPopUpItem;
+    {Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodPopUpItem;
+    Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodPopUpItem;}
     Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
     Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
     {Hauptschirm.TSHUnitCombobox.ItemIndex := TSHPopUpItem;
@@ -360,6 +378,7 @@ begin
     gTSHUnitFactor := TSHUnitFactor;
     gT4UnitFactor := T4UnitFactor;
     gT3UnitFactor := T3UnitFactor;
+    AdjustUnitFactors;
   end;
 end;
 
