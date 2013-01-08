@@ -267,21 +267,21 @@ begin
     theString := NodeContent(RootNode, 'T3');
     gPreferences.T3Unit := theString;
 
-    RootNode := Doc.DocumentElement.FindNode('factors');
+    {RootNode := Doc.DocumentElement.FindNode('factors');
     theString := NodeContent(RootNode, 'TSH');
     gPreferences.TSHUnitFactor := StrToFloat(theString);
     theString := NodeContent(RootNode, 'T4');
     gPreferences.T4UnitFactor := StrToFloat(theString);
     theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3UnitFactor := StrToFloat(theString);
+    gPreferences.T3UnitFactor := StrToFloat(theString);}
 
-    RootNode := Doc.DocumentElement.FindNode('unititems');
+    {RootNode := Doc.DocumentElement.FindNode('unititems');
     theString := NodeContent(RootNode, 'TSH');
     gPreferences.TSHPopUpItem := StrToInt(theString);
     theString := NodeContent(RootNode, 'T4');
     gPreferences.T4PopUpItem := StrToInt(theString);
     theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3PopUpItem := StrToInt(theString);
+    gPreferences.T3PopUpItem := StrToInt(theString); }
 
     RootNode := Doc.DocumentElement.FindNode('methoditems');
     theString := NodeContent(RootNode, 'T4');
@@ -299,9 +299,12 @@ begin
     begin
       T4Method := freeHormone;
       T3Method := freeHormone;
-      TSHUnitFactor := 1;
+      {TSHUnitFactor := 1;
       T4UnitFactor := 1;
-      T3UnitFactor := 1;
+      T3UnitFactor := 1;}
+      TSHUnit := TSH_UNIT;
+      T4Unit := FT4_UNIT;
+      T3Unit := FT3_UNIT;
       TSHPopUpItem := 0;
       T4PopUpItem := 0;
       T3PopUpItem := 0;
@@ -475,17 +478,17 @@ begin
     ElementNode.AppendChild(SimpleNode(Doc, 'T3', gPreferences.T3Unit));
     RootNode.AppendChild(ElementNode);
 
-    ElementNode:=Doc.CreateElement('factors');
+    {ElementNode:=Doc.CreateElement('factors');
     ElementNode.AppendChild(SimpleNode(Doc, 'TSH', FloatToStr(gPreferences.TSHUnitFactor)));
     ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4UnitFactor)));
     ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3UnitFactor)));
-    RootNode.AppendChild(ElementNode);
+    RootNode.AppendChild(ElementNode);  }
 
-    ElementNode:=Doc.CreateElement('unititems');
+    {ElementNode:=Doc.CreateElement('unititems');
     ElementNode.AppendChild(SimpleNode(Doc, 'TSH', FloatToStr(gPreferences.TSHPopUpItem)));
     ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4PopUpItem)));
     ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3PopUpItem)));
-    RootNode.AppendChild(ElementNode);
+    RootNode.AppendChild(ElementNode);}
 
     ElementNode:=Doc.CreateElement('methoditems');
     ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4MethodPopUpItem)));

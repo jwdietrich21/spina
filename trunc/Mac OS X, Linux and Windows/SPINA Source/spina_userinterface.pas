@@ -216,7 +216,7 @@ var
   i, mpIndex, muIndex, vpIndex, j4: integer;
   tempT4Factor, tempT3Factor: real;
 begin
-  mpindex := 0;
+  mpIndex := 0;
   muIndex := 0;
   vpIndex := 0;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T4UnitComboBox.Text));
@@ -227,7 +227,7 @@ begin
       if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
     end;
   tempT4Factor := PrefixFactor[mpIndex] * T4UnitFactor[muIndex] / PrefixFactor[vpIndex];
-  mpindex := 0;
+  mpIndex := 0;
   muIndex := 0;
   vpIndex := 0;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T3UnitComboBox.Text));
@@ -300,17 +300,63 @@ end;
 { THauptschirm }
 
 procedure GetPreferences;
+var
+  found: boolean;
+  i: integer;
 begin
   ReadPreferences;
+  found := false;
   with gPreferences do
   begin
+    for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count -1 do
+      begin
+        if TSHUnit = Hauptschirm.TSHUnitComboBox.Items[i] then
+          begin
+            found := true;
+            Hauptschirm.TSHUnitComboBox.ItemIndex := i;
+          end;
+      end;
+    if found = false then
+      begin
+        Hauptschirm.TSHUnitComboBox.Items.Add(TSHUnit);
+        Hauptschirm.TSHUnitComboBox.ItemIndex := i + 1;
+      end;
+    TSHPopupItem := Hauptschirm.TSHUnitComboBox.ItemIndex;
+    for i := 0 to Hauptschirm.T4UnitComboBox.Items.Count -1 do
+      begin
+        if T4Unit = Hauptschirm.T4UnitComboBox.Items[i] then
+          begin
+            found := true;
+            Hauptschirm.T4UnitComboBox.ItemIndex := i;
+          end;
+      end;
+    if found = false then
+      begin
+        Hauptschirm.T4UnitComboBox.Items.Add(T4Unit);
+        Hauptschirm.T4UnitComboBox.ItemIndex := i + 1;
+      end;
+    T4PopUpItem := Hauptschirm.T4UnitComboBox.ItemIndex;
+    for i := 0 to Hauptschirm.T3UnitComboBox.Items.Count -1 do
+      begin
+        if T3Unit = Hauptschirm.T3UnitComboBox.Items[i] then
+          begin
+            found := true;
+            Hauptschirm.T3UnitComboBox.ItemIndex := i;
+          end;
+      end;
+    if found = false then
+      begin
+        Hauptschirm.T3UnitComboBox.Items.Add(T3Unit);
+        Hauptschirm.T3UnitComboBox.ItemIndex := i + 1;
+      end;
+    T3PopUpItem := Hauptschirm.T3UnitComboBox.ItemIndex;
     Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodPopUpItem;
     Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodPopUpItem;
     Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
     Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
-    Hauptschirm.TSHUnitCombobox.ItemIndex := TSHPopUpItem;
+    {Hauptschirm.TSHUnitCombobox.ItemIndex := TSHPopUpItem;
     Hauptschirm.T4UnitCombobox.ItemIndex := T4PopUpItem;
-    Hauptschirm.T3UnitCombobox.ItemIndex := T3PopUpItem;
+    Hauptschirm.T3UnitCombobox.ItemIndex := T3PopUpItem;}
     gTSHUnitFactor := TSHUnitFactor;
     gT4UnitFactor := T4UnitFactor;
     gT3UnitFactor := T3UnitFactor;

@@ -36,9 +36,9 @@ const
   DEC_POINT = '.';
   DEC_COMMA = ',';
   TEXT_WIDTH = 10;
-  TSH_UNIT = ' mU/l';
-  FT4_UNIT = ' ng/dl';
-  FT3_UNIT = ' pg/ml';
+  TSH_UNIT = 'mU/l';
+  FT4_UNIT = 'ng/dl';
+  FT3_UNIT = 'pg/ml';
   kAnleitung01 = '';
   kAnleitung02 = '';
   kAnleitung11 =
