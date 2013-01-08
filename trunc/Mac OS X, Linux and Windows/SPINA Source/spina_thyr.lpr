@@ -37,6 +37,7 @@ SPINA_Engine, Printer4Lazarus, SPINA_Types, HandlePreferences, spina_toolbar;
 
 begin
   Application.Title:='SPINA Thyr';
+  InitConversionFactors;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
   SplashScreen := TSplashScreen.Create(nil);
@@ -45,7 +46,6 @@ begin
   SplashScreen.AlphaBlendValue := 200;
   Application.ProcessMessages;
   gStartup := true;
-  InitConversionFactors;
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TResultForm, ResultForm);
   Application.CreateForm(TSPINAToolbar, SPINAToolbar);

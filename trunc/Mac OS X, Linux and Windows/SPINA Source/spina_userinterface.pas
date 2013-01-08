@@ -211,47 +211,34 @@ begin
 end;
 
 procedure AdjustUnitFactors;
-var unitElements: TUnitElements;
+var
+  unitElements: TUnitElements;
+  i, mpIndex, muIndex, vpIndex, j4: integer;
+  tempT4Factor, tempT3Factor: real;
 begin
-  UnitElements := ParsedUnitString(Hauptschirm.T4UnitComboBox.Text);
-  if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
-  begin
-    if Hauptschirm.T4UnitCombobox.Text = 'ng/dl' then
-      gT4UnitFactor := UFT4
-    else if Hauptschirm.T4UnitCombobox.Text = 'ng/l' then
-      gT4UnitFactor := 0.1 * UFT4
-    else if Hauptschirm.T4UnitCombobox.Text = 'pmol/l' then
-      gT4UnitFactor := 1 / 1e12;
-  end
-  else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
-  begin
-    if Hauptschirm.T4UnitCombobox.Text = 'µg/l' then
-      gT4UnitFactor := 100 * UFT4
-    else if Hauptschirm.T4UnitCombobox.Text = 'µg/dl' then
-      gT4UnitFactor := 1000 * UFT4
-    else if Hauptschirm.T4UnitCombobox.Text = 'nmol/l' then
-      gT4UnitFactor := 1 / 1e9;
-  end;
-  UnitElements := ParsedUnitString(Hauptschirm.T3UnitComboBox.Text);
-  if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
-  begin
-    if Hauptschirm.T3UnitCombobox.Text = 'pg/ml' then
-      gT3UnitFactor := UFT3
-    else if Hauptschirm.T3UnitCombobox.Text = 'ng/l' then
-      gT3UnitFactor := UFT3
-    else if Hauptschirm.T3UnitCombobox.Text = 'pmol/l' then
-      gT3UnitFactor := 1 / 1e12;
-  end
-  else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
-  begin
-    if Hauptschirm.T3UnitCombobox.Text = 'µg/l' then
-      gT3UnitFactor := 1000 * UFT3
-    else if Hauptschirm.T3UnitCombobox.Text = 'ng/dl' then
-      gT3UnitFactor := 10 * UFT3
-    else if Hauptschirm.T3UnitCombobox.Text = 'nmol/l' then
-      gT3UnitFactor := 1 / 1e9;
-  end;
-  UnitElements := ParsedUnitString(Hauptschirm.TSHUnitComboBox.Text);
+  mpindex := 0;
+  muIndex := 0;
+  vpIndex := 0;
+  UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T4UnitComboBox.Text));
+  for i := MAXFACTORS - 1 downto 0 do
+    begin
+      if unitElements.MassPrefix = PrefixLabel[i] then mpIndex := i;
+      if unitElements.MassUnit = T4UnitLabel[i] then muIndex := i;
+      if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
+    end;
+  tempT4Factor := PrefixFactor[mpIndex] * T4UnitFactor[muIndex] / PrefixFactor[vpIndex];
+  mpindex := 0;
+  muIndex := 0;
+  vpIndex := 0;
+  UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T3UnitComboBox.Text));
+  for i := MAXFACTORS - 1 downto 0 do
+    begin
+      if unitElements.MassPrefix = PrefixLabel[i] then mpIndex := i;
+      if unitElements.MassUnit = T3UnitLabel[i] then muIndex := i;
+      if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
+    end;
+  tempT3Factor := PrefixFactor[mpIndex] * T3UnitFactor[muIndex] / PrefixFactor[vpIndex];
+  UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.TSHUnitComboBox.Text));
   if Hauptschirm.TSHUnitCombobox.Text = 'mU/l' then
     gTSHUnitFactor := 1
   else
@@ -268,6 +255,8 @@ begin
     T4UnitFactor := gT4UnitFactor;
     T3UnitFactor := gT3UnitFactor;
   end;
+  gT4UnitFactor := tempT4Factor;
+  gT3UnitFactor := tempT3Factor
 end;
 
 procedure THauptschirm.T4MethodComboBoxAdjust(Sender: TObject);
@@ -574,7 +563,7 @@ end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
-  AdjustUnitFactors;
+  {AdjustUnitFactors;}
   Hauptschirm.HorzScrollBar.Visible := False;
   Hauptschirm.VertScrollBar.Visible := False;
   Hauptschirm.AutoScroll := False;

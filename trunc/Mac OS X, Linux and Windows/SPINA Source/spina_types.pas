@@ -28,8 +28,8 @@ uses
   Classes, SysUtils;
 
 const
-  UFT4 = 1.28e-11;
-  UFT3 = 1.54e-12;
+  UFT4 = 1.28e-11; {Conversion factor ng/dl -> mol/l (T4)}
+  UFT3 = 1.54e-12; {Conversion factor pg/ml -> mol/l (T3)}
   kTAB = chr(9);
   kLF = chr(10);
   kCR = chr(13);

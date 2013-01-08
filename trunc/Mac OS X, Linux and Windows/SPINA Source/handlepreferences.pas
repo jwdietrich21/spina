@@ -39,6 +39,8 @@ procedure InitConversionFactors;
 function ParsedUnitString(theString: String): TUnitElements;
 function GetPreferencesFolder: String;
 function GetPreferencesFile: String;
+function EncodeGreek(theString: string): string;
+function DecodeGreek(theString: string): string;
 procedure ReadPreferences;
 procedure GetReferenceValues;
 procedure SavePreferences;
@@ -67,12 +69,12 @@ begin
   PrefixFactor[7] := 1e-15;
   T4UnitLabel[0] := 'g';
   T4UnitLabel[1] := 'mol';
-  T4UnitFactor[0] := 1e-3;
-  T4UnitFactor[1] := UFT4 * 1e5;
+  T4UnitFactor[0] := PrefixFactor[1] * UFT4 / PrefixFactor[5]; {since UFT4 converts between ng/dl and mol/l}
+  T4UnitFactor[1] := 1;
   T3UnitLabel[0] := 'g';
   T3UnitLabel[1] := 'mol';
-  T3UnitFactor[0] := 1e-4;
-  T3UnitFactor[1] := UFT3 * 1e5;
+  T3UnitFactor[0] := PrefixFactor[3] * UFT3 / PrefixFactor[6]; {as UFT3 converts between pg/ml and mol/l}
+  T3UnitFactor[1] := 1;
 end;
 
 function ParsedUnitString(theString: String): TUnitElements;
