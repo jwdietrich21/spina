@@ -186,7 +186,9 @@ var
   theNode: TDOMNode;
 begin
   if assigned(theRoot) then
-    theNode := theRoot.FindNode(Name);
+    theNode := theRoot.FindNode(Name)
+  else
+    theNode := nil;
   if assigned(theNode) then
   begin
     try
@@ -235,6 +237,77 @@ begin
   result := foundValue;
 end;
 
+procedure SavePreferences;
+{save preferences file}
+var
+  theFileName, PreferencesFolder: String;
+  Doc: TXMLDocument;
+  StartComment: TDOMComment;
+  RootNode, ElementNode, ItemNode, TextNode: TDOMNode;
+begin
+  theFileName := GetPreferencesFile;
+  PreferencesFolder := GetPreferencesFolder;
+  try
+    Doc := TXMLDocument.Create;
+
+    {StartComment := Doc.CreateComment('SPINA Preferences');
+    RootNode.AppendChild(StartComment);}
+
+    RootNode := Doc.CreateElement('preferences');
+    Doc.Appendchild(RootNode);
+    RootNode := Doc.DocumentElement;
+
+    ElementNode := Doc.CreateElement('methods');
+    if gPreferences.T4Method = freeHormone then
+      ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'free'))
+    else
+      ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'total'));
+    if gPreferences.T3Method = freeHormone then
+      ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'free'))
+    else
+      ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'total'));
+    RootNode.AppendChild(ElementNode);
+
+    ElementNode:=Doc.CreateElement('units');
+    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', gPreferences.TSHUnit));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T4', gPreferences.T4Unit));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T3', gPreferences.T3Unit));
+    RootNode.AppendChild(ElementNode);
+
+    if not DirectoryExists(PreferencesFolder) then
+      if not CreateDir(PreferencesFolder) then
+        ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
+    if DirectoryExists(PreferencesFolder) then
+        begin
+          if FileExists(theFileName) then
+            SysUtils.DeleteFile(theFileName);
+          WriteXMLFile(Doc,theFileName);
+        end;
+  finally
+    Doc.Free;
+  end;
+end;
+
+procedure CreateNewPreferences;
+{creates a new datastructure for preferences}
+begin
+  with gPreferences do
+    begin
+      T4Method := freeHormone;
+      T3Method := freeHormone;
+      TSHUnit := TSH_UNIT;
+      T4Unit := FT4_UNIT;
+      T3Unit := FT3_UNIT;
+      TSHPopUpItem := 0;
+      T4PopUpItem := 0;
+      T3PopUpItem := 0;
+      T4MethodPopUpItem := 0;
+      T3MethodPopUpItem := 0;
+      gPreferences.new := true;
+    end;
+  SavePreferences;
+end;
+
 procedure ReadPreferences;
 {reads preferences file}
 var
@@ -267,52 +340,14 @@ begin
     theString := NodeContent(RootNode, 'T3');
     gPreferences.T3Unit := theString;
 
-    {RootNode := Doc.DocumentElement.FindNode('factors');
-    theString := NodeContent(RootNode, 'TSH');
-    gPreferences.TSHUnitFactor := StrToFloat(theString);
-    theString := NodeContent(RootNode, 'T4');
-    gPreferences.T4UnitFactor := StrToFloat(theString);
-    theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3UnitFactor := StrToFloat(theString);}
-
-    {RootNode := Doc.DocumentElement.FindNode('unititems');
-    theString := NodeContent(RootNode, 'TSH');
-    gPreferences.TSHPopUpItem := StrToInt(theString);
-    theString := NodeContent(RootNode, 'T4');
-    gPreferences.T4PopUpItem := StrToInt(theString);
-    theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3PopUpItem := StrToInt(theString); }
-
-    {RootNode := Doc.DocumentElement.FindNode('methoditems');
-    theString := NodeContent(RootNode, 'T4');
-    gPreferences.T4MethodPopUpItem := StrToInt(theString);
-    theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3MethodPopUpItem := StrToInt(theString);}
-
+    if (gPreferences.TSHUnit = 'NA') or (gPreferences.T4Unit = 'NA') or (gPreferences.T3Unit = 'NA') then
+      CreateNewPreferences;  {fall-back solution, if file is corrupt or in obsolete format}
     gPreferences.new := false;
   finally
     Doc.Free;
   end
   else  {Standards from dialog, if preference file does not exist}
-  begin  {fall-back solution, if file does not exist}
-    with gPreferences do
-    begin
-      T4Method := freeHormone;
-      T3Method := freeHormone;
-      {TSHUnitFactor := 1;
-      T4UnitFactor := 1;
-      T3UnitFactor := 1;}
-      TSHUnit := TSH_UNIT;
-      T4Unit := FT4_UNIT;
-      T3Unit := FT3_UNIT;
-      TSHPopUpItem := 0;
-      T4PopUpItem := 0;
-      T3PopUpItem := 0;
-      T4MethodPopUpItem := 0;
-      T3MethodPopUpItem := 0;
-      gPreferences.new := true;
-    end;
-  end;
+    CreateNewPreferences;  {fall-back solution, if file does not exist}
 end;
 
 procedure GetReferenceValues;
@@ -439,74 +474,6 @@ begin
   gTT3RR := 'N/A';
   gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
   gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
-end;
-
-procedure SavePreferences;
-{save preferences file}
-var
-  theFileName, PreferencesFolder: String;
-  Doc: TXMLDocument;
-  StartComment: TDOMComment;
-  RootNode, ElementNode, ItemNode, TextNode: TDOMNode;
-begin
-  theFileName := GetPreferencesFile;
-  PreferencesFolder := GetPreferencesFolder;
-  try
-    Doc := TXMLDocument.Create;
-
-    {StartComment := Doc.CreateComment('SPINA Preferences');
-    RootNode.AppendChild(StartComment);}
-
-    RootNode := Doc.CreateElement('preferences');
-    Doc.Appendchild(RootNode);
-    RootNode := Doc.DocumentElement;
-
-    ElementNode := Doc.CreateElement('methods');
-    if gPreferences.T4Method = freeHormone then
-      ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'free'))
-    else
-      ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'total'));
-    if gPreferences.T3Method = freeHormone then
-      ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'free'))
-    else
-      ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'total'));
-    RootNode.AppendChild(ElementNode);
-
-    ElementNode:=Doc.CreateElement('units');
-    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', gPreferences.TSHUnit));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T4', gPreferences.T4Unit));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T3', gPreferences.T3Unit));
-    RootNode.AppendChild(ElementNode);
-
-    {ElementNode:=Doc.CreateElement('factors');
-    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', FloatToStr(gPreferences.TSHUnitFactor)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4UnitFactor)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3UnitFactor)));
-    RootNode.AppendChild(ElementNode);  }
-
-    {ElementNode:=Doc.CreateElement('unititems');
-    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', FloatToStr(gPreferences.TSHPopUpItem)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4PopUpItem)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3PopUpItem)));
-    RootNode.AppendChild(ElementNode);}
-
-    {ElementNode:=Doc.CreateElement('methoditems');
-    ElementNode.AppendChild(SimpleNode(Doc, 'T4', FloatToStr(gPreferences.T4MethodPopUpItem)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T3', FloatToStr(gPreferences.T3MethodPopUpItem)));
-    RootNode.AppendChild(ElementNode);}
-
-    if not DirectoryExists(PreferencesFolder) then
-      if not CreateDir(PreferencesFolder) then
-        ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
-    if DirectoryExists(PreferencesFolder) then
-        begin
-          if FileExists(theFileName) then
-            SysUtils.DeleteFile(theFileName);
-          WriteXMLFile(Doc,theFileName);
-        end;
-  finally
-    Doc.Free;
-  end;
 end;
 
 end.

@@ -368,13 +368,8 @@ begin
         Hauptschirm.T3UnitComboBox.ItemIndex := i + 1;
       end;
     T3PopUpItem := Hauptschirm.T3UnitComboBox.ItemIndex;
-    {Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodPopUpItem;
-    Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodPopUpItem;}
     Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
     Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
-    {Hauptschirm.TSHUnitCombobox.ItemIndex := TSHPopUpItem;
-    Hauptschirm.T4UnitCombobox.ItemIndex := T4PopUpItem;
-    Hauptschirm.T3UnitCombobox.ItemIndex := T3PopUpItem;}
     gTSHUnitFactor := TSHUnitFactor;
     gT4UnitFactor := T4UnitFactor;
     gT3UnitFactor := T3UnitFactor;
@@ -508,7 +503,9 @@ var
   Buffer: PChar;
   Size: byte;
   resultRecord: tCaseRecord;
+  oldSeparator: Char;
 begin
+  oldSeparator := decimalSeparator;
   try
     Size := Hauptschirm.TSH_Text.GetTextLen;
     {L??nge des Strings in Edit1 ermitteln}
@@ -522,9 +519,14 @@ begin
       {Buffer als dynamische Variable definieren}
       Hauptschirm.TSH_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
       TSH_String := StrPas(Buffer);
+      if pos(DEC_COMMA, TSH_String) > 0 then
+        decimalSeparator := DEC_COMMA
+      else
+        decimalSeparator := DEC_POINT;
       FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
       TSH := StrToFloat(TSH_String);
       TSH := TSH * gTSHUnitFactor;
+      decimalSeparator := oldSeparator;
     end;
     TSH_String := FloatToStrF(TSH, ffFixed, 3, 2);
     Size := Hauptschirm.FT4_Text.GetTextLen;
@@ -539,8 +541,13 @@ begin
       {Buffer als dynamische Variable definieren}
       Hauptschirm.FT4_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
       T4_String := StrPas(Buffer);
+      if pos(DEC_COMMA, T4_String) > 0 then
+        decimalSeparator := DEC_COMMA
+      else
+        decimalSeparator := DEC_POINT;
       FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
       T4 := StrToFloat(T4_String);
+      decimalSeparator := oldSeparator;
     end;
     T4_String := FloatToStrF(T4, ffFixed, 3, 2);
     T4 := T4 * gT4UnitFactor;
@@ -556,8 +563,13 @@ begin
       {Buffer als dynamische Variable definieren}
       Hauptschirm.FT3_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
       T3_String := StrPas(Buffer);
+      if pos(DEC_COMMA, T3_String) > 0 then
+        decimalSeparator := DEC_COMMA
+      else
+        decimalSeparator := DEC_POINT;
       FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
       T3 := StrToFloat(T3_String);
+      decimalSeparator := oldSeparator;
     end;
     T3_String := FloatToStrF(T3, ffFixed, 3, 2);
     T3 := T3 * gT3UnitFactor;
@@ -582,6 +594,7 @@ begin
       T3 := 0;
     end;
   end;
+  decimalSeparator := oldSeparator;
   resultRecord := Calculate(TSH, T4, T3);
   if gUseReferenceRanges then
     gMessageString := concat('   GT: ', resultRecord.flaggedGTs, kCR,
@@ -628,7 +641,6 @@ end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
-  {AdjustUnitFactors;}
   Hauptschirm.HorzScrollBar.Visible := False;
   Hauptschirm.VertScrollBar.Visible := False;
   Hauptschirm.AutoScroll := False;
