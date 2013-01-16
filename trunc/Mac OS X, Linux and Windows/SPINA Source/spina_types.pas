@@ -106,6 +106,7 @@ tPreferences = record
        end;
 tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
+       isSI: boolean
        end;
 tReferenceValues = record
        TSH, FT4, FT3, TT4, TT3, GT, GD: tReferenceAlerts;

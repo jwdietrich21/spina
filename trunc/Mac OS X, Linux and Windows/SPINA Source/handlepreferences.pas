@@ -442,11 +442,108 @@ begin
                       end;
                   BaseTestNode := BaseTestNode.NextSibling;
                 end;
+              end
+            else if AttributeValue(BatteryNode, 'ID') = 'Thyroid_Hormones' then
+            begin
+              BaseTestNode := BatteryNode.FindNode('BaseTest');
+              while assigned(BaseTestNode) do
+              begin
+                theNode := BaseTestNode.FindNode('LabTest');
+                if assigned(theNode) then
+                  if AttributeValue(theNode, 'ID') = 'TSH' then
+                    begin
+                      theNode := theNode.NextSibling;
+                      while assigned(theNode) do
+                        begin
+                          if theNode.NodeName = 'SubjectCharacteristics' then
+                            begin
+                              FlagUOMNode := theNode.FindNode('FlagUOM');
+                              if assigned(FlagUOMNode) then
+                                begin
+                                  NormalNode := FlagUOMNode.FindNode('Normal');
+                                  if assigned(NormalNode) then
+                                  begin
+                                    NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                    while assigned(NormalDefinitionNode) do
+                                      begin
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                           gReferenceRanges.TSH.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                           gReferenceRanges.TSH.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                      end;
+                                    break;
+                                  end;
+                                end;
+                            end;
+                          theNode := theNode.NextSibling;
+                        end;
+                    end
+                   else if AttributeValue(theNode, 'ID') = 'FT4' then
+                    begin
+                      theNode := theNode.NextSibling;
+                      while assigned(theNode) do
+                        begin
+                          if theNode.NodeName = 'SubjectCharacteristics' then
+                            begin
+                              FlagUOMNode := theNode.FindNode('FlagUOM');
+                              if assigned(FlagUOMNode) then
+                                begin
+                                  NormalNode := FlagUOMNode.FindNode('Normal');
+                                  if assigned(NormalNode) then
+                                  begin
+                                    NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                    while assigned(NormalDefinitionNode) do
+                                      begin
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                           gReferenceRanges.FT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                           gReferenceRanges.FT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                      end;
+                                    break;
+                                  end;
+                                end;
+                            end;
+                          theNode := theNode.NextSibling;
+                        end;
+                    end
+                   else if AttributeValue(theNode, 'ID') = 'FT3' then
+                    begin
+                      theNode := theNode.NextSibling;
+                      while assigned(theNode) do
+                        begin
+                          if theNode.NodeName = 'SubjectCharacteristics' then
+                            begin
+                              FlagUOMNode := theNode.FindNode('FlagUOM');
+                              if assigned(FlagUOMNode) then
+                                begin
+                                  NormalNode := FlagUOMNode.FindNode('Normal');
+                                  if assigned(NormalNode) then
+                                  begin
+                                    NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                    while assigned(NormalDefinitionNode) do
+                                      begin
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                           gReferenceRanges.FT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                           gReferenceRanges.FT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                      end;
+                                    break;
+                                  end;
+                                end;
+                            end;
+                          theNode := theNode.NextSibling;
+                        end;
+                    end;
+                BaseTestNode := BaseTestNode.NextSibling;
               end;
-              if BatteryNode.NextSibling <> nil then
-                BatteryNode := BatteryNode.NextSibling
-              else BatteryNode := nil;
             end;
+            if BatteryNode.NextSibling <> nil then
+              BatteryNode := BatteryNode.NextSibling
+            else BatteryNode := nil;
+          end;
         end;
     ;
   finally
@@ -473,11 +570,11 @@ begin
       end;
   end;
   DecimalSeparator := oldSeparator;
-  gTSHRR := 'N/A';
-  gFT4RR := 'N/A';
-  gFT3RR := 'N/A';
   gTT4RR := 'N/A';
   gTT3RR := 'N/A';
+  gTSHRR := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2) + ' mU/L';
+  gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ng/L';
+  gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' pmol/L';
   gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
   gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
 end;
