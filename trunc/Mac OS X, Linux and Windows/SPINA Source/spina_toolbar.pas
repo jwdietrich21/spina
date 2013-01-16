@@ -59,31 +59,34 @@ type
     QuitMenuItem: TMenuItem;
     SPINAThyrLabel: TLabel;
     ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
-    ToolButton10: TToolButton;
-    ToolButton11: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
-    ToolButton6: TToolButton;
-    ToolButton7: TToolButton;
-    ToolButton8: TToolButton;
-    ToolButton9: TToolButton;
+    NewToolButton: TToolButton;
+    CopyToolButton: TToolButton;
+    PasteToolButton: TToolButton;
+    OpenToolButton: TToolButton;
+    SaveToolButton: TToolButton;
+    SaveAsToolButton: TToolButton;
+    DividerTool1: TToolButton;
+    PrintToolButton: TToolButton;
+    DividerTool2: TToolButton;
+    DeleteToolButton: TToolButton;
+    CopyResultToolButton: TToolButton;
+    UndoToolButton: TToolButton;
+    CutToolButton: TToolButton;
     UndoMenuItem: TMenuItem;
     procedure AboutMenuItemClick(Sender: TObject);
     procedure AppleAboutMenuItemClick(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
+    procedure EditMenuClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure SPINAThyrLabelClick(Sender: TObject);
-    procedure ToolButton1Click(Sender: TObject);
-    procedure ToolButton2Click(Sender: TObject);
-    procedure ToolButton6Click(Sender: TObject);
+    procedure NewToolButtonClick(Sender: TObject);
+    procedure OpenToolButtonClick(Sender: TObject);
+    procedure PrintToolButtonClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -97,7 +100,7 @@ implementation
 
 { TSPINAToolbar }
 
-procedure TSPINAToolbar.ToolButton1Click(Sender: TObject);
+procedure TSPINAToolbar.NewToolButtonClick(Sender: TObject);
 begin
 
 end;
@@ -265,12 +268,17 @@ begin
   Hauptschirm.Ergebniskopieren1Click(Sender);
 end;
 
-procedure TSPINAToolbar.ToolButton2Click(Sender: TObject);
+procedure TSPINAToolbar.EditMenuClick(Sender: TObject);
 begin
 
 end;
 
-procedure TSPINAToolbar.ToolButton6Click(Sender: TObject);
+procedure TSPINAToolbar.OpenToolButtonClick(Sender: TObject);
+begin
+
+end;
+
+procedure TSPINAToolbar.PrintToolButtonClick(Sender: TObject);
 begin
   Hauptschirm.PrintMenuItemClick(Sender);
 end;

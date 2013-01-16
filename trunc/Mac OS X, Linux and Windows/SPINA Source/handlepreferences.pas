@@ -229,11 +229,12 @@ var
   foundValue: String;
 begin
   foundValue := '';
-  for i := 0 to theNode.Attributes.Length - 1 do
-  begin
-    if theNode.Attributes[i].NodeName = theName then
-      foundValue := theNode.Attributes[i].NodeValue;
-  end;
+  if assigned(theNode) then
+    for i := 0 to theNode.Attributes.Length - 1 do
+      begin
+        if theNode.Attributes[i].NodeName = theName then
+          foundValue := theNode.Attributes[i].NodeValue;
+      end;
   result := foundValue;
 end;
 
@@ -354,7 +355,7 @@ procedure GetReferenceValues;
 {reads reference values from a CDISC LAB model-compliant XML file}
 var
   Doc: TXMLDocument;
-  RootNode, theNode, BaseTestNode, FlagUOMNode, NormalNode, NormalDefinitionNode: TDOMNode;
+  RootNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode, NormalNode, NormalDefinitionNode: TDOMNode;
   theFileName, theString: String;
   theStream: TStringStream;
   oldSeparator: Char;
@@ -371,11 +372,12 @@ begin
     if assigned(RootNode) then
       if AttributeValue(RootNode, 'ID') = 'SPIt' then
         begin
-          theNode := RootNode.FindNode('BaseBattery');
-          if assigned(theNode) then
-            if AttributeValue(theNode, 'ID') = 'SPIt' then
+          BatteryNode := RootNode.FindNode('BaseBattery');
+          while assigned(BatteryNode) do
+            begin
+            if AttributeValue(BatteryNode, 'ID') = 'SPIt' then
               begin
-                BaseTestNode := theNode.FindNode('BaseTest');
+                BaseTestNode := BatteryNode.FindNode('BaseTest');
                 while assigned(BaseTestNode) do
                 begin
                   theNode := BaseTestNode.FindNode('LabTest');
@@ -441,6 +443,10 @@ begin
                   BaseTestNode := BaseTestNode.NextSibling;
                 end;
               end;
+              if BatteryNode.NextSibling <> nil then
+                BatteryNode := BatteryNode.NextSibling
+              else BatteryNode := nil;
+            end;
         end;
     ;
   finally

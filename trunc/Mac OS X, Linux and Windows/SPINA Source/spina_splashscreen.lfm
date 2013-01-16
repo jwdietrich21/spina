@@ -23,9 +23,9 @@ object SplashScreen: TSplashScreen
   ShowInTaskBar = stNever
   LCLVersion = '1.0.2.0'
   object Image1: TImage
-    Left = 8
+    Left = 32
     Height = 251
-    Top = 0
+    Top = 24
     Width = 378
     OnClick = Image1Click
     Picture.Data = {
