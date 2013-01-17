@@ -164,7 +164,7 @@ begin
 end;
 
 function EncodeGreek(theString: string): string;
-{encodes greek mu letter}
+{encodes greek mu lettern as ASCII substitution sequence}
 var
   theFlags: TReplaceFlags;
 begin
@@ -173,6 +173,7 @@ begin
 end;
 
 function DecodeGreek(theString: string): string;
+{decodes ASCII substitution sequence for greek mu letter}
 var
   theFlags: TReplaceFlags;
 begin
@@ -360,6 +361,23 @@ var
   theStream: TStringStream;
   oldSeparator: Char;
 begin
+  with gReferenceRanges do
+    begin                   {emtpy default values}
+      TSH.ln := Math.NaN;
+      TSH.hn := Math.NaN;
+      FT4.ln := Math.NaN;
+      FT4.hn := Math.NaN;
+      TT4.ln := Math.NaN;
+      TT4.hn := Math.NaN;
+      FT3.ln := Math.NaN;
+      FT3.hn := Math.NaN;
+      TT3.ln := Math.NaN;
+      TT3.hn := Math.NaN;
+      GT.ln := Math.NaN;
+      GT.hn := Math.NaN;
+      GD.ln := Math.NaN;
+      GD.hn := Math.NaN;
+    end;
   oldSeparator := DecimalSeparator;
   DecimalSeparator := DEC_POINT;
   theFileName := GetRRFile;
@@ -572,11 +590,26 @@ begin
   DecimalSeparator := oldSeparator;
   gTT4RR := 'N/A';
   gTT3RR := 'N/A';
-  gTSHRR := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2) + ' mU/L';
-  gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ng/L';
-  gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' pmol/L';
-  gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
-  gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
+  if IsNan(gReferenceRanges.TSH.ln) then
+    gTSHRR := 'N/A'
+  else
+    gTSHRR := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2) + ' mU/L';
+  if IsNan(gReferenceRanges.FT4.ln) then
+    gFT4RR := 'N/A'
+  else
+    gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ng/L';
+  if IsNan(gReferenceRanges.FT3.ln) then
+    gFT3RR := 'N/A'
+  else
+    gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' pmol/L';
+  if IsNan(gReferenceRanges.GT.ln) then
+    gGTRR := 'N/A'
+  else
+    gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
+  if IsNan(gReferenceRanges.GD.ln) then
+    gGDRR := 'N/A'
+  else
+    gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
 end;
 
 end.
