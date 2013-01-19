@@ -554,8 +554,66 @@ begin
                             end;
                           theNode := theNode.NextSibling;
                         end;
+                    end
+                    else if AttributeValue(theNode, 'ID') = 'TT4' then
+                    begin
+                      theNode := theNode.NextSibling;
+                      while assigned(theNode) do
+                        begin
+                          if theNode.NodeName = 'SubjectCharacteristics' then
+                            begin
+                              FlagUOMNode := theNode.FindNode('FlagUOM');
+                              if assigned(FlagUOMNode) then
+                                begin
+                                  NormalNode := FlagUOMNode.FindNode('Normal');
+                                  if assigned(NormalNode) then
+                                  begin
+                                    NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                    while assigned(NormalDefinitionNode) do
+                                      begin
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                           gReferenceRanges.TT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                           gReferenceRanges.TT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                      end;
+                                    break;
+                                  end;
+                                end;
+                            end;
+                          theNode := theNode.NextSibling;
+                        end;
+                    end
+                   else if AttributeValue(theNode, 'ID') = 'TT3' then
+                    begin
+                      theNode := theNode.NextSibling;
+                      while assigned(theNode) do
+                        begin
+                          if theNode.NodeName = 'SubjectCharacteristics' then
+                            begin
+                              FlagUOMNode := theNode.FindNode('FlagUOM');
+                              if assigned(FlagUOMNode) then
+                                begin
+                                  NormalNode := FlagUOMNode.FindNode('Normal');
+                                  if assigned(NormalNode) then
+                                  begin
+                                    NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                    while assigned(NormalDefinitionNode) do
+                                      begin
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                           gReferenceRanges.TT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                           gReferenceRanges.TT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                      end;
+                                    break;
+                                  end;
+                                end;
+                            end;
+                          theNode := theNode.NextSibling;
+                        end;
                     end;
-                BaseTestNode := BaseTestNode.NextSibling;
+               BaseTestNode := BaseTestNode.NextSibling;
               end;
             end;
             if BatteryNode.NextSibling <> nil then
@@ -602,6 +660,14 @@ begin
     gFT3RR := 'N/A'
   else
     gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' pmol/L';
+  if IsNan(gReferenceRanges.TT4.ln) then
+    gTT4RR := 'N/A'
+  else
+    gTT4RR := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2) + ' ng/L';
+  if IsNan(gReferenceRanges.TT3.ln) then
+    gTT3RR := 'N/A'
+  else
+    gTT3RR := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2) + ' pmol/L';
   if IsNan(gReferenceRanges.GT.ln) then
     gGTRR := 'N/A'
   else
