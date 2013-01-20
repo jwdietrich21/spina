@@ -228,6 +228,10 @@ begin
       if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
     end;
   tempT4Factor := PrefixFactor[mpIndex] * T4UnitFactor[muIndex] / PrefixFactor[vpIndex];
+  if unitElements.MassUnit = 'mol' then
+    gPreferences.T4isSI := true
+  else
+    gPreferences.T4isSI := false;
   mpIndex := 0;
   muIndex := 0;
   vpIndex := 0;
@@ -239,6 +243,10 @@ begin
       if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
     end;
   tempT3Factor := PrefixFactor[mpIndex] * T3UnitFactor[muIndex] / PrefixFactor[vpIndex];
+  if unitElements.MassUnit = 'mol' then
+    gPreferences.T3isSI := true
+  else
+    gPreferences.T3isSI := false;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.TSHUnitComboBox.Text));
   if Hauptschirm.TSHUnitCombobox.Text = 'mU/l' then
     gTSHUnitFactor := 1

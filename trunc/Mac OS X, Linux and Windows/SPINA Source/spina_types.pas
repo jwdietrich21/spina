@@ -99,6 +99,7 @@ tLabMethod = (freeHormone, totalHormone);
 tPreferences = record
        new: boolean;
        T4Method, T3Method: tLabMethod;
+       T4isSI, T3isSI: boolean;
        TSHUnit, T4Unit, T3Unit: string;
        TSHUnitFactor, T4UnitFactor, T3UnitFactor: real;
        TSHPopUpItem, T4PopUpItem, T3PopUpItem: integer;
@@ -106,7 +107,6 @@ tPreferences = record
        end;
 tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
-       isSI: boolean
        end;
 tReferenceValues = record
        TSH, FT4, FT3, TT4, TT3, GT, GD: tReferenceAlerts;
