@@ -15,7 +15,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 330
+  ClientHeight = 349
   ClientWidth = 765
   Color = clWhite
   Icon.Data = {
@@ -316,7 +316,7 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu
   OnActivate = FormActivate
   OnCreate = FormCreate
-  LCLVersion = '1.0.1.3'
+  LCLVersion = '1.0.2.0'
   Visible = True
   object Calculate_Button: TButton
     Left = 656
@@ -334,7 +334,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'ng/dl'
       'ng/l'
@@ -351,7 +351,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'µg/l'
       'µg/dl'
@@ -367,7 +367,7 @@ object Hauptschirm: THauptschirm
     Top = 200
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'pg/ml'
       'ng/l'
@@ -383,7 +383,7 @@ object Hauptschirm: THauptschirm
     Top = 224
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'µg/l'
       'ng/dl'
@@ -421,8 +421,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 81
-      ClientWidth = 213
+      ClientHeight = 77
+      ClientWidth = 209
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
@@ -441,8 +441,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 158
-      ClientWidth = 212
+      ClientHeight = 156
+      ClientWidth = 208
       Color = clNone
       Font.Height = -10
       Font.Name = 'Geneva'
@@ -474,8 +474,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 157
-      ClientWidth = 212
+      ClientHeight = 155
+      ClientWidth = 208
       Color = clNone
       Font.Height = -10
       Font.Name = 'Geneva'
@@ -605,8 +605,8 @@ object Hauptschirm: THauptschirm
       Top = 8
       Width = 272
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 262
-      ClientWidth = 268
+      ClientHeight = 258
+      ClientWidth = 264
       TabOrder = 3
       object Image1: TImage
         Left = -116
@@ -3327,7 +3327,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 97
-        Height = 21
+        Height = 22
         Top = 194
         Width = 56
         TabOrder = 1
@@ -3335,7 +3335,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 196
-        Height = 21
+        Height = 22
         Top = 30
         Width = 54
         TabOrder = 2
@@ -3348,7 +3348,7 @@ object Hauptschirm: THauptschirm
         Top = 54
         Width = 56
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'mU/l'
@@ -3366,7 +3366,7 @@ object Hauptschirm: THauptschirm
         Top = 220
         Width = 67
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'ng/dl'
@@ -3385,7 +3385,7 @@ object Hauptschirm: THauptschirm
         Top = 54
         Width = 66
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'pg/ml'
@@ -3404,7 +3404,7 @@ object Hauptschirm: THauptschirm
         Top = 6
         Width = 56
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'FT3'
@@ -3422,7 +3422,7 @@ object Hauptschirm: THauptschirm
         Top = 172
         Width = 56
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'FT4'
@@ -3435,7 +3435,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = 4
-        Height = 21
+        Height = 22
         Top = 30
         Width = 56
         TabOrder = 0
@@ -3447,7 +3447,7 @@ object Hauptschirm: THauptschirm
     Left = 16
     Height = 13
     Top = 312
-    Width = 56
+    Width = 54
     Caption = 'SPINA Thyr'
     Font.Height = -10
     ParentColor = False

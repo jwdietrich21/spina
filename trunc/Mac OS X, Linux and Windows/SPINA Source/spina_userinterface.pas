@@ -416,7 +416,7 @@ begin
         kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR);
       gReferenceValueString2 :=
         concat(gReferenzbereiche, kCR, kLF, 'TSH: ', gTSHRR, kCR, kLF,
-        'TT4: ', gFT4RR, kCR, kLF, 'FT3: ', gFT3RR, kCR, kLF, kCR,
+        'TT4: ', gTT4RR, kCR, kLF, 'FT3: ', gFT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
     end
     else if gPreferences.T3Method = totalHormone then
@@ -426,7 +426,7 @@ begin
         kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR);
       gReferenceValueString2 :=
         concat(gReferenzbereiche, kCR, kLF, 'TSH: ', gTSHRR, kCR, kLF,
-        'TT4: ', gFT4RR, kCR, kLF, 'TT3: ', gTT3RR, kCR, kLF, kCR,
+        'TT4: ', gTT4RR, kCR, kLF, 'TT3: ', gTT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
     end;
   end;
