@@ -260,20 +260,20 @@ begin
     RootNode := Doc.DocumentElement;
 
     ElementNode := Doc.CreateElement('methods');
-    if gPreferences.T4Method = freeHormone then
+    if gPreferences.T4.Method = freeHormone then
       ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'free'))
     else
       ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'total'));
-    if gPreferences.T3Method = freeHormone then
+    if gPreferences.T3.Method = freeHormone then
       ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'free'))
     else
       ElementNode.AppendChild(SimpleNode(Doc, 'T3', 'total'));
     RootNode.AppendChild(ElementNode);
 
     ElementNode:=Doc.CreateElement('units');
-    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', gPreferences.TSHUnit));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T4', gPreferences.T4Unit));
-    ElementNode.AppendChild(SimpleNode(Doc, 'T3', gPreferences.T3Unit));
+    ElementNode.AppendChild(SimpleNode(Doc, 'TSH', gPreferences.TSH.measurementUnit));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T4', gPreferences.T4.measurementUnit));
+    ElementNode.AppendChild(SimpleNode(Doc, 'T3', gPreferences.T3.measurementUnit));
     RootNode.AppendChild(ElementNode);
 
     if not DirectoryExists(PreferencesFolder) then
@@ -295,16 +295,16 @@ procedure CreateNewPreferences;
 begin
   with gPreferences do
     begin
-      T4Method := freeHormone;
-      T3Method := freeHormone;
-      TSHUnit := TSH_UNIT;
-      T4Unit := FT4_UNIT;
-      T3Unit := FT3_UNIT;
-      TSHPopUpItem := 0;
-      T4PopUpItem := 0;
-      T3PopUpItem := 0;
-      T4MethodPopUpItem := 0;
-      T3MethodPopUpItem := 0;
+      T4.Method := freeHormone;
+      T3.Method := freeHormone;
+      TSH.measurementUnit := TSH_UNIT;
+      T4.measurementUnit := FT4_UNIT;
+      T3.measurementUnit := FT3_UNIT;
+      TSH.PopUpItem := 0;
+      T4.PopUpItem := 0;
+      T3.PopUpItem := 0;
+      T4.MethodPopUpItem := 0;
+      T3.MethodPopUpItem := 0;
       gPreferences.new := true;
     end;
   SavePreferences;
@@ -325,24 +325,24 @@ begin
     RootNode := Doc.DocumentElement.FindNode('methods');
     theString := NodeContent(RootNode, 'T4');
     if theString = 'free' then
-      gPreferences.T4Method := freeHormone
+      gPreferences.T4.Method := freeHormone
     else
-      gPreferences.T4Method := totalHormone;
+      gPreferences.T4.Method := totalHormone;
     theString := NodeContent(RootNode, 'T3');
     if theString = 'free' then
-      gPreferences.T3Method := freeHormone
+      gPreferences.T3.Method := freeHormone
     else
-      gPreferences.T3Method := totalHormone;
+      gPreferences.T3.Method := totalHormone;
 
     RootNode := Doc.DocumentElement.FindNode('units');
     theString := NodeContent(RootNode, 'TSH');
-    gPreferences.TSHUnit := theString;
+    gPreferences.TSH.measurementUnit := theString;
     theString := NodeContent(RootNode, 'T4');
-    gPreferences.T4Unit := theString;
+    gPreferences.T4.measurementUnit := theString;
     theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3Unit := theString;
+    gPreferences.T3.measurementUnit := theString;
 
-    if (gPreferences.TSHUnit = 'NA') or (gPreferences.T4Unit = 'NA') or (gPreferences.T3Unit = 'NA') then
+    if (gPreferences.TSH.measurementUnit = 'NA') or (gPreferences.T4.measurementUnit = 'NA') or (gPreferences.T3.measurementUnit = 'NA') then
       CreateNewPreferences;  {fall-back solution, if file is corrupt or in obsolete format}
     gPreferences.new := false;
   finally

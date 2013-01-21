@@ -229,9 +229,9 @@ begin
     end;
   tempT4Factor := PrefixFactor[mpIndex] * T4UnitFactor[muIndex] / PrefixFactor[vpIndex];
   if unitElements.MassUnit = 'mol' then
-    gPreferences.T4isSI := true
+    gPreferences.T4.isSI := true
   else
-    gPreferences.T4isSI := false;
+    gPreferences.T4.isSI := false;
   mpIndex := 0;
   muIndex := 0;
   vpIndex := 0;
@@ -244,9 +244,9 @@ begin
     end;
   tempT3Factor := PrefixFactor[mpIndex] * T3UnitFactor[muIndex] / PrefixFactor[vpIndex];
   if unitElements.MassUnit = 'mol' then
-    gPreferences.T3isSI := true
+    gPreferences.T3.isSI := true
   else
-    gPreferences.T3isSI := false;
+    gPreferences.T3.isSI := false;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.TSHUnitComboBox.Text));
   if Hauptschirm.TSHUnitCombobox.Text = 'mU/l' then
     gTSHUnitFactor := 1
@@ -257,12 +257,12 @@ begin
   gT3Unit := Hauptschirm.T3UnitCombobox.Text;
   with gPreferences do
   begin
-    TSHUnit := Hauptschirm.TSHUnitCombobox.Caption;
-    T4Unit := Hauptschirm.T4UnitCombobox.Caption;
-    T3Unit := Hauptschirm.T3UnitCombobox.Caption;
-    TSHUnitFactor := gTSHUnitFactor;
-    T4UnitFactor := gT4UnitFactor;
-    T3UnitFactor := gT3UnitFactor;
+    TSH.measurementUnit := Hauptschirm.TSHUnitCombobox.Caption;
+    T4.measurementUnit := Hauptschirm.T4UnitCombobox.Caption;
+    T3.measurementUnit := Hauptschirm.T3UnitCombobox.Caption;
+    TSH.UnitFactor := gTSHUnitFactor;
+    T4.UnitFactor := gT4UnitFactor;
+    T3.UnitFactor := gT3UnitFactor;
   end;
   gT4UnitFactor := tempT4Factor;
   gT3UnitFactor := tempT3Factor;
@@ -272,17 +272,17 @@ procedure THauptschirm.T4MethodComboBoxAdjust(Sender: TObject);
 begin
   if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
   begin
-    gPreferences.T4Method := freeHormone;
+    gPreferences.T4.Method := freeHormone;
     Hauptschirm.T4UnitCombobox.Items.Assign(FT4Items.Items);
     Hauptschirm.T4UnitCombobox.Text :=
-      Hauptschirm.T4UnitCombobox.Items.Strings[gPreferences.T4PopUpItem];
+      Hauptschirm.T4UnitCombobox.Items.Strings[gPreferences.T4.PopUpItem];
   end
   else if Hauptschirm.T4MethodComboBox.Text = 'T4' then
   begin
-    gPreferences.T4Method := totalHormone;
+    gPreferences.T4.Method := totalHormone;
     Hauptschirm.T4UnitCombobox.Items.Assign(T4Items.Items);
     Hauptschirm.T4UnitCombobox.Text :=
-      Hauptschirm.T4UnitCombobox.Items.Strings[gPreferences.T4PopUpItem];
+      Hauptschirm.T4UnitCombobox.Items.Strings[gPreferences.T4.PopUpItem];
   end;
   AdjustUnitFactors;
 end;
@@ -291,17 +291,17 @@ procedure THauptschirm.T3MethodComboBoxAdjust(Sender: TObject);
 begin
   if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
   begin
-    gPreferences.T3Method := freeHormone;
+    gPreferences.T3.Method := freeHormone;
     Hauptschirm.T3UnitCombobox.Items.Assign(FT3Items.Items);
     Hauptschirm.T3UnitCombobox.Text :=
-      Hauptschirm.T3UnitCombobox.Items.Strings[gPreferences.T3PopUpItem];
+      Hauptschirm.T3UnitCombobox.Items.Strings[gPreferences.T3.PopUpItem];
   end
   else if Hauptschirm.T3MethodComboBox.Text = 'T3' then
   begin
-    gPreferences.T3Method := totalHormone;
+    gPreferences.T3.Method := totalHormone;
     Hauptschirm.T3UnitCombobox.Items.Assign(T3Items.Items);
     Hauptschirm.T3UnitCombobox.Text :=
-      Hauptschirm.T3UnitCombobox.Items.Strings[gPreferences.T3PopUpItem];
+      Hauptschirm.T3UnitCombobox.Items.Strings[gPreferences.T3.PopUpItem];
   end;
   AdjustUnitFactors;
 end;
@@ -314,14 +314,14 @@ var
   i: integer;
 begin
   ReadPreferences;
-  if gPreferences.T4Method = freeHormone then
+  if gPreferences.T4.Method = freeHormone then
     Hauptschirm.T4MethodComboBox.ItemIndex := 0
   else
     begin
       Hauptschirm.T4MethodComboBox.ItemIndex := 1;
       Hauptschirm.T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
     end;
-  if gPreferences.T3Method = freeHormone then
+  if gPreferences.T3.Method = freeHormone then
     Hauptschirm.T3MethodComboBox.ItemIndex := 0
   else
     begin
@@ -333,7 +333,7 @@ begin
   begin
     for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count - 1 do
       begin
-        if TSHUnit = Hauptschirm.TSHUnitComboBox.Items[i] then
+        if TSH.measurementUnit = Hauptschirm.TSHUnitComboBox.Items[i] then
           begin
             found := true;
             Hauptschirm.TSHUnitComboBox.ItemIndex := i;
@@ -342,13 +342,13 @@ begin
       end;
     if found = false then
       begin
-        Hauptschirm.TSHUnitComboBox.Items.Add(TSHUnit);
+        Hauptschirm.TSHUnitComboBox.Items.Add(TSH.measurementUnit);
         Hauptschirm.TSHUnitComboBox.ItemIndex := i + 1;
       end;
-    TSHPopupItem := Hauptschirm.TSHUnitComboBox.ItemIndex;
+    TSH.PopupItem := Hauptschirm.TSHUnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T4UnitComboBox.Items.Count - 1 do
       begin
-        if T4Unit = Hauptschirm.T4UnitComboBox.Items[i] then
+        if T4.measurementUnit = Hauptschirm.T4UnitComboBox.Items[i] then
           begin
             found := true;
             Hauptschirm.T4UnitComboBox.ItemIndex := i;
@@ -357,13 +357,13 @@ begin
       end;
     if found = false then
       begin
-        Hauptschirm.T4UnitComboBox.Items.Add(T4Unit);
+        Hauptschirm.T4UnitComboBox.Items.Add(T4.measurementUnit);
         Hauptschirm.T4UnitComboBox.ItemIndex := i + 1;
       end;
-    T4PopUpItem := Hauptschirm.T4UnitComboBox.ItemIndex;
+    T4.PopUpItem := Hauptschirm.T4UnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T3UnitComboBox.Items.Count - 1 do
       begin
-        if T3Unit = Hauptschirm.T3UnitComboBox.Items[i] then
+        if T3.measurementUnit = Hauptschirm.T3UnitComboBox.Items[i] then
           begin
             found := true;
             Hauptschirm.T3UnitComboBox.ItemIndex := i;
@@ -372,15 +372,15 @@ begin
       end;
     if found = false then
       begin
-        Hauptschirm.T3UnitComboBox.Items.Add(T3Unit);
+        Hauptschirm.T3UnitComboBox.Items.Add(T3.measurementUnit);
         Hauptschirm.T3UnitComboBox.ItemIndex := i + 1;
       end;
-    T3PopUpItem := Hauptschirm.T3UnitComboBox.ItemIndex;
+    T3.PopUpItem := Hauptschirm.T3UnitComboBox.ItemIndex;
     Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
     Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
-    gTSHUnitFactor := TSHUnitFactor;
-    gT4UnitFactor := T4UnitFactor;
-    gT3UnitFactor := T3UnitFactor;
+    gTSHUnitFactor := TSH.UnitFactor;
+    gT4UnitFactor := T4.UnitFactor;
+    gT3UnitFactor := T3.UnitFactor;
     AdjustUnitFactors;
   end;
 end;
@@ -392,9 +392,9 @@ end;
 
 procedure ComposeRRHints;
 begin
-  if gPreferences.T4Method = freeHormone then
+  if gPreferences.T4.Method = freeHormone then
   begin
-    if gPreferences.T3Method = freeHormone then
+    if gPreferences.T3.Method = freeHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
@@ -404,7 +404,7 @@ begin
         'FT4: ', gFT4RR, kCR, kLF, 'FT3: ', gFT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
     end
-    else if gPreferences.T3Method = totalHormone then
+    else if gPreferences.T3.Method = totalHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
@@ -417,7 +417,7 @@ begin
   end
   else
   begin
-    if gPreferences.T3Method = freeHormone then
+    if gPreferences.T3.Method = freeHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
@@ -427,7 +427,7 @@ begin
         'TT4: ', gTT4RR, kCR, kLF, 'FT3: ', gFT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT: ', gGTRR, kCR, kLF, 'GD: ', gGDRR);
     end
-    else if gPreferences.T3Method = totalHormone then
+    else if gPreferences.T3.Method = totalHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
@@ -456,7 +456,7 @@ var
   theString, vhString: Str255;
   T4Label, T3Label, sT4Label, sT3Label: Str255;
 begin
-  if gPreferences.T4Method = freeHormone then
+  if gPreferences.T4.Method = freeHormone then
   begin
     T4Label := kFT4_Label;
     sT4Label := ksFT4_Label;
@@ -466,7 +466,7 @@ begin
     T4Label := kT4_Label;
     sT4Label := ksT4_Label;
   end;
-  if gPreferences.T3Method = freeHormone then
+  if gPreferences.T3.Method = freeHormone then
   begin
     T3Label := kFT3_Label;
     sT3Label := ksFT3_Label;
@@ -671,22 +671,22 @@ end;
 
 procedure THauptschirm.TSHUnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.TSHUnit := Hauptschirm.TSHUnitComboBox.Caption;
-  gPreferences.TSHPopUpItem := Hauptschirm.TSHUnitCombobox.ItemIndex;
+  gPreferences.TSH.measurementUnit := Hauptschirm.TSHUnitComboBox.Caption;
+  gPreferences.TSH.PopUpItem := Hauptschirm.TSHUnitCombobox.ItemIndex;
   AdjustUnitFactors;
 end;
 
 procedure THauptschirm.T3UnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T3Unit := Hauptschirm.T3UnitComboBox.Caption;
-  gPreferences.T3PopUpItem := Hauptschirm.T3UnitCombobox.ItemIndex;
+  gPreferences.T3.measurementUnit := Hauptschirm.T3UnitComboBox.Caption;
+  gPreferences.T3.PopUpItem := Hauptschirm.T3UnitCombobox.ItemIndex;
   AdjustUnitFactors;
 end;
 
 procedure THauptschirm.T4UnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T4Unit := Hauptschirm.T4UnitComboBox.Caption;
-  gPreferences.T4PopUpItem := Hauptschirm.T4UnitCombobox.ItemIndex;
+  gPreferences.T4.measurementUnit := Hauptschirm.T4UnitComboBox.Caption;
+  gPreferences.T4.PopUpItem := Hauptschirm.T4UnitCombobox.ItemIndex;
   AdjustUnitFactors;
 end;
 
@@ -908,16 +908,16 @@ end;
 
 procedure THauptschirm.T4MethodComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T4MethodPopUpItem := Hauptschirm.T4MethodComboBox.ItemIndex;
-  gPreferences.T4PopUpItem := 0;
+  gPreferences.T4.MethodPopUpItem := Hauptschirm.T4MethodComboBox.ItemIndex;
+  gPreferences.T4.PopUpItem := 0;
   Hauptschirm.T4MethodComboBoxAdjust(Sender);
   ComposeRRHints;
 end;
 
 procedure THauptschirm.T3MethodComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T3MethodPopUpItem := Hauptschirm.T3MethodComboBox.ItemIndex;
-  gPreferences.T3PopUpItem := 0;
+  gPreferences.T3.MethodPopUpItem := Hauptschirm.T3MethodComboBox.ItemIndex;
+  gPreferences.T3.PopUpItem := 0;
   Hauptschirm.T3MethodComboBoxAdjust(Sender);
   ComposeRRHints;
 end;

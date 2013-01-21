@@ -94,16 +94,18 @@ tCodeList = set of 0..255;
 tUnitElements = record
        MassPrefix, MassUnit, VolumePrefix, VolumeUnit: String;
 end;
-
 tLabMethod = (freeHormone, totalHormone);
+tParameterSettings = record
+       Method: tLabMethod;
+       isSI: boolean;
+       measurementUnit: string;
+       UnitFactor: real;
+       PopUpItem: integer;
+       MethodPopUpItem: integer;
+end;
 tPreferences = record
        new: boolean;
-       T4Method, T3Method: tLabMethod;
-       T4isSI, T3isSI: boolean;
-       TSHUnit, T4Unit, T3Unit: string;
-       TSHUnitFactor, T4UnitFactor, T3UnitFactor: real;
-       TSHPopUpItem, T4PopUpItem, T3PopUpItem: integer;
-       T4MethodPopUpItem, T3MethodPopUpItem: integer;
+       TSH, T4, T3: tParameterSettings;
        end;
 tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;

@@ -71,7 +71,7 @@ begin
   GDFlag := '';
   if (TSH > 0) and not gT4Therapy then
   begin
-    case gPreferences.T4Method of
+    case gPreferences.T4.Method of
       freeHormone:
         TT4 := (1 + k41 * TBG + k42 * TBPA) * T4; {T4 = FT4}
       totalHormone:
@@ -93,13 +93,13 @@ begin
   end;
   if (T4 > 0) and not gT3Therapy then
   begin
-    case gPreferences.T4Method of
+    case gPreferences.T4.Method of
       freeHormone:
         FT4 := T4;
       totalHormone:
         FT4 := T4 / (1 + k41 * TBG + k42 * TBPA);
     end;
-    case gPreferences.T3Method of
+    case gPreferences.T3.Method of
       freeHormone:
         TT3 := (1 + k30 * TBG) * T3;
       totalHormone:
