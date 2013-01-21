@@ -78,6 +78,7 @@ type
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure EditMenuClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
@@ -271,6 +272,12 @@ end;
 procedure TSPINAToolbar.EditMenuClick(Sender: TObject);
 begin
 
+end;
+
+procedure TSPINAToolbar.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+{quits application, if toolbar is closed}
+begin
+  application.terminate;
 end;
 
 procedure TSPINAToolbar.OpenToolButtonClick(Sender: TObject);

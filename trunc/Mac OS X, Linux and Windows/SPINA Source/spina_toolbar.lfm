@@ -11,6 +11,7 @@ object SPINAToolbar: TSPINAToolbar
   ClientHeight = 42
   ClientWidth = 753
   Menu = MainMenu
+  OnClose = FormClose
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
   object ToolBar1: TToolBar
