@@ -42,6 +42,7 @@ function GetPreferencesFile: String;
 function EncodeGreek(theString: string): string;
 function DecodeGreek(theString: string): string;
 procedure ReadPreferences;
+procedure ComposeRRStrings;
 procedure GetReferenceValues;
 procedure SavePreferences;
 
@@ -352,17 +353,103 @@ begin
     CreateNewPreferences;  {fall-back solution, if file does not exist}
 end;
 
+procedure ComposeRRStrings;
+begin
+  if gPreferences.TSH.isSI then
+    begin
+      gReferenceRanges.TSH.ln := gSIReferenceRanges.TSH.ln;
+      gReferenceRanges.TSH.hn := gSIReferenceRanges.TSH.hn;
+      gReferenceRanges.TSH.measurementUnit := gSIReferenceRanges.TSH.measurementUnit;
+    end
+  else
+    begin
+      gReferenceRanges.TSH.ln := gConvReferenceRanges.TSH.ln;
+      gReferenceRanges.TSH.hn := gConvReferenceRanges.TSH.hn;
+      gReferenceRanges.TSH.measurementUnit := gConvReferenceRanges.TSH.measurementUnit;
+    end;
+  if gPreferences.T4.isSI then
+    begin
+      gReferenceRanges.FT4.ln := gSIReferenceRanges.FT4.ln;
+      gReferenceRanges.FT4.hn := gSIReferenceRanges.FT4.hn;
+      gReferenceRanges.TT4.ln := gSIReferenceRanges.TT4.ln;
+      gReferenceRanges.TT4.hn := gSIReferenceRanges.TT4.hn;
+      gReferenceRanges.FT4.measurementUnit := gSIReferenceRanges.FT4.measurementUnit;
+      gReferenceRanges.TT4.measurementUnit := gSIReferenceRanges.TT4.measurementUnit;
+    end
+  else
+    begin
+      gReferenceRanges.FT4.ln := gConvReferenceRanges.FT4.ln;
+      gReferenceRanges.FT4.hn := gConvReferenceRanges.FT4.hn;
+      gReferenceRanges.TT4.ln := gConvReferenceRanges.TT4.ln;
+      gReferenceRanges.TT4.hn := gConvReferenceRanges.TT4.hn;
+      gReferenceRanges.FT4.measurementUnit := gConvReferenceRanges.FT4.measurementUnit;
+      gReferenceRanges.TT4.measurementUnit := gConvReferenceRanges.TT4.measurementUnit;
+    end;
+  if gPreferences.T3.isSI then
+    begin
+      gReferenceRanges.FT3.ln := gSIReferenceRanges.FT3.ln;
+      gReferenceRanges.FT3.hn := gSIReferenceRanges.FT3.hn;
+      gReferenceRanges.TT3.ln := gSIReferenceRanges.TT3.ln;
+      gReferenceRanges.TT3.hn := gSIReferenceRanges.TT3.hn;
+      gReferenceRanges.FT3.measurementUnit := gSIReferenceRanges.FT3.measurementUnit;
+      gReferenceRanges.TT3.measurementUnit := gSIReferenceRanges.TT3.measurementUnit;
+    end
+  else
+    begin
+      gReferenceRanges.FT3.ln := gConvReferenceRanges.FT3.ln;
+      gReferenceRanges.FT3.hn := gConvReferenceRanges.FT3.hn;
+      gReferenceRanges.TT3.ln := gConvReferenceRanges.TT3.ln;
+      gReferenceRanges.TT3.hn := gConvReferenceRanges.TT3.hn;
+      gReferenceRanges.FT3.measurementUnit := gConvReferenceRanges.FT3.measurementUnit;
+      gReferenceRanges.TT3.measurementUnit := gConvReferenceRanges.TT3.measurementUnit;
+    end;
+  gTT4RR := 'N/A';
+  gTT3RR := 'N/A';
+  if IsNan(gReferenceRanges.TSH.ln) then
+    gTSHRR := 'N/A'
+  else
+    gTSHRR := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2) + ' mU/L';
+  if IsNan(gReferenceRanges.FT4.ln) then
+    gFT4RR := 'N/A'
+  else
+    gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.FT4.measurementUnit;
+  if IsNan(gReferenceRanges.FT3.ln) then
+    gFT3RR := 'N/A'
+  else
+    gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.FT3.measurementUnit;
+  if IsNan(gReferenceRanges.TT4.ln) then
+    gTT4RR := 'N/A'
+  else
+    gTT4RR := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.TT4.measurementUnit;
+  if IsNan(gReferenceRanges.TT3.ln) then
+    gTT3RR := 'N/A'
+  else
+    gTT3RR := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.TT3.measurementUnit;
+  if IsNan(gReferenceRanges.GT.ln) then
+    gGTRR := 'N/A'
+  else
+    gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
+  if IsNan(gReferenceRanges.GD.ln) then
+    gGDRR := 'N/A'
+  else
+    gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
+end;
+
 procedure GetReferenceValues;
-{reads reference values from a CDISC LAB model-compliant XML file}
+{reads reference values from a CDISC LAB model-compliant XML file.}
+{This routine ignores sex- and age-specific reference values in this version,}
+{so that the normal definition for females between 0 and 130 years}
+{is taken as a standard for the whole population}
 var
   Doc: TXMLDocument;
-  RootNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode, NormalNode, NormalDefinitionNode: TDOMNode;
+  RootNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode, NormalNode, UnitsNode, NormalDefinitionNode: TDOMNode;
   theFileName, theString: String;
   theStream: TStringStream;
   oldSeparator: Char;
+  SI: boolean;
 begin
   with gReferenceRanges do
-    begin                   {emtpy default values}
+    begin                   {define emtpy default values}
       TSH.ln := Math.NaN;
       TSH.hn := Math.NaN;
       FT4.ln := Math.NaN;
@@ -400,7 +487,7 @@ begin
                 begin
                   theNode := BaseTestNode.FindNode('LabTest');
                   if assigned(theNode) then
-                    if AttributeValue(theNode, 'ID') = 'GT' then
+                    if AttributeValue(theNode, 'ID') = 'GT' then  {SPINA-GT}
                       begin
                         theNode := theNode.NextSibling;
                         while assigned(theNode) do
@@ -411,14 +498,14 @@ begin
                                 if assigned(FlagUOMNode) then
                                   begin
                                     NormalNode := FlagUOMNode.FindNode('Normal');
-                                    if assigned(NormalNode) then
+                                    if assigned(NormalNode) then  {skips exclusion definition}
                                     begin
                                       NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
                                       while assigned(NormalDefinitionNode) do
                                         begin
-                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
                                              gReferenceRanges.GT.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e12;
-                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
                                              gReferenceRanges.GT.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e12;
                                           NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                         end;
@@ -429,7 +516,7 @@ begin
                             theNode := theNode.NextSibling;
                           end;
                       end
-                     else if (AttributeValue(theNode, 'ID') = 'GD') or (AttributeValue(theNode, 'ID') = 'GD1') then
+                     else if (AttributeValue(theNode, 'ID') = 'GD') or (AttributeValue(theNode, 'ID') = 'GD1') then  {SPINA-GD}
                       begin
                         theNode := theNode.NextSibling;
                         while assigned(theNode) do
@@ -440,14 +527,14 @@ begin
                                 if assigned(FlagUOMNode) then
                                   begin
                                     NormalNode := FlagUOMNode.FindNode('Normal');
-                                    if assigned(NormalNode) then
+                                    if assigned(NormalNode) then  {skips exclusion definition}
                                     begin
                                       NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
                                       while assigned(NormalDefinitionNode) do
                                         begin
-                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
+                                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
                                              gReferenceRanges.GD.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e9;
-                                          if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
+                                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
                                              gReferenceRanges.GD.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value')) / 1e9;
                                           NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                         end;
@@ -468,7 +555,7 @@ begin
               begin
                 theNode := BaseTestNode.FindNode('LabTest');
                 if assigned(theNode) then
-                  if AttributeValue(theNode, 'ID') = 'TSH' then
+                  if AttributeValue(theNode, 'ID') = 'TSH' then  {TSH}
                     begin
                       theNode := theNode.NextSibling;
                       while assigned(theNode) do
@@ -476,28 +563,45 @@ begin
                           if theNode.NodeName = 'SubjectCharacteristics' then
                             begin
                               FlagUOMNode := theNode.FindNode('FlagUOM');
-                              if assigned(FlagUOMNode) then
+                              while assigned(FlagUOMNode) do
                                 begin
+                                  if AttributeValue(FlagUOMNode, 'ResultClass') = 'S' then
+                                    SI := true
+                                  else
+                                    SI := false;
+                                  UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                                  If assigned(UnitsNode) then
+                                    if SI then
+                                      gSIReferenceRanges.TSH.measurementUnit := AttributeValue(UnitsNode, 'Value')
+                                    else
+                                      gConvReferenceRanges.TSH.measurementUnit := AttributeValue(UnitsNode, 'Value');
                                   NormalNode := FlagUOMNode.FindNode('Normal');
-                                  if assigned(NormalNode) then
+                                  if assigned(NormalNode) then  {skips exclusion definition}
                                   begin
                                     NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
                                     while assigned(NormalDefinitionNode) do
                                       begin
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
-                                           gReferenceRanges.TSH.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
-                                           gReferenceRanges.TSH.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
+                                          if SI then
+                                            gSIReferenceRanges.TSH.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.TSH.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
+                                          if SI then
+                                            gSIReferenceRanges.TSH.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.TSH.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    break;
+                                    {break;}
                                   end;
+                                  FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
                             end;
                           theNode := theNode.NextSibling;
                         end;
                     end
-                   else if AttributeValue(theNode, 'ID') = 'FT4' then
+                   else if AttributeValue(theNode, 'ID') = 'FT4' then  {FT4}
                     begin
                       theNode := theNode.NextSibling;
                       while assigned(theNode) do
@@ -505,28 +609,45 @@ begin
                           if theNode.NodeName = 'SubjectCharacteristics' then
                             begin
                               FlagUOMNode := theNode.FindNode('FlagUOM');
-                              if assigned(FlagUOMNode) then
+                              while assigned(FlagUOMNode) do
                                 begin
+                                  if AttributeValue(FlagUOMNode, 'ResultClass') = 'S' then
+                                    SI := true
+                                  else
+                                    SI := false;
+                                  UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                                  If assigned(UnitsNode) then
+                                    if SI then
+                                      gSIReferenceRanges.FT4.measurementUnit := AttributeValue(UnitsNode, 'Value')
+                                    else
+                                      gConvReferenceRanges.FT4.measurementUnit := AttributeValue(UnitsNode, 'Value');
                                   NormalNode := FlagUOMNode.FindNode('Normal');
-                                  if assigned(NormalNode) then
+                                  if assigned(NormalNode) then  {skips exclusion definition}
                                   begin
                                     NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
                                     while assigned(NormalDefinitionNode) do
                                       begin
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
-                                           gReferenceRanges.FT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
-                                           gReferenceRanges.FT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
+                                          if SI then
+                                            gSIReferenceRanges.FT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.FT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
+                                          if SI then
+                                            gSIReferenceRanges.FT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.FT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    break;
+                                    {break; }
                                   end;
+                                  FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
                             end;
                           theNode := theNode.NextSibling;
                         end;
                     end
-                   else if AttributeValue(theNode, 'ID') = 'FT3' then
+                   else if AttributeValue(theNode, 'ID') = 'FT3' then  {FT3}
                     begin
                       theNode := theNode.NextSibling;
                       while assigned(theNode) do
@@ -534,28 +655,45 @@ begin
                           if theNode.NodeName = 'SubjectCharacteristics' then
                             begin
                               FlagUOMNode := theNode.FindNode('FlagUOM');
-                              if assigned(FlagUOMNode) then
+                              while assigned(FlagUOMNode) do
                                 begin
+                                  if AttributeValue(FlagUOMNode, 'ResultClass') = 'S' then
+                                    SI := true
+                                  else
+                                    SI := false;
+                                  UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                                  If assigned(UnitsNode) then
+                                    if SI then
+                                      gSIReferenceRanges.FT3.measurementUnit := AttributeValue(UnitsNode, 'Value')
+                                    else
+                                      gConvReferenceRanges.FT3.measurementUnit := AttributeValue(UnitsNode, 'Value');
                                   NormalNode := FlagUOMNode.FindNode('Normal');
-                                  if assigned(NormalNode) then
+                                  if assigned(NormalNode) then  {skips exclusion definition}
                                   begin
                                     NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
                                     while assigned(NormalDefinitionNode) do
                                       begin
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
-                                           gReferenceRanges.FT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
-                                           gReferenceRanges.FT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
+                                          if SI then
+                                            gSIReferenceRanges.FT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.FT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
+                                          if SI then
+                                            gSIReferenceRanges.FT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.FT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    break;
+                                    {break;}
                                   end;
+                                  FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
                             end;
                           theNode := theNode.NextSibling;
                         end;
                     end
-                    else if AttributeValue(theNode, 'ID') = 'TT4' then
+                    else if AttributeValue(theNode, 'ID') = 'TT4' then  {TT4}
                     begin
                       theNode := theNode.NextSibling;
                       while assigned(theNode) do
@@ -563,28 +701,45 @@ begin
                           if theNode.NodeName = 'SubjectCharacteristics' then
                             begin
                               FlagUOMNode := theNode.FindNode('FlagUOM');
-                              if assigned(FlagUOMNode) then
+                              while assigned(FlagUOMNode) do
                                 begin
+                                  if AttributeValue(FlagUOMNode, 'ResultClass') = 'S' then
+                                    SI := true
+                                  else
+                                    SI := false;
+                                  UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                                  If assigned(UnitsNode) then
+                                    if SI then
+                                      gSIReferenceRanges.TT4.measurementUnit := AttributeValue(UnitsNode, 'Value')
+                                    else
+                                      gConvReferenceRanges.TT4.measurementUnit := AttributeValue(UnitsNode, 'Value');
                                   NormalNode := FlagUOMNode.FindNode('Normal');
-                                  if assigned(NormalNode) then
+                                  if assigned(NormalNode) then  {skips exclusion definition}
                                   begin
                                     NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
                                     while assigned(NormalDefinitionNode) do
                                       begin
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
-                                           gReferenceRanges.TT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
-                                           gReferenceRanges.TT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
+                                          if SI then
+                                            gSIReferenceRanges.TT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.TT4.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
+                                          if SI then
+                                            gSIReferenceRanges.TT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.TT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    break;
+                                    {break;}
                                   end;
+                                  FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
                             end;
                           theNode := theNode.NextSibling;
                         end;
                     end
-                   else if AttributeValue(theNode, 'ID') = 'TT3' then
+                   else if AttributeValue(theNode, 'ID') = 'TT3' then   {TT3}
                     begin
                       theNode := theNode.NextSibling;
                       while assigned(theNode) do
@@ -592,22 +747,39 @@ begin
                           if theNode.NodeName = 'SubjectCharacteristics' then
                             begin
                               FlagUOMNode := theNode.FindNode('FlagUOM');
-                              if assigned(FlagUOMNode) then
+                              while assigned(FlagUOMNode) do
                                 begin
+                                  if AttributeValue(FlagUOMNode, 'ResultClass') = 'S' then
+                                    SI := true
+                                  else
+                                    SI := false;
+                                  UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                                  If assigned(UnitsNode) then
+                                    if SI then
+                                      gSIReferenceRanges.TT3.measurementUnit := AttributeValue(UnitsNode, 'Value')
+                                    else
+                                      gConvReferenceRanges.TT3.measurementUnit := AttributeValue(UnitsNode, 'Value');
                                   NormalNode := FlagUOMNode.FindNode('Normal');
-                                  if assigned(NormalNode) then
+                                  if assigned(NormalNode) then  {skips exclusion definition}
                                   begin
                                     NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
                                     while assigned(NormalDefinitionNode) do
                                       begin
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L' then
-                                           gReferenceRanges.TT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
-                                        if AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H' then
-                                           gReferenceRanges.TT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
+                                          if SI then
+                                            gSIReferenceRanges.TT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.TT3.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
+                                          if SI then
+                                            gSIReferenceRanges.TT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'))
+                                          else
+                                            gConvReferenceRanges.TT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    break;
+                                    {break;}
                                   end;
+                                  FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
                             end;
                           theNode := theNode.NextSibling;
@@ -646,36 +818,7 @@ begin
       end;
   end;
   DecimalSeparator := oldSeparator;
-  gTT4RR := 'N/A';
-  gTT3RR := 'N/A';
-  if IsNan(gReferenceRanges.TSH.ln) then
-    gTSHRR := 'N/A'
-  else
-    gTSHRR := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2) + ' mU/L';
-  if IsNan(gReferenceRanges.FT4.ln) then
-    gFT4RR := 'N/A'
-  else
-    gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ng/L';
-  if IsNan(gReferenceRanges.FT3.ln) then
-    gFT3RR := 'N/A'
-  else
-    gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' pmol/L';
-  if IsNan(gReferenceRanges.TT4.ln) then
-    gTT4RR := 'N/A'
-  else
-    gTT4RR := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2) + ' ng/L';
-  if IsNan(gReferenceRanges.TT3.ln) then
-    gTT3RR := 'N/A'
-  else
-    gTT3RR := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2) + ' pmol/L';
-  if IsNan(gReferenceRanges.GT.ln) then
-    gGTRR := 'N/A'
-  else
-    gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
-  if IsNan(gReferenceRanges.GD.ln) then
-    gGDRR := 'N/A'
-  else
-    gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
+  ComposeRRStrings;
 end;
 
 end.

@@ -109,6 +109,7 @@ tPreferences = record
        end;
 tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
+       measurementUnit: string;
        end;
 tReferenceValues = record
        TSH, FT4, FT3, TT4, TT3, GT, GD: tReferenceAlerts;
@@ -137,7 +138,7 @@ var
   gTSHUnit, gT4Unit, gT3Unit, gResultString: Str255;
   gInterfaceLanguage: tInterfaceLanguage;
   gResultDialogString1, gResultDialogString2, gReferenceValueString1, gReferenceValueString2: Str255;
-  gReferenceRanges: tReferenceValues;
+  gReferenceRanges, gSIReferenceRanges, gConvReferenceRanges: tReferenceValues;
 
 implementation
 

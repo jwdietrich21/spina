@@ -266,6 +266,7 @@ begin
   end;
   gT4UnitFactor := tempT4Factor;
   gT3UnitFactor := tempT3Factor;
+  ComposeRRStrings;
 end;
 
 procedure THauptschirm.T4MethodComboBoxAdjust(Sender: TObject);
