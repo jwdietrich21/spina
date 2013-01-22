@@ -217,9 +217,9 @@ var
   i, mpIndex, muIndex, vpIndex, j4: integer;
   tempT4Factor, tempT3Factor: real;
 begin
-  mpIndex := 0;
-  muIndex := 0;
-  vpIndex := 0;
+  mpIndex := 0;    {Index for mass prefix}
+  muIndex := 0;    {index for mass unit}
+  vpIndex := 0;    {index for volume prefix}
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T4UnitComboBox.Text));
   for i := MAXFACTORS - 1 downto 0 do
     begin
@@ -314,7 +314,7 @@ var
   found: boolean;
   i: integer;
 begin
-  ReadPreferences;
+  ReadPreferences;   {read preferences from XML file}
   if gPreferences.T4.Method = freeHormone then
     Hauptschirm.T4MethodComboBox.ItemIndex := 0
   else

@@ -353,6 +353,34 @@ begin
     CreateNewPreferences;  {fall-back solution, if file does not exist}
 end;
 
+function UnitFactor(unitElements: TUnitElements; baseFactor: real): real;
+{calculates conversion factors from parsed unit strings}
+var
+  i, mpIndex, vpIndex, j4: integer;
+  tempFactor: real;
+begin
+  mpIndex := 0;    {Index for mass prefix}
+  vpIndex := 0;    {index for volume prefix}
+  for i := MAXFACTORS - 1 downto 0 do
+    begin
+      if unitElements.MassPrefix = PrefixLabel[i] then mpIndex := i;
+      if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
+    end;
+  tempFactor := PrefixFactor[mpIndex] * baseFactor / PrefixFactor[vpIndex];
+  UnitFactor := tempFactor;
+end;
+
+function UnitFactor(theUnit: String; baseFactor: real): real;
+{calculates conversion factors from parsed unit strings}
+var
+  unitElements: TUnitElements;
+  tempFactor: real;
+begin
+  UnitElements := ParsedUnitString(EncodeGreek(theUnit));
+  tempFactor := UnitFactor(unitElements, baseFactor);
+  UnitFactor := tempFactor;
+end;
+
 procedure ComposeRRStrings;
 begin
   if gPreferences.TSH.isSI then
@@ -375,6 +403,8 @@ begin
       gReferenceRanges.TT4.hn := gSIReferenceRanges.TT4.hn;
       gReferenceRanges.FT4.measurementUnit := gSIReferenceRanges.FT4.measurementUnit;
       gReferenceRanges.TT4.measurementUnit := gSIReferenceRanges.TT4.measurementUnit;
+      gReferenceRanges.FT4.ln := gReferenceRanges.FT4.ln * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[1]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[1]);
+      gReferenceRanges.FT4.hn := gReferenceRanges.FT4.hn * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[1]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[1]);
     end
   else
     begin
@@ -384,6 +414,8 @@ begin
       gReferenceRanges.TT4.hn := gConvReferenceRanges.TT4.hn;
       gReferenceRanges.FT4.measurementUnit := gConvReferenceRanges.FT4.measurementUnit;
       gReferenceRanges.TT4.measurementUnit := gConvReferenceRanges.TT4.measurementUnit;
+      gReferenceRanges.FT4.ln := gReferenceRanges.FT4.ln * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[0]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[0]);
+      gReferenceRanges.FT4.hn := gReferenceRanges.FT4.hn * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[0]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[0]);
     end;
   if gPreferences.T3.isSI then
     begin
@@ -449,6 +481,40 @@ var
   SI: boolean;
 begin
   with gReferenceRanges do
+    begin                   {define emtpy default values}
+      TSH.ln := Math.NaN;
+      TSH.hn := Math.NaN;
+      FT4.ln := Math.NaN;
+      FT4.hn := Math.NaN;
+      TT4.ln := Math.NaN;
+      TT4.hn := Math.NaN;
+      FT3.ln := Math.NaN;
+      FT3.hn := Math.NaN;
+      TT3.ln := Math.NaN;
+      TT3.hn := Math.NaN;
+      GT.ln := Math.NaN;
+      GT.hn := Math.NaN;
+      GD.ln := Math.NaN;
+      GD.hn := Math.NaN;
+    end;
+  with gSIReferenceRanges do
+    begin                   {define emtpy default values}
+      TSH.ln := Math.NaN;
+      TSH.hn := Math.NaN;
+      FT4.ln := Math.NaN;
+      FT4.hn := Math.NaN;
+      TT4.ln := Math.NaN;
+      TT4.hn := Math.NaN;
+      FT3.ln := Math.NaN;
+      FT3.hn := Math.NaN;
+      TT3.ln := Math.NaN;
+      TT3.hn := Math.NaN;
+      GT.ln := Math.NaN;
+      GT.hn := Math.NaN;
+      GD.ln := Math.NaN;
+      GD.hn := Math.NaN;
+    end;
+  with gConvReferenceRanges do
     begin                   {define emtpy default values}
       TSH.ln := Math.NaN;
       TSH.hn := Math.NaN;
