@@ -50,7 +50,7 @@ procedure SavePreferences;
 implementation
 
 procedure InitConversionFactors;
-{sets labels and factors for the elements of measurement units}
+{sets labels and appropriate conversion factors for the elements of measurement units}
 begin
   PrefixLabel[0] := '';
   PrefixLabel[1] := 'd';
@@ -79,7 +79,7 @@ begin
 end;
 
 function ParsedUnitString(theString: String): TUnitElements;
-  { parses a string for measurement unit and breaks it up in single parts }
+{parses a string for measurement unit and breaks it up in single components of a TUnitElements record}
 var
   theElements: TUnitElements;
 begin
@@ -116,7 +116,7 @@ begin
 end;
 
 function GetPreferencesFolder: String;
-  { platform-independend method to search for the location of preferences folder}
+{platform-independend method to search for the location of preferences folder}
 const
   kMaxPath = 1024;
 var
@@ -159,7 +159,7 @@ begin
 end;
 
 function GetRRFile: String;
-{delivers path to XML file with reference values}
+{delivers path to CDISC-compliant XML file with reference values}
 begin
    GetRRFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.ref-ranges.xml';
 end;
@@ -382,6 +382,7 @@ begin
 end;
 
 procedure ComposeRRStrings;
+{creates strings with upper and lower bounds of reference ranges for hints and printout}
 begin
   if gPreferences.TSH.isSI then
     begin
@@ -455,7 +456,7 @@ begin
     gFT4RR := 'N/A'
   else
     gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ' + gPreferences.T4.measurementUnit;
-  if IsNan(gReferenceRanges.FT3.ln) then        { TODO 1 -oJWD -cBugs : TT3-RR mit SI-Einheiten: 0 - 0 pmol/l }
+  if IsNan(gReferenceRanges.FT3.ln) then
     gFT3RR := 'N/A'
   else
     gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' ' + gPreferences.T3.measurementUnit;
@@ -545,8 +546,8 @@ begin
   DecimalSeparator := DEC_POINT;
   theFileName := GetRRFile;
   if not FileExists(theFileName) then
-    gCDISC_RR.SaveToFile(theFileName);
-  if FileExists(theFileName) then {could this file be created?}
+    gCDISC_RR.SaveToFile(theFileName);  {saves a minimal standard file}
+  if FileExists(theFileName) then       {could this file be created (or did it already exist)?}
   try
     ReadXMLFile(Doc, theFileName);
     RootNode := Doc.DocumentElement.FindNode('Study');
@@ -669,7 +670,6 @@ begin
                                             gConvReferenceRanges.TSH.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    {break;}
                                   end;
                                   FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
@@ -715,7 +715,6 @@ begin
                                             gConvReferenceRanges.FT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    {break; }
                                   end;
                                   FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
@@ -761,7 +760,6 @@ begin
                                             gConvReferenceRanges.FT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    {break;}
                                   end;
                                   FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
@@ -807,7 +805,6 @@ begin
                                             gConvReferenceRanges.TT4.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    {break;}
                                   end;
                                   FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
@@ -853,7 +850,6 @@ begin
                                             gConvReferenceRanges.TT3.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
-                                    {break;}
                                   end;
                                   FlagUOMNode := FlagUOMNode.NextSibling;
                                 end;
