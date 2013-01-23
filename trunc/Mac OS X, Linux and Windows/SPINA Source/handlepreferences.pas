@@ -405,6 +405,8 @@ begin
       gReferenceRanges.TT4.measurementUnit := gSIReferenceRanges.TT4.measurementUnit;
       gReferenceRanges.FT4.ln := gReferenceRanges.FT4.ln * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[1]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[1]);
       gReferenceRanges.FT4.hn := gReferenceRanges.FT4.hn * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[1]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[1]);
+      gReferenceRanges.TT4.ln := gReferenceRanges.TT4.ln * UnitFactor(gReferenceRanges.TT4.measurementUnit, T4UnitFactor[1]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[1]);
+      gReferenceRanges.TT4.hn := gReferenceRanges.TT4.hn * UnitFactor(gReferenceRanges.TT4.measurementUnit, T4UnitFactor[1]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[1]);
     end
   else
     begin
@@ -416,6 +418,8 @@ begin
       gReferenceRanges.TT4.measurementUnit := gConvReferenceRanges.TT4.measurementUnit;
       gReferenceRanges.FT4.ln := gReferenceRanges.FT4.ln * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[0]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[0]);
       gReferenceRanges.FT4.hn := gReferenceRanges.FT4.hn * UnitFactor(gReferenceRanges.FT4.measurementUnit, T4UnitFactor[0]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[0]);
+      gReferenceRanges.TT4.ln := gReferenceRanges.TT4.ln * UnitFactor(gReferenceRanges.TT4.measurementUnit, T4UnitFactor[0]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[0]);
+      gReferenceRanges.TT4.hn := gReferenceRanges.TT4.hn * UnitFactor(gReferenceRanges.TT4.measurementUnit, T4UnitFactor[0]) / UnitFactor(gPreferences.T4.measurementUnit, T4UnitFactor[0]);
     end;
   if gPreferences.T3.isSI then
     begin
@@ -425,6 +429,10 @@ begin
       gReferenceRanges.TT3.hn := gSIReferenceRanges.TT3.hn;
       gReferenceRanges.FT3.measurementUnit := gSIReferenceRanges.FT3.measurementUnit;
       gReferenceRanges.TT3.measurementUnit := gSIReferenceRanges.TT3.measurementUnit;
+      gReferenceRanges.FT3.ln := gReferenceRanges.FT3.ln * UnitFactor(gReferenceRanges.FT3.measurementUnit, T3UnitFactor[1]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[1]);
+      gReferenceRanges.FT3.hn := gReferenceRanges.FT3.hn * UnitFactor(gReferenceRanges.FT3.measurementUnit, T3UnitFactor[1]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[1]);
+      gReferenceRanges.TT3.ln := gReferenceRanges.TT3.ln * UnitFactor(gReferenceRanges.TT3.measurementUnit, T3UnitFactor[1]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[1]);
+      gReferenceRanges.TT3.hn := gReferenceRanges.TT3.hn * UnitFactor(gReferenceRanges.TT3.measurementUnit, T3UnitFactor[1]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[1]);
     end
   else
     begin
@@ -434,9 +442,11 @@ begin
       gReferenceRanges.TT3.hn := gConvReferenceRanges.TT3.hn;
       gReferenceRanges.FT3.measurementUnit := gConvReferenceRanges.FT3.measurementUnit;
       gReferenceRanges.TT3.measurementUnit := gConvReferenceRanges.TT3.measurementUnit;
+      gReferenceRanges.FT3.ln := gReferenceRanges.FT3.ln * UnitFactor(gReferenceRanges.FT3.measurementUnit, T3UnitFactor[0]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[0]);
+      gReferenceRanges.FT3.hn := gReferenceRanges.FT3.hn * UnitFactor(gReferenceRanges.FT3.measurementUnit, T3UnitFactor[0]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[0]);
+      gReferenceRanges.TT3.ln := gReferenceRanges.TT3.ln * UnitFactor(gReferenceRanges.TT3.measurementUnit, T3UnitFactor[0]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[0]);
+      gReferenceRanges.TT3.hn := gReferenceRanges.TT3.hn * UnitFactor(gReferenceRanges.TT3.measurementUnit, T3UnitFactor[0]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[0]);
     end;
-  gTT4RR := 'N/A';
-  gTT3RR := 'N/A';
   if IsNan(gReferenceRanges.TSH.ln) then
     gTSHRR := 'N/A'
   else
@@ -444,19 +454,19 @@ begin
   if IsNan(gReferenceRanges.FT4.ln) then
     gFT4RR := 'N/A'
   else
-    gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.FT4.measurementUnit;
-  if IsNan(gReferenceRanges.FT3.ln) then
+    gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ' + gPreferences.T4.measurementUnit;
+  if IsNan(gReferenceRanges.FT3.ln) then        { TODO 1 -oJWD -cBugs : TT3-RR mit SI-Einheiten: 0 - 0 pmol/l }
     gFT3RR := 'N/A'
   else
-    gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.FT3.measurementUnit;
+    gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' ' + gPreferences.T3.measurementUnit;
   if IsNan(gReferenceRanges.TT4.ln) then
     gTT4RR := 'N/A'
   else
-    gTT4RR := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.TT4.measurementUnit;
+    gTT4RR := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2) + ' ' + gPreferences.T4.measurementUnit;
   if IsNan(gReferenceRanges.TT3.ln) then
     gTT3RR := 'N/A'
   else
-    gTT3RR := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2) + ' ' + gReferenceRanges.TT3.measurementUnit;
+    gTT3RR := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2) + ' ' + gPreferences.T3.measurementUnit;
   if IsNan(gReferenceRanges.GT.ln) then
     gGTRR := 'N/A'
   else
