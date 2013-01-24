@@ -1,6 +1,6 @@
 object ResultForm: TResultForm
   Left = 308
-  Height = 188
+  Height = 171
   Top = 120
   Width = 688
   HorzScrollBar.Page = 440
@@ -10,7 +10,7 @@ object ResultForm: TResultForm
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = '   Ergebnis'
-  ClientHeight = 188
+  ClientHeight = 171
   ClientWidth = 688
   Color = clWhite
   FormStyle = fsStayOnTop
@@ -20,7 +20,7 @@ object ResultForm: TResultForm
   Visible = True
   object Image1: TImage
     Left = 24
-    Height = 105
+    Height = 80
     Top = 32
     Width = 73
     Picture.Data = {
@@ -199,7 +199,7 @@ object ResultForm: TResultForm
   end
   object MessageField1: TMemo
     Left = 112
-    Height = 105
+    Height = 80
     Top = 32
     Width = 231
     Font.Height = -12
@@ -216,8 +216,8 @@ object ResultForm: TResultForm
   end
   object MessageField2: TMemo
     Left = 359
-    Height = 104
-    Top = 33
+    Height = 79
+    Top = 32
     Width = 313
     Font.Height = -12
     Lines.Strings = (
@@ -233,7 +233,7 @@ object ResultForm: TResultForm
   object Button1: TButton
     Left = 597
     Height = 24
-    Top = 144
+    Top = 128
     Width = 75
     Caption = 'OK'
     Default = True

@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
   gettext, SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog,
-  HandlePreferences
+  HandlePreferences, Math
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -49,7 +49,15 @@ type
     CDISC_defaults: TMemo;
     MainMenu: TMainMenu;
     ActionList1: TActionList;
+    PopupDiv1: TMenuItem;
+    PopupCopyResult: TMenuItem;
+    PopupCopy: TMenuItem;
+    PopupPaste: TMenuItem;
+    PoputDiv2: TMenuItem;
+    PopupUndo: TMenuItem;
+    PopupCut: TMenuItem;
     Panel1: TPanel;
+    PopupMenu1: TPopupMenu;
     SPINAThyrLabel: TLabel;
     TherapyCheckGroup: TCheckGroup;
     EditMenu: TMenuItem;
@@ -150,6 +158,11 @@ type
     procedure T4MethodComboBoxChange(Sender: TObject);
     procedure T3MethodComboBoxChange(Sender: TObject);
     procedure UndoMenuItemClick(Sender: TObject);
+    procedure PopupCopyClick(Sender: TObject);
+    procedure PopupCopyResultClick(Sender: TObject);
+    procedure PopupCutClick(Sender: TObject);
+    procedure PopupPasteClick(Sender: TObject);
+    procedure PopupUndoClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -524,7 +537,7 @@ begin
     Size := Hauptschirm.TSH_Text.GetTextLen;
     {L??nge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
-      TSH := 0
+      TSH := Math.NaN
     else
     begin
       Inc(Size);
@@ -546,7 +559,7 @@ begin
     Size := Hauptschirm.FT4_Text.GetTextLen;
     {L??nge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
-      T4 := 0
+      T4 := Math.NaN
     else
     begin
       Inc(Size);
@@ -568,7 +581,7 @@ begin
     Size := Hauptschirm.FT3_Text.GetTextLen;
     {L??nge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
-      T3 := 0
+      T3 := Math.NaN
     else
     begin
       Inc(Size);
@@ -603,9 +616,9 @@ begin
     on ex: Exception do
     begin
       bell;
-      TSH := 0;
-      T4 := 0;
-      T3 := 0;
+      TSH := Math.NaN;
+      T4 := Math.NaN;
+      T3 := Math.NaN;
     end;
   end;
   decimalSeparator := oldSeparator;
@@ -954,6 +967,30 @@ begin
   ActionList1.Actions[0].Execute;
 end;
 
+procedure THauptschirm.PopupCopyClick(Sender: TObject);
+begin
+  CopyMenuItemClick(Sender);
+end;
+
+procedure THauptschirm.PopupCopyResultClick(Sender: TObject);
+begin
+  Ergebniskopieren1Click(Sender);
+end;
+
+procedure THauptschirm.PopupCutClick(Sender: TObject);
+begin
+  CutMenuItemClick(Sender);
+end;
+
+procedure THauptschirm.PopupPasteClick(Sender: TObject);
+begin
+  PasteMenuItemClick(Sender);
+end;
+
+procedure THauptschirm.PopupUndoClick(Sender: TObject);
+begin
+  UndoMenuItemClick(Sender);
+end;
 
 initialization
 {$I spina_userinterface.lrs}
