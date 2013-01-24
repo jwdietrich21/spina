@@ -5,15 +5,21 @@ object SPINAToolbar: TSPINAToolbar
   Width = 753
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
+  Align = alTop
+  Anchors = []
+  AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 42
+  ClientHeight = 23
   ClientWidth = 753
+  DefaultMonitor = dmMainForm
+  DockSite = True
   Menu = MainMenu
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '1.0.2.0'
+  LCLVersion = '1.0.1.3'
+  Visible = True
   object ToolBar1: TToolBar
     Left = 0
     Height = 26
@@ -90,47 +96,50 @@ object SPINAToolbar: TSPINAToolbar
     end
     object UndoToolButton: TToolButton
       Left = 126
-      Hint = 'Undo'
       Top = 2
-      Caption = 'UndoToolButton'
+      Caption = '&Rückgängig'
       ImageIndex = 5
+      OnClick = UndoToolButtonClick
       ParentShowHint = False
       ShowHint = True
     end
     object CutToolButton: TToolButton
       Left = 149
-      Hint = 'Cut'
+      Hint = 'Ausschneiden'
       Top = 2
-      Caption = 'CutToolButton'
+      Caption = '&Ausschneiden'
       ImageIndex = 6
+      OnClick = CutToolButtonClick
       ParentShowHint = False
       ShowHint = True
     end
     object CopyToolButton: TToolButton
       Left = 172
-      Hint = 'Copy'
+      Hint = 'Kopieren'
       Top = 2
-      Caption = 'CopyToolButton'
+      Caption = '&Kopieren'
       ImageIndex = 7
+      OnClick = CopyToolButtonClick
       ParentShowHint = False
       ShowCaption = False
       ShowHint = True
     end
     object PasteToolButton: TToolButton
       Left = 195
-      Hint = 'Paste'
+      Hint = 'Einfügen'
       Top = 2
-      Caption = 'PasteToolButton'
+      Caption = '&Einfügen'
       ImageIndex = 8
+      OnClick = PasteToolButtonClick
       ParentShowHint = False
       ShowHint = True
     end
     object DeleteToolButton: TToolButton
       Left = 218
-      Hint = 'Delete'
       Top = 2
-      Caption = 'DeleteToolButton'
+      Caption = '&Löschen'
       ImageIndex = 9
+      OnClick = DeleteToolButtonClick
       ParentShowHint = False
       ShowHint = True
     end
@@ -140,15 +149,16 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'CopyResultToolButton'
       ImageIndex = 10
+      OnClick = CopyResultToolButtonClick
       ParentShowHint = False
       ShowHint = True
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 651
+    Left = 655
     Height = 17
     Top = 7
-    Width = 70
+    Width = 66
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
@@ -601,4 +611,4 @@ object SPINAToolbar: TSPINAToolbar
       1504FFFFFF00FFFFFF00FFFFFF00
     }
   end
-end
+end

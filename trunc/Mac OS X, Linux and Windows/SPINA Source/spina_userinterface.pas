@@ -126,6 +126,9 @@ type
     T3Items: TComboBox;
     procedure Beenden1Click(Sender: TObject);
     procedure Calculate_ButtonClick(Sender: TObject);
+    procedure CopyMenuItemClick(Sender: TObject);
+    procedure CutMenuItemClick(Sender: TObject);
+    procedure DeleteMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure Ergebniskopieren1Click(Sender: TObject);
@@ -136,6 +139,7 @@ type
     procedure MenuItem4Click(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
+    procedure PasteMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure T3ItemsChange(Sender: TObject);
     procedure TSHUnitComboBoxChange(Sender: TObject);
@@ -145,6 +149,7 @@ type
     procedure T3MethodComboBoxAdjust(Sender: TObject);
     procedure T4MethodComboBoxChange(Sender: TObject);
     procedure T3MethodComboBoxChange(Sender: TObject);
+    procedure UndoMenuItemClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -622,6 +627,21 @@ begin
   Hauptschirm.HintField.Text := gAnleitung2;
 end;
 
+procedure THauptschirm.CopyMenuItemClick(Sender: TObject);
+begin
+  ActionList1.Actions[2].Execute;
+end;
+
+procedure THauptschirm.CutMenuItemClick(Sender: TObject);
+begin
+  ActionList1.Actions[1].Execute;
+end;
+
+procedure THauptschirm.DeleteMenuItemClick(Sender: TObject);
+begin
+  ActionList1.Actions[4].Execute;
+end;
+
 procedure AdaptMenus;
 var
   modifierKey: TShiftState;
@@ -699,6 +719,7 @@ begin
     Hauptschirm.VertScrollBar.Visible := False;
     Hauptschirm.AutoScroll := False;
   end;
+  gLastActiveCustomForm := Hauptschirm;
 end;
 
 
@@ -755,6 +776,11 @@ procedure THauptschirm.PageSetupMenuItemClick(Sender: TObject);
 begin
   if not DoPageSetup then
     Exit;
+end;
+
+procedure THauptschirm.PasteMenuItemClick(Sender: TObject);
+begin
+  ActionList1.Actions[3].Execute;
 end;
 
 function GetLinesPerPage(ACanvas: TCanvas; ACanvasHeight, ADPI: integer): integer;
@@ -921,6 +947,11 @@ begin
   gPreferences.T3.PopUpItem := 0;
   Hauptschirm.T3MethodComboBoxAdjust(Sender);
   ComposeRRHints;
+end;
+
+procedure THauptschirm.UndoMenuItemClick(Sender: TObject);
+begin
+  ActionList1.Actions[0].Execute;
 end;
 
 

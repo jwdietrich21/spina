@@ -25,7 +25,7 @@ unit SPINA_Types;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, Forms;
 
 const
   UFT4 = 1.28e-11; {Conversion factor ng/dl -> mol/l (T4)}
@@ -139,6 +139,7 @@ var
   gInterfaceLanguage: tInterfaceLanguage;
   gResultDialogString1, gResultDialogString2, gReferenceValueString1, gReferenceValueString2: Str255;
   gReferenceRanges, gSIReferenceRanges, gConvReferenceRanges: tReferenceValues;
+  gLastActiveCustomForm: TForm;
 
 implementation
 

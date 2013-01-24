@@ -77,17 +77,23 @@ type
     procedure AppleAboutMenuItemClick(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
+    procedure CopyResultToolButtonClick(Sender: TObject);
+    procedure CopyToolButtonClick(Sender: TObject);
+    procedure CutToolButtonClick(Sender: TObject);
+    procedure DeleteToolButtonClick(Sender: TObject);
     procedure EditMenuClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
+    procedure PasteToolButtonClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure SPINAThyrLabelClick(Sender: TObject);
     procedure NewToolButtonClick(Sender: TObject);
     procedure OpenToolButtonClick(Sender: TObject);
     procedure PrintToolButtonClick(Sender: TObject);
+    procedure UndoToolButtonClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -234,6 +240,19 @@ begin
   Hauptschirm.PageSetupMenuItemClick(Sender);
 end;
 
+procedure TSPINAToolbar.PasteToolButtonClick(Sender: TObject);
+var
+  theForm: TForm;
+begin
+  theForm := Screen.ActiveForm;
+  if (theForm = Hauptschirm) or ((theForm = SPINAToolbar) and
+    (gLastActiveCustomForm = Hauptschirm)) then
+    begin
+      Hauptschirm.BringToFront;
+      Hauptschirm.PasteMenuItemClick(Sender);
+    end;
+end;
+
 procedure TSPINAToolbar.PrintMenuItemClick(Sender: TObject);
 begin
   Hauptschirm.PrintMenuItemClick(Sender);
@@ -269,6 +288,50 @@ begin
   Hauptschirm.Ergebniskopieren1Click(Sender);
 end;
 
+procedure TSPINAToolbar.CopyResultToolButtonClick(Sender: TObject);
+begin
+   CopyResultMenuItemClick(Sender);
+end;
+
+procedure TSPINAToolbar.CopyToolButtonClick(Sender: TObject);
+var
+  theForm: TForm;
+begin
+  theForm := Screen.ActiveForm;
+  if (theForm = Hauptschirm) or ((theForm = SPINAToolbar) and
+    (gLastActiveCustomForm = Hauptschirm)) then
+    begin
+      Hauptschirm.BringToFront;
+      Hauptschirm.CopyMenuItemClick(Sender);
+    end;
+end;
+
+procedure TSPINAToolbar.CutToolButtonClick(Sender: TObject);
+var
+  theForm: TForm;
+begin
+  theForm := Screen.ActiveForm;
+  if (theForm = Hauptschirm) or ((theForm = SPINAToolbar) and
+    (gLastActiveCustomForm = Hauptschirm)) then
+    begin
+      Hauptschirm.BringToFront;
+      Hauptschirm.CutMenuItemClick(Sender);
+    end;
+end;
+
+procedure TSPINAToolbar.DeleteToolButtonClick(Sender: TObject);
+var
+  theForm: TForm;
+begin
+  theForm := Screen.ActiveForm;
+  if (theForm = Hauptschirm) or ((theForm = SPINAToolbar) and
+    (gLastActiveCustomForm = Hauptschirm)) then
+    begin
+      Hauptschirm.BringToFront;
+      Hauptschirm.DeleteMenuItemClick(Sender);
+    end;
+end;
+
 procedure TSPINAToolbar.EditMenuClick(Sender: TObject);
 begin
 
@@ -290,7 +353,20 @@ begin
   Hauptschirm.PrintMenuItemClick(Sender);
 end;
 
+procedure TSPINAToolbar.UndoToolButtonClick(Sender: TObject);
+var
+  theForm: TForm;
+begin
+  theForm := Screen.ActiveForm;
+  if (theForm = Hauptschirm) or ((theForm = SPINAToolbar) and
+    (gLastActiveCustomForm = Hauptschirm)) then
+    begin
+      Hauptschirm.BringToFront;
+      Hauptschirm.UndoMenuItemClick(Sender);
+    end;
+end;
+
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 279
+  Left = 280
   Height = 349
-  Top = 120
+  Top = 180
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -15,7 +15,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 349
+  ClientHeight = 330
   ClientWidth = 765
   Color = clWhite
   Icon.Data = {
@@ -316,7 +316,8 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu
   OnActivate = FormActivate
   OnCreate = FormCreate
-  LCLVersion = '1.0.2.0'
+  Position = poScreenCenter
+  LCLVersion = '1.0.1.3'
   Visible = True
   object Calculate_Button: TButton
     Left = 656
@@ -334,7 +335,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'ng/dl'
       'ng/l'
@@ -351,7 +352,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'µg/l'
       'µg/dl'
@@ -367,7 +368,7 @@ object Hauptschirm: THauptschirm
     Top = 200
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'pg/ml'
       'ng/l'
@@ -383,7 +384,7 @@ object Hauptschirm: THauptschirm
     Top = 224
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'µg/l'
       'ng/dl'
@@ -421,8 +422,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 77
-      ClientWidth = 209
+      ClientHeight = 81
+      ClientWidth = 213
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
@@ -441,8 +442,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 156
-      ClientWidth = 208
+      ClientHeight = 158
+      ClientWidth = 212
       Color = clNone
       Font.Height = -10
       Font.Name = 'Geneva'
@@ -474,8 +475,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 155
-      ClientWidth = 208
+      ClientHeight = 157
+      ClientWidth = 212
       Color = clNone
       Font.Height = -10
       Font.Name = 'Geneva'
@@ -502,7 +503,7 @@ object Hauptschirm: THauptschirm
       end
     end
     object Image2: TImage
-      Left = 24
+      Left = 19
       Height = 130
       Top = 16
       Width = 159
@@ -605,8 +606,8 @@ object Hauptschirm: THauptschirm
       Top = 8
       Width = 272
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 258
-      ClientWidth = 264
+      ClientHeight = 262
+      ClientWidth = 268
       TabOrder = 3
       object Image1: TImage
         Left = -116
@@ -3327,7 +3328,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 97
-        Height = 22
+        Height = 21
         Top = 194
         Width = 56
         TabOrder = 1
@@ -3335,7 +3336,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 196
-        Height = 22
+        Height = 21
         Top = 30
         Width = 54
         TabOrder = 2
@@ -3348,7 +3349,7 @@ object Hauptschirm: THauptschirm
         Top = 54
         Width = 56
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'mU/l'
@@ -3366,7 +3367,7 @@ object Hauptschirm: THauptschirm
         Top = 220
         Width = 67
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'ng/dl'
@@ -3385,7 +3386,7 @@ object Hauptschirm: THauptschirm
         Top = 54
         Width = 66
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'pg/ml'
@@ -3404,7 +3405,7 @@ object Hauptschirm: THauptschirm
         Top = 6
         Width = 56
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'FT3'
@@ -3422,7 +3423,7 @@ object Hauptschirm: THauptschirm
         Top = 172
         Width = 56
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'FT4'
@@ -3435,7 +3436,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = 4
-        Height = 22
+        Height = 21
         Top = 30
         Width = 56
         TabOrder = 0
@@ -3447,7 +3448,7 @@ object Hauptschirm: THauptschirm
     Left = 16
     Height = 13
     Top = 312
-    Width = 54
+    Width = 56
     Caption = 'SPINA Thyr'
     Font.Height = -10
     ParentColor = False
@@ -3805,6 +3806,7 @@ object Hauptschirm: THauptschirm
         Action = EditUndo1
         Hint = 'Widerrufen'
         ShortCut = 4185
+        OnClick = UndoMenuItemClick
       end
       object MenuItem5: TMenuItem
         Caption = '-'
@@ -3812,18 +3814,22 @@ object Hauptschirm: THauptschirm
       object CutMenuItem: TMenuItem
         Action = EditCut1
         ShortCut = 4184
+        OnClick = CutMenuItemClick
       end
       object CopyMenuItem: TMenuItem
         Action = EditCopy1
         ShortCut = 4163
+        OnClick = CopyMenuItemClick
       end
       object PasteMenuItem: TMenuItem
         Action = EditPaste1
         ShortCut = 4182
+        OnClick = PasteMenuItemClick
       end
       object DeleteMenuItem: TMenuItem
         Action = EditDelete1
         Hint = 'Löschen'
+        OnClick = DeleteMenuItemClick
       end
       object MenuItem16: TMenuItem
         Caption = '-'
@@ -3848,34 +3854,34 @@ object Hauptschirm: THauptschirm
     object EditUndo1: TEditUndo
       Category = 'Bearbeiten'
       Caption = '&Rückgängig'
-      ImageIndex = 3
+      ImageIndex = 5
       ShortCut = 32776
     end
     object EditCut1: TEditCut
       Category = 'Bearbeiten'
       Caption = '&Ausschneiden'
       Hint = 'Ausschneiden'
-      ImageIndex = 0
+      ImageIndex = 6
       ShortCut = 16472
     end
     object EditCopy1: TEditCopy
       Category = 'Bearbeiten'
       Caption = '&Kopieren'
       Hint = 'Kopieren'
-      ImageIndex = 1
+      ImageIndex = 7
       ShortCut = 16451
     end
     object EditPaste1: TEditPaste
       Category = 'Bearbeiten'
       Caption = '&Einfügen'
       Hint = 'Einfügen'
-      ImageIndex = 2
+      ImageIndex = 8
       ShortCut = 16470
     end
     object EditDelete1: TEditDelete
       Category = 'Bearbeiten'
       Caption = '&Löschen'
-      ImageIndex = 5
+      ImageIndex = 9
       ShortCut = 46
     end
   end
