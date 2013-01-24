@@ -25,7 +25,7 @@ unit SPINA_Engine;
 interface
 
 uses
-  Classes, SysUtils, SPINA_Types;
+  Classes, SysUtils, SPINA_Types, Math;
 
 const
   ALPHAT = 0.1;
@@ -69,7 +69,7 @@ var
 begin
   GTFlag := '';
   GDFlag := '';
-  if (TSH > 0) and not gT4Therapy then
+  if not isNan(TSH) and (TSH > 0) and not gT4Therapy then
   begin
     case gPreferences.T4.Method of
       freeHormone:
@@ -91,7 +91,7 @@ begin
     tempRecord.GTs := gNotCalculable;
     tempRecord.flaggedGTs := gNotCalculable;
   end;
-  if (T4 > 0) and not gT3Therapy then
+  if not isNan(T4) and (T4 > 0) and not gT3Therapy then
   begin
     case gPreferences.T4.Method of
       freeHormone:

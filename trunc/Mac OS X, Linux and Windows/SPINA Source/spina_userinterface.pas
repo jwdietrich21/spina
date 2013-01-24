@@ -537,7 +537,7 @@ begin
     Size := Hauptschirm.TSH_Text.GetTextLen;
     {L??nge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
-      TSH := Math.NaN
+      TSH := Math.Nan
     else
     begin
       Inc(Size);
