@@ -39,11 +39,12 @@ procedure InitConversionFactors;
 function ParsedUnitString(theString: String): TUnitElements;
 function GetPreferencesFolder: String;
 function GetPreferencesFile: String;
+function RRFile: String;
 function EncodeGreek(theString: string): string;
 function DecodeGreek(theString: string): string;
 procedure ReadPreferences;
 procedure ComposeRRStrings;
-procedure GetReferenceValues;
+procedure GetReferenceValues(theFileName: String);
 procedure SavePreferences;
 
 
@@ -158,10 +159,10 @@ begin
   {$ENDIF}
 end;
 
-function GetRRFile: String;
+function RRFile: String;
 {delivers path to CDISC-compliant XML file with reference values}
 begin
-   GetRRFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.ref-ranges.xml';
+   RRFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
 function EncodeGreek(theString: string): string;
@@ -478,7 +479,7 @@ begin
     gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
 end;
 
-procedure GetReferenceValues;
+procedure GetReferenceValues(theFileName: String);
 {reads reference values from a CDISC LAB model-compliant XML file.}
 {This routine ignores sex- and age-specific reference values in this version,}
 {so that the normal definition for females between 0 and 130 years}
@@ -486,7 +487,7 @@ procedure GetReferenceValues;
 var
   Doc: TXMLDocument;
   RootNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode, NormalNode, UnitsNode, NormalDefinitionNode: TDOMNode;
-  theFileName, theString: String;
+  theString: String;
   theStream: TStringStream;
   oldSeparator: Char;
   SI: boolean;
@@ -544,7 +545,6 @@ begin
     end;
   oldSeparator := DecimalSeparator;
   DecimalSeparator := DEC_POINT;
-  theFileName := GetRRFile;
   if not FileExists(theFileName) then
     gCDISC_RR.SaveToFile(theFileName);  {saves a minimal standard file}
   if FileExists(theFileName) then       {could this file be created (or did it already exist)?}

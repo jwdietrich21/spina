@@ -26,13 +26,14 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, SPINA_Types;
+  StdCtrls, SPINA_Types, HandlePreferences;
 
 type
 
   { TPreferencesForm }
 
   TPreferencesForm = class(TForm)
+    CDISCOpenDialog: TOpenDialog;
     ReadCDISCButton: TButton;
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
@@ -59,8 +60,10 @@ type
     MethodLabel: TLabel;
     UnitsGroupBox: TGroupBox;
     OKButton: TButton;
+    procedure DisplayReferenceRanges(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure OKButtonClick(Sender: TObject);
     procedure ReadCDISCButtonClick(Sender: TObject);
     procedure RememberCheckBoxChange(Sender: TObject);
@@ -82,6 +85,21 @@ implementation
 
 uses
   SPINA_UserInterface;
+
+procedure TPreferencesForm.DisplayReferenceRanges(Sender: TObject);
+begin
+  TSHRREdit.Text := gTSHRR;
+  if gPreferences.T4.Method = freeHormone then
+    T4RREdit.Text := gFT4RR
+  else
+    T4RREdit.Text := gTT4RR;
+  if gPreferences.T3.Method = freeHormone then
+    T3RREdit.Text := gFT3RR
+  else
+    T3RREdit.Text := gTT3RR;
+  GTRREdit.Text := gGTRR;
+  GDRREdit.Text := gGDRR;
+end;
 
 procedure DisplayPreferencesDlg;
 begin
@@ -204,7 +222,11 @@ end;
 
 procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
 begin
-
+  if CDISCOpenDialog.Execute then
+    begin
+      GetReferenceValues(CDISCOpenDialog.FileName);
+      DisplayReferenceRanges(Sender);
+    end;
 end;
 
 procedure TPreferencesForm.RememberCheckBoxChange(Sender: TObject);
@@ -232,21 +254,18 @@ end;
 procedure TPreferencesForm.FormActivate(Sender: TObject);
 begin
   GetPreferences(Sender);
-  TSHRREdit.Text := gTSHRR;
-  if gPreferences.T4.Method = freeHormone then
-    T4RREdit.Text := gFT4RR
-  else
-    T4RREdit.Text := gTT4RR;
-  if gPreferences.T3.Method = freeHormone then
-    T3RREdit.Text := gFT3RR
-  else
-    T3RREdit.Text := gTT3RR;
-  GTRREdit.Text := gGTRR;
-  GDRREdit.Text := gGDRR;
+  DisplayReferenceRanges(Sender);
+end;
+
+procedure TPreferencesForm.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  GetReferenceValues(RRFile);
 end;
 
 procedure TPreferencesForm.CancelButtonClick(Sender: TObject);
 begin
+  GetReferenceValues(RRFile);
   PreferencesForm.Close;
 end;
 

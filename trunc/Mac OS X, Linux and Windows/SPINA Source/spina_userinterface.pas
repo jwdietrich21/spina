@@ -698,7 +698,7 @@ begin
   Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
   gCDISC_RR := Hauptschirm.CDISC_defaults.Lines;
   GetPreferences;
-  GetReferenceValues;
+  GetReferenceValues(RRFile);
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);

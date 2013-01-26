@@ -11,6 +11,7 @@ object PreferencesForm: TPreferencesForm
   Constraints.MinHeight = 400
   Constraints.MinWidth = 500
   OnActivate = FormActivate
+  OnClose = FormClose
   Position = poMainFormCenter
   LCLVersion = '1.0.2.0'
   object OKButton: TButton
@@ -121,6 +122,7 @@ object PreferencesForm: TPreferencesForm
       Width = 178
       Caption = 'Remember last used unit'
       Checked = True
+      Enabled = False
       OnChange = RememberCheckBoxChange
       State = cbChecked
       TabOrder = 3
@@ -293,5 +295,12 @@ object PreferencesForm: TPreferencesForm
     Caption = 'Cancel'
     OnClick = CancelButtonClick
     TabOrder = 3
+  end
+  object CDISCOpenDialog: TOpenDialog
+    DefaultExt = '.xml'
+    Filter = 'CDISC Lab Model 1.0.1 file (XML)|*.xml'
+    Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
+    left = 424
+    top = 264
   end
 end
