@@ -27,9 +27,9 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Controls,
-SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox, SPINA_ResultDialog,
-SPINA_Engine, Printer4Lazarus, SPINA_Types, HandlePreferences, spina_toolbar;
+  Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
+  SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
+  HandlePreferences, spina_toolbar, SetPreferences;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 
@@ -72,6 +72,7 @@ begin
   SPINAToolbar.Show;
   gUseReferenceRanges := true;
   Hauptschirm.AlphaBlendValue := 255;
+  Application.CreateForm(TPreferencesForm, PreferencesForm);
   Application.Run;
   if (SplashScreen<>nil) then begin
     SplashScreen.Free;

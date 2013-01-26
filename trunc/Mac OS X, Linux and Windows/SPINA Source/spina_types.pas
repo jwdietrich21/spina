@@ -104,7 +104,7 @@ tParameterSettings = record
        MethodPopUpItem: integer;
 end;
 tPreferences = record
-       new: boolean;
+       new, rememberUsedUnits: boolean;
        TSH, T4, T3: tParameterSettings;
        end;
 tReferenceAlerts = record

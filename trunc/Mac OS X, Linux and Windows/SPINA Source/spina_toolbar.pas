@@ -27,7 +27,8 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls,
-  SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface, VersionSupport;
+  SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface,
+  SetPreferences, VersionSupport;
 
 type
 
@@ -47,11 +48,15 @@ type
     HelpMenu: TMenuItem;
     ImageList1: TImageList;
     MainMenu: TMainMenu;
-    MenuItem10: TMenuItem;
-    MenuItem13: TMenuItem;
-    MenuItem16: TMenuItem;
-    MenuItem3: TMenuItem;
-    MenuItem5: TMenuItem;
+    MacPreferencesItem: TMenuItem;
+    Divider_1_1: TMenuItem;
+    Divider_1_2: TMenuItem;
+    Divider_2_2: TMenuItem;
+    Divider_0_1: TMenuItem;
+    Divider_0_2: TMenuItem;
+    Divider_2_15: TMenuItem;
+    Divider_2_3: TMenuItem;
+    WinPreferencesItem: TMenuItem;
     NewMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
     PasteMenuItem: TMenuItem;
@@ -84,6 +89,7 @@ type
     procedure EditMenuClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure MacPreferencesItemClick(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PasteToolButtonClick(Sender: TObject);
@@ -94,6 +100,7 @@ type
     procedure OpenToolButtonClick(Sender: TObject);
     procedure PrintToolButtonClick(Sender: TObject);
     procedure UndoToolButtonClick(Sender: TObject);
+    procedure WinPreferencesItemClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -228,6 +235,11 @@ begin
   SPINAToolbar.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   SPINAToolbar.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
   Hauptschirm.HintField.Text := gAnleitung1;
+end;
+
+procedure TSPINAToolbar.MacPreferencesItemClick(Sender: TObject);
+begin
+  DisplayPreferencesDlg;
 end;
 
 procedure TSPINAToolbar.NewMenuItemClick(Sender: TObject);
@@ -366,7 +378,12 @@ begin
     end;
 end;
 
+procedure TSPINAToolbar.WinPreferencesItemClick(Sender: TObject);
+begin
+  DisplayPreferencesDlg;
+end;
+
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

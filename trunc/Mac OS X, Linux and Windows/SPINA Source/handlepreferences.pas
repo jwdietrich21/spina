@@ -165,7 +165,7 @@ begin
 end;
 
 function EncodeGreek(theString: string): string;
-{encodes greek mu lettern as ASCII substitution sequence}
+{encodes greek mu letter as ASCII substitution sequence}
 var
   theFlags: TReplaceFlags;
 begin

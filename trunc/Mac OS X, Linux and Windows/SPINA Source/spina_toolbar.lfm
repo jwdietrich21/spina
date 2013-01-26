@@ -177,7 +177,15 @@ object SPINAToolbar: TSPINAToolbar
         Caption = 'Über SPINA'
         OnClick = AppleAboutMenuItemClick
       end
-      object MenuItem3: TMenuItem
+      object Divider_0_1: TMenuItem
+        Caption = '-'
+      end
+      object MacPreferencesItem: TMenuItem
+        Caption = 'Einstellungen ...'
+        ShortCut = 4284
+        OnClick = MacPreferencesItemClick
+      end
+      object Divider_0_2: TMenuItem
         Caption = '-'
       end
     end
@@ -194,7 +202,7 @@ object SPINAToolbar: TSPINAToolbar
         ShortCut = 4183
         OnClick = CloseMenuItemClick
       end
-      object MenuItem10: TMenuItem
+      object Divider_1_1: TMenuItem
         Caption = '-'
       end
       object PageSetupMenuItem: TMenuItem
@@ -206,7 +214,7 @@ object SPINAToolbar: TSPINAToolbar
         ShortCut = 4176
         OnClick = PrintMenuItemClick
       end
-      object MenuItem13: TMenuItem
+      object Divider_1_2: TMenuItem
         Caption = '-'
       end
       object QuitMenuItem: TMenuItem
@@ -217,10 +225,11 @@ object SPINAToolbar: TSPINAToolbar
     end
     object EditMenu: TMenuItem
       Caption = 'Bearbeiten'
+      OnClick = EditMenuClick
       object UndoMenuItem: TMenuItem
         Action = Hauptschirm.EditUndo1
       end
-      object MenuItem5: TMenuItem
+      object Divider_2_15: TMenuItem
         Caption = '-'
       end
       object CutMenuItem: TMenuItem
@@ -235,13 +244,20 @@ object SPINAToolbar: TSPINAToolbar
       object DeleteMenuItem: TMenuItem
         Action = Hauptschirm.EditDelete1
       end
-      object MenuItem16: TMenuItem
+      object Divider_2_2: TMenuItem
         Caption = '-'
       end
       object CopyResultMenuItem: TMenuItem
         Caption = 'Ergebnis kopieren'
         ShortCut = 4178
         OnClick = CopyResultMenuItemClick
+      end
+      object Divider_2_3: TMenuItem
+        Caption = '-'
+      end
+      object WinPreferencesItem: TMenuItem
+        Caption = 'Einstellungen ...'
+        OnClick = WinPreferencesItemClick
       end
     end
     object HelpMenu: TMenuItem

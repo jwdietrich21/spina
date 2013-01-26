@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 280
+  Left = 276
   Height = 349
-  Top = 180
+  Top = 176
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -15,7 +15,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 330
+  ClientHeight = 349
   ClientWidth = 765
   Color = clWhite
   Icon.Data = {
@@ -317,7 +317,7 @@ object Hauptschirm: THauptschirm
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.1.3'
+  LCLVersion = '1.0.2.0'
   Visible = True
   object Calculate_Button: TButton
     Left = 656
@@ -335,7 +335,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'ng/dl'
       'ng/l'
@@ -352,7 +352,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'µg/l'
       'µg/dl'
@@ -368,7 +368,7 @@ object Hauptschirm: THauptschirm
     Top = 200
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'pg/ml'
       'ng/l'
@@ -384,7 +384,7 @@ object Hauptschirm: THauptschirm
     Top = 224
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 0
     Items.Strings = (
       'µg/l'
       'ng/dl'
@@ -423,8 +423,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 81
-      ClientWidth = 213
+      ClientHeight = 76
+      ClientWidth = 209
       Font.Color = clBlack
       Items.Strings = (
         'rhTSH-Substitution'
@@ -445,8 +445,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 158
-      ClientWidth = 212
+      ClientHeight = 156
+      ClientWidth = 208
       Color = clNone
       Font.Color = clBlack
       Font.Height = -10
@@ -479,8 +479,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 157
-      ClientWidth = 212
+      ClientHeight = 155
+      ClientWidth = 208
       Color = clNone
       Font.Color = clBlack
       Font.Height = -10
@@ -611,8 +611,8 @@ object Hauptschirm: THauptschirm
       Top = 8
       Width = 272
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 262
-      ClientWidth = 268
+      ClientHeight = 258
+      ClientWidth = 264
       TabOrder = 3
       object Image1: TImage
         Left = -116
@@ -3333,7 +3333,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 97
-        Height = 21
+        Height = 22
         Top = 194
         Width = 56
         TabOrder = 1
@@ -3341,7 +3341,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 196
-        Height = 21
+        Height = 22
         Top = 30
         Width = 54
         TabOrder = 2
@@ -3354,7 +3354,7 @@ object Hauptschirm: THauptschirm
         Top = 54
         Width = 56
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'mU/l'
@@ -3372,7 +3372,7 @@ object Hauptschirm: THauptschirm
         Top = 220
         Width = 67
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'ng/dl'
@@ -3391,7 +3391,7 @@ object Hauptschirm: THauptschirm
         Top = 54
         Width = 66
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'pg/ml'
@@ -3410,7 +3410,7 @@ object Hauptschirm: THauptschirm
         Top = 6
         Width = 56
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'FT3'
@@ -3428,7 +3428,7 @@ object Hauptschirm: THauptschirm
         Top = 172
         Width = 56
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'FT4'
@@ -3441,7 +3441,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = 4
-        Height = 21
+        Height = 22
         Top = 30
         Width = 56
         TabOrder = 0
@@ -3451,7 +3451,7 @@ object Hauptschirm: THauptschirm
   end
   object SPINAThyrLabel: TLabel
     Left = 16
-    Height = 14
+    Height = 13
     Top = 312
     Width = 54
     Caption = 'SPINA Thyr'
@@ -3768,7 +3768,15 @@ object Hauptschirm: THauptschirm
         Caption = 'Über SPINA'
         OnClick = HandleAbout
       end
-      object MenuItem3: TMenuItem
+      object Divider_0_1: TMenuItem
+        Caption = '-'
+      end
+      object MacPreferencesItem: TMenuItem
+        Caption = 'Einstellungen ...'
+        ShortCut = 4284
+        OnClick = MacPreferencesItemClick
+      end
+      object Divider_0_2: TMenuItem
         Caption = '-'
       end
     end
@@ -3785,7 +3793,7 @@ object Hauptschirm: THauptschirm
         ShortCut = 4183
         OnClick = CloseMenuItemClick
       end
-      object MenuItem10: TMenuItem
+      object Divider_1_1: TMenuItem
         Caption = '-'
       end
       object PageSetupMenuItem: TMenuItem
@@ -3797,7 +3805,7 @@ object Hauptschirm: THauptschirm
         ShortCut = 4176
         OnClick = PrintMenuItemClick
       end
-      object MenuItem13: TMenuItem
+      object Divider_1_2: TMenuItem
         Caption = '-'
       end
       object QuitMenuItem: TMenuItem
@@ -3814,7 +3822,7 @@ object Hauptschirm: THauptschirm
         ShortCut = 4185
         OnClick = UndoMenuItemClick
       end
-      object MenuItem5: TMenuItem
+      object Divider_2_1: TMenuItem
         Caption = '-'
       end
       object CutMenuItem: TMenuItem
@@ -3837,13 +3845,20 @@ object Hauptschirm: THauptschirm
         Hint = 'Löschen'
         OnClick = DeleteMenuItemClick
       end
-      object MenuItem16: TMenuItem
+      object Divider_2_2: TMenuItem
         Caption = '-'
       end
       object CopyResultMenuItem: TMenuItem
         Caption = 'Ergebnis kopieren'
         ShortCut = 4178
         OnClick = Ergebniskopieren1Click
+      end
+      object Divider_2_3: TMenuItem
+        Caption = '-'
+      end
+      object WinPreferencesItem: TMenuItem
+        Caption = 'Einstellungen ...'
+        OnClick = WinPreferencesItemClick
       end
     end
     object HelpMenu: TMenuItem

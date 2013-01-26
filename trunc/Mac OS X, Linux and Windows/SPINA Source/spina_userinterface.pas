@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
   gettext, SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog,
-  HandlePreferences, Math
+  HandlePreferences, SetPreferences, Math
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -49,6 +49,10 @@ type
     CDISC_defaults: TMemo;
     MainMenu: TMainMenu;
     ActionList1: TActionList;
+    MacPreferencesItem: TMenuItem;
+    Divider_0_2: TMenuItem;
+    Divider_2_3: TMenuItem;
+    WinPreferencesItem: TMenuItem;
     PopupDiv1: TMenuItem;
     PopupCopyResult: TMenuItem;
     PopupCopy: TMenuItem;
@@ -80,23 +84,23 @@ type
     HelpMenu: TMenuItem;
     AboutMenuItem: TMenuItem;
     AppleMenu: TMenuItem;
-    MenuItem10: TMenuItem;
+    Divider_1_1: TMenuItem;
     AppleAboutMenuItem: TMenuItem;
-    MenuItem3: TMenuItem;
+    Divider_0_1: TMenuItem;
     ResultField: TMemo;
     PageSetupDialog1: TPageSetupDialog;
     PrintDialog1: TPrintDialog;
     PrinterSetupDialog1: TPrinterSetupDialog;
     PrintMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
-    MenuItem13: TMenuItem;
+    Divider_1_2: TMenuItem;
     QuitMenuItem: TMenuItem;
     DeleteMenuItem: TMenuItem;
-    MenuItem16: TMenuItem;
+    Divider_2_2: TMenuItem;
     CopyResultMenuItem: TMenuItem;
     NewMenuItem: TMenuItem;
     UndoMenuItem: TMenuItem;
-    MenuItem5: TMenuItem;
+    Divider_2_1: TMenuItem;
     CutMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     PasteMenuItem: TMenuItem;
@@ -143,6 +147,8 @@ type
     procedure FT4ItemsChange(Sender: TObject);
     procedure HandleAbout(Sender: TObject);
     procedure AppleMenuClick(Sender: TObject);
+    procedure MacPreferencesItemClick(Sender: TObject);
+    procedure WinPreferencesItemClick(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
@@ -188,6 +194,9 @@ var
   gLineSpacing: integer;
 
 procedure AdaptMenus;
+procedure GetPreferences;
+procedure AdjustUnitFactors;
+procedure ComposeRRHints;
 
 implementation
 
@@ -744,6 +753,16 @@ end;
 procedure THauptschirm.AppleMenuClick(Sender: TObject);
 begin
 
+end;
+
+procedure THauptschirm.MacPreferencesItemClick(Sender: TObject);
+begin
+  DisplayPreferencesDlg;
+end;
+
+procedure THauptschirm.WinPreferencesItemClick(Sender: TObject);
+begin
+  DisplayPreferencesDlg;
 end;
 
 procedure THauptschirm.NewMenuItemClick(Sender: TObject);
