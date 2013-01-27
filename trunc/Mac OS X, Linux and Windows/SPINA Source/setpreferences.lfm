@@ -1,7 +1,7 @@
 object PreferencesForm: TPreferencesForm
-  Left = 287
+  Left = 272
   Height = 400
-  Top = 384
+  Top = 194
   Width = 515
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog

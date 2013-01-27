@@ -75,6 +75,22 @@ const
   kHintCaption2 = 'Hint:';
   kPreferencesHint1 = 'Die Voreinstellungsdatei wurde neu angelegt. Bitte überprüfen Sie Parameter und Maßeinheiten.';
   kPreferencesHint2 = 'A new preferences file has been created. Please check parameters and measurement units.';
+  kPreferences1 = 'Einstellungen';
+  kPreferences2 = 'Preferences';
+  kMethodLabel1 = 'Methode';
+  kMethodLabel2 = 'Method';
+  kUnitLabel1 = 'Einheit';
+  kUnitLabel2 = 'Unit';
+  kUnitsGroupCaption1 = 'Methoden und Masseinheiten:';
+  kUnitsGroupCaption2 = 'Methods and measurement units:';
+  kRemember1 = 'Zuletzt verwendete Masseinheiten merken';
+  kRemember2 = 'Remember last used unit';
+  kCDISCCaption1 = 'Referenzbereiche:';
+  kCDISCCaption2 = 'Reference values:';
+  kCancel1 = 'Abbrechen';
+  kCancel2 = 'Cancel';
+  kReadCDISC1 = 'Aus Datei lesen ...';
+  kReadCDISC2 = 'Read from file ...';
   kMarginSpaces = '                                    ';
 
   BASE_URL = 'http://spina.medical-cybernetics.de';

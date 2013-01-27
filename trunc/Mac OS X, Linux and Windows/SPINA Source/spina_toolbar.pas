@@ -121,7 +121,7 @@ end;
 
 procedure AdaptLanguages;
 begin
-  if gInterfaceLanguage = English then
+  if gInterfaceLanguage <> German then
   begin
     gAnleitung1 := kAnleitung12;
     gAnleitung2 := kAnleitung22;
@@ -169,8 +169,10 @@ begin
     SPINAToolbar.PasteMenuItem.Caption := 'Paste';
     SPINAToolbar.DeleteMenuItem.Caption := 'Clear';
     SPINAToolbar.CopyResultMenuItem.Caption := 'Copy Result';
+    SPINAToolbar.WinPreferencesItem.Caption := kPreferences2 + ' ...';
     SPINAToolbar.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
+    SPINAToolbar.MacPreferencesItem.Caption := kPreferences2 + ' ...';
   end
   else
   begin
@@ -185,6 +187,8 @@ begin
     SPINAToolbar.FileMenu.Caption := 'Datei';
     SPINAToolbar.UndoMenuItem.Caption := 'Rückgängig';
       {$ENDIF}
+    SPINAToolbar.MacPreferencesItem.Caption := kPreferences1 + ' ...';
+    SPINAToolbar.WinPreferencesItem.Caption := kPreferences1 + ' ...';
     gAnleitung1 := kAnleitung11;
     gAnleitung2 := kAnleitung21;
     gVerhaltensparameter := kVerhaltensparameter1;
@@ -220,10 +224,14 @@ begin
   modifierKey := [ssMeta];
   SPINAToolbar.HelpMenu.Visible := False;
   SPINAToolbar.AppleMenu.Visible := True;
+  SPINAToolbar.Divider_2_3.Visible := False;
+  SPINAToolbar.WinPreferencesItem.Visible := False;
   {$ELSE}
   modifierKey := [ssCtrl];
   SPINAToolbar.HelpMenu.Visible := True;
   SPINAToolbar.AppleMenu.Visible := False;
+  SPINAToolbar.Divider_2_3.Visible := True;
+  SPINAToolbar.WinPreferencesItem.Visible := True;
   {$ENDIF}
   SPINAToolbar.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
   SPINAToolbar.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);

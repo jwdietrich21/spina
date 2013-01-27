@@ -60,6 +60,7 @@ type
     MethodLabel: TLabel;
     UnitsGroupBox: TGroupBox;
     OKButton: TButton;
+    procedure UpdateDisplay(Sender: TObject);
     procedure DisplayReferenceRanges(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -85,6 +86,33 @@ implementation
 
 uses
   SPINA_UserInterface;
+
+procedure TPreferencesForm.UpdateDisplay(Sender: TObject);
+{I18n: Adapts labels etc. to system language}
+begin
+  if gInterfaceLanguage = German then
+    begin
+      MethodLabel.Caption := kMethodLabel1;
+      UnitLabel.Caption := kUnitLabel1;
+      UnitsGroupBox.Caption := kUnitsGroupCaption1;
+      PreferencesForm.Caption := kPreferences1;
+      RememberCheckBox.Caption := kRemember1;
+      CDISCGroupBox.Caption := kCDISCCaption1;
+      CancelButton.Caption := kCancel1;
+      ReadCDISCButton.Caption := kReadCDISC1;
+    end
+  else
+    begin
+      MethodLabel.Caption := kMethodLabel2;
+      UnitLabel.Caption := kUnitLabel2;
+      UnitsGroupBox.Caption := kUnitsGroupCaption2;
+      PreferencesForm.Caption := kPreferences2;
+      RememberCheckBox.Caption := kRemember2;
+      CDISCGroupBox.Caption := kCDISCCaption2;
+      CancelButton.Caption := kCancel2;
+      ReadCDISCButton.Caption := kReadCDISC2;
+    end;
+end;
 
 procedure TPreferencesForm.DisplayReferenceRanges(Sender: TObject);
 begin
@@ -145,77 +173,93 @@ var
   found: boolean;
   i: integer;
 begin
-  {ReadPreferences; }  {read preferences from XML file}
+  {ReadPreferences; }{read preferences from XML file}
   if gPreferences.T4.Method = freeHormone then
     T4MethodComboBox.ItemIndex := 0
   else
-    begin
-      T4MethodComboBox.ItemIndex := 1;
-      T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
-    end;
+  begin
+    T4MethodComboBox.ItemIndex := 1;
+    T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
+  end;
   if gPreferences.T3.Method = freeHormone then
     T3MethodComboBox.ItemIndex := 0
   else
-    begin
-      T3MethodComboBox.ItemIndex := 1;
-      T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
-    end;
-  found := false;
+  begin
+    T3MethodComboBox.ItemIndex := 1;
+    T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
+  end;
+  found := False;
   with gPreferences do
   begin
     for i := 0 to TSHUnitComboBox.Items.Count - 1 do
+    begin
+      if TSH.measurementUnit = TSHUnitComboBox.Items[i] then
       begin
-        if TSH.measurementUnit = TSHUnitComboBox.Items[i] then
-          begin
-            found := true;
-            TSHUnitComboBox.ItemIndex := i;
-            break;
-          end;
+        found := True;
+        TSHUnitComboBox.ItemIndex := i;
+        break;
       end;
-    if found = false then
-      begin
-        TSHUnitComboBox.Items.Add(TSH.measurementUnit);
-        TSHUnitComboBox.ItemIndex := i + 1;
-      end;
+    end;
+    if found = False then
+    begin
+      TSHUnitComboBox.Items.Add(TSH.measurementUnit);
+      TSHUnitComboBox.ItemIndex := i + 1;
+    end;
     for i := 0 to T4UnitComboBox.Items.Count - 1 do
+    begin
+      if T4.measurementUnit = T4UnitComboBox.Items[i] then
       begin
-        if T4.measurementUnit = T4UnitComboBox.Items[i] then
-          begin
-            found := true;
-            T4UnitComboBox.ItemIndex := i;
-            break;
-          end;
+        found := True;
+        T4UnitComboBox.ItemIndex := i;
+        break;
       end;
-    if found = false then
-      begin
-        T4UnitComboBox.Items.Add(T4.measurementUnit);
-        T4UnitComboBox.ItemIndex := i + 1;
-      end;
+    end;
+    if found = False then
+    begin
+      T4UnitComboBox.Items.Add(T4.measurementUnit);
+      T4UnitComboBox.ItemIndex := i + 1;
+    end;
     for i := 0 to T3UnitComboBox.Items.Count - 1 do
+    begin
+      if T3.measurementUnit = T3UnitComboBox.Items[i] then
       begin
-        if T3.measurementUnit = T3UnitComboBox.Items[i] then
-          begin
-            found := true;
-            T3UnitComboBox.ItemIndex := i;
-            break;
-          end;
+        found := True;
+        T3UnitComboBox.ItemIndex := i;
+        break;
       end;
-    if found = false then
-      begin
-        T3UnitComboBox.Items.Add(T3.measurementUnit);
-        T3UnitComboBox.ItemIndex := i + 1;
-      end;
+    end;
+    if found = False then
+    begin
+      T3UnitComboBox.Items.Add(T3.measurementUnit);
+      T3UnitComboBox.ItemIndex := i + 1;
+    end;
     T4MethodComboBoxAdjust(Hauptschirm);
     T3MethodComboBoxAdjust(Hauptschirm);
   end;
 end;
 
 procedure TPreferencesForm.OKButtonClick(Sender: TObject);
+var
+  CDISCStream: TMemoryStream;
+  originalFileName: string;
 begin
   if not RememberCheckBox.Checked then
-    begin
-      AdjustUnitFactors;
+  begin
+    AdjustUnitFactors;
+  end;
+  originalFileName := CDISCOpenDialog.FileName;
+  if originalFileName <> '' then
+  begin
+    CDISCStream := TMemoryStream.Create;
+    try
+      CDISCStream.LoadFromFile(originalFileName);
+      CDISCStream.SaveToFile(RRFile);
+    finally
+      CDISCStream.Free;
     end;
+    ComposeRRHints;
+  end;
+  SavePreferences;
   PreferencesForm.Close;
   SPINA_UserInterface.GetPreferences;
 end;
@@ -223,42 +267,46 @@ end;
 procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
 begin
   if CDISCOpenDialog.Execute then
-    begin
-      GetReferenceValues(CDISCOpenDialog.FileName);
-      DisplayReferenceRanges(Sender);
-    end;
+  begin
+    GetReferenceValues(CDISCOpenDialog.FileName);
+    DisplayReferenceRanges(Sender);
+  end;
 end;
 
 procedure TPreferencesForm.RememberCheckBoxChange(Sender: TObject);
 begin
   if RememberCheckBox.Checked then
-    begin
-      gPreferences.rememberUsedUnits := true;
-      T4MethodComboBox.Enabled := false;
-      T3MethodComboBox.Enabled := false;
-      TSHUnitComboBox.Enabled := false;
-      T4UnitComboBox.Enabled := false;
-      T3UnitComboBox.Enabled := false;
-    end
+  begin
+    gPreferences.rememberUsedUnits := True;
+    T4MethodComboBox.Enabled := False;
+    T3MethodComboBox.Enabled := False;
+    TSHUnitComboBox.Enabled := False;
+    T4UnitComboBox.Enabled := False;
+    T3UnitComboBox.Enabled := False;
+  end
   else
-    begin
-      gPreferences.rememberUsedUnits := false;
-      T4MethodComboBox.Enabled := true;
-      T3MethodComboBox.Enabled := true;
-      TSHUnitComboBox.Enabled := true;
-      T4UnitComboBox.Enabled := true;
-      T3UnitComboBox.Enabled := true;
-    end;
+  begin
+    gPreferences.rememberUsedUnits := False;
+    T4MethodComboBox.Enabled := True;
+    T3MethodComboBox.Enabled := True;
+    TSHUnitComboBox.Enabled := True;
+    T4UnitComboBox.Enabled := True;
+    T3UnitComboBox.Enabled := True;
+  end;
 end;
 
 procedure TPreferencesForm.FormActivate(Sender: TObject);
 begin
+  UpdateDisplay(Sender);
   GetPreferences(Sender);
+  if gPreferences.rememberUsedUnits then
+    RememberCheckBox.Checked := True
+  else
+    RememberCheckBox.Checked := False;
   DisplayReferenceRanges(Sender);
 end;
 
-procedure TPreferencesForm.FormClose(Sender: TObject;
-  var CloseAction: TCloseAction);
+procedure TPreferencesForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   GetReferenceValues(RRFile);
 end;
@@ -273,4 +321,5 @@ initialization
   {$I setpreferences.lrs}
 
 end.
+
 

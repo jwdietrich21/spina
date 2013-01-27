@@ -261,6 +261,11 @@ begin
     Doc.Appendchild(RootNode);
     RootNode := Doc.DocumentElement;
 
+    if gPreferences.rememberUsedUnits then
+      RootNode.AppendChild(SimpleNode(Doc, 'remember', 'true'))
+    else
+      RootNode.AppendChild(SimpleNode(Doc, 'remember', 'false'));
+
     ElementNode := Doc.CreateElement('methods');
     if gPreferences.T4.Method = freeHormone then
       ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'free'))
@@ -297,6 +302,7 @@ procedure CreateNewPreferences;
 begin
   with gPreferences do
     begin
+      rememberUsedUnits := true;
       T4.Method := freeHormone;
       T3.Method := freeHormone;
       TSH.measurementUnit := TSH_UNIT;
@@ -323,6 +329,12 @@ begin
   if FileExists(theFileName) then
   try
     ReadXMLFile(Doc, theFileName);
+
+    theString := NodeContent(Doc.DocumentElement, 'remember');
+    if theString = 'true' then
+      gPreferences.rememberUsedUnits := true
+    else
+      gPreferences.rememberUsedUnits := false;
 
     RootNode := Doc.DocumentElement.FindNode('methods');
     theString := NodeContent(RootNode, 'T4');

@@ -673,10 +673,14 @@ begin
   modifierKey := [ssMeta];
   Hauptschirm.HelpMenu.Visible := False;
   Hauptschirm.AppleMenu.Visible := True;
+  Hauptschirm.Divider_2_3.Visible := False;
+  Hauptschirm.WinPreferencesItem.Visible := False;
   {$ELSE}
   modifierKey := [ssCtrl];
   Hauptschirm.HelpMenu.Visible := True;
   Hauptschirm.AppleMenu.Visible := False;
+  Hauptschirm.Divider_2_3.Visible := True;
+  Hauptschirm.WinPreferencesItem.Visible := True;
   {$ENDIF}
   Hauptschirm.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
   Hauptschirm.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
