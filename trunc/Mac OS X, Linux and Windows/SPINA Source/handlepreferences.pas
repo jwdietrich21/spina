@@ -493,9 +493,7 @@ end;
 
 procedure GetReferenceValues(theFileName: String);
 {reads reference values from a CDISC LAB model-compliant XML file.}
-{This routine ignores sex- and age-specific reference values in this version,}
-{so that the normal definition for females between 0 and 130 years}
-{is taken as a standard for the whole population}
+{This version of the routine ignores sex- and age-specific reference values}
 var
   Doc: TXMLDocument;
   RootNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode, NormalNode, UnitsNode, NormalDefinitionNode: TDOMNode;

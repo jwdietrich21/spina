@@ -286,10 +286,10 @@ object PreferencesForm: TPreferencesForm
     end
   end
   object CancelButton: TButton
-    Left = 320
+    Left = 288
     Height = 25
     Top = 357
-    Width = 75
+    Width = 107
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
