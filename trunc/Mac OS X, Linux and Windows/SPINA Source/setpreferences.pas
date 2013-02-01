@@ -265,10 +265,12 @@ begin
 end;
 
 procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
+var
+  theCode: integer;
 begin
   if CDISCOpenDialog.Execute then
   begin
-    GetReferenceValues(CDISCOpenDialog.FileName);
+    GetReferenceValues(CDISCOpenDialog.FileName, theCode);
     DisplayReferenceRanges(Sender);
   end;
 end;
@@ -307,13 +309,17 @@ begin
 end;
 
 procedure TPreferencesForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+var
+  theCode: integer;
 begin
-  GetReferenceValues(RRFile);
+  GetReferenceValues(RRFile, theCode);
 end;
 
 procedure TPreferencesForm.CancelButtonClick(Sender: TObject);
+var
+  theCode: integer;
 begin
-  GetReferenceValues(RRFile);
+  GetReferenceValues(RRFile, theCode);
   PreferencesForm.Close;
 end;
 

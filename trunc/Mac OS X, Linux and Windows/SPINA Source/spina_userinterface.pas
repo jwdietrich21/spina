@@ -695,6 +695,8 @@ begin
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
+var
+  theCode: integer;
 begin
   Hauptschirm.HorzScrollBar.Visible := False;
   Hauptschirm.VertScrollBar.Visible := False;
@@ -702,7 +704,7 @@ begin
   Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
   gCDISC_RR := Hauptschirm.CDISC_defaults.Lines;
   GetPreferences;
-  GetReferenceValues(RRFile);
+  GetReferenceValues(RRFile, theCode);
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);

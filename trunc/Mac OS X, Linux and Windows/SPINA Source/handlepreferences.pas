@@ -22,6 +22,12 @@ unit HandlePreferences;
 
 {$mode objfpc}
 
+{Return codes of procedure GetReferenceValues:
+0: No Error.
+1: Root node with ID "SPIt" not found
+6: Error saving file.
+10: New file created.
+}
 interface
 
 uses
@@ -44,7 +50,7 @@ function EncodeGreek(theString: string): string;
 function DecodeGreek(theString: string): string;
 procedure ReadPreferences;
 procedure ComposeRRStrings;
-procedure GetReferenceValues(theFileName: String);
+procedure GetReferenceValues(theFileName: String; var returnCode: integer);
 procedure SavePreferences;
 
 
@@ -491,7 +497,7 @@ begin
     gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
 end;
 
-procedure GetReferenceValues(theFileName: String);
+procedure GetReferenceValues(theFileName: String; var returnCode: integer);
 {reads reference values from a CDISC LAB model-compliant XML file.}
 {This version of the routine ignores sex- and age-specific reference values}
 var
@@ -502,6 +508,7 @@ var
   oldSeparator: Char;
   SI: boolean;
 begin
+  returnCode := 0;           {no error}
   with gReferenceRanges do
     begin                   {define emtpy default values}
       TSH.ln := Math.NaN;
@@ -556,7 +563,10 @@ begin
   oldSeparator := DecimalSeparator;
   DecimalSeparator := DEC_POINT;
   if not FileExists(theFileName) then
-    gCDISC_RR.SaveToFile(theFileName);  {saves a minimal standard file}
+    begin
+      gCDISC_RR.SaveToFile(theFileName);  {saves a minimal standard file}
+      returnCode := 10;
+    end;
   if FileExists(theFileName) then       {could this file be created (or did it already exist)?}
   try
     ReadXMLFile(Doc, theFileName);
@@ -874,7 +884,9 @@ begin
               BatteryNode := BatteryNode.NextSibling
             else BatteryNode := nil;
           end;
-        end;
+        end
+    else
+      returnCode := 1;
     ;
   finally
     Doc.Free;
@@ -898,6 +910,7 @@ begin
         GD.ln := 20 / 1e9;
         GD.hn := 40 / 1e9;
       end;
+    returnCode := 6;
   end;
   DecimalSeparator := oldSeparator;
   ComposeRRStrings;
