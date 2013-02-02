@@ -300,7 +300,7 @@ end;
 
 procedure TSPINAToolbar.CloseMenuItemClick(Sender: TObject);
 begin
-  Hauptschirm.Close;
+  Screen.ActiveForm.Close;
 end;
 
 procedure TSPINAToolbar.CopyResultMenuItemClick(Sender: TObject);

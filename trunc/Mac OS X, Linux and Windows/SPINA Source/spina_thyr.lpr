@@ -66,6 +66,7 @@ begin
     WindowState := wsNormal;
     AlphaBlend := false;
   end;
+  AboutBox.Tabs.TabIndex := 0;
   AboutBox.Close;
   ResultForm.Close;
   gStartup := false;
