@@ -78,7 +78,6 @@ begin
     SplashScreen.Free;
     SplashScreen:=nil;
   end;
-
   if gPreferences.rememberUsedUnits then
     SavePreferences;
   Hauptschirm.Free;

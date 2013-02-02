@@ -551,10 +551,11 @@ object SplashScreen: TSplashScreen
     }
     Transparent = True
   end
-  object Timer1: TTimer
-    Interval = 2000
-    OnTimer = TimerEvent
-    left = 336
-    top = 216
+  object IdleTimer1: TIdleTimer
+    AutoEnabled = True
+    Interval = 5000
+    OnTimer = IdleTimer1Timer
+    left = 368
+    top = 232
   end
 end

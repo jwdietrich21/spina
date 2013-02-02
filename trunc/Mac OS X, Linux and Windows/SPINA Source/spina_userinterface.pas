@@ -47,6 +47,7 @@ type
 
   THauptschirm = class(TForm)
     CDISC_defaults: TMemo;
+    Label1: TLabel;
     MainMenu: TMainMenu;
     ActionList1: TActionList;
     MacPreferencesItem: TMenuItem;
@@ -199,8 +200,6 @@ procedure AdjustUnitFactors;
 procedure ComposeRRHints;
 
 implementation
-
-uses SPINA_SplashScreen;
 
 function GetOSLanguage: string;
 var

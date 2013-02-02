@@ -33,17 +33,17 @@ type
   { TSplashScreen }
 
   TSplashScreen = class(TForm)
+    IdleTimer1: TIdleTimer;
     Image1: TImage;
-    Timer1: TTimer;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure HandleAbout(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure IdleTimer1Timer(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
-    procedure TimerEvent(Sender: TObject);
   private
     { private declarations }
   public
@@ -57,11 +57,6 @@ implementation
 
 { TSplashScreen }
 
-procedure TSplashScreen.TimerEvent(Sender: TObject);
-begin
-  close;
-end;
-
 procedure TSplashScreen.FormCreate(Sender: TObject);
 begin
   refresh;
@@ -70,7 +65,11 @@ begin
   {$ELSE}
   FormStyle:=fsStayOnTop;
   {$ENDIF}
+end;
 
+procedure TSplashScreen.IdleTimer1Timer(Sender: TObject);
+begin
+  close;
 end;
 
 procedure TSplashScreen.HandleAbout(Sender: TObject);
