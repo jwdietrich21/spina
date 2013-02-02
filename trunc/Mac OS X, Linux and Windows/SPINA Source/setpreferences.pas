@@ -70,7 +70,7 @@ type
     procedure RememberCheckBoxChange(Sender: TObject);
     procedure T4MethodComboBoxAdjust(Sender: TObject);
     procedure T3MethodComboBoxAdjust(Sender: TObject);
-    procedure GetPreferences(Sender: TObject);
+    procedure AdjustCombos(Sender: TObject);
   private
     { private declarations }
   public
@@ -79,6 +79,8 @@ type
 
 var
   PreferencesForm: TPreferencesForm;
+  gSavedReferenceRanges, gSavedSIReferenceRanges, gSavedConvReferenceRanges: tReferenceValues;
+  gCode: integer;
 
 procedure DisplayPreferencesDlg;
 
@@ -168,12 +170,11 @@ begin
   end;
 end;
 
-procedure TPreferencesForm.GetPreferences(Sender: TObject);
+procedure TPreferencesForm.AdjustCombos(Sender: TObject);
 var
   found: boolean;
   i: integer;
 begin
-  {ReadPreferences; }{read preferences from XML file}
   if gPreferences.T4.Method = freeHormone then
     T4MethodComboBox.ItemIndex := 0
   else
@@ -248,7 +249,7 @@ begin
     AdjustUnitFactors;
   end;
   originalFileName := CDISCOpenDialog.FileName;
-  if originalFileName <> '' then
+  if (originalFileName <> '') and ((gCode = 0) or (gCode = 10)) then
   begin
     CDISCStream := TMemoryStream.Create;
     try
@@ -270,8 +271,18 @@ var
 begin
   if CDISCOpenDialog.Execute then
   begin
-    GetReferenceValues(CDISCOpenDialog.FileName, theCode);
-    DisplayReferenceRanges(Sender);
+    GetReferenceValues(CDISCOpenDialog.FileName, gCode);
+    if (gCode = 0) or (gCode = 10) then
+      DisplayReferenceRanges(Sender)
+    else
+    begin
+      case gCode of
+        1: ShowMessage(RR_FORMAT_ERROR_MESSAGE);
+        2: ShowMessage(RR_SPINA_ERROR_MESSAGE);
+        6: ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
+      end;
+      GetReferenceValues(RRFile, theCode);
+    end;
   end;
 end;
 
@@ -300,7 +311,10 @@ end;
 procedure TPreferencesForm.FormActivate(Sender: TObject);
 begin
   UpdateDisplay(Sender);
-  GetPreferences(Sender);
+  gSavedReferenceRanges := gReferenceRanges;
+  gSavedSIReferenceRanges := gSIReferenceRanges;
+  gSavedConvReferenceRanges := gConvReferenceRanges;
+  AdjustCombos(Sender);
   if gPreferences.rememberUsedUnits then
     RememberCheckBox.Checked := True
   else
@@ -320,6 +334,12 @@ var
   theCode: integer;
 begin
   GetReferenceValues(RRFile, theCode);
+  if (theCode <> 0) and (theCode <> 10) then
+  begin
+    gReferenceRanges := gSavedReferenceRanges;
+    gSIReferenceRanges := gSavedSIReferenceRanges;
+    gConvReferenceRanges := gSavedConvReferenceRanges;
+  end;
   PreferencesForm.Close;
 end;
 

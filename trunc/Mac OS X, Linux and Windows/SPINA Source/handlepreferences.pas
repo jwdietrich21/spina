@@ -24,7 +24,8 @@ unit HandlePreferences;
 
 {Return codes of procedure GetReferenceValues:
 0: No Error.
-1: Root node with ID "SPIt" not found
+1: Malformatted XML file
+2: Root node with ID "SPIt" not found
 6: Error saving file.
 10: New file created.
 }
@@ -886,7 +887,7 @@ begin
           end;
         end
     else
-      returnCode := 1;
+      returnCode := 2;
     ;
   finally
     Doc.Free;
