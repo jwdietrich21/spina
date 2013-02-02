@@ -1,7 +1,7 @@
 object PreferencesForm: TPreferencesForm
   Left = 272
   Height = 400
-  Top = 194
+  Top = 193
   Width = 515
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
@@ -74,6 +74,7 @@ object PreferencesForm: TPreferencesForm
         'ng/l'
         'pmol/l'
       )
+      OnChange = T4UnitComboBoxChange
       ParentFont = False
       TabOrder = 0
       Text = 'ng/dl'
@@ -93,6 +94,7 @@ object PreferencesForm: TPreferencesForm
         'ng/l'
         'pmol/l'
       )
+      OnChange = T3UnitComboBoxChange
       ParentFont = False
       TabOrder = 1
       Text = 'pg/ml'
@@ -111,6 +113,7 @@ object PreferencesForm: TPreferencesForm
         'FT4'
         'T4'
       )
+      OnChange = T4MethodComboBoxChange
       ParentFont = False
       TabOrder = 2
       Text = 'FT4'
@@ -122,7 +125,6 @@ object PreferencesForm: TPreferencesForm
       Width = 178
       Caption = 'Remember last used unit'
       Checked = True
-      Enabled = False
       OnChange = RememberCheckBoxChange
       State = cbChecked
       TabOrder = 3
@@ -157,6 +159,7 @@ object PreferencesForm: TPreferencesForm
         'mU/l'
         'µU/ml'
       )
+      OnChange = TSHUnitComboBoxChange
       ParentFont = False
       TabOrder = 4
       Text = 'mU/l'
@@ -175,6 +178,7 @@ object PreferencesForm: TPreferencesForm
         'FT3'
         'T3'
       )
+      OnChange = T3MethodComboBoxChange
       ParentFont = False
       TabOrder = 5
       Text = 'FT3'

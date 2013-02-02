@@ -61,6 +61,14 @@ type
     UnitsGroupBox: TGroupBox;
     OKButton: TButton;
     procedure UpdateDisplay(Sender: TObject);
+    procedure AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
+    procedure AdjustCombos(Sender: TObject);
+    procedure MethodComboBoxChange(Sender: TObject);
+    procedure T3MethodComboBoxChange(Sender: TObject);
+    procedure T3UnitComboBoxChange(Sender: TObject);
+    procedure T4MethodComboBoxChange(Sender: TObject);
+    procedure T4UnitComboBoxChange(Sender: TObject);
+    procedure TSHUnitComboBoxChange(Sender: TObject);
     procedure DisplayReferenceRanges(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -70,7 +78,6 @@ type
     procedure RememberCheckBoxChange(Sender: TObject);
     procedure T4MethodComboBoxAdjust(Sender: TObject);
     procedure T3MethodComboBoxAdjust(Sender: TObject);
-    procedure AdjustCombos(Sender: TObject);
   private
     { private declarations }
   public
@@ -114,6 +121,122 @@ begin
       CancelButton.Caption := kCancel2;
       ReadCDISCButton.Caption := kReadCDISC2;
     end;
+end;
+
+procedure TPreferencesForm.AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
+begin
+  if T4Method = freeHormone then
+    T4MethodComboBox.ItemIndex := 0
+  else
+  begin
+    T4MethodComboBox.ItemIndex := 1;
+    T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
+    T4UnitCombobox.Text := T4UnitCombobox.Items.Strings[1];
+  end;
+  if T3Method = freeHormone then
+    T3MethodComboBox.ItemIndex := 0
+  else
+  begin
+    T3MethodComboBox.ItemIndex := 1;
+    T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
+    T3UnitCombobox.Text := T3UnitCombobox.Items.Strings[1];
+  end;
+end;
+
+procedure TPreferencesForm.AdjustCombos(Sender: TObject);
+var
+  found: boolean;
+  i: integer;
+begin
+  AdjustMethods(Sender, gPreferences.T4.Method, gPreferences.T3.Method);
+  found := False;
+  with gPreferences do
+  begin
+    for i := 0 to TSHUnitComboBox.Items.Count - 1 do
+    begin
+      if TSH.measurementUnit = TSHUnitComboBox.Items[i] then
+      begin
+        found := True;
+        TSHUnitComboBox.ItemIndex := i;
+        break;
+      end;
+    end;
+    if found = False then
+    begin
+      TSHUnitComboBox.Items.Add(TSH.measurementUnit);
+      TSHUnitComboBox.ItemIndex := i + 1;
+    end;
+    for i := 0 to T4UnitComboBox.Items.Count - 1 do
+    begin
+      if T4.measurementUnit = T4UnitComboBox.Items[i] then
+      begin
+        found := True;
+        T4UnitComboBox.ItemIndex := i;
+        break;
+      end;
+    end;
+    if found = False then
+    begin
+      T4UnitComboBox.Items.Add(T4.measurementUnit);
+      T4UnitComboBox.ItemIndex := i + 1;
+    end;
+    for i := 0 to T3UnitComboBox.Items.Count - 1 do
+    begin
+      if T3.measurementUnit = T3UnitComboBox.Items[i] then
+      begin
+        found := True;
+        T3UnitComboBox.ItemIndex := i;
+        break;
+      end;
+    end;
+    if found = False then
+    begin
+      T3UnitComboBox.Items.Add(T3.measurementUnit);
+      T3UnitComboBox.ItemIndex := i + 1;
+    end;
+    T4MethodComboBoxAdjust(Hauptschirm);
+    T3MethodComboBoxAdjust(Hauptschirm);
+  end;
+end;
+
+procedure TPreferencesForm.MethodComboBoxChange(Sender: TObject);
+var
+  tempT4Method, tempT3Method: tLabMethod;
+begin
+  if T4MethodComboBox.ItemIndex = 0 then
+    TempT4Method := freeHormone
+  else
+    TempT4Method := totalHormone;
+  if T3MethodComboBox.ItemIndex = 0 then
+    TempT3Method := freeHormone
+  else
+    TempT3Method := totalHormone;
+  AdjustMethods(Sender, tempT4Method, tempT3Method);
+end;
+
+procedure TPreferencesForm.TSHUnitComboBoxChange(Sender: TObject);
+begin
+
+end;
+
+procedure TPreferencesForm.T4UnitComboBoxChange(Sender: TObject);
+begin
+
+end;
+
+procedure TPreferencesForm.T4MethodComboBoxChange(Sender: TObject);
+begin
+  MethodComboBoxChange(Sender);
+end;
+
+procedure TPreferencesForm.T3UnitComboBoxChange(Sender: TObject);
+begin
+
+end;
+
+procedure TPreferencesForm.T3MethodComboBoxChange(Sender: TObject);
+begin
+  MethodComboBoxChange(Sender);
 end;
 
 procedure TPreferencesForm.DisplayReferenceRanges(Sender: TObject);
@@ -170,75 +293,6 @@ begin
   end;
 end;
 
-procedure TPreferencesForm.AdjustCombos(Sender: TObject);
-var
-  found: boolean;
-  i: integer;
-begin
-  if gPreferences.T4.Method = freeHormone then
-    T4MethodComboBox.ItemIndex := 0
-  else
-  begin
-    T4MethodComboBox.ItemIndex := 1;
-    T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
-  end;
-  if gPreferences.T3.Method = freeHormone then
-    T3MethodComboBox.ItemIndex := 0
-  else
-  begin
-    T3MethodComboBox.ItemIndex := 1;
-    T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
-  end;
-  found := False;
-  with gPreferences do
-  begin
-    for i := 0 to TSHUnitComboBox.Items.Count - 1 do
-    begin
-      if TSH.measurementUnit = TSHUnitComboBox.Items[i] then
-      begin
-        found := True;
-        TSHUnitComboBox.ItemIndex := i;
-        break;
-      end;
-    end;
-    if found = False then
-    begin
-      TSHUnitComboBox.Items.Add(TSH.measurementUnit);
-      TSHUnitComboBox.ItemIndex := i + 1;
-    end;
-    for i := 0 to T4UnitComboBox.Items.Count - 1 do
-    begin
-      if T4.measurementUnit = T4UnitComboBox.Items[i] then
-      begin
-        found := True;
-        T4UnitComboBox.ItemIndex := i;
-        break;
-      end;
-    end;
-    if found = False then
-    begin
-      T4UnitComboBox.Items.Add(T4.measurementUnit);
-      T4UnitComboBox.ItemIndex := i + 1;
-    end;
-    for i := 0 to T3UnitComboBox.Items.Count - 1 do
-    begin
-      if T3.measurementUnit = T3UnitComboBox.Items[i] then
-      begin
-        found := True;
-        T3UnitComboBox.ItemIndex := i;
-        break;
-      end;
-    end;
-    if found = False then
-    begin
-      T3UnitComboBox.Items.Add(T3.measurementUnit);
-      T3UnitComboBox.ItemIndex := i + 1;
-    end;
-    T4MethodComboBoxAdjust(Hauptschirm);
-    T3MethodComboBoxAdjust(Hauptschirm);
-  end;
-end;
-
 procedure TPreferencesForm.OKButtonClick(Sender: TObject);
 var
   CDISCStream: TMemoryStream;
@@ -246,7 +300,16 @@ var
 begin
   if not RememberCheckBox.Checked then
   begin
-    AdjustUnitFactors;
+    Hauptschirm.TSHUnitComboBox.ItemIndex := TSHUnitComboBox.ItemIndex;
+    Hauptschirm.TSHUnitComboBoxChange(Sender);
+    Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodComboBox.ItemIndex;
+    Hauptschirm.T4MethodComboBoxChange(Sender);
+    Hauptschirm.T4UnitComboBox.ItemIndex := T4UnitComboBox.ItemIndex;
+    hauptschirm.T4UnitComboBoxChange(Sender);
+    Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodComboBox.ItemIndex;
+    Hauptschirm.T3MethodComboBoxChange(Sender);
+    Hauptschirm.T3UnitComboBox.ItemIndex := T3UnitComboBox.ItemIndex;
+    Hauptschirm.T3UnitComboBoxChange(Sender);
   end;
   originalFileName := CDISCOpenDialog.FileName;
   if (originalFileName <> '') and ((gCode = 0) or (gCode = 10)) then
