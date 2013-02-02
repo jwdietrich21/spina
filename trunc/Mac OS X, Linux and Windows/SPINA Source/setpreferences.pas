@@ -126,20 +126,28 @@ end;
 procedure TPreferencesForm.AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
 begin
   if T4Method = freeHormone then
-    T4MethodComboBox.ItemIndex := 0
+    begin
+      T4MethodComboBox.ItemIndex := 0;
+      T4UnitCombobox.Items.Assign(Hauptschirm.FT4Items.Items);
+      T4UnitCombobox.Text := T4UnitCombobox.Items.Strings[0];
+    end
   else
   begin
     T4MethodComboBox.ItemIndex := 1;
     T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
-    T4UnitCombobox.Text := T4UnitCombobox.Items.Strings[1];
+    T4UnitCombobox.Text := T4UnitCombobox.Items.Strings[0];
   end;
   if T3Method = freeHormone then
-    T3MethodComboBox.ItemIndex := 0
+    begin
+      T3MethodComboBox.ItemIndex := 0;
+      T3UnitCombobox.Items.Assign(Hauptschirm.FT3Items.Items);
+      T3UnitCombobox.Text := T3UnitCombobox.Items.Strings[0];
+    end
   else
   begin
     T3MethodComboBox.ItemIndex := 1;
     T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
-    T3UnitCombobox.Text := T3UnitCombobox.Items.Strings[1];
+    T3UnitCombobox.Text := T3UnitCombobox.Items.Strings[0];
   end;
 end;
 
