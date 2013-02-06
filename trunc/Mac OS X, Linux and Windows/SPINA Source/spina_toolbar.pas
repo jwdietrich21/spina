@@ -56,6 +56,9 @@ type
     Divider_0_2: TMenuItem;
     Divider_2_15: TMenuItem;
     Divider_2_3: TMenuItem;
+    Divider_3_1: TMenuItem;
+    OnlineInfoItem: TMenuItem;
+    HelpItem: TMenuItem;
     WinPreferencesItem: TMenuItem;
     NewMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
@@ -89,8 +92,10 @@ type
     procedure EditMenuClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure HelpItemClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
+    procedure OnlineInfoItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PasteToolButtonClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
@@ -190,8 +195,10 @@ begin
       {$IFDEF LCLcarbon}
     Hauptschirm.FileMenu.Caption := 'Ablage';
     Hauptschirm.UndoMenuItem.Caption := 'Widerrufen';
+    Hauptschirm.HelpMenu.Caption := 'Hilfe';
     SPINAToolbar.FileMenu.Caption := 'Ablage';
     SPINAToolbar.UndoMenuItem.Caption := 'Widerrufen';
+    SPINAToolbar.HelpMenu.Caption := 'Hilfe';
       {$ELSE}
     Hauptschirm.FileMenu.Caption := 'Datei';
     Hauptschirm.UndoMenuItem.Caption := 'Rückgängig';
@@ -245,15 +252,19 @@ begin
   AdaptLanguages;
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];
-  SPINAToolbar.HelpMenu.Visible := False;
+  SPINAToolbar.HelpMenu.Caption := 'Help';
+  SPINAToolbar.AboutMenuItem.Visible := False;
   SPINAToolbar.AppleMenu.Visible := True;
   SPINAToolbar.Divider_2_3.Visible := False;
+  SPINAToolbar.Divider_3_1.Visible := False;
   SPINAToolbar.WinPreferencesItem.Visible := False;
   {$ELSE}
   modifierKey := [ssCtrl];
-  SPINAToolbar.HelpMenu.Visible := True;
+  SPINAToolbar.HelpMenu.Caption := '?';
+  SPINAToolbar.AboutMenuItem.Visible := True;
   SPINAToolbar.AppleMenu.Visible := False;
   SPINAToolbar.Divider_2_3.Visible := True;
+  SPINAToolbar.Divider_3_1.Visible := True;
   SPINAToolbar.WinPreferencesItem.Visible := True;
   {$ENDIF}
   SPINAToolbar.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
@@ -268,6 +279,11 @@ begin
   Hauptschirm.HintField.Text := gAnleitung1;
 end;
 
+procedure TSPINAToolbar.HelpItemClick(Sender: TObject);
+begin
+  Hauptschirm.HelpItemClick(Sender);
+end;
+
 procedure TSPINAToolbar.MacPreferencesItemClick(Sender: TObject);
 begin
   DisplayPreferencesDlg;
@@ -276,6 +292,11 @@ end;
 procedure TSPINAToolbar.NewMenuItemClick(Sender: TObject);
 begin
 
+end;
+
+procedure TSPINAToolbar.OnlineInfoItemClick(Sender: TObject);
+begin
+  Hauptschirm.OnlineInfoItemClick(Sender);
 end;
 
 procedure TSPINAToolbar.PageSetupMenuItemClick(Sender: TObject);

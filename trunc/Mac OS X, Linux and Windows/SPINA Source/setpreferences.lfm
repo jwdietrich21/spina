@@ -44,10 +44,14 @@ object PreferencesForm: TPreferencesForm
       ParentColor = False
     end
     object UnitLabel: TLabel
-      Left = 260
+      AnchorSideRight.Control = TSHUnitComboBox
+      AnchorSideRight.Side = asrBottom
+      Left = 233
       Height = 17
       Top = 30
       Width = 27
+      Alignment = taCenter
+      Anchors = [akTop, akRight]
       Caption = 'Unit'
       ParentColor = False
     end
@@ -60,7 +64,7 @@ object PreferencesForm: TPreferencesForm
       ParentColor = False
     end
     object T4UnitComboBox: TComboBox
-      Left = 260
+      Left = 193
       Height = 21
       Hint = 'Maßeinheit'
       Top = 78
@@ -80,7 +84,7 @@ object PreferencesForm: TPreferencesForm
       Text = 'ng/dl'
     end
     object T3UnitComboBox: TComboBox
-      Left = 260
+      Left = 194
       Height = 21
       Hint = 'Maßeinheit'
       Top = 102
@@ -146,7 +150,7 @@ object PreferencesForm: TPreferencesForm
       ParentColor = False
     end
     object TSHUnitComboBox: TComboBox
-      Left = 260
+      Left = 204
       Height = 21
       Hint = 'Maßeinheit'
       Top = 54

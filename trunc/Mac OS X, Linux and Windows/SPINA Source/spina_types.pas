@@ -95,6 +95,9 @@ const
 
   BASE_URL = 'http://spina.medical-cybernetics.de';
   SPINA_GLOBAL_ID = 'net.sf.spina';
+  HELP_URL = 'http://spina.sourceforge.net/manual.html';
+  METHOD_URL = 'http://www.ruhr-uni-bochum.de/spina-portal/';
+
 
   IMPLEMENTATION_MESSAGE = 'This function is not implemented in this version of SPINA Thyr.';
   FORMAT_MESSAGE = 'Please check your input.';

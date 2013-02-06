@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 280
+  Left = 296
   Height = 349
-  Top = 180
+  Top = 174
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -18,6 +18,7 @@ object Hauptschirm: THauptschirm
   ClientHeight = 349
   ClientWidth = 765
   Color = clWhite
+  Font.Height = -11
   Icon.Data = {
     962400000000010008001010020000000000B000000086000000101000000000
     000028010000360100001010000000000000680500005E020000101000000000
@@ -426,6 +427,7 @@ object Hauptschirm: THauptschirm
       ClientHeight = 76
       ClientWidth = 209
       Font.Color = clBlack
+      Font.Height = -12
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
@@ -445,20 +447,20 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 156
+      ClientHeight = 153
       ClientWidth = 208
       Color = clNone
       Font.Color = clBlack
-      Font.Height = -10
-      Font.Name = 'Geneva'
+      Font.Height = -12
+      Font.Name = 'Default'
       ParentColor = False
       ParentFont = False
       TabOrder = 1
       object ResultField: TMemo
         Left = 4
-        Height = 149
+        Height = 145
         Hint = 'Das Ergebnis Ihrer Berechnung'
-        Top = 0
+        Top = 4
         Width = 200
         BorderStyle = bsNone
         Font.Height = -10
@@ -479,20 +481,21 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 155
+      ClientHeight = 152
       ClientWidth = 208
       Color = clNone
       Font.Color = clBlack
-      Font.Height = -10
-      Font.Name = 'Geneva'
+      Font.Height = -12
+      Font.Name = 'Default'
       ParentColor = False
       ParentFont = False
       TabOrder = 2
+      OnClick = HintGroupBoxClick
       object HintField: TMemo
-        Left = 4
-        Height = 149
+        Left = 7
+        Height = 145
         Hint = 'Das Ergebnis Ihrer Berechnung'
-        Top = 0
+        Top = 4
         Width = 200
         BorderStyle = bsNone
         Font.Height = -10
@@ -613,8 +616,11 @@ object Hauptschirm: THauptschirm
       Top = 8
       Width = 272
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 258
+      ClientHeight = 257
       ClientWidth = 264
+      Font.Color = clBlack
+      Font.Height = -12
+      ParentFont = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
@@ -952,9 +958,11 @@ object Hauptschirm: THauptschirm
         Left = 7
         Height = 17
         Top = 6
-        Width = 26
-        Caption = 'TSH'
+        Width = 34
+        Caption = '[TSH]'
+        Font.Color = clBlack
         ParentColor = False
+        ParentFont = False
       end
     end
   end
@@ -1373,7 +1381,18 @@ object Hauptschirm: THauptschirm
       end
     end
     object HelpMenu: TMenuItem
-      Caption = '?'
+      Caption = 'Help'
+      object HelpItem: TMenuItem
+        Caption = 'SPINA Help ...'
+        OnClick = HelpItemClick
+      end
+      object OnlineInfoItem: TMenuItem
+        Caption = 'Online Info ...'
+        OnClick = OnlineInfoItemClick
+      end
+      object Divider_3_1: TMenuItem
+        Caption = '-'
+      end
       object AboutMenuItem: TMenuItem
         Caption = 'Über SPINA'
         OnClick = HandleAbout
