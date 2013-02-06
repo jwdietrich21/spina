@@ -27,7 +27,15 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdCtrls, LCLIntf, ComCtrls, DOS, SPINA_Types, VersionSupport,
-  HandlePreferences;
+  HandlePreferences
+  {$IFDEF win32}
+  , Windows, Win32Proc
+  {$ELSE}
+    {$IFDEF LCLCarbon}
+  , MacOSAll
+    {$ENDIF}
+  , Unix
+  {$ENDIF}  ;
 
 type
 

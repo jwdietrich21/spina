@@ -308,7 +308,7 @@ object AboutBox: TAboutBox
   }
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.0.2.0'
+  LCLVersion = '1.0.6.0'
   Visible = True
   object Button1: TButton
     Left = 311

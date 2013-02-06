@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 296
+  Left = 280
   Height = 349
-  Top = 174
+  Top = 180
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -18,7 +18,6 @@ object Hauptschirm: THauptschirm
   ClientHeight = 349
   ClientWidth = 765
   Color = clWhite
-  Font.Height = -11
   Icon.Data = {
     962400000000010008001010020000000000B000000086000000101000000000
     000028010000360100001010000000000000680500005E020000101000000000
@@ -318,7 +317,7 @@ object Hauptschirm: THauptschirm
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.2.0'
+  LCLVersion = '1.0.6.0'
   Visible = True
   object Calculate_Button: TButton
     Left = 656
@@ -426,14 +425,11 @@ object Hauptschirm: THauptschirm
       ChildSizing.ControlsPerLine = 1
       ClientHeight = 76
       ClientWidth = 209
-      Font.Color = clBlack
-      Font.Height = -12
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
         'T3-Substitution'
       )
-      ParentFont = False
       TabOrder = 0
       Data = {
         03000000020202
@@ -447,20 +443,16 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 153
+      ClientHeight = 156
       ClientWidth = 208
       Color = clNone
-      Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Default'
       ParentColor = False
-      ParentFont = False
       TabOrder = 1
       object ResultField: TMemo
         Left = 4
-        Height = 145
+        Height = 147
         Hint = 'Das Ergebnis Ihrer Berechnung'
-        Top = 4
+        Top = 5
         Width = 200
         BorderStyle = bsNone
         Font.Height = -10
@@ -481,21 +473,16 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 152
+      ClientHeight = 155
       ClientWidth = 208
       Color = clNone
-      Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Default'
       ParentColor = False
-      ParentFont = False
       TabOrder = 2
-      OnClick = HintGroupBoxClick
       object HintField: TMemo
-        Left = 7
-        Height = 145
+        Left = 4
+        Height = 147
         Hint = 'Das Ergebnis Ihrer Berechnung'
-        Top = 4
+        Top = 5
         Width = 200
         BorderStyle = bsNone
         Font.Height = -10
@@ -616,11 +603,8 @@ object Hauptschirm: THauptschirm
       Top = 8
       Width = 272
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 257
+      ClientHeight = 258
       ClientWidth = 264
-      Font.Color = clBlack
-      Font.Height = -12
-      ParentFont = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
@@ -958,11 +942,9 @@ object Hauptschirm: THauptschirm
         Left = 7
         Height = 17
         Top = 6
-        Width = 34
-        Caption = '[TSH]'
-        Font.Color = clBlack
+        Width = 26
+        Caption = 'TSH'
         ParentColor = False
-        ParentFont = False
       end
     end
   end
@@ -1381,18 +1363,7 @@ object Hauptschirm: THauptschirm
       end
     end
     object HelpMenu: TMenuItem
-      Caption = 'Help'
-      object HelpItem: TMenuItem
-        Caption = 'SPINA Help ...'
-        OnClick = HelpItemClick
-      end
-      object OnlineInfoItem: TMenuItem
-        Caption = 'Online Info ...'
-        OnClick = OnlineInfoItemClick
-      end
-      object Divider_3_1: TMenuItem
-        Caption = '-'
-      end
+      Caption = '?'
       object AboutMenuItem: TMenuItem
         Caption = 'Über SPINA'
         OnClick = HandleAbout
