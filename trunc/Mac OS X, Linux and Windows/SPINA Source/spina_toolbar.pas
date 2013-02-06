@@ -173,6 +173,17 @@ begin
     SPINAToolbar.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.MacPreferencesItem.Caption := kPreferences2 + ' ...';
+    SPINAToolbar.ToolBar1.Buttons[0].Hint := 'New Calculation ...';
+    SPINAToolbar.ToolBar1.Buttons[1].Hint := 'Open ...';
+    SPINAToolbar.ToolBar1.Buttons[2].Hint := 'Save';
+    SPINAToolbar.ToolBar1.Buttons[3].Hint := 'Save as ...';
+    SPINAToolbar.ToolBar1.Buttons[5].Hint := 'Print';
+    SPINAToolbar.ToolBar1.Buttons[7].Hint := 'Undo';
+    SPINAToolbar.ToolBar1.Buttons[8].Hint := 'Cut';
+    SPINAToolbar.ToolBar1.Buttons[9].Hint := 'Copy';
+    SPINAToolbar.ToolBar1.Buttons[10].Hint := 'Paste';
+    SPINAToolbar.ToolBar1.Buttons[11].Hint := 'Delete';
+    SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Copy result';
   end
   else
   begin
@@ -205,12 +216,24 @@ begin
     gBenutzername := kBenutzername1;
     gDruckdatum := kDruckdatum1;
     gPreferencesHint := kPreferencesHint1;
+    SPINAToolbar.ToolBar1.Buttons[0].Hint := 'Neue Berechnung ...';
+    SPINAToolbar.ToolBar1.Buttons[1].Hint := 'Öffnen ...';
+    SPINAToolbar.ToolBar1.Buttons[2].Hint := 'Sichern';
+    SPINAToolbar.ToolBar1.Buttons[3].Hint := 'Sichern als ...';
+    SPINAToolbar.ToolBar1.Buttons[5].Hint := 'Drucken';
+    SPINAToolbar.ToolBar1.Buttons[7].Hint := 'Widerrufen';
+    SPINAToolbar.ToolBar1.Buttons[8].Hint := 'Ausschneiden';
+    SPINAToolbar.ToolBar1.Buttons[9].Hint := 'Kopieren';
+    SPINAToolbar.ToolBar1.Buttons[10].Hint := 'Einfügen';
+    SPINAToolbar.ToolBar1.Buttons[11].Hint := 'Löschen';
+    SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Ergebnis kopieren';
   end;
   AdaptMenus;
   Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
   Hauptschirm.HintGroupBox.Caption := gHintCaption;
   Hauptschirm.ResultGroupBox.Caption := gResultHint;
   Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
+  Hauptschirm.ValuesGroupBox.Hint := gAnleitung1;
   if gPreferences.new then ShowMessage(gPreferencesHint);
 end;
 

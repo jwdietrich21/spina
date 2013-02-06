@@ -81,9 +81,9 @@ const
   kMethodLabel2 = 'Method';
   kUnitLabel1 = 'Einheit';
   kUnitLabel2 = 'Unit';
-  kUnitsGroupCaption1 = 'Methoden und Masseinheiten:';
+  kUnitsGroupCaption1 = 'Methoden und Maßeinheiten:';
   kUnitsGroupCaption2 = 'Methods and measurement units:';
-  kRemember1 = 'Zuletzt verwendete Masseinheiten merken';
+  kRemember1 = 'Zuletzt verwendete Maßeinheiten merken';
   kRemember2 = 'Remember last used unit';
   kCDISCCaption1 = 'Referenzbereiche:';
   kCDISCCaption2 = 'Reference values:';

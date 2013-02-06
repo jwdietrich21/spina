@@ -30,7 +30,7 @@ object SPINAToolbar: TSPINAToolbar
     TabOrder = 0
     object NewToolButton: TToolButton
       Left = 1
-      Hint = 'New Calculation...'
+      Hint = 'Neue Berechnung...'
       Top = 2
       Caption = 'NewToolButton'
       Enabled = False
@@ -96,6 +96,7 @@ object SPINAToolbar: TSPINAToolbar
     end
     object UndoToolButton: TToolButton
       Left = 126
+      Hint = 'Undo'
       Top = 2
       Caption = '&Rückgängig'
       ImageIndex = 5
@@ -105,7 +106,7 @@ object SPINAToolbar: TSPINAToolbar
     end
     object CutToolButton: TToolButton
       Left = 149
-      Hint = 'Ausschneiden'
+      Hint = 'Cut'
       Top = 2
       Caption = '&Ausschneiden'
       ImageIndex = 6
@@ -115,7 +116,7 @@ object SPINAToolbar: TSPINAToolbar
     end
     object CopyToolButton: TToolButton
       Left = 172
-      Hint = 'Kopieren'
+      Hint = 'Copy'
       Top = 2
       Caption = '&Kopieren'
       ImageIndex = 7
@@ -126,7 +127,7 @@ object SPINAToolbar: TSPINAToolbar
     end
     object PasteToolButton: TToolButton
       Left = 195
-      Hint = 'Einfügen'
+      Hint = 'Paste'
       Top = 2
       Caption = '&Einfügen'
       ImageIndex = 8
@@ -136,6 +137,7 @@ object SPINAToolbar: TSPINAToolbar
     end
     object DeleteToolButton: TToolButton
       Left = 218
+      Hint = 'Delete'
       Top = 2
       Caption = '&Löschen'
       ImageIndex = 9

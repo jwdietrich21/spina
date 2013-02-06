@@ -148,7 +148,9 @@ type
     procedure FT4ItemsChange(Sender: TObject);
     procedure HandleAbout(Sender: TObject);
     procedure AppleMenuClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
+    procedure SPINAThyrLabelClick(Sender: TObject);
     procedure WinPreferencesItemClick(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -760,9 +762,19 @@ begin
 
 end;
 
+procedure THauptschirm.Image2Click(Sender: TObject);
+begin
+  ShowAboutBox;
+end;
+
 procedure THauptschirm.MacPreferencesItemClick(Sender: TObject);
 begin
   DisplayPreferencesDlg;
+end;
+
+procedure THauptschirm.SPINAThyrLabelClick(Sender: TObject);
+begin
+  ShowAboutBox;
 end;
 
 procedure THauptschirm.WinPreferencesItemClick(Sender: TObject);
