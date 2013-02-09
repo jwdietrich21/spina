@@ -26,9 +26,9 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdActns, StdCtrls, LCLType, LCLIntf, Menus, ActnList, VersionSupport,
+  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
   gettext, SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog,
-  HandlePreferences, SetPreferences, Help, Math
+  spina_help, HandlePreferences, SetPreferences, Math, LCLIntf
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -53,9 +53,9 @@ type
     MacPreferencesItem: TMenuItem;
     Divider_0_2: TMenuItem;
     Divider_2_3: TMenuItem;
-    HelpItem: TMenuItem;
-    OnlineInfoItem: TMenuItem;
     Divider_3_1: TMenuItem;
+    OnlineInfoItem: TMenuItem;
+    HelpItem: TMenuItem;
     WinPreferencesItem: TMenuItem;
     PopupDiv1: TMenuItem;
     PopupCopyResult: TMenuItem;
@@ -152,7 +152,6 @@ type
     procedure HandleAbout(Sender: TObject);
     procedure AppleMenuClick(Sender: TObject);
     procedure HelpItemClick(Sender: TObject);
-    procedure HintGroupBoxClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure OnlineInfoItemClick(Sender: TObject);
@@ -678,19 +677,17 @@ var
 begin
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];
-  Hauptschirm.HelpMenu.Caption := 'Help';
   Hauptschirm.AboutMenuItem.Visible := False;
+  Hauptschirm.Divider_3_1.Visible := False;
   Hauptschirm.AppleMenu.Visible := True;
   Hauptschirm.Divider_2_3.Visible := False;
-  Hauptschirm.Divider_3_1.Visible := False;
   Hauptschirm.WinPreferencesItem.Visible := False;
   {$ELSE}
   modifierKey := [ssCtrl];
-  Hauptschirm.HelpMenu.Caption := '?';
   Hauptschirm.AboutMenuItem.Visible := True;
+  Hauptschirm.Divider_3_1.Visible := True;
   Hauptschirm.AppleMenu.Visible := False;
   Hauptschirm.Divider_2_3.Visible := True;
-  Hauptschirm.Divider_3_1.Visible := True;
   Hauptschirm.WinPreferencesItem.Visible := True;
   {$ENDIF}
   Hauptschirm.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
@@ -774,12 +771,7 @@ end;
 
 procedure THauptschirm.HelpItemClick(Sender: TObject);
 begin
-  HelpWindow.Show;
-end;
-
-procedure THauptschirm.HintGroupBoxClick(Sender: TObject);
-begin
-
+  HelpWindow.ShowOnTop;
 end;
 
 procedure THauptschirm.Image2Click(Sender: TObject);
@@ -794,7 +786,7 @@ end;
 
 procedure THauptschirm.OnlineInfoItemClick(Sender: TObject);
 begin
-  OpenURL('http://spina.medical-cybernetics.de');
+  OpenURL(BASE_URL);
 end;
 
 procedure THauptschirm.SPINAThyrLabelClick(Sender: TObject);

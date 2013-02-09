@@ -3,7 +3,7 @@ object PreferencesForm: TPreferencesForm
   Height = 400
   Top = 193
   Width = 515
-  BorderIcons = [biSystemMenu, biMinimize]
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Application Preferences'
   ClientHeight = 400
@@ -13,7 +13,7 @@ object PreferencesForm: TPreferencesForm
   OnActivate = FormActivate
   OnClose = FormClose
   Position = poMainFormCenter
-  LCLVersion = '1.0.2.0'
+  LCLVersion = '1.0.6.0'
   object OKButton: TButton
     Left = 410
     Height = 25

@@ -1,8 +1,8 @@
 object SPINAToolbar: TSPINAToolbar
   Left = 295
-  Height = 42
+  Height = 37
   Top = 121
-  Width = 753
+  Width = 883
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
   Align = alTop
@@ -11,8 +11,8 @@ object SPINAToolbar: TSPINAToolbar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 42
-  ClientWidth = 753
+  ClientHeight = 37
+  ClientWidth = 883
   DefaultMonitor = dmMainForm
   DockSite = True
   Menu = MainMenu
@@ -24,7 +24,7 @@ object SPINAToolbar: TSPINAToolbar
     Left = 0
     Height = 26
     Top = 0
-    Width = 753
+    Width = 883
     Caption = 'ToolBar1'
     Images = ImageList1
     TabOrder = 0
@@ -157,7 +157,7 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 651
+    Left = 781
     Height = 17
     Top = 7
     Width = 70
@@ -171,8 +171,8 @@ object SPINAToolbar: TSPINAToolbar
     OnClick = SPINAThyrLabelClick
   end
   object MainMenu: TMainMenu
-    left = 8
-    top = 560
+    left = 408
+    top = 9
     object AppleMenu: TMenuItem
       Caption = ''
       object AppleAboutMenuItem: TMenuItem
@@ -231,7 +231,7 @@ object SPINAToolbar: TSPINAToolbar
       object UndoMenuItem: TMenuItem
         Action = Hauptschirm.EditUndo1
       end
-      object Divider_2_15: TMenuItem
+      object Divider_2_1: TMenuItem
         Caption = '-'
       end
       object CutMenuItem: TMenuItem
@@ -263,7 +263,7 @@ object SPINAToolbar: TSPINAToolbar
       end
     end
     object HelpMenu: TMenuItem
-      Caption = '?'
+      Caption = 'Help'
       object HelpItem: TMenuItem
         Caption = 'SPINA Help ...'
         OnClick = HelpItemClick
@@ -282,8 +282,8 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object ImageList1: TImageList
-    left = 8
-    top = 616
+    left = 472
+    top = 9
     Bitmap = {
       4C690B00000010000000100000009E9E9EA3818181FF818181FF818181FF8181
       81FF818181FF818181FF818181FF818181FF7C8C8CFF729F9FFF6AAEAFFF36E4

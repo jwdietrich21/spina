@@ -5,7 +5,7 @@ program spina_thyr;
 { Application for calculating structure parameters }
 { of thyrotropic feedback control }
 
-{ Programm zur Berechnung von Strukturparametern }
+{ Programm  zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
 { Version 3.3 }
@@ -29,7 +29,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
-  HandlePreferences, spina_toolbar, SetPreferences, Help;
+  HandlePreferences, spina_toolbar, SetPreferences, spina_help;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 

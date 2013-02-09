@@ -26,9 +26,9 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls,
+  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls, LCLIntf,
   SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface,
-  SetPreferences, VersionSupport;
+  SetPreferences, VersionSupport, spina_help;
 
 type
 
@@ -43,8 +43,10 @@ type
     CopyResultMenuItem: TMenuItem;
     CutMenuItem: TMenuItem;
     DeleteMenuItem: TMenuItem;
+    Divider_3_1: TMenuItem;
     EditMenu: TMenuItem;
     FileMenu: TMenuItem;
+    HelpItem: TMenuItem;
     HelpMenu: TMenuItem;
     ImageList1: TImageList;
     MainMenu: TMainMenu;
@@ -54,11 +56,9 @@ type
     Divider_2_2: TMenuItem;
     Divider_0_1: TMenuItem;
     Divider_0_2: TMenuItem;
-    Divider_2_15: TMenuItem;
+    Divider_2_1: TMenuItem;
     Divider_2_3: TMenuItem;
-    Divider_3_1: TMenuItem;
     OnlineInfoItem: TMenuItem;
-    HelpItem: TMenuItem;
     WinPreferencesItem: TMenuItem;
     NewMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
@@ -178,6 +178,13 @@ begin
     SPINAToolbar.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.MacPreferencesItem.Caption := kPreferences2 + ' ...';
+       {$IFDEF LCLcarbon}
+    Hauptschirm.HelpMenu.Caption := 'Help';
+    SPINAToolbar.HelpMenu.Caption := 'Help';
+      {$ELSE}
+    Hauptschirm.HelpMenu.Caption := '?';
+    SPINAToolbar.HelpMenu.Caption := '?';
+      {$ENDIF}
     SPINAToolbar.ToolBar1.Buttons[0].Hint := 'New Calculation ...';
     SPINAToolbar.ToolBar1.Buttons[1].Hint := 'Open ...';
     SPINAToolbar.ToolBar1.Buttons[2].Hint := 'Save';
@@ -202,8 +209,10 @@ begin
       {$ELSE}
     Hauptschirm.FileMenu.Caption := 'Datei';
     Hauptschirm.UndoMenuItem.Caption := 'Rückgängig';
+    Hauptschirm.HelpMenu.Caption := '?';
     SPINAToolbar.FileMenu.Caption := 'Datei';
     SPINAToolbar.UndoMenuItem.Caption := 'Rückgängig';
+    SPINAToolbar.HelpMenu.Caption := '?';
       {$ENDIF}
     SPINAToolbar.MacPreferencesItem.Caption := kPreferences1 + ' ...';
     SPINAToolbar.WinPreferencesItem.Caption := kPreferences1 + ' ...';
@@ -252,19 +261,17 @@ begin
   AdaptLanguages;
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];
-  SPINAToolbar.HelpMenu.Caption := 'Help';
   SPINAToolbar.AboutMenuItem.Visible := False;
+  SPINAToolbar.Divider_3_1.Visible := False;
   SPINAToolbar.AppleMenu.Visible := True;
   SPINAToolbar.Divider_2_3.Visible := False;
-  SPINAToolbar.Divider_3_1.Visible := False;
   SPINAToolbar.WinPreferencesItem.Visible := False;
   {$ELSE}
   modifierKey := [ssCtrl];
-  SPINAToolbar.HelpMenu.Caption := '?';
   SPINAToolbar.AboutMenuItem.Visible := True;
+  SPINAToolbar.Divider_3_1.Visible := True;
   SPINAToolbar.AppleMenu.Visible := False;
   SPINAToolbar.Divider_2_3.Visible := True;
-  SPINAToolbar.Divider_3_1.Visible := True;
   SPINAToolbar.WinPreferencesItem.Visible := True;
   {$ENDIF}
   SPINAToolbar.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
@@ -281,7 +288,7 @@ end;
 
 procedure TSPINAToolbar.HelpItemClick(Sender: TObject);
 begin
-  Hauptschirm.HelpItemClick(Sender);
+  HelpWindow.ShowOnTop;
 end;
 
 procedure TSPINAToolbar.MacPreferencesItemClick(Sender: TObject);
@@ -296,7 +303,7 @@ end;
 
 procedure TSPINAToolbar.OnlineInfoItemClick(Sender: TObject);
 begin
-  Hauptschirm.OnlineInfoItemClick(Sender);
+  OpenURL(BASE_URL);
 end;
 
 procedure TSPINAToolbar.PageSetupMenuItemClick(Sender: TObject);
@@ -438,4 +445,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

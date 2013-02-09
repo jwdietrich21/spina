@@ -8,7 +8,7 @@ object Hauptschirm: THauptschirm
   ActiveControl = TSH_Text
   AlphaBlend = True
   AlphaBlendValue = 0
-  BorderIcons = [biSystemMenu]
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
   Caption = 'SPINA Thyr'
   ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -423,7 +423,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 76
+      ClientHeight = 77
       ClientWidth = 209
       Items.Strings = (
         'rhTSH-Substitution'
@@ -443,7 +443,7 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 156
+      ClientHeight = 154
       ClientWidth = 208
       Color = clNone
       ParentColor = False
@@ -473,7 +473,7 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 155
+      ClientHeight = 153
       ClientWidth = 208
       Color = clNone
       ParentColor = False
@@ -1363,7 +1363,18 @@ object Hauptschirm: THauptschirm
       end
     end
     object HelpMenu: TMenuItem
-      Caption = '?'
+      Caption = 'Help'
+      object HelpItem: TMenuItem
+        Caption = 'SPINA Help ...'
+        OnClick = HelpItemClick
+      end
+      object OnlineInfoItem: TMenuItem
+        Caption = 'Online Info ...'
+        OnClick = OnlineInfoItemClick
+      end
+      object Divider_3_1: TMenuItem
+        Caption = '-'
+      end
       object AboutMenuItem: TMenuItem
         Caption = 'Über SPINA'
         OnClick = HandleAbout
