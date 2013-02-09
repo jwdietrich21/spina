@@ -134,10 +134,14 @@ var
   {$ENDIF}
   pathBuffer: PChar;
 begin
-  {$IFDEF DARWIN}
+  {$IFDEF DARWIN} {standard method for Mac OS X}
     try
       pathBuffer := Allocmem(kMaxPath);
-    except on exception do exit;
+    except on exception do
+      begin
+        GetPreferencesFolder := '';
+        exit;
+      end
     end;
     try
       Fillchar(pathBuffer^, kMaxPath, #0);
@@ -152,15 +156,21 @@ begin
       Freemem(pathBuffer);
     end
   {$ELSE}
-    GetPreferencesFolder := GetAppConfigDir(false);
+    GetPreferencesFolder := GetAppConfigDir(false); {standard method for Linux and Windows}
   {$ENDIF}
 end;
 
 function GetPreferencesFile: String;
 {delivers path to preferences file}
+var
+  prefsFolder: String;
 begin
   {$IFDEF LCLCarbon}
-    GetPreferencesFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.xml';
+    prefsFolder := GetPreferencesFolder;
+    if prefsFolder = '' then
+      GetPreferencesFile := ''
+    else
+      GetPreferencesFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.xml';
   {$ELSE}
     GetPreferencesFile := GetAppConfigFile(false);
   {$ENDIF}
@@ -168,8 +178,14 @@ end;
 
 function RRFile: String;
 {delivers path to CDISC-compliant XML file with reference values}
+var
+  prefsFolder: String;
 begin
-   RRFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.ref-ranges.xml';
+   prefsFolder := GetPreferencesFolder;
+   if prefsFolder = '' then
+     RRFile := ''
+   else
+     RRFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
 function EncodeGreek(theString: string): string;
