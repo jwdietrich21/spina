@@ -1,7 +1,7 @@
 object HelpWindow: THelpWindow
-  Left = 384
+  Left = 381
   Height = 295
-  Top = 188
+  Top = 173
   Width = 610
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'SPINA Help'

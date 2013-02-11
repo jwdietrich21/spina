@@ -161,6 +161,8 @@ begin
     Hauptschirm.CopyResultMenuItem.Caption := 'Copy Result';
     Hauptschirm.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
     Hauptschirm.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
+    Hauptschirm.HelpItem.Caption := 'SPINA Help ...';
+    Hauptschirm.OnlineInfoItem.Caption := 'Online Info ...';
     SPINAToolbar.FileMenu.Caption := 'File';
     SPINAToolbar.NewMenuItem.Caption := 'New Calculation...';
     SPINAToolbar.CloseMenuItem.Caption := 'Close';
@@ -177,6 +179,8 @@ begin
     SPINAToolbar.WinPreferencesItem.Caption := kPreferences2 + ' ...';
     SPINAToolbar.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
+    SPINAToolbar.HelpItem.Caption := 'SPINA Help ...';
+    SPINAToolbar.OnlineInfoItem.Caption := 'Online Info ...';
     SPINAToolbar.MacPreferencesItem.Caption := kPreferences2 + ' ...';
        {$IFDEF LCLcarbon}
     Hauptschirm.HelpMenu.Caption := 'Help';
@@ -214,6 +218,10 @@ begin
     SPINAToolbar.UndoMenuItem.Caption := 'Rückgängig';
     SPINAToolbar.HelpMenu.Caption := '?';
       {$ENDIF}
+    Hauptschirm.HelpItem.Caption := 'SPINA-Hilfe ...';
+    SPINAToolbar.HelpItem.Caption := 'SPINA-Hilfe ...';
+    Hauptschirm.OnlineInfoItem.Caption := 'Online-Info ...';
+    SPINAToolbar.OnlineInfoItem.Caption := 'Online-Info ...';
     SPINAToolbar.MacPreferencesItem.Caption := kPreferences1 + ' ...';
     SPINAToolbar.WinPreferencesItem.Caption := kPreferences1 + ' ...';
     gAnleitung1 := kAnleitung11;
@@ -445,4 +453,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.
