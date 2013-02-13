@@ -124,6 +124,7 @@ begin
 end;
 
 procedure TPreferencesForm.AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
+{Adjusts units depending from the selected method (levels of free or total hormone)}
 begin
   if T4Method = freeHormone then
     begin
@@ -152,6 +153,7 @@ begin
 end;
 
 procedure TPreferencesForm.AdjustCombos(Sender: TObject);
+{adjust comboboxes according to measurement unit}
 var
   found: boolean;
   i: integer;
@@ -208,6 +210,7 @@ begin
 end;
 
 procedure TPreferencesForm.MethodComboBoxChange(Sender: TObject);
+{reacts to a change in the combobox for the method {level of free or total hormone}}
 var
   tempT4Method, tempT3Method: tLabMethod;
 begin
@@ -302,6 +305,7 @@ begin
 end;
 
 procedure TPreferencesForm.OKButtonClick(Sender: TObject);
+{save preferences}
 var
   CDISCStream: TMemoryStream;
   originalFileName: string;
@@ -337,6 +341,7 @@ begin
 end;
 
 procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
+{read CDISC lab model file}
 var
   theCode: integer;
 begin

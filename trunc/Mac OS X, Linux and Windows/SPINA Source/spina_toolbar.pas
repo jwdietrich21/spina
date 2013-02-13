@@ -125,6 +125,7 @@ begin
 end;
 
 procedure AdaptLanguages;
+{i18n and l10n: adapts user interface elements to the language of the operating system}
 begin
   if gInterfaceLanguage <> German then
   begin

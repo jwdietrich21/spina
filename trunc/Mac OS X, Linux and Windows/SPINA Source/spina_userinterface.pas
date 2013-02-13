@@ -209,6 +209,7 @@ procedure ComposeRRHints;
 implementation
 
 function GetOSLanguage: string;
+{platform-independent method to read the language of the user interface}
 var
   l, fbl: string;
   {$IFDEF LCLCarbon}
