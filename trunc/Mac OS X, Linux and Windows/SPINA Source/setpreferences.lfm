@@ -13,7 +13,7 @@ object PreferencesForm: TPreferencesForm
   OnActivate = FormActivate
   OnClose = FormClose
   Position = poMainFormCenter
-  LCLVersion = '1.0.6.0'
+  LCLVersion = '0.9.30.4'
   object OKButton: TButton
     Left = 410
     Height = 25
@@ -32,12 +32,12 @@ object PreferencesForm: TPreferencesForm
     Width = 459
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Methods and measurement units:'
-    ClientHeight = 131
-    ClientWidth = 451
+    ClientHeight = 137
+    ClientWidth = 457
     TabOrder = 1
     object MethodLabel: TLabel
       Left = 116
-      Height = 17
+      Height = 16
       Top = 30
       Width = 49
       Caption = 'Method'
@@ -47,7 +47,7 @@ object PreferencesForm: TPreferencesForm
       AnchorSideRight.Control = TSHUnitComboBox
       AnchorSideRight.Side = asrBottom
       Left = 233
-      Height = 17
+      Height = 16
       Top = 30
       Width = 27
       Alignment = taCenter
@@ -57,15 +57,15 @@ object PreferencesForm: TPreferencesForm
     end
     object T4Label: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 82
-      Width = 22
+      Width = 20
       Caption = 'T4:'
       ParentColor = False
     end
     object T4UnitComboBox: TComboBox
       Left = 193
-      Height = 21
+      Height = 23
       Hint = 'Maßeinheit'
       Top = 78
       Width = 67
@@ -85,7 +85,7 @@ object PreferencesForm: TPreferencesForm
     end
     object T3UnitComboBox: TComboBox
       Left = 194
-      Height = 21
+      Height = 23
       Hint = 'Maßeinheit'
       Top = 102
       Width = 66
@@ -105,7 +105,7 @@ object PreferencesForm: TPreferencesForm
     end
     object T4MethodComboBox: TComboBox
       Left = 116
-      Height = 21
+      Height = 23
       Hint = 'Maßeinheit'
       Top = 78
       Width = 56
@@ -124,9 +124,9 @@ object PreferencesForm: TPreferencesForm
     end
     object RememberCheckBox: TCheckBox
       Left = 12
-      Height = 18
+      Height = 19
       Top = 5
-      Width = 178
+      Width = 180
       Caption = 'Remember last used unit'
       Checked = True
       OnChange = RememberCheckBoxChange
@@ -135,23 +135,23 @@ object PreferencesForm: TPreferencesForm
     end
     object TSHLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 58
-      Width = 30
+      Width = 31
       Caption = 'TSH:'
       ParentColor = False
     end
     object T3Label: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 106
-      Width = 22
+      Width = 20
       Caption = 'T3:'
       ParentColor = False
     end
     object TSHUnitComboBox: TComboBox
       Left = 204
-      Height = 21
+      Height = 23
       Hint = 'Maßeinheit'
       Top = 54
       Width = 56
@@ -170,7 +170,7 @@ object PreferencesForm: TPreferencesForm
     end
     object T3MethodComboBox: TComboBox
       Left = 116
-      Height = 21
+      Height = 23
       Hint = 'Maßeinheit'
       Top = 102
       Width = 56
@@ -195,36 +195,36 @@ object PreferencesForm: TPreferencesForm
     Width = 459
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'Reference values:'
-    ClientHeight = 134
-    ClientWidth = 451
+    ClientHeight = 140
+    ClientWidth = 457
     TabOrder = 2
     object TSHRRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 12
-      Width = 30
+      Width = 31
       Caption = 'TSH:'
       ParentColor = False
     end
     object T4RRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 36
-      Width = 22
+      Width = 20
       Caption = 'T4:'
       ParentColor = False
     end
     object T3RRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 60
-      Width = 22
+      Width = 20
       Caption = 'T3:'
       ParentColor = False
     end
     object TSHRREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 7
       Width = 144
       ReadOnly = True
@@ -233,7 +233,7 @@ object PreferencesForm: TPreferencesForm
     end
     object T4RREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 31
       Width = 144
       ReadOnly = True
@@ -242,7 +242,7 @@ object PreferencesForm: TPreferencesForm
     end
     object T3RREDit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 55
       Width = 144
       ReadOnly = True
@@ -251,23 +251,23 @@ object PreferencesForm: TPreferencesForm
     end
     object GTRRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 86
-      Width = 23
+      Width = 21
       Caption = 'GT:'
       ParentColor = False
     end
     object GDRRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 16
       Top = 110
-      Width = 24
+      Width = 25
       Caption = 'GD:'
       ParentColor = False
     end
     object GTRREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 81
       Width = 144
       ReadOnly = True
@@ -276,7 +276,7 @@ object PreferencesForm: TPreferencesForm
     end
     object GDRREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 105
       Width = 144
       ReadOnly = True

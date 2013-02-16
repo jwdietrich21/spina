@@ -11,12 +11,12 @@ object HelpWindow: THelpWindow
   Constraints.MinHeight = 200
   Constraints.MinWidth = 350
   OnCreate = FormCreate
-  LCLVersion = '1.0.6.0'
+  LCLVersion = '0.9.30.4'
   object Label1: TLabel
     Left = 80
     Height = 22
     Top = 34
-    Width = 104
+    Width = 116
     Caption = 'SPINA Help'
     Font.Height = -18
     Font.Style = [fsBold]
@@ -26,9 +26,9 @@ object HelpWindow: THelpWindow
   object Label3: TLabel
     Cursor = crHandPoint
     Left = 40
-    Height = 17
+    Height = 16
     Top = 128
-    Width = 192
+    Width = 194
     Caption = 'Information about the method'
     Font.Color = clNavy
     Font.Pitch = fpVariable
@@ -39,9 +39,9 @@ object HelpWindow: THelpWindow
   object Label4: TLabel
     Cursor = crHandPoint
     Left = 40
-    Height = 17
+    Height = 16
     Top = 80
-    Width = 75
+    Width = 74
     Caption = 'Online Help'
     Font.Color = clNavy
     Font.Pitch = fpVariable
@@ -74,9 +74,9 @@ object HelpWindow: THelpWindow
   end
   object Label2: TLabel
     Left = 40
-    Height = 13
+    Height = 12
     Top = 96
-    Width = 301
+    Width = 292
     Caption = 'Get a short introduction, a full handbook and tutorials online.'
     Font.Height = 10
     ParentColor = False
@@ -84,9 +84,9 @@ object HelpWindow: THelpWindow
   end
   object Label5: TLabel
     Left = 40
-    Height = 13
+    Height = 12
     Top = 144
-    Width = 262
+    Width = 264
     Caption = 'References and background information about SPINA.'
     Font.Height = 10
     ParentColor = False
@@ -95,9 +95,9 @@ object HelpWindow: THelpWindow
   object Label6: TLabel
     Cursor = crHandPoint
     Left = 40
-    Height = 17
+    Height = 16
     Top = 168
-    Width = 77
+    Width = 75
     Caption = 'Version info'
     Font.Color = clNavy
     Font.Pitch = fpVariable

@@ -5,15 +5,15 @@ LazarusResources.Add('THelpWindow','FORMDATA',[
   +#3#173#0#5'Width'#3'b'#2#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0
   +#7'Caption'#6#10'SPINA Help'#12'ClientHeight'#3''''#1#11'ClientWidth'#3'b'#2
   +#5'Color'#7#7'clWhite'#21'Constraints.MinHeight'#3#200#0#20'Constraints.MinW'
-  +'idth'#3'^'#1#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#7'1.0.6.0'#0#6'T'
-  +'Label'#6'Label1'#4'Left'#2'P'#6'Height'#2#22#3'Top'#2'"'#5'Width'#2'h'#7'Ca'
-  +'ption'#6#10'SPINA Help'#11'Font.Height'#2#238#10'Font.Style'#11#6'fsBold'#0
+  +'idth'#3'^'#1#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#8'0.9.30.4'#0#6
+  +'TLabel'#6'Label1'#4'Left'#2'P'#6'Height'#2#22#3'Top'#2'"'#5'Width'#2't'#7'C'
+  +'aption'#6#10'SPINA Help'#11'Font.Height'#2#238#10'Font.Style'#11#6'fsBold'#0
   +#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#6'Label3'#6'Cursor'#7#11'c'
-  +'rHandPoint'#4'Left'#2'('#6'Height'#2#17#3'Top'#3#128#0#5'Width'#3#192#0#7'C'
+  +'rHandPoint'#4'Left'#2'('#6'Height'#2#16#3'Top'#3#128#0#5'Width'#3#194#0#7'C'
   +'aption'#6#28'Information about the method'#10'Font.Color'#7#6'clNavy'#10'Fo'
   +'nt.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#7'OnClick'#7
   +#11'Label3Click'#0#0#6'TLabel'#6'Label4'#6'Cursor'#7#11'crHandPoint'#4'Left'
-  +#2'('#6'Height'#2#17#3'Top'#2'P'#5'Width'#2'K'#7'Caption'#6#11'Online Help'
+  +#2'('#6'Height'#2#16#3'Top'#2'P'#5'Width'#2'J'#7'Caption'#6#11'Online Help'
   +#10'Font.Color'#7#6'clNavy'#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8
   +#10'ParentFont'#8#7'OnClick'#7#11'Label4Click'#0#0#6'TImage'#6'Image1'#4'Lef'
   +'t'#2'('#6'Height'#2' '#3'Top'#2#24#5'Width'#2' '#8'AutoSize'#9#7'OnClick'#7
@@ -33,13 +33,13 @@ LazarusResources.Add('THelpWindow','FORMDATA',[
   +#231#149'Y'#235'M'#226'd'#148#152'*Y'#238#191#239#226#245#190#250#127's'#213
   +#26#132#228#222#190']'#196#135#157'e/'#0#0#0#255#255#3#0'z'#172#245#244'8\R'
   +#177#0#0#0#0'IEND'#174'B`'#130#0#0#6'TLabel'#6'Label2'#4'Left'#2'('#6'Height'
-  +#2#13#3'Top'#2'`'#5'Width'#3'-'#1#7'Caption'#6'?Get a short introduction, a '
+  +#2#12#3'Top'#2'`'#5'Width'#3'$'#1#7'Caption'#6'?Get a short introduction, a '
   +'full handbook and tutorials online.'#11'Font.Height'#2#10#11'ParentColor'#8
-  +#10'ParentFont'#8#0#0#6'TLabel'#6'Label5'#4'Left'#2'('#6'Height'#2#13#3'Top'
-  +#3#144#0#5'Width'#3#6#1#7'Caption'#6'2References and background information '
+  +#10'ParentFont'#8#0#0#6'TLabel'#6'Label5'#4'Left'#2'('#6'Height'#2#12#3'Top'
+  +#3#144#0#5'Width'#3#8#1#7'Caption'#6'2References and background information '
   +'about SPINA.'#11'Font.Height'#2#10#11'ParentColor'#8#10'ParentFont'#8#0#0#6
-  +'TLabel'#6'Label6'#6'Cursor'#7#11'crHandPoint'#4'Left'#2'('#6'Height'#2#17#3
-  +'Top'#3#168#0#5'Width'#2'M'#7'Caption'#6#12'Version info'#10'Font.Color'#7#6
+  +'TLabel'#6'Label6'#6'Cursor'#7#11'crHandPoint'#4'Left'#2'('#6'Height'#2#16#3
+  +'Top'#3#168#0#5'Width'#2'K'#7'Caption'#6#12'Version info'#10'Font.Color'#7#6
   +'clNavy'#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#7
   +'OnClick'#7#11'Label6Click'#0#0#6'TLabel'#6'Label7'#4'Left'#2'('#6'Height'#2
   +' '#3'Top'#3#184#0#5'Width'#3#29#2#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRigh'

@@ -8,7 +8,7 @@ unit SPINA_UserInterface;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 3.3 }
+{ Version 3.3.1 }
 
 { (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -32,6 +32,7 @@ uses
   {$IFDEF win32}
   , Windows
   {$ELSE}
+  , Unix
     {$IFDEF LCLCarbon}
   , MacOSAll
     {$ENDIF}

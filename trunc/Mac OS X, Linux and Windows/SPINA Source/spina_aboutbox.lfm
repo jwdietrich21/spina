@@ -1,7 +1,7 @@
 object AboutBox: TAboutBox
-  Left = 415
+  Left = 420
   Height = 346
-  Top = 147
+  Top = 339
   Width = 439
   AlphaBlend = True
   AlphaBlendValue = 0
@@ -308,8 +308,7 @@ object AboutBox: TAboutBox
   }
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.0.6.0'
-  Visible = True
+  LCLVersion = '0.9.30.4'
   object Button1: TButton
     Left = 311
     Height = 24
@@ -331,8 +330,8 @@ object AboutBox: TAboutBox
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
-      ClientHeight = 281
-      ClientWidth = 418
+      ClientHeight = 295
+      ClientWidth = 422
       object Image1: TImage
         Cursor = crHandPoint
         Left = 21
@@ -865,8 +864,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet2: TTabSheet
       Caption = 'Info'
-      ClientHeight = 281
-      ClientWidth = 418
+      ClientHeight = 295
+      ClientWidth = 422
       object Memo1: TMemo
         Left = 5
         Height = 274
@@ -875,6 +874,7 @@ object AboutBox: TAboutBox
         Lines.Strings = (
           'Memo1'
         )
+        OnKeyDown = FormKeyDown
         ReadOnly = True
         ScrollBars = ssAutoVertical
         TabOrder = 0
@@ -882,8 +882,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet3: TTabSheet
       Caption = 'Acknowledgment'
-      ClientHeight = 281
-      ClientWidth = 418
+      ClientHeight = 295
+      ClientWidth = 422
       object Label3: TLabel
         Left = 21
         Height = 17

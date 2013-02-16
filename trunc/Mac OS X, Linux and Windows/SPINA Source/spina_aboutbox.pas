@@ -8,7 +8,7 @@ unit SPINA_AboutBox;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 3.3 }
+{ Version 3.3.1 }
 
 { (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -175,6 +175,7 @@ begin
   begin
     AboutBox.Memo1.Lines.Add('');
     AboutBox.Memo1.Lines.Add('Preferences file: ' + GetPreferencesFile);
+    AboutBox.Memo1.Lines.Add('Definition file for reference values: ' + RRFile);
     gExtendedInfo := true;
   end;
 end;

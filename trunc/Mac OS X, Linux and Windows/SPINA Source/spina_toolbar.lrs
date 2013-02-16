@@ -5,47 +5,47 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +'p'#2'y'#5'Width'#3's'#3#21'HorzScrollBar.Visible'#8#21'VertScrollBar.Visibl'
   +'e'#8#5'Align'#7#5'alTop'#7'Anchors'#11#0#8'AutoSize'#9#11'BorderIcons'#11#12
   +'biSystemMenu'#10'biMinimize'#0#11'BorderStyle'#7#12'bsToolWindow'#7'Caption'
-  +#6#5'SPINA'#12'ClientHeight'#2'%'#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
+  +#6#5'SPINA'#12'ClientHeight'#2#12#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
   +#10'dmMainForm'#8'DockSite'#9#4'Menu'#7#8'MainMenu'#7'OnClose'#7#9'FormClose'
-  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#7'1.0.6.0'#7'Visible'#9#0#8'T'
-  +'ToolBar'#8'ToolBar1'#4'Left'#2#0#6'Height'#2#26#3'Top'#2#0#5'Width'#3's'#3#7
-  +'Caption'#6#8'ToolBar1'#6'Images'#7#10'ImageList1'#8'TabOrder'#2#0#0#11'TToo'
-  +'lButton'#13'NewToolButton'#4'Left'#2#1#4'Hint'#6#18'Neue Berechnung...'#3'T'
-  +'op'#2#2#7'Caption'#6#13'NewToolButton'#7'Enabled'#8#10'ImageIndex'#2#0#7'On'
-  +'Click'#7#18'NewToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11'T'
-  +'ToolButton'#14'OpenToolButton'#4'Left'#2#24#4'Hint'#6#12'Open file...'#3'To'
-  +'p'#2#2#7'Caption'#6#14'OpenToolButton'#7'Enabled'#8#10'ImageIndex'#2#1#7'On'
-  +'Click'#7#19'OpenToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11
+  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#8'0.9.30.4'#7'Visible'#9#0#8
+  +'TToolBar'#8'ToolBar1'#4'Left'#2#0#6'Height'#2#26#3'Top'#2#0#5'Width'#3's'#3
+  +#7'Caption'#6#8'ToolBar1'#6'Images'#7#10'ImageList1'#8'TabOrder'#2#0#0#11'TT'
+  +'oolButton'#13'NewToolButton'#4'Left'#2#1#4'Hint'#6#18'Neue Berechnung...'#3
+  +'Top'#2#2#7'Caption'#6#13'NewToolButton'#7'Enabled'#8#10'ImageIndex'#2#0#7'O'
+  +'nClick'#7#18'NewToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11
+  +'TToolButton'#14'OpenToolButton'#4'Left'#2#24#4'Hint'#6#12'Open file...'#3'T'
+  +'op'#2#2#7'Caption'#6#14'OpenToolButton'#7'Enabled'#8#10'ImageIndex'#2#1#7'O'
+  +'nClick'#7#19'OpenToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11
   +'TToolButton'#14'SaveToolButton'#4'Left'#2'/'#4'Hint'#6#4'Save'#3'Top'#2#2#7
   +'Caption'#6#14'SaveToolButton'#7'Enabled'#8#10'ImageIndex'#2#2#14'ParentShow'
   +'Hint'#8#8'ShowHint'#9#0#0#11'TToolButton'#16'SaveAsToolButton'#4'Left'#2'F'
   +#4'Hint'#6#10'Save as...'#3'Top'#2#2#7'Caption'#6#16'SaveAsToolButton'#7'Ena'
   +'bled'#8#10'ImageIndex'#2#3#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11'TToolB'
-  +'utton'#12'DividerTool1'#4'Left'#2']'#3'Top'#2#2#5'Width'#2#5#7'Caption'#6#12
+  +'utton'#12'DividerTool1'#4'Left'#2']'#3'Top'#2#2#5'Width'#2#4#7'Caption'#6#12
   +'DividerTool1'#5'Style'#7#10'tbsDivider'#0#0#11'TToolButton'#15'PrintToolBut'
-  +'ton'#4'Left'#2'b'#4'Hint'#6#13'Print results'#3'Top'#2#2#7'Caption'#6#15'Pr'
+  +'ton'#4'Left'#2'a'#4'Hint'#6#13'Print results'#3'Top'#2#2#7'Caption'#6#15'Pr'
   +'intToolButton'#10'ImageIndex'#2#4#7'OnClick'#7#20'PrintToolButtonClick'#14
   +'ParentShowHint'#8#8'ShowHint'#9#0#0#11'TToolButton'#12'DividerTool2'#4'Left'
-  +#2'y'#3'Top'#2#2#5'Width'#2#5#7'Caption'#6#12'DividerTool2'#5'Style'#7#10'tb'
-  +'sDivider'#0#0#11'TToolButton'#14'UndoToolButton'#4'Left'#2'~'#4'Hint'#6#4'U'
+  +#2'x'#3'Top'#2#2#5'Width'#2#4#7'Caption'#6#12'DividerTool2'#5'Style'#7#10'tb'
+  +'sDivider'#0#0#11'TToolButton'#14'UndoToolButton'#4'Left'#2'|'#4'Hint'#6#4'U'
   +'ndo'#3'Top'#2#2#7'Caption'#6#13'&R'#195#188'ckg'#195#164'ngig'#10'ImageInde'
   +'x'#2#5#7'OnClick'#7#19'UndoToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'
-  +#9#0#0#11'TToolButton'#13'CutToolButton'#4'Left'#3#149#0#4'Hint'#6#3'Cut'#3
+  +#9#0#0#11'TToolButton'#13'CutToolButton'#4'Left'#3#147#0#4'Hint'#6#3'Cut'#3
   +'Top'#2#2#7'Caption'#6#13'&Ausschneiden'#10'ImageIndex'#2#6#7'OnClick'#7#18
   +'CutToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11'TToolButton'
-  +#14'CopyToolButton'#4'Left'#3#172#0#4'Hint'#6#4'Copy'#3'Top'#2#2#7'Caption'#6
+  +#14'CopyToolButton'#4'Left'#3#170#0#4'Hint'#6#4'Copy'#3'Top'#2#2#7'Caption'#6
   +#9'&Kopieren'#10'ImageIndex'#2#7#7'OnClick'#7#19'CopyToolButtonClick'#14'Par'
   +'entShowHint'#8#11'ShowCaption'#8#8'ShowHint'#9#0#0#11'TToolButton'#15'Paste'
-  +'ToolButton'#4'Left'#3#195#0#4'Hint'#6#5'Paste'#3'Top'#2#2#7'Caption'#6#10'&'
+  +'ToolButton'#4'Left'#3#193#0#4'Hint'#6#5'Paste'#3'Top'#2#2#7'Caption'#6#10'&'
   +'Einf'#195#188'gen'#10'ImageIndex'#2#8#7'OnClick'#7#20'PasteToolButtonClick'
   +#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11'TToolButton'#16'DeleteToolButton'
-  +#4'Left'#3#218#0#4'Hint'#6#6'Delete'#3'Top'#2#2#7'Caption'#6#9'&L'#195#182's'
+  +#4'Left'#3#216#0#4'Hint'#6#6'Delete'#3'Top'#2#2#7'Caption'#6#9'&L'#195#182's'
   +'chen'#10'ImageIndex'#2#9#7'OnClick'#7#21'DeleteToolButtonClick'#14'ParentSh'
   +'owHint'#8#8'ShowHint'#9#0#0#11'TToolButton'#20'CopyResultToolButton'#4'Left'
-  +#3#241#0#4'Hint'#6#11'Copy Result'#3'Top'#2#2#7'Caption'#6#20'CopyResultTool'
+  +#3#239#0#4'Hint'#6#11'Copy Result'#3'Top'#2#2#7'Caption'#6#20'CopyResultTool'
   +'Button'#10'ImageIndex'#2#10#7'OnClick'#7#25'CopyResultToolButtonClick'#14'P'
   +'arentShowHint'#8#8'ShowHint'#9#0#0#0#6'TLabel'#14'SPINAThyrLabel'#4'Left'#3
-  +#13#3#6'Height'#2#17#3'Top'#2#7#5'Width'#2'F'#9'Alignment'#7#14'taRightJusti'
+  +#12#3#6'Height'#2#16#3'Top'#2#7#5'Width'#2'G'#9'Alignment'#7#14'taRightJusti'
   +'fy'#7'Anchors'#11#5'akTop'#7'akRight'#0#7'Caption'#6#10'SPINA Thyr'#10'Font'
   +'.Color'#7#6'clGray'#11'Font.Height'#2#243#11'ParentColor'#8#10'ParentFont'#8
   +#7'OnClick'#7#19'SPINAThyrLabelClick'#0#0#9'TMainMenu'#8'MainMenu'#4'left'#3
