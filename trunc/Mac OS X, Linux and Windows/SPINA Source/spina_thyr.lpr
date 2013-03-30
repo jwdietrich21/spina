@@ -21,6 +21,7 @@ program spina_thyr;
 { See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}{$H+}
+{off $DEFINE DEBUG}
 
 uses
   {$IFDEF UNIX}{$IFDEF UseCThreads}
@@ -37,6 +38,11 @@ uses
 
 begin
   Application.Title:='SPINA Thyr';
+  {$IFDEF DEBUG}{$IFDEF UNIX}
+  SetHeapTraceOutput('~/heaptrace.trc');
+  {$ELSE}
+  SetHeapTraceOutput('c:\heaptrace.trc');
+  {$ENDIF}{$ENDIF}
   InitConversionFactors;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);

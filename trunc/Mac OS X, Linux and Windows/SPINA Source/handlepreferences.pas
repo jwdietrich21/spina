@@ -347,44 +347,56 @@ var
   Doc: TXMLDocument;
   RootNode, theNode: TDOMNode;
   theFileName, theString: String;
+  theFileHandle: longint;
+  XMLfound: boolean;
 begin
+  XMLfound := false;
   theFileName := GetPreferencesFile;
-  if FileExists(theFileName) then
+  if FileExists(theFileName) then {simple check for XML file}
   try
-    ReadXMLFile(Doc, theFileName);
-
-    theString := NodeContent(Doc.DocumentElement, 'remember');
-    if theString = 'true' then
-      gPreferences.rememberUsedUnits := true
-    else
-      gPreferences.rememberUsedUnits := false;
-
-    RootNode := Doc.DocumentElement.FindNode('methods');
-    theString := NodeContent(RootNode, 'T4');
-    if theString = 'free' then
-      gPreferences.T4.Method := freeHormone
-    else
-      gPreferences.T4.Method := totalHormone;
-    theString := NodeContent(RootNode, 'T3');
-    if theString = 'free' then
-      gPreferences.T3.Method := freeHormone
-    else
-      gPreferences.T3.Method := totalHormone;
-
-    RootNode := Doc.DocumentElement.FindNode('units');
-    theString := NodeContent(RootNode, 'TSH');
-    gPreferences.TSH.measurementUnit := theString;
-    theString := NodeContent(RootNode, 'T4');
-    gPreferences.T4.measurementUnit := theString;
-    theString := NodeContent(RootNode, 'T3');
-    gPreferences.T3.measurementUnit := theString;
-
-    if (gPreferences.TSH.measurementUnit = 'NA') or (gPreferences.T4.measurementUnit = 'NA') or (gPreferences.T3.measurementUnit = 'NA') then
-      CreateNewPreferences;  {fall-back solution, if file is corrupt or in obsolete format}
-    gPreferences.new := false;
+    theFileHandle := FileOpen(theFileName, fmOpenRead);
+    FileRead(theFileHandle, theString, SizeOf(theString));
+    if pos('xml', LowerCase(theString)) > 0 then
+      XMLfound := true;
   finally
-    Doc.Free;
-  end
+    FileClose(theFileHandle);
+  end;
+  if XMLfound then {file present and marked as XML file}
+    try
+      ReadXMLFile(Doc, theFileName);
+
+      theString := NodeContent(Doc.DocumentElement, 'remember');
+      if theString = 'true' then
+        gPreferences.rememberUsedUnits := true
+      else
+        gPreferences.rememberUsedUnits := false;
+
+      RootNode := Doc.DocumentElement.FindNode('methods');
+      theString := NodeContent(RootNode, 'T4');
+      if theString = 'free' then
+        gPreferences.T4.Method := freeHormone
+      else
+        gPreferences.T4.Method := totalHormone;
+      theString := NodeContent(RootNode, 'T3');
+      if theString = 'free' then
+        gPreferences.T3.Method := freeHormone
+      else
+        gPreferences.T3.Method := totalHormone;
+
+      RootNode := Doc.DocumentElement.FindNode('units');
+      theString := NodeContent(RootNode, 'TSH');
+      gPreferences.TSH.measurementUnit := theString;
+      theString := NodeContent(RootNode, 'T4');
+      gPreferences.T4.measurementUnit := theString;
+      theString := NodeContent(RootNode, 'T3');
+      gPreferences.T3.measurementUnit := theString;
+
+      if (gPreferences.TSH.measurementUnit = 'NA') or (gPreferences.T4.measurementUnit = 'NA') or (gPreferences.T3.measurementUnit = 'NA') then
+        CreateNewPreferences;  {fall-back solution, if file is corrupt or in obsolete format}
+      gPreferences.new := false;
+    finally
+      Doc.Free;
+    end
   else  {Standards from dialog, if preference file does not exist}
     CreateNewPreferences;  {fall-back solution, if file does not exist}
 end;
