@@ -37,8 +37,8 @@ type
     Image1: TImage;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
-    procedure HandleAbout(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure HandleAbout(Sender: TObject);
     procedure IdleTimer1Timer(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);

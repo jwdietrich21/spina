@@ -15,7 +15,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 324
+  ClientHeight = 349
   ClientWidth = 765
   Color = clWhite
   Icon.Data = {
@@ -317,7 +317,7 @@ object Hauptschirm: THauptschirm
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '0.9.30.4'
+  LCLVersion = '1.0.6.0'
   object Calculate_Button: TButton
     Left = 656
     Height = 24
@@ -330,7 +330,7 @@ object Hauptschirm: THauptschirm
   end
   object FT4Items: TComboBox
     Left = 128
-    Height = 23
+    Height = 21
     Top = 176
     Width = 41
     Enabled = False
@@ -347,7 +347,7 @@ object Hauptschirm: THauptschirm
   end
   object T4Items: TComboBox
     Left = 184
-    Height = 23
+    Height = 21
     Top = 176
     Width = 41
     Enabled = False
@@ -363,7 +363,7 @@ object Hauptschirm: THauptschirm
   end
   object FT3Items: TComboBox
     Left = 184
-    Height = 23
+    Height = 21
     Top = 200
     Width = 41
     Enabled = False
@@ -379,7 +379,7 @@ object Hauptschirm: THauptschirm
   end
   object T3Items: TComboBox
     Left = 184
-    Height = 23
+    Height = 21
     Top = 224
     Width = 41
     Enabled = False
@@ -422,6 +422,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
+      ClientHeight = 77
+      ClientWidth = 209
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
@@ -440,8 +442,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 160
-      ClientWidth = 214
+      ClientHeight = 154
+      ClientWidth = 208
       Color = clNone
       ParentColor = False
       TabOrder = 1
@@ -470,8 +472,8 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 159
-      ClientWidth = 214
+      ClientHeight = 153
+      ClientWidth = 208
       Color = clNone
       ParentColor = False
       TabOrder = 2
@@ -600,8 +602,8 @@ object Hauptschirm: THauptschirm
       Top = 8
       Width = 272
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 264
-      ClientWidth = 270
+      ClientHeight = 258
+      ClientWidth = 264
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
@@ -818,7 +820,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 103
-        Height = 21
+        Height = 22
         Hint = '(F)T4'
         Top = 221
         Width = 56
@@ -827,7 +829,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 199
-        Height = 21
+        Height = 22
         Hint = '(F)T3'
         Top = 26
         Width = 54
@@ -836,7 +838,7 @@ object Hauptschirm: THauptschirm
       end
       object TSHUnitComboBox: TComboBox
         Left = 7
-        Height = 23
+        Height = 21
         Hint = 'Maßeinheit'
         Top = 50
         Width = 66
@@ -854,7 +856,7 @@ object Hauptschirm: THauptschirm
       end
       object T4UnitComboBox: TComboBox
         Left = 165
-        Height = 23
+        Height = 21
         Hint = 'Maßeinheit'
         Top = 221
         Width = 67
@@ -873,7 +875,7 @@ object Hauptschirm: THauptschirm
       end
       object T3UnitComboBox: TComboBox
         Left = 197
-        Height = 23
+        Height = 21
         Hint = 'Maßeinheit'
         Top = 50
         Width = 66
@@ -892,7 +894,7 @@ object Hauptschirm: THauptschirm
       end
       object T3MethodComboBox: TComboBox
         Left = 199
-        Height = 23
+        Height = 21
         Hint = 'Maßeinheit'
         Top = 2
         Width = 56
@@ -910,7 +912,7 @@ object Hauptschirm: THauptschirm
       end
       object T4MethodComboBox: TComboBox
         Left = 41
-        Height = 23
+        Height = 21
         Hint = 'Maßeinheit'
         Top = 221
         Width = 56
@@ -928,7 +930,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = 7
-        Height = 21
+        Height = 22
         Hint = 'TSH'
         Top = 26
         Width = 56
@@ -937,9 +939,9 @@ object Hauptschirm: THauptschirm
       end
       object Label1: TLabel
         Left = 7
-        Height = 16
+        Height = 17
         Top = 6
-        Width = 27
+        Width = 26
         Caption = 'TSH'
         ParentColor = False
       end
@@ -948,9 +950,9 @@ object Hauptschirm: THauptschirm
   object SPINAThyrLabel: TLabel
     Cursor = crHandPoint
     Left = 16
-    Height = 12
+    Height = 13
     Top = 312
-    Width = 57
+    Width = 54
     Caption = 'SPINA Thyr'
     Font.Color = clBlack
     Font.Height = -10

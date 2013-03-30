@@ -42,16 +42,16 @@ uses
     {$ENDIF}
   {$ENDIF};
 
-procedure InitConversionFactors;
-function ParsedUnitString(theString: String): TUnitElements;
-function GetPreferencesFolder: String;
-function GetPreferencesFile: String;
-function RRFile: String;
-function EncodeGreek(theString: string): string;
 function DecodeGreek(theString: string): string;
-procedure ReadPreferences;
+function EncodeGreek(theString: string): string;
+function GetPreferencesFile: String;
+function GetPreferencesFolder: String;
+function ParsedUnitString(theString: String): TUnitElements;
+function RRFile: String;
 procedure ComposeRRStrings;
 procedure GetReferenceValues(theFileName: String; var returnCode: integer);
+procedure InitConversionFactors;
+procedure ReadPreferences;
 procedure SavePreferences;
 
 

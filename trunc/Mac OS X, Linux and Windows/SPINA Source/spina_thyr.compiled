@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <CONFIG>
-  <Compiler Value="/usr/bin/fpc" Date="1358923363"/>
-  <Params Value=" -MObjFPC -Sgi -CX -Cro -O1 -gl -XX -vewnhi -l -Fu/usr/lib/lazarus/0.9.30.4/components/printers/lib/arm-linux/gtk2 -Fu/usr/lib/lazarus/0.9.30.4/lcl/units/arm-linux -Fu/usr/lib/lazarus/0.9.30.4/lcl/units/arm-linux/gtk2 -Fu/usr/lib/lazarus/0.9.30.4/packager/units/arm-linux &quot;-Fu/home/pi/SPINA Source/&quot; -Fu. &quot;-oSPINA Thyr&quot; /-k-macosx_version_min //-k10.4 //-XR/Developer/SDKs/MacOSX10.4u.sdk/ -dLCL -dLCLgtk2 spina_thyr.lpr"/>
+  <Compiler Value="/usr/local/bin/ppcppc" Date="1324569333"/>
+  <Params Value=" -MObjFPC -Sgi -CX -CirotR -O1 -g -XX  -k-framework -kCarbon -k-framework -kOpenGL -k-dylib_file -k/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib:/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib -vewnhi -Fu/Developer/lazarus/components/printers/lib/powerpc-darwin/carbon -Fu/Developer/lazarus/lcl/units/powerpc-darwin/carbon -Fu/Developer/lazarus/lcl/units/powerpc-darwin -Fu/Developer/lazarus/components/lazutils/lib/powerpc-darwin -Fu/Developer/lazarus/packager/units/powerpc-darwin &quot;-Fu/Volumes/G5 Dokumente/Projekte/SPINA/Software und Webdienste/code/trunc/Mac OS X, Linux and Windows/SPINA Source/&quot; -l &quot;-oSPINA Thyr&quot; -dLCL -dLCLcarbon /-k-macosx_version_min //-k10.4 //-XR/Developer/SDKs/MacOSX10.4u.sdk/ spina_thyr.lpr"/>
 </CONFIG>

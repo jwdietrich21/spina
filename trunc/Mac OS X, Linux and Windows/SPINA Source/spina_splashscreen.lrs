@@ -9,7 +9,7 @@ LazarusResources.Add('TSplashScreen','FORMDATA',[
   +#7'Caption'#6#10'SPINA Thyr'#12'ClientHeight'#3'4'#1#11'ClientWidth'#3#182#1
   +#5'Color'#4#230#230#230#0#9'FormStyle'#7#8'fsSplash'#8'OnCreate'#7#10'FormCr'
   +'eate'#8'Position'#7#14'poScreenCenter'#13'ShowInTaskBar'#7#7'stNever'#10'LC'
-  +'LVersion'#6#8'0.9.30.4'#0#6'TImage'#6'Image1'#4'Left'#2' '#6'Height'#3#251#0
+  +'LVersion'#6#7'1.0.6.0'#0#6'TImage'#6'Image1'#4'Left'#2' '#6'Height'#3#251#0
   +#3'Top'#2#24#5'Width'#3'z'#1#6'Center'#9#7'OnClick'#7#11'Image1Click'#12'Pic'
   +'ture.Data'#10#182'@'#0#0#23'TPortableNetworkGraphic'#154'@'#0#0#137'PNG'#13
   +#10#26#10#0#0#0#13'IHDR'#0#0#1'{'#0#0#0#218#8#2#0#0#0#200'ku'#163#0#0#0#4'gA'

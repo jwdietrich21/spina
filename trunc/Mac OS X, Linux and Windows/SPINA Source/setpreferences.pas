@@ -33,51 +33,51 @@ type
   { TPreferencesForm }
 
   TPreferencesForm = class(TForm)
-    CDISCOpenDialog: TOpenDialog;
-    ReadCDISCButton: TButton;
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
+    CDISCOpenDialog: TOpenDialog;
+    GDRREdit: TEdit;
+    GDRRLabel: TLabel;
+    GTRREdit: TEdit;
+    GTRRLabel: TLabel;
+    MethodLabel: TLabel;
+    OKButton: TButton;
+    ReadCDISCButton: TButton;
+    RememberCheckBox: TCheckBox;
     T3Label: TLabel;
     T3MethodComboBox: TComboBox;
-    TSHLabel: TLabel;
-    RememberCheckBox: TCheckBox;
-    GTRREdit: TEdit;
-    GDRREdit: TEdit;
-    GTRRLabel: TLabel;
-    GDRRLabel: TLabel;
     T3RREDit: TEdit;
-    T4RREdit: TEdit;
-    TSHRREdit: TEdit;
     T3RRLabel: TLabel;
     T3UnitComboBox: TComboBox;
     T4Label: TLabel;
-    T4RRLabel: TLabel;
     T4MethodComboBox: TComboBox;
+    T4RREdit: TEdit;
+    T4RRLabel: TLabel;
     T4UnitComboBox: TComboBox;
+    TSHLabel: TLabel;
+    TSHRREdit: TEdit;
     TSHRRLabel: TLabel;
     TSHUnitComboBox: TComboBox;
     UnitLabel: TLabel;
-    MethodLabel: TLabel;
     UnitsGroupBox: TGroupBox;
-    OKButton: TButton;
-    procedure UpdateDisplay(Sender: TObject);
-    procedure AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
     procedure AdjustCombos(Sender: TObject);
-    procedure MethodComboBoxChange(Sender: TObject);
-    procedure T3MethodComboBoxChange(Sender: TObject);
-    procedure T3UnitComboBoxChange(Sender: TObject);
-    procedure T4MethodComboBoxChange(Sender: TObject);
-    procedure T4UnitComboBoxChange(Sender: TObject);
-    procedure TSHUnitComboBoxChange(Sender: TObject);
-    procedure DisplayReferenceRanges(Sender: TObject);
+    procedure AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
     procedure CancelButtonClick(Sender: TObject);
+    procedure DisplayReferenceRanges(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure MethodComboBoxChange(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure ReadCDISCButtonClick(Sender: TObject);
     procedure RememberCheckBoxChange(Sender: TObject);
-    procedure T4MethodComboBoxAdjust(Sender: TObject);
     procedure T3MethodComboBoxAdjust(Sender: TObject);
+    procedure T3MethodComboBoxChange(Sender: TObject);
+    procedure T3UnitComboBoxChange(Sender: TObject);
+    procedure T4MethodComboBoxAdjust(Sender: TObject);
+    procedure T4MethodComboBoxChange(Sender: TObject);
+    procedure T4UnitComboBoxChange(Sender: TObject);
+    procedure TSHUnitComboBoxChange(Sender: TObject);
+    procedure UpdateDisplay(Sender: TObject);
   private
     { private declarations }
   public
