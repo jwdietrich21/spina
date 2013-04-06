@@ -80,6 +80,7 @@ type
     procedure UpdateDisplay(Sender: TObject);
   private
     { private declarations }
+    procedure ReadCDISCFile(Sender: TObject; thePath: String);
   public
     { public declarations }
   end;
@@ -340,25 +341,30 @@ begin
   SPINA_UserInterface.GetPreferences;
 end;
 
-procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
-{read CDISC lab model file}
+procedure TPreferencesForm.ReadCDISCFile(Sender: TObject; thePath: String);
+{reads an XML file that is compliant with CDISC lab model standards}
 var
   theCode: integer;
 begin
+  GetReferenceValues(thePath, gCode);
+  if (gCode = 0) or (gCode = 10) then  {no error or new file created}
+    DisplayReferenceRanges(Sender)
+  else
+  begin
+    case gCode of
+      1: ShowMessage(RR_FORMAT_ERROR_MESSAGE);
+      2: ShowMessage(RR_SPINA_ERROR_MESSAGE);
+      6: ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
+    end;
+    GetReferenceValues(RRFile, theCode);
+  end;
+end;
+
+procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
+begin
   if CDISCOpenDialog.Execute then
   begin
-    GetReferenceValues(CDISCOpenDialog.FileName, gCode);
-    if (gCode = 0) or (gCode = 10) then
-      DisplayReferenceRanges(Sender)
-    else
-    begin
-      case gCode of
-        1: ShowMessage(RR_FORMAT_ERROR_MESSAGE);
-        2: ShowMessage(RR_SPINA_ERROR_MESSAGE);
-        6: ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
-      end;
-      GetReferenceValues(RRFile, theCode);
-    end;
+    ReadCDISCFile(Sender, CDISCOpenDialog.FileName);
   end;
 end;
 

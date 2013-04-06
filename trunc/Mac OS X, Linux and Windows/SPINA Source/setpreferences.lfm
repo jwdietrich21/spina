@@ -310,6 +310,6 @@ object PreferencesForm: TPreferencesForm
     Filter = 'CDISC Lab Model 1.0.1 file (XML)|*.xml'
     Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
     left = 424
-    top = 264
+    top = 296
   end
 end
