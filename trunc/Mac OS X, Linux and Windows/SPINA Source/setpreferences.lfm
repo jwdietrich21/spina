@@ -13,7 +13,7 @@ object PreferencesForm: TPreferencesForm
   OnActivate = FormActivate
   OnClose = FormClose
   Position = poMainFormCenter
-  LCLVersion = '1.0.6.0'
+  LCLVersion = '1.0.8.0'
   object OKButton: TButton
     Left = 410
     Height = 25
@@ -197,6 +197,7 @@ object PreferencesForm: TPreferencesForm
     Caption = 'Reference values:'
     ClientHeight = 134
     ClientWidth = 451
+    DragMode = dmAutomatic
     TabOrder = 2
     object TSHRRLabel: TLabel
       Left = 12

@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 257
+  Left = 296
   Height = 349
-  Top = 337
+  Top = 174
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -317,7 +317,7 @@ object Hauptschirm: THauptschirm
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.6.0'
+  LCLVersion = '1.0.8.0'
   object Calculate_Button: TButton
     Left = 656
     Height = 24
@@ -454,6 +454,7 @@ object Hauptschirm: THauptschirm
         Top = 5
         Width = 200
         BorderStyle = bsNone
+        DragMode = dmAutomatic
         Font.Height = -10
         Font.Name = 'Geneva'
         ParentFont = False
@@ -484,6 +485,7 @@ object Hauptschirm: THauptschirm
         Top = 5
         Width = 200
         BorderStyle = bsNone
+        DragMode = dmAutomatic
         Font.Height = -10
         Font.Name = 'Geneva'
         Lines.Strings = (
