@@ -82,7 +82,7 @@ begin
     tempRecord.GTs := concat(tempRecord.GTs, ' pmol/s');
     if (tempRecord.GT < gReferenceRanges.GT.ln) or (tempRecord.GT >
       gReferenceRanges.GT.hn) then
-      GTFlag := '*';
+      GTFlag := REF_RANGE_FLAG;
     tempRecord.flaggedGTs := FloatToStrF(1e12 * tempRecord.GT, ffFixed, 5, 2);
     tempRecord.flaggedGTs := concat(tempRecord.flaggedGTs, GTFlag, ' pmol/s ');
   end
@@ -110,7 +110,7 @@ begin
     tempRecord.GDs := concat(tempRecord.GDs, ' nmol/s');
     if (tempRecord.GD < gReferenceRanges.GD.ln) or (tempRecord.GD >
       gReferenceRanges.GD.hn) then
-      GDFlag := '*';
+      GDFlag := REF_RANGE_FLAG;
     tempRecord.flaggedGDs := FloatToStrF(1e9 * tempRecord.GD, ffFixed, 5, 2);
     tempRecord.flaggedGDs := concat(tempRecord.flaggedGDs, GDFlag, ' nmol/s ');
   end

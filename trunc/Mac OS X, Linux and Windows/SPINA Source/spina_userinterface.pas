@@ -477,7 +477,7 @@ begin
   Hauptschirm.ResultField.Hint := gReferenceValueString2;
 end;
 
-procedure ShowMessage;
+procedure ShowMessage(TSH_String, T4_String, T3_String: Str255; theResult: String);
 const
   kTSH_Label = '   TSH: ';
   kFT4_Label = '   FT4: ';
@@ -490,37 +490,25 @@ const
   ksT3_Label = 'T3: ';
 var
   theString, vhString: Str255;
-  T4Label, T3Label, sT4Label, sT3Label: Str255;
+  T4Label, T3Label: Str255;
 begin
-  if gPreferences.T4.Method = freeHormone then
-  begin
-    T4Label := kFT4_Label;
-    sT4Label := ksFT4_Label;
-  end
+  if gPreferences.T4.Method = freeHormone then  {free or total T4?}
+    T4Label := kFT4_Label
   else
-  begin
     T4Label := kT4_Label;
-    sT4Label := ksT4_Label;
-  end;
-  if gPreferences.T3.Method = freeHormone then
-  begin
-    T3Label := kFT3_Label;
-    sT3Label := ksFT3_Label;
-  end
+  if gPreferences.T3.Method = freeHormone then  {free or total T3?}
+    T3Label := kFT3_Label
   else
-  begin
     T3Label := kT3_Label;
-    sT3Label := ksT3_Label;
-  end;
   vhString := concat(gVerhaltensparameter, kCR, kLF, '   TSH: ',
     TSH_String, ' ', gTSHUnit, kCR, kLF, T4Label, T4_String, ' ',
     gT4Unit, kCR, kLF, T3Label, T3_String, ' ', gT3Unit);
   theString := concat(vhString, kCR, kLF, kCR, kLF, gStrukturparameter,
-    kCR, kLF, gMessageString);
+    kCR, kLF, theResult);
   Hauptschirm.ResultField.Text := theString;
   gResultString := theString;
   gResultDialogString1 := vhString;
-  gResultDialogString2 := concat(gStrukturparameter, kCR, kLF, gMessageString);
+  gResultDialogString2 := concat(gStrukturparameter, kCR, kLF, theResult);
   ComposeRRHints;
 end;
 
@@ -548,6 +536,8 @@ var
   Size: byte;
   resultRecord: tCaseRecord;
   oldSeparator: Char;
+  strucPars: String;
+  TSH_String, T4_String, T3_String: Str255;
 begin
   oldSeparator := decimalSeparator;
   try
@@ -641,12 +631,12 @@ begin
   decimalSeparator := oldSeparator;
   resultRecord := Calculate(TSH, T4, T3);
   if gUseReferenceRanges then
-    gMessageString := concat('   GT: ', resultRecord.flaggedGTs, kCR,
+    strucPars := concat('   GT: ', resultRecord.flaggedGTs, kCR,
       kLF, '   GD: ', resultRecord.flaggedGDs)
   else
-    gMessageString := concat('   GT: ', resultRecord.GTs, kCR, kLF,
+    strucPars := concat('   GT: ', resultRecord.GTs, kCR, kLF,
       '   GD: ', resultRecord.GDs);
-  ShowMessage;
+  ShowMessage(TSH_String, T4_String, T3_String, strucPars);
 end;
 
 procedure THauptschirm.Calculate_ButtonClick(Sender: TObject);

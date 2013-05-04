@@ -1,5 +1,3 @@
-{ This is an automatically generated lazarus resource file }
-
 LazarusResources.Add('THauptschirm','FORMDATA',[
   'TPF0'#12'THauptschirm'#11'Hauptschirm'#4'Left'#3'('#1#6'Height'#3']'#1#3'Top'
   +#3#174#0#5'Width'#3#253#2#21'HorzScrollBar.Visible'#8#21'VertScrollBar.Visib'
@@ -1103,3 +1101,4 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +#0#9'TMenuItem'#15'PopupCopyResult'#7'Caption'#6#11'Copy Result'#10'ImageInd'
   +'ex'#2#10#7'OnClick'#7#20'PopupCopyResultClick'#0#0#0#0
 ]);
+

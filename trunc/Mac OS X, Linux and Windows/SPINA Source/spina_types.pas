@@ -107,6 +107,8 @@ const
 
   MAXFACTORS = 10; {for measurement units and preferences}
 
+  REF_RANGE_FLAG = '*'; {flag sign for marking results outside the reference range}
+
 type
 Str3 = string[3];
 Str255 = String[255];
@@ -153,7 +155,7 @@ var
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
   gPreferencesHint: string;
   gcalcTitle, gcalcString, gNotCalculableString: Str255;
-  gExplanationString, gMessageString, TSH_String, T4_String, T3_String: Str255;
+  gExplanationString: Str255;
   gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;
   gTSHUnit, gT4Unit, gT3Unit, gResultString: Str255;
   gInterfaceLanguage: tInterfaceLanguage;
