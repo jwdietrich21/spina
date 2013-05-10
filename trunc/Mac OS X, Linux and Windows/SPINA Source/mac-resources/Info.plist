@@ -23,30 +23,32 @@ See http://spina.medical-cybernetics.de for details
 -->
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleExecutable</key>
-	<string>SPINA Thyr</string>
-	<key>CFBundleName</key>
-	<string>SPINA Thyr</string>
-	<key>CFBundleGetInfoString</key>
-	<string>3.3.1, ©1994-2013 J. W. Dietrich</string>
-	<key>CFBundleIdentifier</key>
-	<string>net.sf.spina</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleExecutable</key>
+	<string>SPINA Thyr</string>
+	<key>CFBundleVersion</key>
+	<string>3.3.1</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleName</key>
+	<string>SPINA Thyr</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>SPIt</string>
 	<key>CFBundleShortVersionString</key>
 	<string>3.3.1</string>
+	<key>CFBundleGetInfoString</key>
+	<string>3.3.1, ©1994-2013 J. W. Dietrich</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>3.3.1, ©1994-2013 J. W. Dietrich</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.sf.spina</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.medical</string>
 	<key>CFBundleIconFile</key>
 	<string>iconfile.icns</string>
-	<key>CFBundleVersion</key>
-	<string>Version 3.3.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>LSRequiresCarbon</key>
