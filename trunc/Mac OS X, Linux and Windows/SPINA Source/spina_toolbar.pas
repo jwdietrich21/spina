@@ -345,7 +345,7 @@ end;
 
 procedure TSPINAToolbar.SPINAThyrLabelClick(Sender: TObject);
 begin
-
+  ShowAboutBox;
 end;
 
 procedure TSPINAToolbar.AppleAboutMenuItemClick(Sender: TObject);
