@@ -39,7 +39,7 @@ const
   HELP_ITEM2_TITLE2 = 'Information about the method';
   HELP_ITEM3_TITLE1 = 'Versionsinformation';
   HELP_ITEM3_TITLE2 = 'Version info';
-  HELP_ITEM1_ENTRY1 = 'Beginnen Sie hier für eine kurze Einführung, eine Handbuch und Online-Tutorials.';
+  HELP_ITEM1_ENTRY1 = 'Beginnen Sie hier für eine kurze Einführung, ein Handbuch und Online-Tutorials.';
   HELP_ITEM1_ENTRY2 = 'Get a short introduction, a full handbook and tutorials online.';
   HELP_ITEM2_ENTRY1 = 'Informieren Sie sich über SPINA und die Schilddrüsen-Homöostase.';
   HELP_ITEM2_ENTRY2 = 'References and background information about SPINA.';

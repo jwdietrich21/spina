@@ -34,48 +34,51 @@ LazarusResources.Add('TPreferencesForm','FORMDATA',[
   +'ht'#2#245#10'ItemHeight'#2#0#9'ItemIndex'#2#0#13'Items.Strings'#1#6#3'FT4'#6
   +#2'T4'#0#8'OnChange'#7#22'T4MethodComboBoxChange'#10'ParentFont'#8#8'TabOrde'
   +'r'#2#2#4'Text'#6#3'FT4'#0#0#9'TCheckBox'#16'RememberCheckBox'#4'Left'#2#12#6
-  +'Height'#2#18#3'Top'#2#5#5'Width'#3#178#0#7'Caption'#6#23'Remember last used'
-  +' unit'#7'Checked'#9#8'OnChange'#7#22'RememberCheckBoxChange'#5'State'#7#9'c'
-  +'bChecked'#8'TabOrder'#2#3#0#0#6'TLabel'#8'TSHLabel'#4'Left'#2#12#6'Height'#2
-  +#17#3'Top'#2':'#5'Width'#2#30#7'Caption'#6#4'TSH:'#11'ParentColor'#8#0#0#6'T'
-  +'Label'#7'T3Label'#4'Left'#2#12#6'Height'#2#17#3'Top'#2'j'#5'Width'#2#22#7'C'
-  +'aption'#6#3'T3:'#11'ParentColor'#8#0#0#9'TComboBox'#15'TSHUnitComboBox'#4'L'
-  +'eft'#3#204#0#6'Height'#2#21#4'Hint'#6#11'Ma'#195#159'einheit'#3'Top'#2'6'#5
-  +'Width'#2'8'#7'Enabled'#8#11'Font.Height'#2#245#10'ItemHeight'#2#0#9'ItemInd'
-  +'ex'#2#0#13'Items.Strings'#1#6#4'mU/l'#6#6#194#181'U/ml'#0#8'OnChange'#7#21
-  +'TSHUnitComboBoxChange'#10'ParentFont'#8#8'TabOrder'#2#4#4'Text'#6#4'mU/l'#0
-  +#0#9'TComboBox'#16'T3MethodComboBox'#4'Left'#2't'#6'Height'#2#21#4'Hint'#6#11
-  +'Ma'#195#159'einheit'#3'Top'#2'f'#5'Width'#2'8'#7'Enabled'#8#11'Font.Height'
-  +#2#245#10'ItemHeight'#2#0#9'ItemIndex'#2#0#13'Items.Strings'#1#6#3'FT3'#6#2
-  +'T3'#0#8'OnChange'#7#22'T3MethodComboBoxChange'#10'ParentFont'#8#8'TabOrder'
-  +#2#5#4'Text'#6#3'FT3'#0#0#0#9'TGroupBox'#13'CDISCGroupBox'#4'Left'#2#24#6'He'
-  +'ight'#3#156#0#3'Top'#3#184#0#5'Width'#3#203#1#7'Anchors'#11#6'akLeft'#7'akR'
-  +'ight'#8'akBottom'#0#7'Caption'#6#17'Reference values:'#12'ClientHeight'#3
-  +#134#0#11'ClientWidth'#3#195#1#8'DragMode'#7#11'dmAutomatic'#8'TabOrder'#2#2
-  +#0#6'TLabel'#10'TSHRRLabel'#4'Left'#2#12#6'Height'#2#17#3'Top'#2#12#5'Width'
-  +#2#30#7'Caption'#6#4'TSH:'#11'ParentColor'#8#0#0#6'TLabel'#9'T4RRLabel'#4'Le'
-  +'ft'#2#12#6'Height'#2#17#3'Top'#2'$'#5'Width'#2#22#7'Caption'#6#3'T4:'#11'Pa'
-  +'rentColor'#8#0#0#6'TLabel'#9'T3RRLabel'#4'Left'#2#12#6'Height'#2#17#3'Top'#2
-  +'<'#5'Width'#2#22#7'Caption'#6#3'T3:'#11'ParentColor'#8#0#0#5'TEdit'#9'TSHRR'
-  +'Edit'#4'Left'#2't'#6'Height'#2#22#3'Top'#2#7#5'Width'#3#144#0#8'ReadOnly'#9
-  +#8'TabOrder'#2#0#4'Text'#6#3'NaN'#0#0#5'TEdit'#8'T4RREdit'#4'Left'#2't'#6'He'
-  +'ight'#2#22#3'Top'#2#31#5'Width'#3#144#0#8'ReadOnly'#9#8'TabOrder'#2#1#4'Tex'
-  +'t'#6#3'NaN'#0#0#5'TEdit'#8'T3RREDit'#4'Left'#2't'#6'Height'#2#22#3'Top'#2'7'
-  +#5'Width'#3#144#0#8'ReadOnly'#9#8'TabOrder'#2#2#4'Text'#6#3'NaN'#0#0#6'TLabe'
-  +'l'#9'GTRRLabel'#4'Left'#2#12#6'Height'#2#17#3'Top'#2'V'#5'Width'#2#23#7'Cap'
-  +'tion'#6#3'GT:'#11'ParentColor'#8#0#0#6'TLabel'#9'GDRRLabel'#4'Left'#2#12#6
-  +'Height'#2#17#3'Top'#2'n'#5'Width'#2#24#7'Caption'#6#3'GD:'#11'ParentColor'#8
-  ,#0#0#5'TEdit'#8'GTRREdit'#4'Left'#2't'#6'Height'#2#22#3'Top'#2'Q'#5'Width'#3
-  +#144#0#8'ReadOnly'#9#8'TabOrder'#2#3#4'Text'#6#3'NaN'#0#0#5'TEdit'#8'GDRREdi'
-  +'t'#4'Left'#2't'#6'Height'#2#22#3'Top'#2'i'#5'Width'#3#144#0#8'ReadOnly'#9#8
-  +'TabOrder'#2#4#4'Text'#6#3'NaN'#0#0#7'TButton'#15'ReadCDISCButton'#4'Left'#3
-  +'$'#1#6'Height'#2#25#3'Top'#2#7#5'Width'#3#155#0#7'Caption'#6#18'Read from f'
-  +'ile ...'#7'OnClick'#7#20'ReadCDISCButtonClick'#8'TabOrder'#2#5#0#0#0#7'TBut'
-  +'ton'#12'CancelButton'#4'Left'#3' '#1#6'Height'#2#25#3'Top'#3'e'#1#5'Width'#2
-  +'k'#7'Anchors'#11#7'akRight'#8'akBottom'#0#6'Cancel'#9#7'Caption'#6#6'Cancel'
-  +#7'OnClick'#7#17'CancelButtonClick'#8'TabOrder'#2#3#0#0#11'TOpenDialog'#15'C'
-  +'DISCOpenDialog'#10'DefaultExt'#6#4'.xml'#6'Filter'#6'&CDISC Lab Model 1.0.1'
-  +' file (XML)|*.xml'#7'Options'#11#15'ofPathMustExist'#15'ofFileMustExist'#14
-  +'ofEnableSizing'#12'ofViewDetail'#13'ofAutoPreview'#0#4'left'#3#168#1#3'top'
-  +#3'('#1#0#0#0
+  +'Height'#2#18#4'Hint'#6'dBitte anklicken, um f'#195#188'r neue Berechnungen '
+  +'die Ma'#195#159'einheiten der vorherigen Berechnung zu verwenden.'#3'Top'#2
+  +#5#5'Width'#3#178#0#7'Caption'#6#23'Remember last used unit'#7'Checked'#9#8
+  +'OnChange'#7#22'RememberCheckBoxChange'#14'ParentShowHint'#8#8'ShowHint'#9#5
+  +'State'#7#9'cbChecked'#8'TabOrder'#2#3#0#0#6'TLabel'#8'TSHLabel'#4'Left'#2#12
+  +#6'Height'#2#17#3'Top'#2':'#5'Width'#2#30#7'Caption'#6#4'TSH:'#11'ParentColo'
+  +'r'#8#0#0#6'TLabel'#7'T3Label'#4'Left'#2#12#6'Height'#2#17#3'Top'#2'j'#5'Wid'
+  +'th'#2#22#7'Caption'#6#3'T3:'#11'ParentColor'#8#0#0#9'TComboBox'#15'TSHUnitC'
+  +'omboBox'#4'Left'#3#204#0#6'Height'#2#21#4'Hint'#6#11'Ma'#195#159'einheit'#3
+  +'Top'#2'6'#5'Width'#2'8'#7'Enabled'#8#11'Font.Height'#2#245#10'ItemHeight'#2
+  +#0#9'ItemIndex'#2#0#13'Items.Strings'#1#6#4'mU/l'#6#6#194#181'U/ml'#0#8'OnCh'
+  +'ange'#7#21'TSHUnitComboBoxChange'#10'ParentFont'#8#8'TabOrder'#2#4#4'Text'#6
+  +#4'mU/l'#0#0#9'TComboBox'#16'T3MethodComboBox'#4'Left'#2't'#6'Height'#2#21#4
+  +'Hint'#6#11'Ma'#195#159'einheit'#3'Top'#2'f'#5'Width'#2'8'#7'Enabled'#8#11'F'
+  +'ont.Height'#2#245#10'ItemHeight'#2#0#9'ItemIndex'#2#0#13'Items.Strings'#1#6
+  +#3'FT3'#6#2'T3'#0#8'OnChange'#7#22'T3MethodComboBoxChange'#10'ParentFont'#8#8
+  +'TabOrder'#2#5#4'Text'#6#3'FT3'#0#0#0#9'TGroupBox'#13'CDISCGroupBox'#4'Left'
+  +#2#24#6'Height'#3#156#0#3'Top'#3#184#0#5'Width'#3#203#1#7'Anchors'#11#6'akLe'
+  +'ft'#7'akRight'#8'akBottom'#0#7'Caption'#6#17'Reference values:'#12'ClientHe'
+  +'ight'#3#134#0#11'ClientWidth'#3#195#1#8'DragMode'#7#11'dmAutomatic'#8'TabOr'
+  +'der'#2#2#0#6'TLabel'#10'TSHRRLabel'#4'Left'#2#12#6'Height'#2#17#3'Top'#2#12
+  +#5'Width'#2#30#7'Caption'#6#4'TSH:'#11'ParentColor'#8#0#0#6'TLabel'#9'T4RRLa'
+  +'bel'#4'Left'#2#12#6'Height'#2#17#3'Top'#2'$'#5'Width'#2#22#7'Caption'#6#3'T'
+  +'4:'#11'ParentColor'#8#0#0#6'TLabel'#9'T3RRLabel'#4'Left'#2#12#6'Height'#2#17
+  +#3'Top'#2'<'#5'Width'#2#22#7'Caption'#6#3'T3:'#11'ParentColor'#8#0#0#5'TEdit'
+  +#9'TSHRREdit'#4'Left'#2't'#6'Height'#2#22#3'Top'#2#7#5'Width'#3#144#0#8'Read'
+  +'Only'#9#8'TabOrder'#2#0#4'Text'#6#3'NaN'#0#0#5'TEdit'#8'T4RREdit'#4'Left'#2
+  +'t'#6'Height'#2#22#3'Top'#2#31#5'Width'#3#144#0#8'ReadOnly'#9#8'TabOrder'#2#1
+  +#4'Text'#6#3'NaN'#0#0#5'TEdit'#8'T3RREDit'#4'Left'#2't'#6'Height'#2#22#3'Top'
+  +#2'7'#5'Width'#3#144#0#8'ReadOnly'#9#8'TabOrder'#2#2#4'Text'#6#3'NaN'#0#0#6
+  +'TLabel'#9'GTRRLabel'#4'Left'#2#12#6'Height'#2#17#3'Top'#2'V'#5'Width'#2#23#7
+  ,'Caption'#6#3'GT:'#11'ParentColor'#8#0#0#6'TLabel'#9'GDRRLabel'#4'Left'#2#12
+  +#6'Height'#2#17#3'Top'#2'n'#5'Width'#2#24#7'Caption'#6#3'GD:'#11'ParentColor'
+  +#8#0#0#5'TEdit'#8'GTRREdit'#4'Left'#2't'#6'Height'#2#22#3'Top'#2'Q'#5'Width'
+  +#3#144#0#8'ReadOnly'#9#8'TabOrder'#2#3#4'Text'#6#3'NaN'#0#0#5'TEdit'#8'GDRRE'
+  +'dit'#4'Left'#2't'#6'Height'#2#22#3'Top'#2'i'#5'Width'#3#144#0#8'ReadOnly'#9
+  +#8'TabOrder'#2#4#4'Text'#6#3'NaN'#0#0#7'TButton'#15'ReadCDISCButton'#4'Left'
+  +#3'$'#1#6'Height'#2#25#4'Hint'#6'''Referenzbereiche aus Datei importieren.'#3
+  +'Top'#2#7#5'Width'#3#155#0#7'Caption'#6#18'Read from file ...'#7'OnClick'#7
+  +#20'ReadCDISCButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'#2#5
+  +#0#0#0#7'TButton'#12'CancelButton'#4'Left'#3' '#1#6'Height'#2#25#3'Top'#3'e'
+  +#1#5'Width'#2'k'#7'Anchors'#11#7'akRight'#8'akBottom'#0#6'Cancel'#9#7'Captio'
+  +'n'#6#6'Cancel'#7'OnClick'#7#17'CancelButtonClick'#8'TabOrder'#2#3#0#0#11'TO'
+  +'penDialog'#15'CDISCOpenDialog'#10'DefaultExt'#6#4'.xml'#6'Filter'#6'&CDISC '
+  +'Lab Model 1.0.1 file (XML)|*.xml'#7'Options'#11#15'ofPathMustExist'#15'ofFi'
+  +'leMustExist'#14'ofEnableSizing'#12'ofViewDetail'#13'ofAutoPreview'#0#4'left'
+  +#3#168#1#3'top'#3'('#1#0#0#0
 ]);

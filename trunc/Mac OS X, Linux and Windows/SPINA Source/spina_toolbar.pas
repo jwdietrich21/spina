@@ -164,6 +164,14 @@ begin
     Hauptschirm.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
     Hauptschirm.HelpItem.Caption := 'SPINA Help ...';
     Hauptschirm.OnlineInfoItem.Caption := 'Online Info ...';
+    Hauptschirm.TSHUnitComboBox.Hint := 'Measurement unit';
+    Hauptschirm.T4UnitComboBox.Hint := 'Measurement unit';
+    Hauptschirm.T3UnitComboBox.Hint := 'Measurement unit';
+    Hauptschirm.T4MethodComboBox.Hint := 'Method';
+    Hauptschirm.T3MethodComboBox.Hint := 'Method';
+    Hauptschirm.TherapyCheckGroup.Hint := 'Please mark on therapy';
+    PreferencesForm.RememberCheckBox.Hint := 'Please click to reuse measurement units of previous calculations';
+    PreferencesForm.ReadCDISCButton.Hint := 'Import reference ranges from file';
     SPINAToolbar.FileMenu.Caption := 'File';
     SPINAToolbar.NewMenuItem.Caption := 'New Calculation...';
     SPINAToolbar.CloseMenuItem.Caption := 'Close';

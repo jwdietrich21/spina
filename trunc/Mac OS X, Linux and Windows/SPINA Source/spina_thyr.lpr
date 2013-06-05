@@ -54,6 +54,7 @@ begin
   gStartup := true;
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TResultForm, ResultForm);
+  Application.CreateForm(TPreferencesForm, PreferencesForm);
   Application.CreateForm(TSPINAToolbar, SPINAToolbar);
   with SPINAToolbar do
   begin
@@ -79,7 +80,6 @@ begin
   SPINAToolbar.Show;
   gUseReferenceRanges := true;
   Hauptschirm.AlphaBlendValue := 255;
-  Application.CreateForm(TPreferencesForm, PreferencesForm);
   Application.CreateForm(THelpWindow, HelpWindow);
   Application.Run;
   if (SplashScreen<>nil) then begin

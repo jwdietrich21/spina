@@ -125,11 +125,14 @@ object PreferencesForm: TPreferencesForm
     object RememberCheckBox: TCheckBox
       Left = 12
       Height = 18
+      Hint = 'Bitte anklicken, um für neue Berechnungen die Maßeinheiten der vorherigen Berechnung zu verwenden.'
       Top = 5
       Width = 178
       Caption = 'Remember last used unit'
       Checked = True
       OnChange = RememberCheckBoxChange
+      ParentShowHint = False
+      ShowHint = True
       State = cbChecked
       TabOrder = 3
     end
@@ -287,10 +290,13 @@ object PreferencesForm: TPreferencesForm
     object ReadCDISCButton: TButton
       Left = 292
       Height = 25
+      Hint = 'Referenzbereiche aus Datei importieren.'
       Top = 7
       Width = 155
       Caption = 'Read from file ...'
       OnClick = ReadCDISCButtonClick
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 5
     end
   end

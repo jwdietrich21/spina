@@ -410,6 +410,7 @@ object Hauptschirm: THauptschirm
     object TherapyCheckGroup: TCheckGroup
       Left = 520
       Height = 99
+      Hint = 'Bitte markieren Sie bei Substitutionstherapie die entsprechende Box.'
       Top = 8
       Width = 217
       AutoFill = True
@@ -429,6 +430,8 @@ object Hauptschirm: THauptschirm
         'T4-Substitution'
         'T3-Substitution'
       )
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
       Data = {
         03000000020202
@@ -897,7 +900,7 @@ object Hauptschirm: THauptschirm
       object T3MethodComboBox: TComboBox
         Left = 199
         Height = 21
-        Hint = 'Maßeinheit'
+        Hint = 'Methode'
         Top = 2
         Width = 56
         Font.Height = -11
@@ -915,7 +918,7 @@ object Hauptschirm: THauptschirm
       object T4MethodComboBox: TComboBox
         Left = 41
         Height = 21
-        Hint = 'Maßeinheit'
+        Hint = 'Methode'
         Top = 221
         Width = 56
         Font.Height = -11

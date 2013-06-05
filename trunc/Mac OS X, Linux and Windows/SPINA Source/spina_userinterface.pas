@@ -345,6 +345,7 @@ end;
 { THauptschirm }
 
 procedure GetPreferences;
+{gets preferences and adjust controls in the main form accordingly}
 var
   found: boolean;
   i: integer;
@@ -427,6 +428,7 @@ begin
 end;
 
 procedure ComposeRRHints;
+{create hints with reference ranges}
 begin
   if gPreferences.T4.Method = freeHormone then
   begin
@@ -478,6 +480,7 @@ begin
 end;
 
 procedure ShowMessage(TSH_String, T4_String, T3_String: Str255; theResult: String);
+{displays the result of the calculation}
 const
   kTSH_Label = '   TSH: ';
   kFT4_Label = '   FT4: ';
@@ -640,6 +643,7 @@ begin
 end;
 
 procedure THauptschirm.Calculate_ButtonClick(Sender: TObject);
+{invokes calculation engine}
 begin
   HandleInput;
   ResultForm.Visible := True;
@@ -663,6 +667,7 @@ begin
 end;
 
 procedure AdaptMenus;
+{platform-sensitive adjustmens of menus}
 var
   modifierKey: TShiftState;
   theForm: TForm;
@@ -691,7 +696,6 @@ begin
   Hauptschirm.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
   Hauptschirm.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   Hauptschirm.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
-
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
