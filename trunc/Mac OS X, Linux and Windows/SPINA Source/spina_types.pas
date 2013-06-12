@@ -25,7 +25,7 @@ unit SPINA_Types;
 interface
 
 uses
-  Classes, SysUtils, Forms;
+  Classes, SysUtils, Forms, Graphics;
 
 const
   UFT4 = 1.28e-11; {Conversion factor ng/dl -> mol/l (T4)}
@@ -109,6 +109,8 @@ const
 
   REF_RANGE_FLAG = '*'; {flag sign for marking results outside the reference range}
 
+  clLtYellow = TColor($AAFFFF);
+
 type
 Str3 = string[3];
 Str255 = String[255];
@@ -126,7 +128,7 @@ tParameterSettings = record
        MethodPopUpItem: integer;
 end;
 tPreferences = record
-       new, rememberUsedUnits: boolean;
+       new, rememberUsedUnits, colouriseMandatoryFields: boolean;
        TSH, T4, T3: tParameterSettings;
        end;
 tReferenceAlerts = record

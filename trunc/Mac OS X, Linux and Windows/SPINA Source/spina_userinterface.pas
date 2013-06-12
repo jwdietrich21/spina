@@ -149,6 +149,7 @@ type
     procedure CutMenuItemClick(Sender: TObject);
     procedure DeleteMenuItemClick(Sender: TObject);
     procedure Ergebniskopieren1Click(Sender: TObject);
+    procedure MarkMandatoryFields(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FT4ItemsChange(Sender: TObject);
@@ -175,6 +176,8 @@ type
     procedure T4MethodComboBoxAdjust(Sender: TObject);
     procedure T4MethodComboBoxChange(Sender: TObject);
     procedure T4UnitComboBoxChange(Sender: TObject);
+    procedure TherapyCheckGroupClick(Sender: TObject);
+    procedure TherapyCheckGroupItemClick(Sender: TObject; Index: integer);
     procedure TSHUnitComboBoxChange(Sender: TObject);
     procedure UndoMenuItemClick(Sender: TObject);
     procedure WinPreferencesItemClick(Sender: TObject);
@@ -712,9 +715,28 @@ begin
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
+{copy result}
 begin
   Hauptschirm.ResultField.SelectAll;
   Hauptschirm.ResultField.CopyToClipboard;
+end;
+
+procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
+begin
+  if gPreferences.colouriseMandatoryFields then begin {should mandatory fields be colourised?}
+    if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
+      Hauptschirm.TSH_Text.Color:= clDefault
+    else
+      Hauptschirm.TSH_Text.Color:= clLtYellow;
+    if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
+      Hauptschirm.FT4_Text.Color:= clDefault
+    else
+      Hauptschirm.FT4_Text.Color:= clLtYellow;
+    if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
+      Hauptschirm.FT3_Text.Color:= clDefault
+    else
+      Hauptschirm.FT3_Text.Color:= clLtYellow;
+  end;
 end;
 
 procedure THauptschirm.FT4ItemsChange(Sender: TObject);
@@ -743,6 +765,17 @@ begin
   AdjustUnitFactors;
 end;
 
+procedure THauptschirm.TherapyCheckGroupClick(Sender: TObject);
+begin
+  Hauptschirm.MarkMandatoryFields(Sender);
+end;
+
+procedure THauptschirm.TherapyCheckGroupItemClick(Sender: TObject;
+  Index: integer);
+begin
+  Hauptschirm.MarkMandatoryFields(Sender);
+end;
+
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
   if gStartup then
@@ -751,6 +784,7 @@ begin
     Hauptschirm.VertScrollBar.Visible := False;
     Hauptschirm.AutoScroll := False;
   end;
+  Hauptschirm.MarkMandatoryFields(Sender);
   gLastActiveCustomForm := Hauptschirm;
 end;
 

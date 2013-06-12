@@ -326,6 +326,7 @@ begin
   with gPreferences do
     begin
       rememberUsedUnits := true;
+      colouriseMandatoryFields := false;
       T4.Method := freeHormone;
       T3.Method := freeHormone;
       TSH.measurementUnit := TSH_UNIT;
@@ -370,6 +371,12 @@ begin
         gPreferences.rememberUsedUnits := true
       else
         gPreferences.rememberUsedUnits := false;
+
+      theString := NodeContent(Doc.DocumentElement, 'colourise');
+      if theString = 'true' then
+        gPreferences.colouriseMandatoryFields := true
+      else
+        gPreferences.colouriseMandatoryFields := false;
 
       RootNode := Doc.DocumentElement.FindNode('methods');
       theString := NodeContent(RootNode, 'T4');
