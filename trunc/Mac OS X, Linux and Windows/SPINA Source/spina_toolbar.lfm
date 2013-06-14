@@ -1,7 +1,7 @@
 object SPINAToolbar: TSPINAToolbar
-  Left = 295
+  Left = 236
   Height = 37
-  Top = 121
+  Top = 126
   Width = 883
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -18,7 +18,7 @@ object SPINAToolbar: TSPINAToolbar
   Menu = MainMenu
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '1.0.8.0'
+  LCLVersion = '1.0.6.0'
   Visible = True
   object ToolBar1: TToolBar
     Left = 0
@@ -157,10 +157,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 781
+    Left = 775
     Height = 17
     Top = 7
-    Width = 70
+    Width = 76
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'

@@ -1,21 +1,21 @@
 object PreferencesForm: TPreferencesForm
-  Left = 272
+  Left = 464
   Height = 400
-  Top = 193
-  Width = 515
+  Top = 182
+  Width = 540
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Application Preferences'
   ClientHeight = 400
-  ClientWidth = 515
+  ClientWidth = 540
   Constraints.MinHeight = 400
   Constraints.MinWidth = 500
   OnActivate = FormActivate
   OnClose = FormClose
-  Position = poMainFormCenter
-  LCLVersion = '1.0.8.0'
+  Position = poScreenCenter
+  LCLVersion = '1.0.10.0'
   object OKButton: TButton
-    Left = 410
+    Left = 435
     Height = 25
     Top = 357
     Width = 75
@@ -28,12 +28,12 @@ object PreferencesForm: TPreferencesForm
   object UnitsGroupBox: TGroupBox
     Left = 24
     Height = 153
-    Top = 16
-    Width = 459
+    Top = 8
+    Width = 484
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Methods and measurement units:'
     ClientHeight = 131
-    ClientWidth = 451
+    ClientWidth = 476
     TabOrder = 1
     object MethodLabel: TLabel
       Left = 116
@@ -194,12 +194,12 @@ object PreferencesForm: TPreferencesForm
   object CDISCGroupBox: TGroupBox
     Left = 24
     Height = 156
-    Top = 184
-    Width = 459
-    Anchors = [akLeft, akRight, akBottom]
+    Top = 168
+    Width = 484
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Reference values:'
     ClientHeight = 134
-    ClientWidth = 451
+    ClientWidth = 476
     DragMode = dmAutomatic
     TabOrder = 2
     object TSHRRLabel: TLabel
@@ -301,7 +301,7 @@ object PreferencesForm: TPreferencesForm
     end
   end
   object CancelButton: TButton
-    Left = 288
+    Left = 313
     Height = 25
     Top = 357
     Width = 107
@@ -311,11 +311,21 @@ object PreferencesForm: TPreferencesForm
     OnClick = CancelButtonClick
     TabOrder = 3
   end
+  object MarkMandatoryCheck: TCheckBox
+    Left = 40
+    Height = 18
+    Top = 336
+    Width = 162
+    Anchors = [akLeft, akBottom]
+    Caption = 'Mark mandatory fields'
+    OnChange = MarkMandatoryCheckChange
+    TabOrder = 4
+  end
   object CDISCOpenDialog: TOpenDialog
     DefaultExt = '.xml'
     Filter = 'CDISC Lab Model 1.0.1 file (XML)|*.xml'
     Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
     left = 424
-    top = 296
+    top = 256
   end
 end

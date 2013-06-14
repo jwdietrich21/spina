@@ -172,6 +172,7 @@ begin
     Hauptschirm.TherapyCheckGroup.Hint := 'Please mark on therapy';
     PreferencesForm.RememberCheckBox.Hint := 'Please click to reuse measurement units of previous calculations';
     PreferencesForm.ReadCDISCButton.Hint := 'Import reference ranges from file';
+    PreferencesForm.MarkMandatoryCheck.Caption := kPflichtfelder2;
     SPINAToolbar.FileMenu.Caption := 'File';
     SPINAToolbar.NewMenuItem.Caption := 'New Calculation...';
     SPINAToolbar.CloseMenuItem.Caption := 'Close';
@@ -249,6 +250,7 @@ begin
     gBenutzername := kBenutzername1;
     gDruckdatum := kDruckdatum1;
     gPreferencesHint := kPreferencesHint1;
+    PreferencesForm.MarkMandatoryCheck.Caption := kPflichtfelder1;
     SPINAToolbar.ToolBar1.Buttons[0].Hint := 'Neue Berechnung ...';
     SPINAToolbar.ToolBar1.Buttons[1].Hint := 'Öffnen ...';
     SPINAToolbar.ToolBar1.Buttons[2].Hint := 'Sichern';

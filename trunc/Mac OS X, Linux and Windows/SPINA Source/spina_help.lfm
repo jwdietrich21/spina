@@ -11,7 +11,8 @@ object HelpWindow: THelpWindow
   Constraints.MinHeight = 200
   Constraints.MinWidth = 350
   OnCreate = FormCreate
-  LCLVersion = '1.0.8.0'
+  Position = poScreenCenter
+  LCLVersion = '1.0.6.0'
   object Label1: TLabel
     Left = 80
     Height = 22
@@ -28,7 +29,7 @@ object HelpWindow: THelpWindow
     Left = 40
     Height = 17
     Top = 128
-    Width = 192
+    Width = 204
     Caption = 'Information about the method'
     Font.Color = clNavy
     Font.Pitch = fpVariable
@@ -41,7 +42,7 @@ object HelpWindow: THelpWindow
     Left = 40
     Height = 17
     Top = 80
-    Width = 75
+    Width = 80
     Caption = 'Online Help'
     Font.Color = clNavy
     Font.Pitch = fpVariable
@@ -76,7 +77,7 @@ object HelpWindow: THelpWindow
     Left = 40
     Height = 13
     Top = 96
-    Width = 301
+    Width = 319
     Caption = 'Get a short introduction, a full handbook and tutorials online.'
     Font.Height = 10
     ParentColor = False
@@ -86,7 +87,7 @@ object HelpWindow: THelpWindow
     Left = 40
     Height = 13
     Top = 144
-    Width = 262
+    Width = 277
     Caption = 'References and background information about SPINA.'
     Font.Height = 10
     ParentColor = False
@@ -97,7 +98,7 @@ object HelpWindow: THelpWindow
     Left = 40
     Height = 17
     Top = 168
-    Width = 77
+    Width = 83
     Caption = 'Version info'
     Font.Color = clNavy
     Font.Pitch = fpVariable

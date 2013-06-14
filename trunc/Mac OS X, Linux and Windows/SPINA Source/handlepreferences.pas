@@ -289,6 +289,11 @@ begin
     else
       RootNode.AppendChild(SimpleNode(Doc, 'remember', 'false'));
 
+    if gPreferences.colouriseMandatoryFields then
+      RootNode.AppendChild(SimpleNode(Doc, 'colourise', 'true'))
+    else
+      RootNode.AppendChild(SimpleNode(Doc, 'colourise', 'false'));
+
     ElementNode := Doc.CreateElement('methods');
     if gPreferences.T4.Method = freeHormone then
       ElementNode.AppendChild(SimpleNode(Doc, 'T4', 'free'))

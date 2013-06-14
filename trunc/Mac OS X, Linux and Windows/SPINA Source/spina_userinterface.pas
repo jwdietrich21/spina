@@ -736,6 +736,12 @@ begin
       Hauptschirm.FT3_Text.Color:= clDefault
     else
       Hauptschirm.FT3_Text.Color:= clLtYellow;
+  end
+  else
+  begin
+    Hauptschirm.TSH_Text.Color:= clDefault;
+    Hauptschirm.FT4_Text.Color:= clDefault;
+    Hauptschirm.FT3_Text.Color:= clDefault;
   end;
 end;
 

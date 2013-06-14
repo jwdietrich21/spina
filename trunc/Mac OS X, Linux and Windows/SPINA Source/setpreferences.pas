@@ -36,6 +36,7 @@ type
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
     CDISCOpenDialog: TOpenDialog;
+    MarkMandatoryCheck: TCheckBox;
     GDRREdit: TEdit;
     GDRRLabel: TLabel;
     GTRREdit: TEdit;
@@ -66,6 +67,7 @@ type
     procedure DisplayReferenceRanges(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure MarkMandatoryCheckChange(Sender: TObject);
     procedure MethodComboBoxChange(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure ReadCDISCButtonClick(Sender: TObject);
@@ -266,6 +268,14 @@ begin
   GDRREdit.Text := gGDRR;
 end;
 
+procedure CheckMandatoryColourising; {checks if mandatory fields should be coloured}
+begin
+  if PreferencesForm.MarkMandatoryCheck.Checked then
+    gPreferences.colouriseMandatoryFields := true
+  else
+    gPreferences.colouriseMandatoryFields := false;
+end;
+
 procedure DisplayPreferencesDlg;
 begin
   PreferencesForm.ShowModal;
@@ -336,6 +346,7 @@ begin
     end;
     ComposeRRHints;
   end;
+  CheckMandatoryColourising;
   SavePreferences;
   PreferencesForm.Close;
   SPINA_UserInterface.GetPreferences;
@@ -409,6 +420,11 @@ var
   theCode: integer;
 begin
   GetReferenceValues(RRFile, theCode);
+end;
+
+procedure TPreferencesForm.MarkMandatoryCheckChange(Sender: TObject);
+begin
+  CheckMandatoryColourising;
 end;
 
 procedure TPreferencesForm.CancelButtonClick(Sender: TObject);

@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 296
+  Left = 353
   Height = 349
-  Top = 174
+  Top = 183
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -317,7 +317,7 @@ object Hauptschirm: THauptschirm
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.10.0'
+  LCLVersion = '1.0.6.0'
   object Calculate_Button: TButton
     Left = 656
     Height = 24
@@ -948,7 +948,7 @@ object Hauptschirm: THauptschirm
         Left = 7
         Height = 17
         Top = 6
-        Width = 26
+        Width = 28
         Caption = 'TSH'
         ParentColor = False
       end
@@ -959,7 +959,7 @@ object Hauptschirm: THauptschirm
     Left = 16
     Height = 13
     Top = 312
-    Width = 54
+    Width = 58
     Caption = 'SPINA Thyr'
     Font.Color = clBlack
     Font.Height = -10

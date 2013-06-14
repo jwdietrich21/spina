@@ -91,6 +91,8 @@ const
   kCancel2 = 'Cancel';
   kReadCDISC1 = 'Aus Datei lesen ...';
   kReadCDISC2 = 'Read from file ...';
+  kPflichtfelder1 = 'Pflichtfelder farbig hevorheben';
+  kPflichtfelder2 = 'Mark mandatory fields by colouring';
   kMarginSpaces = '                                    ';
 
   BASE_URL = 'http://spina.medical-cybernetics.de';
