@@ -90,7 +90,7 @@ type
     HintField: TMemo;
     HintGroupBox: TGroupBox;
     Image1: TImage;
-    Image2: TImage;
+    SPINALabel: TImage;
     ImageList1: TImageList;
     Kopieren1: TMenuItem;
     Label1: TLabel;
@@ -155,7 +155,7 @@ type
     procedure FT4ItemsChange(Sender: TObject);
     procedure HandleAbout(Sender: TObject);
     procedure HelpItemClick(Sender: TObject);
-    procedure Image2Click(Sender: TObject);
+    procedure SPINALabelClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
     procedure NewMenuItemClick(Sender: TObject);
@@ -784,6 +784,16 @@ end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
+  {Adjustments for small windows:}
+  if Screen.Width < Hauptschirm.Width then
+  begin
+    Hauptschirm.SPINALabel.Visible := false;
+    Hauptschirm.HintGroupBox.Visible := false;
+    Hauptschirm.HintField.Visible := false;
+    Hauptschirm.Width := Hauptschirm.Constraints.MinWidth;
+    Hauptschirm.Left := (Screen.Width - Hauptschirm.Width) div 2;
+  end;
+  {Some preparations in startup situation:}
   if gStartup then
   begin
     Hauptschirm.TSH_Text.SetFocus;
@@ -810,7 +820,7 @@ begin
   HelpWindow.ShowOnTop;
 end;
 
-procedure THauptschirm.Image2Click(Sender: TObject);
+procedure THauptschirm.SPINALabelClick(Sender: TObject);
 begin
   ShowAboutBox;
 end;
