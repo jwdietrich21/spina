@@ -7,15 +7,15 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +'biSystemMenu'#10'biMinimize'#0#11'BorderStyle'#7#12'bsToolWindow'#7'Caption'
   +#6#5'SPINA'#12'ClientHeight'#2'%'#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
   +#10'dmMainForm'#8'DockSite'#9#4'Menu'#7#8'MainMenu'#7'OnClose'#7#9'FormClose'
-  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#7'1.0.6.0'#7'Visible'#9#0#8'T'
-  +'ToolBar'#8'ToolBar1'#4'Left'#2#0#6'Height'#2#26#3'Top'#2#0#5'Width'#3's'#3#7
-  +'Caption'#6#8'ToolBar1'#6'Images'#7#10'ImageList1'#8'TabOrder'#2#0#0#11'TToo'
-  +'lButton'#13'NewToolButton'#4'Left'#2#1#4'Hint'#6#18'Neue Berechnung...'#3'T'
-  +'op'#2#2#7'Caption'#6#13'NewToolButton'#7'Enabled'#8#10'ImageIndex'#2#0#7'On'
-  +'Click'#7#18'NewToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11'T'
-  +'ToolButton'#14'OpenToolButton'#4'Left'#2#24#4'Hint'#6#12'Open file...'#3'To'
-  +'p'#2#2#7'Caption'#6#14'OpenToolButton'#7'Enabled'#8#10'ImageIndex'#2#1#7'On'
-  +'Click'#7#19'OpenToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11
+  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#8'1.0.10.0'#7'Visible'#9#0#8
+  +'TToolBar'#8'ToolBar1'#4'Left'#2#0#6'Height'#2#26#3'Top'#2#0#5'Width'#3's'#3
+  +#7'Caption'#6#8'ToolBar1'#6'Images'#7#10'ImageList1'#8'TabOrder'#2#0#0#11'TT'
+  +'oolButton'#13'NewToolButton'#4'Left'#2#1#4'Hint'#6#18'Neue Berechnung...'#3
+  +'Top'#2#2#7'Caption'#6#13'NewToolButton'#7'Enabled'#8#10'ImageIndex'#2#0#7'O'
+  +'nClick'#7#18'NewToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11
+  +'TToolButton'#14'OpenToolButton'#4'Left'#2#24#4'Hint'#6#12'Open file...'#3'T'
+  +'op'#2#2#7'Caption'#6#14'OpenToolButton'#7'Enabled'#8#10'ImageIndex'#2#1#7'O'
+  +'nClick'#7#19'OpenToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#11
   +'TToolButton'#14'SaveToolButton'#4'Left'#2'/'#4'Hint'#6#4'Save'#3'Top'#2#2#7
   +'Caption'#6#14'SaveToolButton'#7'Enabled'#8#10'ImageIndex'#2#2#14'ParentShow'
   +'Hint'#8#8'ShowHint'#9#0#0#11'TToolButton'#16'SaveAsToolButton'#4'Left'#2'F'
@@ -45,9 +45,9 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +#3#241#0#4'Hint'#6#11'Copy Result'#3'Top'#2#2#7'Caption'#6#20'CopyResultTool'
   +'Button'#10'ImageIndex'#2#10#7'OnClick'#7#25'CopyResultToolButtonClick'#14'P'
   +'arentShowHint'#8#8'ShowHint'#9#0#0#0#6'TLabel'#14'SPINAThyrLabel'#4'Left'#3
-  +#7#3#6'Height'#2#17#3'Top'#2#7#5'Width'#2'L'#9'Alignment'#7#14'taRightJustif'
-  +'y'#7'Anchors'#11#5'akTop'#7'akRight'#0#7'Caption'#6#10'SPINA Thyr'#10'Font.'
-  +'Color'#7#6'clGray'#11'Font.Height'#2#243#11'ParentColor'#8#10'ParentFont'#8
+  +#13#3#6'Height'#2#17#3'Top'#2#7#5'Width'#2'F'#9'Alignment'#7#14'taRightJusti'
+  +'fy'#7'Anchors'#11#5'akTop'#7'akRight'#0#7'Caption'#6#10'SPINA Thyr'#10'Font'
+  +'.Color'#7#6'clGray'#11'Font.Height'#2#243#11'ParentColor'#8#10'ParentFont'#8
   +#7'OnClick'#7#19'SPINAThyrLabelClick'#0#0#9'TMainMenu'#8'MainMenu'#4'left'#3
   +#152#1#3'top'#2#9#0#9'TMenuItem'#9'AppleMenu'#7'Caption'#6#3#239#163#191#0#9
   +'TMenuItem'#18'AppleAboutMenuItem'#7'Caption'#6#11#195#156'ber SPINA'#7'OnCl'

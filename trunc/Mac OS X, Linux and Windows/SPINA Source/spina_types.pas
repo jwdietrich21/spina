@@ -166,6 +166,7 @@ var
   gResultDialogString1, gResultDialogString2, gReferenceValueString1, gReferenceValueString2: Str255;
   gReferenceRanges, gSIReferenceRanges, gConvReferenceRanges: tReferenceValues;
   gLastActiveCustomForm: TForm;
+  gMandatoryColor: TColor;
 
 implementation
 

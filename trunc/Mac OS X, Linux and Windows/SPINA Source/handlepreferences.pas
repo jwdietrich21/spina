@@ -33,7 +33,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, SPINA_Types, DOM, XMLRead, XMLWrite, Math
+  StdCtrls, SPINA_Types, DOM, XMLRead, XMLWrite, StrUtils, Math
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -289,10 +289,13 @@ begin
     else
       RootNode.AppendChild(SimpleNode(Doc, 'remember', 'false'));
 
+    ElementNode := Doc.CreateElement('mandatoryfields');
     if gPreferences.colouriseMandatoryFields then
-      RootNode.AppendChild(SimpleNode(Doc, 'colourise', 'true'))
+      ElementNode.AppendChild(SimpleNode(Doc, 'colourise', 'true'))
     else
-      RootNode.AppendChild(SimpleNode(Doc, 'colourise', 'false'));
+      ElementNode.AppendChild(SimpleNode(Doc, 'colourise', 'false'));
+    ElementNode.AppendChild(SimpleNode(Doc, 'colour', Dec2Numb(gMandatoryColor, 6, 16)));
+    RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('methods');
     if gPreferences.T4.Method = freeHormone then
@@ -377,11 +380,21 @@ begin
       else
         gPreferences.rememberUsedUnits := false;
 
-      theString := NodeContent(Doc.DocumentElement, 'colourise');
+      RootNode := Doc.DocumentElement.FindNode('mandatoryfields');
+      theString := NodeContent(RootNode, 'colourise');
       if theString = 'true' then
         gPreferences.colouriseMandatoryFields := true
       else
         gPreferences.colouriseMandatoryFields := false;
+      theString := NodeContent(RootNode, 'colour');
+      if (theString = '') or (theString = 'NA') then
+        gMandatoryColor := clLtYellow
+      else
+        try
+          gMandatoryColor := TColor(Hex2Dec(theString));
+        except
+          gMandatoryColor := clDefault;
+        end;
 
       RootNode := Doc.DocumentElement.FindNode('methods');
       theString := NodeContent(RootNode, 'T4');

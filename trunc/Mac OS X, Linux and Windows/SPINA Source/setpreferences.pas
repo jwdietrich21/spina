@@ -112,6 +112,7 @@ begin
       CDISCGroupBox.Caption := kCDISCCaption1;
       CancelButton.Caption := kCancel1;
       ReadCDISCButton.Caption := kReadCDISC1;
+      PreferencesForm.MarkMandatoryCheck.Caption := kPflichtfelder1;
     end
   else
     begin
@@ -123,6 +124,9 @@ begin
       CDISCGroupBox.Caption := kCDISCCaption2;
       CancelButton.Caption := kCancel2;
       ReadCDISCButton.Caption := kReadCDISC2;
+      RememberCheckBox.Hint := 'Please click to reuse measurement units of previous calculations';
+      ReadCDISCButton.Hint := 'Import reference ranges from file';
+      MarkMandatoryCheck.Caption := kPflichtfelder2;
     end;
 end;
 

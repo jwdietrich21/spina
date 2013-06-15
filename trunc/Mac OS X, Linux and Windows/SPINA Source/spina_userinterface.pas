@@ -727,15 +727,15 @@ begin
     if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
       Hauptschirm.TSH_Text.Color:= clDefault
     else
-      Hauptschirm.TSH_Text.Color:= clLtYellow;
+      Hauptschirm.TSH_Text.Color:= gMandatoryColor;
     if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
       Hauptschirm.FT4_Text.Color:= clDefault
     else
-      Hauptschirm.FT4_Text.Color:= clLtYellow;
+      Hauptschirm.FT4_Text.Color:= gMandatoryColor;
     if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
       Hauptschirm.FT3_Text.Color:= clDefault
     else
-      Hauptschirm.FT3_Text.Color:= clLtYellow;
+      Hauptschirm.FT3_Text.Color:= gMandatoryColor;
   end
   else
   begin
