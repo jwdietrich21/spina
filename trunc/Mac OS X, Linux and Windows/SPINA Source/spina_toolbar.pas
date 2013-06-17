@@ -288,6 +288,7 @@ begin
   SPINAToolbar.AppleMenu.Visible := False;
   SPINAToolbar.Divider_2_3.Visible := True;
   SPINAToolbar.WinPreferencesItem.Visible := True;
+  SPINAToolbar.HelpItem.ShortCut := ShortCut(VK_F1, []);
   {$ENDIF}
   SPINAToolbar.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
   SPINAToolbar.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);

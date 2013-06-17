@@ -1,8 +1,8 @@
 object SplashScreen: TSplashScreen
   Cursor = crHourGlass
-  Left = 520
+  Left = 637
   Height = 308
-  Top = 155
+  Top = 133
   Width = 438
   HorzScrollBar.Page = 396
   HorzScrollBar.Range = 392
@@ -21,7 +21,7 @@ object SplashScreen: TSplashScreen
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stNever
-  LCLVersion = '1.0.6.0'
+  LCLVersion = '1.0.10.0'
   object Image1: TImage
     Left = 32
     Height = 251

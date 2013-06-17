@@ -689,6 +689,7 @@ begin
   Hauptschirm.AppleMenu.Visible := False;
   Hauptschirm.Divider_2_3.Visible := True;
   Hauptschirm.WinPreferencesItem.Visible := True;
+  Hauptschirm.HelpItem.ShortCut := ShortCut(VK_F1, []);
   {$ENDIF}
   Hauptschirm.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
   Hauptschirm.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
