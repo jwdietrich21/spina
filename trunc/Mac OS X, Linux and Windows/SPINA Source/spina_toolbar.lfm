@@ -267,7 +267,6 @@ object SPINAToolbar: TSPINAToolbar
       object HelpItem: TMenuItem
         Caption = 'SPINA Help ...'
         ShortCut = 12477
-        ShortCutKey2 = 45
         OnClick = HelpItemClick
       end
       object OnlineInfoItem: TMenuItem

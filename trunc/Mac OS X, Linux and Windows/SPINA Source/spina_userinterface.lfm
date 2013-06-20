@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 296
+  Left = 295
   Height = 350
-  Top = 174
+  Top = 195
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -1392,7 +1392,6 @@ object Hauptschirm: THauptschirm
       object HelpItem: TMenuItem
         Caption = 'SPINA Help ...'
         ShortCut = 12477
-        ShortCutKey2 = 45
         OnClick = HelpItemClick
       end
       object OnlineInfoItem: TMenuItem
