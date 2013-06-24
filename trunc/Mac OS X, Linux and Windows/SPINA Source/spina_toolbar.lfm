@@ -1,7 +1,7 @@
 object SPINAToolbar: TSPINAToolbar
-  Left = 236
+  Left = 275
   Height = 37
-  Top = 126
+  Top = 119
   Width = 883
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -11,7 +11,7 @@ object SPINAToolbar: TSPINAToolbar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 37
+  ClientHeight = 18
   ClientWidth = 883
   DefaultMonitor = dmMainForm
   DockSite = True
@@ -157,10 +157,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 781
+    Left = 785
     Height = 17
     Top = 7
-    Width = 70
+    Width = 66
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
@@ -641,4 +641,4 @@ object SPINAToolbar: TSPINAToolbar
       1504FFFFFF00FFFFFF00FFFFFF00
     }
   end
-end
+end

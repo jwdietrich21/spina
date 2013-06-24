@@ -785,7 +785,7 @@ end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
-  {Adjustments for small windows:}
+  {Adjustments for small screens:}
   if Screen.Width < Hauptschirm.Width then
   begin
     Hauptschirm.SPINALabel.Visible := false;

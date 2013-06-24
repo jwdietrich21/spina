@@ -1,7 +1,7 @@
 object AboutBox: TAboutBox
-  Left = 415
+  Left = 301
   Height = 346
-  Top = 147
+  Top = 191
   Width = 439
   AlphaBlend = True
   AlphaBlendValue = 0
@@ -308,7 +308,7 @@ object AboutBox: TAboutBox
   }
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.0.6.0'
+  LCLVersion = '1.0.10.0'
   object Button1: TButton
     Left = 311
     Height = 24
@@ -330,8 +330,8 @@ object AboutBox: TAboutBox
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
-      ClientHeight = 281
-      ClientWidth = 418
+      ClientHeight = 294
+      ClientWidth = 416
       object Image1: TImage
         Cursor = crHandPoint
         Left = 21
@@ -999,4 +999,4 @@ object AboutBox: TAboutBox
       end
     end
   end
-end
+end

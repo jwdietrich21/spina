@@ -57,6 +57,12 @@ uses SPINA_UserInterface;
 
 procedure TResultForm.UpdateResultDisplay(Sender: TObject);
 begin
+  {Adjustments for small windows:}
+    if Screen.Width < ResultForm.Width then
+    begin
+      ResultForm.Width := Screen.Width - 13;
+      ResultForm.Left := (Screen.Width - ResultForm.Width) div 2;
+    end;
   if gInterfaceLanguage = German then
     Label1.Caption := kResultHint1
   else

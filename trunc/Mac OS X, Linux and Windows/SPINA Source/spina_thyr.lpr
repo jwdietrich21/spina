@@ -67,7 +67,7 @@ begin
     {$ELSE}
     left := 1;
     top := 0;
-    width := Screen.Width - 3;
+    width := Screen.Width - 6;
     height := Toolbar1.Height + 26;
     {$ENDIF}
     WindowState := wsNormal;

@@ -1,7 +1,7 @@
 object PreferencesForm: TPreferencesForm
-  Left = 464
+  Left = 337
   Height = 400
-  Top = 182
+  Top = 260
   Width = 540
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -32,24 +32,24 @@ object PreferencesForm: TPreferencesForm
     Width = 484
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Methods and measurement units:'
-    ClientHeight = 131
-    ClientWidth = 476
+    ClientHeight = 135
+    ClientWidth = 480
     TabOrder = 1
     object MethodLabel: TLabel
       Left = 116
-      Height = 17
+      Height = 14
       Top = 30
-      Width = 49
+      Width = 37
       Caption = 'Method'
       ParentColor = False
     end
     object UnitLabel: TLabel
       AnchorSideRight.Control = TSHUnitComboBox
       AnchorSideRight.Side = asrBottom
-      Left = 233
-      Height = 17
+      Left = 240
+      Height = 14
       Top = 30
-      Width = 27
+      Width = 20
       Alignment = taCenter
       Anchors = [akTop, akRight]
       Caption = 'Unit'
@@ -57,9 +57,9 @@ object PreferencesForm: TPreferencesForm
     end
     object T4Label: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 82
-      Width = 22
+      Width = 17
       Caption = 'T4:'
       ParentColor = False
     end
@@ -71,7 +71,7 @@ object PreferencesForm: TPreferencesForm
       Width = 67
       Enabled = False
       Font.Height = -11
-      ItemHeight = 0
+      ItemHeight = 13
       ItemIndex = 0
       Items.Strings = (
         'ng/dl'
@@ -91,7 +91,7 @@ object PreferencesForm: TPreferencesForm
       Width = 66
       Enabled = False
       Font.Height = -11
-      ItemHeight = 0
+      ItemHeight = 13
       ItemIndex = 0
       Items.Strings = (
         'pg/ml'
@@ -111,7 +111,7 @@ object PreferencesForm: TPreferencesForm
       Width = 56
       Enabled = False
       Font.Height = -11
-      ItemHeight = 0
+      ItemHeight = 13
       ItemIndex = 0
       Items.Strings = (
         'FT4'
@@ -124,10 +124,10 @@ object PreferencesForm: TPreferencesForm
     end
     object RememberCheckBox: TCheckBox
       Left = 12
-      Height = 18
+      Height = 17
       Hint = 'Bitte anklicken, um für neue Berechnungen die Maßeinheiten der vorherigen Berechnung zu verwenden.'
       Top = 5
-      Width = 178
+      Width = 138
       Caption = 'Remember last used unit'
       Checked = True
       OnChange = RememberCheckBoxChange
@@ -138,17 +138,17 @@ object PreferencesForm: TPreferencesForm
     end
     object TSHLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 58
-      Width = 30
+      Width = 24
       Caption = 'TSH:'
       ParentColor = False
     end
     object T3Label: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 106
-      Width = 22
+      Width = 17
       Caption = 'T3:'
       ParentColor = False
     end
@@ -160,7 +160,7 @@ object PreferencesForm: TPreferencesForm
       Width = 56
       Enabled = False
       Font.Height = -11
-      ItemHeight = 0
+      ItemHeight = 13
       ItemIndex = 0
       Items.Strings = (
         'mU/l'
@@ -179,7 +179,7 @@ object PreferencesForm: TPreferencesForm
       Width = 56
       Enabled = False
       Font.Height = -11
-      ItemHeight = 0
+      ItemHeight = 13
       ItemIndex = 0
       Items.Strings = (
         'FT3'
@@ -198,37 +198,37 @@ object PreferencesForm: TPreferencesForm
     Width = 484
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Reference values:'
-    ClientHeight = 134
-    ClientWidth = 476
+    ClientHeight = 138
+    ClientWidth = 480
     DragMode = dmAutomatic
     TabOrder = 2
     object TSHRRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 12
-      Width = 30
+      Width = 24
       Caption = 'TSH:'
       ParentColor = False
     end
     object T4RRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 36
-      Width = 22
+      Width = 17
       Caption = 'T4:'
       ParentColor = False
     end
     object T3RRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 60
-      Width = 22
+      Width = 17
       Caption = 'T3:'
       ParentColor = False
     end
     object TSHRREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 7
       Width = 144
       ReadOnly = True
@@ -237,7 +237,7 @@ object PreferencesForm: TPreferencesForm
     end
     object T4RREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 31
       Width = 144
       ReadOnly = True
@@ -246,7 +246,7 @@ object PreferencesForm: TPreferencesForm
     end
     object T3RREDit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 55
       Width = 144
       ReadOnly = True
@@ -255,23 +255,23 @@ object PreferencesForm: TPreferencesForm
     end
     object GTRRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 86
-      Width = 23
+      Width = 18
       Caption = 'GT:'
       ParentColor = False
     end
     object GDRRLabel: TLabel
       Left = 12
-      Height = 17
+      Height = 14
       Top = 110
-      Width = 24
+      Width = 19
       Caption = 'GD:'
       ParentColor = False
     end
     object GTRREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 81
       Width = 144
       ReadOnly = True
@@ -280,7 +280,7 @@ object PreferencesForm: TPreferencesForm
     end
     object GDRREdit: TEdit
       Left = 116
-      Height = 22
+      Height = 21
       Top = 105
       Width = 144
       ReadOnly = True
@@ -313,9 +313,9 @@ object PreferencesForm: TPreferencesForm
   end
   object MarkMandatoryCheck: TCheckBox
     Left = 40
-    Height = 18
-    Top = 336
-    Width = 162
+    Height = 17
+    Top = 337
+    Width = 126
     Anchors = [akLeft, akBottom]
     Caption = 'Mark mandatory fields'
     OnChange = MarkMandatoryCheckChange

@@ -1,8 +1,8 @@
 object SplashScreen: TSplashScreen
   Cursor = crHourGlass
-  Left = 637
+  Left = 460
   Height = 308
-  Top = 133
+  Top = 254
   Width = 438
   HorzScrollBar.Page = 396
   HorzScrollBar.Range = 392
