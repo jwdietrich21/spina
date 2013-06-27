@@ -329,7 +329,7 @@ begin
 end;
 
 procedure CreateNewPreferences;
-{creates a new datastructure for preferences}
+{creates a new datastructure for preferences with standard entries}
 begin
   with gPreferences do
     begin
@@ -345,6 +345,7 @@ begin
       T3.PopUpItem := 0;
       T4.MethodPopUpItem := 0;
       T3.MethodPopUpItem := 0;
+      gMandatoryColor := clLtYellow;
       gPreferences.new := true;
     end;
   SavePreferences;
@@ -388,7 +389,7 @@ begin
         gPreferences.colouriseMandatoryFields := false;
       theString := NodeContent(RootNode, 'colour');
       if (theString = '') or (theString = 'NA') then
-        gMandatoryColor := clLtYellow
+        gMandatoryColor := clLtYellow  {Standard colour}
       else
         try
           gMandatoryColor := TColor(Hex2Dec(theString));
