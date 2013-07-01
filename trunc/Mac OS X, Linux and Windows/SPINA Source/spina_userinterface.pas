@@ -544,70 +544,53 @@ var
   oldSeparator: Char;
   strucPars: String;
   TSH_String, T4_String, T3_String: Str255;
+  TSH_Flag, T4_Flag, T3_Flag: Char;
 begin
   oldSeparator := decimalSeparator;
   try
     Size := Hauptschirm.TSH_Text.GetTextLen;
-    {L??nge des Strings in Edit1 ermitteln}
+    {Laenge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
       TSH := Math.Nan
     else
     begin
-      Inc(Size);
-      {Platz f??r NULL-Zeichen hinzuf??gen}
-      GetMem(Buffer, Size);
-      {Buffer als dynamische Variable definieren}
-      Hauptschirm.TSH_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
-      TSH_String := StrPas(Buffer);
+      TSH_String := Hauptschirm.TSH_Text.Text;
       if pos(DEC_COMMA, TSH_String) > 0 then
         decimalSeparator := DEC_COMMA
       else
         decimalSeparator := DEC_POINT;
-      FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
       TSH := StrToFloat(TSH_String);
       TSH := TSH * gTSHUnitFactor;
       decimalSeparator := oldSeparator;
     end;
     TSH_String := FloatToStrF(TSH, ffFixed, 3, 2);
     Size := Hauptschirm.FT4_Text.GetTextLen;
-    {L??nge des Strings in Edit1 ermitteln}
+    {Laenge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
       T4 := Math.NaN
     else
     begin
-      Inc(Size);
-      {Platz f??r NULL-Zeichen hinzuf??gen}
-      GetMem(Buffer, Size);
-      {Buffer als dynamische Variable definieren}
-      Hauptschirm.FT4_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
-      T4_String := StrPas(Buffer);
+      T4_String := Hauptschirm.FT4_Text.Text;
       if pos(DEC_COMMA, T4_String) > 0 then
         decimalSeparator := DEC_COMMA
       else
         decimalSeparator := DEC_POINT;
-      FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
       T4 := StrToFloat(T4_String);
       decimalSeparator := oldSeparator;
     end;
     T4_String := FloatToStrF(T4, ffFixed, 3, 2);
     T4 := T4 * gT4UnitFactor;
     Size := Hauptschirm.FT3_Text.GetTextLen;
-    {L??nge des Strings in Edit1 ermitteln}
+    {Laenge des Strings in Edit1 ermitteln}
     if Size = 0 then                                      {Feld leer?}
       T3 := Math.NaN
     else
     begin
-      Inc(Size);
-      {Platz f??r NULL-Zeichen hinzuf??gen}
-      GetMem(Buffer, Size);
-      {Buffer als dynamische Variable definieren}
-      Hauptschirm.FT3_Text.GetTextBuf(Buffer, Size);     {Edit1.Text in Buffer ablegen}
-      T3_String := StrPas(Buffer);
+      T3_String := Hauptschirm.FT3_Text.Text;
       if pos(DEC_COMMA, T3_String) > 0 then
         decimalSeparator := DEC_COMMA
       else
         decimalSeparator := DEC_POINT;
-      FreeMem(Buffer, Size);                            {Speicher von Buffer freigeben}
       T3 := StrToFloat(T3_String);
       decimalSeparator := oldSeparator;
     end;
