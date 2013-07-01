@@ -544,12 +544,15 @@ var
   oldSeparator: Char;
   strucPars: String;
   TSH_String, T4_String, T3_String: Str255;
-  TSH_Flag, T4_Flag, T3_Flag: Char;
+  TSH_Flag, T4_Flag, T3_Flag: String;
 begin
   oldSeparator := decimalSeparator;
+  TSH_Flag := '';
+  T4_Flag := '';
+  T3_Flag := '';
   try
     Size := Hauptschirm.TSH_Text.GetTextLen;
-    {Laenge des Strings in Edit1 ermitteln}
+    {Laenge des Strings in TSH_Text ermitteln}
     if Size = 0 then                                      {Feld leer?}
       TSH := Math.Nan
     else
@@ -563,9 +566,11 @@ begin
       TSH := TSH * gTSHUnitFactor;
       decimalSeparator := oldSeparator;
     end;
-    TSH_String := FloatToStrF(TSH, ffFixed, 3, 2);
+    if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
+      TSH_Flag := REF_RANGE_FLAG;
+    TSH_String := FloatToStrF(TSH, ffFixed, 3, 2) + TSH_Flag;
     Size := Hauptschirm.FT4_Text.GetTextLen;
-    {Laenge des Strings in Edit1 ermitteln}
+    {Laenge des Strings in FT4_Text ermitteln}
     if Size = 0 then                                      {Feld leer?}
       T4 := Math.NaN
     else
@@ -578,10 +583,17 @@ begin
       T4 := StrToFloat(T4_String);
       decimalSeparator := oldSeparator;
     end;
-    T4_String := FloatToStrF(T4, ffFixed, 3, 2);
+    if gPreferences.T4.Method = freeHormone then  {free or total T4?}
+      begin
+       if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
+         T4_Flag := REF_RANGE_FLAG;
+      end
+    else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
+         T4_Flag := REF_RANGE_FLAG;
+    T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
     T4 := T4 * gT4UnitFactor;
     Size := Hauptschirm.FT3_Text.GetTextLen;
-    {Laenge des Strings in Edit1 ermitteln}
+    {Laenge des Strings in FT3_Text ermitteln}
     if Size = 0 then                                      {Feld leer?}
       T3 := Math.NaN
     else
@@ -594,7 +606,14 @@ begin
       T3 := StrToFloat(T3_String);
       decimalSeparator := oldSeparator;
     end;
-    T3_String := FloatToStrF(T3, ffFixed, 3, 2);
+    if gPreferences.T3.Method = freeHormone then  {free or total T3?}
+      begin
+       if (T3 < gReferenceRanges.FT3.ln) or (T3 > gReferenceRanges.FT3.hn) then
+         T3_Flag := REF_RANGE_FLAG;
+      end
+    else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
+         T3_Flag := REF_RANGE_FLAG;
+    T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
     T3 := T3 * gT3UnitFactor;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
       gTSHTherapy := True
