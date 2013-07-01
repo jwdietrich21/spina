@@ -36,7 +36,7 @@ LazarusResources.Add('TPreferencesForm','FORMDATA',[
   +#2#4'Text'#6#3'FT4'#0#0#9'TCheckBox'#16'RememberCheckBox'#4'Left'#2#12#6'Hei'
   +'ght'#2#17#4'Hint'#6'dBitte anklicken, um f'#195#188'r neue Berechnungen die'
   +' Ma'#195#159'einheiten der vorherigen Berechnung zu verwenden.'#3'Top'#2#5#5
-  +'Width'#3#138#0#7'Caption'#6#23'Remember last used unit'#7'Checked'#9#8'OnCh'
+  +'Width'#3#136#0#7'Caption'#6#23'Remember last used unit'#7'Checked'#9#8'OnCh'
   +'ange'#7#22'RememberCheckBoxChange'#14'ParentShowHint'#8#8'ShowHint'#9#5'Sta'
   +'te'#7#9'cbChecked'#8'TabOrder'#2#3#0#0#6'TLabel'#8'TSHLabel'#4'Left'#2#12#6
   +'Height'#2#14#3'Top'#2':'#5'Width'#2#24#7'Caption'#6#4'TSH:'#11'ParentColor'
@@ -78,7 +78,7 @@ LazarusResources.Add('TPreferencesForm','FORMDATA',[
   +#1#5'Width'#2'k'#7'Anchors'#11#7'akRight'#8'akBottom'#0#6'Cancel'#9#7'Captio'
   +'n'#6#6'Cancel'#7'OnClick'#7#17'CancelButtonClick'#8'TabOrder'#2#3#0#0#9'TCh'
   +'eckBox'#18'MarkMandatoryCheck'#4'Left'#2'('#6'Height'#2#17#3'Top'#3'Q'#1#5
-  +'Width'#2'~'#7'Anchors'#11#6'akLeft'#8'akBottom'#0#7'Caption'#6#21'Mark mand'
+  +'Width'#2'|'#7'Anchors'#11#6'akLeft'#8'akBottom'#0#7'Caption'#6#21'Mark mand'
   +'atory fields'#8'OnChange'#7#24'MarkMandatoryCheckChange'#8'TabOrder'#2#4#0#0
   +#11'TOpenDialog'#15'CDISCOpenDialog'#10'DefaultExt'#6#4'.xml'#6'Filter'#6'&C'
   +'DISC Lab Model 1.0.1 file (XML)|*.xml'#7'Options'#11#15'ofPathMustExist'#15

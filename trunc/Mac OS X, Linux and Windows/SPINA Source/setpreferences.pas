@@ -408,6 +408,10 @@ end;
 procedure TPreferencesForm.FormActivate(Sender: TObject);
 begin
   UpdateDisplay(Sender);
+  if gPreferences.colouriseMandatoryFields then
+    MarkMandatoryCheck.Checked := true
+  else
+    MarkMandatoryCheck.Checked := false;
   gSavedReferenceRanges := gReferenceRanges;
   gSavedSIReferenceRanges := gSIReferenceRanges;
   gSavedConvReferenceRanges := gConvReferenceRanges;
@@ -424,6 +428,7 @@ var
   theCode: integer;
 begin
   GetReferenceValues(RRFile, theCode);
+  Hauptschirm.FormActivate(Sender);
 end;
 
 procedure TPreferencesForm.MarkMandatoryCheckChange(Sender: TObject);

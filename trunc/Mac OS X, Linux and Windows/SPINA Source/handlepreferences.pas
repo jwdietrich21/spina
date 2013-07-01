@@ -345,7 +345,7 @@ begin
       T3.PopUpItem := 0;
       T4.MethodPopUpItem := 0;
       T3.MethodPopUpItem := 0;
-      gMandatoryColor := clLtYellow;
+      gMandatoryColor := clLtOrange;
       gPreferences.new := true;
     end;
   SavePreferences;
@@ -389,7 +389,7 @@ begin
         gPreferences.colouriseMandatoryFields := false;
       theString := NodeContent(RootNode, 'colour');
       if (theString = '') or (theString = 'NA') then
-        gMandatoryColor := clLtYellow  {Standard colour}
+        gMandatoryColor := clLtOrange  {Standard colour}
       else
         try
           gMandatoryColor := TColor(Hex2Dec(theString));

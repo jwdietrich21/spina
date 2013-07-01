@@ -1,14 +1,14 @@
 { This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('THauptschirm','FORMDATA',[
-  'TPF0'#12'THauptschirm'#11'Hauptschirm'#4'Left'#3#9#1#6'Height'#3'^'#1#3'Top'
-  +#3#246#0#5'Width'#3#253#2#21'HorzScrollBar.Visible'#8#21'VertScrollBar.Visib'
-  +'le'#8#13'ActiveControl'#7#8'TSH_Text'#10'AlphaBlend'#9#15'AlphaBlendValue'#2
-  +#0#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0#11'BorderStyle'#7#8
-  +'bsDialog'#7'Caption'#6#10'SPINA Thyr'#29'ChildSizing.EnlargeHorizontal'#7#14
+  'TPF0'#12'THauptschirm'#11'Hauptschirm'#4'Left'#3#23#1#6'Height'#3'^'#1#3'Top'
+  +#2'y'#5'Width'#3#253#2#21'HorzScrollBar.Visible'#8#21'VertScrollBar.Visible'
+  +#8#13'ActiveControl'#7#8'TSH_Text'#10'AlphaBlend'#9#15'AlphaBlendValue'#2#0
+  +#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0#11'BorderStyle'#7#8'bs'
+  +'Dialog'#7'Caption'#6#10'SPINA Thyr'#29'ChildSizing.EnlargeHorizontal'#7#14
   +'crsScaleChilds'#27'ChildSizing.EnlargeVertical'#7#14'crsScaleChilds'#28'Chi'
   +'ldSizing.ShrinkHorizontal'#7#24'crsHomogenousChildResize'#26'ChildSizing.Sh'
-  +'rinkVertical'#7#24'crsHomogenousChildResize'#12'ClientHeight'#3'K'#1#11'Cli'
+  +'rinkVertical'#7#24'crsHomogenousChildResize'#12'ClientHeight'#3'J'#1#11'Cli'
   +'entWidth'#3#253#2#5'Color'#7#7'clWhite'#21'Constraints.MinHeight'#3'^'#1#20
   +'Constraints.MinWidth'#3#8#2#9'Icon.Data'#10#154'$'#0#0#150'$'#0#0#0#0#1#0#8
   +#0#16#16#2#0#0#0#0#0#176#0#0#0#134#0#0#0#16#16#0#0#0#0#0#0'('#1#0#0'6'#1#0#0
@@ -351,7 +351,7 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +#255#255#255#4'Menu'#7#8'MainMenu'#10'OnActivate'#7#12'FormActivate'#8'OnCre'
   +'ate'#7#10'FormCreate'#8'Position'#7#14'poScreenCenter'#10'LCLVersion'#6#8'1'
   +'.0.10.0'#0#7'TButton'#16'Calculate_Button'#4'Left'#3#149#2#6'Height'#2#24#3
-  +'Top'#3'%'#1#5'Width'#2'\'#7'Anchors'#11#7'akRight'#8'akBottom'#0#7'Caption'
+  +'Top'#3'$'#1#5'Width'#2'\'#7'Anchors'#11#7'akRight'#8'akBottom'#0#7'Caption'
   +#6#9'Berechnen'#7'Default'#9#7'OnClick'#7#21'Calculate_ButtonClick'#8'TabOrd'
   +'er'#2#0#0#0#9'TComboBox'#8'FT4Items'#4'Left'#3#128#0#6'Height'#2#21#3'Top'#3
   +#176#0#5'Width'#2')'#7'Enabled'#8#10'ItemHeight'#2#13#13'Items.Strings'#1#6#5
@@ -366,12 +366,12 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +#4'Left'#3#184#0#6'Height'#2#21#3'Top'#3#224#0#5'Width'#2')'#7'Enabled'#8#10
   +'ItemHeight'#2#13#13'Items.Strings'#1#6#5#194#181'g/l'#6#5'ng/dl'#6#6'nmol/l'
   +#0#8'OnChange'#7#13'T3ItemsChange'#8'TabOrder'#2#4#4'Text'#6#7'T3Items'#7'Vi'
-  +'sible'#8#0#0#6'TPanel'#6'Panel1'#4'Left'#2#13#6'Height'#3#23#1#3'Top'#2#8#5
+  +'sible'#8#0#0#6'TPanel'#6'Panel1'#4'Left'#2#13#6'Height'#3#22#1#3'Top'#2#8#5
   +'Width'#3#238#2#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#8'akBottom'#0#10
-  +'BevelInner'#7#9'bvLowered'#7'Caption'#6#6'Panel1'#12'ClientHeight'#3#23#1#11
+  +'BevelInner'#7#9'bvLowered'#7'Caption'#6#6'Panel1'#12'ClientHeight'#3#22#1#11
   +'ClientWidth'#3#238#2#5'Color'#7#7'clWhite'#11'ParentColor'#8#9'PopupMenu'#7
   +#10'PopupMenu1'#8'TabOrder'#2#5#0#11'TCheckGroup'#17'TherapyCheckGroup'#4'Le'
-  +'ft'#3#13#2#6'Height'#2'L'#4'Hint'#6'DBitte markieren Sie bei Substitutionst'
+  +'ft'#3#13#2#6'Height'#2'K'#4'Hint'#6'DBitte markieren Sie bei Substitutionst'
   +'herapie die entsprechende Box.'#3'Top'#2#8#5'Width'#3#216#0#7'Anchors'#11#5
   +'akTop'#7'akRight'#8'akBottom'#0#8'AutoFill'#9#7'Caption'#6#9'Therapie:'#28
   +'ChildSizing.LeftRightSpacing'#2#6#28'ChildSizing.TopBottomSpacing'#2#6#29'C'
@@ -379,17 +379,17 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +'.EnlargeVertical'#7#24'crsHomogenousChildResize'#28'ChildSizing.ShrinkHoriz'
   +'ontal'#7#14'crsScaleChilds'#26'ChildSizing.ShrinkVertical'#7#14'crsScaleChi'
   +'lds'#18'ChildSizing.Layout'#7#29'cclLeftToRightThenTopToBottom'#27'ChildSiz'
-  +'ing.ControlsPerLine'#2#1#12'ClientHeight'#2':'#11'ClientWidth'#3#212#0#13'I'
+  +'ing.ControlsPerLine'#2#1#12'ClientHeight'#2'9'#11'ClientWidth'#3#212#0#13'I'
   +'tems.Strings'#1#6#18'rhTSH-Substitution'#6#15'T4-Substitution'#6#15'T3-Subs'
   +'titution'#0#7'OnClick'#7#22'TherapyCheckGroupClick'#11'OnItemClick'#7#26'Th'
   +'erapyCheckGroupItemClick'#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'#2#0
   +#4'Data'#10#7#0#0#0#3#0#0#0#2#2#2#0#0#9'TGroupBox'#14'ResultGroupBox'#4'Left'
-  +#3#13#2#6'Height'#3#153#0#3'Top'#2'p'#5'Width'#3#215#0#7'Anchors'#11#5'akTop'
+  +#3#13#2#6'Height'#3#152#0#3'Top'#2'p'#5'Width'#3#215#0#7'Anchors'#11#5'akTop'
   ,#7'akRight'#8'akBottom'#0'!BorderSpacing.CellAlignHorizontal'#7#10'ccaLeftTo'
   +'p'#31'BorderSpacing.CellAlignVertical'#7#10'ccaLeftTop'#7'Caption'#6#9'Erge'
-  +'bnis:'#12'ClientHeight'#3#135#0#11'ClientWidth'#3#211#0#5'Color'#7#6'clNone'
+  +'bnis:'#12'ClientHeight'#3#134#0#11'ClientWidth'#3#211#0#5'Color'#7#6'clNone'
   +#11'ParentColor'#8#8'TabOrder'#2#1#0#5'TMemo'#11'ResultField'#4'Left'#2#8#6
-  +'Height'#3#147#0#4'Hint'#6#29'Das Ergebnis Ihrer Berechnung'#3'Top'#2#246#5
+  +'Height'#3#147#0#4'Hint'#6#29'Das Ergebnis Ihrer Berechnung'#3'Top'#2#245#5
   +'Width'#3#200#0#7'Anchors'#11#7'akRight'#8'akBottom'#0#11'BorderStyle'#7#6'b'
   +'sNone'#8'DragMode'#7#11'dmAutomatic'#11'Font.Height'#2#246#9'Font.Name'#6#6
   +'Geneva'#10'ParentFont'#8#14'ParentShowHint'#8#8'ReadOnly'#9#10'ScrollBars'#7
@@ -524,9 +524,9 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +'C'#215#208#229#247#151's'#246#153#128'_'#25#166#193'V'#209#227'xph'#238#231
   +#26#240#31#0#0#0#255#255#3#0#6#199#130#210#214#137'r'#141#0#0#0#0'IEND'#174
   +'B`'#130#11'Transparent'#9#0#0#9'TGroupBox'#14'ValuesGroupBox'#4'Left'#3#245
-  +#0#6'Height'#3#1#1#3'Top'#2#8#5'Width'#3#15#1#7'Anchors'#11#5'akTop'#7'akRig'
+  +#0#6'Height'#3#0#1#3'Top'#2#8#5'Width'#3#15#1#7'Anchors'#11#5'akTop'#7'akRig'
   +'ht'#8'akBottom'#0#7'Caption'#6#20'Verhaltensparameter:'#12'ClientHeight'#3
-  +#239#0#11'ClientWidth'#3#11#1#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'
+  +#238#0#11'ClientWidth'#3#11#1#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'
   +#2#3#0#6'TImage'#6'Image1'#4'Left'#2#26#6'Height'#3#229#0#3'Top'#2#14#5'Widt'
   +'h'#3#240#0#7'Anchors'#11#5'akTop'#7'akRight'#0#12'Picture.Data'#10'<'#25#0#0
   +#23'TPortableNetworkGraphic '#25#0#0#137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0
@@ -835,7 +835,7 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +'Height'#2#13#3'Top'#3'8'#1#5'Width'#2'8'#7'Caption'#6#10'SPINA Thyr'#10'Fon'
   ,'t.Color'#7#7'clBlack'#11'Font.Height'#2#246#11'ParentColor'#8#10'ParentFont'
   +#8#7'OnClick'#7#19'SPINAThyrLabelClick'#0#0#5'TMemo'#14'CDISC_defaults'#4'Le'
-  +'ft'#2't'#6'Height'#2#24#3'Top'#3'%'#1#5'Width'#3#25#2#7'Anchors'#11#6'akLef'
+  +'ft'#2't'#6'Height'#2#24#3'Top'#3'$'#1#5'Width'#3#25#2#7'Anchors'#11#6'akLef'
   +'t'#7'akRight'#8'akBottom'#0#7'Enabled'#8#13'Lines.Strings'#1#6'+<?xml versi'
   +'on="1.0" encoding="ISO-8859-1"?>'#6'+<!-- Example for SPINA Reference Value'
   +'s -->'#6')<!-- adapted to CDISC LAB MODEL 1.0.1 -->'#6'(<!-- (c) J. W. Diet'

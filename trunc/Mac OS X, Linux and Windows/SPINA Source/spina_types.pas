@@ -112,6 +112,7 @@ const
   REF_RANGE_FLAG = '*'; {flag sign for marking results outside the reference range}
 
   clLtYellow = TColor($AAFFFF);
+  clLtOrange = TColor($89E9FF);
 
 type
 Str3 = string[3];

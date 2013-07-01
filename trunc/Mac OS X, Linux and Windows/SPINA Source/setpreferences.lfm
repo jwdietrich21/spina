@@ -127,7 +127,7 @@ object PreferencesForm: TPreferencesForm
       Height = 17
       Hint = 'Bitte anklicken, um für neue Berechnungen die Maßeinheiten der vorherigen Berechnung zu verwenden.'
       Top = 5
-      Width = 138
+      Width = 136
       Caption = 'Remember last used unit'
       Checked = True
       OnChange = RememberCheckBoxChange
@@ -315,7 +315,7 @@ object PreferencesForm: TPreferencesForm
     Left = 40
     Height = 17
     Top = 337
-    Width = 126
+    Width = 124
     Anchors = [akLeft, akBottom]
     Caption = 'Mark mandatory fields'
     OnChange = MarkMandatoryCheckChange

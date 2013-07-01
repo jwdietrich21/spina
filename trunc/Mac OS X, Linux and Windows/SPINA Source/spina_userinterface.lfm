@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 265
+  Left = 279
   Height = 350
-  Top = 246
+  Top = 121
   Width = 765
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -15,7 +15,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 331
+  ClientHeight = 330
   ClientWidth = 765
   Color = clWhite
   Constraints.MinHeight = 350
@@ -323,7 +323,7 @@ object Hauptschirm: THauptschirm
   object Calculate_Button: TButton
     Left = 661
     Height = 24
-    Top = 293
+    Top = 292
     Width = 92
     Anchors = [akRight, akBottom]
     Caption = 'Berechnen'
@@ -399,13 +399,13 @@ object Hauptschirm: THauptschirm
   end
   object Panel1: TPanel
     Left = 13
-    Height = 279
+    Height = 278
     Top = 8
     Width = 750
     Anchors = [akTop, akLeft, akRight, akBottom]
     BevelInner = bvLowered
     Caption = 'Panel1'
-    ClientHeight = 279
+    ClientHeight = 278
     ClientWidth = 750
     Color = clWhite
     ParentColor = False
@@ -413,7 +413,7 @@ object Hauptschirm: THauptschirm
     TabOrder = 5
     object TherapyCheckGroup: TCheckGroup
       Left = 525
-      Height = 76
+      Height = 75
       Hint = 'Bitte markieren Sie bei Substitutionstherapie die entsprechende Box.'
       Top = 8
       Width = 216
@@ -428,7 +428,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 58
+      ClientHeight = 57
       ClientWidth = 212
       Items.Strings = (
         'rhTSH-Substitution'
@@ -446,14 +446,14 @@ object Hauptschirm: THauptschirm
     end
     object ResultGroupBox: TGroupBox
       Left = 525
-      Height = 153
+      Height = 152
       Top = 112
       Width = 215
       Anchors = [akTop, akRight, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 135
+      ClientHeight = 134
       ClientWidth = 211
       Color = clNone
       ParentColor = False
@@ -462,7 +462,7 @@ object Hauptschirm: THauptschirm
         Left = 8
         Height = 147
         Hint = 'Das Ergebnis Ihrer Berechnung'
-        Top = -10
+        Top = -11
         Width = 200
         Anchors = [akRight, akBottom]
         BorderStyle = bsNone
@@ -612,12 +612,12 @@ object Hauptschirm: THauptschirm
     end
     object ValuesGroupBox: TGroupBox
       Left = 245
-      Height = 257
+      Height = 256
       Top = 8
       Width = 271
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 239
+      ClientHeight = 238
       ClientWidth = 267
       ParentShowHint = False
       ShowHint = True
@@ -988,7 +988,7 @@ object Hauptschirm: THauptschirm
   object CDISC_defaults: TMemo
     Left = 116
     Height = 24
-    Top = 293
+    Top = 292
     Width = 537
     Anchors = [akLeft, akRight, akBottom]
     Enabled = False
