@@ -190,7 +190,7 @@ type
 var
   TSH, T4, T3: real;
   Hauptschirm: THauptschirm;
-  Language, UserName: array[0..128] of char;
+  UserName: array[0..128] of char;
   gSysLanguage, gUserName: string;
   arraySize: DWord;
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
@@ -1104,7 +1104,6 @@ initialization
   gPrefsFileName := GetPreferencesFile;
 
   gAppName := ApplicationName;
-  gAppPath := ParamStr(0);
   gAppPath := Application.Location;
 
   gSysLanguage := GetOSLanguage;

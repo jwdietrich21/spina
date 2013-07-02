@@ -70,7 +70,6 @@ end;
 procedure TSplashScreen.IdleTimer1Timer(Sender: TObject);
 begin
   close;
-  free;
 end;
 
 procedure TSplashScreen.HandleAbout(Sender: TObject);
