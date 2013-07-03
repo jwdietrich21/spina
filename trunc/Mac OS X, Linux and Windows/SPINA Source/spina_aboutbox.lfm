@@ -1,6 +1,6 @@
 object AboutBox: TAboutBox
   Left = 301
-  Height = 346
+  Height = 335
   Top = 191
   Width = 439
   AlphaBlend = True
@@ -8,7 +8,7 @@ object AboutBox: TAboutBox
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Über SPINA Thyr'
-  ClientHeight = 346
+  ClientHeight = 335
   ClientWidth = 439
   Color = clWhite
   Icon.Data = {

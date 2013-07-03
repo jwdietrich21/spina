@@ -566,7 +566,9 @@ begin
       TSH := TSH * gTSHUnitFactor;
       decimalSeparator := oldSeparator;
     end;
-    if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
+    if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.ln)) then
+      TSH_Flag := ''
+    else if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
       TSH_Flag := REF_RANGE_FLAG;
     TSH_String := FloatToStrF(TSH, ffFixed, 3, 2) + TSH_Flag;
     Size := Hauptschirm.FT4_Text.GetTextLen;
@@ -585,11 +587,18 @@ begin
     end;
     if gPreferences.T4.Method = freeHormone then  {free or total T4?}
       begin
-       if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
+        if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.ln)) then
+         T4_Flag := ''
+        else if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
          T4_Flag := REF_RANGE_FLAG;
       end
-    else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
+    else
+      begin
+        if (isNan(gReferenceRanges.TT4.ln) or isNan(gReferenceRanges.TT4.ln)) then
+         T4_Flag := ''
+        else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
          T4_Flag := REF_RANGE_FLAG;
+      end;
     T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
     T4 := T4 * gT4UnitFactor;
     Size := Hauptschirm.FT3_Text.GetTextLen;
@@ -608,11 +617,18 @@ begin
     end;
     if gPreferences.T3.Method = freeHormone then  {free or total T3?}
       begin
-       if (T3 < gReferenceRanges.FT3.ln) or (T3 > gReferenceRanges.FT3.hn) then
+       if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.ln)) then
+         T3_Flag := ''
+        else if (T3 < gReferenceRanges.FT3.ln) or (T3 > gReferenceRanges.FT3.hn) then
          T3_Flag := REF_RANGE_FLAG;
       end
-    else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
+    else
+      begin
+        if (isNan(gReferenceRanges.TT3.ln) or isNan(gReferenceRanges.TT3.ln)) then
+         T3_Flag := ''
+        else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
          T3_Flag := REF_RANGE_FLAG;
+      end;
     T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
     T3 := T3 * gT3UnitFactor;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
