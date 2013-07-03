@@ -13,7 +13,7 @@ object ResultForm: TResultForm
   ClientHeight = 166
   ClientWidth = 688
   Color = clWhite
-  FormStyle = fsSystemStayOnTop
+  FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   Position = poMainFormCenter
   LCLVersion = '1.0.10.0'
