@@ -18,7 +18,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="325"/>
+      <BuildNr Value="326"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.3.1"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -50,11 +50,10 @@
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="spina_thyr"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="31" Y="25"/>
+        <CursorPos X="92" Y="31"/>
         <UsageCount Value="186"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -66,9 +65,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
+        <TopLine Value="561"/>
         <CursorPos X="91" Y="1"/>
         <UsageCount Value="186"/>
         <Loaded Value="True"/>
@@ -571,6 +571,10 @@
     <Target>
       <Filename Value="SPINA Thyr"/>
     </Target>
+    <Conditionals Value="if TargetOS = 'darwin' then begin
+  UsageCustomOptions += ' -k-macosx_version_min -k10.4';
+  UsageCustomOptions += ' -XR/Developer/SDKs/MacOSX10.4u.sdk/';
+end;"/>
     <Parsing>
       <SyntaxOptions>
         <CStyleOperator Value="False"/>
@@ -585,7 +589,6 @@
         <OverflowChecks Value="True"/>
         <StackChecks Value="True"/>
       </Checks>
-      <VerifyObjMethodCallValidity Value="True"/>
     </CodeGeneration>
     <Linking>
       <LinkSmart Value="True"/>
@@ -619,5 +622,4 @@
       </Item2>
     </Exceptions>
   </Debugging>
-</CONFIG>
-
+</CONFIG>
