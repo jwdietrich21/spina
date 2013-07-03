@@ -300,6 +300,7 @@ begin
   SPINAToolbar.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   SPINAToolbar.CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
   Hauptschirm.HintField.Text := gAnleitung1;
+  Hauptschirm.HintField.Hint := Hauptschirm.HintField.Text;
 end;
 
 procedure TSPINAToolbar.HelpItemClick(Sender: TObject);

@@ -654,6 +654,7 @@ begin
   ResultForm.Visible := True;
   ResultForm.AlphaBlendValue := 220;
   Hauptschirm.HintField.Text := gAnleitung2;
+  Hauptschirm.HintField.Hint := Hauptschirm.HintField.Text;
 end;
 
 procedure THauptschirm.CopyMenuItemClick(Sender: TObject);
