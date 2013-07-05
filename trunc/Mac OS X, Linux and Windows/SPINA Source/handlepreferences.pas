@@ -294,7 +294,7 @@ begin
       ElementNode.AppendChild(SimpleNode(Doc, 'colourise', 'true'))
     else
       ElementNode.AppendChild(SimpleNode(Doc, 'colourise', 'false'));
-    ElementNode.AppendChild(SimpleNode(Doc, 'colour', Dec2Numb(gMandatoryColor, 6, 16)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'colour', Dec2Numb(gPreferences.MandatoryColor, 6, 16)));
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('methods');
@@ -331,10 +331,11 @@ end;
 procedure CreateNewPreferences;
 {creates a new datastructure for preferences with standard entries}
 begin
+  gStandardMandatoryColor := clLtYellow;
   with gPreferences do
     begin
       rememberUsedUnits := true;
-      colouriseMandatoryFields := false;
+      colouriseMandatoryFields := true;
       T4.Method := freeHormone;
       T3.Method := freeHormone;
       TSH.measurementUnit := TSH_UNIT;
@@ -345,7 +346,7 @@ begin
       T3.PopUpItem := 0;
       T4.MethodPopUpItem := 0;
       T3.MethodPopUpItem := 0;
-      gMandatoryColor := clLtOrange;
+      MandatoryColor := gStandardMandatoryColor;
       gPreferences.new := true;
     end;
   SavePreferences;
@@ -360,6 +361,7 @@ var
   theFileHandle: longint;
   XMLfound: boolean;
 begin
+  gStandardMandatoryColor := clLtYellow;
   XMLfound := false;
   theFileName := GetPreferencesFile;
   if FileExists(theFileName) then {simple check for XML file}
@@ -389,12 +391,12 @@ begin
         gPreferences.colouriseMandatoryFields := false;
       theString := NodeContent(RootNode, 'colour');
       if (theString = '') or (theString = 'NA') then
-        gMandatoryColor := clLtOrange  {Standard colour}
+        gPreferences.MandatoryColor := gStandardMandatoryColor  {Standard colour}
       else
         try
-          gMandatoryColor := TColor(Hex2Dec(theString));
+          gPreferences.MandatoryColor := TColor(Hex2Dec(theString));
         except
-          gMandatoryColor := clDefault;
+          gPreferences.MandatoryColor := clDefault;
         end;
 
       RootNode := Doc.DocumentElement.FindNode('methods');

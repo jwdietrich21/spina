@@ -111,7 +111,7 @@ const
 
   REF_RANGE_FLAG = '*'; {flag sign for marking results outside the reference range}
 
-  clLtYellow = TColor($AAFFFF);
+  clLtYellow = TColor($66FFFF);
   clLtOrange = TColor($89E9FF);
 
 type
@@ -133,6 +133,7 @@ end;
 tPreferences = record
        new, rememberUsedUnits, colouriseMandatoryFields: boolean;
        TSH, T4, T3: tParameterSettings;
+       MandatoryColor: TColor;
        end;
 tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
@@ -167,7 +168,7 @@ var
   gResultDialogString1, gResultDialogString2, gReferenceValueString1, gReferenceValueString2: Str255;
   gReferenceRanges, gSIReferenceRanges, gConvReferenceRanges: tReferenceValues;
   gLastActiveCustomForm: TForm;
-  gMandatoryColor: TColor;
+  gStandardMandatoryColor: TColor;
 
 implementation
 
