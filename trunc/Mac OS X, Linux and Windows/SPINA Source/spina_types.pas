@@ -97,7 +97,7 @@ const
 
   BASE_URL = 'http://spina.medical-cybernetics.de';
   SPINA_GLOBAL_ID = 'net.sf.spina';
-  SPINA_THYR_GLOBAL_ID = 'net.sf.spina.spina-thyr';
+  SPINA_THYR_GLOBAL_ID = 'net.sf.spina.thyr';
   HELP_URL = 'http://spina.sourceforge.net/manual.html';
   PORTAL_URL = 'http://www.ruhr-uni-bochum.de/spina-portal';
 
