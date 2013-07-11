@@ -170,7 +170,7 @@ begin
     if prefsFolder = '' then
       GetPreferencesFile := ''
     else
-      GetPreferencesFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.xml';
+      GetPreferencesFile := GetPreferencesFolder + SPINA_THYR_GLOBAL_ID + '.xml';
   {$ELSE}
     GetPreferencesFile := GetAppConfigFile(false);
   {$ENDIF}
@@ -185,7 +185,7 @@ begin
    if prefsFolder = '' then
      RRFile := ''
    else
-     RRFile := GetPreferencesFolder + SPINA_GLOBAL_ID + '.ref-ranges.xml';
+     RRFile := GetPreferencesFolder + SPINA_THYR_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
 function EncodeGreek(theString: string): string;

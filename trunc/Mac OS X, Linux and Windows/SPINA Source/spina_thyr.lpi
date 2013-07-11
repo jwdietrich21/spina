@@ -18,7 +18,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="330"/>
+      <BuildNr Value="331"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.3.1"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -45,7 +45,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="50">
+    <Units Count="51">
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -127,7 +127,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_SplashScreen"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -254,7 +253,7 @@
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="19" Y="1"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="103"/>
         <Loaded Value="True"/>
       </Unit23>
@@ -278,6 +277,7 @@
       <Unit26>
         <Filename Value="handlepreferences.pas"/>
         <UnitName Value="HandlePreferences"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -481,127 +481,135 @@
         <CursorPos X="1" Y="322"/>
         <UsageCount Value="10"/>
       </Unit49>
+      <Unit50>
+        <Filename Value="..\..\..\..\..\..\..\..\..\Developer\lazarus\lcl\lcltype.pp"/>
+        <UnitName Value="LCLType"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2967"/>
+        <CursorPos X="1" Y="2985"/>
+        <UsageCount Value="10"/>
+      </Unit50>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="512" Column="1" TopLine="483"/>
+        <Caret Line="516" Column="1" TopLine="488"/>
       </Position1>
       <Position2>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="513" Column="1" TopLine="484"/>
+        <Caret Line="517" Column="1" TopLine="489"/>
       </Position2>
       <Position3>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="514" Column="1" TopLine="485"/>
+        <Caret Line="518" Column="1" TopLine="490"/>
       </Position3>
       <Position4>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="515" Column="1" TopLine="487"/>
+        <Caret Line="519" Column="1" TopLine="491"/>
       </Position4>
       <Position5>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="516" Column="1" TopLine="488"/>
+        <Caret Line="664" Column="1" TopLine="647"/>
       </Position5>
       <Position6>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="517" Column="1" TopLine="489"/>
+        <Caret Line="670" Column="1" TopLine="646"/>
       </Position6>
       <Position7>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="518" Column="1" TopLine="490"/>
+        <Caret Line="671" Column="1" TopLine="646"/>
       </Position7>
       <Position8>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="519" Column="1" TopLine="491"/>
+        <Caret Line="672" Column="1" TopLine="646"/>
       </Position8>
       <Position9>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="664" Column="1" TopLine="647"/>
+        <Caret Line="673" Column="1" TopLine="646"/>
       </Position9>
       <Position10>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="670" Column="1" TopLine="646"/>
+        <Caret Line="674" Column="1" TopLine="646"/>
       </Position10>
       <Position11>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="671" Column="1" TopLine="646"/>
+        <Caret Line="675" Column="1" TopLine="646"/>
       </Position11>
       <Position12>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="672" Column="1" TopLine="646"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="19" Column="1" TopLine="1"/>
       </Position12>
       <Position13>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="673" Column="1" TopLine="646"/>
+        <Caret Line="808" Column="3" TopLine="806"/>
       </Position13>
       <Position14>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="674" Column="1" TopLine="646"/>
+        <Caret Line="663" Column="14" TopLine="637"/>
       </Position14>
       <Position15>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="675" Column="1" TopLine="646"/>
-      </Position15>
-      <Position16>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="19" Column="1" TopLine="1"/>
-      </Position16>
-      <Position17>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="808" Column="3" TopLine="806"/>
-      </Position17>
-      <Position18>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="663" Column="14" TopLine="637"/>
-      </Position18>
-      <Position19>
         <Filename Value="handlepreferences.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
+      </Position15>
+      <Position16>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="348" Column="36" TopLine="330"/>
+      </Position16>
+      <Position17>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="372" Column="8" TopLine="369"/>
+      </Position17>
+      <Position18>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="293" Column="42" TopLine="280"/>
+      </Position18>
+      <Position19>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="1" Column="91" TopLine="1"/>
       </Position19>
       <Position20>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="348" Column="36" TopLine="330"/>
+        <Caret Line="8" Column="50" TopLine="1"/>
       </Position20>
       <Position21>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="372" Column="8" TopLine="369"/>
+        <Caret Line="347" Column="41" TopLine="319"/>
       </Position21>
       <Position22>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="293" Column="42" TopLine="280"/>
+        <Caret Line="1" Column="40" TopLine="1"/>
       </Position22>
       <Position23>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="348" Column="7" TopLine="355"/>
+        <Caret Line="630" Column="35" TopLine="600"/>
       </Position23>
       <Position24>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1" Column="91" TopLine="1"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="641" Column="92" TopLine="622"/>
       </Position24>
       <Position25>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="8" Column="50" TopLine="1"/>
+        <Caret Line="632" Column="74" TopLine="610"/>
       </Position25>
       <Position26>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="347" Column="41" TopLine="319"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position26>
       <Position27>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="1" Column="40" TopLine="1"/>
+        <Caret Line="173" Column="72" TopLine="155"/>
       </Position27>
       <Position28>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="630" Column="35" TopLine="600"/>
+        <Caret Line="188" Column="59" TopLine="158"/>
       </Position28>
       <Position29>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="641" Column="92" TopLine="622"/>
+        <Filename Value="spina_types.pas"/>
+        <Caret Line="100" Column="23" TopLine="88"/>
       </Position29>
       <Position30>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="632" Column="74" TopLine="610"/>
+        <Filename Value="spina_types.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -642,8 +650,8 @@ end;"/>
       <CompilerMessages>
         <UseMsgFile Value="True"/>
       </CompilerMessages>
-      <CustomOptions Value="/-k-macosx_version_min //-k10.4
-//-XR/Developer/SDKs/MacOSX10.4u.sdk/"/>
+      <CustomOptions Value="-k-macosx_version_min -k10.4
+-XR/Developer/SDKs/MacOSX10.4u.sdk/"/>
       <CompilerPath Value="$(CompPath)"/>
     </Other>
   </CompilerOptions>
@@ -662,4 +670,4 @@ end;"/>
       </Item2>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>
