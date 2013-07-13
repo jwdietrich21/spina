@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+SPINA-Thyr
+
+Application for calculating structure parameters
+of thyrotropic feedback control
+
+Programm zur Berechnung von Strukturparametern
+des thyreotropen Regelkreises
+
+Version 3.3.1
+
+(c) J. W. Dietrich, 1994 - 2013
+(c) Ludwig Maximilian University of Munich 1995 - 2002
+(c) University of Ulm Hospitals 2002-2004
+(c) Ruhr University of Bochum 2005 - 2013
+
+Source code released under the BSD License
+See http://spina.medical-cybernetics.de for details
+-->
+<plist version="1.0">
+<dict>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleExecutable</key>
+	<string>SPINA Thyr</string>
+	<key>CFBundleVersion</key>
+	<string>3.3.1</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleName</key>
+	<string>SPINA Thyr</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>SPIt</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.3.1</string>
+	<key>CFBundleGetInfoString</key>
+	<string>3.3.1, ©1994-2013 J. W. Dietrich</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>3.3.1, ©1994-2013 J. W. Dietrich</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.sf.spina.thyr</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.medical</string>
+	<key>CFBundleIconFile</key>
+	<string>iconfile.icns</string>
+	<key>CSResourcesFileMapped</key>
+	<true/>
+	<key>LSRequiresCarbon</key>
+	<true/>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>*</string>
+			</array>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>fold</string>
+				<string>disk</string>
+				<string>****</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.4.0</string>
+</dict>
+</plist>
