@@ -18,7 +18,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="334"/>
+      <BuildNr Value="336"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.3.1"/>
     </VersionInfo>
     <BuildModes Count="1">
