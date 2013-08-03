@@ -186,9 +186,9 @@ object ResultForm: TResultForm
   end
   object Label1: TLabel
     Left = 112
-    Height = 17
+    Height = 18
     Top = 8
-    Width = 68
+    Width = 58
     Caption = 'Ergebnis:'
     Font.Color = clBlack
     Font.Height = -13
