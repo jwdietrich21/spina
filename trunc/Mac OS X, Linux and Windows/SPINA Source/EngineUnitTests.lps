@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="5">
+      <Unit0>
+        <Filename Value="EngineUnitTests.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EngineUnitTests"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="59" Y="10"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="engine_testcase.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="engine_testcase"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="52" Y="13"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="spina_engine.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SPINA_Engine"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="57" Y="5"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="spina_types.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SPINA_Types"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="26" Y="1"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="/usr/local/share/fpcsrc/packages/fcl-fpcunit/src/fpcunit.pp"/>
+        <UnitName Value="fpcunit"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="84"/>
+        <CursorPos X="21" Y="121"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+    </Units>
+    <General>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <JumpHistory Count="7" HistoryIndex="6">
+      <Position1>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="33" Column="3" TopLine="1"/>
+      </Position1>
+      <Position2>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="8" Column="69" TopLine="1"/>
+      </Position2>
+      <Position3>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="33" Column="12" TopLine="7"/>
+      </Position3>
+      <Position4>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="34" Column="1" TopLine="7"/>
+      </Position4>
+      <Position5>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="17" Column="26" TopLine="7"/>
+      </Position5>
+      <Position6>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="28" Column="13" TopLine="13"/>
+      </Position6>
+      <Position7>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="42" Column="90" TopLine="17"/>
+      </Position7>
+    </JumpHistory>
+  </ProjectSession>
+  <Debugging>
+    <Watches Count="1">
+      <Item1>
+        <Expression Value="testCaseRecord"/>
+      </Item1>
+    </Watches>
+  </Debugging>
+</CONFIG>
