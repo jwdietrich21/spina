@@ -1,6 +1,5 @@
 program EngineUnitTests;
 
-
 { SPINA-Thyr }
 
 { Application for calculating structure parameters }
@@ -31,6 +30,7 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TGuiTestRunner, TestRunner);
+  gNotCalculable := 'N/C';
   Application.Run;
 end.
 

@@ -25,7 +25,7 @@ unit engine_testcase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, SPINA_Types, SPINA_Engine;
+  Classes, SysUtils, fpcunit, math, testutils, testregistry, SPINA_Types, SPINA_Engine;
 
 type
 
@@ -34,6 +34,7 @@ type
   TEngineTestCases= class(TTestCase)
   published
     procedure PositiveCheck;
+    procedure TestCase2;
     procedure TestCase12;
     procedure TestCase13;
     procedure TestCase14;
@@ -48,6 +49,24 @@ implementation
 procedure TEngineTestCases.PositiveCheck;
 begin
   AssertNull('This test is bound to succeed', nil);
+end;
+
+procedure TEngineTestCases.TestCase2;
+{test case #2}
+{Empty values}
+{TSH 0 mU/l, FT4 0 pmol/l, FT3 0 pmol/l}
+{=> GT = NaN, GD = NaN}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH := 0;
+  T4 := 0;
+  T3 := 0;
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals((testCaseRecord.GT), NaN);
+  AssertEquals((testCaseRecord.GD), NaN);
+  AssertEquals((testCaseRecord.GTs), gNotCalculable);
+  AssertEquals((testCaseRecord.GDs), gNotCalculable);
 end;
 
 procedure TEngineTestCases.TestCase12;

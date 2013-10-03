@@ -88,6 +88,7 @@ begin
   end
   else
   begin
+    tempRecord.GT := NaN;
     tempRecord.GTs := gNotCalculable;
     tempRecord.flaggedGTs := gNotCalculable;
   end;
@@ -116,6 +117,7 @@ begin
   end
   else
   begin
+    tempRecord.GD := NaN;
     tempRecord.GDs := gNotCalculable;
     tempRecord.flaggedGDs := gNotCalculable;
   end;
