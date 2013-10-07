@@ -65,8 +65,8 @@ begin
   testCaseRecord := Calculate(TSH, T4, T3);
   AssertEquals((testCaseRecord.GT), NaN);
   AssertEquals((testCaseRecord.GD), NaN);
-  AssertEquals((testCaseRecord.GTs), gNotCalculable);
-  AssertEquals((testCaseRecord.GDs), gNotCalculable);
+  AssertEquals(gNotCalculable, (testCaseRecord.GTs));
+  AssertEquals(gNotCalculable, (testCaseRecord.GDs));
 end;
 
 procedure TEngineTestCases.TestCase12;
@@ -81,12 +81,12 @@ begin
   T4 := 16.5e-12;
   T3 := 4.5e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals((testCaseRecord.GT > 4.69e-12) and (testCaseRecord.GT < 4.71e-12), true);
-  AssertEquals((testCaseRecord.GD > 25.2e-9) and (testCaseRecord.GD < 25.3e-9), true);
-  AssertEquals(LeftStr(testCaseRecord.GTs, 3), '4.7');
-  AssertEquals(RightStr(testCaseRecord.GTs, 6), 'pmol/s');
-  AssertEquals(LeftStr(testCaseRecord.GDs, 4), '25.2');
-  AssertEquals(RightStr(testCaseRecord.GDs, 6), 'nmol/s');
+  AssertEquals(true, (testCaseRecord.GT > 4.69e-12) and (testCaseRecord.GT < 4.71e-12));
+  AssertEquals(true, (testCaseRecord.GD > 25.2e-9) and (testCaseRecord.GD < 25.3e-9));
+  AssertEquals('4.7', LeftStr(testCaseRecord.GTs, 3));
+  AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
+  AssertEquals('25.2', LeftStr(testCaseRecord.GDs, 4));
+  AssertEquals('nmol/s', RightStr(testCaseRecord.GDs, 6));
 end;
 
 procedure TEngineTestCases.TestCase13;
@@ -101,12 +101,12 @@ begin
   T4 := 7.7e-12;
   T3 := 28e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals((testCaseRecord.GT > 1.07e-12) and (testCaseRecord.GT < 1.09e-12), true);
-  AssertEquals((testCaseRecord.GD > 336.0e-9) and (testCaseRecord.GD < 336.4e-9), true);
-  AssertEquals(LeftStr(testCaseRecord.GTs, 3), '1.0');
-  AssertEquals(RightStr(testCaseRecord.GTs, 6), 'pmol/s');
-  AssertEquals(LeftStr(testCaseRecord.GDs, 4), '336.');
-  AssertEquals(RightStr(testCaseRecord.GDs, 6), 'nmol/s');
+  AssertEquals(true, (testCaseRecord.GT > 1.07e-12) and (testCaseRecord.GT < 1.09e-12));
+  AssertEquals(true, (testCaseRecord.GD > 336.0e-9) and (testCaseRecord.GD < 336.4e-9));
+  AssertEquals('1.0', LeftStr(testCaseRecord.GTs, 3));
+  AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
+  AssertEquals('336.', LeftStr(testCaseRecord.GDs, 4));
+  AssertEquals('nmol/s', RightStr(testCaseRecord.GDs, 6));
 end;
 
 procedure TEngineTestCases.TestCase14;
@@ -121,12 +121,12 @@ begin
   T4 := 9e-12;
   T3 := 6.2e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals((testCaseRecord.GT > 3.36e-12) and (testCaseRecord.GT < 3.38e-12), true);
-  AssertEquals((testCaseRecord.GD > 63.4e-9) and (testCaseRecord.GD < 64e-9), true);
-  AssertEquals(LeftStr(testCaseRecord.GTs, 3), '3.3');
-  AssertEquals(RightStr(testCaseRecord.GTs, 6), 'pmol/s');
-  AssertEquals(LeftStr(testCaseRecord.GDs, 4), '63.7');
-  AssertEquals(RightStr(testCaseRecord.GDs, 6), 'nmol/s');
+  AssertEquals(true, (testCaseRecord.GT > 3.36e-12) and (testCaseRecord.GT < 3.38e-12));
+  AssertEquals(true, (testCaseRecord.GD > 63.4e-9) and (testCaseRecord.GD < 64e-9));
+  AssertEquals('3.3',LeftStr(testCaseRecord.GTs, 3));
+  AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
+  AssertEquals('63.7', LeftStr(testCaseRecord.GDs, 4));
+  AssertEquals('nmol/s', RightStr(testCaseRecord.GDs, 6));
 end;
 
 initialization
