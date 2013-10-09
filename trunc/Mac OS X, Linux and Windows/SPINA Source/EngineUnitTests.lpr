@@ -23,7 +23,8 @@ program EngineUnitTests;
 {$mode objfpc}{$H+}
 
 uses
-  Interfaces, Forms, GuiTestRunner, engine_testcase, spina_engine, spina_types;
+  Interfaces, Forms, GuiTestRunner, engine_testcase, spina_engine, spina_types,
+  MeasurementParser;
 
 {$R *.res}
 

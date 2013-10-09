@@ -25,15 +25,30 @@ unit engine_testcase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, math, testutils, testregistry, SPINA_Types, SPINA_Engine;
+  Classes, SysUtils, fpcunit, math, testutils, testregistry, SPINA_Types, MeasurementParser, SPINA_Engine;
 
 type
 
   { TEngineTestCases }
 
-  TEngineTestCases= class(TTestCase)
+  TControlTestCases = class(TTestCase)
   published
     procedure PositiveCheck;
+  end;
+
+  TParserTestCases = class(TTestCase)
+  published
+    procedure TestCase1;
+    procedure TestCase2;
+    procedure TestCase3;
+    procedure TestCase4;
+    procedure TestCase5;
+    procedure TestCase6;
+    procedure TestCase7;
+  end;
+
+  TEngineTestCases = class(TTestCase)
+  published
     procedure TestCase2;
     procedure TestCase12;
     procedure TestCase13;
@@ -46,9 +61,72 @@ var
 
 implementation
 
-procedure TEngineTestCases.PositiveCheck;
+procedure TControlTestCases.PositiveCheck;
 begin
   AssertNull('This test is bound to succeed', nil);
+end;
+
+procedure TParserTestCases.TestCase1;
+var
+  theMeasurement: tMeasurement;
+begin
+  theMeasurement := parsedMeasurement('');
+  AssertEquals(NaN, theMeasurement.Value);
+  AssertEquals('', theMeasurement.uom);
+end;
+
+procedure TParserTestCases.TestCase2;
+var
+  theMeasurement: tMeasurement;
+begin
+  theMeasurement := parsedMeasurement('0');
+  AssertEquals(0, theMeasurement.Value);
+  AssertEquals('', theMeasurement.uom);
+end;
+
+procedure TParserTestCases.TestCase3;
+var
+  theMeasurement: tMeasurement;
+begin
+  theMeasurement := parsedMeasurement('1 mU/l');
+  AssertEquals(1, theMeasurement.Value);
+  AssertEquals('mU/l', theMeasurement.uom);
+end;
+
+procedure TParserTestCases.TestCase4;
+var
+  theMeasurement: tMeasurement;
+begin
+  theMeasurement := parsedMeasurement('1,3 ng/dl');
+  AssertEquals(1.3, theMeasurement.Value);
+  AssertEquals('ng/dl', theMeasurement.uom);
+end;
+
+procedure TParserTestCases.TestCase5;
+var
+  theMeasurement: tMeasurement;
+begin
+  theMeasurement := parsedMeasurement('4 pg/ml');
+  AssertEquals(4, theMeasurement.Value);
+  AssertEquals('pg/ml', theMeasurement.uom);
+end;
+
+procedure TParserTestCases.TestCase6;
+var
+  theMeasurement: tMeasurement;
+begin
+  theMeasurement := parsedMeasurement('1.6 ng/dl');
+  AssertEquals(1.6, theMeasurement.Value);
+  AssertEquals('ng/dl', theMeasurement.uom);
+end;
+
+procedure TParserTestCases.TestCase7;
+var
+  theMeasurement: tMeasurement;
+begin
+  theMeasurement := parsedMeasurement('0.01 mU/l');
+  AssertEquals(0.01, theMeasurement.Value);
+  AssertEquals('mU/l', theMeasurement.uom);
 end;
 
 procedure TEngineTestCases.TestCase2;
@@ -63,8 +141,8 @@ begin
   T4 := 0;
   T3 := 0;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals((testCaseRecord.GT), NaN);
-  AssertEquals((testCaseRecord.GD), NaN);
+  AssertEquals(NaN, (testCaseRecord.GT));
+  AssertEquals(NaN, (testCaseRecord.GD));
   AssertEquals(gNotCalculable, (testCaseRecord.GTs));
   AssertEquals(gNotCalculable, (testCaseRecord.GDs));
 end;
@@ -131,6 +209,8 @@ end;
 
 initialization
 
+  RegisterTest(TControlTestCases);
+  RegisterTest(TParserTestCases);
   RegisterTest(TEngineTestCases);
 end.
 
