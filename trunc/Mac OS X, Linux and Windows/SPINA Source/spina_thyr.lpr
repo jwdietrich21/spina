@@ -30,7 +30,8 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
-  HandlePreferences, spina_toolbar, SetPreferences, spina_help;
+  HandlePreferences, spina_toolbar, SetPreferences, spina_help,
+  measurementparser;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 
@@ -43,7 +44,7 @@ begin
   {$ELSE}
   SetHeapTraceOutput('c:\heaptrace.trc');
   {$ENDIF}{$ENDIF}
-  InitConversionFactors;
+  InitThyroidHormoneConversionFactors;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
   SplashScreen := TSplashScreen.Create(nil);

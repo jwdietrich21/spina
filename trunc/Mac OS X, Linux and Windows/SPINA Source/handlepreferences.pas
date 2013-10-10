@@ -40,42 +40,26 @@ uses
     {$IFDEF LCLCarbon}
       , MacOSAll
     {$ENDIF}
-  {$ENDIF};
+  {$ENDIF},
+  MeasurementParser;
 
 function DecodeGreek(theString: string): string;
 function EncodeGreek(theString: string): string;
 function GetPreferencesFile: String;
 function GetPreferencesFolder: String;
-function ParsedUnitString(theString: String): TUnitElements;
 function RRFile: String;
 procedure ComposeRRStrings;
 procedure GetReferenceValues(theFileName: String; var returnCode: integer);
-procedure InitConversionFactors;
+procedure InitThyroidHormoneConversionFactors;
 procedure ReadPreferences;
 procedure SavePreferences;
 
 
 implementation
 
-procedure InitConversionFactors;
+procedure InitThyroidHormoneConversionFactors;
 {sets labels and appropriate conversion factors for the elements of measurement units}
 begin
-  PrefixLabel[0] := '';
-  PrefixLabel[1] := 'd';
-  PrefixLabel[2] := 'c';
-  PrefixLabel[3] := 'm';
-  PrefixLabel[4] := 'µ';
-  PrefixLabel[5] := 'n';
-  PrefixLabel[6] := 'p';
-  PrefixLabel[7] := 'f';
-  PrefixFactor[0] := 1;
-  PrefixFactor[1] := 1e-1;
-  PrefixFactor[2] := 1e-2;
-  PrefixFactor[3] := 1e-3;
-  PrefixFactor[4] := 1e-6;
-  PrefixFactor[5] := 1e-9;
-  PrefixFactor[6] := 1e-12;
-  PrefixFactor[7] := 1e-15;
   T4UnitLabel[0] := 'g';
   T4UnitLabel[1] := 'mol';
   T4UnitFactor[0] := PrefixFactor[1] * UFT4 / PrefixFactor[5]; {since UFT4 converts between ng/dl and mol/l}
@@ -84,43 +68,6 @@ begin
   T3UnitLabel[1] := 'mol';
   T3UnitFactor[0] := PrefixFactor[3] * UFT3 / PrefixFactor[6]; {as UFT3 converts between pg/ml and mol/l}
   T3UnitFactor[1] := 1;
-end;
-
-function ParsedUnitString(theString: String): TUnitElements;
-{parses a string for measurement unit and breaks it up in single components of a TUnitElements record}
-var
-  theElements: TUnitElements;
-begin
-  if theString <> 'NA' then
-    begin
-      with theElements do
-      begin
-        if copy(theString, 1, 1) = 'm' then
-          begin
-            if copy(theString, 2, 1) = 'c' then
-              MassPrefix := PrefixLabel[4] {mc -> µ}
-            else
-              MassPrefix := 'm';
-          end
-          else
-            MassPrefix := copy(theString, 1, 1);
-        MassUnit := copy(theString, 2, pos('/', theString) - 2);
-        VolumePrefix := copy(theString, pos('/', theString) + 1, 1);
-        VolumeUnit := 'l';
-        if VolumePrefix = VolumeUnit then VolumePrefix := '';  {no prefix set}
-      end;
-    end
-  else
-  begin
-    with theElements do
-    begin
-      MassPrefix := 'NA';
-      MassUnit := 'NA';
-      VolumePrefix := 'NA';
-      VolumeUnit := 'NA';
-    end;
-  end;
-  ParsedUnitString := theElements;
 end;
 
 function GetPreferencesFolder: String;

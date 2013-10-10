@@ -36,7 +36,17 @@ type
     procedure PositiveCheck;
   end;
 
-  TParserTestCases = class(TTestCase)
+  TUnitParserTestCases = class(TTestCase)
+  published
+    procedure TestCase1;
+    procedure TestCase2;
+    procedure TestCase3;
+    procedure TestCase4;
+    procedure TestCase5;
+    procedure TestCase11;
+  end;
+
+  TMeasurementParserTestCases = class(TTestCase)
   published
     procedure TestCase1;
     procedure TestCase2;
@@ -66,65 +76,131 @@ begin
   AssertNull('This test is bound to succeed', nil);
 end;
 
-procedure TParserTestCases.TestCase1;
+procedure TUnitParserTestCases.TestCase1;
+var
+  theUnitElements: tUnitElements;
+begin
+  theUnitElements := ParsedUnitString('NA');
+  AssertEquals('NA', theUnitElements.MassPrefix);
+  AssertEquals('NA', theUnitElements.MassUnit);
+  AssertEquals('NA', theUnitElements.VolumePrefix);
+  AssertEquals('NA', theUnitElements.VolumeUnit);
+end;
+
+procedure TUnitParserTestCases.TestCase2;
+var
+  theUnitElements: tUnitElements;
+begin
+  theUnitElements := ParsedUnitString('');
+  AssertEquals('', theUnitElements.MassPrefix);
+  AssertEquals('', theUnitElements.MassUnit);
+  AssertEquals('', theUnitElements.VolumePrefix);
+  AssertEquals('', theUnitElements.VolumeUnit);
+end;
+
+procedure TUnitParserTestCases.TestCase3;
+var
+  theUnitElements: tUnitElements;
+begin
+  theUnitElements := ParsedUnitString('mU/l');
+  AssertEquals('m', theUnitElements.MassPrefix);
+  AssertEquals('U', theUnitElements.MassUnit);
+  AssertEquals('', theUnitElements.VolumePrefix);
+  AssertEquals('l', theUnitElements.VolumeUnit);
+end;
+
+procedure TUnitParserTestCases.TestCase4;
+var
+  theUnitElements: tUnitElements;
+begin
+  theUnitElements := ParsedUnitString('ng/dl');
+  AssertEquals('n', theUnitElements.MassPrefix);
+  AssertEquals('g', theUnitElements.MassUnit);
+  AssertEquals('d', theUnitElements.VolumePrefix);
+  AssertEquals('l', theUnitElements.VolumeUnit);
+end;
+
+procedure TUnitParserTestCases.TestCase5;
+var
+  theUnitElements: tUnitElements;
+begin
+  theUnitElements := ParsedUnitString('pg/ml');
+  AssertEquals('p', theUnitElements.MassPrefix);
+  AssertEquals('g', theUnitElements.MassUnit);
+  AssertEquals('m', theUnitElements.VolumePrefix);
+  AssertEquals('l', theUnitElements.VolumeUnit);
+end;
+
+procedure TUnitParserTestCases.TestCase11;
+var
+  theUnitElements: tUnitElements;
+begin
+  theUnitElements := ParsedUnitString('pmol/l');
+  AssertEquals('p', theUnitElements.MassPrefix);
+  AssertEquals('mol', theUnitElements.MassUnit);
+  AssertEquals('', theUnitElements.VolumePrefix);
+  AssertEquals('l', theUnitElements.VolumeUnit);
+end;
+
+procedure TMeasurementParserTestCases.TestCase1;
 var
   theMeasurement: tMeasurement;
 begin
-  theMeasurement := parsedMeasurement('');
+  theMeasurement := ParsedMeasurement('');
   AssertEquals(true, isNaN(theMeasurement.Value));
   AssertEquals('', theMeasurement.uom);
 end;
 
-procedure TParserTestCases.TestCase2;
+procedure TMeasurementParserTestCases.TestCase2;
 var
   theMeasurement: tMeasurement;
 begin
-  theMeasurement := parsedMeasurement('0');
+  theMeasurement := ParsedMeasurement('0');
   AssertEquals(0, theMeasurement.Value);
   AssertEquals('', theMeasurement.uom);
 end;
 
-procedure TParserTestCases.TestCase3;
+procedure TMeasurementParserTestCases.TestCase3;
 var
   theMeasurement: tMeasurement;
 begin
-  theMeasurement := parsedMeasurement('1 mU/l');
+  theMeasurement := ParsedMeasurement('1 mU/l');
   AssertEquals(1, theMeasurement.Value);
   AssertEquals('mU/l', theMeasurement.uom);
 end;
 
-procedure TParserTestCases.TestCase4;
+procedure TMeasurementParserTestCases.TestCase4;
 var
   theMeasurement: tMeasurement;
 begin
-  theMeasurement := parsedMeasurement('1,3 ng/dl');
+  theMeasurement := ParsedMeasurement('1,3 ng/dl');
   AssertEquals(1.3, theMeasurement.Value);
   AssertEquals('ng/dl', theMeasurement.uom);
 end;
 
-procedure TParserTestCases.TestCase5;
+procedure TMeasurementParserTestCases.TestCase5;
 var
   theMeasurement: tMeasurement;
 begin
-  theMeasurement := parsedMeasurement('4 pg/ml');
+  theMeasurement := ParsedMeasurement('4 pg/ml');
   AssertEquals(4, theMeasurement.Value);
   AssertEquals('pg/ml', theMeasurement.uom);
 end;
 
-procedure TParserTestCases.TestCase6;
+procedure TMeasurementParserTestCases.TestCase6;
 var
   theMeasurement: tMeasurement;
 begin
-  theMeasurement := parsedMeasurement('1.6 ng/dl');
+  theMeasurement := ParsedMeasurement('1.6 ng/dl');
   AssertEquals(1.6, theMeasurement.Value);
   AssertEquals('ng/dl', theMeasurement.uom);
 end;
 
-procedure TParserTestCases.TestCase7;
+procedure TMeasurementParserTestCases.TestCase7;
 var
   theMeasurement: tMeasurement;
 begin
-  theMeasurement := parsedMeasurement('0.01 mU/l');
+  theMeasurement := ParsedMeasurement('0.01 mU/l');
   AssertEquals(0.01, theMeasurement.Value);
   AssertEquals('mU/l', theMeasurement.uom);
 end;
@@ -210,7 +286,8 @@ end;
 initialization
 
   RegisterTest(TControlTestCases);
-  RegisterTest(TParserTestCases);
+  RegisterTest(TUnitParserTestCases);
+  RegisterTest(TMeasurementParserTestCases);
   RegisterTest(TEngineTestCases);
 end.
 

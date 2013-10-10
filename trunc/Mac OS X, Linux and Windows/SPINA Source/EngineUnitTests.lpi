@@ -16,8 +16,10 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <MajorVersionNr Value="1"/>
-      <BuildNr Value="8"/>
+      <MajorVersionNr Value="3"/>
+      <MinorVersionNr Value="3"/>
+      <RevisionNr Value="1"/>
+      <BuildNr Value="10"/>
       <StringTable ProductName="SPINA Thyr Engine Unit Tests" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="1">

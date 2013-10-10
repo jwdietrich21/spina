@@ -25,18 +25,24 @@ unit MeasurementParser;
 interface
 
 uses
-  Classes, SysUtils, Math;
+  Classes, SysUtils, Math, SPINA_Types;
 
 type
   tMeasurement = record
     Value: extended;
     uom: string;
   end;
+  tUnitElements = record
+       MassPrefix, MassUnit, VolumePrefix, VolumeUnit: String;
+  end;
 
 var
   gPosition: integer;
+  PrefixLabel: array[0..MAXFACTORS - 1] of Str3;
+  PrefixFactor: array[0..MAXFACTORS - 1] of real;
 
-function parsedMeasurement(measurement: string): tMeasurement;
+function ParsedUnitString(theString: String): TUnitElements;
+function ParsedMeasurement(measurement: string): tMeasurement;
 
 implementation
 
@@ -47,6 +53,27 @@ const
   kETB = char(23);
   DEC_POINT = '.';
   DEC_COMMA = ',';
+
+procedure InitConversionFactors;
+{sets labels and appropriate conversion factors for the elements of measurement units}
+begin
+  PrefixLabel[0] := '';
+  PrefixLabel[1] := 'd';
+  PrefixLabel[2] := 'c';
+  PrefixLabel[3] := 'm';
+  PrefixLabel[4] := 'µ';
+  PrefixLabel[5] := 'n';
+  PrefixLabel[6] := 'p';
+  PrefixLabel[7] := 'f';
+  PrefixFactor[0] := 1;
+  PrefixFactor[1] := 1e-1;
+  PrefixFactor[2] := 1e-2;
+  PrefixFactor[3] := 1e-3;
+  PrefixFactor[4] := 1e-6;
+  PrefixFactor[5] := 1e-9;
+  PrefixFactor[6] := 1e-12;
+  PrefixFactor[7] := 1e-15;
+end;
 
 function ValidChar(theChar: char): boolean;
   {check a character in a string representing a number for validity}
@@ -84,7 +111,50 @@ begin
     NextChar := kETB;
 end;
 
-function parsedMeasurement(measurement: string): tMeasurement;
+function ParsedUnitString(theString: string): TUnitElements;
+  {parses a string for measurement unit and breaks it up in single components of a TUnitElements record}
+var
+  theElements: TUnitElements;
+begin
+  with theElements do
+  begin
+    if theString = '' then
+    begin
+      MassPrefix := '';
+      MassUnit := '';
+      VolumePrefix := '';
+      VolumeUnit := '';
+    end
+    else if theString = 'NA' then
+    begin
+      MassPrefix := 'NA';
+      MassUnit := 'NA';
+      VolumePrefix := 'NA';
+      VolumeUnit := 'NA';
+    end
+    else
+      with theElements do
+      begin
+        if copy(theString, 1, 1) = 'm' then
+        begin
+          if copy(theString, 2, 1) = 'c' then
+            MassPrefix := PrefixLabel[4] {mc -> ??}
+          else
+            MassPrefix := 'm';
+        end
+        else
+          MassPrefix := copy(theString, 1, 1);
+        MassUnit := copy(theString, 2, pos('/', theString) - 2);
+        VolumePrefix := copy(theString, pos('/', theString) + 1, 1);
+        VolumeUnit := 'l';
+        if VolumePrefix = VolumeUnit then
+          VolumePrefix := '';  {no prefix set}
+      end;
+  end;
+  ParsedUnitString := theElements;
+end;
+
+function ParsedMeasurement(measurement: string): tMeasurement;
 { decompose measurement result into numeric value and unit }
 var
   ch: char;
@@ -204,5 +274,8 @@ begin
     parsedMeasurement.uom := RightStr(measurement, length(measurement) - gPosition + 1);
   end;
 end;
+
+initialization
+  InitConversionFactors;
 
 end.

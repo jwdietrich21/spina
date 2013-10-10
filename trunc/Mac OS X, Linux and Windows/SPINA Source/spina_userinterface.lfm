@@ -319,7 +319,7 @@ object Hauptschirm: THauptschirm
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.10.0'
+  LCLVersion = '1.0.12.0'
   object Calculate_Button: TButton
     Left = 636
     Height = 24
