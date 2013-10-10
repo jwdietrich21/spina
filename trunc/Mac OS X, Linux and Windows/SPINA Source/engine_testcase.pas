@@ -71,7 +71,7 @@ var
   theMeasurement: tMeasurement;
 begin
   theMeasurement := parsedMeasurement('');
-  AssertEquals(NaN, theMeasurement.Value);
+  AssertEquals(true, isNaN(theMeasurement.Value));
   AssertEquals('', theMeasurement.uom);
 end;
 
@@ -141,8 +141,8 @@ begin
   T4 := 0;
   T3 := 0;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(NaN, (testCaseRecord.GT));
-  AssertEquals(NaN, (testCaseRecord.GD));
+  AssertEquals(true, isNaN(testCaseRecord.GT));
+  AssertEquals(true, isNaN(testCaseRecord.GD));
   AssertEquals(gNotCalculable, (testCaseRecord.GTs));
   AssertEquals(gNotCalculable, (testCaseRecord.GDs));
 end;
