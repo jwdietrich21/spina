@@ -30,6 +30,8 @@ uses
 const
   UFT4 = 1.28e-11; {Conversion factor ng/dl -> mol/l (T4)}
   UFT3 = 1.54e-12; {Conversion factor pg/ml -> mol/l (T3)}
+  T4_MOLAR_MASS = 776.87; {molar mass of T4}
+  T3_MOLAR_MASS = 650.97; {molar mass of T3}
   kTAB = chr(9);
   kLF = chr(10);
   kCR = chr(13);

@@ -40,11 +40,14 @@ var
   gPosition: integer;
   PrefixLabel: array[0..MAXFACTORS - 1] of Str3;
   PrefixFactor: array[0..MAXFACTORS - 1] of real;
+  UnitLabel: array[0..MAXFACTORS - 1] of string;
 
+function DecodeGreek(theString: string): string;
+function EncodeGreek(theString: string): string;
 function ParsedUnitString(theString: String): TUnitElements;
 function ParsedMeasurement(measurement: string): tMeasurement;
-function AsUnit(value, conversionFactor: real; fromUnit, toUnit, baseUnit: string): real;
-function AsUnitString(fromValue: string; conversionFactor: real; toUnit, baseUnit: string): string;
+function AsUnit(value, molarMass: real; fromUnit, toUnit: string): real;
+function AsUnitString(fromValue: string; molarMass: real; toUnit: string): string;
 
 implementation
 
@@ -75,6 +78,8 @@ begin
   PrefixFactor[5] := 1e-9;
   PrefixFactor[6] := 1e-12;
   PrefixFactor[7] := 1e-15;
+  UnitLabel[0] := 'g';
+  UnitLabel[1] := 'mol';
 end;
 
 function ValidChar(theChar: char): boolean;
@@ -111,6 +116,24 @@ begin
   end
   else
     NextChar := kETB;
+end;
+
+function EncodeGreek(theString: string): string;
+{encodes greek mu letter as ASCII substitution sequence}
+var
+  theFlags: TReplaceFlags;
+begin
+  theFlags := [rfReplaceAll, rfIgnoreCase];
+  Result := StringReplace(theString, #194#181, 'mc', theFlags);
+end;
+
+function DecodeGreek(theString: string): string;
+{decodes ASCII substitution sequence for greek mu letter}
+var
+  theFlags: TReplaceFlags;
+begin
+  theFlags := [rfReplaceAll, rfIgnoreCase];
+  result := UTF8Decode(StringReplace(theString, 'mc', #194#181, theFlags));
 end;
 
 function ParsedUnitString(theString: string): TUnitElements;
@@ -277,19 +300,49 @@ begin
   end;
 end;
 
-function AsUnit(value, conversionFactor: real; fromUnit, toUnit, baseUnit: string): real;
+function AsUnit(value, molarMass: real; fromUnit, toUnit: string): real;
+{ converts value from one measuement unit to another one }
+var
+  fromUnitElements, toUnitElements: TUnitElements;
+  i, fromMpIndex, fromMuIndex, fromVpIndex, toMpIndex, toMuIndex, toVpIndex: integer;
+  conversionFactor: real;
 begin
   if value = NaN then
   AsUnit := NaN
   else
     begin
-
+      fromMpIndex := 0;    {Index for mass prefix}
+      fromMuIndex := 0;    {index for mass unit}
+      fromVpIndex := 0;    {index for volume prefix}
+      toMpIndex := 0;    {Index for mass prefix}
+      toMuIndex := 0;    {index for mass unit}
+      toVpIndex := 0;    {index for volume prefix}
+      fromUnitElements := ParsedUnitString(EncodeGreek(fromUnit));
+      toUnitElements := ParsedUnitString(EncodeGreek(toUnit));
+      for i := MAXFACTORS - 1 downto 0 do
+        begin
+          if fromUnitElements.MassPrefix = PrefixLabel[i] then fromMpIndex := i;
+          if fromUnitElements.MassUnit = UnitLabel[i] then fromMuIndex := i;
+          if fromUnitElements.VolumePrefix = PrefixLabel[i] then fromVpIndex := i;
+          if toUnitElements.MassPrefix = PrefixLabel[i] then toMpIndex := i;
+          if toUnitElements.MassUnit = UnitLabel[i] then toMuIndex := i;
+          if toUnitElements.VolumePrefix = PrefixLabel[i] then toVpIndex := i;
+        end;
+      if (fromUnitElements.MassUnit = 'mol') and (toUnitElements.MassUnit = 'g') then        {SI to conventional}
+        conversionFactor := PrefixFactor[fromMpIndex] * molarMass / PrefixFactor[fromVpIndex] * PrefixFactor[toVpIndex] / PrefixFactor[toMpIndex]
+      else if (fromUnitElements.MassUnit = 'g') and (toUnitElements.MassUnit = 'mol') then        {conventional to SI}
+        conversionFactor := PrefixFactor[fromMpIndex] * 1 / molarMass / PrefixFactor[fromVpIndex] * PrefixFactor[toVpIndex] / PrefixFactor[toMpIndex]
+      else if fromUnitElements.MassUnit = fromUnitElements.MassUnit then         {identical units}
+        conversionFactor := 1
+      else conversionFactor := NaN;
+      AsUnit := value * conversionFactor;
     end;
 end;
 
-function AsUnitString(fromValue: string; conversionFactor: real; toUnit, baseUnit: string): string;
+function AsUnitString(fromValue: string; molarMass: real; toUnit: string): string;
+{ converts value from one measuement unit to another one and delivers string with result}
 var
-  value: real;
+  value, target: real;
   fromUnit: string;
   theMeasurement: tMeasurement;
 begin
@@ -300,6 +353,8 @@ begin
       theMeasurement := ParsedMeasurement(fromValue);
       value := theMeasurement.Value;
       fromUnit := theMeasurement.uom;
+      target := AsUnit(value, molarMass, fromUnit, toUnit);
+      AsUnitString := FloatToStr(AsUnit(value, molarMass, fromUnit, toUnit)) + ' ' + toUnit;
     end;
 end;
 
