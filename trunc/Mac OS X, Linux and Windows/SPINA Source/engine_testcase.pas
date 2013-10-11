@@ -57,6 +57,11 @@ type
     procedure TestCase7;
   end;
 
+  TconverterTestCases = class(TTestCase)
+  published
+    procedure TestCase1;
+  end;
+
   TEngineTestCases = class(TTestCase)
   published
     procedure TestCase2;
@@ -205,6 +210,13 @@ begin
   AssertEquals('mU/l', theMeasurement.uom);
 end;
 
+procedure TconverterTestCases.TestCase1;
+var
+  theResultString: String;
+begin
+  theResultString := AsUnitString('', 1, 'ng/dl', 'pmol/l');
+end;
+
 procedure TEngineTestCases.TestCase2;
 {test case #2}
 {Empty values}
@@ -288,6 +300,7 @@ initialization
   RegisterTest(TControlTestCases);
   RegisterTest(TUnitParserTestCases);
   RegisterTest(TMeasurementParserTestCases);
+  RegisterTest(TconverterTestCases);
   RegisterTest(TEngineTestCases);
 end.
 

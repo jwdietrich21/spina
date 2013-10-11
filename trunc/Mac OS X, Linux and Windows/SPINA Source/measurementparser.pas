@@ -43,6 +43,8 @@ var
 
 function ParsedUnitString(theString: String): TUnitElements;
 function ParsedMeasurement(measurement: string): tMeasurement;
+function AsUnit(value, conversionFactor: real; fromUnit, toUnit, baseUnit: string): real;
+function AsUnitString(fromValue: string; conversionFactor: real; toUnit, baseUnit: string): string;
 
 implementation
 
@@ -273,6 +275,32 @@ begin
     parsedMeasurement.Value := Number;
     parsedMeasurement.uom := RightStr(measurement, length(measurement) - gPosition + 1);
   end;
+end;
+
+function AsUnit(value, conversionFactor: real; fromUnit, toUnit, baseUnit: string): real;
+begin
+  if value = NaN then
+  AsUnit := NaN
+  else
+    begin
+
+    end;
+end;
+
+function AsUnitString(fromValue: string; conversionFactor: real; toUnit, baseUnit: string): string;
+var
+  value: real;
+  fromUnit: string;
+  theMeasurement: tMeasurement;
+begin
+  if fromValue = '' then
+  AsUnitString := ''
+  else
+    begin
+      theMeasurement := ParsedMeasurement(fromValue);
+      value := theMeasurement.Value;
+      fromUnit := theMeasurement.uom;
+    end;
 end;
 
 initialization

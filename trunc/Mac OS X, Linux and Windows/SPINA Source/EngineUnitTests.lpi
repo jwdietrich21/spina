@@ -19,7 +19,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="10"/>
+      <BuildNr Value="12"/>
       <StringTable ProductName="SPINA Thyr Engine Unit Tests" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="1">
