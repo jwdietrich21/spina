@@ -68,11 +68,14 @@ type
     procedure TestCase7;
     procedure TestCase8;
     procedure TestCase9;
+    procedure TestCase10;
   end;
 
   TEngineTestCases = class(TTestCase)
   published
+    procedure TestCase1;
     procedure TestCase2;
+    procedure TestCase3;
     procedure TestCase12;
     procedure TestCase13;
     procedure TestCase14;
@@ -81,13 +84,18 @@ type
 var
   testCaseRecord: tCaseRecord;
   TSH, T4, T3: real;
+  TSH_String, T4_String, T3_String: String;
 
 implementation
+
+{ -- Base functionality test -- }
 
 procedure TControlTestCases.PositiveCheck;
 begin
   AssertNull('This test is bound to succeed', nil);
 end;
+
+{ -- Unit parser tests -- }
 
 procedure TUnitParserTestCases.TestCase1;
 var
@@ -155,6 +163,8 @@ begin
   AssertEquals('l', theUnitElements.VolumeUnit);
 end;
 
+{ -- Measurement parser tests -- }
+
 procedure TMeasurementParserTestCases.TestCase1;
 var
   theMeasurement: tMeasurement;
@@ -218,12 +228,14 @@ begin
   AssertEquals('mU/l', theMeasurement.uom);
 end;
 
+{ -- Unit converter tests -- }
+
 procedure TconverterTestCases.TestCase1;
 {empty value}
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('', 1, 'ng/dl');
+  theResultString := ConvertedUnit('', 1, 'ng/dl');
   AssertEquals('', theResultString);
 end;
 
@@ -232,7 +244,7 @@ procedure TconverterTestCases.TestCase2;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('20 pmol/l', T4_MOLAR_MASS, 'ng/dl');
+  theResultString := ConvertedUnit('20 pmol/l', T4_MOLAR_MASS, 'ng/dl');
   AssertEquals('1.55', LeftStr(theResultString, 4));
   AssertEquals('ng/dl', RightStr(theResultString, 5));
 end;
@@ -242,7 +254,7 @@ procedure TconverterTestCases.TestCase3;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('20 pmol/l', T4_MOLAR_MASS, 'ng/l');
+  theResultString := ConvertedUnit('20 pmol/l', T4_MOLAR_MASS, 'ng/l');
   AssertEquals('15.5', LeftStr(theResultString, 4));
   AssertEquals('ng/l', RightStr(theResultString, 4));
 end;
@@ -252,7 +264,7 @@ procedure TconverterTestCases.TestCase4;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('18 ng/l', T4_MOLAR_MASS, 'pmol/l');
+  theResultString := ConvertedUnit('18 ng/l', T4_MOLAR_MASS, 'pmol/l');
   AssertEquals('23.1', LeftStr(theResultString, 4));
   AssertEquals('pmol/l', RightStr(theResultString, 6));
 end;
@@ -262,7 +274,7 @@ procedure TconverterTestCases.TestCase5;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('1.8 ng/dl', T4_MOLAR_MASS, 'pmol/l');
+  theResultString := ConvertedUnit('1.8 ng/dl', T4_MOLAR_MASS, 'pmol/l');
   AssertEquals('23.1', LeftStr(theResultString, 4));
   AssertEquals('pmol/l', RightStr(theResultString, 6));
 end;
@@ -272,7 +284,7 @@ procedure TconverterTestCases.TestCase6;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('18 ng/l', T4_MOLAR_MASS, 'ng/l');
+  theResultString := ConvertedUnit('18 ng/l', T4_MOLAR_MASS, 'ng/l');
   AssertEquals('18', LeftStr(theResultString, 2));
   AssertEquals('ng/l', RightStr(theResultString, 4));
 end;
@@ -282,7 +294,7 @@ procedure TconverterTestCases.TestCase7;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('3.2 ng/l', T3_MOLAR_MASS, 'pmol/l');
+  theResultString := ConvertedUnit('3.2 ng/l', T3_MOLAR_MASS, 'pmol/l');
   AssertEquals('4.9', LeftStr(theResultString, 3));
   AssertEquals('pmol/l', RightStr(theResultString, 6));
 end;
@@ -292,7 +304,7 @@ procedure TconverterTestCases.TestCase8;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('5 pmol/l', T3_MOLAR_MASS, 'ng/l');
+  theResultString := ConvertedUnit('5 pmol/l', T3_MOLAR_MASS, 'ng/l');
   AssertEquals('3.2', LeftStr(theResultString, 3));
   AssertEquals('ng/l', RightStr(theResultString, 4));
 end;
@@ -302,14 +314,43 @@ procedure TconverterTestCases.TestCase9;
 var
   theResultString: String;
 begin
-  theResultString := AsUnitString('5 pmol/l', T3_MOLAR_MASS, 'pg/ml');
+  theResultString := ConvertedUnit('5 pmol/l', T3_MOLAR_MASS, 'pg/ml');
   AssertEquals('3.2', LeftStr(theResultString, 3));
   AssertEquals('pg/ml', RightStr(theResultString, 5));
 end;
 
+procedure TconverterTestCases.TestCase10;
+{T4: ng/l to mol/l}
+var
+  theResult: real;
+begin
+  theResult := ValueFromUnit('18 ng/l', T4_MOLAR_MASS, 'mol/l');
+  AssertEquals(true, (theResult > 23.0e-12) and (theResult < 23.2e-12));
+end;
+
+{ -- Calculation engine tests -- }
+
+procedure TEngineTestCases.TestCase1;
+{test case #1}
+{Empty values}
+{TSH NaN, FT4 NaN, FT3 0 NaN}
+{=> GT = NaN, GD = NaN}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH := NaN;
+  T4 := NaN;
+  T3 := NaN;
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, isNaN(testCaseRecord.GT));
+  AssertEquals(true, isNaN(testCaseRecord.GD));
+  AssertEquals(gNotCalculable, (testCaseRecord.GTs));
+  AssertEquals(gNotCalculable, (testCaseRecord.GDs));
+end;
+
 procedure TEngineTestCases.TestCase2;
 {test case #2}
-{Empty values}
+{Zero values}
 {TSH 0 mU/l, FT4 0 pmol/l, FT3 0 pmol/l}
 {=> GT = NaN, GD = NaN}
 begin
@@ -325,6 +366,32 @@ begin
   AssertEquals(gNotCalculable, (testCaseRecord.GDs));
 end;
 
+procedure TEngineTestCases.TestCase3;
+{test case #3}
+{TSH 1 mU/l, FT4 2 ng/dl, FT3 3 pg/ml}
+{=> GT = 7.29 pmol/s, GD = 16.69 nmol/s}
+var
+  tempGT, tempGD: real;
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH_String := '1 mU/l';
+  T4_String := '2 ng/dl';
+  T3_String := '3 pg/ml';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  tempGT := testCaseRecord.GT;
+  tempGD := testCaseRecord.GD;
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 7.29e-12) and (testCaseRecord.GT < 1.01 * 7.29e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 16.69e-9) and (testCaseRecord.GD < 1.01 * 16.69e-9));
+  AssertEquals('7.', LeftStr(testCaseRecord.GTs, 2));
+  AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
+  AssertEquals('16.', LeftStr(testCaseRecord.GDs, 3));
+  AssertEquals('nmol/s', RightStr(testCaseRecord.GDs, 6));
+end;
+
 procedure TEngineTestCases.TestCase12;
   {test case #12}
   {Normal values}
@@ -337,8 +404,8 @@ begin
   T4 := 16.5e-12;
   T3 := 4.5e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 4.69e-12) and (testCaseRecord.GT < 4.71e-12));
-  AssertEquals(true, (testCaseRecord.GD > 25.2e-9) and (testCaseRecord.GD < 25.3e-9));
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 4.70e-12) and (testCaseRecord.GT < 1.01 * 4.70e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 25.22e-9) and (testCaseRecord.GD < 1.01 * 25.22e-9));
   AssertEquals('4.7', LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('25.2', LeftStr(testCaseRecord.GDs, 4));
@@ -357,8 +424,8 @@ begin
   T4 := 7.7e-12;
   T3 := 28e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 1.07e-12) and (testCaseRecord.GT < 1.09e-12));
-  AssertEquals(true, (testCaseRecord.GD > 336.0e-9) and (testCaseRecord.GD < 336.4e-9));
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.08e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 336.2e-9) and (testCaseRecord.GD < 1.01 * 336.2e-9));
   AssertEquals('1.0', LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('336.', LeftStr(testCaseRecord.GDs, 4));
@@ -377,8 +444,8 @@ begin
   T4 := 9e-12;
   T3 := 6.2e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 3.36e-12) and (testCaseRecord.GT < 3.38e-12));
-  AssertEquals(true, (testCaseRecord.GD > 63.4e-9) and (testCaseRecord.GD < 64e-9));
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 3.37e-12) and (testCaseRecord.GT < 1.01 * 3.37e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 63.7e-9) and (testCaseRecord.GD < 1.01 * 63.7e-9));
   AssertEquals('3.3',LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('63.7', LeftStr(testCaseRecord.GDs, 4));

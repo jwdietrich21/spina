@@ -27,6 +27,9 @@ interface
 uses
   Classes, SysUtils, Math, SPINA_Types;
 
+const
+  MAXFACTORS = 10; {number of supported prefixes for measurement units}
+
 type
   tMeasurement = record
     Value: extended;
@@ -46,8 +49,9 @@ function DecodeGreek(theString: string): string;
 function EncodeGreek(theString: string): string;
 function ParsedUnitString(theString: String): TUnitElements;
 function ParsedMeasurement(measurement: string): tMeasurement;
-function AsUnit(value, molarMass: real; fromUnit, toUnit: string): real;
-function AsUnitString(fromValue: string; molarMass: real; toUnit: string): string;
+function ConvertedValue(value, molarMass: real; fromUnit, toUnit: string): real;
+function ValueFromUnit(fromValue: string; molarMass: real; toUnit: string): real;
+function ConvertedUnit(fromValue: string; molarMass: real; toUnit: string): string;
 
 implementation
 
@@ -160,16 +164,29 @@ begin
     else
       with theElements do
       begin
-        if copy(theString, 1, 1) = 'm' then
-        begin
-          if copy(theString, 2, 1) = 'c' then
-            MassPrefix := PrefixLabel[4] {mc -> ??}
-          else
-            MassPrefix := 'm';
-        end
+        if (copy(theString, 1, 1) = 'g') and (copy(theString, 2, 1) = '/') then {e.g. 'g/l'}
+          begin
+            MassPrefix := '';
+            MassUnit := 'g';
+          end
+        else if (copy(theString, 1, 3) = 'mol') then {e.g. 'mol/l'}
+          begin
+            MassPrefix := '';
+            MassUnit := 'mol';
+          end
         else
-          MassPrefix := copy(theString, 1, 1);
-        MassUnit := copy(theString, 2, pos('/', theString) - 2);
+          begin
+            if copy(theString, 1, 1) = 'm' then
+          begin
+            if copy(theString, 2, 1) = 'c' then
+              MassPrefix := PrefixLabel[4] {mc -> µ}
+            else
+              MassPrefix := 'm';
+          end
+          else
+            MassPrefix := copy(theString, 1, 1);
+          MassUnit := copy(theString, 2, pos('/', theString) - 2);
+        end;
         VolumePrefix := copy(theString, pos('/', theString) + 1, 1);
         VolumeUnit := 'l';
         if VolumePrefix = VolumeUnit then
@@ -300,7 +317,7 @@ begin
   end;
 end;
 
-function AsUnit(value, molarMass: real; fromUnit, toUnit: string): real;
+function ConvertedValue(value, molarMass: real; fromUnit, toUnit: string): real;
 { converts value from one measuement unit to another one }
 var
   fromUnitElements, toUnitElements: TUnitElements;
@@ -308,7 +325,7 @@ var
   conversionFactor: real;
 begin
   if value = NaN then
-  AsUnit := NaN
+  ConvertedValue := NaN
   else
     begin
       fromMpIndex := 0;    {Index for mass prefix}
@@ -332,14 +349,33 @@ begin
         conversionFactor := PrefixFactor[fromMpIndex] * molarMass / PrefixFactor[fromVpIndex] * PrefixFactor[toVpIndex] / PrefixFactor[toMpIndex]
       else if (fromUnitElements.MassUnit = 'g') and (toUnitElements.MassUnit = 'mol') then        {conventional to SI}
         conversionFactor := PrefixFactor[fromMpIndex] * 1 / molarMass / PrefixFactor[fromVpIndex] * PrefixFactor[toVpIndex] / PrefixFactor[toMpIndex]
-      else if fromUnitElements.MassUnit = fromUnitElements.MassUnit then         {identical units}
+      else if fromUnitElements.MassUnit = toUnitElements.MassUnit then         {identical units}
         conversionFactor := 1
       else conversionFactor := NaN;
-      AsUnit := value * conversionFactor;
+      ConvertedValue := value * conversionFactor;
     end;
 end;
 
-function AsUnitString(fromValue: string; molarMass: real; toUnit: string): string;
+function ValueFromUnit(fromValue: string; molarMass: real; toUnit: string): real;
+{ converts value from one measuement unit to another one and delivers numeric result}
+var
+  value, target: real;
+  fromUnit: string;
+  theMeasurement: tMeasurement;
+begin
+  if fromValue = '' then
+  ValueFromUnit := NaN
+  else
+    begin
+      theMeasurement := ParsedMeasurement(fromValue);
+      value := theMeasurement.Value;
+      fromUnit := theMeasurement.uom;
+      target := ConvertedValue(value, molarMass, fromUnit, toUnit);
+      ValueFromUnit := target;
+    end;
+end;
+
+function ConvertedUnit(fromValue: string; molarMass: real; toUnit: string): string;
 { converts value from one measuement unit to another one and delivers string with result}
 var
   value, target: real;
@@ -347,14 +383,14 @@ var
   theMeasurement: tMeasurement;
 begin
   if fromValue = '' then
-  AsUnitString := ''
+  ConvertedUnit := ''
   else
     begin
       theMeasurement := ParsedMeasurement(fromValue);
       value := theMeasurement.Value;
       fromUnit := theMeasurement.uom;
-      target := AsUnit(value, molarMass, fromUnit, toUnit);
-      AsUnitString := FloatToStr(AsUnit(value, molarMass, fromUnit, toUnit)) + ' ' + toUnit;
+      target := ConvertedValue(value, molarMass, fromUnit, toUnit);
+      ConvertedUnit := FloatToStr(ConvertedValue(value, molarMass, fromUnit, toUnit)) + ' ' + toUnit;
     end;
 end;
 
