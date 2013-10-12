@@ -24,7 +24,7 @@ program EngineUnitTests;
 
 uses
   Interfaces, Forms, GuiTestRunner, engine_testcase, spina_engine, spina_types,
-  MeasurementParser;
+  UnitConverter;
 
 {$R *.res}
 

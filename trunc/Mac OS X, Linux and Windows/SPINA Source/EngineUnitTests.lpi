@@ -19,7 +19,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="13"/>
+      <BuildNr Value="15"/>
       <StringTable ProductName="SPINA Thyr Engine Unit Tests" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -68,9 +68,9 @@
         <UnitName Value="SPINA_Types"/>
       </Unit3>
       <Unit4>
-        <Filename Value="measurementparser.pas"/>
+        <Filename Value="unitconverter.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="MeasurementParser"/>
+        <UnitName Value="UnitConverter"/>
       </Unit4>
     </Units>
   </ProjectOptions>

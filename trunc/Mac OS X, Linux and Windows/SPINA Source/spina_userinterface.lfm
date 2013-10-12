@@ -838,7 +838,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 102
-        Height = 22
+        Height = 21
         Hint = '(F)T4'
         Top = 221
         Width = 56
@@ -848,7 +848,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 198
-        Height = 22
+        Height = 21
         Hint = '(F)T3'
         Top = 26
         Width = 54
@@ -955,7 +955,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = 6
-        Height = 22
+        Height = 21
         Hint = 'TSH'
         Top = 26
         Width = 56

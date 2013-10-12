@@ -25,7 +25,7 @@ unit engine_testcase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, math, testutils, testregistry, SPINA_Types, MeasurementParser, SPINA_Engine;
+  Classes, SysUtils, fpcunit, math, testutils, testregistry, SPINA_Types, UnitConverter, SPINA_Engine;
 
 type
 

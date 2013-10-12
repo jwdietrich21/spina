@@ -41,7 +41,7 @@ uses
       , MacOSAll
     {$ENDIF}
   {$ENDIF},
-  MeasurementParser;
+  UnitConverter;
 
 function DecodeGreek(theString: string): string;
 function EncodeGreek(theString: string): string;
