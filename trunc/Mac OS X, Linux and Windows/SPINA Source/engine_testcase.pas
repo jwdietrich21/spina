@@ -87,6 +87,9 @@ type
     procedure TestCase12;
     procedure TestCase13;
     procedure TestCase14;
+    procedure TestCase15;
+    procedure TestCase16;
+    procedure TestCase17;
   end;
 
 var
@@ -606,6 +609,63 @@ begin
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('63.7', LeftStr(testCaseRecord.GDs, 4));
   AssertEquals('nmol/s', RightStr(testCaseRecord.GDs, 6));
+end;
+
+procedure TEngineTestCases.TestCase15;
+{test case #15}
+{Structure parameters calculated from total hormone values}
+{TSH 0.86 mU/l, TT4 163 nmol/l, TT3 3 nmol/l}
+{=> GT = 7.53 pmol/s, GD = 19.54 nmol/s}
+begin
+  gPreferences.T4.Method := totalHormone;
+  gPreferences.T3.Method := totalHormone;
+  TSH_String := '0.86 mU/l';
+  T4_String := '163 nmol/l';
+  T3_String := '3 nmol/l';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 7.53e-12) and (testCaseRecord.GT < 1.01 * 7.53e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 19.54e-9) and (testCaseRecord.GD < 1.01 * 19.54e-9));
+end;
+
+procedure TEngineTestCases.TestCase16;
+{test case #16}
+{Secondary hypothyroidism due to thyrotropic insufficiency}
+{TSH 0.2 mU/l, FT4 4 ng/l, FT3 2 pmol/l}
+{=> GT = 5.73 pmol/s, GD = 36.12 nmol/s}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH_String := '0.2 mU/l';
+  T4_String := '4 ng/l';
+  T3_String := '2 pmol/l';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 5.73e-12) and (testCaseRecord.GT < 1.01 * 5.73e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 36.12e-9) and (testCaseRecord.GD < 1.01 * 36.12e-9));
+end;
+
+procedure TEngineTestCases.TestCase17;
+{test case #17}
+{Secondary hyperthyoidism in case of TSH-producing adenoma}
+{TSH 16.13 mU/l, FT4 24 ng/l, TT3 1.9 pmol/l}
+{=> GT = 2.73 pmol/s, GD = 14.65 nmol/s}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := totalHormone;
+  TSH_String := '16.13 mU/l';
+  T4_String := '24 ng/l';
+  T3_String := '1.9 µg/l';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 2.73e-12) and (testCaseRecord.GT < 1.01 * 2.73e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 14.65e-9) and (testCaseRecord.GD < 1.01 * 14.65e-9));
 end;
 
 initialization

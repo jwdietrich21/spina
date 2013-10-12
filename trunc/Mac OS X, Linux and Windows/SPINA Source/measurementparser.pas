@@ -144,6 +144,7 @@ function ParsedUnitString(theString: string): TUnitElements;
   {parses a string for measurement unit and breaks it up in single components of a TUnitElements record}
 var
   theElements: TUnitElements;
+  tempPos:integer;
 begin
   with theElements do
   begin
@@ -177,16 +178,25 @@ begin
         else
           begin
             if copy(theString, 1, 1) = 'm' then
-          begin
-            if copy(theString, 2, 1) = 'c' then
-              MassPrefix := PrefixLabel[4] {mc -> µ}
+            begin
+              if copy(theString, 2, 1) = 'c' then
+              begin
+                MassPrefix := PrefixLabel[4]; {mc -> µ}
+                temppos := pos('/', theString) - 2;
+                MassUnit := copy(theString, 3, pos('/', theString) - 3);
+              end
+              else
+              begin
+                MassPrefix := copy(theString, 1, 1);
+                MassUnit := copy(theString, 2, pos('/', theString) - 2);
+              end;
+            end
             else
-              MassPrefix := 'm';
-          end
-          else
-            MassPrefix := copy(theString, 1, 1);
-          MassUnit := copy(theString, 2, pos('/', theString) - 2);
-        end;
+            begin
+              MassPrefix := copy(theString, 1, 1);
+              MassUnit := copy(theString, 2, pos('/', theString) - 2);
+            end;
+          end;
         VolumePrefix := copy(theString, pos('/', theString) + 1, 1);
         VolumeUnit := 'l';
         if VolumePrefix = VolumeUnit then
