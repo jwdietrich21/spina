@@ -207,7 +207,7 @@ var
   gLineSpacing: integer;
 
 procedure AdaptMenus;
-procedure AdjustUnitFactors;
+procedure AdjustUnitLabels;
 procedure ComposeRRHints;
 procedure GetPreferences;
 
@@ -249,48 +249,24 @@ begin
   Result := fbl;
 end;
 
-procedure AdjustUnitFactors;
-{calculates conversion factors from parsed unit strings}
+procedure AdjustUnitLabels;
+{determines labels from parsed unit strings}
 var
   unitElements: TUnitElements;
   i, mpIndex, muIndex, vpIndex, j4: integer;
   tempT4Factor, tempT3Factor: real;
 begin
-  mpIndex := 0;    {Index for mass prefix}
-  muIndex := 0;    {index for mass unit}
-  vpIndex := 0;    {index for volume prefix}
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T4UnitComboBox.Text));
-  for i := MAXFACTORS - 1 downto 0 do
-    begin
-      if unitElements.MassPrefix = PrefixLabel[i] then mpIndex := i;
-      if unitElements.MassUnit = T4UnitLabel[i] then muIndex := i;
-      if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
-    end;
-  tempT4Factor := PrefixFactor[mpIndex] * T4UnitFactor[muIndex] / PrefixFactor[vpIndex];
   if unitElements.MassUnit = 'mol' then
     gPreferences.T4.isSI := true
   else
     gPreferences.T4.isSI := false;
-  mpIndex := 0;
-  muIndex := 0;
-  vpIndex := 0;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T3UnitComboBox.Text));
-  for i := MAXFACTORS - 1 downto 0 do
-    begin
-      if unitElements.MassPrefix = PrefixLabel[i] then mpIndex := i;
-      if unitElements.MassUnit = T3UnitLabel[i] then muIndex := i;
-      if unitElements.VolumePrefix = PrefixLabel[i] then vpIndex := i;
-    end;
-  tempT3Factor := PrefixFactor[mpIndex] * T3UnitFactor[muIndex] / PrefixFactor[vpIndex];
   if unitElements.MassUnit = 'mol' then
     gPreferences.T3.isSI := true
   else
     gPreferences.T3.isSI := false;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.TSHUnitComboBox.Text));
-  if Hauptschirm.TSHUnitCombobox.Text = 'mU/l' then
-    gTSHUnitFactor := 1
-  else
-    gTSHUnitFactor := 1;
   gTSHUnit := Hauptschirm.TSHUnitCombobox.Text;
   gT4Unit := Hauptschirm.T4UnitCombobox.Text;
   gT3Unit := Hauptschirm.T3UnitCombobox.Text;
@@ -299,12 +275,7 @@ begin
     TSH.measurementUnit := Hauptschirm.TSHUnitCombobox.Caption;
     T4.measurementUnit := Hauptschirm.T4UnitCombobox.Caption;
     T3.measurementUnit := Hauptschirm.T3UnitCombobox.Caption;
-    TSH.UnitFactor := gTSHUnitFactor;
-    T4.UnitFactor := gT4UnitFactor;
-    T3.UnitFactor := gT3UnitFactor;
   end;
-  gT4UnitFactor := tempT4Factor;
-  gT3UnitFactor := tempT3Factor;
   ComposeRRStrings;
 end;
 
@@ -324,7 +295,7 @@ begin
     Hauptschirm.T4UnitCombobox.Text :=
       Hauptschirm.T4UnitCombobox.Items.Strings[gPreferences.T4.PopUpItem];
   end;
-  AdjustUnitFactors;
+  AdjustUnitLabels;
 end;
 
 procedure THauptschirm.T3MethodComboBoxAdjust(Sender: TObject);
@@ -343,7 +314,7 @@ begin
     Hauptschirm.T3UnitCombobox.Text :=
       Hauptschirm.T3UnitCombobox.Items.Strings[gPreferences.T3.PopUpItem];
   end;
-  AdjustUnitFactors;
+  AdjustUnitLabels;
 end;
 
 { THauptschirm }
@@ -422,7 +393,7 @@ begin
     gTSHUnitFactor := TSH.UnitFactor;
     gT4UnitFactor := T4.UnitFactor;
     gT3UnitFactor := T3.UnitFactor;
-    AdjustUnitFactors;
+    AdjustUnitLabels;
   end;
 end;
 
@@ -564,7 +535,7 @@ begin
       else
         decimalSeparator := DEC_POINT;
       TSH := StrToFloat(TSH_String);
-      TSH := TSH * gTSHUnitFactor;
+      TSH := ConvertedValue(TSH, 1, 'mU/l', 'mU/l');
       decimalSeparator := oldSeparator;
     end;
     if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.ln)) then
@@ -601,7 +572,7 @@ begin
          T4_Flag := REF_RANGE_FLAG;
       end;
     T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
-    T4 := T4 * gT4UnitFactor;
+    T4 := ConvertedValue(T4, T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
     Size := Hauptschirm.FT3_Text.GetTextLen;
     {Laenge des Strings in FT3_Text ermitteln}
     if Size = 0 then                                      {Feld leer?}
@@ -631,7 +602,7 @@ begin
          T3_Flag := REF_RANGE_FLAG;
       end;
     T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
-    T3 := T3 * gT3UnitFactor;
+    T3 := ConvertedValue(T3, T3_MOLAR_MASS, Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
       gTSHTherapy := True
     else
@@ -775,21 +746,21 @@ procedure THauptschirm.TSHUnitComboBoxChange(Sender: TObject);
 begin
   gPreferences.TSH.measurementUnit := Hauptschirm.TSHUnitComboBox.Caption;
   gPreferences.TSH.PopUpItem := Hauptschirm.TSHUnitCombobox.ItemIndex;
-  AdjustUnitFactors;
+  AdjustUnitLabels;
 end;
 
 procedure THauptschirm.T3UnitComboBoxChange(Sender: TObject);
 begin
   gPreferences.T3.measurementUnit := Hauptschirm.T3UnitComboBox.Caption;
   gPreferences.T3.PopUpItem := Hauptschirm.T3UnitCombobox.ItemIndex;
-  AdjustUnitFactors;
+  AdjustUnitLabels;
 end;
 
 procedure THauptschirm.T4UnitComboBoxChange(Sender: TObject);
 begin
   gPreferences.T4.measurementUnit := Hauptschirm.T4UnitComboBox.Caption;
   gPreferences.T4.PopUpItem := Hauptschirm.T4UnitCombobox.ItemIndex;
-  AdjustUnitFactors;
+  AdjustUnitLabels;
 end;
 
 procedure THauptschirm.TherapyCheckGroupClick(Sender: TObject);

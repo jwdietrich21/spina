@@ -59,13 +59,17 @@ implementation
 
 procedure InitThyroidHormoneConversionFactors;
 {sets labels and appropriate conversion factors for the elements of measurement units}
+var
+  UFT4, UFT3: real;
 begin
   T4UnitLabel[0] := 'g';
   T4UnitLabel[1] := 'mol';
+  UFT4 := ConvertedValue(1, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   T4UnitFactor[0] := PrefixFactor[1] * UFT4 / PrefixFactor[5]; {since UFT4 converts between ng/dl and mol/l}
   T4UnitFactor[1] := 1;
   T3UnitLabel[0] := 'g';
   T3UnitLabel[1] := 'mol';
+  UFT3 := ConvertedValue(1, T3_MOLAR_MASS, 'pg/ml', 'mol/l');
   T3UnitFactor[0] := PrefixFactor[3] * UFT3 / PrefixFactor[6]; {as UFT3 converts between pg/ml and mol/l}
   T3UnitFactor[1] := 1;
 end;
