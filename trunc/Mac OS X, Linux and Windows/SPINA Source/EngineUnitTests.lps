@@ -19,11 +19,10 @@
         <Filename Value="engine_testcase.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="engine_testcase"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="442"/>
-        <CursorPos X="54" Y="468"/>
+        <TopLine Value="521"/>
+        <CursorPos X="26" Y="86"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -53,10 +52,11 @@
         <Filename Value="measurementparser.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MeasurementParser"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="171"/>
-        <CursorPos X="51" Y="185"/>
+        <TopLine Value="326"/>
+        <CursorPos X="29" Y="353"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -95,7 +95,7 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="engine_testcase.pas"/>
         <Caret Line="384" Column="1" TopLine="363"/>
@@ -206,16 +206,12 @@
       </Position27>
       <Position28>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="422" Column="21" TopLine="442"/>
+        <Caret Line="466" Column="1" TopLine="442"/>
       </Position28>
       <Position29>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="466" Column="1" TopLine="442"/>
-      </Position29>
-      <Position30>
-        <Filename Value="engine_testcase.pas"/>
         <Caret Line="467" Column="1" TopLine="442"/>
-      </Position30>
+      </Position29>
     </JumpHistory>
   </ProjectSession>
   <Debugging>

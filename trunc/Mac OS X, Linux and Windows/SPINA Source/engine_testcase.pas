@@ -80,6 +80,10 @@ type
     procedure TestCase5;
     procedure TestCase6;
     procedure TestCase7;
+    procedure TestCase8;
+    procedure TestCase9;
+    procedure TestCase10;
+    procedure TestCase11;
     procedure TestCase12;
     procedure TestCase13;
     procedure TestCase14;
@@ -466,6 +470,82 @@ begin
   testCaseRecord := Calculate(TSH, T4, T3);
   AssertEquals(true, (testCaseRecord.GT > 0.99 * 589.99e-12) and (testCaseRecord.GT < 1.01 * 589.99e-12));
   AssertEquals(true, (testCaseRecord.GD > 0.99 * 30.34e-9) and (testCaseRecord.GD < 1.01 * 30.34e-9));
+end;
+
+procedure TEngineTestCases.TestCase8;
+{test case #8}
+{Sublatent hypothyroidism}
+{TSH 3.9 mU/l, FT4 0.8 ng/dl, FT3 2 pg/ml}
+{=> GT = 1.33 pmol/s, GD = 27.81 nmol/s}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH_String := '3.9 mU/l';
+  T4_String := '0.8 ng/dl';
+  T3_String := '2 pg/ml';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 1.33e-12) and (testCaseRecord.GT < 1.01 * 1.33e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+end;
+
+procedure TEngineTestCases.TestCase9;
+{test case #9}
+{Latent or subclinical hypothyroidism}
+{TSH 7 mU/l, FT4 0.8 ng/dl, FT3 2 pg/ml}
+{=> GT = 1.08 pmol/s, GD = 27.81 nmol/s}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH_String := '7 mU/l';
+  T4_String := '0.8 ng/dl';
+  T3_String := '2 pg/ml';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.084e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+end;
+
+procedure TEngineTestCases.TestCase10;
+{test case #10}
+{Overt hypothyroidism}
+{TSH 13 mU/l, FT4 0.4 ng/dl, FT3 1 pg/ml}
+{=> GT = 0.47 pmol/s, GD = 27.81 nmol/s}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH_String := '13 mU/l';
+  T4_String := '0.4 ng/dl';
+  T3_String := '1 pg/ml';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 0.47e-12) and (testCaseRecord.GT < 1.01 * 0.47e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+end;
+
+procedure TEngineTestCases.TestCase11;
+{test case #11}
+{Normal values, units ng/l and pmol/l}
+{TSH 1 mU/l, FT4 13 ng/l, FT3 4.5 pmol/l}
+{=> GT = 4.74 pmol/s, GD = 25.01 nmol/s}
+begin
+  gPreferences.T4.Method := freeHormone;
+  gPreferences.T3.Method := freeHormone;
+  TSH_String := '1 mU/l';
+  T4_String := '13 ng/l';
+  T3_String := '4.5 pmol/l';
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  testCaseRecord := Calculate(TSH, T4, T3);
+  AssertEquals(true, (testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
+  AssertEquals(true, (testCaseRecord.GD > 0.99 * 25.01e-9) and (testCaseRecord.GD < 1.01 * 25.01e-9));
 end;
 
 procedure TEngineTestCases.TestCase12;

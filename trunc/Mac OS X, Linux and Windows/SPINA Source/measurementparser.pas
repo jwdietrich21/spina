@@ -350,7 +350,7 @@ begin
       else if (fromUnitElements.MassUnit = 'g') and (toUnitElements.MassUnit = 'mol') then        {conventional to SI}
         conversionFactor := PrefixFactor[fromMpIndex] * 1 / molarMass / PrefixFactor[fromVpIndex] * PrefixFactor[toVpIndex] / PrefixFactor[toMpIndex]
       else if fromUnitElements.MassUnit = toUnitElements.MassUnit then         {identical units}
-        conversionFactor := 1
+        conversionFactor := PrefixFactor[fromMpIndex] / PrefixFactor[fromVpIndex] * PrefixFactor[toVpIndex] / PrefixFactor[toMpIndex]
       else conversionFactor := NaN;
       ConvertedValue := value * conversionFactor;
     end;
