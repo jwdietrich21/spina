@@ -195,7 +195,7 @@ var
   theMeasurement: tMeasurement;
 begin
   theMeasurement := ParsedMeasurement('');
-  AssertEquals(true, isNaN(theMeasurement.Value));
+  AssertTrue(isNaN(theMeasurement.Value));
   AssertEquals('', theMeasurement.uom);
 end;
 
@@ -356,7 +356,7 @@ var
   theResult: real;
 begin
   theResult := ValueFromUnit('18 ng/l', T4_MOLAR_MASS, 'mol/l');
-  AssertEquals(true, (theResult > 23.0e-12) and (theResult < 23.2e-12));
+  AssertTrue((theResult > 23.0e-12) and (theResult < 23.2e-12));
 end;
 
 procedure TconverterTestCases.TestCase11;
@@ -434,8 +434,8 @@ begin
   T4 := NaN;
   T3 := NaN;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, isNaN(testCaseRecord.GT));
-  AssertEquals(true, isNaN(testCaseRecord.GD));
+  AssertTrue(isNaN(testCaseRecord.GT));
+  AssertTrue(isNaN(testCaseRecord.GD));
   AssertEquals(gNotCalculable, (testCaseRecord.GTs));
   AssertEquals(gNotCalculable, (testCaseRecord.GDs));
 end;
@@ -452,8 +452,8 @@ begin
   T4 := 0;
   T3 := 0;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, isNaN(testCaseRecord.GT));
-  AssertEquals(true, isNaN(testCaseRecord.GD));
+  AssertTrue(isNaN(testCaseRecord.GT));
+  AssertTrue(isNaN(testCaseRecord.GD));
   AssertEquals(gNotCalculable, (testCaseRecord.GTs));
   AssertEquals(gNotCalculable, (testCaseRecord.GDs));
 end;
@@ -472,8 +472,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 7.29e-12) and (testCaseRecord.GT < 1.01 * 7.29e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 16.69e-9) and (testCaseRecord.GD < 1.01 * 16.69e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 7.29e-12) and (testCaseRecord.GT < 1.01 * 7.29e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 16.69e-9) and (testCaseRecord.GD < 1.01 * 16.69e-9));
   AssertEquals('7.', LeftStr(testCaseRecord.GTs, 2));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('16.', LeftStr(testCaseRecord.GDs, 3));
@@ -495,8 +495,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 25.67e-9) and (testCaseRecord.GD < 1.01 * 25.67e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 25.67e-9) and (testCaseRecord.GD < 1.01 * 25.67e-9));
 end;
 
 procedure TEngineTestCases.TestCase5;
@@ -514,8 +514,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 9.47e-12) and (testCaseRecord.GT < 1.01 * 9.47e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 29.67e-9) and (testCaseRecord.GD < 1.01 * 29.67e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 9.47e-12) and (testCaseRecord.GT < 1.01 * 9.47e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 29.67e-9) and (testCaseRecord.GD < 1.01 * 29.67e-9));
 end;
 
 procedure TEngineTestCases.TestCase6;
@@ -533,8 +533,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 15.81e-12) and (testCaseRecord.GT < 1.01 * 15.81e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 34.74e-9) and (testCaseRecord.GD < 1.01 * 34.74e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 15.81e-12) and (testCaseRecord.GT < 1.01 * 15.81e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 34.74e-9) and (testCaseRecord.GD < 1.01 * 34.74e-9));
 end;
 
 procedure TEngineTestCases.TestCase7;
@@ -552,8 +552,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 589.99e-12) and (testCaseRecord.GT < 1.01 * 589.99e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 30.34e-9) and (testCaseRecord.GD < 1.01 * 30.34e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 589.99e-12) and (testCaseRecord.GT < 1.01 * 589.99e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 30.34e-9) and (testCaseRecord.GD < 1.01 * 30.34e-9));
 end;
 
 procedure TEngineTestCases.TestCase8;
@@ -571,8 +571,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 1.33e-12) and (testCaseRecord.GT < 1.01 * 1.33e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 1.33e-12) and (testCaseRecord.GT < 1.01 * 1.33e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
 end;
 
 procedure TEngineTestCases.TestCase9;
@@ -590,8 +590,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.084e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.084e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
 end;
 
 procedure TEngineTestCases.TestCase10;
@@ -609,8 +609,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 0.47e-12) and (testCaseRecord.GT < 1.01 * 0.47e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 0.47e-12) and (testCaseRecord.GT < 1.01 * 0.47e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
 end;
 
 procedure TEngineTestCases.TestCase11;
@@ -628,8 +628,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 25.01e-9) and (testCaseRecord.GD < 1.01 * 25.01e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 25.01e-9) and (testCaseRecord.GD < 1.01 * 25.01e-9));
 end;
 
 procedure TEngineTestCases.TestCase12;
@@ -644,8 +644,8 @@ begin
   T4 := 16.5e-12;
   T3 := 4.5e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 4.70e-12) and (testCaseRecord.GT < 1.01 * 4.70e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 25.22e-9) and (testCaseRecord.GD < 1.01 * 25.22e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 4.70e-12) and (testCaseRecord.GT < 1.01 * 4.70e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 25.22e-9) and (testCaseRecord.GD < 1.01 * 25.22e-9));
   AssertEquals('4.7', LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('25.2', LeftStr(testCaseRecord.GDs, 4));
@@ -664,8 +664,8 @@ begin
   T4 := 7.7e-12;
   T3 := 28e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.08e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 336.2e-9) and (testCaseRecord.GD < 1.01 * 336.2e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.08e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 336.2e-9) and (testCaseRecord.GD < 1.01 * 336.2e-9));
   AssertEquals('1.0', LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('336.', LeftStr(testCaseRecord.GDs, 4));
@@ -684,8 +684,8 @@ begin
   T4 := 9e-12;
   T3 := 6.2e-12;
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 3.37e-12) and (testCaseRecord.GT < 1.01 * 3.37e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 63.7e-9) and (testCaseRecord.GD < 1.01 * 63.7e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 3.37e-12) and (testCaseRecord.GT < 1.01 * 3.37e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 63.7e-9) and (testCaseRecord.GD < 1.01 * 63.7e-9));
   AssertEquals('3.3',LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('63.7', LeftStr(testCaseRecord.GDs, 4));
@@ -707,8 +707,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 7.53e-12) and (testCaseRecord.GT < 1.01 * 7.53e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 19.54e-9) and (testCaseRecord.GD < 1.01 * 19.54e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 7.53e-12) and (testCaseRecord.GT < 1.01 * 7.53e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 19.54e-9) and (testCaseRecord.GD < 1.01 * 19.54e-9));
 end;
 
 procedure TEngineTestCases.TestCase16;
@@ -726,8 +726,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 5.73e-12) and (testCaseRecord.GT < 1.01 * 5.73e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 36.12e-9) and (testCaseRecord.GD < 1.01 * 36.12e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 5.73e-12) and (testCaseRecord.GT < 1.01 * 5.73e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 36.12e-9) and (testCaseRecord.GD < 1.01 * 36.12e-9));
 end;
 
 procedure TEngineTestCases.TestCase17;
@@ -745,8 +745,8 @@ begin
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
-  AssertEquals(true, (testCaseRecord.GT > 0.99 * 2.73e-12) and (testCaseRecord.GT < 1.01 * 2.73e-12));
-  AssertEquals(true, (testCaseRecord.GD > 0.99 * 14.65e-9) and (testCaseRecord.GD < 1.01 * 14.65e-9));
+  AssertTrue((testCaseRecord.GT > 0.99 * 2.73e-12) and (testCaseRecord.GT < 1.01 * 2.73e-12));
+  AssertTrue((testCaseRecord.GD > 0.99 * 14.65e-9) and (testCaseRecord.GD < 1.01 * 14.65e-9));
 end;
 
 initialization
