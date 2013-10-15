@@ -25,19 +25,28 @@ unit HandleImpEx;
 interface
 
 uses
-  Classes, SysUtils, SPINA_Engine;
+  Classes, SysUtils, SPINA_Engine, SPINA_Types;
 
-procedure SaveResults;
+procedure SaveResults(caseRecord: tCaseRecord);
 
 implementation
 
 uses spina_toolbar;
 
-procedure SaveResults;
+procedure SaveResults(caseRecord: tCaseRecord);
+var
+  filePath: String;
+  textFile: TFileStream = nil;
 begin
   if SPINAToolbar.SaveResultsDialog.Execute then
   begin
-
+    try
+      filePath := SPINAToolbar.SaveResultsDialog.FileName;
+      textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
+      textFile.WriteAnsiString(gResultString);
+    finally
+      if textFile <> nil then textFile.Free;
+    end;
   end;
 end;
 

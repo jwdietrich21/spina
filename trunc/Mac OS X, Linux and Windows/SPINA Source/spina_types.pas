@@ -161,7 +161,8 @@ var
   gcalcTitle, gcalcString, gNotCalculableString: Str255;
   gExplanationString: Str255;
   gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;
-  gTSHUnit, gT4Unit, gT3Unit, gResultString: Str255;
+  gResultString: string;
+  gTSHUnit, gT4Unit, gT3Unit: Str255;
   gInterfaceLanguage: tInterfaceLanguage;
   gResultDialogString1, gResultDialogString2, gReferenceValueString1, gReferenceValueString2: Str255;
   gReferenceRanges, gSIReferenceRanges, gConvReferenceRanges: tReferenceValues;

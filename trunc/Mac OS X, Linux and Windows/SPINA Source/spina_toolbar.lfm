@@ -55,8 +55,8 @@ object SPINAToolbar: TSPINAToolbar
       Hint = 'Save'
       Top = 2
       Caption = 'SaveToolButton'
-      Enabled = False
       ImageIndex = 2
+      OnClick = SaveToolButtonClick
       ParentShowHint = False
       ShowHint = True
     end
@@ -65,8 +65,8 @@ object SPINAToolbar: TSPINAToolbar
       Hint = 'Save as...'
       Top = 2
       Caption = 'SaveAsToolButton'
-      Enabled = False
       ImageIndex = 3
+      OnClick = SaveAsToolButtonClick
       ParentShowHint = False
       ShowHint = True
     end
@@ -651,7 +651,8 @@ object SPINAToolbar: TSPINAToolbar
   end
   object SaveResultsDialog: TSaveDialog
     Title = 'Export'
-    Filter = 'Text|*.txt'
+    Filter = 'Text (*.txt)|*.txt|CDISC LAB Base Model Version 1.0.1 (*.xml)|*.xml|HL7 Version 2.x (*.hl7)|*.hl7|LDT (*.ldt)|*.ldt'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
     left = 552
     top = 9
   end

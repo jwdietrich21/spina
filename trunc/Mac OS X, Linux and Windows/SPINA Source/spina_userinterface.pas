@@ -189,6 +189,7 @@ type
     { private declarations }
   public
     { public declarations }
+    caseRecord: tCaseRecord;
   end;
 
 var
@@ -515,7 +516,6 @@ procedure HandleInput;
 var
   Buffer: PChar;
   Size: byte;
-  resultRecord: tCaseRecord;
   oldSeparator: Char;
   strucPars: String;
   TSH_String, T4_String, T3_String: Str255;
@@ -541,7 +541,7 @@ begin
       TSH := ConvertedValue(TSH, 1, 'mU/l', 'mU/l');
       decimalSeparator := oldSeparator;
     end;
-    if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.ln)) then
+    if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.hn)) then
       TSH_Flag := ''
     else if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
       TSH_Flag := REF_RANGE_FLAG;
@@ -562,14 +562,14 @@ begin
     end;
     if gPreferences.T4.Method = freeHormone then  {free or total T4?}
       begin
-        if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.ln)) then
+        if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.hn)) then
          T4_Flag := ''
         else if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
          T4_Flag := REF_RANGE_FLAG;
       end
     else
       begin
-        if (isNan(gReferenceRanges.TT4.ln) or isNan(gReferenceRanges.TT4.ln)) then
+        if (isNan(gReferenceRanges.TT4.ln) or isNan(gReferenceRanges.TT4.hn)) then
          T4_Flag := ''
         else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
          T4_Flag := REF_RANGE_FLAG;
@@ -592,14 +592,14 @@ begin
     end;
     if gPreferences.T3.Method = freeHormone then  {free or total T3?}
       begin
-       if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.ln)) then
+       if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.hn)) then
          T3_Flag := ''
         else if (T3 < gReferenceRanges.FT3.ln) or (T3 > gReferenceRanges.FT3.hn) then
          T3_Flag := REF_RANGE_FLAG;
       end
     else
       begin
-        if (isNan(gReferenceRanges.TT3.ln) or isNan(gReferenceRanges.TT3.ln)) then
+        if (isNan(gReferenceRanges.TT3.ln) or isNan(gReferenceRanges.TT3.hn)) then
          T3_Flag := ''
         else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
          T3_Flag := REF_RANGE_FLAG;
@@ -628,13 +628,13 @@ begin
     end;
   end;
   decimalSeparator := oldSeparator;
-  resultRecord := Calculate(TSH, T4, T3);
+  Hauptschirm.caseRecord := Calculate(TSH, T4, T3);
   if gUseReferenceRanges then
-    strucPars := concat('   GT: ', resultRecord.flaggedGTs, kCR,
-      kLF, '   GD: ', resultRecord.flaggedGDs)
+    strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs, kCR,
+      kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs)
   else
-    strucPars := concat('   GT: ', resultRecord.GTs, kCR, kLF,
-      '   GD: ', resultRecord.GDs);
+    strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs, kCR, kLF,
+      '   GD: ', Hauptschirm.caseRecord.GDs);
   ShowMessage(TSH_String, T4_String, T3_String, strucPars);
 end;
 
@@ -819,7 +819,7 @@ end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
 begin
-  SaveResults;
+  SaveResults(caseRecord);
 end;
 
 procedure THauptschirm.SPINALabelClick(Sender: TObject);
@@ -980,7 +980,7 @@ end;
 procedure THauptschirm.PrintMenuItemClick(Sender: TObject);
 var
   H, ADPI, marginX, marginXr, currentX, currentY, lastY, returnPos, lastPos: integer;
-  resultLine, remainder: Str255;
+  resultLine, remainder: string;
 begin
   if DoPrintSetup then
   begin

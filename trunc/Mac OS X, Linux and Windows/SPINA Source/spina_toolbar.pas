@@ -106,7 +106,9 @@ type
     procedure PrintMenuItemClick(Sender: TObject);
     procedure PrintToolButtonClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
+    procedure SaveAsToolButtonClick(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
+    procedure SaveToolButtonClick(Sender: TObject);
     procedure SPINAThyrLabelClick(Sender: TObject);
     procedure UndoToolButtonClick(Sender: TObject);
     procedure WinPreferencesItemClick(Sender: TObject);
@@ -359,9 +361,19 @@ begin
   application.Terminate;
 end;
 
+procedure TSPINAToolbar.SaveAsToolButtonClick(Sender: TObject);
+begin
+  SaveResults(Hauptschirm.caseRecord);
+end;
+
 procedure TSPINAToolbar.SaveMenuItemClick(Sender: TObject);
 begin
-  SaveResults;
+  SaveResults(Hauptschirm.caseRecord);
+end;
+
+procedure TSPINAToolbar.SaveToolButtonClick(Sender: TObject);
+begin
+  SaveResults(Hauptschirm.caseRecord);
 end;
 
 procedure TSPINAToolbar.SPINAThyrLabelClick(Sender: TObject);
