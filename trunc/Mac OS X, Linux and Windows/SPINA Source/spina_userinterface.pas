@@ -29,7 +29,7 @@ uses
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
   gettext, SPINA_Types, UnitConverter, SPINA_Engine, SPINA_AboutBox,
   SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences,
-  Math, LCLIntf
+  HandleImpEx, Math, LCLIntf
   {$IFDEF win32}
   , Windows
   {$ELSE}
@@ -91,6 +91,8 @@ type
     HintField: TMemo;
     HintGroupBox: TGroupBox;
     Image1: TImage;
+    SaveMenuItem: TMenuItem;
+    OpenMenuItem: TMenuItem;
     SPINALabel: TImage;
     ImageList1: TImageList;
     Kopieren1: TMenuItem;
@@ -156,6 +158,7 @@ type
     procedure FT4ItemsChange(Sender: TObject);
     procedure HandleAbout(Sender: TObject);
     procedure HelpItemClick(Sender: TObject);
+    procedure SaveMenuItemClick(Sender: TObject);
     procedure SPINALabelClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -683,6 +686,8 @@ begin
   Hauptschirm.HelpItem.ShortCut := ShortCut(VK_F1, []);
   {$ENDIF}
   Hauptschirm.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
+  Hauptschirm.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
+  Hauptschirm.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
   Hauptschirm.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
   Hauptschirm.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
   Hauptschirm.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
@@ -810,6 +815,11 @@ end;
 procedure THauptschirm.HelpItemClick(Sender: TObject);
 begin
   HelpWindow.ShowOnTop;
+end;
+
+procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
+begin
+  SaveResults;
 end;
 
 procedure THauptschirm.SPINALabelClick(Sender: TObject);

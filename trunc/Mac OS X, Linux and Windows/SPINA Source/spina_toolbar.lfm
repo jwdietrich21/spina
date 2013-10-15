@@ -1,6 +1,6 @@
 object SPINAToolbar: TSPINAToolbar
   Left = 275
-  Height = 37
+  Height = 88
   Top = 119
   Width = 883
   HorzScrollBar.Visible = False
@@ -11,14 +11,14 @@ object SPINAToolbar: TSPINAToolbar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 37
+  ClientHeight = 68
   ClientWidth = 883
   DefaultMonitor = dmMainForm
   DockSite = True
   Menu = MainMenu
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '1.0.10.0'
+  LCLVersion = '1.0.12.0'
   Visible = True
   object ToolBar1: TToolBar
     Left = 0
@@ -26,7 +26,7 @@ object SPINAToolbar: TSPINAToolbar
     Top = 0
     Width = 883
     Caption = 'ToolBar1'
-    Images = ImageList1
+    Images = ToolbarImageList
     TabOrder = 0
     object NewToolButton: TToolButton
       Left = 1
@@ -157,10 +157,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 781
+    Left = 785
     Height = 17
     Top = 7
-    Width = 70
+    Width = 66
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
@@ -198,6 +198,14 @@ object SPINAToolbar: TSPINAToolbar
         Enabled = False
         ShortCut = 4174
         OnClick = NewMenuItemClick
+      end
+      object OpenMenuItem: TMenuItem
+        Caption = 'Öffnen'
+        Enabled = False
+      end
+      object SaveMenuItem: TMenuItem
+        Caption = 'Sichern'
+        OnClick = SaveMenuItemClick
       end
       object CloseMenuItem: TMenuItem
         Caption = 'Schließen'
@@ -282,7 +290,7 @@ object SPINAToolbar: TSPINAToolbar
       end
     end
   end
-  object ImageList1: TImageList
+  object ToolbarImageList: TImageList
     left = 472
     top = 9
     Bitmap = {
@@ -641,4 +649,10 @@ object SPINAToolbar: TSPINAToolbar
       1504FFFFFF00FFFFFF00FFFFFF00
     }
   end
-end
+  object SaveResultsDialog: TSaveDialog
+    Title = 'Export'
+    Filter = 'Text|*.txt'
+    left = 552
+    top = 9
+  end
+end

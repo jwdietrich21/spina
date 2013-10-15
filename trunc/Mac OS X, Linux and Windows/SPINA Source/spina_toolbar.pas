@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls, LCLIntf,
   SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface,
-  SetPreferences, VersionSupport, spina_help;
+  SetPreferences, VersionSupport, spina_help, HandleImpEx;
 
 type
 
@@ -61,7 +61,9 @@ type
     FileMenu: TMenuItem;
     HelpItem: TMenuItem;
     HelpMenu: TMenuItem;
-    ImageList1: TImageList;
+    SaveMenuItem: TMenuItem;
+    OpenMenuItem: TMenuItem;
+    ToolbarImageList: TImageList;
     MacPreferencesItem: TMenuItem;
     MainMenu: TMainMenu;
     NewMenuItem: TMenuItem;
@@ -75,6 +77,7 @@ type
     PrintToolButton: TToolButton;
     QuitMenuItem: TMenuItem;
     SaveAsToolButton: TToolButton;
+    SaveResultsDialog: TSaveDialog;
     SaveToolButton: TToolButton;
     SPINAThyrLabel: TLabel;
     ToolBar1: TToolBar;
@@ -103,6 +106,7 @@ type
     procedure PrintMenuItemClick(Sender: TObject);
     procedure PrintToolButtonClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
+    procedure SaveMenuItemClick(Sender: TObject);
     procedure SPINAThyrLabelClick(Sender: TObject);
     procedure UndoToolButtonClick(Sender: TObject);
     procedure WinPreferencesItemClick(Sender: TObject);
@@ -149,6 +153,8 @@ begin
     Hauptschirm.HintGroupBox.Caption := 'Hint:';
     Hauptschirm.FileMenu.Caption := 'File';
     Hauptschirm.NewMenuItem.Caption := 'New Calculation...';
+    Hauptschirm.OpenMenuItem.Caption := 'Open';
+    Hauptschirm.SaveMenuItem.Caption := 'Save';
     Hauptschirm.CloseMenuItem.Caption := 'Close';
     Hauptschirm.PrintMenuItem.Caption := 'Print';
     Hauptschirm.PageSetupMenuItem.Caption := 'Page Setup...';
@@ -172,6 +178,8 @@ begin
     Hauptschirm.TherapyCheckGroup.Hint := 'Please mark on therapy';
     SPINAToolbar.FileMenu.Caption := 'File';
     SPINAToolbar.NewMenuItem.Caption := 'New Calculation...';
+    SPINAToolbar.OpenMenuItem.Caption := 'Open';
+    SPINAToolbar.SaveMenuItem.Caption := 'Save';
     SPINAToolbar.CloseMenuItem.Caption := 'Close';
     SPINAToolbar.PrintMenuItem.Caption := 'Print';
     SPINAToolbar.PageSetupMenuItem.Caption := 'Page Setup...';
@@ -351,6 +359,11 @@ begin
   application.Terminate;
 end;
 
+procedure TSPINAToolbar.SaveMenuItemClick(Sender: TObject);
+begin
+  SaveResults;
+end;
+
 procedure TSPINAToolbar.SPINAThyrLabelClick(Sender: TObject);
 begin
   ShowAboutBox;
@@ -462,4 +475,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

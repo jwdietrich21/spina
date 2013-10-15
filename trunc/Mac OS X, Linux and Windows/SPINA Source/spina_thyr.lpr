@@ -30,7 +30,8 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
-  HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter;
+  HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
+  HandleImpEx;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 
