@@ -33,22 +33,33 @@ implementation
 
 uses spina_toolbar;
 
+procedure SaveStringToPath(theString, filePath: String);
+var
+  textFile: TFileStream = nil;
+  textLength: integer;
+  stringBuffer: ^String;
+begin
+  textLength := length(theString);
+  try
+    textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
+    { write string to stream while avoiding to write the initial length }
+    stringBuffer := @theString + 1;
+    textFile.WriteBuffer(stringBuffer^, textLength);
+  finally
+    if textFile <> nil then textFile.Free;
+  end;
+end;
+
 procedure SaveResults(caseRecord: tCaseRecord);
 var
   filePath: String;
   textFile: TFileStream = nil;
+  textLength: integer;
+  tBuffer: ^String;
 begin
   if SPINAToolbar.SaveResultsDialog.Execute then
-  begin
-    try
-      filePath := SPINAToolbar.SaveResultsDialog.FileName;
-      textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
-      textFile.WriteAnsiString(gResultString);
-    finally
-      if textFile <> nil then textFile.Free;
-    end;
-  end;
+    SaveStringToPath(gResultString, SPINAToolbar.SaveResultsDialog.FileName);
 end;
 
 end.
-
+
