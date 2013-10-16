@@ -83,7 +83,7 @@ const
   kUnitLabel2 = 'Unit';
   kUnitsGroupCaption1 = 'Methoden und Maßeinheiten:';
   kUnitsGroupCaption2 = 'Methods and measurement units:';
-  kRemember1 = 'Verwendete Maßeinheiten merken';
+  kRemember1 = 'Letzte Maßeinheiten merken';
   kRemember2 = 'Remember last used unit';
   kCDISCCaption1 = 'Referenzbereiche:';
   kCDISCCaption2 = 'Reference values:';

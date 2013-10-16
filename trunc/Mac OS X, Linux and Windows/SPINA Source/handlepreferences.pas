@@ -266,7 +266,11 @@ begin
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('mshinfo');
+    {$IFDEF LCLCarbon}
+    TDOMElement(ElementNode).SetAttribute('id', UTF8Decode(gPreferences.MSH_ID));
+    {$ELSE}
     TDOMElement(ElementNode).SetAttribute('id', UTF8ToSys(gPreferences.MSH_ID));
+    {$ENDIF}
     RootNode.AppendChild(ElementNode);
 
     if not DirectoryExists(PreferencesFolder) then
@@ -379,7 +383,11 @@ begin
 
       if RootNode <> nil then
         if RootNode.HasAttributes and (RootNode.Attributes.Length>0) then
+         {$IFDEF LCLCarbon}
+         gPreferences.MSH_ID := UTF8Encode(RootNode.Attributes[0].NodeValue);
+         {$ELSE}
          gPreferences.MSH_ID := SysToUTF8(RootNode.Attributes[0].NodeValue);
+         {$ENDIF}
 
       if (gPreferences.TSH.measurementUnit = 'NA') or (gPreferences.T4.measurementUnit = 'NA') or (gPreferences.T3.measurementUnit = 'NA') then
         CreateNewPreferences;  {fall-back solution, if file is corrupt or in obsolete format}
