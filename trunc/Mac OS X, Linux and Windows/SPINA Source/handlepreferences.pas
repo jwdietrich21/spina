@@ -265,6 +265,10 @@ begin
     ElementNode.AppendChild(SimpleNode(Doc, 'T3', gPreferences.T3.measurementUnit));
     RootNode.AppendChild(ElementNode);
 
+    ElementNode := Doc.CreateElement('mshinfo');
+    TDOMElement(ElementNode).SetAttribute('id', gPreferences.MSH_ID);
+    RootNode.AppendChild(ElementNode);
+
     if not DirectoryExists(PreferencesFolder) then
       if not CreateDir(PreferencesFolder) then
         ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
@@ -298,6 +302,7 @@ begin
       T4.MethodPopUpItem := 0;
       T3.MethodPopUpItem := 0;
       MandatoryColor := gStandardMandatoryColor;
+      MSH_ID := '';
       gPreferences.new := true;
     end;
   SavePreferences;
@@ -369,6 +374,12 @@ begin
       gPreferences.T4.measurementUnit := theString;
       theString := NodeContent(RootNode, 'T3');
       gPreferences.T3.measurementUnit := theString;
+
+      RootNode := Doc.DocumentElement.FindNode('mshinfo');
+
+      if RootNode <> nil then
+        if RootNode.HasAttributes and (RootNode.Attributes.Length>0) then
+         gPreferences.MSH_ID := RootNode.Attributes[0].NodeValue;
 
       if (gPreferences.TSH.measurementUnit = 'NA') or (gPreferences.T4.measurementUnit = 'NA') or (gPreferences.T3.measurementUnit = 'NA') then
         CreateNewPreferences;  {fall-back solution, if file is corrupt or in obsolete format}

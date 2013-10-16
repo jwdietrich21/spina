@@ -36,6 +36,9 @@ type
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
     CDISCOpenDialog: TOpenDialog;
+    MSHIDEdit: TEdit;
+    GroupBox1: TGroupBox;
+    IDLabel: TLabel;
     MarkMandatoryCheck: TCheckBox;
     GDRREdit: TEdit;
     GDRRLabel: TLabel;
@@ -332,7 +335,7 @@ begin
     Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodComboBox.ItemIndex;
     Hauptschirm.T4MethodComboBoxChange(Sender);
     Hauptschirm.T4UnitComboBox.ItemIndex := T4UnitComboBox.ItemIndex;
-    hauptschirm.T4UnitComboBoxChange(Sender);
+    Hauptschirm.T4UnitComboBoxChange(Sender);
     Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodComboBox.ItemIndex;
     Hauptschirm.T3MethodComboBoxChange(Sender);
     Hauptschirm.T3UnitComboBox.ItemIndex := T3UnitComboBox.ItemIndex;
@@ -351,6 +354,7 @@ begin
     ComposeRRHints;
   end;
   CheckMandatoryColourising;
+  gPreferences.MSH_ID := MSHIDEdit.Text;
   SavePreferences;
   PreferencesForm.Close;
   SPINA_UserInterface.GetPreferences;
@@ -421,6 +425,7 @@ begin
   else
     RememberCheckBox.Checked := False;
   DisplayReferenceRanges(Sender);
+  MSHIDEdit.Text := gPreferences.MSH_ID;
 end;
 
 procedure TPreferencesForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);

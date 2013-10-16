@@ -25,7 +25,7 @@ unit HandleImpEx;
 interface
 
 uses
-  Classes, SysUtils, SPINA_Engine, SPINA_Types;
+  Classes, SysUtils, SPINA_Engine, SPINA_Types, HL7;
 
 procedure SaveResults(caseRecord: tCaseRecord);
 
@@ -53,13 +53,15 @@ end;
 procedure SaveResults(caseRecord: tCaseRecord);
 var
   filePath: String;
-  textFile: TFileStream = nil;
-  textLength: integer;
-  tBuffer: ^String;
 begin
+  SPINAToolbar.SaveResultsDialog.FilterIndex := 1;
   if SPINAToolbar.SaveResultsDialog.Execute then
-    SaveStringToPath(gResultString, SPINAToolbar.SaveResultsDialog.FileName);
+    case SPINAToolbar.SaveResultsDialog.FilterIndex of
+    1: SaveStringToPath(gResultString, SPINAToolbar.SaveResultsDialog.FileName);
+    2: ;
+    3: ;
+    end;
 end;
 
 end.
-
+

@@ -132,6 +132,7 @@ tPreferences = record
        new, rememberUsedUnits, colouriseMandatoryFields: boolean;
        TSH, T4, T3: tParameterSettings;
        MandatoryColor: TColor;
+       MSH_ID: String
        end;
 tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
