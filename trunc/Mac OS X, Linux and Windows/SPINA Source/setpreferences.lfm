@@ -1,23 +1,24 @@
 object PreferencesForm: TPreferencesForm
-  Left = 337
-  Height = 418
-  Top = 260
-  Width = 539
+  Left = 252
+  Height = 402
+  Top = 163
+  Width = 630
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Application Preferences'
-  ClientHeight = 418
-  ClientWidth = 539
+  ClientHeight = 402
+  ClientWidth = 630
   Constraints.MinHeight = 400
   Constraints.MinWidth = 500
   OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '1.0.12.0'
   object OKButton: TButton
-    Left = 434
+    Left = 525
     Height = 25
-    Top = 375
+    Top = 359
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'OK'
@@ -25,327 +26,364 @@ object PreferencesForm: TPreferencesForm
     OnClick = OKButtonClick
     TabOrder = 0
   end
-  object UnitsGroupBox: TGroupBox
-    Left = 24
-    Height = 120
-    Top = 8
-    Width = 483
-    Anchors = [akTop, akLeft, akRight]
-    Caption = 'Methods and measurement units:'
-    ClientHeight = 102
-    ClientWidth = 479
-    TabOrder = 1
-    object MethodLabel: TLabel
-      Left = 116
-      Height = 14
-      Top = 4
-      Width = 37
-      Caption = 'Method'
-      ParentColor = False
-    end
-    object UnitLabel: TLabel
-      AnchorSideRight.Control = TSHUnitComboBox
-      AnchorSideRight.Side = asrBottom
-      Left = 240
-      Height = 14
-      Top = 4
-      Width = 20
-      Alignment = taCenter
-      Anchors = [akTop, akRight]
-      Caption = 'Unit'
-      ParentColor = False
-    end
-    object T4Label: TLabel
-      Left = 12
-      Height = 14
-      Top = 51
-      Width = 17
-      Caption = 'T4:'
-      ParentColor = False
-    end
-    object T4UnitComboBox: TComboBox
-      Left = 193
-      Height = 21
-      Hint = 'Maßeinheit'
-      Top = 47
-      Width = 67
-      Enabled = False
-      Font.Height = -11
-      ItemHeight = 13
-      ItemIndex = 0
-      Items.Strings = (
-        'ng/dl'
-        'ng/l'
-        'pmol/l'
-      )
-      OnChange = T4UnitComboBoxChange
-      ParentFont = False
-      TabOrder = 0
-      Text = 'ng/dl'
-    end
-    object T3UnitComboBox: TComboBox
-      Left = 194
-      Height = 21
-      Hint = 'Maßeinheit'
-      Top = 71
-      Width = 66
-      Enabled = False
-      Font.Height = -11
-      ItemHeight = 13
-      ItemIndex = 0
-      Items.Strings = (
-        'pg/ml'
-        'ng/l'
-        'pmol/l'
-      )
-      OnChange = T3UnitComboBoxChange
-      ParentFont = False
-      TabOrder = 1
-      Text = 'pg/ml'
-    end
-    object T4MethodComboBox: TComboBox
-      Left = 116
-      Height = 21
-      Hint = 'Maßeinheit'
-      Top = 47
-      Width = 56
-      Enabled = False
-      Font.Height = -11
-      ItemHeight = 13
-      ItemIndex = 0
-      Items.Strings = (
-        'FT4'
-        'T4'
-      )
-      OnChange = T4MethodComboBoxChange
-      ParentFont = False
-      TabOrder = 2
-      Text = 'FT4'
-    end
-    object RememberCheckBox: TCheckBox
-      Left = 318
-      Height = 17
-      Hint = 'Bitte anklicken, um für neue Berechnungen die Maßeinheiten der vorherigen Berechnung zu verwenden.'
-      Top = 4
-      Width = 138
-      Caption = 'Remember last used unit'
-      Checked = True
-      OnChange = RememberCheckBoxChange
-      ParentShowHint = False
-      ShowHint = True
-      State = cbChecked
-      TabOrder = 3
-    end
-    object TSHLabel: TLabel
-      Left = 12
-      Height = 14
-      Top = 27
-      Width = 24
-      Caption = 'TSH:'
-      ParentColor = False
-    end
-    object T3Label: TLabel
-      Left = 12
-      Height = 14
-      Top = 75
-      Width = 17
-      Caption = 'T3:'
-      ParentColor = False
-    end
-    object TSHUnitComboBox: TComboBox
-      Left = 204
-      Height = 21
-      Hint = 'Maßeinheit'
-      Top = 23
-      Width = 56
-      Enabled = False
-      Font.Height = -11
-      ItemHeight = 13
-      ItemIndex = 0
-      Items.Strings = (
-        'mU/l'
-        'µU/ml'
-      )
-      OnChange = TSHUnitComboBoxChange
-      ParentFont = False
-      TabOrder = 4
-      Text = 'mU/l'
-    end
-    object T3MethodComboBox: TComboBox
-      Left = 116
-      Height = 21
-      Hint = 'Maßeinheit'
-      Top = 71
-      Width = 56
-      Enabled = False
-      Font.Height = -11
-      ItemHeight = 13
-      ItemIndex = 0
-      Items.Strings = (
-        'FT3'
-        'T3'
-      )
-      OnChange = T3MethodComboBoxChange
-      ParentFont = False
-      TabOrder = 5
-      Text = 'FT3'
-    end
-  end
-  object CDISCGroupBox: TGroupBox
-    Left = 24
-    Height = 156
-    Top = 136
-    Width = 483
-    Anchors = [akTop, akLeft, akRight]
-    Caption = 'Reference values:'
-    ClientHeight = 138
-    ClientWidth = 479
-    DragMode = dmAutomatic
-    TabOrder = 2
-    object TSHRRLabel: TLabel
-      Left = 12
-      Height = 14
-      Top = 12
-      Width = 24
-      Caption = 'TSH:'
-      ParentColor = False
-    end
-    object T4RRLabel: TLabel
-      Left = 12
-      Height = 14
-      Top = 36
-      Width = 17
-      Caption = 'T4:'
-      ParentColor = False
-    end
-    object T3RRLabel: TLabel
-      Left = 12
-      Height = 14
-      Top = 60
-      Width = 17
-      Caption = 'T3:'
-      ParentColor = False
-    end
-    object TSHRREdit: TEdit
-      Left = 116
-      Height = 21
-      Top = 7
-      Width = 144
-      ReadOnly = True
-      TabOrder = 0
-      Text = 'NaN'
-    end
-    object T4RREdit: TEdit
-      Left = 116
-      Height = 21
-      Top = 31
-      Width = 144
-      ReadOnly = True
-      TabOrder = 1
-      Text = 'NaN'
-    end
-    object T3RREDit: TEdit
-      Left = 116
-      Height = 21
-      Top = 55
-      Width = 144
-      ReadOnly = True
-      TabOrder = 2
-      Text = 'NaN'
-    end
-    object GTRRLabel: TLabel
-      Left = 12
-      Height = 14
-      Top = 86
-      Width = 18
-      Caption = 'GT:'
-      ParentColor = False
-    end
-    object GDRRLabel: TLabel
-      Left = 12
-      Height = 14
-      Top = 110
-      Width = 19
-      Caption = 'GD:'
-      ParentColor = False
-    end
-    object GTRREdit: TEdit
-      Left = 116
-      Height = 21
-      Top = 81
-      Width = 144
-      ReadOnly = True
-      TabOrder = 3
-      Text = 'NaN'
-    end
-    object GDRREdit: TEdit
-      Left = 116
-      Height = 21
-      Top = 105
-      Width = 144
-      ReadOnly = True
-      TabOrder = 4
-      Text = 'NaN'
-    end
-    object ReadCDISCButton: TButton
-      Left = 292
-      Height = 25
-      Hint = 'Referenzbereiche aus Datei importieren.'
-      Top = 7
-      Width = 170
-      Anchors = [akTop, akLeft, akRight]
-      Caption = 'Read from file ...'
-      OnClick = ReadCDISCButtonClick
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 5
-    end
-  end
   object CancelButton: TButton
-    Left = 312
+    Left = 403
     Height = 25
-    Top = 375
+    Top = 359
     Width = 107
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
     OnClick = CancelButtonClick
-    TabOrder = 3
+    TabOrder = 1
   end
-  object MarkMandatoryCheck: TCheckBox
-    Left = 36
-    Height = 17
-    Top = 383
-    Width = 126
-    Anchors = [akLeft, akBottom]
-    Caption = 'Mark mandatory fields'
-    OnChange = MarkMandatoryCheckChange
-    TabOrder = 4
-  end
-  object GroupBox1: TGroupBox
+  object PageControl1: TPageControl
     Left = 24
-    Height = 61
-    Top = 304
-    Width = 483
+    Height = 336
+    Top = 8
+    Width = 574
+    ActivePage = TabSheet2
     Anchors = [akTop, akLeft, akRight]
-    Caption = 'Physician or Hospital ID:'
-    ClientHeight = 43
-    ClientWidth = 479
-    TabOrder = 5
-    object IDLabel: TLabel
-      Left = 12
-      Height = 14
-      Top = 8
-      Width = 40
-      Caption = 'MSH ID:'
-      ParentColor = False
+    TabIndex = 1
+    TabOrder = 2
+    object TabSheet1: TTabSheet
+      Caption = 'Laboratory results'
+      ClientHeight = 310
+      ClientWidth = 566
+      object UnitsGroupBox: TGroupBox
+        Left = 24
+        Height = 130
+        Top = 8
+        Width = 530
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Methods and measurement units:'
+        ClientHeight = 112
+        ClientWidth = 526
+        TabOrder = 0
+        object MethodLabel: TLabel
+          Left = 116
+          Height = 14
+          Top = 10
+          Width = 37
+          Caption = 'Method'
+          ParentColor = False
+        end
+        object UnitLabel: TLabel
+          AnchorSideRight.Control = TSHUnitComboBox
+          AnchorSideRight.Side = asrBottom
+          Left = 240
+          Height = 14
+          Top = 10
+          Width = 20
+          Alignment = taCenter
+          Anchors = [akTop, akRight]
+          Caption = 'Unit'
+          ParentColor = False
+        end
+        object T4Label: TLabel
+          Left = 12
+          Height = 14
+          Top = 57
+          Width = 17
+          Caption = 'T4:'
+          ParentColor = False
+        end
+        object T4UnitComboBox: TComboBox
+          Left = 193
+          Height = 21
+          Hint = 'Maßeinheit'
+          Top = 53
+          Width = 67
+          Enabled = False
+          Font.Height = -11
+          ItemHeight = 13
+          ItemIndex = 0
+          Items.Strings = (
+            'ng/dl'
+            'ng/l'
+            'pmol/l'
+          )
+          OnChange = T4UnitComboBoxChange
+          ParentFont = False
+          TabOrder = 0
+          Text = 'ng/dl'
+        end
+        object T3UnitComboBox: TComboBox
+          Left = 193
+          Height = 21
+          Hint = 'Maßeinheit'
+          Top = 77
+          Width = 67
+          Enabled = False
+          Font.Height = -11
+          ItemHeight = 13
+          ItemIndex = 0
+          Items.Strings = (
+            'pg/ml'
+            'ng/l'
+            'pmol/l'
+          )
+          OnChange = T3UnitComboBoxChange
+          ParentFont = False
+          TabOrder = 1
+          Text = 'pg/ml'
+        end
+        object T4MethodComboBox: TComboBox
+          Left = 116
+          Height = 21
+          Hint = 'Maßeinheit'
+          Top = 53
+          Width = 56
+          Enabled = False
+          Font.Height = -11
+          ItemHeight = 13
+          ItemIndex = 0
+          Items.Strings = (
+            'FT4'
+            'T4'
+          )
+          OnChange = T4MethodComboBoxChange
+          ParentFont = False
+          TabOrder = 2
+          Text = 'FT4'
+        end
+        object RememberCheckBox: TCheckBox
+          Left = 292
+          Height = 17
+          Hint = 'Bitte anklicken, um für neue Berechnungen die Maßeinheiten der vorherigen Berechnung zu verwenden.'
+          Top = 10
+          Width = 138
+          Caption = 'Remember last used unit'
+          Checked = True
+          OnChange = RememberCheckBoxChange
+          ParentShowHint = False
+          ShowHint = True
+          State = cbChecked
+          TabOrder = 3
+        end
+        object TSHLabel: TLabel
+          Left = 12
+          Height = 14
+          Top = 33
+          Width = 24
+          Caption = 'TSH:'
+          ParentColor = False
+        end
+        object T3Label: TLabel
+          Left = 12
+          Height = 14
+          Top = 81
+          Width = 17
+          Caption = 'T3:'
+          ParentColor = False
+        end
+        object TSHUnitComboBox: TComboBox
+          Left = 193
+          Height = 21
+          Hint = 'Maßeinheit'
+          Top = 29
+          Width = 67
+          Enabled = False
+          Font.Height = -11
+          ItemHeight = 13
+          ItemIndex = 0
+          Items.Strings = (
+            'mU/l'
+            'µU/ml'
+          )
+          OnChange = TSHUnitComboBoxChange
+          ParentFont = False
+          TabOrder = 4
+          Text = 'mU/l'
+        end
+        object T3MethodComboBox: TComboBox
+          Left = 116
+          Height = 21
+          Hint = 'Maßeinheit'
+          Top = 77
+          Width = 56
+          Enabled = False
+          Font.Height = -11
+          ItemHeight = 13
+          ItemIndex = 0
+          Items.Strings = (
+            'FT3'
+            'T3'
+          )
+          OnChange = T3MethodComboBoxChange
+          ParentFont = False
+          TabOrder = 5
+          Text = 'FT3'
+        end
+      end
+      object CDISCGroupBox: TGroupBox
+        Left = 24
+        Height = 156
+        Top = 146
+        Width = 530
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Reference values:'
+        ClientHeight = 138
+        ClientWidth = 526
+        DragMode = dmAutomatic
+        TabOrder = 1
+        object TSHRRLabel: TLabel
+          Left = 12
+          Height = 14
+          Top = 12
+          Width = 24
+          Caption = 'TSH:'
+          ParentColor = False
+        end
+        object T4RRLabel: TLabel
+          Left = 12
+          Height = 14
+          Top = 36
+          Width = 17
+          Caption = 'T4:'
+          ParentColor = False
+        end
+        object T3RRLabel: TLabel
+          Left = 12
+          Height = 14
+          Top = 60
+          Width = 17
+          Caption = 'T3:'
+          ParentColor = False
+        end
+        object TSHRREdit: TEdit
+          Left = 116
+          Height = 21
+          Top = 7
+          Width = 144
+          ReadOnly = True
+          TabOrder = 0
+          Text = 'NaN'
+        end
+        object T4RREdit: TEdit
+          Left = 116
+          Height = 21
+          Top = 31
+          Width = 144
+          ReadOnly = True
+          TabOrder = 1
+          Text = 'NaN'
+        end
+        object T3RREDit: TEdit
+          Left = 116
+          Height = 21
+          Top = 55
+          Width = 144
+          ReadOnly = True
+          TabOrder = 2
+          Text = 'NaN'
+        end
+        object GTRRLabel: TLabel
+          Left = 12
+          Height = 14
+          Top = 86
+          Width = 18
+          Caption = 'GT:'
+          ParentColor = False
+        end
+        object GDRRLabel: TLabel
+          Left = 12
+          Height = 14
+          Top = 110
+          Width = 19
+          Caption = 'GD:'
+          ParentColor = False
+        end
+        object GTRREdit: TEdit
+          Left = 116
+          Height = 21
+          Top = 81
+          Width = 144
+          ReadOnly = True
+          TabOrder = 3
+          Text = 'NaN'
+        end
+        object GDRREdit: TEdit
+          Left = 116
+          Height = 21
+          Top = 105
+          Width = 144
+          ReadOnly = True
+          TabOrder = 4
+          Text = 'NaN'
+        end
+        object ReadCDISCButton: TButton
+          Left = 292
+          Height = 25
+          Hint = 'Referenzbereiche aus Datei importieren.'
+          Top = 7
+          Width = 217
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'Read from file ...'
+          OnClick = ReadCDISCButtonClick
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 5
+        end
+      end
     end
-    object MSHIDEdit: TEdit
-      Left = 116
-      Height = 21
-      Top = 7
-      Width = 144
-      TabOrder = 0
+    object TabSheet2: TTabSheet
+      Caption = 'Sender ID'
+      ClientHeight = 310
+      ClientWidth = 566
+      object IDGroupBox: TGroupBox
+        Left = 24
+        Height = 72
+        Top = 8
+        Width = 530
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Physician or Hospital ID:'
+        ClientHeight = 54
+        ClientWidth = 526
+        TabOrder = 0
+        object IDLabel: TLabel
+          Left = 12
+          Height = 14
+          Top = 16
+          Width = 40
+          Caption = 'MSH ID:'
+          ParentColor = False
+        end
+        object MSHIDEdit: TEdit
+          Left = 116
+          Height = 21
+          Top = 16
+          Width = 398
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          TabOrder = 0
+        end
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Div'
+      ClientHeight = 310
+      ClientWidth = 566
+      object GUIGroupBox: TGroupBox
+        Left = 24
+        Height = 58
+        Top = 8
+        Width = 530
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'GUI'
+        ClientHeight = 40
+        ClientWidth = 526
+        TabOrder = 0
+        object MarkMandatoryCheck: TCheckBox
+          Left = 16
+          Height = 17
+          Top = 10
+          Width = 126
+          Caption = 'Mark mandatory fields'
+          OnChange = MarkMandatoryCheckChange
+          TabOrder = 0
+        end
+      end
     end
   end
   object CDISCOpenDialog: TOpenDialog
@@ -353,6 +391,6 @@ object PreferencesForm: TPreferencesForm
     Filter = 'CDISC Lab Model 1.0.1 file (XML)|*.xml'
     Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
     left = 424
-    top = 224
+    top = 272
   end
 end

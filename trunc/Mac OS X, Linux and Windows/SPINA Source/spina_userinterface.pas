@@ -924,12 +924,23 @@ end;
 
 procedure PrintCaption(H: integer; var currentX, currentY, rightMargin: integer);
 var
-  theSize: integer;
+  theSize, IDWidth: integer;
+  IDPos: TPoint;
 begin
   theSize := Printer.Canvas.Font.Size;
   Printer.Canvas.Font.Size := trunc(theSize * 1.7);
   Printer.Canvas.Font.Style := [fsBold];
-  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr Report');
+  PrinterWrite(H, currentX, currentY, 'SPINA Thyr Report');
+  if gPreferences.MSH_ID <> '' then
+  begin
+    Printer.Canvas.Font.Size := theSize;
+    IDWidth := Printer.Canvas.TextWidth(gPreferences.MSH_ID);
+    IDPos.x := Printer.PageWidth - rightMargin - IDWidth;
+    IDPos.y := currentY + H div 2;
+    PrinterWrite(H, IDPos.x, IDPos.y, gPreferences.MSH_ID);
+    Printer.Canvas.Font.Size := trunc(theSize * 1.7);
+  end;
+  PrinterWriteln(H, currentX, currentY, '');
   PrinterWriteln(H, currentX, currentY, '');
   PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);

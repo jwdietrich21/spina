@@ -83,7 +83,7 @@ const
   kUnitLabel2 = 'Unit';
   kUnitsGroupCaption1 = 'Methoden und Maßeinheiten:';
   kUnitsGroupCaption2 = 'Methods and measurement units:';
-  kRemember1 = 'Zuletzt verwendete Maßeinheiten merken';
+  kRemember1 = 'Verwendete Maßeinheiten merken';
   kRemember2 = 'Remember last used unit';
   kCDISCCaption1 = 'Referenzbereiche:';
   kCDISCCaption2 = 'Reference values:';
@@ -93,6 +93,14 @@ const
   kReadCDISC2 = 'Read from file ...';
   kPflichtfelder1 = 'Pflichtfelder farbig hevorheben';
   kPflichtfelder2 = 'Mark mandatory fields by colouring';
+  kPrefsCaption11 = 'Hormonspiegel';
+  kPrefsCaption12 = 'Hormone levels';
+  kPrefsCaption21 = 'Absender-ID';
+  kPrefsCaption22 = 'Sender ID';
+  kPrefsCaption31 = 'Sonstiges';
+  kPrefsCaption32 = 'Other';
+  kGroupCaption31 = 'Praxis- oder Klinik-ID';
+  kGroupCaption32 = 'Physician or Hospital ID';
   kMarginSpaces = '                                    ';
 
   BASE_URL = 'http://spina.medical-cybernetics.de';

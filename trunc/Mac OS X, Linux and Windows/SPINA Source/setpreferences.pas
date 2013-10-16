@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, SPINA_Types, HandlePreferences;
+  StdCtrls, ComCtrls, SPINA_Types, HandlePreferences;
 
 type
 
@@ -36,8 +36,8 @@ type
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
     CDISCOpenDialog: TOpenDialog;
-    MSHIDEdit: TEdit;
-    GroupBox1: TGroupBox;
+    IDGroupBox: TGroupBox;
+    GUIGroupBox: TGroupBox;
     IDLabel: TLabel;
     MarkMandatoryCheck: TCheckBox;
     GDRREdit: TEdit;
@@ -45,7 +45,9 @@ type
     GTRREdit: TEdit;
     GTRRLabel: TLabel;
     MethodLabel: TLabel;
+    MSHIDEdit: TEdit;
     OKButton: TButton;
+    PageControl1: TPageControl;
     ReadCDISCButton: TButton;
     RememberCheckBox: TCheckBox;
     T3Label: TLabel;
@@ -58,6 +60,9 @@ type
     T4RREdit: TEdit;
     T4RRLabel: TLabel;
     T4UnitComboBox: TComboBox;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
     TSHLabel: TLabel;
     TSHRREdit: TEdit;
     TSHRRLabel: TLabel;
@@ -70,6 +75,7 @@ type
     procedure DisplayReferenceRanges(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure MarkMandatoryCheckChange(Sender: TObject);
     procedure MethodComboBoxChange(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
@@ -115,7 +121,11 @@ begin
       CDISCGroupBox.Caption := kCDISCCaption1;
       CancelButton.Caption := kCancel1;
       ReadCDISCButton.Caption := kReadCDISC1;
-      PreferencesForm.MarkMandatoryCheck.Caption := kPflichtfelder1;
+      MarkMandatoryCheck.Caption := kPflichtfelder1;
+      TabSheet1.Caption := kPrefsCaption11;
+      TabSheet2.Caption := kPrefsCaption21;
+      TabSheet3.Caption := kPrefsCaption31;
+      IDGroupBox.Caption := kGroupCaption31;
     end
   else
     begin
@@ -130,6 +140,10 @@ begin
       RememberCheckBox.Hint := 'Please click to reuse measurement units of previous calculations';
       ReadCDISCButton.Hint := 'Import reference ranges from file';
       MarkMandatoryCheck.Caption := kPflichtfelder2;
+      TabSheet1.Caption := kPrefsCaption12;
+      TabSheet2.Caption := kPrefsCaption22;
+      TabSheet3.Caption := kPrefsCaption32;
+      IDGroupBox.Caption := kGroupCaption32;
     end;
 end;
 
@@ -434,6 +448,11 @@ var
 begin
   GetReferenceValues(RRFile, theCode);
   Hauptschirm.FormActivate(Sender);
+end;
+
+procedure TPreferencesForm.FormCreate(Sender: TObject);
+begin
+  PageControl1.TabIndex := 0;
 end;
 
 procedure TPreferencesForm.MarkMandatoryCheckChange(Sender: TObject);

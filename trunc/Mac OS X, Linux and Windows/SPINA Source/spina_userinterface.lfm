@@ -15,7 +15,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 330
+  ClientHeight = 331
   ClientWidth = 753
   Color = clWhite
   Constraints.MinHeight = 350
@@ -323,7 +323,7 @@ object Hauptschirm: THauptschirm
   object Calculate_Button: TButton
     Left = 624
     Height = 24
-    Top = 292
+    Top = 293
     Width = 116
     Anchors = [akRight, akBottom]
     Caption = 'Berechnen'
@@ -399,12 +399,12 @@ object Hauptschirm: THauptschirm
   end
   object Panel1: TPanel
     Left = 13
-    Height = 278
+    Height = 279
     Top = 8
     Width = 727
     Anchors = [akTop, akLeft, akRight, akBottom]
     BevelOuter = bvNone
-    ClientHeight = 278
+    ClientHeight = 279
     ClientWidth = 727
     Color = clWhite
     ParentColor = False
@@ -412,7 +412,7 @@ object Hauptschirm: THauptschirm
     TabOrder = 5
     object TherapyCheckGroup: TCheckGroup
       Left = 509
-      Height = 83
+      Height = 84
       Hint = 'Bitte markieren Sie bei Substitutionstherapie die entsprechende Box.'
       Top = 8
       Width = 216
@@ -427,7 +427,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 65
+      ClientHeight = 66
       ClientWidth = 212
       Items.Strings = (
         'rhTSH-Substitution'
@@ -445,19 +445,19 @@ object Hauptschirm: THauptschirm
     end
     object ResultGroupBox: TGroupBox
       Left = 510
-      Height = 162
+      Height = 163
       Top = 112
       Width = 215
       Anchors = [akTop, akRight, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 144
+      ClientHeight = 145
       ClientWidth = 211
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 125
+        Height = 126
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 8
         Width = 200
@@ -477,19 +477,19 @@ object Hauptschirm: THauptschirm
     end
     object HintGroupBox: TGroupBox
       Left = 3
-      Height = 162
+      Height = 163
       Top = 112
       Width = 216
       Anchors = [akTop, akLeft, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 144
+      ClientHeight = 145
       ClientWidth = 212
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 128
+        Height = 129
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -613,12 +613,12 @@ object Hauptschirm: THauptschirm
     end
     object ValuesGroupBox: TGroupBox
       Left = 230
-      Height = 266
+      Height = 267
       Top = 8
       Width = 271
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 248
+      ClientHeight = 249
       ClientWidth = 267
       ParentColor = False
       ParentShowHint = False
@@ -980,7 +980,7 @@ object Hauptschirm: THauptschirm
     Cursor = crHandPoint
     Left = 16
     Height = 13
-    Top = 298
+    Top = 299
     Width = 56
     Caption = 'SPINA Thyr'
     Font.Color = clBlack
@@ -992,7 +992,7 @@ object Hauptschirm: THauptschirm
   object CDISC_defaults: TMemo
     Left = 116
     Height = 24
-    Top = 290
+    Top = 291
     Width = 502
     Anchors = [akLeft, akRight, akBottom]
     Enabled = False
