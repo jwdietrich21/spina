@@ -1,15 +1,15 @@
 object AboutBox: TAboutBox
   Left = 415
-  Height = 346
+  Height = 383
   Top = 147
-  Width = 439
+  Width = 441
   AlphaBlend = True
   AlphaBlendValue = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Über SPINA Thyr'
-  ClientHeight = 346
-  ClientWidth = 439
+  ClientHeight = 383
+  ClientWidth = 441
   Color = clWhite
   Icon.Data = {
     962400000000010008001010020000000000B000000086000000101000000000
@@ -308,11 +308,11 @@ object AboutBox: TAboutBox
   }
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.0.10.0'
+  LCLVersion = '1.0.12.0'
   object Button1: TButton
-    Left = 311
+    Left = 192
     Height = 24
-    Top = 232
+    Top = 344
     Width = 75
     Caption = 'OK'
     Default = True
@@ -1815,8 +1815,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet2: TTabSheet
       Caption = 'Info'
-      ClientHeight = 295
-      ClientWidth = 422
+      ClientHeight = 281
+      ClientWidth = 418
       object Memo1: TMemo
         Left = 5
         Height = 274
@@ -1833,8 +1833,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet3: TTabSheet
       Caption = 'Acknowledgment'
-      ClientHeight = 295
-      ClientWidth = 422
+      ClientHeight = 281
+      ClientWidth = 418
       object Label3: TLabel
         Left = 21
         Height = 17

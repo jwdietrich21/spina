@@ -177,7 +177,9 @@ begin
     AboutBox.Memo1.Lines.Add('Preferences file: ' + GetPreferencesFile);
     AboutBox.Memo1.Lines.Add('Definition file for reference values: ' + RRFile);
     gExtendedInfo := true;
-  end;
+  end
+  else if (key = 87) and ((ssMeta in Shift) or (ssCtrl in Shift)) then
+    self.Close;
 end;
 
 procedure TAboutBox.Label5Click(Sender: TObject);
