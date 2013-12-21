@@ -2,23 +2,23 @@ unit HandleImpEx;
 
 { SPINA-Thyr }
 
- { Application for calculating structure parameters }
- { of thyrotropic feedback control }
+{ Application for calculating structure parameters }
+{ of thyrotropic feedback control }
 
- { Programm zur Berechnung von Strukturparametern }
- { des thyreotropen Regelkreises }
+{ Programm zur Berechnung von Strukturparametern }
+{ des thyreotropen Regelkreises }
 
 { Version 3.4.0 }
 
- { (c) J. W. Dietrich, 1994 - 2013 }
- { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
- { (c) University of Ulm Hospitals 2002-2004 }
- { (c) Ruhr University of Bochum 2005 - 2013 }
+{ (c) J. W. Dietrich, 1994 - 2013 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2013 }
 
 { This unit handles import and export of laboratory results and calculations }
 
- { Source code released under the BSD License }
- { See http://spina.medical-cybernetics.de for details }
+{ Source code released under the BSD License }
+{ See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}{$H+}
 
@@ -35,16 +35,15 @@ uses spina_toolbar;
 
 procedure SaveStringToPath(theString, filePath: string);
 var
-  textFile:     TFileStream = nil;
-  textLength:   integer;
+  textFile: TFileStream = nil;
+  textLength: integer;
   stringBuffer: ^string;
 begin
   textLength := length(theString);
   try
-    textFile     := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
+    textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
     { write string to stream while avoiding to write the initial length }
-    stringBuffer := @theString + 1;
-    textFile.WriteBuffer(stringBuffer^, textLength);
+    textFile.WriteBuffer(theString[1], textLength);
   finally
     if textFile <> nil then
       textFile.Free;
@@ -67,26 +66,26 @@ var
   continuationPointer: str180;
   AccAckType, AppAckType: Str2;
   countryCode: str3;
-  charSet:  str16;
+  charSet: str16;
   messageLanguage: str250;
   altCharHandlScheme: str20;
   profileID: str427;
-  SetID:    str4;
+  SetID: str4;
   PlacOrdNumb, FillOrdNumb: str22;
-  USI:      str250;
+  USI: str250;
   Priority: Str2;
   ReqDateTime, ObsDateTime, ObsEndDateTime: str26;
   ValueType: str2;
-  ObsID:    str250;
+  ObsID: str250;
   obsSubID: str20;
   obsValue, obsValue2: ansistring;
-  Units:    str250;
+  Units: str250;
   RefRange: str60;
   AbnormFlags, probability: str5;
-  Nature:   str2;
-  status:   char;
-  RRDate:   str26;
-  UDAC:     str20;
+  Nature: str2;
+  status: char;
+  RRDate: str26;
+  UDAC: str20;
   prodID, respObs, observMethod: str250;
   EquipInstID: str22;
   AnalysisDateTime: str26;
@@ -96,60 +95,60 @@ begin
     ShowMessage('HL7 Error')
   else
   begin
-    delimiters   := STANDARD_DELIMITERS;
-    sendingApp   := 'SPINA Thyr';
-    sendingFac   := gPreferences.MSH_ID;
+    delimiters := STANDARD_DELIMITERS;
+    sendingApp := 'SPINA Thyr';
+    sendingFac := gPreferences.MSH_ID;
     receivingApp := '';
     receivingFac := '';
-    dateTime     := EncodedDateTime(Now);
-    messageType  := 'ADT^A04';
-    security     := '';
-    messageType  := '';
-    controlID    := EncodedDateTime(Now) + IntToStr(random(13000));
+    dateTime := EncodedDateTime(Now);
+    messageType := 'ADT^A04';
+    security := '';
+    messageType := '';
+    controlID := EncodedDateTime(Now) + IntToStr(random(13000));
     processingID := '';
-    versionID    := '';
+    versionID := '';
     sequenceNumber := '';
     continuationPointer := '';
-    AccAckType   := '';
-    AppAckType   := '';
-    countryCode  := '276';
-    charSet      := '';
+    AccAckType := '';
+    AppAckType := '';
+    countryCode := '276';
+    charSet := '';
     messageLanguage := '';
     altCharHandlScheme := '';
-    profileID    := '';
+    profileID := '';
     SetMSH(HL7Message, delimiters, sendingApp,
       sendingFac, receivingApp, receivingFac, dateTime,
       security, messageType, controlID, processingID,
       versionID, sequenceNumber, continuationPointer,
       AccAckType, AppAckType, countryCode, charSet,
       messageLanguage, altCharHandlScheme, profileID);
-    SetID    := '1';
+    SetID := '1';
     PlacOrdNumb := '';
     FillOrdNumb := '';
-    USI      := 'SPINA Thyr';
+    USI := 'SPINA Thyr';
     Priority := '';
     ReqDateTime := EncodedDateTime(Now);
     ObsDateTime := '';
     ObsEndDateTime := '';
     SetOBR(HL7Message, SetID, PlacOrdNumb, FillOrdNumb, USI,
       Priority, ReqDateTime, ObsDateTime, ObsEndDateTime);
-    SetID     := '1';
+    SetID := '1';
     ValueType := 'NM';
-    ObsID     := 'SPINA-GT';
-    obsSubID  := 'GT';
-    obsValue  := FloatToStrF(acaseRecord.GT * 1E12, ffNumber, 5, 2);
-    Units     := 'pmol/s';
-    RefRange  := FloatToStr(gReferenceRanges.GT.ln * 1E12) + ' - ' +
+    ObsID := 'SPINA-GT';
+    obsSubID := 'GT';
+    obsValue := FloatToStrF(acaseRecord.GT * 1E12, ffNumber, 5, 2);
+    Units := 'pmol/s';
+    RefRange := FloatToStr(gReferenceRanges.GT.ln * 1E12) + ' - ' +
       FloatToStr(gReferenceRanges.GT.hn * 1E12);
     AbnormFlags := '';
     probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
     ObsDateTime := '';
-    prodID    := '';
-    respObs   := '';
+    prodID := '';
+    respObs := '';
     observMethod := '';
     EquipInstID := '';
     AnalysisDateTime := '';
@@ -158,23 +157,23 @@ begin
       AbnormFlags, probability, Nature, status, RRDate,
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
-    SetID     := '2';
+    SetID := '2';
     ValueType := 'NM';
-    ObsID     := 'SPINA-GD';
-    obsSubID  := 'GD';
-    obsValue  := FloatToStrF(acaseRecord.GD * 1E9, ffNumber, 5, 2);
-    Units     := 'nmol/s';
-    RefRange  := FloatToStr(gReferenceRanges.GD.ln * 1E9) + ' - ' +
+    ObsID := 'SPINA-GD';
+    obsSubID := 'GD';
+    obsValue := FloatToStrF(acaseRecord.GD * 1E9, ffNumber, 5, 2);
+    Units := 'nmol/s';
+    RefRange := FloatToStr(gReferenceRanges.GD.ln * 1E9) + ' - ' +
       FloatToStr(gReferenceRanges.GD.hn * 1E9);
     AbnormFlags := '';
     probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
     ObsDateTime := '';
-    prodID    := '';
-    respObs   := '';
+    prodID := '';
+    respObs := '';
     observMethod := '';
     EquipInstID := '';
     AnalysisDateTime := '';
@@ -190,15 +189,20 @@ end;
 procedure SaveResults(caseRecord: tCaseRecord);
 var
   filePath: string;
+  theFilterIndex: integer;
 begin
   SPINAToolbar.SaveResultsDialog.FilterIndex := 1;
   if SPINAToolbar.SaveResultsDialog.Execute then
-    case SPINAToolbar.SaveResultsDialog.FilterIndex of
+  begin
+    theFilterIndex := SPINAToolbar.SaveResultsDialog.FilterIndex;
+      {$IFDEF LCLcarbon}{compensates for a bug in the carbon widgetset}
+    theFilterIndex := theFilterIndex + 1;
+      {$ENDIF}{may be removed in future versions}
+    case theFilterIndex of
       1: SaveStringToPath(gResultString, SPINAToolbar.SaveResultsDialog.FileName);
-      2: ;
-      3: SaveAsHL7file(caseRecord);
-      4: ;
+      2: SaveAsHL7file(caseRecord);
     end;
+  end;
 end;
 
-end.
+end.

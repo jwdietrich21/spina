@@ -5,9 +5,9 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +#2'w'#5'Width'#3's'#3#21'HorzScrollBar.Visible'#8#21'VertScrollBar.Visible'#8
   +#5'Align'#7#5'alTop'#7'Anchors'#11#0#8'AutoSize'#9#11'BorderIcons'#11#12'biS'
   +'ystemMenu'#10'biMinimize'#0#11'BorderStyle'#7#12'bsToolWindow'#7'Caption'#6
-  +#5'SPINA'#12'ClientHeight'#2'E'#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
+  +#5'SPINA'#12'ClientHeight'#2'X'#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
   +#10'dmMainForm'#8'DockSite'#9#4'Menu'#7#8'MainMenu'#7'OnClose'#7#9'FormClose'
-  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#8'1.0.12.0'#7'Visible'#9#0#8
+  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#8'1.0.14.0'#7'Visible'#9#0#8
   +'TToolBar'#8'ToolBar1'#4'Left'#2#0#6'Height'#2#26#3'Top'#2#0#5'Width'#3's'#3
   +#7'Caption'#6#8'ToolBar1'#6'Images'#7#16'ToolbarImageList'#8'TabOrder'#2#0#0
   +#11'TToolButton'#13'NewToolButton'#4'Left'#2#1#4'Hint'#6#18'Neue Berechnung.'
@@ -45,8 +45,8 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +#11'TToolButton'#20'CopyResultToolButton'#4'Left'#3#241#0#4'Hint'#6#11'Copy '
   +'Result'#3'Top'#2#2#7'Caption'#6#20'CopyResultToolButton'#10'ImageIndex'#2#10
   +#7'OnClick'#7#25'CopyResultToolButtonClick'#14'ParentShowHint'#8#8'ShowHint'
-  +#9#0#0#0#6'TLabel'#14'SPINAThyrLabel'#4'Left'#3#17#3#6'Height'#2#17#3'Top'#2
-  +#7#5'Width'#2'B'#9'Alignment'#7#14'taRightJustify'#7'Anchors'#11#5'akTop'#7
+  +#9#0#0#0#6'TLabel'#14'SPINAThyrLabel'#4'Left'#3#13#3#6'Height'#2#17#3'Top'#2
+  +#7#5'Width'#2'F'#9'Alignment'#7#14'taRightJustify'#7'Anchors'#11#5'akTop'#7
   +'akRight'#0#7'Caption'#6#10'SPINA Thyr'#10'Font.Color'#7#6'clGray'#11'Font.H'
   +'eight'#2#243#11'ParentColor'#8#10'ParentFont'#8#7'OnClick'#7#19'SPINAThyrLa'
   +'belClick'#0#0#9'TMainMenu'#8'MainMenu'#4'left'#3#152#1#3'top'#2#9#0#9'TMenu'
@@ -614,8 +614,8 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +#255#0#255#255#255#0#255#255#255#0#255#255#255#0#255#255#255#0#255#255#255#0
   +'*'#139#198'F('#137#197#190'&'#135#197#196'$'#133#196'M'#0'}!'#235#3'{'#30
   +#255#0'y'#21#4#255#255#255#0#255#255#255#0#255#255#255#0#0#0#11'TSaveDialog'
-  +#17'SaveResultsDialog'#5'Title'#6#6'Export'#6'Filter'#6'sText (*.txt)|*.txt|'
-  +'CDISC LAB Base Model Version 1.0.1 (*.xml)|*.xml|HL7 Version 2.x (*.hl7)|*.'
-  +'hl7|LDT (*.ldt)|*.ldt'#7'Options'#11#17'ofOverwritePrompt'#14'ofEnableSizin'
-  +'g'#12'ofViewDetail'#13'ofAutoPreview'#0#4'left'#3'('#2#3'top'#2#9#0#0#0
-]);
+  +#17'SaveResultsDialog'#5'Title'#6#6'Export'#6'Filter'#6'0Text (*.txt)|*.txt|'
+  +'HL7 Version 2.x (*.hl7)|*.hl7'#7'Options'#11#17'ofOverwritePrompt'#14'ofEna'
+  +'bleSizing'#12'ofViewDetail'#13'ofAutoPreview'#0#4'left'#3'('#2#3'top'#2#9#0
+  +#0#0
+]);

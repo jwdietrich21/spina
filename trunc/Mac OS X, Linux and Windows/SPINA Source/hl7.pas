@@ -6,7 +6,7 @@ unit HL7;
 
 { HL7 base unit }
 
-{ Version 0.9 }
+{ Version 1.2 }
 
 { (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -27,8 +27,12 @@ uses
 
 const
 
+  ksCR = #13;
+  ksLF = #10;
+  ksCRLF = #13#10;
+
   STANDARD_DELIMITERS = '|^~\&';
-  SEGMENT_DELIMITER = char(13);
+  SEGMENT_DELIMITER = ksCR;
 
   ACKNOWLEDGEMENT_OK = 'AA';
   ACKNOWLEDGEMENT_ERROR = 'AE';
@@ -55,9 +59,9 @@ const
   ESCAPE_ISO_IR126 = '\C2D46\';    {ISO 8859 : Greek}
   ESCAPE_ISO_IR138 = '\C2D48\';    {ISO 8859 : Hebrew}
   ESCAPE_ISO_IR148 = '\C2D4D\';    {ISO 8859 : Latin Alphabet 5}
-  ESCAPE_ISO_IR14 = '\C284A\';    {JIS X 0201 -1976: Romaji}
-  ESCAPE_ISO_IR13 = '\C2949\';    {JIS X 0201 : Katakana}
-  ESCAPE_ISO_IR87 = '\M2442\';    {JIS X 0208 : Kanji, hiragana and katakana}
+  ESCAPE_ISO_IR14  = '\C284A\';    {JIS X 0201 -1976: Romaji}
+  ESCAPE_ISO_IR13  = '\C2949\';    {JIS X 0201 : Katakana}
+  ESCAPE_ISO_IR87  = '\M2442\';    {JIS X 0208 : Kanji, hiragana and katakana}
   ESCAPE_ISO_IR159 = '\M242844\';  {JIS X 0212 : Supplementary Kanji}
 
   MSH_ID = 'MSH';
@@ -68,6 +72,7 @@ type
   str3 = string[3];
   str4 = string[4];
   str5 = string[5];
+  str8 = string[8];
   str15 = string[15];
   str16 = string[16];
   str20 = string[20];
@@ -293,6 +298,7 @@ begin
   end;
   if theString <> '' then
     begin
+      theString := StringReplace(theString, ksCRLF, ksCR, [rfReplaceAll, rfIgnoreCase]);
       HL7Doc := THL7Message.Create('2.5');
       HL7Doc.contentString := theString;
     end;
@@ -316,6 +322,7 @@ begin
     aStream.Read(theString[1], aStream.Size);
     if theString <> '' then
     begin
+      theString := StringReplace(theString, ksCRLF, ksCR, [rfReplaceAll, rfIgnoreCase]);
       HL7Doc := THL7Message.Create('2.5');
       HL7Doc.contentString := theString;
     end;
@@ -391,7 +398,7 @@ var
   theString: ansistring;
 begin
   theString := aString;
-  if pos > 1 then
+  if pos >= 1 then
     Delete(theString, 1, pos);
   i := system.pos(delim, theString);
   if i = 0 then
@@ -403,7 +410,6 @@ begin
     Result := copy(theString, 1, i - 1);
   Inc(pos, i);
 end;
-
 
 { THL7MessageSection }
 
