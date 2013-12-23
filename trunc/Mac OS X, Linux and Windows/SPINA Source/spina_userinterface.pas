@@ -520,6 +520,7 @@ var
   strucPars: String;
   TSH_String, T4_String, T3_String: Str255;
   TSH_Flag, T4_Flag, T3_Flag: String;
+  FT4UpperLimitforTTSI: real;
 begin
   oldSeparator := decimalSeparator;
   TSH_Flag := '';
@@ -629,12 +630,19 @@ begin
   end;
   decimalSeparator := oldSeparator;
   Hauptschirm.caseRecord := Calculate(TSH, T4, T3);
+  FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn, T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
+  InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
+  FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
   if gUseReferenceRanges then
     strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs, kCR,
-      kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs)
+      kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs, kCR,
+      kLF, '   TSHI: ', Hauptschirm.caseRecord.flaggedTSHIs, kCR,
+      kLF, '   TTSI: ', Hauptschirm.caseRecord.flaggedTTSIs)
   else
     strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs, kCR, kLF,
-      '   GD: ', Hauptschirm.caseRecord.GDs);
+      '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF,
+      '   TSHI: ', Hauptschirm.caseRecord.TSHIs, kCR, kLF,
+      '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
   ShowMessage(TSH_String, T4_String, T3_String, strucPars);
 end;
 

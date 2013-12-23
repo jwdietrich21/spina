@@ -427,17 +427,27 @@ procedure TEngineTestCases.TestCase1;
 {Empty values}
 {TSH NaN, FT4 NaN, FT3 0 NaN}
 {=> GT = NaN, GD = NaN}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH := NaN;
   T4 := NaN;
   T3 := NaN;
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue(isNaN(testCaseRecord.GT));
   AssertTrue(isNaN(testCaseRecord.GD));
-  AssertEquals(gNotCalculable, (testCaseRecord.GTs));
-  AssertEquals(gNotCalculable, (testCaseRecord.GDs));
+  AssertEquals(gNotCalculable, testCaseRecord.GTs);
+  AssertEquals(gNotCalculable, testCaseRecord.GDs);
+  AssertEquals(gNotCalculable, testCaseRecord.TSHIs);
+  AssertEquals(gNotCalculable, testCaseRecord.TTSIs);
 end;
 
 procedure TEngineTestCases.TestCase2;
@@ -445,35 +455,55 @@ procedure TEngineTestCases.TestCase2;
 {Zero values}
 {TSH 0 mU/l, FT4 0 pmol/l, FT3 0 pmol/l}
 {=> GT = NaN, GD = NaN}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH := 0;
   T4 := 0;
   T3 := 0;
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
+  FormatCase(testCaseRecord, gReferenceRanges);
   AssertTrue(isNaN(testCaseRecord.GT));
   AssertTrue(isNaN(testCaseRecord.GD));
-  AssertEquals(gNotCalculable, (testCaseRecord.GTs));
-  AssertEquals(gNotCalculable, (testCaseRecord.GDs));
+  AssertEquals(gNotCalculable, testCaseRecord.GTs);
+  AssertEquals(gNotCalculable, testCaseRecord.GDs);
+  AssertEquals(gNotCalculable, testCaseRecord.TSHIs);
+  AssertEquals(0, testCaseRecord.TTSI);
 end;
 
 procedure TEngineTestCases.TestCase3;
 {test case #3}
 {TSH 1 mU/l, FT4 2 ng/dl, FT3 3 pg/ml}
 {=> GT = 7.29 pmol/s, GD = 16.69 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '1 mU/l';
   T4_String := '2 ng/dl';
   T3_String := '3 pg/ml';
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 7.29e-12) and (testCaseRecord.GT < 1.01 * 7.29e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 16.69e-9) and (testCaseRecord.GD < 1.01 * 16.69e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 3.45) and (testCaseRecord.TSHI < 1.01 * 3.45));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 100) and (testCaseRecord.TTSI < 1.01 * 100));
   AssertEquals('7.', LeftStr(testCaseRecord.GTs, 2));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('16.', LeftStr(testCaseRecord.GDs, 3));
@@ -485,18 +515,28 @@ procedure TEngineTestCases.TestCase4;
 {Euthyroidism with normal values}
 {TSH 1 mU/l, FT4 1.3 ng/dl, FT3 3 pg/ml}
 {=> GT = 4.74 pmol/s, GD = 25.67 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '1 mU/l';
   T4_String := '1.3 ng/dl';
   T3_String := '3 pg/ml';
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 25.67e-9) and (testCaseRecord.GD < 1.01 * 25.67e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 2.24) and (testCaseRecord.TSHI < 1.01 * 2.24));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 65) and (testCaseRecord.TTSI < 1.01 * 65));
 end;
 
 procedure TEngineTestCases.TestCase5;
@@ -504,6 +544,8 @@ procedure TEngineTestCases.TestCase5;
 {Sublatent hyperthyroidism}
 {TSH 0.5 mU/l, FT4 1.5 ng/dl, FT3 4 pg/ml}
 {=> GT = 9.47 pmol/s, GD = 29.67 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
@@ -511,11 +553,20 @@ begin
   T4_String := '1.5 ng/dl';
   T3_String := '4 pg/ml';
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 9.47e-12) and (testCaseRecord.GT < 1.01 * 9.47e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 29.67e-9) and (testCaseRecord.GD < 1.01 * 29.67e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 1.89) and (testCaseRecord.TSHI < 1.01 * 1.89));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 37.5) and (testCaseRecord.TTSI < 1.01 * 37.5));
 end;
 
 procedure TEngineTestCases.TestCase6;
@@ -523,18 +574,28 @@ procedure TEngineTestCases.TestCase6;
 {Latent or subclinical hyperthyroidism}
 {TSH 0.3 mU/l, FT4 1.6 ng/dl, FT3 5 pg/ml}
 {=> GT = 15.81 pmol/s, GD = 34.74 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '0.3 mU/l';
   T4_String := '1.6 ng/dl';
   T3_String := '5 pg/ml';
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 15.81e-12) and (testCaseRecord.GT < 1.01 * 15.81e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 34.74e-9) and (testCaseRecord.GD < 1.01 * 34.74e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 1.56) and (testCaseRecord.TSHI < 1.01 * 1.56));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 24) and (testCaseRecord.TTSI < 1.01 * 24));
 end;
 
 procedure TEngineTestCases.TestCase7;
@@ -542,18 +603,28 @@ procedure TEngineTestCases.TestCase7;
 {Overt hyperthyroidism}
 {TSH 0.01 mU/l, FT4 2.2 ng/dl, FT3 6 pg/ml}
 {=> GT = 589.99 pmol/s, GD = 30.34 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '0.01 mU/l';
   T4_String := '2.2 ng/dl';
   T3_String := '6 pg/ml';
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 589.99e-12) and (testCaseRecord.GT < 1.01 * 589.99e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 30.34e-9) and (testCaseRecord.GD < 1.01 * 30.34e-9));
+  AssertTrue((testCaseRecord.TSHI > 1.02 * -0.81) and (testCaseRecord.TSHI < 0.98 * -0.81));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 1.1) and (testCaseRecord.TTSI < 1.01 * 1.1));
 end;
 
 procedure TEngineTestCases.TestCase8;
@@ -561,18 +632,28 @@ procedure TEngineTestCases.TestCase8;
 {Sublatent hypothyroidism}
 {TSH 3.9 mU/l, FT4 0.8 ng/dl, FT3 2 pg/ml}
 {=> GT = 1.33 pmol/s, GD = 27.81 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '3.9 mU/l';
   T4_String := '0.8 ng/dl';
   T3_String := '2 pg/ml';
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 1.33e-12) and (testCaseRecord.GT < 1.01 * 1.33e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 2.74) and (testCaseRecord.TSHI < 1.01 * 2.74));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 156) and (testCaseRecord.TTSI < 1.01 * 156));
 end;
 
 procedure TEngineTestCases.TestCase9;
@@ -580,18 +661,28 @@ procedure TEngineTestCases.TestCase9;
 {Latent or subclinical hypothyroidism}
 {TSH 7 mU/l, FT4 0.8 ng/dl, FT3 2 pg/ml}
 {=> GT = 1.08 pmol/s, GD = 27.81 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '7 mU/l';
   T4_String := '0.8 ng/dl';
   T3_String := '2 pg/ml';
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.084e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 3.33) and (testCaseRecord.TSHI < 1.01 * 3.33));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 280) and (testCaseRecord.TTSI < 1.01 * 280));
 end;
 
 procedure TEngineTestCases.TestCase10;
@@ -599,18 +690,28 @@ procedure TEngineTestCases.TestCase10;
 {Overt hypothyroidism}
 {TSH 13 mU/l, FT4 0.4 ng/dl, FT3 1 pg/ml}
 {=> GT = 0.47 pmol/s, GD = 27.81 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '13 mU/l';
   T4_String := '0.4 ng/dl';
   T3_String := '1 pg/ml';
+  lReferenceRanges.FT4.ln := 0.7;
+  lReferenceRanges.FT4.hn := 2;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 0.47e-12) and (testCaseRecord.GT < 1.01 * 0.47e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 27.81e-9) and (testCaseRecord.GD < 1.01 * 27.81e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 3.25) and (testCaseRecord.TSHI < 1.01 * 3.25));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 260) and (testCaseRecord.TTSI < 1.01 * 260));
 end;
 
 procedure TEngineTestCases.TestCase11;
@@ -618,18 +719,28 @@ procedure TEngineTestCases.TestCase11;
 {Normal values, units ng/l and pmol/l}
 {TSH 1 mU/l, FT4 13 ng/l, FT3 4.5 pmol/l}
 {=> GT = 4.74 pmol/s, GD = 25.01 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '1 mU/l';
   T4_String := '13 ng/l';
   T3_String := '4.5 pmol/l';
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, lReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 25.01e-9) and (testCaseRecord.GD < 1.01 * 25.01e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 2.24) and (testCaseRecord.TSHI < 1.01 * 2.24));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 65) and (testCaseRecord.TTSI < 1.01 * 65));
 end;
 
 procedure TEngineTestCases.TestCase12;
@@ -637,15 +748,25 @@ procedure TEngineTestCases.TestCase12;
   {Normal values}
   {TSH 1 mU/l, FT4 16.5 pmol/l, FT3 4.5 pmol/l}
   {=> GT = 4.70 pmol/s, GD = 25.22 nmol/l}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH := 1;
   T4 := 16.5e-12;
   T3 := 4.5e-12;
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 4.70e-12) and (testCaseRecord.GT < 1.01 * 4.70e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 25.22e-9) and (testCaseRecord.GD < 1.01 * 25.22e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 2.21) and (testCaseRecord.TSHI < 1.01 * 2.21));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 64.1) and (testCaseRecord.TTSI < 1.01 * 64.1));
   AssertEquals('4.7', LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('25.2', LeftStr(testCaseRecord.GDs, 4));
@@ -657,15 +778,25 @@ procedure TEngineTestCases.TestCase13;
   {T3 thyrotoxicosis}
   {TSH 3.24 mU/l, FT4 7.7 pmol/l, FT3 28 pmol/l}
   {=> GT = 1.08 pmol/s, GD = 336.2 nmol/l}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH := 3.24;
   T4 := 7.7e-12;
   T3 := 28e-12;
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.08e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 336.2e-9) and (testCaseRecord.GD < 1.01 * 336.2e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 2.21) and (testCaseRecord.TSHI < 1.01 * 2.21));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 97.2) and (testCaseRecord.TTSI < 1.01 * 97.2));
   AssertEquals('1.0', LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('336.', LeftStr(testCaseRecord.GDs, 4));
@@ -677,15 +808,25 @@ procedure TEngineTestCases.TestCase14;
   {Latent hyperdeiodation (hyperdeiodination)}
   {TSH 0.7 mU/l, FT4 9 pmol/l, FT3 6.2 pmol/l}
   {=> GT = 3.37 pmol/s, GD = 63.7 nmol/l}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH := 0.7;
   T4 := 9e-12;
   T3 := 6.2e-12;
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 3.37e-12) and (testCaseRecord.GT < 1.01 * 3.37e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 63.7e-9) and (testCaseRecord.GD < 1.01 * 63.7e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 0.85) and (testCaseRecord.TSHI < 1.01 * 0.85));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 24.5) and (testCaseRecord.TTSI < 1.01 * 24.5));
   AssertEquals('3.3',LeftStr(testCaseRecord.GTs, 3));
   AssertEquals('pmol/s', RightStr(testCaseRecord.GTs, 6));
   AssertEquals('63.7', LeftStr(testCaseRecord.GDs, 4));
@@ -697,18 +838,30 @@ procedure TEngineTestCases.TestCase15;
 {Structure parameters calculated from total hormone values}
 {TSH 0.86 mU/l, TT4 163 nmol/l, TT3 3 nmol/l}
 {=> GT = 7.53 pmol/s, GD = 19.54 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := totalHormone;
   gPreferences.T3.Method := totalHormone;
   TSH_String := '0.86 mU/l';
   T4_String := '163 nmol/l';
   T3_String := '3 nmol/l';
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 7.53e-12) and (testCaseRecord.GT < 1.01 * 7.53e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 19.54e-9) and (testCaseRecord.GD < 1.01 * 19.54e-9));
+  AssertTrue(isNan(testCaseRecord.TSHI));
+  AssertTrue(isNan(testCaseRecord.TTSI));
+  AssertEquals(gNotCalculable, testCaseRecord.TSHIs);
+  AssertEquals(gNotCalculable, testCaseRecord.TTSIs);
 end;
 
 procedure TEngineTestCases.TestCase16;
@@ -716,18 +869,28 @@ procedure TEngineTestCases.TestCase16;
 {Secondary hypothyroidism due to thyrotropic insufficiency}
 {TSH 0.2 mU/l, FT4 4 ng/l, FT3 2 pmol/l}
 {=> GT = 5.73 pmol/s, GD = 36.12 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := freeHormone;
   TSH_String := '0.2 mU/l';
   T4_String := '4 ng/l';
   T3_String := '2 pmol/l';
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 5.73e-12) and (testCaseRecord.GT < 1.01 * 5.73e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 36.12e-9) and (testCaseRecord.GD < 1.01 * 36.12e-9));
+  AssertTrue((testCaseRecord.TSHI > 1.02 * -0.91) and (testCaseRecord.TSHI < 0.98 * -0.91));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 4) and (testCaseRecord.TTSI < 1.01 * 4));
 end;
 
 procedure TEngineTestCases.TestCase17;
@@ -735,18 +898,28 @@ procedure TEngineTestCases.TestCase17;
 {Secondary hyperthyoidism in case of TSH-producing adenoma}
 {TSH 16.13 mU/l, FT4 24 ng/l, TT3 1.9 pmol/l}
 {=> GT = 2.73 pmol/s, GD = 14.65 nmol/s}
+var
+  lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
   gPreferences.T4.Method := freeHormone;
   gPreferences.T3.Method := totalHormone;
   TSH_String := '16.13 mU/l';
   T4_String := '24 ng/l';
   T3_String := '1.9 µg/l';
+  lReferenceRanges.FT4.ln := 7;
+  lReferenceRanges.FT4.hn := 20;
+  lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
+  lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
   T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
   testCaseRecord := Calculate(TSH, T4, T3);
+  FormatCase(testCaseRecord, gReferenceRanges);
+  InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 2.73e-12) and (testCaseRecord.GT < 1.01 * 2.73e-12));
   AssertTrue((testCaseRecord.GD > 0.99 * 14.65e-9) and (testCaseRecord.GD < 1.01 * 14.65e-9));
+  AssertTrue((testCaseRecord.TSHI > 0.99 * 6.92) and (testCaseRecord.TSHI < 1.01 * 6.92));
+  AssertTrue((testCaseRecord.TTSI > 0.99 * 1936) and (testCaseRecord.TTSI < 1.01 * 1936));
 end;
 
 initialization

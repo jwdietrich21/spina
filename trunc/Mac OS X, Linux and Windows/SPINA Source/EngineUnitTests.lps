@@ -11,8 +11,8 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="16" Y="27"/>
-        <UsageCount Value="37"/>
+        <CursorPos X="1" Y="2"/>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -23,8 +23,15 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="26" Y="3"/>
-        <UsageCount Value="37"/>
+        <CursorPos X="1" Y="2"/>
+        <ExtraEditorCount Value="1"/>
+        <ExtraEditor1>
+          <IsVisibleTab Value="True"/>
+          <WindowIndex Value="1"/>
+          <TopLine Value="719"/>
+          <CursorPos X="88" Y="743"/>
+        </ExtraEditor1>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
@@ -34,8 +41,8 @@
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
-        <UsageCount Value="37"/>
+        <CursorPos X="1" Y="2"/>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -45,8 +52,8 @@
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="34" Y="2"/>
-        <UsageCount Value="37"/>
+        <CursorPos X="1" Y="2"/>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -56,8 +63,8 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="38" Y="9"/>
-        <UsageCount Value="20"/>
+        <CursorPos X="1" Y="2"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -103,131 +110,151 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="665" Column="1" TopLine="645"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="149" Column="28" TopLine="127"/>
       </Position1>
       <Position2>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="28" Column="88" TopLine="1"/>
+        <Caret Line="206" Column="20" TopLine="202"/>
       </Position2>
       <Position3>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="297" Column="38" TopLine="290"/>
+        <Caret Line="207" Column="1" TopLine="200"/>
       </Position3>
       <Position4>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="292" Column="42" TopLine="276"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="245" Column="1" TopLine="232"/>
       </Position4>
       <Position5>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="422" Column="1" TopLine="355"/>
+        <Caret Line="207" Column="1" TopLine="200"/>
       </Position5>
       <Position6>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="329" Column="1" TopLine="311"/>
       </Position6>
       <Position7>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="198" Column="14" TopLine="169"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="245" Column="1" TopLine="1"/>
       </Position7>
       <Position8>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="359" Column="14" TopLine="330"/>
+        <Caret Line="207" Column="1" TopLine="200"/>
       </Position8>
       <Position9>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="438" Column="14" TopLine="408"/>
+        <Caret Line="479" Column="1" TopLine="446"/>
       </Position9>
       <Position10>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="456" Column="14" TopLine="426"/>
+        <Caret Line="477" Column="1" TopLine="449"/>
       </Position10>
       <Position11>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="476" Column="14" TopLine="446"/>
+        <Caret Line="470" Column="1" TopLine="449"/>
       </Position11>
       <Position12>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="499" Column="14" TopLine="469"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="73" Column="1" TopLine="56"/>
       </Position12>
       <Position13>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="518" Column="14" TopLine="488"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="76" Column="1" TopLine="56"/>
       </Position13>
       <Position14>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="537" Column="14" TopLine="507"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="77" Column="1" TopLine="56"/>
       </Position14>
       <Position15>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="556" Column="14" TopLine="526"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="85" Column="1" TopLine="57"/>
       </Position15>
       <Position16>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="574" Column="14" TopLine="545"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="88" Column="1" TopLine="60"/>
       </Position16>
       <Position17>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="575" Column="13" TopLine="546"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="89" Column="1" TopLine="61"/>
       </Position17>
       <Position18>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="594" Column="14" TopLine="564"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="97" Column="1" TopLine="81"/>
       </Position18>
       <Position19>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="613" Column="14" TopLine="583"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="98" Column="1" TopLine="81"/>
       </Position19>
       <Position20>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="632" Column="14" TopLine="602"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="109" Column="1" TopLine="81"/>
       </Position20>
       <Position21>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="648" Column="14" TopLine="618"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="110" Column="1" TopLine="82"/>
       </Position21>
       <Position22>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="668" Column="14" TopLine="638"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="127" Column="1" TopLine="110"/>
       </Position22>
       <Position23>
-        <Filename Value="engine_testcase.pas"/>
-        <Caret Line="688" Column="14" TopLine="658"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="128" Column="78" TopLine="110"/>
       </Position23>
       <Position24>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="711" Column="14" TopLine="681"/>
+        <Caret Line="470" Column="1" TopLine="449"/>
       </Position24>
       <Position25>
         <Filename Value="engine_testcase.pas"/>
-        <Caret Line="730" Column="14" TopLine="700"/>
+        <Caret Line="471" Column="1" TopLine="449"/>
       </Position25>
+      <Position26>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="479" Column="56" TopLine="451"/>
+      </Position26>
+      <Position27>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="627" Column="86" TopLine="600"/>
+      </Position27>
+      <Position28>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="626" Column="82" TopLine="600"/>
+      </Position28>
+      <Position29>
+        <Filename Value="engine_testcase.pas"/>
+        <Caret Line="922" Column="88" TopLine="888"/>
+      </Position29>
+      <Position30>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="128" Column="58" TopLine="120"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
   <Debugging>
     <Watches Count="7">
       <Item1>
-        <Expression Value="theElements"/>
+        <Expression Value="theCase.TSH"/>
       </Item1>
       <Item2>
-        <Expression Value="theElements.massPrefix"/>
+        <Expression Value="theCase.FT4"/>
       </Item2>
       <Item3>
-        <Expression Value="theElements.massUnit"/>
+        <Expression Value="FT4UpperLimit"/>
       </Item3>
       <Item4>
-        <Expression Value="theElements.volumePrefix"/>
+        <Expression Value="theCase.TTSI"/>
       </Item4>
       <Item5>
-        <Expression Value="theElements.volumeUnit"/>
+        <Expression Value="testCaseRecord.TTSI"/>
       </Item5>
       <Item6>
-        <Expression Value="theString"/>
+        <Expression Value="testCaseRecord.TTSIs"/>
       </Item6>
       <Item7>
-        <Expression Value="tempPos"/>
+        <Expression Value="testCaseRecord.TSHI"/>
       </Item7>
     </Watches>
   </Debugging>
