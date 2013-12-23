@@ -122,6 +122,7 @@ begin
       versionID, sequenceNumber, continuationPointer,
       AccAckType, AppAckType, countryCode, charSet,
       messageLanguage, altCharHandlScheme, profileID);
+
     SetID := '1';
     PlacOrdNumb := '';
     FillOrdNumb := '';
@@ -157,6 +158,7 @@ begin
       AbnormFlags, probability, Nature, status, RRDate,
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
+
     SetID := '2';
     ValueType := 'NM';
     ObsID := 'SPINA-GD';
@@ -182,6 +184,57 @@ begin
       AbnormFlags, probability, Nature, status, RRDate,
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
+
+    SetID := '3';
+    ValueType := 'NM';
+    ObsID := 'TSHI';
+    obsSubID := 'TSHI';
+    obsValue := FloatToStrF(acaseRecord.TSHI, ffNumber, 5, 2);
+    Units := '';
+    RefRange := '';
+    AbnormFlags := '';
+    probability := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
+    ObsDateTime := '';
+    prodID := '';
+    respObs := '';
+    observMethod := '';
+    EquipInstID := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    SetID := '4';
+    ValueType := 'NM';
+    ObsID := 'TTSI';
+    obsSubID := 'TTSI';
+    obsValue := FloatToStrF(acaseRecord.TTSI, ffNumber, 5, 2);
+    Units := '';
+    RefRange := '';
+    AbnormFlags := '';
+    probability := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
+    ObsDateTime := '';
+    prodID := '';
+    respObs := '';
+    observMethod := '';
+    EquipInstID := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
     WriteHL7File(HL7Message, SPINAToolbar.SaveResultsDialog.FileName);
   end;
 end;
