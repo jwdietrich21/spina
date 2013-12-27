@@ -127,7 +127,7 @@ begin
     tempRecord.GD := NaN;
   if (gPreferences.T4.Method = freeHormone) and not isNan(TSH) and (TSH > 0) and not gTSHTherapy then
   begin
-    tempRecord.TSHI := ln(TSH) + 0.1345 * FT4 * 1e12;
+    tempRecord.TSHI := ln(TSH) + 0.1345 * T4 * 1e12;
   end
   else
   begin
