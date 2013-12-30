@@ -6,7 +6,7 @@ unit HL7;
 
 { HL7 base unit }
 
-{ Version 1.2 }
+{ Version 1.3 }
 
 { (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -16,7 +16,23 @@ unit HL7;
 { Parser and compiler for HL7 messages }
 
 { Source code released under the BSD License }
-{ See http://puma-repository.sf.net for details }
+
+{ See the file "license.txt", included in this distribution, }
+{ for details about the copyright. }
+{ Current versions and additional information are available from }
+{ http://puma-repository.sf.net }
+
+{ This program is distributed in the hope that it will be useful, }
+{ but WITHOUT ANY WARRANTY; without even the implied warranty of }
+{ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
+
+{Status code of HL7 message:
+ 0: No Error.
+ 4: This HL7 version is not supported.
+ 6: Error saving file.
+ 7: Error reading file.
+ 8: Segment not found.
+}
 
 {$mode objfpc}
 
@@ -83,8 +99,17 @@ type
   str80 = string[80];
   str180 = string[180];
   str227 = string[227];
+  str241 = string[241];
   str250 = string[250];
   str427 = AnsiString;
+
+  tCWE = str3;   { HL7 2.7 CWE type }
+  tIS = str3;    { HL7 2.5 IS type }
+  tMSG = str15;  { HL7 MSG type }
+  tDTM = str26;  { HL7 2.7 DTM type }
+  tTS = str26;   { HL7 2.5 TS type }
+  tHD = str241;  { HL7 HD type }
+  tXCN = str250; { HL7 XCN type }
 
   THL7Delimiters = record
     SegmentTerminator, FieldSeparator, ComponentSeparator: char;
@@ -216,6 +241,7 @@ type
   private
     HL7_version: string;
     HL7Delimiters: THL7Delimiters;
+    Status: integer;
   protected
     HL7Text: ansistring;
     procedure SetHL7Version(const aValue: string);
@@ -247,6 +273,7 @@ type
     procedure AllocSegments(const SegmentText: ansistring);
     property contentString: ansistring read CompiledMessageString
       write ParseMessageString;
+    property StatusCode: integer read status;
   end;
 
 procedure ReadHL7File(out HL7Doc: THL7Message; const aFileName: ansistring); overload;
@@ -275,9 +302,16 @@ begin
         ReadHL7File(HL7Doc, theStream, FilenameToURI(AFilename));
       finally
         if theStream <> nil then
-          theStream.Free;
+          theStream.Free
+        else
+          HL7Doc.Status := 7;
+      end;
+    end
+  else
+    begin
+      HL7Doc := THL7Message.Create('2.0');
+      HL7Doc.Status := 7;          { create empty message with status code 7 }
     end;
-  end;
 end;
 
 procedure ReadHL7File(out HL7Doc: THL7Message; var aFile: Text);
@@ -301,6 +335,11 @@ begin
       theString := StringReplace(theString, ksCRLF, ksCR, [rfReplaceAll, rfIgnoreCase]);
       HL7Doc := THL7Message.Create('2.5');
       HL7Doc.contentString := theString;
+    end
+  else
+    begin
+      HL7Doc := THL7Message.Create('2.0');
+      HL7Doc.Status := 7;          { create empty message with status code 7 }
     end;
 end;
 
@@ -325,8 +364,18 @@ begin
       theString := StringReplace(theString, ksCRLF, ksCR, [rfReplaceAll, rfIgnoreCase]);
       HL7Doc := THL7Message.Create('2.5');
       HL7Doc.contentString := theString;
+    end
+    else
+      begin
+        HL7Doc := THL7Message.Create('2.0');
+        HL7Doc.Status := 7;          { create empty message with status code 7 }
+      end;
+  end
+  else
+    begin
+      HL7Doc := THL7Message.Create('2.0');
+      HL7Doc.Status := 7;          { create empty message with status code 7 }
     end;
-  end;
 end;
 
 procedure WriteHL7File(HL7Doc: THL7Message; const aFileName: ansistring);
@@ -339,7 +388,9 @@ begin
     WriteHL7File(HL7Doc, theStream);
   finally
     if theStream <> nil then
-      theStream.Free;
+      theStream.Free
+    else
+      HL7Doc.Status := 6;
   end;
 end;
 
@@ -357,6 +408,8 @@ begin
   finally
     CloseFile(aFile);
   end;
+  if IOResult <> 0 then
+    HL7Doc.Status := 6;
 end;
 
 procedure WriteHL7File(HL7Doc: THL7Message; aStream: TStream);
@@ -367,7 +420,11 @@ var
 begin
   theString := HL7Doc.contentString;
   textLength := length(theString);
-  aStream.WriteBuffer(theString[1], textLength);
+  try
+    aStream.WriteBuffer(theString[1], textLength);
+  except
+    HL7Doc.Status := 6;
+  end;
 end;
 
 function EncodedDateTime(DateTime: TDateTime): string;
@@ -839,6 +896,7 @@ end;
 procedure THL7Message.SetHL7Version(const aValue: string);
 begin
   HL7_version := aValue;
+  if LeftStr(HL7_version, 1) <> '2' then Status := 4;
 end;
 
 procedure THL7Message.ParseMessageString(const aString: ansistring);
@@ -949,6 +1007,7 @@ constructor THL7Message.Create(version: string);
 begin
   inherited Create;
   ParseDelimiters(STANDARD_DELIMITERS);  {Default delimiter definition}
+  Status := 0;
   HL7_Version := version;
   FirstSegment := nil;
 end;
@@ -1021,6 +1080,7 @@ begin
       (currSegment.FirstOccurrence.FirstField.nextSibling.contentString = SetID)) then
     begin
       found := True;
+      Status := 0;
       Result := currSegment;
     end
     else
@@ -1030,6 +1090,8 @@ begin
         currSegment := currSegment.nextSibling;
       end;
   until (found = True) or (currSegment = nil);
+  if not found then
+    Status := 8;
 end;
 
 function THL7Message.NewSegment: THL7Segment;

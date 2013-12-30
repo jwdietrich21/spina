@@ -6,7 +6,7 @@ unit OBR;
 
 { HL7 support unit for observation request segments }
 
-{ Version 1.2 }
+{ Version 1.3 }
 
 { (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -16,7 +16,15 @@ unit OBR;
 { Parser and compiler for HL7 messages }
 
 { Source code released under the BSD License }
-{ See http://puma-repository.sf.net for details }
+
+{ See the file "license.txt", included in this distribution, }
+{ for details about the copyright. }
+{ Current versions and additional information are available from }
+{ http://puma-repository.sf.net }
+
+{ This program is distributed in the hope that it will be useful, }
+{ but WITHOUT ANY WARRANTY; without even the implied warranty of }
+{ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
 
 {$mode objfpc}{$H+}
 
@@ -31,10 +39,10 @@ const
 function OBR_Segment(message: THL7Message): THL7Segment;
 procedure GetOBR(message: THL7Message; out SetID: str4;
   out PlacOrdNumb, FillOrdNumb: str22; out USI: str250; out Priority: Str2;
-  out ReqDateTime, ObsDateTime, ObsEndDateTime: str26);
+  out ReqDateTime, ObsDateTime, ObsEndDateTime: tDTM);
 procedure SetOBR(message: THL7Message; aSegment: THL7Segment);
 procedure SetOBR(message: THL7Message; SetID: str4; PlacOrdNumb, FillOrdNumb: str22;
-  USI: str250; Priority: Str2; ReqDateTime, ObsDateTime, ObsEndDateTime: str26);
+  USI: str250; Priority: Str2; ReqDateTime, ObsDateTime, ObsEndDateTime: tDTM);
 
 implementation
 
@@ -48,7 +56,7 @@ end;
 
 procedure GetOBR(message: THL7Message; out SetID: str4;
   out PlacOrdNumb, FillOrdNumb: str22; out USI: str250; out Priority: Str2;
-  out ReqDateTime, ObsDateTime, ObsEndDateTime: str26);
+  out ReqDateTime, ObsDateTime, ObsEndDateTime: tDTM);
 var
   curSegment: THL7Segment;
   nextField: THL7Field;
@@ -79,7 +87,7 @@ begin
 end;
 
 procedure SetOBR(message: THL7Message; SetID: str4; PlacOrdNumb, FillOrdNumb: str22;
-  USI: str250; Priority: Str2; ReqDateTime, ObsDateTime, ObsEndDateTime: str26);
+  USI: str250; Priority: Str2; ReqDateTime, ObsDateTime, ObsEndDateTime: tDTM);
 var
   newSegment: THL7Segment;
   FieldSep: char;

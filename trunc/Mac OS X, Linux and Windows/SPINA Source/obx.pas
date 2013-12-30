@@ -6,7 +6,7 @@ unit OBX;
 
 { HL7 support unit for observation / result segments }
 
-{ Version 1.2 }
+{ Version 1.3 }
 
 { (c) J. W. Dietrich, 1994 - 2013 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -16,7 +16,15 @@ unit OBX;
 { Parser and compiler for HL7 messages }
 
 { Source code released under the BSD License }
-{ See http://puma-repository.sf.net for details }
+
+{ See the file "license.txt", included in this distribution, }
+{ for details about the copyright. }
+{ Current versions and additional information are available from }
+{ http://puma-repository.sf.net }
+
+{ This program is distributed in the hope that it will be useful, }
+{ but WITHOUT ANY WARRANTY; without even the implied warranty of }
+{ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
 
 {$mode objfpc}{$H+}
 
@@ -31,15 +39,15 @@ const
 function OBX_Segment(message: THL7Message): THL7Segment;
 procedure GetOBX(message: THL7Message; out SetID: str4; out ValueType: str2; out ObsID: str250;
   obsSubID: str20; out obsValue: AnsiString; out Units: str250; out RefRange: str60;
-  AbnormFlags, probability: str5; out Nature: str2; out status: char; out RRDate: str26;
-  UDAC: str20; out ObsDateTime: str26; out prodID, respObs, observMethod: str250;
-  EquipInstID: str22; out AnalysisDateTime: str26);
+  AbnormFlags, probability: str5; out Nature: str2; out status: char; out RRDate: tDTM;
+  UDAC: str20; out ObsDateTime: tDTM; out prodID, respObs, observMethod: str250;
+  EquipInstID: str22; out AnalysisDateTime: tDTM);
 procedure SetOBX(message: THL7Message; aSegment: THL7Segment);
 procedure SetOBX(message: THL7Message; SetID: str4; ValueType: str2; ObsID: str250;
   obsSubID: str20; obsValue: AnsiString; Units: str250; RefRange: str60;
-  AbnormFlags, probability: str5; Nature: str2; status: char; RRDate: str26;
-  UDAC: str20; ObsDateTime: str26; prodID, respObs, observMethod: str250;
-  EquipInstID: str22; AnalysisDateTime: str26);
+  AbnormFlags, probability: str5; Nature: str2; status: char; RRDate: tDTM;
+  UDAC: str20; ObsDateTime: tDTM; prodID, respObs, observMethod: str250;
+  EquipInstID: str22; AnalysisDateTime: tDTM);
 
 implementation
 
@@ -53,9 +61,9 @@ end;
 
 procedure GetOBX(message: THL7Message; out SetID: str4; out ValueType: str2; out ObsID: str250;
   obsSubID: str20; out obsValue: AnsiString; out Units: str250; out RefRange: str60;
-  AbnormFlags, probability: str5; out Nature: str2; out status: char; out RRDate: str26;
-  UDAC: str20; out ObsDateTime: str26; out prodID, respObs, observMethod: str250;
-  EquipInstID: str22; out AnalysisDateTime: str26);
+  AbnormFlags, probability: str5; out Nature: str2; out status: char; out RRDate: tDTM;
+  UDAC: str20; out ObsDateTime: tDTM; out prodID, respObs, observMethod: str250;
+  EquipInstID: str22; out AnalysisDateTime: tDTM);
 var
   curSegment: THL7Segment;
   nextField: THL7Field;
@@ -98,9 +106,9 @@ end;
 
 procedure SetOBX(message: THL7Message; SetID: str4; ValueType: str2; ObsID: str250;
   obsSubID: str20; obsValue: AnsiString; Units: str250; RefRange: str60;
-  AbnormFlags, probability: str5; Nature: str2; status: char; RRDate: str26;
-  UDAC: str20; ObsDateTime: str26; prodID, respObs, observMethod: str250;
-  EquipInstID: str22; AnalysisDateTime: str26);
+  AbnormFlags, probability: str5; Nature: str2; status: char; RRDate: tDTM;
+  UDAC: str20; ObsDateTime: tDTM; prodID, respObs, observMethod: str250;
+  EquipInstID: str22; AnalysisDateTime: tDTM);
 var
   newSegment: THL7Segment;
   FieldSep: char;
