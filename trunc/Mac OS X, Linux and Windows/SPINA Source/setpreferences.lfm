@@ -14,7 +14,7 @@ object PreferencesForm: TPreferencesForm
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.12.0'
+  LCLVersion = '1.0.14.0'
   object OKButton: TButton
     Left = 525
     Height = 25
@@ -57,8 +57,8 @@ object PreferencesForm: TPreferencesForm
         Width = 530
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Methods and measurement units:'
-        ClientHeight = 112
-        ClientWidth = 526
+        ClientHeight = 108
+        ClientWidth = 522
         TabOrder = 0
         object MethodLabel: TLabel
           Left = 116
@@ -96,7 +96,7 @@ object PreferencesForm: TPreferencesForm
           Width = 67
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'ng/dl'
@@ -116,7 +116,7 @@ object PreferencesForm: TPreferencesForm
           Width = 67
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'pg/ml'
@@ -136,7 +136,7 @@ object PreferencesForm: TPreferencesForm
           Width = 56
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'FT4'
@@ -185,7 +185,7 @@ object PreferencesForm: TPreferencesForm
           Width = 67
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'mU/l'
@@ -204,7 +204,7 @@ object PreferencesForm: TPreferencesForm
           Width = 56
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'FT3'
@@ -223,8 +223,8 @@ object PreferencesForm: TPreferencesForm
         Width = 530
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Reference values:'
-        ClientHeight = 138
-        ClientWidth = 526
+        ClientHeight = 134
+        ClientWidth = 522
         DragMode = dmAutomatic
         TabOrder = 1
         object TSHRRLabel: TLabel
@@ -329,23 +329,23 @@ object PreferencesForm: TPreferencesForm
     end
     object TabSheet2: TTabSheet
       Caption = 'Sender ID'
-      ClientHeight = 310
-      ClientWidth = 566
+      ClientHeight = 297
+      ClientWidth = 568
       object IDGroupBox: TGroupBox
         Left = 24
         Height = 72
         Top = 8
-        Width = 530
+        Width = 532
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Physician or Hospital ID:'
-        ClientHeight = 54
-        ClientWidth = 526
+        ClientHeight = 50
+        ClientWidth = 524
         TabOrder = 0
         object IDLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 16
-          Width = 40
+          Width = 50
           Caption = 'MSH ID:'
           ParentColor = False
         end
@@ -353,7 +353,7 @@ object PreferencesForm: TPreferencesForm
           Left = 116
           Height = 21
           Top = 16
-          Width = 398
+          Width = 396
           Anchors = [akTop, akLeft, akRight]
           AutoSize = False
           TabOrder = 0
@@ -371,8 +371,8 @@ object PreferencesForm: TPreferencesForm
         Width = 530
         Anchors = [akTop, akLeft, akRight]
         Caption = 'GUI'
-        ClientHeight = 40
-        ClientWidth = 526
+        ClientHeight = 36
+        ClientWidth = 522
         TabOrder = 0
         object MarkMandatoryCheck: TCheckBox
           Left = 16

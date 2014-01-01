@@ -344,7 +344,7 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +#15#224'x'#248#7#240'x'#248#7#240'x'#252#7#240'x'#254#7#240#249#255#7#248#249
   +#255#135#252#253#255#255#255#255#255#255#255#255#255#255#255#255#255#255#255
   +#255#255#255#9'OnKeyDown'#7#11'FormKeyDown'#8'Position'#7#14'poScreenCenter'
-  +#10'LCLVersion'#6#8'1.0.12.0'#0#7'TButton'#7'Button1'#4'Left'#3#192#0#6'Heig'
+  +#10'LCLVersion'#6#8'1.0.14.0'#0#7'TButton'#7'Button1'#4'Left'#3#192#0#6'Heig'
   +'ht'#2#24#3'Top'#3'X'#1#5'Width'#2'K'#7'Caption'#6#2'OK'#7'Default'#9#7'OnCl'
   +'ick'#7#13'CloseAboutBox'#8'TabOrder'#2#0#0#0#12'TPageControl'#4'Tabs'#4'Lef'
   +'t'#2#8#6'Height'#3'@'#1#3'Top'#2#8#5'Width'#3#168#1#10'ActivePage'#7#9'TabS'
