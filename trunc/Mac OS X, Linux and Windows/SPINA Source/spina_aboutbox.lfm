@@ -330,8 +330,8 @@ object AboutBox: TAboutBox
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
-      ClientHeight = 281
-      ClientWidth = 418
+      ClientHeight = 294
+      ClientWidth = 416
       object Image1: TImage
         Cursor = crHandPoint
         Left = 21
@@ -1950,4 +1950,4 @@ object AboutBox: TAboutBox
       end
     end
   end
-end
+end

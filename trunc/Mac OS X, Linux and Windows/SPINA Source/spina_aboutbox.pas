@@ -110,9 +110,9 @@ begin
   else if WindowsVersion = wvVista then
     OSVersion := 'Windows Vista '
   else if WindowsVersion = wv7 then
-    OSVersion := 'Windows 7 ';
-  else if WindowsVersion = wv8 then
-    OSVersion := 'Windows 8 '
+    OSVersion := 'Windows 7 '
+  //else if WindowsVersion = wv8 then   // for future LCL versions
+  //  OSVersion := 'Windows 8 '
   else
     OSVersion := 'Windows ';
   {$ENDIF}
@@ -123,7 +123,11 @@ end;
 
 procedure ShowAboutBox;
 var
-  SystemStem, MajVer, MinVer: Str255;
+  SystemStem, MajVer, MinVer, BugfixVer, VersionString: Str255;
+  {$IFDEF LCLcarbon}
+  Major, Minor, Bugfix: SInt32;
+  theError: SInt16;
+  {$ENDIF}
 begin
   if gStartup then
     AboutBox.Hide
@@ -149,14 +153,37 @@ begin
       AboutBox.Memo1.Lines.Add('with '+ GetCompilerInfo + ' on '+ GetCompiledDate);
       AboutBox.Memo1.Lines.Add('and using '+ GetLCLVersion + ' and ' + GetWidgetset);
       AboutBox.Memo1.Lines.Add('');
+      {$IFDEF LCLcarbon}
+      theError := Gestalt(gestaltSystemVersionMajor, Major);
+      if theError = 0 then
+        MajVer := IntToStr(Major)
+      else
+        MajVer := '';
+      theError := Gestalt(gestaltSystemVersionMinor, Minor);
+      if theError = 0 then
+        MinVer := IntToStr(Minor)
+      else
+        MinVer := '';
+      theError := Gestalt(gestaltSystemVersionBugFix, Bugfix);
+      if theError = 0 then
+        BugfixVer := IntToStr(Bugfix)
+      else
+        BugfixVer := '';
+      if SystemStem <> 'Mac OS X 10.' then
+        SystemStem := 'Mac OS ' + MajVer + '.';
+      VersionString := SystemStem + MinVer + '.' + BugfixVer;
+      {$ELSE}
       {$IFDEF WINDOWS}
       MajVer := IntToStr(Win32MajorVersion);
       MinVer := IntToStr(Win32MinorVersion);
+      VersionString := SystemStem + MajVer + '.' + MinVer;
       {$ELSE}
       MajVer := IntToStr(Lo(DosVersion) - 4);
       MinVer := IntToStr(Hi(DosVersion));
+      VersionString := SystemStem + MajVer + '.' + MinVer;
       {$ENDIF}
-      AboutBox.Memo1.Lines.Add('Operating system: ' + GetOS + ' (' + SystemStem + MajVer + '.' + MinVer + ')');
+      {$ENDIF}
+      AboutBox.Memo1.Lines.Add('Operating system: ' + GetOS + ' (' + VersionString + ')');
       AboutBox.AlphaBlendValue := 255;
       AboutBox.ShowModal;
     end;

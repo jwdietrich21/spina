@@ -349,8 +349,8 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'ick'#7#13'CloseAboutBox'#8'TabOrder'#2#0#0#0#12'TPageControl'#4'Tabs'#4'Lef'
   +'t'#2#8#6'Height'#3'@'#1#3'Top'#2#8#5'Width'#3#168#1#10'ActivePage'#7#9'TabS'
   +'heet1'#8'TabIndex'#2#0#8'TabOrder'#2#1#8'OnChange'#7#10'TabsChange'#0#9'TTa'
-  +'bSheet'#9'TabSheet1'#7'Caption'#6#7'Version'#12'ClientHeight'#3#25#1#11'Cli'
-  +'entWidth'#3#162#1#0#6'TImage'#6'Image1'#6'Cursor'#7#11'crHandPoint'#4'Left'
+  +'bSheet'#9'TabSheet1'#7'Caption'#6#7'Version'#12'ClientHeight'#3'&'#1#11'Cli'
+  +'entWidth'#3#160#1#0#6'TImage'#6'Image1'#6'Cursor'#7#11'crHandPoint'#4'Left'
   +#2#21#6'Height'#3#251#0#3'Top'#2#12#5'Width'#3'z'#1#7'OnClick'#7#8'ClickURL'
   +#12'Picture.Data'#10#133#183#0#0#23'TPortableNetworkGraphici'#183#0#0#137'PN'
   +'G'#13#10#26#10#0#0#0#13'IHDR'#0#0#1'z'#0#0#0#218#8#2#0#0#0''''#169#30#157#0
