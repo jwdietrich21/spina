@@ -138,7 +138,7 @@ end;
 
 procedure InsertTTSI(var theCase: tCaseRecord; FT4UpperLimit: real);
 begin
-  if (gPreferences.T4.Method = freeHormone) and not isNan(theCase.TSH) and not gTSHTherapy then
+  if (gPreferences.T4.Method = freeHormone) and not isNan(theCase.TSH) and not isNan(FT4UpperLimit) and not gTSHTherapy then
   begin
     theCase.TTSI := 100 * theCase.TSH * theCase.FT4 / FT4UpperLimit;
   end

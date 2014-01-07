@@ -35,6 +35,7 @@ const
   kCR = chr(13);
   DEC_POINT = '.';
   DEC_COMMA = ',';
+  NA_MARK = 'N/A';
   TEXT_WIDTH = 10;
   TSH_UNIT = 'mU/l';   {standard initial unit}
   FT4_UNIT = 'ng/dl';  {standard initial unit}

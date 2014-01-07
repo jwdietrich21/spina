@@ -218,7 +218,7 @@ procedure GetPreferences;
 implementation
 
 function GetOSLanguage: string;
-{platform-independent method to read the language of the user interface}
+  {platform-independent method to read the language of the user interface}
 var
   l, fbl: string;
   {$IFDEF LCLCarbon}
@@ -262,14 +262,14 @@ var
 begin
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T4UnitComboBox.Text));
   if unitElements.MassUnit = 'mol' then
-    gPreferences.T4.isSI := true
+    gPreferences.T4.isSI := True
   else
-    gPreferences.T4.isSI := false;
+    gPreferences.T4.isSI := False;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.T3UnitComboBox.Text));
   if unitElements.MassUnit = 'mol' then
-    gPreferences.T3.isSI := true
+    gPreferences.T3.isSI := True
   else
-    gPreferences.T3.isSI := false;
+    gPreferences.T3.isSI := False;
   UnitElements := ParsedUnitString(EncodeGreek(Hauptschirm.TSHUnitComboBox.Text));
   gTSHUnit := Hauptschirm.TSHUnitCombobox.Text;
   gT4Unit := Hauptschirm.T4UnitCombobox.Text;
@@ -333,64 +333,64 @@ begin
   if gPreferences.T4.Method = freeHormone then
     Hauptschirm.T4MethodComboBox.ItemIndex := 0
   else
-    begin
-      Hauptschirm.T4MethodComboBox.ItemIndex := 1;
-      Hauptschirm.T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
-    end;
+  begin
+    Hauptschirm.T4MethodComboBox.ItemIndex := 1;
+    Hauptschirm.T4UnitCombobox.Items.Assign(Hauptschirm.T4Items.Items);
+  end;
   if gPreferences.T3.Method = freeHormone then
     Hauptschirm.T3MethodComboBox.ItemIndex := 0
   else
-    begin
-      Hauptschirm.T3MethodComboBox.ItemIndex := 1;
-      Hauptschirm.T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
-    end;
-  found := false;
+  begin
+    Hauptschirm.T3MethodComboBox.ItemIndex := 1;
+    Hauptschirm.T3UnitCombobox.Items.Assign(Hauptschirm.T3Items.Items);
+  end;
+  found := False;
   with gPreferences do
   begin
     for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count - 1 do
+    begin
+      if TSH.measurementUnit = Hauptschirm.TSHUnitComboBox.Items[i] then
       begin
-        if TSH.measurementUnit = Hauptschirm.TSHUnitComboBox.Items[i] then
-          begin
-            found := true;
-            Hauptschirm.TSHUnitComboBox.ItemIndex := i;
-            break;
-          end;
+        found := True;
+        Hauptschirm.TSHUnitComboBox.ItemIndex := i;
+        break;
       end;
-    if found = false then
-      begin
-        Hauptschirm.TSHUnitComboBox.Items.Add(TSH.measurementUnit);
-        Hauptschirm.TSHUnitComboBox.ItemIndex := i + 1;
-      end;
+    end;
+    if found = False then
+    begin
+      Hauptschirm.TSHUnitComboBox.Items.Add(TSH.measurementUnit);
+      Hauptschirm.TSHUnitComboBox.ItemIndex := i + 1;
+    end;
     TSH.PopupItem := Hauptschirm.TSHUnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T4UnitComboBox.Items.Count - 1 do
+    begin
+      if T4.measurementUnit = Hauptschirm.T4UnitComboBox.Items[i] then
       begin
-        if T4.measurementUnit = Hauptschirm.T4UnitComboBox.Items[i] then
-          begin
-            found := true;
-            Hauptschirm.T4UnitComboBox.ItemIndex := i;
-            break;
-          end;
+        found := True;
+        Hauptschirm.T4UnitComboBox.ItemIndex := i;
+        break;
       end;
-    if found = false then
-      begin
-        Hauptschirm.T4UnitComboBox.Items.Add(T4.measurementUnit);
-        Hauptschirm.T4UnitComboBox.ItemIndex := i + 1;
-      end;
+    end;
+    if found = False then
+    begin
+      Hauptschirm.T4UnitComboBox.Items.Add(T4.measurementUnit);
+      Hauptschirm.T4UnitComboBox.ItemIndex := i + 1;
+    end;
     T4.PopUpItem := Hauptschirm.T4UnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T3UnitComboBox.Items.Count - 1 do
+    begin
+      if T3.measurementUnit = Hauptschirm.T3UnitComboBox.Items[i] then
       begin
-        if T3.measurementUnit = Hauptschirm.T3UnitComboBox.Items[i] then
-          begin
-            found := true;
-            Hauptschirm.T3UnitComboBox.ItemIndex := i;
-            break;
-          end;
+        found := True;
+        Hauptschirm.T3UnitComboBox.ItemIndex := i;
+        break;
       end;
-    if found = false then
-      begin
-        Hauptschirm.T3UnitComboBox.Items.Add(T3.measurementUnit);
-        Hauptschirm.T3UnitComboBox.ItemIndex := i + 1;
-      end;
+    end;
+    if found = False then
+    begin
+      Hauptschirm.T3UnitComboBox.Items.Add(T3.measurementUnit);
+      Hauptschirm.T3UnitComboBox.ItemIndex := i + 1;
+    end;
     T3.PopUpItem := Hauptschirm.T3UnitComboBox.ItemIndex;
     Hauptschirm.T4MethodComboBoxAdjust(Hauptschirm);
     Hauptschirm.T3MethodComboBoxAdjust(Hauptschirm);
@@ -458,7 +458,7 @@ begin
   Hauptschirm.ResultField.Hint := gReferenceValueString2;
 end;
 
-procedure ShowMessage(TSH_String, T4_String, T3_String: Str255; theResult: String);
+procedure ShowMessage(TSH_String, T4_String, T3_String: Str255; theResult: string);
 {displays the result of the calculation}
 const
   kTSH_Label = '   TSH: ';
@@ -473,6 +473,7 @@ const
 var
   theString, vhString: Str255;
   T4Label, T3Label: Str255;
+  TSH_withUnit, T4_withUnit, T3_withUnit: Str255;
 begin
   if gPreferences.T4.Method = freeHormone then  {free or total T4?}
     T4Label := kFT4_Label
@@ -482,9 +483,20 @@ begin
     T3Label := kFT3_Label
   else
     T3Label := kT3_Label;
+  if LeftStr(TSH_String, 3) = NA_MARK then
+    TSH_withUnit := NA_MARK
+  else
+    TSH_withUnit :=  concat(TSH_String, ' ', gTSHUnit);
+  if LeftStr(T4_String, 3) = NA_MARK then
+    T4_withUnit := NA_MARK
+  else
+    T4_withUnit :=  concat(T4_String, ' ', gTSHUnit);
+  if LeftStr(T3_String, 3) = NA_MARK then
+    T3_withUnit := NA_MARK
+  else
+    T3_withUnit :=  concat(T3_String, ' ', gTSHUnit);
   vhString := concat(gVerhaltensparameter, kCR, kLF, '   TSH: ',
-    TSH_String, ' ', gTSHUnit, kCR, kLF, T4Label, T4_String, ' ',
-    gT4Unit, kCR, kLF, T3Label, T3_String, ' ', gT3Unit);
+    TSH_withUnit, kCR, kLF, T4Label, T4_withUnit, kCR, kLF, T3Label, T3_withUnit);
   theString := concat(vhString, kCR, kLF, kCR, kLF, gStrukturparameter,
     kCR, kLF, theResult);
   Hauptschirm.ResultField.Text := theString;
@@ -514,12 +526,11 @@ end;
 
 procedure HandleInput;
 var
-  Buffer: PChar;
   Size: byte;
-  oldSeparator: Char;
-  strucPars: String;
+  oldSeparator: char;
+  strucPars: string;
   TSH_String, T4_String, T3_String: Str255;
-  TSH_Flag, T4_Flag, T3_Flag: String;
+  TSH_Flag, T4_Flag, T3_Flag: string;
   FT4UpperLimitforTTSI: real;
 begin
   oldSeparator := decimalSeparator;
@@ -530,7 +541,10 @@ begin
     Size := Hauptschirm.TSH_Text.GetTextLen;
     {Laenge des Strings in TSH_Text ermitteln}
     if Size = 0 then                                      {Feld leer?}
-      TSH := Math.Nan
+    begin
+      TSH := Math.Nan;
+      TSH_String := NA_MARK;
+    end
     else
     begin
       TSH_String := Hauptschirm.TSH_Text.Text;
@@ -541,16 +555,19 @@ begin
       TSH := StrToFloat(TSH_String);
       TSH := ConvertedValue(TSH, 1, 'mU/l', 'mU/l');
       decimalSeparator := oldSeparator;
+      if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.hn)) then
+        TSH_Flag := ''
+      else if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
+        TSH_Flag := REF_RANGE_FLAG;
+      TSH_String := FloatToStrF(TSH, ffFixed, 3, 2) + TSH_Flag;
     end;
-    if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.hn)) then
-      TSH_Flag := ''
-    else if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
-      TSH_Flag := REF_RANGE_FLAG;
-    TSH_String := FloatToStrF(TSH, ffFixed, 3, 2) + TSH_Flag;
     Size := Hauptschirm.FT4_Text.GetTextLen;
     {Laenge des Strings in FT4_Text ermitteln}
     if Size = 0 then                                      {Feld leer?}
-      T4 := Math.NaN
+    begin
+      T4 := Math.NaN;
+      T4_String := NA_MARK;
+    end
     else
     begin
       T4_String := Hauptschirm.FT4_Text.Text;
@@ -560,27 +577,31 @@ begin
         decimalSeparator := DEC_POINT;
       T4 := StrToFloat(T4_String);
       decimalSeparator := oldSeparator;
-    end;
-    if gPreferences.T4.Method = freeHormone then  {free or total T4?}
+      if gPreferences.T4.Method = freeHormone then  {free or total T4?}
       begin
         if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.hn)) then
-         T4_Flag := ''
+          T4_Flag := ''
         else if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
-         T4_Flag := REF_RANGE_FLAG;
+          T4_Flag := REF_RANGE_FLAG;
       end
-    else
+      else
       begin
         if (isNan(gReferenceRanges.TT4.ln) or isNan(gReferenceRanges.TT4.hn)) then
-         T4_Flag := ''
+          T4_Flag := ''
         else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
-         T4_Flag := REF_RANGE_FLAG;
+          T4_Flag := REF_RANGE_FLAG;
       end;
-    T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
-    T4 := ConvertedValue(T4, T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
+      T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
+      T4 := ConvertedValue(T4, T4_MOLAR_MASS,
+        Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
+    end;
     Size := Hauptschirm.FT3_Text.GetTextLen;
     {Laenge des Strings in FT3_Text ermitteln}
     if Size = 0 then                                      {Feld leer?}
-      T3 := Math.NaN
+    begin
+      T3 := Math.NaN;
+      T3_String := NA_MARK;
+    end
     else
     begin
       T3_String := Hauptschirm.FT3_Text.Text;
@@ -590,23 +611,23 @@ begin
         decimalSeparator := DEC_POINT;
       T3 := StrToFloat(T3_String);
       decimalSeparator := oldSeparator;
-    end;
-    if gPreferences.T3.Method = freeHormone then  {free or total T3?}
+      if gPreferences.T3.Method = freeHormone then  {free or total T3?}
       begin
-       if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.hn)) then
-         T3_Flag := ''
+        if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.hn)) then
+          T3_Flag := ''
         else if (T3 < gReferenceRanges.FT3.ln) or (T3 > gReferenceRanges.FT3.hn) then
-         T3_Flag := REF_RANGE_FLAG;
+          T3_Flag := REF_RANGE_FLAG;
       end
-    else
+      else
       begin
         if (isNan(gReferenceRanges.TT3.ln) or isNan(gReferenceRanges.TT3.hn)) then
-         T3_Flag := ''
+          T3_Flag := ''
         else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
-         T3_Flag := REF_RANGE_FLAG;
+          T3_Flag := REF_RANGE_FLAG;
       end;
-    T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
-    T3 := ConvertedValue(T3, T3_MOLAR_MASS, Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
+      T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
+      T3 := ConvertedValue(T3, T3_MOLAR_MASS, Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
+    end;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
       gTSHTherapy := True
     else
@@ -630,19 +651,19 @@ begin
   end;
   decimalSeparator := oldSeparator;
   Hauptschirm.caseRecord := Calculate(TSH, T4, T3);
-  FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn, T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
+  FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
+    T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
   InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
   FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
   if gUseReferenceRanges then
-    strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs, kCR,
-      kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs, kCR,
+    strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs,
+      kCR, kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs, kCR,
       kLF, '   TSHI: ', Hauptschirm.caseRecord.flaggedTSHIs, kCR,
       kLF, '   TTSI: ', Hauptschirm.caseRecord.flaggedTTSIs)
   else
-    strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs, kCR, kLF,
-      '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF,
-      '   TSHI: ', Hauptschirm.caseRecord.TSHIs, kCR, kLF,
-      '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
+    strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs, kCR,
+      kLF, '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF, '   TSHI: ',
+      Hauptschirm.caseRecord.TSHIs, kCR, kLF, '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
   ShowMessage(TSH_String, T4_String, T3_String, strucPars);
 end;
 
@@ -728,25 +749,26 @@ end;
 
 procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
 begin
-  if gPreferences.colouriseMandatoryFields then begin {should mandatory fields be colourised?}
+  if gPreferences.colouriseMandatoryFields then
+  begin {should mandatory fields be colourised?}
     if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
-      Hauptschirm.TSH_Text.Color:= clDefault
+      Hauptschirm.TSH_Text.Color := clDefault
     else
-      Hauptschirm.TSH_Text.Color:= gPreferences.MandatoryColor;
+      Hauptschirm.TSH_Text.Color := gPreferences.MandatoryColor;
     if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
-      Hauptschirm.FT4_Text.Color:= clDefault
+      Hauptschirm.FT4_Text.Color := clDefault
     else
-      Hauptschirm.FT4_Text.Color:= gPreferences.MandatoryColor;
+      Hauptschirm.FT4_Text.Color := gPreferences.MandatoryColor;
     if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
-      Hauptschirm.FT3_Text.Color:= clDefault
+      Hauptschirm.FT3_Text.Color := clDefault
     else
-      Hauptschirm.FT3_Text.Color:= gPreferences.MandatoryColor;
+      Hauptschirm.FT3_Text.Color := gPreferences.MandatoryColor;
   end
   else
   begin
-    Hauptschirm.TSH_Text.Color:= clDefault;
-    Hauptschirm.FT4_Text.Color:= clDefault;
-    Hauptschirm.FT3_Text.Color:= clDefault;
+    Hauptschirm.TSH_Text.Color := clDefault;
+    Hauptschirm.FT4_Text.Color := clDefault;
+    Hauptschirm.FT3_Text.Color := clDefault;
   end;
 end;
 
@@ -781,8 +803,7 @@ begin
   Hauptschirm.MarkMandatoryFields(Sender);
 end;
 
-procedure THauptschirm.TherapyCheckGroupItemClick(Sender: TObject;
-  Index: integer);
+procedure THauptschirm.TherapyCheckGroupItemClick(Sender: TObject; Index: integer);
 begin
   Hauptschirm.MarkMandatoryFields(Sender);
 end;
@@ -792,9 +813,9 @@ begin
   {Adjustments for small screens:}
   if Screen.Width < Hauptschirm.Width then
   begin
-    Hauptschirm.SPINALabel.Visible := false;
-    Hauptschirm.HintGroupBox.Visible := false;
-    Hauptschirm.HintField.Visible := false;
+    Hauptschirm.SPINALabel.Visible := False;
+    Hauptschirm.HintGroupBox.Visible := False;
+    Hauptschirm.HintField.Visible := False;
     Hauptschirm.Width := Hauptschirm.Constraints.MinWidth;
     Hauptschirm.Left := (Screen.Width - Hauptschirm.Width) div 2;
   end;
@@ -1022,7 +1043,8 @@ begin
       Printer.Canvas.Pen.Color := clBlack;
       Printer.Canvas.Pen.Width := 2;
       H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
-      tabX := Printer.PageWidth - marginXr - trunc(2.5 * Printer.Canvas.TextWidth(gUntersuchungsdatum));
+      tabX := Printer.PageWidth - marginXr - trunc(2.5 *
+        Printer.Canvas.TextWidth(gUntersuchungsdatum));
       PrintCaption(H, currentX, currentY, marginXr);
       lastPos := 1;
       lastY := currentY;

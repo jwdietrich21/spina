@@ -495,31 +495,31 @@ begin
       gReferenceRanges.TT3.hn := gReferenceRanges.TT3.hn * UnitFactor(gReferenceRanges.TT3.measurementUnit, T3UnitFactor[0]) / UnitFactor(gPreferences.T3.measurementUnit, T3UnitFactor[0]);
     end;
   if IsNan(gReferenceRanges.TSH.ln) then
-    gTSHRR := 'N/A'
+    gTSHRR := NA_MARK
   else
     gTSHRR := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2) + ' mU/L';
   if IsNan(gReferenceRanges.FT4.ln) then
-    gFT4RR := 'N/A'
+    gFT4RR := NA_MARK
   else
     gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ' + gPreferences.T4.measurementUnit;
   if IsNan(gReferenceRanges.FT3.ln) then
-    gFT3RR := 'N/A'
+    gFT3RR := NA_MARK
   else
     gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' ' + gPreferences.T3.measurementUnit;
   if IsNan(gReferenceRanges.TT4.ln) then
-    gTT4RR := 'N/A'
+    gTT4RR := NA_MARK
   else
     gTT4RR := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2) + ' ' + gPreferences.T4.measurementUnit;
   if IsNan(gReferenceRanges.TT3.ln) then
-    gTT3RR := 'N/A'
+    gTT3RR := NA_MARK
   else
     gTT3RR := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2) + ' ' + gPreferences.T3.measurementUnit;
   if IsNan(gReferenceRanges.GT.ln) then
-    gGTRR := 'N/A'
+    gGTRR := NA_MARK
   else
     gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
   if IsNan(gReferenceRanges.GD.ln) then
-    gGDRR := 'N/A'
+    gGDRR := NA_MARK
   else
     gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
 end;
