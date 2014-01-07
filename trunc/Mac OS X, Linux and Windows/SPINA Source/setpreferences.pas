@@ -13,7 +13,7 @@ unit SetPreferences;
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2013 }
+{ (c) Ruhr University of Bochum 2005 - 2014 }
 
 { This unit draws a dialog box for setting global application preferences }
 
@@ -38,14 +38,14 @@ type
     CDISCOpenDialog: TOpenDialog;
     IDGroupBox: TGroupBox;
     GUIGroupBox: TGroupBox;
-    IDLabel: TLabel;
+    SendingFacLabel: TLabel;
     MarkMandatoryCheck: TCheckBox;
     GDRREdit: TEdit;
     GDRRLabel: TLabel;
     GTRREdit: TEdit;
     GTRRLabel: TLabel;
     MethodLabel: TLabel;
-    MSHIDEdit: TEdit;
+    SendingFacEdit: TEdit;
     OKButton: TButton;
     PageControl1: TPageControl;
     ReadCDISCButton: TButton;
@@ -368,7 +368,7 @@ begin
     ComposeRRHints;
   end;
   CheckMandatoryColourising;
-  gPreferences.MSH_ID := MSHIDEdit.Text;
+  gPreferences.MSH_ID := SendingFacEdit.Text;
   SavePreferences;
   PreferencesForm.Close;
   SPINA_UserInterface.GetPreferences;
@@ -439,7 +439,7 @@ begin
   else
     RememberCheckBox.Checked := False;
   DisplayReferenceRanges(Sender);
-  MSHIDEdit.Text := gPreferences.MSH_ID;
+  SendingFacEdit.Text := gPreferences.MSH_ID;
 end;
 
 procedure TPreferencesForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);

@@ -1,5 +1,3 @@
-{ This is an automatically generated lazarus resource file }
-
 LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   'TPF0'#13'TSPINAToolbar'#12'SPINAToolbar'#4'Left'#3#19#1#6'Height'#2'X'#3'Top'
   +#2'w'#5'Width'#3's'#3#21'HorzScrollBar.Visible'#8#21'VertScrollBar.Visible'#8
@@ -618,4 +616,4 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +'HL7 Version 2.x (*.hl7)|*.hl7'#7'Options'#11#17'ofOverwritePrompt'#14'ofEna'
   +'bleSizing'#12'ofViewDetail'#13'ofAutoPreview'#0#4'left'#3'('#2#3'top'#2#9#0
   +#0#0
-]);
+]);
