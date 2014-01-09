@@ -80,6 +80,21 @@ implementation
 procedure THelpWindow.FormCreate(Sender: TObject);
 {i18n}
 begin
+  {$IFDEF LCLCarbon}
+  Label3.Font.Height := 13;
+  Label4.Font.Height := 13;
+  Label6.Font.Height := 13;
+  Label2.Font.Height := 10;
+  Label5.Font.Height := 10;
+  Label7.Font.Height := 10;
+  {$ELSE}
+  Label3.Font.Height := 15;
+  Label4.Font.Height := 15;
+  Label6.Font.Height := 15;
+  Label2.Font.Height := 13;
+  Label5.Font.Height := 13;
+  Label7.Font.Height := 13;
+  {$ENDIF}
   if gInterfaceLanguage <> German then
   begin
     HelpWindow.Caption := WINDOW_TITLE2;

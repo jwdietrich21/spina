@@ -1,11 +1,11 @@
 object HelpWindow: THelpWindow
-  Left = 392
-  Height = 295
-  Top = 239
+  Left = 362
+  Height = 255
+  Top = 207
   Width = 610
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'SPINA Help'
-  ClientHeight = 295
+  ClientHeight = 255
   ClientWidth = 610
   Color = clWhite
   Constraints.MinHeight = 200
@@ -15,9 +15,9 @@ object HelpWindow: THelpWindow
   LCLVersion = '1.0.14.0'
   object Label1: TLabel
     Left = 80
-    Height = 22
+    Height = 23
     Top = 34
-    Width = 104
+    Width = 105
     Caption = 'SPINA Help'
     Font.Height = -18
     Font.Style = [fsBold]
@@ -27,9 +27,9 @@ object HelpWindow: THelpWindow
   object Label3: TLabel
     Cursor = crHandPoint
     Left = 40
-    Height = 17
+    Height = 14
     Top = 128
-    Width = 192
+    Width = 146
     Caption = 'Information about the method'
     Font.Color = clNavy
     Font.Pitch = fpVariable
@@ -40,11 +40,12 @@ object HelpWindow: THelpWindow
   object Label4: TLabel
     Cursor = crHandPoint
     Left = 40
-    Height = 17
+    Height = 14
     Top = 80
-    Width = 75
+    Width = 55
     Caption = 'Online Help'
     Font.Color = clNavy
+    Font.Height = 13
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
@@ -75,9 +76,9 @@ object HelpWindow: THelpWindow
   end
   object Label2: TLabel
     Left = 40
-    Height = 13
+    Height = 11
     Top = 96
-    Width = 301
+    Width = 215
     Caption = 'Get a short introduction, a full handbook and tutorials online.'
     Font.Height = 10
     ParentColor = False
@@ -85,9 +86,9 @@ object HelpWindow: THelpWindow
   end
   object Label5: TLabel
     Left = 40
-    Height = 13
+    Height = 11
     Top = 144
-    Width = 262
+    Width = 188
     Caption = 'References and background information about SPINA.'
     Font.Height = 10
     ParentColor = False
@@ -96,9 +97,9 @@ object HelpWindow: THelpWindow
   object Label6: TLabel
     Cursor = crHandPoint
     Left = 40
-    Height = 17
+    Height = 14
     Top = 168
-    Width = 77
+    Width = 57
     Caption = 'Version info'
     Font.Color = clNavy
     Font.Pitch = fpVariable

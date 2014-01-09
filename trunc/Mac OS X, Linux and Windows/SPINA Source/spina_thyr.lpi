@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="4"/>
-      <BuildNr Value="399"/>
+      <BuildNr Value="401"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.4.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -49,11 +49,10 @@
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="spina_thyr"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="18"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="100" Y="7"/>
+        <TopLine Value="37"/>
+        <CursorPos X="28" Y="63"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -383,10 +382,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="spina_help"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <TopLine Value="69"/>
+        <CursorPos X="85" Y="80"/>
         <UsageCount Value="58"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -829,4 +829,4 @@ end;"/>
       </Item2>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>
