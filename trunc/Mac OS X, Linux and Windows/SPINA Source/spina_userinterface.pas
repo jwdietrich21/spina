@@ -30,18 +30,24 @@ uses
   gettext, SPINA_Types, UnitConverter, SPINA_Engine, SPINA_AboutBox,
   SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences,
   HandleImpEx, Math, LCLIntf
-  {$IFDEF win32}
+  {$IFDEF MSWINDOWS}
   , Windows
-  {$ELSE}
-  , Unix
-    {$IFDEF LCLCarbon}
-  , MacOSAll
-    {$ENDIF}
   {$ENDIF}
-  , Printers, ComCtrls, PrintersDlgs;
+  {$IFDEF UNIX}
+  , Unix
+  {$IF (DEFINED(LINUX)) OR (DEFINED(FREEBSD))}
+  , users // not available on OSX
+  {$ENDIF}
+  , baseunix // for fpgetuid
+  {$ENDIF}
+  {$IFDEF LCLCarbon}
+  , MacOSAll
+  {$ENDIF}
+  , lazutf8, Printers, ComCtrls, PrintersDlgs;
 
 const
   AnInch = 2.54;
+  MaxLen = 256;
 
 type
 
@@ -195,9 +201,9 @@ type
 var
   TSH, T4, T3: real;
   Hauptschirm: THauptschirm;
-  UserName: array[0..128] of char;
   gSysLanguage, gUserName: string;
-  arraySize: DWord;
+  UserNameSize: DWord;
+  wUserName: WideString;
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
   gcalcCounter: longint;
   gAppPath, gAppDir, gAppName: string;
@@ -1137,7 +1143,6 @@ end;
 initialization
 {$I spina_userinterface.lrs}
 
-  arraySize := SizeOf(UserName);
   gInterfaceLanguage := German;
 
   gPrefsDir := GetPreferencesFolder;
@@ -1147,12 +1152,41 @@ initialization
   gAppPath := Application.Location;
 
   gSysLanguage := GetOSLanguage;
+  {$IFDEF WINDOWS}
+  UserNameSize := MaxLen;
+  {$IFNDEF WINCE}
+  if Win32MajorVersion <= 4 then
+  begin
+    SetLength(gUserName, MaxLen);
+    if Windows.GetUserName(@gUserName[1], UserNameSize) then
+    begin
+      SetLength(gUserName, UserNameSize - 1);
+      gUserName := SysToUtf8(gUserName);
+    end
+    else
+      gUserName := '';
+  end
+  else
+  {$ENDIF NOT WINCE}
+  begin
+    SetLength(wUserName, MaxLen - 1);
+    if Windows.GetUserNameW(@wUserName[1], UserNameSize) then
+    begin
+      SetLength(wUserName, UserNameSize - 1);
+      gUserName := Utf16ToUtf8(wUserName);
+    end
+    else
+      gUserName := '';
+  end;
+  {$ENDIF WINDOWS}
   {$IFDEF UNIX}
-  gUserName := GetEnvironmentVariable('USER');
-  {$ELSE}
-  GetUserName(UserName, arraySize);
-  gUserName := string(UserName);
+  {$IF (DEFINED(LINUX)) OR (DEFINED(FREEBSD))}
+  gUserName := SysToUtf8(GetUserName(fpgetuid));
   {$ENDIF}
+  if gUserName = '' then
+  gUserName := GetEnvironmentVariableUTF8('USER');
+  {$ENDIF}
+
   if gSysLanguage = 'de' then
   begin
     gInterfaceLanguage := German;
