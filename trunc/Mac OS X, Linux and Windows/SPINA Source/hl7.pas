@@ -8,10 +8,10 @@ unit HL7;
 
 { Version 1.3 }
 
-{ (c) J. W. Dietrich, 1994 - 2013 }
+{ (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2013 }
+{ (c) Ruhr University of Bochum 2005 - 2014 }
 
 { Parser and compiler for HL7 messages }
 
@@ -20,13 +20,14 @@ unit HL7;
 { See the file "license.txt", included in this distribution, }
 { for details about the copyright. }
 { Current versions and additional information are available from }
-{ http://puma-repository.sf.net }
+{ http://puma-repository.sf.net }
 
 { This program is distributed in the hope that it will be useful, }
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
 { MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
 
-{Status code of HL7 message:
+{
+Status code of HL7 message:
  0: No Error.
  4: This HL7 version is not supported.
  6: Error saving file.
@@ -65,7 +66,7 @@ const
   ESCAPE_REPETITION = '\R\';
   ESCAPE_ESCAPE = '\E\';
 
-  ESCAPE_ISO_IR6_G0 = '\C2842\';    {ISO 646 : ASCII}
+  ESCAPE_ISO_IR6_G0 = '\C2842\';   {ISO 646 : ASCII}
   ESCAPE_ISO_IR100 = '\C2D41\';    {ISO 8859 : Latin Alphabet 1}
   ESCAPE_ISO_IR101 = '\C2D42\';    {ISO 8859 : Latin Alphabet 2}
   ESCAPE_ISO_IR109 = '\C2D43\';    {ISO 8859 : Latin Alphabet 3}
@@ -80,6 +81,20 @@ const
   ESCAPE_ISO_IR87  = '\M2442\';    {JIS X 0208 : Kanji, hiragana and katakana}
   ESCAPE_ISO_IR159 = '\M242844\';  {JIS X 0212 : Supplementary Kanji}
 
+  ERROR_COND_MSG_ACC = '0';           {Message accepted}
+  ERROR_COND_SEG_SEQ_ERR = '100';     {Segment sequence error}
+  ERROR_COND_REQ_FLD_MISS = '101';    {Required field missing}
+  ERROR_COND_DATA_TYPE_ERR = '102';   {Data type error}
+  ERROR_COND_TBL_VAL_NOT_FND = '103'; {Table value not found}
+  ERROR_COND_UNSUPP_MSG_TYPE = '200'; {Unsupported message type}
+  ERROR_COND_UNSUPP_EVT_CODE = '201'; {Unsupported event code}
+  ERROR_COND_UNSUPP_PROC_ID = '202';  {Unsupported processing id}
+  ERROR_COND_UNSUPP_VERS_ID = '200';  {Unsupported version id}
+  ERROR_COND_UNKNOWN_KEY_ID = '204';  {Unknown key identifier}
+  ERROR_COND_DUPL_KEY_ID = '205';     {Duplicate key identifier}
+  ERROR_COND_APPL_REC_LOCK = '206';   {Application record locked}
+  ERROR_COND_INT_ERR = '207';         {Internal error}
+
   MSH_ID = 'MSH';
 
 type
@@ -93,8 +108,10 @@ type
   str16 = string[16];
   str20 = string[20];
   str22 = string[22];
+  str25 = string[25];
   str26 = string[26];
   str40 = string[40];
+  str50 = string[50];
   str60 = string[60];
   str80 = string[80];
   str180 = string[180];
@@ -103,13 +120,43 @@ type
   str250 = string[250];
   str427 = AnsiString;
 
-  tCWE = str3;   { HL7 2.7 CWE type }
-  tIS = str3;    { HL7 2.5 IS type }
-  tMSG = str15;  { HL7 MSG type }
-  tDTM = str26;  { HL7 2.7 DTM type }
-  tTS = str26;   { HL7 2.5 TS type }
-  tHD = str241;  { HL7 HD type }
-  tXCN = str250; { HL7 XCN type }
+  tCE = str250;      { HL7 CE type (Coded entry, deprecated as of HL7 v2.6) }
+  tCNE = AnsiString; { HL7 2.6 CNE type (Coded with no exceptions) }
+  tCWE = AnsiString; { HL7 2.6 CWE type (coded with exceptions) }
+  tCX = str250;      { HL7 CX type (Extended composite ID with check digit) }
+  tCQ = AnsiString;  { HL7 CQ type (Composite quantity with units) }
+  tDLD = AnsiString; { HL7 DLD type (Discharge to location and date) }
+  tDLN = str25;      { HL7 DLN type (Driver's license number) }
+  tDTM = str26;      { HL7 2.7 DTM type (Date/time) }
+  tDT = str8;        { HL7 DT type (Date) }
+  tEI = str427;      { HL7 EI type (Entity identifier) }
+  tEIP = AnsiString; { HL7 EIP type (Entity identifier pair) }
+  tELD = AnsiString; { HL7 ELD type (Error location and description, deprecated as of HL7 v2.5) }
+  tERL = str180;     { HL7 ERL type (Error location) }
+  tFC = str50;       { HL7 FC type (Financial class) }
+  tFT = AnsiString;  { HL7 FT type (Formatted text data) }
+  tHD = AnsiString;  { HL7 HD type (Hierarchic designator) }
+  tID = AnsiString;  { HL7 ID type (Coded value for HL7 defined tables) }
+  tIS = str20;       { HL7 2.5 IS type (Coded value for user-defined tables) }
+  tJCC = AnsiString; { HL7 JCC type (Job code/class) }
+  tMSG = str15;      { HL7 MSG type (Message type) }
+  tMOC = AnsiString; { HL7 MOC type (Money and charge code) }
+  tNDL = AnsiString; { HL7 NDL type (Name with date and location) }
+  tNM = str16;       { HL7 NM type (ASCII-represented number) }
+  tPL = str80;       { HL7 PL type (Person location) }
+  tPRL = AnsiString; { HL7 PRL type (Parent result link) }
+  tPT = str3;        { HL7 PT type (Processing type) }
+  tSI = str4;        { HL7 SI type (Sequence ID) }
+  tSPS = AnsiString; { HL7 SPS type (Specimen source, deprecated as of HL7 v2.5) }
+  tST = AnsiString;  { HL7 ST type (Dtring data ) }
+  tTQ = str250;      { HL7 TQ type (timing/quantity, deprecated as of HL7 v2.6) }
+  tTS = str26;       { HL7 2.5 TS type (Time stamp, deprecated as of HL7 v2.6) }
+  tVID = str60;      { HL7 VID type (Version identifier) }
+  tXAD = str250;     { HL7 XAD type (Extended address) }
+  tXCN = str250;     { HL7 XCN type (Extended composite ID number and name for persons) }
+  tXON = AnsiString; { HL7 XON type (Extended composite name and identification number for organizations) }
+  tXPN = str250;     { HL7 XPN type (Extended person name) }
+  tXTN = str250;     { HL7 XAD type (Extended telecommunications number) }
 
   THL7Delimiters = record
     SegmentTerminator, FieldSeparator, ComponentSeparator: char;
@@ -242,6 +289,7 @@ type
     HL7_version: string;
     HL7Delimiters: THL7Delimiters;
     Status: integer;
+    ErrorCond: string;
   protected
     HL7Text: ansistring;
     procedure SetHL7Version(const aValue: string);
@@ -274,6 +322,7 @@ type
     property contentString: ansistring read CompiledMessageString
       write ParseMessageString;
     property StatusCode: integer read status;
+    property ErrorCondition: string read ErrorCond write ErrorCond;
   end;
 
 procedure ReadHL7File(out HL7Doc: THL7Message; const aFileName: ansistring); overload;
@@ -304,13 +353,17 @@ begin
         if theStream <> nil then
           theStream.Free
         else
-          HL7Doc.Status := 7;
+          begin
+            HL7Doc.Status := 7;
+            HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
+          end;
       end;
     end
   else
     begin
       HL7Doc := THL7Message.Create('2.0');
       HL7Doc.Status := 7;          { create empty message with status code 7 }
+      HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
     end;
 end;
 
@@ -340,6 +393,7 @@ begin
     begin
       HL7Doc := THL7Message.Create('2.0');
       HL7Doc.Status := 7;          { create empty message with status code 7 }
+      HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
     end;
 end;
 
@@ -369,12 +423,14 @@ begin
       begin
         HL7Doc := THL7Message.Create('2.0');
         HL7Doc.Status := 7;          { create empty message with status code 7 }
+        HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
       end;
   end
   else
     begin
       HL7Doc := THL7Message.Create('2.0');
       HL7Doc.Status := 7;          { create empty message with status code 7 }
+      HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
     end;
 end;
 
@@ -390,7 +446,10 @@ begin
     if theStream <> nil then
       theStream.Free
     else
-      HL7Doc.Status := 6;
+      begin
+        HL7Doc.Status := 6;
+        HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
+      end;
   end;
 end;
 
@@ -409,7 +468,10 @@ begin
     CloseFile(aFile);
   end;
   if IOResult <> 0 then
-    HL7Doc.Status := 6;
+    begin
+      HL7Doc.Status := 6;
+      HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
+    end;
 end;
 
 procedure WriteHL7File(HL7Doc: THL7Message; aStream: TStream);
@@ -423,7 +485,10 @@ begin
   try
     aStream.WriteBuffer(theString[1], textLength);
   except
-    HL7Doc.Status := 6;
+    begin
+      HL7Doc.Status := 6;
+      HL7Doc.ErrorCondition := ERROR_COND_INT_ERR;
+    end;
   end;
 end;
 
@@ -896,7 +961,11 @@ end;
 procedure THL7Message.SetHL7Version(const aValue: string);
 begin
   HL7_version := aValue;
-  if LeftStr(HL7_version, 1) <> '2' then Status := 4;
+  if LeftStr(HL7_version, 1) <> '2' then
+  begin
+    Status := 4;
+    ErrorCondition := ERROR_COND_UNSUPP_VERS_ID;
+  end;
 end;
 
 procedure THL7Message.ParseMessageString(const aString: ansistring);
@@ -1008,6 +1077,7 @@ begin
   inherited Create;
   ParseDelimiters(STANDARD_DELIMITERS);  {Default delimiter definition}
   Status := 0;
+  ErrorCondition := ERROR_COND_MSG_ACC;
   HL7_Version := version;
   FirstSegment := nil;
 end;
@@ -1081,6 +1151,7 @@ begin
     begin
       found := True;
       Status := 0;
+      ErrorCondition := ERROR_COND_MSG_ACC;
       Result := currSegment;
     end
     else
@@ -1091,7 +1162,10 @@ begin
       end;
   until (found = True) or (currSegment = nil);
   if not found then
-    Status := 8;
+    begin
+      Status := 8;
+      ErrorCondition := ERROR_COND_SEG_SEQ_ERR;
+    end;
 end;
 
 function THL7Message.NewSegment: THL7Segment;

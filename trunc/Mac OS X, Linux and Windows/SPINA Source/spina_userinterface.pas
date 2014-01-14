@@ -490,11 +490,11 @@ begin
   if LeftStr(T4_String, 3) = NA_MARK then
     T4_withUnit := NA_MARK
   else
-    T4_withUnit :=  concat(T4_String, ' ', gTSHUnit);
+    T4_withUnit :=  concat(T4_String, ' ', gT4Unit);
   if LeftStr(T3_String, 3) = NA_MARK then
     T3_withUnit := NA_MARK
   else
-    T3_withUnit :=  concat(T3_String, ' ', gTSHUnit);
+    T3_withUnit :=  concat(T3_String, ' ', gT3Unit);
   vhString := concat(gVerhaltensparameter, kCR, kLF, '   TSH: ',
     TSH_withUnit, kCR, kLF, T4Label, T4_withUnit, kCR, kLF, T3Label, T3_withUnit);
   theString := concat(vhString, kCR, kLF, kCR, kLF, gStrukturparameter,
