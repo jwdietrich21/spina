@@ -161,7 +161,6 @@ var
   gTSHTherapy, gT4Therapy, gT3Therapy, gUseReferenceRanges: boolean;
   gPrefsDir, gPrefsFileName: String;
   gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR: string;
-  gCDISC_RR: TStrings;
   gPreferences: tPreferences;
   gPrefsFile: tPrefsFile;
   gAnleitung1, gAnleitung2, gVerhaltensparameter, gStrukturparameter, gReferenzbereiche: string;

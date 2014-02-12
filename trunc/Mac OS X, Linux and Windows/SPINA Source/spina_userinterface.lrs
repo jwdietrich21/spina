@@ -836,287 +836,66 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   ,'rsor'#7#11'crHandPoint'#4'Left'#2#16#6'Height'#2#13#3'Top'#3'.'#1#5'Width'#2
   +'8'#7'Caption'#6#10'SPINA Thyr'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2
   +#246#11'ParentColor'#8#10'ParentFont'#8#7'OnClick'#7#19'SPINAThyrLabelClick'
-  +#0#0#5'TMemo'#14'CDISC_defaults'#4'Left'#2't'#6'Height'#2#24#3'Top'#3'&'#1#5
-  +'Width'#3#246#1#7'Anchors'#11#6'akLeft'#7'akRight'#8'akBottom'#0#7'Enabled'#8
-  +#13'Lines.Strings'#1#6'+<?xml version="1.0" encoding="ISO-8859-1"?>'#6'+<!--'
-  +' Example for SPINA Reference Values -->'#6')<!-- adapted to CDISC LAB MODEL'
-  +' 1.0.1 -->'#6'(<!-- (c) J. W. Dietrich, 1994 - 2012 -->'#6'?<!-- (c) Ludwig'
-  +' Maximilian University of Munich 1995 - 2002 -->'#6'2<!-- (c) University of'
-  +' Ulm Hospitals 2002-2004 -->'#6'2<!-- (c) Ruhr University of Bochum 2005 - '
-  +'2012 -->'#6'''<!-- released under the BSD License -->'#6'1<GTP CreationDate'
-  +'Time="2012-12-30T13:13:13+01:00"'#6#23'ModelVersion="01-0-01">'#6'A   <Tran'
-  +'smissionSource ID="www.ruhr-uni-bochum.de/bergmannsheil/"'#6'+Name="Bergman'
-  +'nsheil University Hospitals"/>'#6':   <Study ID="SPIt" Name="Reference Rang'
-  +'es for SPINA Thyr"'#6#21'TransmissionType="C">'#6'/      <BaseBattery ID="S'
-  +'PIt" Name="SPINA Thyr">'#6'&         <BaseTest DefiningEntity="C">'#6'B    '
-  +'        <LabTest ID="GT" Name="Thyroid''s Secretory Capacity"/>'#6'$       '
-  +'     <SubjectCharacteristics>'#6'L               <Sex CodeListID="HL7 Gende'
-  +'r Vocabulary Domain V2.4" Value="F"'#6#1'>'#6'%               <Age Boundary'
-  +'Type="L">'#6'1                  <LowerLimit UOM="Y" Value="0"/>'#6'3       '
-  +'           <UpperLimit UOM="Y" Value="999"/>'#6#21'               </Age>'#6
-  +'(               <FlagUOM ResultClass="S">'#6'E                  <ResultUnit'
-  +'s CodeListID="ISO 1000" Value="pmol/s"/>'#6#27'                  <Deltas/>'
-  +#6'H                  <Exclusions StartDateTime="2000-01-01T12:00:00+01:00">'
-  +#6'M                     <ExclusionDefinition ExclusionLevel="LX" Value="&lt'
-  +';0"/>'#6'Q                     <ExclusionDefinition ExclusionLevel="HX" Val'
-  +'ue="&gt;10000"/>'#6'9                     <TransactionType>I</TransactionTy'
-  +'pe>'#6#31'                  </Exclusions>'#6#25'               </FlagUOM>'#6
-  +'(               <FlagUOM ResultClass="C">'#6'E                  <ResultUnit'
-  +'s CodeListID="ISO 1000" Value="pmol/s"/>'#6#27'                  <Deltas/>'
-  +#6'H                  <Exclusions StartDateTime="2000-01-01T12:00:00+01:00">'
-  +#6'M                     <ExclusionDefinition ExclusionLevel="LX" Value="&lt'
-  +';0"/>'#6'Q                     <ExclusionDefinition ExclusionLevel="HX" Val'
-  +'ue="&gt;10000"/>'#6'9                     <TransactionType>I</TransactionTy'
-  +'pe>'#6#31'                  </Exclusions>'#6#25'               </FlagUOM>'#6
-  +'%            </SubjectCharacteristics>'#6'$            <SubjectCharacterist'
-  +'ics>'#6'L               <Sex CodeListID="HL7 Gender Vocabulary Domain V2.4"'
-  +' Value="F"'#6#1'>'#6'%               <Age BoundaryType="L">'#6'1           '
-  +'       <LowerLimit UOM="Y" Value="0"/>'#6'3                  <UpperLimit UO'
-  +'M="Y" Value="130"/>'#6#21'               </Age>'#6'(               <FlagUOM'
-  +' ResultClass="S">'#6'E                  <ResultUnits CodeListID="ISO 1000" '
-  +'Value="pmol/s"/>'#6'D                  <Normal StartDateTime="2000-01-01T12'
-  +':00:00+01:00">'#6'E                     <NormalDefinition NormalLevel="L" V'
-  +'alue="1.41"/>'#6'E                     <NormalDefinition NormalLevel="H" Va'
-  +'lue="8.67"/>'#6'9                     <TransactionType>I</TransactionType>'
-  +#6#27'                  </Normal>'#6'D                  <Alerts StartDateTim'
-  +'e="2000-01-01T12:00:00+01:00">'#6'H                     <AlertDefinition Al'
-  +'ertLevel="LN" Value="&lt;1.41"/>'#6'H                     <AlertDefinition '
-  +'AlertLevel="HN" Value="&gt;8.67"/>'#6'G                     <AlertDefinitio'
-  +'n AlertLevel="HT" Value="&gt;100"/>'#6'G                     <AlertDefiniti'
-  +'on AlertLevel="HP" Value="&gt;500"/>'#6'9                     <TransactionT'
-  +'ype>I</TransactionType>'#6#27'                  </Alerts>'#6#25'           '
-  +'    </FlagUOM>'#6'(               <FlagUOM ResultClass="C">'#6'E           '
-  +'       <ResultUnits CodeListID="ISO 1000" Value="pmol/s"/>'#6'D            '
-  +'      <Normal StartDateTime="2000-01-01T12:00:00+01:00">'#6'E              '
-  +'       <NormalDefinition NormalLevel="L" Value="1.41"/>'#6'E               '
-  +'      <NormalDefinition NormalLevel="H" Value="8.67"/>'#6'9                '
-  +'     <TransactionType>I</TransactionType>'#6#27'                  </Normal>'
-  +#6'D                  <Alerts StartDateTime="2000-01-01T12:00:00+01:00">'#6
-  +'H                     <AlertDefinition AlertLevel="LN" Value="&lt;1.41"/>'#6
-  +'H                     <AlertDefinition AlertLevel="HN" Value="&gt;8.67"/>'#6
-  +'G                     <AlertDefinition AlertLevel="HT" Value="&gt;100"/>'#6
-  +'G                     <AlertDefinition AlertLevel="HP" Value="&gt;500"/>'#6
-  +'9                     <TransactionType>I</TransactionType>'#6#27'          '
-  ,'        </Alerts>'#6#25'               </FlagUOM>'#6'%            </Subject'
-  +'Characteristics>'#6'4            <!-- Add additional age classes here -->'#6
-  +'$            <SubjectCharacteristics>'#6'L               <Sex CodeListID="H'
-  +'L7 Gender Vocabulary Domain V2.4" Value="M"'#6#1'>'#6'%               <Age '
-  +'BoundaryType="L">'#6'1                  <LowerLimit UOM="Y" Value="0"/>'#6
-  +'3                  <UpperLimit UOM="Y" Value="999"/>'#6#21'               <'
-  +'/Age>'#6'(               <FlagUOM ResultClass="S">'#6'E                  <R'
-  +'esultUnits CodeListID="ISO 1000" Value="pmol/s"/>'#6#27'                  <'
-  +'Deltas/>'#6'H                  <Exclusions StartDateTime="2000-01-01T12:00:'
-  +'00+01:00">'#6'M                     <ExclusionDefinition ExclusionLevel="LX'
-  +'" Value="&lt;0"/>'#6'Q                     <ExclusionDefinition ExclusionLe'
-  +'vel="HX" Value="&gt;10000"/>'#6'9                     <TransactionType>I</T'
-  +'ransactionType>'#6#31'                  </Exclusions>'#6#25'               '
-  +'</FlagUOM>'#6'(               <FlagUOM ResultClass="C">'#6'E               '
-  +'   <ResultUnits CodeListID="ISO 1000" Value="pmol/s"/>'#6#27'              '
-  +'    <Deltas/>'#6'H                  <Exclusions StartDateTime="2000-01-01T1'
-  +'2:00:00+01:00">'#6'M                     <ExclusionDefinition ExclusionLeve'
-  +'l="LX" Value="&lt;0"/>'#6'Q                     <ExclusionDefinition Exclus'
-  +'ionLevel="HX" Value="&gt;10000"/>'#6'9                     <TransactionType'
-  +'>I</TransactionType>'#6#31'                  </Exclusions>'#6#25'          '
-  +'     </FlagUOM>'#6'%            </SubjectCharacteristics>'#6'$            <'
-  +'SubjectCharacteristics>'#6'L               <Sex CodeListID="HL7 Gender Voca'
-  +'bulary Domain V2.4" Value="M"'#6#1'>'#6'%               <Age BoundaryType="'
-  +'L">'#6'1                  <LowerLimit UOM="Y" Value="0"/>'#6'3             '
-  +'     <UpperLimit UOM="Y" Value="130"/>'#6#21'               </Age>'#6'(    '
-  +'           <FlagUOM ResultClass="S">'#6'E                  <ResultUnits Cod'
-  +'eListID="ISO 1000" Value="pmol/s"/>'#6'D                  <Normal StartDate'
-  +'Time="2000-01-01T12:00:00+01:00">'#6'E                     <NormalDefinitio'
-  +'n NormalLevel="L" Value="1.41"/>'#6'E                     <NormalDefinition'
-  +' NormalLevel="H" Value="8.67"/>'#6'9                     <TransactionType>I'
-  +'</TransactionType>'#6#27'                  </Normal>'#6'D                  '
-  +'<Alerts StartDateTime="2000-01-01T12:00:00+01:00">'#6'H                    '
-  +' <AlertDefinition AlertLevel="LN" Value="&lt;1.41"/>'#6'H                  '
-  +'   <AlertDefinition AlertLevel="HN" Value="&gt;8.67"/>'#6'G                '
-  +'     <AlertDefinition AlertLevel="HT" Value="&gt;100"/>'#6'G               '
-  +'      <AlertDefinition AlertLevel="HP" Value="&gt;500"/>'#6'9              '
-  +'       <TransactionType>I</TransactionType>'#6#27'                  </Alert'
-  +'s>'#6#25'               </FlagUOM>'#6'(               <FlagUOM ResultClass='
-  +'"C">'#6'E                  <ResultUnits CodeListID="ISO 1000" Value="pmol/s'
-  +'"/>'#6'D                  <Normal StartDateTime="2000-01-01T12:00:00+01:00"'
-  +'>'#6'E                     <NormalDefinition NormalLevel="L" Value="1.41"/>'
-  +#6'E                     <NormalDefinition NormalLevel="H" Value="8.67"/>'#6
-  +'9                     <TransactionType>I</TransactionType>'#6#27'          '
-  +'        </Normal>'#6'D                  <Alerts StartDateTime="2000-01-01T1'
-  +'2:00:00+01:00">'#6'H                     <AlertDefinition AlertLevel="LN" V'
-  +'alue="&lt;1.41"/>'#6'H                     <AlertDefinition AlertLevel="HN"'
-  +' Value="&gt;8.67"/>'#6'G                     <AlertDefinition AlertLevel="H'
-  +'T" Value="&gt;100"/>'#6'G                     <AlertDefinition AlertLevel="'
-  +'HP" Value="&gt;500"/>'#6'9                     <TransactionType>I</Transact'
-  +'ionType>'#6#27'                  </Alerts>'#6#25'               </FlagUOM>'
-  +#6'%            </SubjectCharacteristics>'#6#20'         </BaseTest>'#6'&   '
-  +'      <BaseTest DefiningEntity="C">'#6'E            <LabTest ID="GD1" Name='
-  +'"Sum activity of peripheral type 1'#6#13'deiodinase"/>'#6'$            <Sub'
-  +'jectCharacteristics>'#6'L               <Sex CodeListID="HL7 Gender Vocabul'
-  +'ary Domain V2.4" Value="F"'#6#1'>'#6'%               <Age BoundaryType="L">'
-  +#6'1                  <LowerLimit UOM="Y" Value="0"/>'#6'3                  '
-  +'<UpperLimit UOM="Y" Value="999"/>'#6#21'               </Age>'#6'(         '
-  +'      <FlagUOM ResultClass="S">'#6'E                  <ResultUnits CodeList'
-  +'ID="ISO 1000" Value="nmol/s"/>'#6#27'                  <Deltas/>'#6'H      '
-  +'            <Exclusions StartDateTime="2000-01-01T12:00:00+01:00">'#6'M    '
-  +'                 <ExclusionDefinition ExclusionLevel="LX" Value="&lt;0"/>'#6
-  +'P                     <ExclusionDefinition ExclusionLevel="HX" Value="&gt;1'
-  +'000"/>'#6'9                     <TransactionType>I</TransactionType>'#6#31
-  +'                  </Exclusions>'#6#25'               </FlagUOM>'#6'(       '
-  ,'        <FlagUOM ResultClass="C">'#6'E                  <ResultUnits CodeLi'
-  +'stID="ISO 1000" Value="nmol/s"/>'#6#27'                  <Deltas/>'#6'H    '
-  +'              <Exclusions StartDateTime="2000-01-01T12:00:00+01:00">'#6'M  '
-  +'                   <ExclusionDefinition ExclusionLevel="LX" Value="&lt;0"/>'
-  +#6'P                     <ExclusionDefinition ExclusionLevel="HX" Value="&gt'
-  +';1000"/>'#6'9                     <TransactionType>I</TransactionType>'#6#31
-  +'                  </Exclusions>'#6#25'               </FlagUOM>'#6'%       '
-  +'     </SubjectCharacteristics>'#6'$            <SubjectCharacteristics>'#6
-  +'L               <Sex CodeListID="HL7 Gender Vocabulary Domain V2.4" Value="'
-  +'F"'#6#1'>'#6'%               <Age BoundaryType="L">'#6'1                  <'
-  +'LowerLimit UOM="Y" Value="0"/>'#6'3                  <UpperLimit UOM="Y" Va'
-  +'lue="130"/>'#6#21'               </Age>'#6'(               <FlagUOM ResultC'
-  +'lass="S">'#6'E                  <ResultUnits CodeListID="ISO 1000" Value="n'
-  +'mol/s"/>'#6'D                  <Normal StartDateTime="2000-01-01T12:00:00+0'
-  +'1:00">'#6'C                     <NormalDefinition NormalLevel="L" Value="20'
-  +'"/>'#6'C                     <NormalDefinition NormalLevel="H" Value="40"/>'
-  +#6'9                     <TransactionType>I</TransactionType>'#6#27'        '
-  +'          </Normal>'#6'D                  <Alerts StartDateTime="2000-01-01'
-  +'T12:00:00+01:00">'#6'F                     <AlertDefinition AlertLevel="LN"'
-  +' Value="&lt;20"/>'#6'F                     <AlertDefinition AlertLevel="HN"'
-  +' Value="&gt;40"/>'#6'F                     <AlertDefinition AlertLevel="LT"'
-  +' Value="&lt;10"/>'#6'F                     <AlertDefinition AlertLevel="HT"'
-  +' Value="&gt;60"/>'#6'E                     <AlertDefinition AlertLevel="LP"'
-  +' Value="&lt;5"/>'#6'G                     <AlertDefinition AlertLevel="HP" '
-  +'Value="&gt;100"/>'#6'9                     <TransactionType>I</TransactionT'
-  +'ype>'#6#27'                  </Alerts>'#6#25'               </FlagUOM>'#6'('
-  +'               <FlagUOM ResultClass="C">'#6'E                  <ResultUnits'
-  +' CodeListID="ISO 1000" Value="nmol/s"/>'#6'D                  <Normal Start'
-  +'DateTime="2000-01-01T12:00:00+01:00">'#6'C                     <NormalDefin'
-  +'ition NormalLevel="L" Value="20"/>'#6'C                     <NormalDefiniti'
-  +'on NormalLevel="H" Value="40"/>'#6'9                     <TransactionType>I'
-  +'</TransactionType>'#6#27'                  </Normal>'#6'D                  '
-  +'<Alerts StartDateTime="2000-01-01T12:00:00+01:00">'#6'F                    '
-  +' <AlertDefinition AlertLevel="LN" Value="&lt;20"/>'#6'F                    '
-  +' <AlertDefinition AlertLevel="HN" Value="&gt;40"/>'#6'F                    '
-  +' <AlertDefinition AlertLevel="LT" Value="&lt;10"/>'#6'F                    '
-  +' <AlertDefinition AlertLevel="HT" Value="&gt;60"/>'#6'E                    '
-  +' <AlertDefinition AlertLevel="LP" Value="&lt;5"/>'#6'G                     '
-  +'<AlertDefinition AlertLevel="HP" Value="&gt;100"/>'#6'9                    '
-  +' <TransactionType>I</TransactionType>'#6#27'                  </Alerts>'#6
-  +#25'               </FlagUOM>'#6'%            </SubjectCharacteristics>'#6'4'
-  +'            <!-- Add additional age classes here -->'#6'$            <Subje'
-  +'ctCharacteristics>'#6'L               <Sex CodeListID="HL7 Gender Vocabular'
-  +'y Domain V2.4" Value="M"'#6#1'>'#6'%               <Age BoundaryType="L">'#6
-  +'1                  <LowerLimit UOM="Y" Value="0"/>'#6'3                  <U'
-  +'pperLimit UOM="Y" Value="999"/>'#6#21'               </Age>'#6'(           '
-  +'    <FlagUOM ResultClass="S">'#6'E                  <ResultUnits CodeListID'
-  +'="ISO 1000" Value="nmol/s"/>'#6#27'                  <Deltas/>'#6'H        '
-  +'          <Exclusions StartDateTime="2000-01-01T12:00:00+01:00">'#6'M      '
-  +'               <ExclusionDefinition ExclusionLevel="LX" Value="&lt;0"/>'#6
-  +'P                     <ExclusionDefinition ExclusionLevel="HX" Value="&gt;1'
-  +'000"/>'#6'9                     <TransactionType>I</TransactionType>'#6#31
-  +'                  </Exclusions>'#6#25'               </FlagUOM>'#6'(       '
-  +'        <FlagUOM ResultClass="C">'#6'E                  <ResultUnits CodeLi'
-  +'stID="ISO 1000" Value="nmol/s"/>'#6#27'                  <Deltas/>'#6'H    '
-  +'              <Exclusions StartDateTime="2000-01-01T12:00:00+01:00">'#6'M  '
-  +'                   <ExclusionDefinition ExclusionLevel="LX" Value="&lt;0"/>'
-  +#6'P                     <ExclusionDefinition ExclusionLevel="HX" Value="&gt'
-  +';1000"/>'#6'9                     <TransactionType>I</TransactionType>'#6#31
-  +'                  </Exclusions>'#6#25'               </FlagUOM>'#6'%       '
-  +'     </SubjectCharacteristics>'#6'$            <SubjectCharacteristics>'#6
-  +'L               <Sex CodeListID="HL7 Gender Vocabulary Domain V2.4" Value="'
-  +'M"'#6#1'>'#6'%               <Age BoundaryType="L">'#6'1                  <'
-  +'LowerLimit UOM="Y" Value="0"/>'#6'3                  <UpperLimit UOM="Y" Va'
-  ,'lue="130"/>'#6#21'               </Age>'#6'(               <FlagUOM ResultC'
-  +'lass="S">'#6'E                  <ResultUnits CodeListID="ISO 1000" Value="n'
-  +'mol/s"/>'#6'D                  <Normal StartDateTime="2000-01-01T12:00:00+0'
-  +'1:00">'#6'C                     <NormalDefinition NormalLevel="L" Value="20'
-  +'"/>'#6'C                     <NormalDefinition NormalLevel="H" Value="40"/>'
-  +#6'9                     <TransactionType>I</TransactionType>'#6#27'        '
-  +'          </Normal>'#6'D                  <Alerts StartDateTime="2000-01-01'
-  +'T12:00:00+01:00">'#6'F                     <AlertDefinition AlertLevel="LN"'
-  +' Value="&lt;20"/>'#6'F                     <AlertDefinition AlertLevel="HN"'
-  +' Value="&gt;40"/>'#6'F                     <AlertDefinition AlertLevel="LT"'
-  +' Value="&lt;10"/>'#6'F                     <AlertDefinition AlertLevel="HT"'
-  +' Value="&gt;60"/>'#6'E                     <AlertDefinition AlertLevel="LP"'
-  +' Value="&lt;5"/>'#6'G                     <AlertDefinition AlertLevel="HP" '
-  +'Value="&gt;100"/>'#6'9                     <TransactionType>I</TransactionT'
-  +'ype>'#6#27'                  </Alerts>'#6#25'               </FlagUOM>'#6'('
-  +'               <FlagUOM ResultClass="C">'#6'E                  <ResultUnits'
-  +' CodeListID="ISO 1000" Value="nmol/s"/>'#6'D                  <Normal Start'
-  +'DateTime="2000-01-01T12:00:00+01:00">'#6'C                     <NormalDefin'
-  +'ition NormalLevel="L" Value="20"/>'#6'C                     <NormalDefiniti'
-  +'on NormalLevel="H" Value="40"/>'#6'9                     <TransactionType>I'
-  +'</TransactionType>'#6#27'                  </Normal>'#6'D                  '
-  +'<Alerts StartDateTime="2000-01-01T12:00:00+01:00">'#6'F                    '
-  +' <AlertDefinition AlertLevel="LN" Value="&lt;20"/>'#6'F                    '
-  +' <AlertDefinition AlertLevel="HN" Value="&gt;40"/>'#6'F                    '
-  +' <AlertDefinition AlertLevel="LT" Value="&lt;10"/>'#6'F                    '
-  +' <AlertDefinition AlertLevel="HT" Value="&gt;60"/>'#6'E                    '
-  +' <AlertDefinition AlertLevel="LP" Value="&lt;5"/>'#6'G                     '
-  +'<AlertDefinition AlertLevel="HP" Value="&gt;100"/>'#6'9                    '
-  +' <TransactionType>I</TransactionType>'#6#27'                  </Alerts>'#6
-  +#25'               </FlagUOM>'#6'%            </SubjectCharacteristics>'#6#20
-  +'         </BaseTest>'#6#20'      </BaseBattery>'#6#11'   </Study>'#6#6'</GT'
-  +'P>'#6#0#0#14'ParentShowHint'#8#8'ReadOnly'#9#8'ShowHint'#9#8'TabOrder'#2#6#7
-  +'Visible'#8#0#0#9'TMainMenu'#8'MainMenu'#4'left'#2#24#3'top'#2#8#0#9'TMenuIt'
-  +'em'#9'AppleMenu'#7'Caption'#6#3#239#163#191#7'OnClick'#7#14'AppleMenuClick'
-  +#0#9'TMenuItem'#18'AppleAboutMenuItem'#7'Caption'#6#11#195#156'ber SPINA'#7
-  +'OnClick'#7#11'HandleAbout'#0#0#9'TMenuItem'#11'Divider_0_1'#7'Caption'#6#1
-  +'-'#0#0#9'TMenuItem'#18'MacPreferencesItem'#7'Caption'#6#17'Einstellungen ..'
-  +'.'#8'ShortCut'#3#188#16#7'OnClick'#7#23'MacPreferencesItemClick'#0#0#9'TMen'
-  +'uItem'#11'Divider_0_2'#7'Caption'#6#1'-'#0#0#0#9'TMenuItem'#8'FileMenu'#7'C'
-  +'aption'#6#6'Ablage'#0#9'TMenuItem'#11'NewMenuItem'#7'Caption'#6#18'Neue Ber'
-  +'echnung'#226#128#166#7'Enabled'#8#8'ShortCut'#3'N'#16#7'OnClick'#7#16'NewMe'
-  +'nuItemClick'#0#0#9'TMenuItem'#12'OpenMenuItem'#7'Caption'#6#7#195#150'ffnen'
-  +#7'Enabled'#8#0#0#9'TMenuItem'#12'SaveMenuItem'#7'Caption'#6#7'Sichern'#7'On'
-  +'Click'#7#17'SaveMenuItemClick'#0#0#9'TMenuItem'#13'CloseMenuItem'#7'Caption'
-  +#6#10'Schlie'#195#159'en'#8'ShortCut'#3'W'#16#7'OnClick'#7#18'CloseMenuItemC'
-  +'lick'#0#0#9'TMenuItem'#11'Divider_1_1'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#17
-  +'PageSetupMenuItem'#7'Caption'#6#12'Papierformat'#7'OnClick'#7#22'PageSetupM'
-  +'enuItemClick'#0#0#9'TMenuItem'#13'PrintMenuItem'#7'Caption'#6#7'Drucken'#8
-  +'ShortCut'#3'P'#16#7'OnClick'#7#18'PrintMenuItemClick'#0#0#9'TMenuItem'#11'D'
-  +'ivider_1_2'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#12'QuitMenuItem'#7'Caption'#6
-  +#7'Beenden'#8'ShortCut'#3'Q'#16#7'OnClick'#7#13'Beenden1Click'#0#0#0#9'TMenu'
-  +'Item'#8'EditMenu'#7'Caption'#6#10'Bearbeiten'#0#9'TMenuItem'#12'UndoMenuIte'
-  +'m'#6'Action'#7#9'EditUndo1'#4'Hint'#6#10'Widerrufen'#8'ShortCut'#3'Y'#16#7
-  +'OnClick'#7#17'UndoMenuItemClick'#0#0#9'TMenuItem'#11'Divider_2_1'#7'Caption'
-  +#6#1'-'#0#0#9'TMenuItem'#11'CutMenuItem'#6'Action'#7#8'EditCut1'#8'ShortCut'
-  +#3'X'#16#7'OnClick'#7#16'CutMenuItemClick'#0#0#9'TMenuItem'#12'CopyMenuItem'
-  +#6'Action'#7#9'EditCopy1'#8'ShortCut'#3'C'#16#7'OnClick'#7#17'CopyMenuItemCl'
-  +'ick'#0#0#9'TMenuItem'#13'PasteMenuItem'#6'Action'#7#10'EditPaste1'#8'ShortC'
-  +'ut'#3'V'#16#7'OnClick'#7#18'PasteMenuItemClick'#0#0#9'TMenuItem'#14'DeleteM'
-  +'enuItem'#6'Action'#7#11'EditDelete1'#4'Hint'#6#8'L'#195#182'schen'#7'OnClic'
-  +'k'#7#19'DeleteMenuItemClick'#0#0#9'TMenuItem'#11'Divider_2_2'#7'Caption'#6#1
-  +'-'#0#0#9'TMenuItem'#18'CopyResultMenuItem'#7'Caption'#6#17'Ergebnis kopiere'
-  +'n'#8'ShortCut'#3'R'#16#7'OnClick'#7#22'Ergebniskopieren1Click'#0#0#9'TMenuI'
-  +'tem'#11'Divider_2_3'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#18'WinPreferencesIt'
-  ,'em'#7'Caption'#6#17'Einstellungen ...'#7'OnClick'#7#23'WinPreferencesItemCl'
-  +'ick'#0#0#0#9'TMenuItem'#8'HelpMenu'#7'Caption'#6#4'Help'#0#9'TMenuItem'#8'H'
-  +'elpItem'#7'Caption'#6#14'SPINA Help ...'#8'ShortCut'#3#189'0'#7'OnClick'#7
-  +#13'HelpItemClick'#0#0#9'TMenuItem'#14'OnlineInfoItem'#7'Caption'#6#15'Onlin'
-  +'e Info ...'#7'OnClick'#7#19'OnlineInfoItemClick'#0#0#9'TMenuItem'#11'Divide'
-  +'r_3_1'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#13'AboutMenuItem'#7'Caption'#6#11
-  +#195#156'ber SPINA'#7'OnClick'#7#11'HandleAbout'#0#0#0#0#11'TActionList'#11
-  +'ActionList1'#4'left'#3#168#1#3'top'#3#16#1#0#9'TEditUndo'#9'EditUndo1'#8'Ca'
-  +'tegory'#6#10'Bearbeiten'#7'Caption'#6#13'&R'#195#188'ckg'#195#164'ngig'#10
-  +'ImageIndex'#2#5#8'ShortCut'#4#8#128#0#0#0#0#8'TEditCut'#8'EditCut1'#8'Categ'
-  +'ory'#6#10'Bearbeiten'#7'Caption'#6#13'&Ausschneiden'#4'Hint'#6#12'Ausschnei'
-  +'den'#10'ImageIndex'#2#6#8'ShortCut'#3'X@'#0#0#9'TEditCopy'#9'EditCopy1'#8'C'
-  +'ategory'#6#10'Bearbeiten'#7'Caption'#6#9'&Kopieren'#4'Hint'#6#8'Kopieren'#10
-  +'ImageIndex'#2#7#8'ShortCut'#3'C@'#0#0#10'TEditPaste'#10'EditPaste1'#8'Categ'
-  +'ory'#6#10'Bearbeiten'#7'Caption'#6#10'&Einf'#195#188'gen'#4'Hint'#6#9'Einf'
-  +#195#188'gen'#10'ImageIndex'#2#8#8'ShortCut'#3'V@'#0#0#11'TEditDelete'#11'Ed'
-  +'itDelete1'#8'Category'#6#10'Bearbeiten'#7'Caption'#6#9'&L'#195#182'schen'#10
-  +'ImageIndex'#2#9#8'ShortCut'#2'.'#0#0#0#16'TPageSetupDialog'#16'PageSetupDia'
-  +'log1'#4'left'#3#8#1#3'top'#3#16#1#0#0#19'TPrinterSetupDialog'#19'PrinterSet'
-  +'upDialog1'#4'left'#3'8'#1#3'top'#3#16#1#0#0#12'TPrintDialog'#12'PrintDialog'
-  +'1'#4'left'#3'p'#1#3'top'#3#16#1#0#0#10'TPopupMenu'#10'PopupMenu1'#4'left'#3
-  +#232#1#3'top'#3#16#1#0#9'TMenuItem'#9'PopupUndo'#7'Caption'#6#4'Undo'#10'Ima'
-  +'geIndex'#2#5#7'OnClick'#7#14'PopupUndoClick'#0#0#9'TMenuItem'#9'PopupDiv1'#7
-  +'Caption'#6#1'-'#0#0#9'TMenuItem'#8'PopupCut'#7'Caption'#6#3'Cut'#10'ImageIn'
-  +'dex'#2#6#7'OnClick'#7#13'PopupCutClick'#0#0#9'TMenuItem'#9'PopupCopy'#7'Cap'
-  +'tion'#6#4'Copy'#10'ImageIndex'#2#7#7'OnClick'#7#14'PopupCopyClick'#0#0#9'TM'
-  +'enuItem'#10'PopupPaste'#7'Caption'#6#5'Paste'#10'ImageIndex'#2#8#7'OnClick'
-  +#7#15'PopupPasteClick'#0#0#9'TMenuItem'#9'PoputDiv2'#7'Caption'#6#1'-'#0#0#9
-  +'TMenuItem'#15'PopupCopyResult'#7'Caption'#6#11'Copy Result'#10'ImageIndex'#2
-  +#10#7'OnClick'#7#20'PopupCopyResultClick'#0#0#0#0
+  +#0#0#9'TMainMenu'#8'MainMenu'#4'left'#2#24#3'top'#2#8#0#9'TMenuItem'#9'Apple'
+  +'Menu'#7'Caption'#6#3#239#163#191#7'OnClick'#7#14'AppleMenuClick'#0#9'TMenuI'
+  +'tem'#18'AppleAboutMenuItem'#7'Caption'#6#11#195#156'ber SPINA'#7'OnClick'#7
+  +#11'HandleAbout'#0#0#9'TMenuItem'#11'Divider_0_1'#7'Caption'#6#1'-'#0#0#9'TM'
+  +'enuItem'#18'MacPreferencesItem'#7'Caption'#6#17'Einstellungen ...'#8'ShortC'
+  +'ut'#3#188#16#7'OnClick'#7#23'MacPreferencesItemClick'#0#0#9'TMenuItem'#11'D'
+  +'ivider_0_2'#7'Caption'#6#1'-'#0#0#0#9'TMenuItem'#8'FileMenu'#7'Caption'#6#6
+  +'Ablage'#0#9'TMenuItem'#11'NewMenuItem'#7'Caption'#6#18'Neue Berechnung'#226
+  +#128#166#7'Enabled'#8#8'ShortCut'#3'N'#16#7'OnClick'#7#16'NewMenuItemClick'#0
+  +#0#9'TMenuItem'#12'OpenMenuItem'#7'Caption'#6#7#195#150'ffnen'#7'Enabled'#8#0
+  +#0#9'TMenuItem'#12'SaveMenuItem'#7'Caption'#6#7'Sichern'#7'OnClick'#7#17'Sav'
+  +'eMenuItemClick'#0#0#9'TMenuItem'#13'CloseMenuItem'#7'Caption'#6#10'Schlie'
+  +#195#159'en'#8'ShortCut'#3'W'#16#7'OnClick'#7#18'CloseMenuItemClick'#0#0#9'T'
+  +'MenuItem'#11'Divider_1_1'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#17'PageSetupMe'
+  +'nuItem'#7'Caption'#6#12'Papierformat'#7'OnClick'#7#22'PageSetupMenuItemClic'
+  +'k'#0#0#9'TMenuItem'#13'PrintMenuItem'#7'Caption'#6#7'Drucken'#8'ShortCut'#3
+  +'P'#16#7'OnClick'#7#18'PrintMenuItemClick'#0#0#9'TMenuItem'#11'Divider_1_2'#7
+  +'Caption'#6#1'-'#0#0#9'TMenuItem'#12'QuitMenuItem'#7'Caption'#6#7'Beenden'#8
+  +'ShortCut'#3'Q'#16#7'OnClick'#7#13'Beenden1Click'#0#0#0#9'TMenuItem'#8'EditM'
+  +'enu'#7'Caption'#6#10'Bearbeiten'#0#9'TMenuItem'#12'UndoMenuItem'#6'Action'#7
+  +#9'EditUndo1'#4'Hint'#6#10'Widerrufen'#8'ShortCut'#3'Y'#16#7'OnClick'#7#17'U'
+  +'ndoMenuItemClick'#0#0#9'TMenuItem'#11'Divider_2_1'#7'Caption'#6#1'-'#0#0#9
+  +'TMenuItem'#11'CutMenuItem'#6'Action'#7#8'EditCut1'#8'ShortCut'#3'X'#16#7'On'
+  +'Click'#7#16'CutMenuItemClick'#0#0#9'TMenuItem'#12'CopyMenuItem'#6'Action'#7
+  +#9'EditCopy1'#8'ShortCut'#3'C'#16#7'OnClick'#7#17'CopyMenuItemClick'#0#0#9'T'
+  +'MenuItem'#13'PasteMenuItem'#6'Action'#7#10'EditPaste1'#8'ShortCut'#3'V'#16#7
+  +'OnClick'#7#18'PasteMenuItemClick'#0#0#9'TMenuItem'#14'DeleteMenuItem'#6'Act'
+  +'ion'#7#11'EditDelete1'#4'Hint'#6#8'L'#195#182'schen'#7'OnClick'#7#19'Delete'
+  +'MenuItemClick'#0#0#9'TMenuItem'#11'Divider_2_2'#7'Caption'#6#1'-'#0#0#9'TMe'
+  +'nuItem'#18'CopyResultMenuItem'#7'Caption'#6#17'Ergebnis kopieren'#8'ShortCu'
+  +'t'#3'R'#16#7'OnClick'#7#22'Ergebniskopieren1Click'#0#0#9'TMenuItem'#11'Divi'
+  +'der_2_3'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#18'WinPreferencesItem'#7'Captio'
+  +'n'#6#17'Einstellungen ...'#7'OnClick'#7#23'WinPreferencesItemClick'#0#0#0#9
+  +'TMenuItem'#8'HelpMenu'#7'Caption'#6#4'Help'#0#9'TMenuItem'#8'HelpItem'#7'Ca'
+  +'ption'#6#14'SPINA Help ...'#8'ShortCut'#3#189'0'#7'OnClick'#7#13'HelpItemCl'
+  +'ick'#0#0#9'TMenuItem'#14'OnlineInfoItem'#7'Caption'#6#15'Online Info ...'#7
+  +'OnClick'#7#19'OnlineInfoItemClick'#0#0#9'TMenuItem'#11'Divider_3_1'#7'Capti'
+  +'on'#6#1'-'#0#0#9'TMenuItem'#13'AboutMenuItem'#7'Caption'#6#11#195#156'ber S'
+  +'PINA'#7'OnClick'#7#11'HandleAbout'#0#0#0#0#11'TActionList'#11'ActionList1'#4
+  +'left'#3#168#1#3'top'#3#16#1#0#9'TEditUndo'#9'EditUndo1'#8'Category'#6#10'Be'
+  +'arbeiten'#7'Caption'#6#13'&R'#195#188'ckg'#195#164'ngig'#10'ImageIndex'#2#5
+  +#8'ShortCut'#4#8#128#0#0#0#0#8'TEditCut'#8'EditCut1'#8'Category'#6#10'Bearbe'
+  +'iten'#7'Caption'#6#13'&Ausschneiden'#4'Hint'#6#12'Ausschneiden'#10'ImageInd'
+  +'ex'#2#6#8'ShortCut'#3'X@'#0#0#9'TEditCopy'#9'EditCopy1'#8'Category'#6#10'Be'
+  +'arbeiten'#7'Caption'#6#9'&Kopieren'#4'Hint'#6#8'Kopieren'#10'ImageIndex'#2#7
+  +#8'ShortCut'#3'C@'#0#0#10'TEditPaste'#10'EditPaste1'#8'Category'#6#10'Bearbe'
+  +'iten'#7'Caption'#6#10'&Einf'#195#188'gen'#4'Hint'#6#9'Einf'#195#188'gen'#10
+  +'ImageIndex'#2#8#8'ShortCut'#3'V@'#0#0#11'TEditDelete'#11'EditDelete1'#8'Cat'
+  +'egory'#6#10'Bearbeiten'#7'Caption'#6#9'&L'#195#182'schen'#10'ImageIndex'#2#9
+  +#8'ShortCut'#2'.'#0#0#0#16'TPageSetupDialog'#16'PageSetupDialog1'#4'left'#3#8
+  +#1#3'top'#3#16#1#0#0#19'TPrinterSetupDialog'#19'PrinterSetupDialog1'#4'left'
+  +#3'8'#1#3'top'#3#16#1#0#0#12'TPrintDialog'#12'PrintDialog1'#4'left'#3'p'#1#3
+  +'top'#3#16#1#0#0#10'TPopupMenu'#10'PopupMenu1'#4'left'#3#232#1#3'top'#3#16#1
+  +#0#9'TMenuItem'#9'PopupUndo'#7'Caption'#6#4'Undo'#10'ImageIndex'#2#5#7'OnCli'
+  +'ck'#7#14'PopupUndoClick'#0#0#9'TMenuItem'#9'PopupDiv1'#7'Caption'#6#1'-'#0#0
+  +#9'TMenuItem'#8'PopupCut'#7'Caption'#6#3'Cut'#10'ImageIndex'#2#6#7'OnClick'#7
+  +#13'PopupCutClick'#0#0#9'TMenuItem'#9'PopupCopy'#7'Caption'#6#4'Copy'#10'Ima'
+  +'geIndex'#2#7#7'OnClick'#7#14'PopupCopyClick'#0#0#9'TMenuItem'#10'PopupPaste'
+  +#7'Caption'#6#5'Paste'#10'ImageIndex'#2#8#7'OnClick'#7#15'PopupPasteClick'#0
+  +#0#9'TMenuItem'#9'PoputDiv2'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#15'PopupCopy'
+  +'Result'#7'Caption'#6#11'Copy Result'#10'ImageIndex'#2#10#7'OnClick'#7#20'Po'
+  ,'pupCopyResultClick'#0#0#0#0
 ]);

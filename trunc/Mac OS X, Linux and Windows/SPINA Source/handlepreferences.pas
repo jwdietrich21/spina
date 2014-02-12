@@ -29,6 +29,7 @@ unit HandlePreferences;
 6: Error saving file.
 10: New file created.
 }
+
 interface
 
 uses
@@ -41,7 +42,7 @@ uses
       , MacOSAll
     {$ENDIF}
   {$ENDIF},
-  UnitConverter;
+  UnitConverter, CDISC;
 
 function DecodeGreek(theString: string): string;
 function EncodeGreek(theString: string): string;
@@ -524,137 +525,6 @@ begin
     gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
 end;
 
-procedure SaveStandardCDISC_RRFile(theFileName: String; var returnCode: integer);
-{saves a minimal standard file}
-var
-  Doc: TXMLDocument;
-  RootNode, parentNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode: TDOMNode;
-  LabTestNode, NormalNode, UnitsNode, NormalDefinitionNode: TDOMNode;
-  SubjectCharsNote, AgeNode, ExclusionsNode, TextNode: TDOMNode;
-begin
-  try
-    Doc := TXMLDocument.Create;
-    theNode := Doc.CreateComment('Example for SPINA Reference Values');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('adapted to CDISC LAB MODEL 1.0.1');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) J. W. Dietrich, 1994 - 2012');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) Ludwig Maximilian University of Munich 1995 - 2002');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) University of Ulm Hospitals 2002-2004');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) Ruhr University of Bochum 2005 - 2012');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(released under the BSD License');
-    Doc.AppendChild(theNode);
-    RootNode := Doc.CreateElement('GTP');
-    TDOMElement(RootNode).SetAttribute('CreationDateTime', '2012-12-30T13:13:13+01:00');
-    TDOMElement(RootNode).SetAttribute('ModelVersion', '01-0-01');
-    Doc.Appendchild(RootNode);
-    RootNode:= Doc.DocumentElement;
-    parentNode := Doc.CreateElement('TransmissionSource');
-    TDOMElement(parentNode).SetAttribute('ID', 'www.ruhr-uni-bochum.de/bergmannsheil/');
-    TDOMElement(parentNode).SetAttribute('Name', 'Bergmannsheil University Hospitals');
-    RootNode.Appendchild(parentNode);
-    parentNode := Doc.CreateElement('Study');
-    TDOMElement(parentNode).SetAttribute('ID', 'SPIt');
-    TDOMElement(parentNode).SetAttribute('Name', 'Reference Ranges for SPINA Thyr');
-    TDOMElement(parentNode).SetAttribute('TransmissionType', 'C');
-    RootNode.Appendchild(parentNode);
-    BatteryNode := Doc.CreateElement('BaseBattery');
-    TDOMElement(BatteryNode).SetAttribute('ID', 'SPIt');
-    TDOMElement(BatteryNode).SetAttribute('Name', 'SPINA Thyr');
-    parentNode.Appendchild(BatteryNode);
-    BaseTestNode := Doc.CreateElement('BaseTest');
-    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
-    BatteryNode.Appendchild(BaseTestNode);
-    LabTestNode := Doc.CreateElement('LabTest');
-    TDOMElement(LabTestNode).SetAttribute('ID', 'GT');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Thyroid''s Secretory Capacity');
-    BaseTestNode.Appendchild(LabTestNode);
-    SubjectCharsNote := Doc.CreateElement('SubjectCharacteristics');
-    theNode := Doc.CreateElement('Sex');
-    TDOMElement(theNode).SetAttribute('CodeListID', 'HL7 Gender Vocabulary Domain V2.4');
-    TDOMElement(theNode).SetAttribute('Value', 'F');
-
-    SubjectCharsNote.Appendchild(theNode);
-    AgeNode := Doc.CreateElement('Age');
-    TDOMElement(AgeNode).SetAttribute('BoundaryType', 'L');
-    SubjectCharsNote.Appendchild(AgeNode);
-    theNode := Doc.CreateElement('LowerLimit');
-    TDOMElement(theNode).SetAttribute('UOM', 'Y');
-    TDOMElement(theNode).SetAttribute('Value', '0');
-    AgeNode.Appendchild(theNode);
-    theNode := Doc.CreateElement('UpperLimit');
-    TDOMElement(theNode).SetAttribute('UOM', 'Y');
-    TDOMElement(theNode).SetAttribute('Value', '999');
-    AgeNode.Appendchild(theNode);
-    FlagUOMNode := Doc.CreateElement('FlagUOM');
-    TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'S');
-    theNode := Doc.CreateElement('ResultUnits');
-    TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
-    TDOMElement(theNode).SetAttribute('Value', 'pmol/s');
-    FlagUOMNode.Appendchild(theNode);
-    theNode := Doc.CreateElement('Deltas');
-    FlagUOMNode.Appendchild(theNode);
-    ExclusionsNode := Doc.CreateElement('Exclusions');
-    TDOMElement(ExclusionsNode).SetAttribute('StartDateTime', '2000-01-01T12:00:00+01:00');
-    FlagUOMNode.Appendchild(ExclusionsNode);
-    theNode := Doc.CreateElement('ExclusionDefinition');
-    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'LX');
-    TDOMElement(theNode).SetAttribute('Value', '<0');
-    FlagUOMNode.Appendchild(theNode);
-    theNode := Doc.CreateElement('ExclusionDefinition');
-    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
-    TDOMElement(theNode).SetAttribute('Value', '>10000');
-    FlagUOMNode.Appendchild(theNode);
-    theNode := Doc.CreateElement('TransactionType');
-    TextNode := Doc.CreateTextNode('I');
-    theNode.AppendChild(TextNode);
-    FlagUOMNode.Appendchild(theNode);
-    SubjectCharsNote.Appendchild(FlagUOMNode);
-    FlagUOMNode := Doc.CreateElement('FlagUOM');
-    TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'C');
-    theNode := Doc.CreateElement('ResultUnits');
-    TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
-    TDOMElement(theNode).SetAttribute('Value', 'pmol/s');
-    FlagUOMNode.Appendchild(theNode);
-    theNode := Doc.CreateElement('Deltas');
-    FlagUOMNode.Appendchild(theNode);
-    ExclusionsNode := Doc.CreateElement('Exclusions');
-    TDOMElement(ExclusionsNode).SetAttribute('StartDateTime', '2000-01-01T12:00:00+01:00');
-    FlagUOMNode.Appendchild(ExclusionsNode);
-    theNode := Doc.CreateElement('ExclusionDefinition');
-    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'LX');
-    TDOMElement(theNode).SetAttribute('Value', '<0');
-    FlagUOMNode.Appendchild(theNode);
-    theNode := Doc.CreateElement('ExclusionDefinition');
-    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
-    TDOMElement(theNode).SetAttribute('Value', '>10000');
-    FlagUOMNode.Appendchild(theNode);
-    theNode := Doc.CreateElement('TransactionType');
-    TextNode := Doc.CreateTextNode('I');
-    theNode.AppendChild(TextNode);
-    FlagUOMNode.Appendchild(theNode);
-    SubjectCharsNote.Appendchild(FlagUOMNode);
-    BaseTestNode.Appendchild(SubjectCharsNote);
-
-    SubjectCharsNote := Doc.CreateElement('SubjectCharacteristics');
-    BaseTestNode.Appendchild(SubjectCharsNote);
-
-    SubjectCharsNote := Doc.CreateElement('SubjectCharacteristics');
-    BaseTestNode.Appendchild(SubjectCharsNote);
-
-    SubjectCharsNote := Doc.CreateElement('SubjectCharacteristics');
-    BaseTestNode.Appendchild(SubjectCharsNote);
-
-    writeXMLFile(Doc, theFileName);
-  finally
-    Doc.Free;
-  end;
-end;
-
 procedure GetReferenceValues(theFileName: String; var returnCode: integer);
 {reads reference values from a CDISC LAB model-compliant XML file.}
 {This version of the routine ignores sex- and age-specific reference values}
@@ -666,7 +536,6 @@ var
   oldSeparator: Char;
   SI: boolean;
 begin
-  SaveStandardCDISC_RRFile('CDISC_RR_Test.xml', returnCode); // for testing only
   returnCode := 0;           {no error}
   with gReferenceRanges do
     begin                   {define emtpy default values}
@@ -723,9 +592,9 @@ begin
   DecimalSeparator := DEC_POINT;
   if not FileExists(theFileName) then
     begin
-      //SaveStandardCDISC_RRFile(theFileName, returnCode);
-      gCDISC_RR.SaveToFile(theFileName);  {saves a minimal standard file}
-      returnCode := 10;
+      SaveStandardCDISC_RRFile(theFileName, returnCode);  {saves a minimal standard file}
+      if returnCode = 0 then    {no error,}
+        returnCode := 10;       {therefore new file created}
     end;
   if FileExists(theFileName) then       {could this file be created (or did it already exist)?}
   try

@@ -62,7 +62,6 @@ type
     Beenden1: TMenuItem;
     berSPINAThyr1: TMenuItem;
     Calculate_Button: TButton;
-    CDISC_defaults: TMemo;
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     CopyResultMenuItem: TMenuItem;
@@ -741,7 +740,6 @@ begin
   Hauptschirm.VertScrollBar.Visible := False;
   Hauptschirm.AutoScroll := False;
   Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
-  gCDISC_RR := Hauptschirm.CDISC_defaults.Lines;
   GetPreferences;
   GetReferenceValues(RRFile, theCode);
 end;
