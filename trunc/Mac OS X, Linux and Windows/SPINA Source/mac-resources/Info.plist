@@ -11,10 +11,10 @@ des thyreotropen Regelkreises
 
 Version 3.4.0
 
-(c) J. W. Dietrich, 1994 - 2013
+(c) J. W. Dietrich, 1994 - 2014
 (c) Ludwig Maximilian University of Munich 1995 - 2002
 (c) University of Ulm Hospitals 2002-2004
-(c) Ruhr University of Bochum 2005 - 2013
+(c) Ruhr University of Bochum 2005 - 2014
 
 Source code released under the BSD License
 See http://spina.medical-cybernetics.de for details
@@ -38,9 +38,9 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleShortVersionString</key>
 	<string>3.4.0</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.4.0, ©1994-2013 J. W. Dietrich</string>
+	<string>3.4.0, ©1994-2014 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>3.4.0, ©1994-2013 J. W. Dietrich</string>
+	<string>3.4.0, ©1994-2014 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sf.spina.thyr</string>
 	<key>LSApplicationCategoryType</key>

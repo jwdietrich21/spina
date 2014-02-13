@@ -523,6 +523,14 @@ begin
     gGDRR := NA_MARK
   else
     gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
+  if IsNan(gReferenceRanges.TSHI.ln) then
+    gTSHIRR := NA_MARK
+  else
+    gTSHIRR := FloatToStrF(gReferenceRanges.TSHI.ln, ffFixed, 5, 1) + ' - ' + FloatToStrF(gReferenceRanges.TSHI.hn, ffFixed, 5, 1) + ' ';
+  if IsNan(gReferenceRanges.TTSI.ln) then
+    gTTSIRR := NA_MARK
+  else
+    gTTSIRR := FloatToStrF(gReferenceRanges.TTSI.ln, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.TTSI.hn, ffFixed, 5, 0) + ' ';
 end;
 
 procedure GetReferenceValues(theFileName: String; var returnCode: integer);
@@ -553,6 +561,10 @@ begin
       GT.hn := Math.NaN;
       GD.ln := Math.NaN;
       GD.hn := Math.NaN;
+      TSHI.ln := Math.NaN;
+      TSHI.hn := Math.NaN;
+      TTSI.ln := Math.NaN;
+      TTSI.hn := Math.NaN;
     end;
   with gSIReferenceRanges do
     begin                   {define emtpy default values}
@@ -570,7 +582,11 @@ begin
       GT.hn := Math.NaN;
       GD.ln := Math.NaN;
       GD.hn := Math.NaN;
-    end;
+      TSHI.ln := Math.NaN;
+      TSHI.hn := Math.NaN;
+      TTSI.ln := Math.NaN;
+      TTSI.hn := Math.NaN;
+   end;
   with gConvReferenceRanges do
     begin                   {define emtpy default values}
       TSH.ln := Math.NaN;
@@ -587,6 +603,10 @@ begin
       GT.hn := Math.NaN;
       GD.ln := Math.NaN;
       GD.hn := Math.NaN;
+      TSHI.ln := Math.NaN;
+      TSHI.hn := Math.NaN;
+      TTSI.ln := Math.NaN;
+      TTSI.hn := Math.NaN;
     end;
   oldSeparator := DecimalSeparator;
   DecimalSeparator := DEC_POINT;
@@ -908,6 +928,74 @@ begin
                     end;
                BaseTestNode := BaseTestNode.NextSibling;
               end;
+            end
+            else if AttributeValue(BatteryNode, 'ID') = 'Other' then
+            begin
+              BaseTestNode := BatteryNode.FindNode('BaseTest');
+              while assigned(BaseTestNode) do
+              begin
+                theNode := BaseTestNode.FindNode('LabTest');
+                if assigned(theNode) then
+                  if AttributeValue(theNode, 'ID') = 'TSHI' then  {TSHI}
+                    begin
+                      theNode := theNode.NextSibling;
+                      while assigned(theNode) do
+                        begin
+                          if theNode.NodeName = 'SubjectCharacteristics' then
+                            begin
+                              FlagUOMNode := theNode.FindNode('FlagUOM');
+                              if assigned(FlagUOMNode) then
+                                begin
+                                  NormalNode := FlagUOMNode.FindNode('Normal');
+                                  if assigned(NormalNode) then  {skips exclusion definition}
+                                  begin
+                                    NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                    while assigned(NormalDefinitionNode) do
+                                      begin
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
+                                           gReferenceRanges.TSHI.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
+                                           gReferenceRanges.TSHI.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                      end;
+                                    break;
+                                  end;
+                                end;
+                            end;
+                          theNode := theNode.NextSibling;
+                        end;
+                    end
+                   else if AttributeValue(theNode, 'ID') = 'TTSI' then  {TTSI}
+                    begin
+                      theNode := theNode.NextSibling;
+                      while assigned(theNode) do
+                        begin
+                          if theNode.NodeName = 'SubjectCharacteristics' then
+                            begin
+                              FlagUOMNode := theNode.FindNode('FlagUOM');
+                              if assigned(FlagUOMNode) then
+                                begin
+                                  NormalNode := FlagUOMNode.FindNode('Normal');
+                                  if assigned(NormalNode) then  {skips exclusion definition}
+                                  begin
+                                    NormalDefinitionNode := NormalNode.FindNode('NormalDefinition');
+                                    while assigned(NormalDefinitionNode) do
+                                      begin
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
+                                           gReferenceRanges.TTSI.ln := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
+                                           gReferenceRanges.TTSI.hn := StrToFloat(AttributeValue(NormalDefinitionNode, 'Value'));
+                                        NormalDefinitionNode := NormalDefinitionNode.NextSibling;
+                                      end;
+                                    break;
+                                  end;
+                                end;
+                            end;
+                          theNode := theNode.NextSibling;
+                        end;
+                    end;
+                BaseTestNode := BaseTestNode.NextSibling;
+              end;
             end;
             if BatteryNode.NextSibling <> nil then
               BatteryNode := BatteryNode.NextSibling
@@ -938,6 +1026,10 @@ begin
         GT.hn := 8.67 / 1e12;
         GD.ln := 20 / 1e9;
         GD.hn := 40 / 1e9;
+        TSHI.ln := 1.3;
+        TSHI.hn := 4.1;
+        TTSI.ln := 122;
+        TTSI.hn := 150;
       end;
     returnCode := 6;
   end;

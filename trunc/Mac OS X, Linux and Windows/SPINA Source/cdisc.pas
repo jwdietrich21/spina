@@ -15,7 +15,7 @@ unit CDISC;
 { (c) University of Ulm Hospitals 2002-2004 }
 { (c) Ruhr University of Bochum 2005 - 2013 }
 
-{ This unit handles global application preferences }
+{ This unit handles CDISC XML files for reference ranges }
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
@@ -459,6 +459,53 @@ begin
     AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'nmol/s', 'nmol/s', '<0', '>1000', '<0', '>1000', '2012-08-01T12:00:00+01:00');
     AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'nmol/s', 'nmol/s', '20', '40', '<10', '>60', '<5', '>100', '20', '40', '<10', '>60', '<5', '>100', '2012-08-01T12:00:00+01:00');
 
+    {Other structure parameters:}
+
+    BatteryNode := Doc.CreateElement('BaseBattery');
+    TDOMElement(BatteryNode).SetAttribute('ID', 'Other');
+    TDOMElement(BatteryNode).SetAttribute('Name', 'Other structure parameters');
+    parentNode.Appendchild(BatteryNode);
+
+    {TSHI:}
+
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for TSHI:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'TSHI');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Jostel''s TSH index');
+    BaseTestNode.Appendchild(LabTestNode);
+    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, '', '', '<0', '>100', '<0', '>100', '2012-08-01T12:00:00+01:00');
+    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, '', '', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '2012-08-01T12:00:00+01:00');
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, '', '', '<0', '>100', '<0', '>100', '2012-08-01T12:00:00+01:00');
+    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, '', '', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '2012-08-01T12:00:00+01:00');
+
+    {TTSI:}
+
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for TTSI:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'TTSI');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Thyrotroph thyroid hormone sensitivity index');
+    BaseTestNode.Appendchild(LabTestNode);
+    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, '', '', '<0', '>1000', '<0', '>1000', '2012-08-01T12:00:00+01:00');
+    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, '', '', '122', '150', '<50', '200', '<10', '>300', '122', '150', '<50', '200', '<10', '>300', '2012-08-01T12:00:00+01:00');
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, '', '', '<0', '>1000', '<0', '>1000', '2012-08-01T12:00:00+01:00');
+    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, '', '', '122', '150', '<50', '200', '<10', '>300', '122', '150', '<50', '200', '<10', '>300', '2012-08-01T12:00:00+01:00');
+
     writeXMLFile(Doc, theFileName);
 
     returnCode := 0;
@@ -468,4 +515,4 @@ begin
 end;
 
 end.
-
+

@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="4"/>
-      <BuildNr Value="441"/>
+      <BuildNr Value="444"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.4.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -64,10 +64,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="725"/>
-        <CursorPos X="72" Y="742"/>
+        <TopLine Value="1"/>
+        <CursorPos X="36" Y="30"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -130,7 +131,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="182"/>
+        <UsageCount Value="184"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit9>
@@ -159,7 +160,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="51" Y="24"/>
-        <UsageCount Value="180"/>
+        <UsageCount Value="182"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit12>
@@ -174,7 +175,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="177"/>
+        <UsageCount Value="179"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit13>
@@ -211,8 +212,8 @@
         <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="3" Y="165"/>
-        <UsageCount Value="144"/>
+        <CursorPos X="1" Y="2"/>
+        <UsageCount Value="146"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
@@ -251,9 +252,9 @@
         <UnitName Value="SPINA_Types"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="148"/>
-        <CursorPos X="64" Y="163"/>
-        <UsageCount Value="131"/>
+        <TopLine Value="146"/>
+        <CursorPos X="49" Y="164"/>
+        <UsageCount Value="133"/>
         <Loaded Value="True"/>
       </Unit23>
       <Unit24>
@@ -263,7 +264,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="3" Y="111"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
       </Unit24>
       <Unit25>
@@ -280,8 +281,8 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="48" Y="595"/>
-        <UsageCount Value="66"/>
+        <CursorPos X="1" Y="2"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
       </Unit26>
       <Unit27>
@@ -311,7 +312,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="123"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit29>
@@ -371,7 +372,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit36>
@@ -386,7 +387,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit37>
@@ -496,7 +497,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="50"/>
         <Loaded Value="True"/>
       </Unit51>
       <Unit52>
@@ -507,7 +508,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="99" Y="17"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
       </Unit52>
       <Unit53>
@@ -562,7 +563,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit59>
       <Unit60>
@@ -573,7 +574,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
       </Unit60>
       <Unit61>
@@ -584,7 +585,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
       </Unit61>
       <Unit62>
@@ -595,7 +596,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
       </Unit62>
       <Unit63>
@@ -606,7 +607,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
       </Unit63>
       <Unit64>
@@ -650,140 +651,139 @@
         <Filename Value="cdisc.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CDISC"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="17" Y="2"/>
+        <TopLine Value="483"/>
+        <CursorPos X="37" Y="511"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <TopLine Value="82"/>
           <CursorPos X="150" Y="83"/>
         </ExtraEditor1>
-        <UsageCount Value="23"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit69>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="34" Column="110" TopLine="24"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="745" Column="129" TopLine="727"/>
       </Position1>
       <Position2>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="106" Column="103" TopLine="84"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="1020" Column="25" TopLine="987"/>
       </Position2>
       <Position3>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="313" Column="92" TopLine="297"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="1030" Column="34" TopLine="1016"/>
       </Position3>
       <Position4>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="106" Column="158" TopLine="93"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="1025" Column="15" TopLine="1009"/>
       </Position4>
       <Position5>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="250" Column="51" TopLine="243"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="1024" Column="23" TopLine="998"/>
       </Position5>
       <Position6>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="246" Column="9" TopLine="224"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="1029" Column="19" TopLine="998"/>
       </Position6>
       <Position7>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="314" Column="136" TopLine="299"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="525" Column="10" TopLine="502"/>
       </Position7>
       <Position8>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="320" Column="71" TopLine="316"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="526" Column="33" TopLine="505"/>
       </Position8>
       <Position9>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="106" Column="107" TopLine="99"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="533" Column="136" TopLine="508"/>
       </Position9>
       <Position10>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="59" Column="50" TopLine="44"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="529" Column="130" TopLine="508"/>
       </Position10>
       <Position11>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="83" Column="50" TopLine="68"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="533" Column="112" TopLine="508"/>
       </Position11>
       <Position12>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="132" Column="50" TopLine="118"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="12" Column="61" TopLine="1"/>
       </Position12>
       <Position13>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="197" Column="50" TopLine="182"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="465" Column="52" TopLine="446"/>
       </Position13>
       <Position14>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="354" Column="42" TopLine="326"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="468" Column="46" TopLine="452"/>
       </Position14>
       <Position15>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="414" Column="42" TopLine="388"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="5" Column="88" TopLine="1"/>
       </Position15>
       <Position16>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="595" Column="31" TopLine="568"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="424" Column="24" TopLine="395"/>
       </Position16>
       <Position17>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="30" Column="35" TopLine="15"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="429" Column="34" TopLine="400"/>
       </Position17>
       <Position18>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="588" Column="60" TopLine="568"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="436" Column="24" TopLine="407"/>
       </Position18>
       <Position19>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="3" Column="34" TopLine="1"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="441" Column="34" TopLine="412"/>
       </Position19>
       <Position20>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="53" Column="65" TopLine="27"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="451" Column="24" TopLine="423"/>
       </Position20>
       <Position21>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="528" Column="65" TopLine="502"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="456" Column="34" TopLine="428"/>
       </Position21>
       <Position22>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="539" Column="13" TopLine="513"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="463" Column="24" TopLine="435"/>
       </Position22>
       <Position23>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="595" Column="55" TopLine="570"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="468" Column="34" TopLine="440"/>
       </Position23>
       <Position24>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="596" Column="17" TopLine="571"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="165" Column="3" TopLine="1"/>
       </Position24>
       <Position25>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="872" Column="17" TopLine="842"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="52" Column="19" TopLine="34"/>
       </Position25>
       <Position26>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="444" Column="21" TopLine="416"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="534" Column="1" TopLine="106"/>
       </Position26>
       <Position27>
-        <Filename Value="cdisc.pas"/>
-        <Caret Line="446" Column="51" TopLine="422"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="52" Column="18" TopLine="34"/>
       </Position27>
       <Position28>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="745" Column="44" TopLine="728"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="219" Column="68" TopLine="195"/>
       </Position28>
       <Position29>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="744" Column="44" TopLine="727"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="431" Column="18" TopLine="517"/>
       </Position29>
       <Position30>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="745" Column="129" TopLine="727"/>
+        <Caret Line="11" Column="89" TopLine="1"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -830,10 +830,13 @@ end;"/>
     </Other>
   </CompilerOptions>
   <Debugging>
-    <Watches Count="1">
+    <Watches Count="2">
       <Item1>
-        <Expression Value="arraySize"/>
+        <Expression Value="gTSHIRR"/>
       </Item1>
+      <Item2>
+        <Expression Value="gTTSIRR"/>
+      </Item2>
     </Watches>
     <Exceptions Count="2">
       <Item1>
@@ -844,4 +847,4 @@ end;"/>
       </Item2>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>

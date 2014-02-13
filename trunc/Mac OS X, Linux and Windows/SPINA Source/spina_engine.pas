@@ -160,10 +160,12 @@ end;
 
 procedure FormatCase(var theCase: tCaseRecord; referenceRanges: tReferenceValues);
 var
-  GTFlag, GDFlag: string;
+  GTFlag, GDFlag, TSHIFlag, TTSIFlag: string;
 begin
   GTFlag := '';
   GDFlag := '';
+  TSHIFlag := '';
+  TTSIFlag := '';
   if not isNaN(theCase.GT) then
   begin
     theCase.GTs := FloatToStrF(1e12 * theCase.GT, ffFixed, 5, 2);
@@ -196,8 +198,26 @@ begin
   end;
   if not isNaN(theCase.TSHI) then
   begin
-    theCase.TSHIs := FloatToStrF(theCase.TSHI, ffFixed, 5, 2);
-    theCase.flaggedTSHIs := FloatToStrF(theCase.TSHI, ffFixed, 5, 2);
+    theCase.TSHIs := FloatToStrF(theCase.TSHI, ffFixed, 5, 1);
+    if (theCase.TSHI < gReferenceRanges.TSHI.ln) or
+      (theCase.TSHI > gReferenceRanges.TSHI.hn) then
+      TSHIFlag := REF_RANGE_FLAG;
+    theCase.flaggedTSHIs := FloatToStrF(theCase.TSHI, ffFixed, 5, 1);
+    theCase.flaggedTSHIs := concat(theCase.flaggedTSHIs, TSHIFlag);
+  end
+  else
+  begin
+    theCase.TSHIs := gNotCalculable;
+    theCase.flaggedTSHIs := gNotCalculable;
+  end;
+  if not isNaN(theCase.TTSI) then
+  begin
+    theCase.TTSIs := FloatToStrF(theCase.TTSI, ffFixed, 5, 0);
+    if (theCase.TTSI < gReferenceRanges.TTSI.ln) or
+      (theCase.TTSI > gReferenceRanges.TTSI.hn) then
+      TTSIFlag := REF_RANGE_FLAG;
+    theCase.flaggedTTSIs := FloatToStrF(theCase.TTSI, ffFixed, 5, 0);
+    theCase.flaggedTTSIs := concat(theCase.flaggedTTSIs, TTSIFlag);
   end
   else
   begin
