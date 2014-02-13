@@ -170,8 +170,9 @@ begin
   begin
     theCase.GTs := FloatToStrF(1e12 * theCase.GT, ffFixed, 5, 2);
     theCase.GTs := concat(theCase.GTs, ' pmol/s');
-    if (theCase.GT < gReferenceRanges.GT.ln) or (theCase.GT >
-      gReferenceRanges.GT.hn) then
+    if not isNaN(gReferenceRanges.GT.ln) and not isNan(gReferenceRanges.GT.hn) and
+      ((theCase.GT < gReferenceRanges.GT.ln) or (theCase.GT >
+      gReferenceRanges.GT.hn)) then
       GTFlag := REF_RANGE_FLAG;
     theCase.flaggedGTs := FloatToStrF(1e12 * theCase.GT, ffFixed, 5, 2);
     theCase.flaggedGTs := concat(theCase.flaggedGTs, GTFlag, ' pmol/s ');
@@ -185,8 +186,9 @@ begin
   begin
     theCase.GDs := FloatToStrF(1e9 * theCase.GD, ffFixed, 5, 2);
     theCase.GDs := concat(theCase.GDs, ' nmol/s');
-    if (theCase.GD < gReferenceRanges.GD.ln) or
-      (theCase.GD > gReferenceRanges.GD.hn) then
+    if not isNaN(gReferenceRanges.GD.ln) and not isNan(gReferenceRanges.GD.hn) and
+      ((theCase.GD < gReferenceRanges.GD.ln) or
+      (theCase.GD > gReferenceRanges.GD.hn)) then
       GDFlag := REF_RANGE_FLAG;
     theCase.flaggedGDs := FloatToStrF(1e9 * theCase.GD, ffFixed, 5, 2);
     theCase.flaggedGDs := concat(theCase.flaggedGDs, GDFlag, ' nmol/s ');
@@ -199,8 +201,9 @@ begin
   if not isNaN(theCase.TSHI) then
   begin
     theCase.TSHIs := FloatToStrF(theCase.TSHI, ffFixed, 5, 1);
-    if (theCase.TSHI < gReferenceRanges.TSHI.ln) or
-      (theCase.TSHI > gReferenceRanges.TSHI.hn) then
+    if not isNaN(gReferenceRanges.TSHI.ln) and not isNan(gReferenceRanges.TSHI.hn) and
+      ((theCase.TSHI < gReferenceRanges.TSHI.ln) or
+      (theCase.TSHI > gReferenceRanges.TSHI.hn)) then
       TSHIFlag := REF_RANGE_FLAG;
     theCase.flaggedTSHIs := FloatToStrF(theCase.TSHI, ffFixed, 5, 1);
     theCase.flaggedTSHIs := concat(theCase.flaggedTSHIs, TSHIFlag);
@@ -213,8 +216,9 @@ begin
   if not isNaN(theCase.TTSI) then
   begin
     theCase.TTSIs := FloatToStrF(theCase.TTSI, ffFixed, 5, 0);
-    if (theCase.TTSI < gReferenceRanges.TTSI.ln) or
-      (theCase.TTSI > gReferenceRanges.TTSI.hn) then
+    if not isNaN(gReferenceRanges.TTSI.ln) and not isNan(gReferenceRanges.TTSI.hn) and
+      ((theCase.TTSI < gReferenceRanges.TTSI.ln) or
+      (theCase.TTSI > gReferenceRanges.TTSI.hn)) then
       TTSIFlag := REF_RANGE_FLAG;
     theCase.flaggedTTSIs := FloatToStrF(theCase.TTSI, ffFixed, 5, 0);
     theCase.flaggedTTSIs := concat(theCase.flaggedTTSIs, TTSIFlag);

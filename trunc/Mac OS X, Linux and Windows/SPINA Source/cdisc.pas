@@ -13,7 +13,7 @@ unit CDISC;
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2013 }
+{ (c) Ruhr University of Bochum 2005 - 2014 }
 
 { This unit handles CDISC XML files for reference ranges }
 
@@ -515,4 +515,4 @@ begin
 end;
 
 end.
-
+

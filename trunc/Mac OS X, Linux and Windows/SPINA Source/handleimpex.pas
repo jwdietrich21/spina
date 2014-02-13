@@ -13,7 +13,7 @@ unit HandleImpEx;
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2013 }
+{ (c) Ruhr University of Bochum 2005 - 2014 }
 
 { This unit handles import and export of laboratory results and calculations }
 
@@ -191,7 +191,8 @@ begin
     obsSubID := 'TSHI';
     obsValue := FloatToStrF(acaseRecord.TSHI, ffNumber, 5, 2);
     Units := '';
-    RefRange := '';
+    RefRange := FloatToStr(gReferenceRanges.TSHI.ln) + ' - ' +
+      FloatToStr(gReferenceRanges.TSHI.hn);
     AbnormFlags := '';
     probability := '';
     Nature := '';
@@ -216,7 +217,8 @@ begin
     obsSubID := 'TTSI';
     obsValue := FloatToStrF(acaseRecord.TTSI, ffNumber, 5, 2);
     Units := '';
-    RefRange := '';
+    RefRange := FloatToStr(gReferenceRanges.TTSI.ln) + ' - ' +
+      FloatToStr(gReferenceRanges.TTSI.hn);
     AbnormFlags := '';
     probability := '';
     Nature := '';
@@ -258,4 +260,4 @@ begin
   end;
 end;
 
-end.
+end.

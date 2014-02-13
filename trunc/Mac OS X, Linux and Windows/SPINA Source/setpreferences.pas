@@ -36,13 +36,31 @@ type
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
     CDISCOpenDialog: TOpenDialog;
+    Dashlabel5: TLabel;
+    Dashlabel6: TLabel;
+    Dashlabel4: TLabel;
+    Dashlabel3: TLabel;
+    Dashlabel2: TLabel;
+    Dashlabel7: TLabel;
+    GDRRHEdit: TEdit;
+    GTRRHEdit: TEdit;
+    Dashlabel1: TLabel;
+    TSHIRRHEdit: TEdit;
+    TTSIRRHEdit: TEdit;
+    TSHIRRLEdit: TEdit;
+    TTSIRRLEdit: TEdit;
+    TTSIRRLabel: TLabel;
+    TSHIRRLabel: TLabel;
+    T3RRHEdit: TEdit;
+    T4RRHEdit: TEdit;
+    TSHRRHEdit: TEdit;
     IDGroupBox: TGroupBox;
     GUIGroupBox: TGroupBox;
     SendingFacLabel: TLabel;
     MarkMandatoryCheck: TCheckBox;
-    GDRREdit: TEdit;
+    GDRRLEdit: TEdit;
     GDRRLabel: TLabel;
-    GTRREdit: TEdit;
+    GTRRLEdit: TEdit;
     GTRRLabel: TLabel;
     MethodLabel: TLabel;
     SendingFacEdit: TEdit;
@@ -52,19 +70,19 @@ type
     RememberCheckBox: TCheckBox;
     T3Label: TLabel;
     T3MethodComboBox: TComboBox;
-    T3RREDit: TEdit;
+    T3RRLEDit: TEdit;
     T3RRLabel: TLabel;
     T3UnitComboBox: TComboBox;
     T4Label: TLabel;
     T4MethodComboBox: TComboBox;
-    T4RREdit: TEdit;
+    T4RRLEdit: TEdit;
     T4RRLabel: TLabel;
     T4UnitComboBox: TComboBox;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
     TSHLabel: TLabel;
-    TSHRREdit: TEdit;
+    TSHRRLEdit: TEdit;
     TSHRRLabel: TLabel;
     TSHUnitComboBox: TComboBox;
     UnitLabel: TLabel;
@@ -276,17 +294,36 @@ end;
 
 procedure TPreferencesForm.DisplayReferenceRanges(Sender: TObject);
 begin
-  TSHRREdit.Text := gTSHRR;
+  TSHRRLEdit.Text := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2);
+  TSHRRHEdit.Text := FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2);
   if gPreferences.T4.Method = freeHormone then
-    T4RREdit.Text := gFT4RR
+    begin
+      T4RRLEdit.Text := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2);
+      T4RRHEdit.Text := FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2);
+    end
   else
-    T4RREdit.Text := gTT4RR;
+    begin
+      T4RRLEdit.Text := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2);
+      T4RRHEdit.Text := FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2);
+    end;
   if gPreferences.T3.Method = freeHormone then
-    T3RREdit.Text := gFT3RR
+    begin
+      T3RRLEDit.Text := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2);
+      T3RRHEDit.Text := FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2);
+    end
   else
-    T3RREdit.Text := gTT3RR;
-  GTRREdit.Text := gGTRR;
-  GDRREdit.Text := gGDRR;
+    begin
+      T3RRLEDit.Text := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2);
+      T3RRHEDit.Text := FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2);
+    end;
+  GTRRLEdit.Text := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2);
+  GTRRHEdit.Text := FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2);
+  GDRRLEdit.Text := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 1);
+  GDRRHEdit.Text := FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 1);
+  TSHIRRLEdit.Text := FloatToStrF(gReferenceRanges.TSHI.ln, ffFixed, 5, 1);
+  TSHIRRHEdit.Text := FloatToStrF(gReferenceRanges.TSHI.hn, ffFixed, 5, 1);
+  TTSIRRLEdit.Text := FloatToStrF(gReferenceRanges.TTSI.ln, ffFixed, 5, 0);
+  TTSIRRHEdit.Text := FloatToStrF(gReferenceRanges.TTSI.hn, ffFixed, 5, 0);
 end;
 
 procedure CheckMandatoryColourising; {checks if mandatory fields should be coloured}
