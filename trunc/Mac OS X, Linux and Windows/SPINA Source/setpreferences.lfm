@@ -1,13 +1,13 @@
 object PreferencesForm: TPreferencesForm
-  Left = 258
-  Height = 404
-  Top = 198
-  Width = 623
+  Left = 320
+  Height = 420
+  Top = 186
+  Width = 675
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Application Preferences'
-  ClientHeight = 404
-  ClientWidth = 623
+  ClientHeight = 420
+  ClientWidth = 675
   Constraints.MinHeight = 400
   Constraints.MinWidth = 500
   OnActivate = FormActivate
@@ -16,9 +16,9 @@ object PreferencesForm: TPreferencesForm
   Position = poScreenCenter
   LCLVersion = '1.0.14.0'
   object OKButton: TButton
-    Left = 518
+    Left = 570
     Height = 25
-    Top = 361
+    Top = 377
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'OK'
@@ -27,9 +27,9 @@ object PreferencesForm: TPreferencesForm
     TabOrder = 0
   end
   object CancelButton: TButton
-    Left = 396
+    Left = 448
     Height = 25
-    Top = 361
+    Top = 377
     Width = 107
     Anchors = [akRight, akBottom]
     Cancel = True
@@ -39,42 +39,42 @@ object PreferencesForm: TPreferencesForm
   end
   object PageControl1: TPageControl
     Left = 24
-    Height = 336
+    Height = 352
     Top = 8
-    Width = 567
+    Width = 619
     ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akRight]
     TabIndex = 0
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Laboratory results'
-      ClientHeight = 310
-      ClientWidth = 559
+      ClientHeight = 313
+      ClientWidth = 613
       object UnitsGroupBox: TGroupBox
         Left = 24
         Height = 130
         Top = 8
-        Width = 523
+        Width = 577
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Methods and measurement units:'
-        ClientHeight = 112
-        ClientWidth = 519
+        ClientHeight = 108
+        ClientWidth = 569
         TabOrder = 0
         object MethodLabel: TLabel
           Left = 116
-          Height = 14
+          Height = 17
           Top = 10
-          Width = 37
+          Width = 49
           Caption = 'Method'
           ParentColor = False
         end
         object UnitLabel: TLabel
           AnchorSideRight.Control = TSHUnitComboBox
           AnchorSideRight.Side = asrBottom
-          Left = 240
-          Height = 14
+          Left = 233
+          Height = 17
           Top = 10
-          Width = 20
+          Width = 27
           Alignment = taCenter
           Anchors = [akTop, akRight]
           Caption = 'Unit'
@@ -82,9 +82,9 @@ object PreferencesForm: TPreferencesForm
         end
         object T4Label: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 57
-          Width = 17
+          Width = 22
           Caption = 'T4:'
           ParentColor = False
         end
@@ -96,7 +96,7 @@ object PreferencesForm: TPreferencesForm
           Width = 67
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'ng/dl'
@@ -116,7 +116,7 @@ object PreferencesForm: TPreferencesForm
           Width = 67
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'pg/ml'
@@ -136,7 +136,7 @@ object PreferencesForm: TPreferencesForm
           Width = 56
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'FT4'
@@ -149,10 +149,10 @@ object PreferencesForm: TPreferencesForm
         end
         object RememberCheckBox: TCheckBox
           Left = 292
-          Height = 17
+          Height = 18
           Hint = 'Bitte anklicken, um für neue Berechnungen die Maßeinheiten der vorherigen Berechnung zu verwenden.'
           Top = 10
-          Width = 138
+          Width = 178
           Caption = 'Remember last used unit'
           Checked = True
           OnChange = RememberCheckBoxChange
@@ -163,17 +163,17 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 33
-          Width = 24
+          Width = 30
           Caption = 'TSH:'
           ParentColor = False
         end
         object T3Label: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 81
-          Width = 17
+          Width = 22
           Caption = 'T3:'
           ParentColor = False
         end
@@ -185,7 +185,7 @@ object PreferencesForm: TPreferencesForm
           Width = 67
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'mU/l'
@@ -204,7 +204,7 @@ object PreferencesForm: TPreferencesForm
           Width = 56
           Enabled = False
           Font.Height = -11
-          ItemHeight = 13
+          ItemHeight = 0
           ItemIndex = 0
           Items.Strings = (
             'FT3'
@@ -220,40 +220,40 @@ object PreferencesForm: TPreferencesForm
         Left = 24
         Height = 156
         Top = 146
-        Width = 523
+        Width = 577
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Reference values:'
-        ClientHeight = 138
-        ClientWidth = 519
+        ClientHeight = 134
+        ClientWidth = 569
         DragMode = dmAutomatic
         TabOrder = 1
         object TSHRRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 12
-          Width = 24
+          Width = 30
           Caption = 'TSH:'
           ParentColor = False
         end
         object T4RRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 36
-          Width = 31
+          Width = 37
           Caption = '(F)T4:'
           ParentColor = False
         end
         object T3RRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 60
-          Width = 31
+          Width = 37
           Caption = '(F)T3:'
           ParentColor = False
         end
         object TSHRRLEdit: TEdit
           Left = 116
-          Height = 21
+          Height = 22
           Top = 7
           Width = 56
           ReadOnly = True
@@ -262,7 +262,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T4RRLEdit: TEdit
           Left = 116
-          Height = 21
+          Height = 22
           Top = 31
           Width = 56
           ReadOnly = True
@@ -271,7 +271,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T3RRLEDit: TEdit
           Left = 116
-          Height = 21
+          Height = 22
           Top = 55
           Width = 56
           ReadOnly = True
@@ -280,23 +280,23 @@ object PreferencesForm: TPreferencesForm
         end
         object GTRRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 86
-          Width = 18
+          Width = 23
           Caption = 'GT:'
           ParentColor = False
         end
         object GDRRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 110
-          Width = 19
+          Width = 24
           Caption = 'GD:'
           ParentColor = False
         end
         object GTRRLEdit: TEdit
           Left = 116
-          Height = 21
+          Height = 22
           Top = 81
           Width = 56
           ReadOnly = True
@@ -305,7 +305,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GDRRLEdit: TEdit
           Left = 116
-          Height = 21
+          Height = 22
           Top = 105
           Width = 56
           ReadOnly = True
@@ -313,11 +313,11 @@ object PreferencesForm: TPreferencesForm
           Text = 'NaN'
         end
         object ReadCDISCButton: TButton
-          Left = 292
+          Left = 337
           Height = 25
           Hint = 'Referenzbereiche aus Datei importieren.'
           Top = 99
-          Width = 214
+          Width = 219
           Anchors = [akTop, akLeft, akRight]
           Caption = 'Read from file ...'
           OnClick = ReadCDISCButtonClick
@@ -327,7 +327,7 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHRRHEdit: TEdit
           Left = 204
-          Height = 21
+          Height = 22
           Top = 7
           Width = 56
           ReadOnly = True
@@ -336,7 +336,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T4RRHEdit: TEdit
           Left = 204
-          Height = 21
+          Height = 22
           Top = 31
           Width = 56
           ReadOnly = True
@@ -345,7 +345,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T3RRHEdit: TEdit
           Left = 204
-          Height = 21
+          Height = 22
           Top = 55
           Width = 56
           ReadOnly = True
@@ -354,8 +354,8 @@ object PreferencesForm: TPreferencesForm
         end
         object GTRRHEdit: TEdit
           Left = 204
-          Height = 21
-          Top = 79
+          Height = 22
+          Top = 81
           Width = 56
           ReadOnly = True
           TabOrder = 9
@@ -363,8 +363,8 @@ object PreferencesForm: TPreferencesForm
         end
         object GDRRHEdit: TEdit
           Left = 204
-          Height = 21
-          Top = 103
+          Height = 22
+          Top = 105
           Width = 56
           ReadOnly = True
           TabOrder = 10
@@ -372,7 +372,7 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel1: TLabel
           Left = 186
-          Height = 14
+          Height = 17
           Top = 12
           Width = 7
           Caption = '–'
@@ -380,7 +380,7 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel2: TLabel
           Left = 186
-          Height = 14
+          Height = 17
           Top = 36
           Width = 7
           Caption = '–'
@@ -388,7 +388,7 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel3: TLabel
           Left = 186
-          Height = 14
+          Height = 17
           Top = 60
           Width = 7
           Caption = '–'
@@ -396,7 +396,7 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel4: TLabel
           Left = 186
-          Height = 14
+          Height = 17
           Top = 86
           Width = 7
           Caption = '–'
@@ -404,31 +404,31 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel6: TLabel
           Left = 186
-          Height = 14
+          Height = 17
           Top = 110
           Width = 7
           Caption = '–'
           ParentColor = False
         end
         object TSHIRRLabel: TLabel
-          Left = 292
-          Height = 14
-          Top = 12
-          Width = 28
+          Left = 337
+          Height = 17
+          Top = 8
+          Width = 34
           Caption = 'TSHI:'
           ParentColor = False
         end
         object TTSIRRLabel: TLabel
-          Left = 292
-          Height = 14
+          Left = 337
+          Height = 17
           Top = 36
-          Width = 27
+          Width = 32
           Caption = 'TTSI:'
           ParentColor = False
         end
         object TSHIRRLEdit: TEdit
-          Left = 362
-          Height = 21
+          Left = 414
+          Height = 22
           Top = 7
           Width = 56
           ReadOnly = True
@@ -436,16 +436,16 @@ object PreferencesForm: TPreferencesForm
           Text = 'NaN'
         end
         object Dashlabel5: TLabel
-          Left = 432
-          Height = 14
+          Left = 481
+          Height = 17
           Top = 12
           Width = 7
           Caption = '–'
           ParentColor = False
         end
         object TSHIRRHEdit: TEdit
-          Left = 450
-          Height = 21
+          Left = 500
+          Height = 22
           Top = 7
           Width = 56
           ReadOnly = True
@@ -453,8 +453,8 @@ object PreferencesForm: TPreferencesForm
           Text = 'NaN'
         end
         object TTSIRRLEdit: TEdit
-          Left = 362
-          Height = 21
+          Left = 414
+          Height = 22
           Top = 31
           Width = 56
           ReadOnly = True
@@ -462,43 +462,83 @@ object PreferencesForm: TPreferencesForm
           Text = 'NaN'
         end
         object Dashlabel7: TLabel
-          Left = 432
-          Height = 14
+          Left = 481
+          Height = 17
           Top = 36
           Width = 7
           Caption = '–'
           ParentColor = False
         end
         object TTSIRRHEdit: TEdit
-          Left = 450
-          Height = 21
+          Left = 500
+          Height = 22
           Top = 31
           Width = 56
           ReadOnly = True
           TabOrder = 14
           Text = 'NaN'
         end
+        object TSHUnitLabel: TLabel
+          Left = 273
+          Height = 17
+          Top = 12
+          Width = 33
+          Caption = 'mU/l'
+          ParentColor = False
+        end
+        object T4UnitLabel: TLabel
+          Left = 273
+          Height = 17
+          Top = 36
+          Width = 13
+          Caption = '...'
+          ParentColor = False
+        end
+        object T3UnitLabel: TLabel
+          Left = 273
+          Height = 17
+          Top = 60
+          Width = 13
+          Caption = '...'
+          ParentColor = False
+        end
+        object GTUnitLabel: TLabel
+          Left = 273
+          Height = 17
+          Top = 86
+          Width = 47
+          Caption = 'pmol/s'
+          ParentColor = False
+        end
+        object GDUnitLabel: TLabel
+          Left = 273
+          Height = 17
+          Top = 110
+          Width = 46
+          Caption = 'nmol/s'
+          ParentColor = False
+        end
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Sender ID'
-      ClientHeight = 310
-      ClientWidth = 566
+      ClientHeight = 313
+      ClientWidth = 561
       object IDGroupBox: TGroupBox
         Left = 24
         Height = 72
         Top = 8
-        Width = 530
+        Width = 525
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Physician or Hospital ID:'
-        ClientHeight = 54
-        ClientWidth = 526
+        ClientHeight = 50
+        ClientWidth = 517
         TabOrder = 0
         object SendingFacLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 17
           Top = 16
-          Width = 68
+          Width = 89
           Caption = 'Facility Name:'
           ParentColor = False
         end
@@ -507,7 +547,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Hint = 'HL7 Sending and Receiving Facility'
           Top = 16
-          Width = 377
+          Width = 368
           Anchors = [akTop, akLeft, akRight]
           AutoSize = False
           ParentShowHint = False
@@ -518,23 +558,23 @@ object PreferencesForm: TPreferencesForm
     end
     object TabSheet3: TTabSheet
       Caption = 'Div'
-      ClientHeight = 310
-      ClientWidth = 566
+      ClientHeight = 313
+      ClientWidth = 561
       object GUIGroupBox: TGroupBox
         Left = 24
         Height = 58
         Top = 8
-        Width = 530
+        Width = 525
         Anchors = [akTop, akLeft, akRight]
         Caption = 'GUI'
-        ClientHeight = 40
-        ClientWidth = 526
+        ClientHeight = 36
+        ClientWidth = 517
         TabOrder = 0
         object MarkMandatoryCheck: TCheckBox
           Left = 16
-          Height = 17
+          Height = 16
           Top = 10
-          Width = 126
+          Width = 139
           Caption = 'Mark mandatory fields'
           OnChange = MarkMandatoryCheckChange
           TabOrder = 0
@@ -547,6 +587,6 @@ object PreferencesForm: TPreferencesForm
     Filter = 'CDISC Lab Model 1.0.1 file (XML)|*.xml'
     Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
     left = 280
-    top = 352
+    top = 360
   end
 end
