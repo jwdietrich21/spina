@@ -100,6 +100,7 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure MarkMandatoryCheckChange(Sender: TObject);
+    procedure GetMethodsAndUnits(const Sender: TObject);
     procedure MethodComboBoxChange(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure ReadCDISCButtonClick(Sender: TObject);
@@ -295,6 +296,23 @@ begin
   DisplayReferenceRanges(Sender);
 end;
 
+procedure TPreferencesForm.GetMethodsAndUnits(const Sender: TObject);
+begin
+  if not RememberCheckBox.Checked then
+  begin
+    Hauptschirm.TSHUnitComboBox.ItemIndex := TSHUnitComboBox.ItemIndex;
+    Hauptschirm.TSHUnitComboBoxChange(Sender);
+    Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodComboBox.ItemIndex;
+    Hauptschirm.T4MethodComboBoxChange(Sender);
+    Hauptschirm.T4UnitComboBox.ItemIndex := T4UnitComboBox.ItemIndex;
+    Hauptschirm.T4UnitComboBoxChange(Sender);
+    Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodComboBox.ItemIndex;
+    Hauptschirm.T3MethodComboBoxChange(Sender);
+    Hauptschirm.T3UnitComboBox.ItemIndex := T3UnitComboBox.ItemIndex;
+    Hauptschirm.T3UnitComboBoxChange(Sender);
+  end;
+end;
+
 procedure TPreferencesForm.MethodComboBoxChange(Sender: TObject);
 {reacts to a change in the combobox for the method {level of free or total hormone}}
 var
@@ -313,27 +331,34 @@ end;
 
 procedure TPreferencesForm.TSHUnitComboBoxChange(Sender: TObject);
 begin
-
+  GetMethodsAndUnits(Sender);
+  DisplayReferenceRanges(Sender);
 end;
 
 procedure TPreferencesForm.T4UnitComboBoxChange(Sender: TObject);
 begin
-
+  GetMethodsAndUnits(Sender);
+  DisplayReferenceRanges(Sender);
 end;
 
 procedure TPreferencesForm.T4MethodComboBoxChange(Sender: TObject);
 begin
   MethodComboBoxChange(Sender);
+  GetMethodsAndUnits(Sender);
+  DisplayReferenceRanges(Sender);
 end;
 
 procedure TPreferencesForm.T3UnitComboBoxChange(Sender: TObject);
 begin
-
+  GetMethodsAndUnits(Sender);
+  DisplayReferenceRanges(Sender);
 end;
 
 procedure TPreferencesForm.T3MethodComboBoxChange(Sender: TObject);
 begin
   MethodComboBoxChange(Sender);
+  GetMethodsAndUnits(Sender);
+  DisplayReferenceRanges(Sender);
 end;
 
 procedure CheckMandatoryColourising; {checks if mandatory fields should be coloured}
@@ -389,19 +414,7 @@ var
   CDISCStream: TMemoryStream;
   originalFileName: string;
 begin
-  if not RememberCheckBox.Checked then
-  begin
-    Hauptschirm.TSHUnitComboBox.ItemIndex := TSHUnitComboBox.ItemIndex;
-    Hauptschirm.TSHUnitComboBoxChange(Sender);
-    Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodComboBox.ItemIndex;
-    Hauptschirm.T4MethodComboBoxChange(Sender);
-    Hauptschirm.T4UnitComboBox.ItemIndex := T4UnitComboBox.ItemIndex;
-    Hauptschirm.T4UnitComboBoxChange(Sender);
-    Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodComboBox.ItemIndex;
-    Hauptschirm.T3MethodComboBoxChange(Sender);
-    Hauptschirm.T3UnitComboBox.ItemIndex := T3UnitComboBox.ItemIndex;
-    Hauptschirm.T3UnitComboBoxChange(Sender);
-  end;
+  GetMethodsAndUnits(Sender);
   originalFileName := CDISCOpenDialog.FileName;
   if (originalFileName <> '') and ((gCode = 0) or (gCode = 10)) then
   begin
