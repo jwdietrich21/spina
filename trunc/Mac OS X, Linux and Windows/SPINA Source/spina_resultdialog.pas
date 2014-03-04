@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, SPINA_Types;
+  ExtCtrls, StdCtrls, SPINA_Types, SPINA_Resources;
 
 type
 

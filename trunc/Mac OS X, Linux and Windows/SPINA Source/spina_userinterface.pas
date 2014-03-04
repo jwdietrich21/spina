@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
-  gettext, SPINA_Types, UnitConverter, SPINA_Engine, SPINA_AboutBox,
+  gettext, SPINA_Types, SPINA_Resources, UnitConverter, SPINA_Engine, SPINA_AboutBox,
   SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences,
   HandleImpEx, Math, LCLIntf
   {$IFDEF MSWINDOWS}

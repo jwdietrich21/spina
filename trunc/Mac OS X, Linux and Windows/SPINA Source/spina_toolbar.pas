@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls, LCLIntf,
-  SPINA_Types, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface,
+  SPINA_Types, SPINA_Resources, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface,
   SetPreferences, VersionSupport, spina_help, HandleImpEx;
 
 type
@@ -168,6 +168,8 @@ begin
     Hauptschirm.PasteMenuItem.Caption := 'Paste';
     Hauptschirm.DeleteMenuItem.Caption := 'Clear';
     Hauptschirm.CopyResultMenuItem.Caption := 'Copy Result';
+    Hauptschirm.WinPreferencesItem.Caption := kPreferences2 + ' ...';
+    Hauptschirm.MacPreferencesItem.Caption := kPreferences2 + ' ...';
     Hauptschirm.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
     Hauptschirm.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
     Hauptschirm.HelpItem.Caption := 'SPINA Help ...';
@@ -194,11 +196,11 @@ begin
     SPINAToolbar.DeleteMenuItem.Caption := 'Clear';
     SPINAToolbar.CopyResultMenuItem.Caption := 'Copy Result';
     SPINAToolbar.WinPreferencesItem.Caption := kPreferences2 + ' ...';
+    SPINAToolbar.MacPreferencesItem.Caption := kPreferences2 + ' ...';
     SPINAToolbar.AboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.HelpItem.Caption := 'SPINA Help ...';
     SPINAToolbar.OnlineInfoItem.Caption := 'Online Info ...';
-    SPINAToolbar.MacPreferencesItem.Caption := kPreferences2 + ' ...';
        {$IFDEF LCLcarbon}
     Hauptschirm.HelpMenu.Caption := 'Help';
     SPINAToolbar.HelpMenu.Caption := 'Help';
@@ -487,4 +489,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

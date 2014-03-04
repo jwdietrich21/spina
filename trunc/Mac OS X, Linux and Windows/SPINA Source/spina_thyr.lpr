@@ -31,7 +31,7 @@ uses
   Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
-  HandleImpEx, HL7, obx, msa, msh, obr, CDISC;
+  HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 
