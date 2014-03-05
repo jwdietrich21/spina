@@ -26,13 +26,15 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ComCtrls, SPINA_Types, SPINA_Resources, HandlePreferences;
+  StdCtrls, ComCtrls, Math, SPINA_Types, SPINA_Resources, CDISC,
+  HandlePreferences;
 
 type
 
   { TPreferencesForm }
 
   TPreferencesForm = class(TForm)
+    SaveCDISCButton: TButton;
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
     CDISCOpenDialog: TOpenDialog;
@@ -47,6 +49,7 @@ type
     GTRRHEdit: TEdit;
     Dashlabel1: TLabel;
     GTUnitLabel: TLabel;
+    CDISCSaveDialog: TSaveDialog;
     T3UnitLabel: TLabel;
     T4UnitLabel: TLabel;
     TSHIRRHEdit: TEdit;
@@ -105,6 +108,7 @@ type
     procedure OKButtonClick(Sender: TObject);
     procedure ReadCDISCButtonClick(Sender: TObject);
     procedure RememberCheckBoxChange(Sender: TObject);
+    procedure SaveCDISCButtonClick(Sender: TObject);
     procedure T3MethodComboBoxAdjust(Sender: TObject);
     procedure T3MethodComboBoxChange(Sender: TObject);
     procedure T3UnitComboBoxChange(Sender: TObject);
@@ -145,6 +149,7 @@ begin
       CDISCGroupBox.Caption := kCDISCCaption1;
       CancelButton.Caption := kCancel1;
       ReadCDISCButton.Caption := kReadCDISC1;
+      SaveCDISCButton.Caption := kSaveCDISC1;
       MarkMandatoryCheck.Caption := kPflichtfelder1;
       TabSheet1.Caption := kPrefsCaption11;
       TabSheet2.Caption := kPrefsCaption21;
@@ -161,6 +166,7 @@ begin
       CDISCGroupBox.Caption := kCDISCCaption2;
       CancelButton.Caption := kCancel2;
       ReadCDISCButton.Caption := kReadCDISC2;
+      SaveCDISCButton.Caption := kSaveCDISC2;
       RememberCheckBox.Hint := 'Please click to reuse measurement units of previous calculations';
       ReadCDISCButton.Hint := 'Import reference ranges from file';
       MarkMandatoryCheck.Caption := kPflichtfelder2;
@@ -204,8 +210,8 @@ begin
   TSHIRRHEdit.Text := FloatToStrF(gReferenceRanges.TSHI.hn, ffFixed, 5, 1);
   TTSIRRLEdit.Text := FloatToStrF(gReferenceRanges.TTSI.ln, ffFixed, 5, 0);
   TTSIRRHEdit.Text := FloatToStrF(gReferenceRanges.TTSI.hn, ffFixed, 5, 0);
-  T4UnitLabel.Caption := gPreferences.T4.measurementUnit;
-  T3UnitLabel.Caption := gPreferences.T3.measurementUnit;
+  T4UnitLabel.Caption := gPreferences.T4.UOM;
+  T3UnitLabel.Caption := gPreferences.T3.UOM;
 end;
 
 procedure TPreferencesForm.AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
@@ -250,7 +256,7 @@ begin
   begin
     for i := 0 to TSHUnitComboBox.Items.Count - 1 do
     begin
-      if TSH.measurementUnit = TSHUnitComboBox.Items[i] then
+      if TSH.UOM = TSHUnitComboBox.Items[i] then
       begin
         found := True;
         TSHUnitComboBox.ItemIndex := i;
@@ -259,12 +265,12 @@ begin
     end;
     if found = False then
     begin
-      TSHUnitComboBox.Items.Add(TSH.measurementUnit);
+      TSHUnitComboBox.Items.Add(TSH.UOM);
       TSHUnitComboBox.ItemIndex := i + 1;
     end;
     for i := 0 to T4UnitComboBox.Items.Count - 1 do
     begin
-      if T4.measurementUnit = T4UnitComboBox.Items[i] then
+      if T4.UOM = T4UnitComboBox.Items[i] then
       begin
         found := True;
         T4UnitComboBox.ItemIndex := i;
@@ -273,12 +279,12 @@ begin
     end;
     if found = False then
     begin
-      T4UnitComboBox.Items.Add(T4.measurementUnit);
+      T4UnitComboBox.Items.Add(T4.UOM);
       T4UnitComboBox.ItemIndex := i + 1;
     end;
     for i := 0 to T3UnitComboBox.Items.Count - 1 do
     begin
-      if T3.measurementUnit = T3UnitComboBox.Items[i] then
+      if T3.UOM = T3UnitComboBox.Items[i] then
       begin
         found := True;
         T3UnitComboBox.ItemIndex := i;
@@ -287,7 +293,7 @@ begin
     end;
     if found = False then
     begin
-      T3UnitComboBox.Items.Add(T3.measurementUnit);
+      T3UnitComboBox.Items.Add(T3.UOM);
       T3UnitComboBox.ItemIndex := i + 1;
     end;
     T4MethodComboBoxAdjust(Hauptschirm);
@@ -481,6 +487,43 @@ begin
     T4UnitComboBox.Enabled := True;
     T3UnitComboBox.Enabled := True;
   end;
+end;
+
+procedure TPreferencesForm.SaveCDISCButtonClick(Sender: TObject);
+var
+  returnCode: integer;
+  ReferenceRanges: tReferenceValues;
+begin
+  if CDISCSaveDialog.Execute then
+  begin
+    ReferenceRanges.TSH.ln := StrToFloat(TSHRRLEdit.Text);
+    ReferenceRanges.TSH.hn := StrToFloat(TSHRRHEdit.Text);
+    ReferenceRanges.TSH.lt := NaN;
+    ReferenceRanges.TSH.ht := NaN;
+    ReferenceRanges.TSH.lp := NaN;
+    ReferenceRanges.TSH.hp := NaN;
+    if gPreferences.T4.Method = freeHormone then
+    begin
+      ReferenceRanges.FT4.ln := StrToFloat(T4RRLEdit.Text);
+      ReferenceRanges.FT4.hn := StrToFloat(T4RRHEdit.Text);
+      ReferenceRanges.FT4.lt := NaN;
+      ReferenceRanges.FT4.ht := NaN;
+      ReferenceRanges.FT4.lp := NaN;
+      ReferenceRanges.FT4.hp := NaN;
+    end
+    else
+    begin
+      ReferenceRanges.TT4.ln := StrToFloat(T4RRLEdit.Text);
+      ReferenceRanges.TT4.hn := StrToFloat(T4RRHEdit.Text);
+      ReferenceRanges.TT4.lt := NaN;
+      ReferenceRanges.TT4.ht := NaN;
+      ReferenceRanges.TT4.lp := NaN;
+      ReferenceRanges.TT4.hp := NaN;
+    end;
+    SaveCDISC_RRFile(CDISCSaveDialog.FileName, ReferenceRanges, returnCode);
+  end;
+  if returnCode <> 0 then
+    ShowMessage(SAVE_ERROR_MESSAGE);
 end;
 
 procedure TPreferencesForm.FormActivate(Sender: TObject);

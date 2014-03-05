@@ -319,7 +319,7 @@ object Hauptschirm: THauptschirm
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.14.0'
+  LCLVersion = '1.2.0.3'
   object Calculate_Button: TButton
     Left = 624
     Height = 24
@@ -964,10 +964,10 @@ object Hauptschirm: THauptschirm
         Text = '0'
       end
       object Label1: TLabel
-        Left = 16
-        Height = 14
+        Left = 17
+        Height = 13
         Top = 6
-        Width = 20
+        Width = 19
         Anchors = [akTop, akRight]
         Caption = 'TSH'
         ParentColor = False
@@ -979,9 +979,9 @@ object Hauptschirm: THauptschirm
     AnchorSideTop.Side = asrCenter
     Cursor = crHandPoint
     Left = 16
-    Height = 13
+    Height = 12
     Top = 302
-    Width = 56
+    Width = 55
     Caption = 'SPINA Thyr'
     Font.Color = clBlack
     Font.Height = -10

@@ -281,9 +281,9 @@ begin
   gT3Unit := Hauptschirm.T3UnitCombobox.Text;
   with gPreferences do
   begin
-    TSH.measurementUnit := Hauptschirm.TSHUnitCombobox.Caption;
-    T4.measurementUnit := Hauptschirm.T4UnitCombobox.Caption;
-    T3.measurementUnit := Hauptschirm.T3UnitCombobox.Caption;
+    TSH.UOM := Hauptschirm.TSHUnitCombobox.Caption;
+    T4.UOM := Hauptschirm.T4UnitCombobox.Caption;
+    T3.UOM := Hauptschirm.T3UnitCombobox.Caption;
   end;
   ComposeRRStrings;
 end;
@@ -354,7 +354,7 @@ begin
   begin
     for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count - 1 do
     begin
-      if TSH.measurementUnit = Hauptschirm.TSHUnitComboBox.Items[i] then
+      if TSH.UOM = Hauptschirm.TSHUnitComboBox.Items[i] then
       begin
         found := True;
         Hauptschirm.TSHUnitComboBox.ItemIndex := i;
@@ -363,13 +363,13 @@ begin
     end;
     if found = False then
     begin
-      Hauptschirm.TSHUnitComboBox.Items.Add(TSH.measurementUnit);
+      Hauptschirm.TSHUnitComboBox.Items.Add(TSH.UOM);
       Hauptschirm.TSHUnitComboBox.ItemIndex := i + 1;
     end;
     TSH.PopupItem := Hauptschirm.TSHUnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T4UnitComboBox.Items.Count - 1 do
     begin
-      if T4.measurementUnit = Hauptschirm.T4UnitComboBox.Items[i] then
+      if T4.UOM = Hauptschirm.T4UnitComboBox.Items[i] then
       begin
         found := True;
         Hauptschirm.T4UnitComboBox.ItemIndex := i;
@@ -378,13 +378,13 @@ begin
     end;
     if found = False then
     begin
-      Hauptschirm.T4UnitComboBox.Items.Add(T4.measurementUnit);
+      Hauptschirm.T4UnitComboBox.Items.Add(T4.UOM);
       Hauptschirm.T4UnitComboBox.ItemIndex := i + 1;
     end;
     T4.PopUpItem := Hauptschirm.T4UnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T3UnitComboBox.Items.Count - 1 do
     begin
-      if T3.measurementUnit = Hauptschirm.T3UnitComboBox.Items[i] then
+      if T3.UOM = Hauptschirm.T3UnitComboBox.Items[i] then
       begin
         found := True;
         Hauptschirm.T3UnitComboBox.ItemIndex := i;
@@ -393,7 +393,7 @@ begin
     end;
     if found = False then
     begin
-      Hauptschirm.T3UnitComboBox.Items.Add(T3.measurementUnit);
+      Hauptschirm.T3UnitComboBox.Items.Add(T3.UOM);
       Hauptschirm.T3UnitComboBox.ItemIndex := i + 1;
     end;
     T3.PopUpItem := Hauptschirm.T3UnitComboBox.ItemIndex;
@@ -791,21 +791,21 @@ end;
 
 procedure THauptschirm.TSHUnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.TSH.measurementUnit := Hauptschirm.TSHUnitComboBox.Caption;
+  gPreferences.TSH.UOM := Hauptschirm.TSHUnitComboBox.Caption;
   gPreferences.TSH.PopUpItem := Hauptschirm.TSHUnitCombobox.ItemIndex;
   AdjustUnitLabels;
 end;
 
 procedure THauptschirm.T3UnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T3.measurementUnit := Hauptschirm.T3UnitComboBox.Caption;
+  gPreferences.T3.UOM := Hauptschirm.T3UnitComboBox.Caption;
   gPreferences.T3.PopUpItem := Hauptschirm.T3UnitCombobox.ItemIndex;
   AdjustUnitLabels;
 end;
 
 procedure THauptschirm.T4UnitComboBoxChange(Sender: TObject);
 begin
-  gPreferences.T4.measurementUnit := Hauptschirm.T4UnitComboBox.Caption;
+  gPreferences.T4.UOM := Hauptschirm.T4UnitComboBox.Caption;
   gPreferences.T4.PopUpItem := Hauptschirm.T4UnitCombobox.ItemIndex;
   AdjustUnitLabels;
 end;

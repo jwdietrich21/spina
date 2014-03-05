@@ -81,6 +81,8 @@ const
   kCancel2 = 'Cancel';
   kReadCDISC1 = 'Aus Datei lesen ...';
   kReadCDISC2 = 'Read from file ...';
+  kSaveCDISC1 = 'Sichern als ...';
+  kSaveCDISC2 = 'Save to file ...';
   kPflichtfelder1 = 'Pflichtfelder farbig hevorheben';
   kPflichtfelder2 = 'Mark mandatory fields by colouring';
   kPrefsCaption11 = 'Hormonspiegel';

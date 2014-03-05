@@ -1,7 +1,7 @@
 object PreferencesForm: TPreferencesForm
   Left = 320
   Height = 420
-  Top = 186
+  Top = 173
   Width = 675
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -256,7 +256,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
-          ReadOnly = True
           TabOrder = 0
           Text = 'NaN'
         end
@@ -265,7 +264,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
-          ReadOnly = True
           TabOrder = 1
           Text = 'NaN'
         end
@@ -274,7 +272,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 55
           Width = 56
-          ReadOnly = True
           TabOrder = 2
           Text = 'NaN'
         end
@@ -299,7 +296,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 81
           Width = 56
-          ReadOnly = True
           TabOrder = 3
           Text = 'NaN'
         end
@@ -308,15 +304,14 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 105
           Width = 56
-          ReadOnly = True
           TabOrder = 4
           Text = 'NaN'
         end
         object ReadCDISCButton: TButton
-          Left = 337
+          Left = 335
           Height = 25
           Hint = 'Referenzbereiche aus Datei importieren.'
-          Top = 99
+          Top = 72
           Width = 221
           Anchors = [akTop, akLeft, akRight]
           Caption = 'Read from file ...'
@@ -330,7 +325,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
-          ReadOnly = True
           TabOrder = 6
           Text = 'NaN'
         end
@@ -339,7 +333,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
-          ReadOnly = True
           TabOrder = 7
           Text = 'NaN'
         end
@@ -348,7 +341,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 55
           Width = 56
-          ReadOnly = True
           TabOrder = 8
           Text = 'NaN'
         end
@@ -357,7 +349,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 81
           Width = 56
-          ReadOnly = True
           TabOrder = 9
           Text = 'NaN'
         end
@@ -366,7 +357,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 105
           Width = 56
-          ReadOnly = True
           TabOrder = 10
           Text = 'NaN'
         end
@@ -431,7 +421,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
-          ReadOnly = True
           TabOrder = 11
           Text = 'NaN'
         end
@@ -448,7 +437,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
-          ReadOnly = True
           TabOrder = 12
           Text = 'NaN'
         end
@@ -457,7 +445,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
-          ReadOnly = True
           TabOrder = 13
           Text = 'NaN'
         end
@@ -474,7 +461,6 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
-          ReadOnly = True
           TabOrder = 14
           Text = 'NaN'
         end
@@ -517,6 +503,15 @@ object PreferencesForm: TPreferencesForm
           Width = 31
           Caption = 'nmol/s'
           ParentColor = False
+        end
+        object SaveCDISCButton: TButton
+          Left = 335
+          Height = 25
+          Top = 98
+          Width = 221
+          Caption = 'Save to file ...'
+          OnClick = SaveCDISCButtonClick
+          TabOrder = 15
         end
       end
     end
@@ -587,6 +582,12 @@ object PreferencesForm: TPreferencesForm
     Filter = 'CDISC Lab Model 1.0.1 file (XML)|*.xml'
     Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
     left = 280
+    top = 360
+  end
+  object CDISCSaveDialog: TSaveDialog
+    Filter = 'CDISC Lab Model 1.0.1 file (XML)|*.xml'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofDontAddToRecent, ofViewDetail, ofAutoPreview]
+    left = 368
     top = 360
   end
 end

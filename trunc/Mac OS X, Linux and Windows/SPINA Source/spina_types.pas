@@ -70,7 +70,7 @@ tLabMethod = (freeHormone, totalHormone);
 tParameterSettings = record
        Method: tLabMethod;
        isSI: boolean;
-       measurementUnit: string;
+       UOM: string;
        UnitFactor: real;
        PopUpItem: integer;
        MethodPopUpItem: integer;
@@ -80,11 +80,11 @@ tPreferences = record
        TSH, T4, T3: tParameterSettings;
        MandatoryColor: TColor;
        MSH_ID: String
-       end;
+end;
 tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
-       measurementUnit: string;
-       end;
+       UOM: string;
+end;
 tReferenceExDefinitions = record
        Sex: char;
        AgeL, AgeH: integer;
