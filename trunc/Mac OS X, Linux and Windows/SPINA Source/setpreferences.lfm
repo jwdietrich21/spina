@@ -14,7 +14,7 @@ object PreferencesForm: TPreferencesForm
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.14.0'
+  LCLVersion = '1.2.0.3'
   object OKButton: TButton
     Left = 570
     Height = 25
@@ -62,19 +62,19 @@ object PreferencesForm: TPreferencesForm
         TabOrder = 0
         object MethodLabel: TLabel
           Left = 116
-          Height = 14
+          Height = 13
           Top = 10
-          Width = 37
+          Width = 36
           Caption = 'Method'
           ParentColor = False
         end
         object UnitLabel: TLabel
           AnchorSideRight.Control = TSHUnitComboBox
           AnchorSideRight.Side = asrBottom
-          Left = 240
-          Height = 14
+          Left = 241
+          Height = 13
           Top = 10
-          Width = 20
+          Width = 19
           Alignment = taCenter
           Anchors = [akTop, akRight]
           Caption = 'Unit'
@@ -82,9 +82,9 @@ object PreferencesForm: TPreferencesForm
         end
         object T4Label: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 57
-          Width = 17
+          Width = 16
           Caption = 'T4:'
           ParentColor = False
         end
@@ -163,17 +163,17 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 33
-          Width = 24
+          Width = 23
           Caption = 'TSH:'
           ParentColor = False
         end
         object T3Label: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 81
-          Width = 17
+          Width = 16
           Caption = 'T3:'
           ParentColor = False
         end
@@ -229,25 +229,25 @@ object PreferencesForm: TPreferencesForm
         TabOrder = 1
         object TSHRRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 12
-          Width = 24
+          Width = 23
           Caption = 'TSH:'
           ParentColor = False
         end
         object T4RRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 36
-          Width = 31
+          Width = 30
           Caption = '(F)T4:'
           ParentColor = False
         end
         object T3RRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 60
-          Width = 31
+          Width = 30
           Caption = '(F)T3:'
           ParentColor = False
         end
@@ -280,17 +280,17 @@ object PreferencesForm: TPreferencesForm
         end
         object GTRRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 86
-          Width = 18
+          Width = 17
           Caption = 'GT:'
           ParentColor = False
         end
         object GDRRLabel: TLabel
           Left = 12
-          Height = 14
+          Height = 13
           Top = 110
-          Width = 19
+          Width = 18
           Caption = 'GD:'
           ParentColor = False
         end
@@ -372,57 +372,57 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel1: TLabel
           Left = 186
-          Height = 14
+          Height = 13
           Top = 12
-          Width = 7
+          Width = 6
           Caption = '–'
           ParentColor = False
         end
         object Dashlabel2: TLabel
           Left = 186
-          Height = 14
+          Height = 13
           Top = 36
-          Width = 7
+          Width = 6
           Caption = '–'
           ParentColor = False
         end
         object Dashlabel3: TLabel
           Left = 186
-          Height = 14
+          Height = 13
           Top = 60
-          Width = 7
+          Width = 6
           Caption = '–'
           ParentColor = False
         end
         object Dashlabel4: TLabel
           Left = 186
-          Height = 14
+          Height = 13
           Top = 86
-          Width = 7
+          Width = 6
           Caption = '–'
           ParentColor = False
         end
         object Dashlabel6: TLabel
           Left = 186
-          Height = 14
+          Height = 13
           Top = 110
-          Width = 7
+          Width = 6
           Caption = '–'
           ParentColor = False
         end
         object TSHIRRLabel: TLabel
           Left = 337
-          Height = 14
+          Height = 13
           Top = 8
-          Width = 28
+          Width = 27
           Caption = 'TSHI:'
           ParentColor = False
         end
         object TTSIRRLabel: TLabel
           Left = 337
-          Height = 14
+          Height = 13
           Top = 36
-          Width = 27
+          Width = 26
           Caption = 'TTSI:'
           ParentColor = False
         end
@@ -437,9 +437,9 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel5: TLabel
           Left = 481
-          Height = 14
+          Height = 13
           Top = 12
-          Width = 7
+          Width = 6
           Caption = '–'
           ParentColor = False
         end
@@ -463,9 +463,9 @@ object PreferencesForm: TPreferencesForm
         end
         object Dashlabel7: TLabel
           Left = 481
-          Height = 14
+          Height = 13
           Top = 36
-          Width = 7
+          Width = 6
           Caption = '–'
           ParentColor = False
         end
@@ -480,41 +480,41 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHUnitLabel: TLabel
           Left = 273
-          Height = 14
+          Height = 13
           Top = 12
-          Width = 22
+          Width = 21
           Caption = 'mU/l'
           ParentColor = False
         end
         object T4UnitLabel: TLabel
           Left = 273
-          Height = 14
+          Height = 13
           Top = 36
-          Width = 13
+          Width = 12
           Caption = '...'
           ParentColor = False
         end
         object T3UnitLabel: TLabel
           Left = 273
-          Height = 14
+          Height = 13
           Top = 60
-          Width = 13
+          Width = 12
           Caption = '...'
           ParentColor = False
         end
         object GTUnitLabel: TLabel
           Left = 273
-          Height = 14
+          Height = 13
           Top = 86
-          Width = 32
+          Width = 31
           Caption = 'pmol/s'
           ParentColor = False
         end
         object GDUnitLabel: TLabel
           Left = 273
-          Height = 14
+          Height = 13
           Top = 110
-          Width = 32
+          Width = 31
           Caption = 'nmol/s'
           ParentColor = False
         end

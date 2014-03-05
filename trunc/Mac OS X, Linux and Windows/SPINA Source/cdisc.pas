@@ -2,23 +2,23 @@ unit CDISC;
 
 { SPINA-Thyr }
 
-{ Application for calculating structure parameters }
-{ of thyrotropic feedback control }
+ { Application for calculating structure parameters }
+ { of thyrotropic feedback control }
 
-{ Programm zur Berechnung von Strukturparametern }
-{ des thyreotropen Regelkreises }
+ { Programm zur Berechnung von Strukturparametern }
+ { des thyreotropen Regelkreises }
 
 { Version 3.4.0 }
 
-{ (c) J. W. Dietrich, 1994 - 2014 }
-{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2014 }
+ { (c) J. W. Dietrich, 1994 - 2014 }
+ { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+ { (c) University of Ulm Hospitals 2002-2004 }
+ { (c) Ruhr University of Bochum 2005 - 2014 }
 
 { This unit handles CDISC XML files for reference ranges }
 
-{ Source code released under the BSD License }
-{ See http://spina.medical-cybernetics.de for details }
+ { Source code released under the BSD License }
+ { See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}
 
@@ -30,269 +30,280 @@ unit CDISC;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, DOM, XMLRead, XMLWrite, StrUtils;
+  Classes, SysUtils, FileUtil, DOM, XMLRead, XMLWrite, StrUtils, Math, SPINA_Types;
 
-procedure SaveStandardCDISC_RRFile(theFileName: String; var returnCode: integer);
+procedure SaveStandardCDISC_RRFile(theFileName: string; var returnCode: integer);
 
 implementation
 
-procedure AddSubExNodes(Doc: TXMLDocument; theRoot: TDOMNode; Sex: char; AgeL, AgeH: integer; UOMS, UOMC, LXS, HXS, LXC, HXC, startDateTime: string);
+procedure AddSubExNodes(Doc: TXMLDocument; theRoot: TDOMNode;
+  ExclusionDefinitions: tReferenceExDefinitions);
 var
   theNode, FlagUOMNode: TDOMNode;
   SubjectCharsNode, AgeNode, ExclusionsNode, TextNode: TDOMNode;
 begin
-  SubjectCharsNode := Doc.CreateElement('SubjectCharacteristics');
-  theNode := Doc.CreateElement('Sex');
-  TDOMElement(theNode).SetAttribute('CodeListID', 'HL7 Gender Vocabulary Domain V2.4');
-  TDOMElement(theNode).SetAttribute('Value', Sex);
-  SubjectCharsNode.Appendchild(theNode);
-  AgeNode := Doc.CreateElement('Age');
-  TDOMElement(AgeNode).SetAttribute('BoundaryType', 'L');
-  SubjectCharsNode.Appendchild(AgeNode);
-  theNode := Doc.CreateElement('LowerLimit');
-  TDOMElement(theNode).SetAttribute('UOM', 'Y');
-  TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeL));
-  AgeNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('UpperLimit');
-  TDOMElement(theNode).SetAttribute('UOM', 'Y');
-  TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeH));
-  AgeNode.Appendchild(theNode);
-  FlagUOMNode := Doc.CreateElement('FlagUOM');
-  TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'S');
-  theNode := Doc.CreateElement('ResultUnits');
-  TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
-  TDOMElement(theNode).SetAttribute('Value', UOMS);
-  FlagUOMNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('Deltas');
-  FlagUOMNode.Appendchild(theNode);
-  ExclusionsNode := Doc.CreateElement('Exclusions');
-  TDOMElement(ExclusionsNode).SetAttribute('StartDateTime', startDateTime);
-  FlagUOMNode.Appendchild(ExclusionsNode);
-  theNode := Doc.CreateElement('ExclusionDefinition');
-  TDOMElement(theNode).SetAttribute('ExclusionLevel', 'LX');
-  TDOMElement(theNode).SetAttribute('Value', LXS);
-  ExclusionsNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('ExclusionDefinition');
-  TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
-  TDOMElement(theNode).SetAttribute('Value', HXS);
-  ExclusionsNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('TransactionType');
-  TextNode := Doc.CreateTextNode('I');
-  theNode.AppendChild(TextNode);
-  ExclusionsNode.Appendchild(theNode);
-  SubjectCharsNode.Appendchild(FlagUOMNode);
-  FlagUOMNode := Doc.CreateElement('FlagUOM');
-  TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'C');
-  theNode := Doc.CreateElement('ResultUnits');
-  TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
-  TDOMElement(theNode).SetAttribute('Value', UOMC);
-  FlagUOMNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('Deltas');
-  FlagUOMNode.Appendchild(theNode);
-  ExclusionsNode := Doc.CreateElement('Exclusions');
-  TDOMElement(ExclusionsNode).SetAttribute('StartDateTime', startDateTime);
-  FlagUOMNode.Appendchild(ExclusionsNode);
-  theNode := Doc.CreateElement('ExclusionDefinition');
-  TDOMElement(theNode).SetAttribute('ExclusionLevel', 'LX');
-  TDOMElement(theNode).SetAttribute('Value', LXC);
-  ExclusionsNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('ExclusionDefinition');
-  TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
-  TDOMElement(theNode).SetAttribute('Value', HXC);
-  ExclusionsNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('TransactionType');
-  TextNode := Doc.CreateTextNode('I');
-  theNode.AppendChild(TextNode);
-  ExclusionsNode.Appendchild(theNode);
-  SubjectCharsNode.Appendchild(FlagUOMNode);
-  theRoot.Appendchild(SubjectCharsNode);
+  with ExclusionDefinitions do
+  begin
+    SubjectCharsNode := Doc.CreateElement('SubjectCharacteristics');
+    theNode := Doc.CreateElement('Sex');
+    TDOMElement(theNode).SetAttribute('CodeListID', 'HL7 Gender Vocabulary Domain V2.4');
+    TDOMElement(theNode).SetAttribute('Value', Sex);
+    SubjectCharsNode.Appendchild(theNode);
+    AgeNode := Doc.CreateElement('Age');
+    TDOMElement(AgeNode).SetAttribute('BoundaryType', 'L');
+    SubjectCharsNode.Appendchild(AgeNode);
+    theNode := Doc.CreateElement('LowerLimit');
+    TDOMElement(theNode).SetAttribute('UOM', 'Y');
+    TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeL));
+    AgeNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('UpperLimit');
+    TDOMElement(theNode).SetAttribute('UOM', 'Y');
+    TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeH));
+    AgeNode.Appendchild(theNode);
+    FlagUOMNode := Doc.CreateElement('FlagUOM');
+    TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'S');
+    theNode := Doc.CreateElement('ResultUnits');
+    TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
+    TDOMElement(theNode).SetAttribute('Value', UOMS);
+    FlagUOMNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('Deltas');
+    FlagUOMNode.Appendchild(theNode);
+    ExclusionsNode := Doc.CreateElement('Exclusions');
+    TDOMElement(ExclusionsNode).SetAttribute('StartDateTime', startDateTime);
+    FlagUOMNode.Appendchild(ExclusionsNode);
+    theNode := Doc.CreateElement('ExclusionDefinition');
+    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'LX');
+    TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LXS, ffGeneral, 5, 2));
+    ExclusionsNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('ExclusionDefinition');
+    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
+    TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HXS, ffGeneral, 5, 2));
+    ExclusionsNode.Appendchild(theNode);
+    theNode  := Doc.CreateElement('TransactionType');
+    TextNode := Doc.CreateTextNode('I');
+    theNode.AppendChild(TextNode);
+    ExclusionsNode.Appendchild(theNode);
+    SubjectCharsNode.Appendchild(FlagUOMNode);
+    FlagUOMNode := Doc.CreateElement('FlagUOM');
+    TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'C');
+    theNode := Doc.CreateElement('ResultUnits');
+    TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
+    TDOMElement(theNode).SetAttribute('Value', UOMC);
+    FlagUOMNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('Deltas');
+    FlagUOMNode.Appendchild(theNode);
+    ExclusionsNode := Doc.CreateElement('Exclusions');
+    TDOMElement(ExclusionsNode).SetAttribute('StartDateTime', startDateTime);
+    FlagUOMNode.Appendchild(ExclusionsNode);
+    theNode := Doc.CreateElement('ExclusionDefinition');
+    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'LX');
+    TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LXC, ffGeneral, 5, 2));
+    ExclusionsNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('ExclusionDefinition');
+    TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
+    TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HXC, ffGeneral, 5, 2));
+    ExclusionsNode.Appendchild(theNode);
+    theNode  := Doc.CreateElement('TransactionType');
+    TextNode := Doc.CreateTextNode('I');
+    theNode.AppendChild(TextNode);
+    ExclusionsNode.Appendchild(theNode);
+    SubjectCharsNode.Appendchild(FlagUOMNode);
+    theRoot.Appendchild(SubjectCharsNode);
+  end;
 end;
 
-procedure AddSubNormNodes(Doc: TXMLDocument; theRoot: TDOMNode; Sex: char; AgeL, AgeH: integer; UOMS, UOMC, LS, HS, LTS, HTS, LPS, HPS, LC, HC, lTC, HTC, LPC, HPC, startDateTime: string);
+procedure AddSubNormNodes(Doc: TXMLDocument; theRoot: TDOMNode;
+  NormDefinitions: tReferenceNormDefinitions);
 var
   RootNode, parentNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode: TDOMNode;
   LabTestNode, NormalNode, AlertNode, UnitsNode, NormalDefinitionNode: TDOMNode;
   SubjectCharsNode, AgeNode, ExclusionsNode, TextNode: TDOMNode;
 begin
-  SubjectCharsNode := Doc.CreateElement('SubjectCharacteristics');
-  theNode := Doc.CreateElement('Sex');
-  TDOMElement(theNode).SetAttribute('CodeListID', 'HL7 Gender Vocabulary Domain V2.4');
-  TDOMElement(theNode).SetAttribute('Value', Sex);
-  SubjectCharsNode.Appendchild(theNode);
-  AgeNode := Doc.CreateElement('Age');
-  TDOMElement(AgeNode).SetAttribute('BoundaryType', 'L');
-  SubjectCharsNode.Appendchild(AgeNode);
-  theNode := Doc.CreateElement('LowerLimit');
-  TDOMElement(theNode).SetAttribute('UOM', 'Y');
-  TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeL));
-  AgeNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('UpperLimit');
-  TDOMElement(theNode).SetAttribute('UOM', 'Y');
-  TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeH));
-  AgeNode.Appendchild(theNode);
-  FlagUOMNode := Doc.CreateElement('FlagUOM');
-  TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'S');
-  theNode := Doc.CreateElement('ResultUnits');
-  TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
-  TDOMElement(theNode).SetAttribute('Value', UOMS);
-  FlagUOMNode.Appendchild(theNode);
-  NormalNode := Doc.CreateElement('Normal');
-  TDOMElement(NormalNode).SetAttribute('StartDateTime', startDateTime);
-  FlagUOMNode.Appendchild(NormalNode);
-  theNode := Doc.CreateElement('NormalDefinition');
-  TDOMElement(theNode).SetAttribute('NormalLevel', 'L');
-  TDOMElement(theNode).SetAttribute('Value', LS);
-  NormalNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('NormalDefinition');
-  TDOMElement(theNode).SetAttribute('NormalLevel', 'H');
-  TDOMElement(theNode).SetAttribute('Value', HS);
-  NormalNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('TransactionType');
-  TextNode := Doc.CreateTextNode('I');
-  theNode.AppendChild(TextNode);
-  NormalNode.Appendchild(theNode);
-  AlertNode := Doc.CreateElement('Alerts');
-  TDOMElement(AlertNode).SetAttribute('StartDateTime', startDateTime);
-  FlagUOMNode.Appendchild(AlertNode);
-  theNode := Doc.CreateElement('AlertDefinition');
-  TDOMElement(theNode).SetAttribute('AlertLevel', 'LN');
-  TDOMElement(theNode).SetAttribute('Value', LS);
-  AlertNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('AlertDefinition');
-  TDOMElement(theNode).SetAttribute('AlertLevel', 'HN');
-  TDOMElement(theNode).SetAttribute('Value', HS);
-  AlertNode.Appendchild(theNode);
-  if LTS <> '' then
+  with NormDefinitions do
   begin
+    SubjectCharsNode := Doc.CreateElement('SubjectCharacteristics');
+    theNode := Doc.CreateElement('Sex');
+    TDOMElement(theNode).SetAttribute('CodeListID', 'HL7 Gender Vocabulary Domain V2.4');
+    TDOMElement(theNode).SetAttribute('Value', Sex);
+    SubjectCharsNode.Appendchild(theNode);
+    AgeNode := Doc.CreateElement('Age');
+    TDOMElement(AgeNode).SetAttribute('BoundaryType', 'L');
+    SubjectCharsNode.Appendchild(AgeNode);
+    theNode := Doc.CreateElement('LowerLimit');
+    TDOMElement(theNode).SetAttribute('UOM', 'Y');
+    TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeL));
+    AgeNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('UpperLimit');
+    TDOMElement(theNode).SetAttribute('UOM', 'Y');
+    TDOMElement(theNode).SetAttribute('Value', IntToStr(AgeH));
+    AgeNode.Appendchild(theNode);
+    FlagUOMNode := Doc.CreateElement('FlagUOM');
+    TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'S');
+    theNode := Doc.CreateElement('ResultUnits');
+    TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
+    TDOMElement(theNode).SetAttribute('Value', UOMS);
+    FlagUOMNode.Appendchild(theNode);
+    NormalNode := Doc.CreateElement('Normal');
+    TDOMElement(NormalNode).SetAttribute('StartDateTime', startDateTime);
+    FlagUOMNode.Appendchild(NormalNode);
+    theNode := Doc.CreateElement('NormalDefinition');
+    TDOMElement(theNode).SetAttribute('NormalLevel', 'L');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(LS, ffGeneral, 5, 2));
+    NormalNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('NormalDefinition');
+    TDOMElement(theNode).SetAttribute('NormalLevel', 'H');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(HS, ffGeneral, 5, 2));
+    NormalNode.Appendchild(theNode);
+    theNode  := Doc.CreateElement('TransactionType');
+    TextNode := Doc.CreateTextNode('I');
+    theNode.AppendChild(TextNode);
+    NormalNode.Appendchild(theNode);
+    AlertNode := Doc.CreateElement('Alerts');
+    TDOMElement(AlertNode).SetAttribute('StartDateTime', startDateTime);
+    FlagUOMNode.Appendchild(AlertNode);
     theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'LT');
-    TDOMElement(theNode).SetAttribute('Value', LTS);
+    TDOMElement(theNode).SetAttribute('AlertLevel', 'LN');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(LS, ffGeneral, 5, 2));
     AlertNode.Appendchild(theNode);
-  end;
-  if HTS <> '' then
-  begin
     theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'HT');
-    TDOMElement(theNode).SetAttribute('Value', HTS);
+    TDOMElement(theNode).SetAttribute('AlertLevel', 'HN');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(HS, ffGeneral, 5, 2));
     AlertNode.Appendchild(theNode);
-  end;
-  if LPS <> '' then
-  begin
+    if not IsNan(LTS) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'LT');
+      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LTS, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    if not IsNan(HTS) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'HT');
+      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HTS, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    if not IsNan(LPS) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'LP');
+      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LPS, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    if not IsNan(HPS) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'HP');
+      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HPS, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    theNode  := Doc.CreateElement('TransactionType');
+    TextNode := Doc.CreateTextNode('I');
+    theNode.AppendChild(TextNode);
+    AlertNode.Appendchild(theNode);
+    SubjectCharsNode.Appendchild(FlagUOMNode);
+    FlagUOMNode := Doc.CreateElement('FlagUOM');
+    TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'C');
+    theNode := Doc.CreateElement('ResultUnits');
+    TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
+    TDOMElement(theNode).SetAttribute('Value', UOMC);
+    FlagUOMNode.Appendchild(theNode);
+    NormalNode := Doc.CreateElement('Normal');
+    TDOMElement(NormalNode).SetAttribute('StartDateTime', startDateTime);
+    FlagUOMNode.Appendchild(NormalNode);
+    theNode := Doc.CreateElement('NormalDefinition');
+    TDOMElement(theNode).SetAttribute('NormalLevel', 'L');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(LC, ffGeneral, 5, 2));
+    NormalNode.Appendchild(theNode);
+    theNode := Doc.CreateElement('NormalDefinition');
+    TDOMElement(theNode).SetAttribute('NormalLevel', 'H');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(HC, ffGeneral, 5, 2));
+    NormalNode.Appendchild(theNode);
+    theNode  := Doc.CreateElement('TransactionType');
+    TextNode := Doc.CreateTextNode('I');
+    theNode.AppendChild(TextNode);
+    NormalNode.Appendchild(theNode);
+    AlertNode := Doc.CreateElement('Alerts');
+    TDOMElement(AlertNode).SetAttribute('StartDateTime', startDateTime);
+    FlagUOMNode.Appendchild(AlertNode);
     theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'LP');
-    TDOMElement(theNode).SetAttribute('Value', LPS);
+    TDOMElement(theNode).SetAttribute('AlertLevel', 'LN');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(LC, ffGeneral, 5, 2));
     AlertNode.Appendchild(theNode);
-  end;
-  if HPS <> '' then
-  begin
     theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'HP');
-    TDOMElement(theNode).SetAttribute('Value', HPS);
+    TDOMElement(theNode).SetAttribute('AlertLevel', 'HN');
+    TDOMElement(theNode).SetAttribute('Value', FloatToStrF(HC, ffGeneral, 5, 2));
     AlertNode.Appendchild(theNode);
-  end;
-  theNode := Doc.CreateElement('TransactionType');
-  TextNode := Doc.CreateTextNode('I');
-  theNode.AppendChild(TextNode);
-  AlertNode.Appendchild(theNode);
-  SubjectCharsNode.Appendchild(FlagUOMNode);
-  FlagUOMNode := Doc.CreateElement('FlagUOM');
-  TDOMElement(FlagUOMNode).SetAttribute('ResultClass', 'C');
-  theNode := Doc.CreateElement('ResultUnits');
-  TDOMElement(theNode).SetAttribute('CodeListID', 'ISO 1000');
-  TDOMElement(theNode).SetAttribute('Value', UOMC);
-  FlagUOMNode.Appendchild(theNode);
-  NormalNode := Doc.CreateElement('Normal');
-  TDOMElement(NormalNode).SetAttribute('StartDateTime', startDateTime);
-  FlagUOMNode.Appendchild(NormalNode);
-  theNode := Doc.CreateElement('NormalDefinition');
-  TDOMElement(theNode).SetAttribute('NormalLevel', 'L');
-  TDOMElement(theNode).SetAttribute('Value', LC);
-  NormalNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('NormalDefinition');
-  TDOMElement(theNode).SetAttribute('NormalLevel', 'H');
-  TDOMElement(theNode).SetAttribute('Value', HC);
-  NormalNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('TransactionType');
-  TextNode := Doc.CreateTextNode('I');
-  theNode.AppendChild(TextNode);
-  NormalNode.Appendchild(theNode);
-  AlertNode := Doc.CreateElement('Alerts');
-  TDOMElement(AlertNode).SetAttribute('StartDateTime', startDateTime);
-  FlagUOMNode.Appendchild(AlertNode);
-  theNode := Doc.CreateElement('AlertDefinition');
-  TDOMElement(theNode).SetAttribute('AlertLevel', 'LN');
-  TDOMElement(theNode).SetAttribute('Value', LC);
-  AlertNode.Appendchild(theNode);
-  theNode := Doc.CreateElement('AlertDefinition');
-  TDOMElement(theNode).SetAttribute('AlertLevel', 'HN');
-  TDOMElement(theNode).SetAttribute('Value', HC);
-  AlertNode.Appendchild(theNode);
-  if LTC <> '' then
-  begin
-    theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'LT');
-    TDOMElement(theNode).SetAttribute('Value', LTC);
+    if not IsNan(LTC) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'LT');
+      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LTC, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    if not IsNan(HTC) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'HT');
+      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HTC, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    if not IsNan(LPC) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'LP');
+      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LPC, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    if not IsNan(HPC) then
+    begin
+      theNode := Doc.CreateElement('AlertDefinition');
+      TDOMElement(theNode).SetAttribute('AlertLevel', 'HP');
+      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HPC, ffGeneral, 5, 2));
+      AlertNode.Appendchild(theNode);
+    end;
+    theNode  := Doc.CreateElement('TransactionType');
+    TextNode := Doc.CreateTextNode('I');
+    theNode.AppendChild(TextNode);
     AlertNode.Appendchild(theNode);
+    SubjectCharsNode.Appendchild(FlagUOMNode);
+    theRoot.Appendchild(SubjectCharsNode);
   end;
-  if HTC <> '' then
-  begin
-    theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'HT');
-    TDOMElement(theNode).SetAttribute('Value', HTC);
-    AlertNode.Appendchild(theNode);
-  end;
-  if LPC <> '' then
-  begin
-    theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'LP');
-    TDOMElement(theNode).SetAttribute('Value', LPC);
-    AlertNode.Appendchild(theNode);
-  end;
-  if HPC <> '' then
-  begin
-    theNode := Doc.CreateElement('AlertDefinition');
-    TDOMElement(theNode).SetAttribute('AlertLevel', 'HP');
-    TDOMElement(theNode).SetAttribute('Value', HPC);
-    AlertNode.Appendchild(theNode);
-  end;
-  theNode := Doc.CreateElement('TransactionType');
-  TextNode := Doc.CreateTextNode('I');
-  theNode.AppendChild(TextNode);
-  AlertNode.Appendchild(theNode);
-  SubjectCharsNode.Appendchild(FlagUOMNode);
-  theRoot.Appendchild(SubjectCharsNode);
 end;
 
-procedure SaveStandardCDISC_RRFile(theFileName: String; var returnCode: integer);
+procedure SaveStandardCDISC_RRFile(theFileName: string; var returnCode: integer);
 {saves a minimal standard file}
 var
   Doc: TXMLDocument;
   RootNode, parentNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode: TDOMNode;
   LabTestNode, NormalNode, AlertNode, UnitsNode, NormalDefinitionNode: TDOMNode;
   SubjectCharsNode, AgeNode, ExclusionsNode, TextNode: TDOMNode;
+  ExclusionDefinitions: tReferenceExDefinitions;
+  NormDefinitions: tReferenceNormDefinitions;
 begin
   returnCode := 6;
   try
-    Doc := TXMLDocument.Create;
+    Doc     := TXMLDocument.Create;
     theNode := Doc.CreateComment('Example for SPINA Reference Values');
     Doc.AppendChild(theNode);
     theNode := Doc.CreateComment('adapted to CDISC LAB MODEL 1.0.1');
     Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) J. W. Dietrich, 1994 - 2012');
+    theNode := Doc.CreateComment('(c) J. W. Dietrich, 1994 - 2014');
     Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) Ludwig Maximilian University of Munich 1995 - 2002');
+    theNode := Doc.CreateComment(
+      '(c) Ludwig Maximilian University of Munich 1995 - 2002');
     Doc.AppendChild(theNode);
     theNode := Doc.CreateComment('(c) University of Ulm Hospitals 2002-2004');
     Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) Ruhr University of Bochum 2005 - 2012');
+    theNode := Doc.CreateComment('(c) Ruhr University of Bochum 2005 - 2014');
     Doc.AppendChild(theNode);
     theNode := Doc.CreateComment('(released under the BSD License');
     Doc.AppendChild(theNode);
     RootNode := Doc.CreateElement('GTP');
-    TDOMElement(RootNode).SetAttribute('CreationDateTime', '2012-12-30T13:13:13+01:00');
+    TDOMElement(RootNode).SetAttribute('CreationDateTime', '2014-03-05T13:13:13+01:00');
     TDOMElement(RootNode).SetAttribute('ModelVersion', '01-0-01');
     Doc.Appendchild(RootNode);
-    RootNode:= Doc.DocumentElement;
+    RootNode   := Doc.DocumentElement;
     parentNode := Doc.CreateElement('TransmissionSource');
     TDOMElement(parentNode).SetAttribute('ID', 'www.ruhr-uni-bochum.de/bergmannsheil/');
     TDOMElement(parentNode).SetAttribute('Name', 'Bergmannsheil University Hospitals');
@@ -322,14 +333,70 @@ begin
     TDOMElement(LabTestNode).SetAttribute('Name', 'Thyrotropin');
     BaseTestNode.Appendchild(LabTestNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, 'mIU/L', 'mIU/L', '<0', '>10000', '<0', '>10000', '2000-01-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, 'mIU/L', 'mIU/L', '0.35', '3.5', '', '>100', '', '>500', '0.35', '3.5', '', '>100', '', '>500', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'mIU/L';
+    ExclusionDefinitions.UOMC := 'mIU/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 10000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'mIU/L';
+    NormDefinitions.UOMC := 'mIU/L';
+    NormDefinitions.LS  := 0.35;
+    NormDefinitions.HS  := 3.5;
+    NormDefinitions.LTS := 0.1;
+    NormDefinitions.HTS := 100;
+    NormDefinitions.LPS := NaN;
+    NormDefinitions.HPS := 500;
+    NormDefinitions.LC  := 0.35;
+    NormDefinitions.HC  := 3.5;
+    NormDefinitions.LTC := 0.1;
+    NormDefinitions.HTC := 100;
+    NormDefinitions.LPC := NaN;
+    NormDefinitions.HPC := 500;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'mIU/L', 'mIU/L', '<0', '>10000', '<0', '>10000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'mIU/L', 'mIU/L', '0.35', '3.5', '', '>100', '', '>500', '0.35', '3.5', '', '>100', '', '>500', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'mIU/L';
+    ExclusionDefinitions.UOMC := 'mIU/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 10000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'mIU/L';
+    NormDefinitions.UOMC := 'mIU/L';
+    NormDefinitions.LS  := 0.35;
+    NormDefinitions.HS  := 3.5;
+    NormDefinitions.LTS := 0.1;
+    NormDefinitions.HTS := 100;
+    NormDefinitions.LPS := NaN;
+    NormDefinitions.HPS := 500;
+    NormDefinitions.LC  := 0.35;
+    NormDefinitions.HC  := 3.5;
+    NormDefinitions.LTC := 0.1;
+    NormDefinitions.HTC := 100;
+    NormDefinitions.LPC := NaN;
+    NormDefinitions.HPC := 500;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {FT4:}
 
@@ -343,14 +410,70 @@ begin
     TDOMElement(LabTestNode).SetAttribute('Name', 'Free T4');
     BaseTestNode.Appendchild(LabTestNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, 'pmol/L', 'ng/L', '0', '>1287', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, 'pmol/L', 'ng/L', '7.7', '18', '<7.7', '>18', '<7.7', '>18', '6', '14', '6', '14', '6', '14', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/L';
+    ExclusionDefinitions.UOMC := 'ng/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1287;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/L';
+    NormDefinitions.UOMC := 'ng/L';
+    NormDefinitions.LS  := 7.7;
+    NormDefinitions.HS  := 18;
+    NormDefinitions.LTS := 7.7;
+    NormDefinitions.HTS := 18;
+    NormDefinitions.LPS := 7.7;
+    NormDefinitions.HPS := 18;
+    NormDefinitions.LC  := 6;
+    NormDefinitions.HC  := 14;
+    NormDefinitions.LTC := 6;
+    NormDefinitions.HTC := 14;
+    NormDefinitions.LPC := 6;
+    NormDefinitions.HPC := 14;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'pmol/L', 'ng/L', '<0', '>1287', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'pmol/L', 'ng/L', '7.7', '18', '<7.7', '>18', '<7.7', '>18', '6', '14', '6', '14', '6', '14', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/L';
+    ExclusionDefinitions.UOMC := 'ng/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1287;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/L';
+    NormDefinitions.UOMC := 'ng/L';
+    NormDefinitions.LS  := 7.7;
+    NormDefinitions.HS  := 18;
+    NormDefinitions.LTS := 7.7;
+    NormDefinitions.HTS := 18;
+    NormDefinitions.LPS := 7.7;
+    NormDefinitions.HPS := 18;
+    NormDefinitions.LC  := 6;
+    NormDefinitions.HC  := 14;
+    NormDefinitions.LTC := 6;
+    NormDefinitions.HTC := 14;
+    NormDefinitions.LPC := 6;
+    NormDefinitions.HPC := 14;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {FT3:}
 
@@ -363,14 +486,71 @@ begin
     TDOMElement(LabTestNode).SetAttribute('ID', 'FT3');
     TDOMElement(LabTestNode).SetAttribute('Name', 'Free T3');
     BaseTestNode.Appendchild(LabTestNode);
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, 'pmol/L', 'ng/L', '<0', '>100', '<0', '>65', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, 'pmol/L', 'ng/L', '3.5', '6.3', '<3.5', '>6.3', '<3.5', '>6.3', '2.3', '4.1', '<2.3', '>4.1', '<2.3', '>4.1', '2012-08-01T12:00:00+01:00');
+
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/L';
+    ExclusionDefinitions.UOMC := 'ng/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 100;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 65;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/L';
+    NormDefinitions.UOMC := 'ng/L';
+    NormDefinitions.LS  := 3.5;
+    NormDefinitions.HS  := 6.3;
+    NormDefinitions.LTS := 3.5;
+    NormDefinitions.HTS := 6.3;
+    NormDefinitions.LPS := 3.5;
+    NormDefinitions.HPS := 6.3;
+    NormDefinitions.LC  := 2.3;
+    NormDefinitions.HC  := 4.1;
+    NormDefinitions.LTC := 2.3;
+    NormDefinitions.HTC := 4.1;
+    NormDefinitions.LPC := 2.3;
+    NormDefinitions.HPC := 4.1;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'pmol/L', 'ng/L', '<0', '>100', '<0', '>65', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'pmol/L', 'ng/L', '3.5', '6.3', '<3.5', '>6.3', '<3.5', '>6.3', '2.3', '4.1', '<2.3', '>4.1', '<2.3', '>4.1', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/L';
+    ExclusionDefinitions.UOMC := 'ng/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 100;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 65;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/L';
+    NormDefinitions.UOMC := 'ng/L';
+    NormDefinitions.LS  := 3.5;
+    NormDefinitions.HS  := 6.3;
+    NormDefinitions.LTS := 3.5;
+    NormDefinitions.HTS := 6.3;
+    NormDefinitions.LPS := 3.5;
+    NormDefinitions.HPS := 6.3;
+    NormDefinitions.LC  := 2.3;
+    NormDefinitions.HC  := 4.1;
+    NormDefinitions.LTC := 2.3;
+    NormDefinitions.HTC := 4.1;
+    NormDefinitions.LPC := 2.3;
+    NormDefinitions.HPC := 4.1;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {TT4:}
 
@@ -383,14 +563,71 @@ begin
     TDOMElement(LabTestNode).SetAttribute('ID', 'TT4');
     TDOMElement(LabTestNode).SetAttribute('Name', 'Total T4');
     BaseTestNode.Appendchild(LabTestNode);
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, 'nmol/L', 'mcg/L', '<0', '>1287', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, 'nmol/L', 'mcg/L', '64.4', '144.4', '<64.4', '>144.4', '<64.4', '>144.4', '50', '120', '<50', '>120', '<50', '>120', '2012-08-01T12:00:00+01:00');
+
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/L';
+    ExclusionDefinitions.UOMC := 'mcg/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1287;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/L';
+    NormDefinitions.UOMC := 'mcg/L';
+    NormDefinitions.LS  := 64.4;
+    NormDefinitions.HS  := 144.4;
+    NormDefinitions.LTS := 64.4;
+    NormDefinitions.HTS := 144.4;
+    NormDefinitions.LPS := 64.4;
+    NormDefinitions.HPS := 144.4;
+    NormDefinitions.LC  := 50;
+    NormDefinitions.HC  := 120;
+    NormDefinitions.LTC := 50;
+    NormDefinitions.HTC := 120;
+    NormDefinitions.LPC := 50;
+    NormDefinitions.HPC := 120;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'nmol/L', 'mcg/L', '<0', '>1287', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'nmol/L', 'mcg/L', '64.4', '144.4', '<64.4', '>144.4', '<64.4', '>144.4', '50', '120', '<50', '>120', '<50', '>120', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/L';
+    ExclusionDefinitions.UOMC := 'mcg/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1287;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/L';
+    NormDefinitions.UOMC := 'mcg/L';
+    NormDefinitions.LS  := 64.4;
+    NormDefinitions.HS  := 144.4;
+    NormDefinitions.LTS := 64.4;
+    NormDefinitions.HTS := 144.4;
+    NormDefinitions.LPS := 64.4;
+    NormDefinitions.HPS := 144.4;
+    NormDefinitions.LC  := 50;
+    NormDefinitions.HC  := 120;
+    NormDefinitions.LTC := 50;
+    NormDefinitions.HTC := 120;
+    NormDefinitions.LPC := 50;
+    NormDefinitions.HPC := 120;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {TT3:}
 
@@ -403,14 +640,71 @@ begin
     TDOMElement(LabTestNode).SetAttribute('ID', 'TT3');
     TDOMElement(LabTestNode).SetAttribute('Name', 'Total T3');
     BaseTestNode.Appendchild(LabTestNode);
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, 'nmol/L', 'mcg/L', '<0', '>154', '<0', '>100', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, 'nmol/L', 'mcg/L', '1.1', '2.8', '<1.1', '>2.8', '<1.1', '>2.8', '0.7', '1.8', '<0.7', '>1.8', '<0.7', '>1.8', '2012-08-01T12:00:00+01:00');
+
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/L';
+    ExclusionDefinitions.UOMC := 'mcg/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 154;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 100;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/L';
+    NormDefinitions.UOMC := 'mcg/L';
+    NormDefinitions.LS  := 1.1;
+    NormDefinitions.HS  := 2.8;
+    NormDefinitions.LTS := 1.1;
+    NormDefinitions.HTS := 2.8;
+    NormDefinitions.LPS := 1.1;
+    NormDefinitions.HPS := 2.8;
+    NormDefinitions.LC  := 0.7;
+    NormDefinitions.HC  := 1.8;
+    NormDefinitions.LTC := 0.7;
+    NormDefinitions.HTC := 1.8;
+    NormDefinitions.LPC := 0.7;
+    NormDefinitions.HPC := 1.8;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'nmol/L', 'mcg/L', '<0', '>154', '<0', '>100', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'nmol/L', 'mcg/L', '1.1', '2.8', '<1.1', '>2.8', '<1.1', '>2.8', '0.7', '1.8', '<0.7', '>1.8', '<0.7', '>1.8', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/L';
+    ExclusionDefinitions.UOMC := 'mcg/L';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 154;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 100;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/L';
+    NormDefinitions.UOMC := 'mcg/L';
+    NormDefinitions.LS  := 1.1;
+    NormDefinitions.HS  := 2.8;
+    NormDefinitions.LTS := 1.1;
+    NormDefinitions.HTS := 2.8;
+    NormDefinitions.LPS := 1.1;
+    NormDefinitions.HPS := 2.8;
+    NormDefinitions.LC  := 0.7;
+    NormDefinitions.HC  := 1.8;
+    NormDefinitions.LTC := 0.7;
+    NormDefinitions.HTC := 1.8;
+    NormDefinitions.LPC := 0.7;
+    NormDefinitions.HPC := 1.8;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {SPINA:}
 
@@ -430,14 +724,71 @@ begin
     TDOMElement(LabTestNode).SetAttribute('ID', 'GT');
     TDOMElement(LabTestNode).SetAttribute('Name', 'Thyroid''s Secretory Capacity');
     BaseTestNode.Appendchild(LabTestNode);
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, 'pmol/s', 'pmol/s', '<0', '>10000', '<0', '>10000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, 'pmol/s', 'pmol/s', '1.41', '8.67', '', '>100', '', '>500', '1.41', '8.67', '', '>100', '', '>500', '2012-08-01T12:00:00+01:00');
+
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/s';
+    ExclusionDefinitions.UOMC := 'pmol/s';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 10000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/s';
+    NormDefinitions.UOMC := 'pmol/s';
+    NormDefinitions.LS  := 1.41;
+    NormDefinitions.HS  := 8.67;
+    NormDefinitions.LTS := 1.00;
+    NormDefinitions.HTS := 25;
+    NormDefinitions.LPS := 0.7;
+    NormDefinitions.HPS := 100;
+    NormDefinitions.LC  := 1.41;
+    NormDefinitions.HC  := 8.67;
+    NormDefinitions.LTC := 1.00;
+    NormDefinitions.HTC := 25;
+    NormDefinitions.LPC := 0.7;
+    NormDefinitions.HPC := 100;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'pmol/s', 'pmol/s', '<0', '>10000', '<0', '>10000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'pmol/s', 'pmol/s', '1.41', '8.67', '', '>100', '', '>500', '1.41', '8.67', '', '>100', '', '>500', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/s';
+    ExclusionDefinitions.UOMC := 'pmol/s';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 10000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/s';
+    NormDefinitions.UOMC := 'pmol/s';
+    NormDefinitions.LS  := 1.41;
+    NormDefinitions.HS  := 8.67;
+    NormDefinitions.LTS := 1.00;
+    NormDefinitions.HTS := 25;
+    NormDefinitions.LPS := 0.7;
+    NormDefinitions.HPS := 100;
+    NormDefinitions.LC  := 1.41;
+    NormDefinitions.HC  := 8.67;
+    NormDefinitions.LTC := 1.00;
+    NormDefinitions.HTC := 25;
+    NormDefinitions.LPC := 0.7;
+    NormDefinitions.HPC := 100;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {SPINA-GD:}
 
@@ -448,16 +799,74 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'GD');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Sum activity of peripheral type 1 deiodinase');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Sum activity of peripheral type 1 deiodinase');
     BaseTestNode.Appendchild(LabTestNode);
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, 'nmol/s', 'nmol/s', '<0', '>1000', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, 'nmol/s', 'nmol/s', '20', '40', '<10', '>60', '<5', '>100', '20', '40', '<10', '>60', '<5', '>100', '2012-08-01T12:00:00+01:00');
+
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/s';
+    ExclusionDefinitions.UOMC := 'nmol/s';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/s';
+    NormDefinitions.UOMC := 'nmol/s';
+    NormDefinitions.LS  := 20;
+    NormDefinitions.HS  := 40;
+    NormDefinitions.LTS := 10;
+    NormDefinitions.HTS := 60;
+    NormDefinitions.LPS := 5;
+    NormDefinitions.HPS := 100;
+    NormDefinitions.LC  := 20;
+    NormDefinitions.HC  := 40;
+    NormDefinitions.LTC := 10;
+    NormDefinitions.HTC := 60;
+    NormDefinitions.LPC := 5;
+    NormDefinitions.HPC := 100;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, 'nmol/s', 'nmol/s', '<0', '>1000', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, 'nmol/s', 'nmol/s', '20', '40', '<10', '>60', '<5', '>100', '20', '40', '<10', '>60', '<5', '>100', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/s';
+    ExclusionDefinitions.UOMC := 'nmol/s';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/s';
+    NormDefinitions.UOMC := 'nmol/s';
+    NormDefinitions.LS  := 20;
+    NormDefinitions.HS  := 40;
+    NormDefinitions.LTS := 10;
+    NormDefinitions.HTS := 60;
+    NormDefinitions.LPS := 5;
+    NormDefinitions.HPS := 100;
+    NormDefinitions.LC  := 20;
+    NormDefinitions.HC  := 40;
+    NormDefinitions.LTC := 10;
+    NormDefinitions.HTC := 60;
+    NormDefinitions.LPC := 5;
+    NormDefinitions.HPC := 100;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {Other structure parameters:}
 
@@ -477,14 +886,70 @@ begin
     TDOMElement(LabTestNode).SetAttribute('ID', 'TSHI');
     TDOMElement(LabTestNode).SetAttribute('Name', 'Jostel''s TSH index');
     BaseTestNode.Appendchild(LabTestNode);
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, '', '', '<0', '>100', '<0', '>100', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, '', '', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '2012-08-01T12:00:00+01:00');
+
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '';
+    ExclusionDefinitions.UOMC := '';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 100;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 100;
+    ExclusionDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '';
+    NormDefinitions.UOMC := '';
+    NormDefinitions.LS  := 1.3;
+    NormDefinitions.HS  := 4.1;
+    NormDefinitions.LTS := 1;
+    NormDefinitions.HTS := 6;
+    NormDefinitions.LPS := 0.2;
+    NormDefinitions.HPS := 10;
+    NormDefinitions.LC  := 1.3;
+    NormDefinitions.HC  := 4.1;
+    NormDefinitions.LTC := 1;
+    NormDefinitions.HTC := 6;
+    NormDefinitions.LPC := 0.2;
+    NormDefinitions.HPC := 10;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, '', '', '<0', '>100', '<0', '>100', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, '', '', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '1.3', '4.1', '<1', '>6', '<0.5', '>10', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '';
+    ExclusionDefinitions.UOMC := '';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 100;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 100;
+    ExclusionDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '';
+    NormDefinitions.UOMC := '';
+    NormDefinitions.LS  := 1.3;
+    NormDefinitions.HS  := 4.1;
+    NormDefinitions.LTS := 1;
+    NormDefinitions.HTS := 6;
+    NormDefinitions.LPS := 0.2;
+    NormDefinitions.HPS := 10;
+    NormDefinitions.LC  := 1.3;
+    NormDefinitions.HC  := 4.1;
+    NormDefinitions.LTC := 1;
+    NormDefinitions.HTC := 6;
+    NormDefinitions.LPC := 0.2;
+    NormDefinitions.HPC := 10;
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {TTSI:}
 
@@ -495,16 +960,74 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'TTSI');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Thyrotroph thyroid hormone sensitivity index');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Thyrotroph thyroid hormone sensitivity index');
     BaseTestNode.Appendchild(LabTestNode);
-    AddSubExNodes(Doc, BaseTestNode, 'F', 0, 999, '', '', '<0', '>1000', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'F', 0, 130, '', '', '122', '150', '<50', '200', '<10', '>300', '122', '150', '<50', '200', '<10', '>300', '2012-08-01T12:00:00+01:00');
+
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '';
+    ExclusionDefinitions.UOMC := '';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    ExclusionDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '';
+    NormDefinitions.UOMC := '';
+    NormDefinitions.LS  := 100;
+    NormDefinitions.HS  := 150;
+    NormDefinitions.LTS := 50;
+    NormDefinitions.HTS := 200;
+    NormDefinitions.LPS := 10;
+    NormDefinitions.HPS := 300;
+    NormDefinitions.LC  := 100;
+    NormDefinitions.HC  := 150;
+    NormDefinitions.LTC := 50;
+    NormDefinitions.HTC := 200;
+    NormDefinitions.LPC := 10;
+    NormDefinitions.HPC := 300;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    AddSubExNodes(Doc, BaseTestNode, 'M', 0, 999, '', '', '<0', '>1000', '<0', '>1000', '2012-08-01T12:00:00+01:00');
-    AddSubNormNodes(Doc, BaseTestNode, 'M', 0, 130, '', '', '122', '150', '<50', '200', '<10', '>300', '122', '150', '<50', '200', '<10', '>300', '2012-08-01T12:00:00+01:00');
+    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '';
+    ExclusionDefinitions.UOMC := '';
+    ExclusionDefinitions.LXS  := 0;
+    ExclusionDefinitions.HXS  := 1000;
+    ExclusionDefinitions.LXC  := 0;
+    ExclusionDefinitions.HXC  := 1000;
+    ExclusionDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex  := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '';
+    NormDefinitions.UOMC := '';
+    NormDefinitions.LS  := 100;
+    NormDefinitions.HS  := 150;
+    NormDefinitions.LTS := 50;
+    NormDefinitions.HTS := 200;
+    NormDefinitions.LPS := 10;
+    NormDefinitions.HPS := 300;
+    NormDefinitions.LC  := 100;
+    NormDefinitions.HC  := 150;
+    NormDefinitions.LTC := 50;
+    NormDefinitions.HTC := 200;
+    NormDefinitions.LPC := 10;
+    NormDefinitions.HPC := 300;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     writeXMLFile(Doc, theFileName);
 
@@ -515,4 +1038,3 @@ begin
 end;
 
 end.
-

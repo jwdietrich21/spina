@@ -85,6 +85,20 @@ tReferenceAlerts = record
        ln, hn, lt, ht, lp, hp: real;
        measurementUnit: string;
        end;
+tReferenceExDefinitions = record
+       Sex: char;
+       AgeL, AgeH: integer;
+       UOMS, UOMC: string;
+       LXS, HXS, LXC, HXC: real;
+       startDateTime: string
+end;
+tReferenceNormDefinitions = record
+       Sex: char;
+       AgeL, AgeH: integer;
+       UOMS, UOMC: string;
+       LS, HS, LTS, HTS, LPS, HPS, LC, HC, LTC, HTC, LPC, HPC: real;
+       startDateTime: string
+end;
 tReferenceValues = record
        TSH, FT4, FT3, TT4, TT3, GT, GD, TSHI, TTSI: tReferenceAlerts;
 end;
