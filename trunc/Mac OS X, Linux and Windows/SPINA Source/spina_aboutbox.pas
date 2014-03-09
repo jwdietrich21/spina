@@ -13,7 +13,7 @@ unit SPINA_AboutBox;
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2013 }
+{ (c) Ruhr University of Bochum 2005 - 2014 }
 
 { This unit displays an information dialog }
 
@@ -43,6 +43,14 @@ type
 
   TAboutBox = class(TForm)
     Button1: TButton;
+    CopyrightLabel1: TLabel;
+    CopyrightLabel2: TLabel;
+    CopyrightLabel3: TLabel;
+    CopyrightLabel4: TLabel;
+    CopyrightLabel5: TLabel;
+    CopyrightLabel6: TLabel;
+    CopyrightLabel7: TLabel;
+    Divider: TLabel;
     Image1: TImage;
     Label10: TLabel;
     Label11: TLabel;
@@ -60,13 +68,19 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
+    URL1: TLabel;
+    URL2: TLabel;
+    VersionLabel: TLabel;
     procedure ClickURL(Sender: TObject);
     procedure CloseAboutBox(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Label5Click(Sender: TObject);
     procedure Label7Click(Sender: TObject);
     procedure Label9Click(Sender: TObject);
     procedure TabsChange(Sender: TObject);
+    procedure URL1Click(Sender: TObject);
+    procedure URL2Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -196,6 +210,11 @@ begin
   Close;
 end;
 
+procedure TAboutBox.FormCreate(Sender: TObject);
+begin
+  VersionLabel.Caption := 'Version ' + GetFileVersion;
+end;
+
 procedure TAboutBox.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 {provide additional information, if option or alt key is pressed}
@@ -231,9 +250,19 @@ begin
 
 end;
 
+procedure TAboutBox.URL1Click(Sender: TObject);
+begin
+  OpenURL('http://spina.medical-cybernetics.de')
+end;
+
+procedure TAboutBox.URL2Click(Sender: TObject);
+begin
+  OpenURL('http://spina.sourceforge.net')
+end;
+
 procedure TAboutBox.ClickURL(Sender: TObject);
 begin
-  OpenURL('http://spina.medical-cybernetics.de');
+
 end;
 
 initialization

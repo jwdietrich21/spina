@@ -26,15 +26,26 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Grids, Menus, SPINA_UserInterface;
+  ExtCtrls, Grids, Menus, StdCtrls, SPINA_UserInterface;
 
 type
 
   { TSplashScreen }
 
   TSplashScreen = class(TForm)
+    CopyrightLabel1: TLabel;
+    CopyrightLabel2: TLabel;
+    CopyrightLabel3: TLabel;
+    CopyrightLabel4: TLabel;
+    CopyrightLabel5: TLabel;
+    CopyrightLabel6: TLabel;
+    CopyrightLabel7: TLabel;
+    Divider: TLabel;
     IdleTimer1: TIdleTimer;
     Image1: TImage;
+    URL1: TLabel;
+    URL2: TLabel;
+    VersionLabel: TLabel;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
