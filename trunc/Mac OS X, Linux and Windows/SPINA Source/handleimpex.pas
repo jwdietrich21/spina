@@ -25,7 +25,8 @@ unit HandleImpEx;
 interface
 
 uses
-  Classes, SysUtils, Dialogs, SPINA_Engine, SPINA_Types, HL7, MSH, MSA, OBR, OBX;
+  Classes, SysUtils, Dialogs, LCLVersion,
+  SPINA_Engine, SPINA_Types, HL7, MSH, MSA, OBR, OBX;
 
 procedure SaveResults(caseRecord: tCaseRecord);
 
@@ -250,9 +251,10 @@ begin
   if SPINAToolbar.SaveResultsDialog.Execute then
   begin
     theFilterIndex := SPINAToolbar.SaveResultsDialog.FilterIndex;
-      {$IFDEF LCLcarbon}{compensates for a bug in the carbon widgetset}
-    theFilterIndex := theFilterIndex + 1;
-      {$ENDIF}{may be removed in future versions}
+    {$IFDEF LCLcarbon}{compensates for a bug in older versions of carbon widgetset}
+      if (lcl_major < 2) and (lcl_minor < 2) then
+        theFilterIndex := theFilterIndex + 1;
+    {$ENDIF}
     case theFilterIndex of
       1: SaveStringToPath(gResultString, SPINAToolbar.SaveResultsDialog.FileName);
       2: SaveAsHL7file(caseRecord);
@@ -260,4 +262,4 @@ begin
   end;
 end;
 
-end.
+end.
