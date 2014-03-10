@@ -120,7 +120,10 @@ var
   RootNode, parentNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode: TDOMNode;
   LabTestNode, NormalNode, AlertNode, UnitsNode, NormalDefinitionNode: TDOMNode;
   SubjectCharsNode, AgeNode, ExclusionsNode, TextNode: TDOMNode;
+  oldSeparator: char;
 begin
+  oldSeparator := DefaultFormatSettings.DecimalSeparator;
+  DefaultFormatSettings.DecimalSeparator := DEC_POINT;
   with NormDefinitions do
   begin
     SubjectCharsNode := Doc.CreateElement('SubjectCharacteristics');
@@ -271,6 +274,7 @@ begin
     SubjectCharsNode.Appendchild(FlagUOMNode);
     theRoot.Appendchild(SubjectCharsNode);
   end;
+  DefaultFormatSettings.DecimalSeparator := oldSeparator;
 end;
 
 function ISO8601Date(const AValue: TDateTime): String;
@@ -541,19 +545,37 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'pmol/L';
     NormDefinitions.UOMC := 'ng/L';
-    NormDefinitions.LS  := 3.5;
-    NormDefinitions.HS  := 6.3;
-    NormDefinitions.LTS := 3.5;
-    NormDefinitions.HTS := 6.3;
-    NormDefinitions.LPS := 3.5;
-    NormDefinitions.HPS := 6.3;
-    NormDefinitions.LC  := 2.3;
-    NormDefinitions.HC  := 4.1;
-    NormDefinitions.LTC := 2.3;
-    NormDefinitions.HTC := 4.1;
-    NormDefinitions.LPC := 2.3;
-    NormDefinitions.HPC := 4.1;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.FT3.UOM)) > 0 then
+    begin
+      NormDefinitions.LS  := ReferenceRanges.FT3.ln;
+      NormDefinitions.HS  := ReferenceRanges.FT3.hn;
+      NormDefinitions.LTS := ReferenceRanges.FT3.lt;
+      NormDefinitions.HTS := ReferenceRanges.FT3.ht;
+      NormDefinitions.LPS := ReferenceRanges.FT3.lp;
+      NormDefinitions.HPS := ReferenceRanges.FT3.hp;
+      NormDefinitions.LC  := NaN;
+      NormDefinitions.HC  := NaN;
+      NormDefinitions.LTC := NaN;
+      NormDefinitions.HTC := NaN;
+      NormDefinitions.LPC := NaN;
+      NormDefinitions.HPC := NaN;
+    end
+    else
+    begin
+      NormDefinitions.LS  := NaN;
+      NormDefinitions.HS  := NaN;
+      NormDefinitions.LTS := NaN;
+      NormDefinitions.HTS := NaN;
+      NormDefinitions.LPS := NaN;
+      NormDefinitions.HPS := NaN;
+      NormDefinitions.LC  := ReferenceRanges.FT3.ln;
+      NormDefinitions.HC  := ReferenceRanges.FT3.hn;
+      NormDefinitions.LTC := ReferenceRanges.FT3.lt;
+      NormDefinitions.HTC := ReferenceRanges.FT3.ht;
+      NormDefinitions.LPC := ReferenceRanges.FT3.lp;
+      NormDefinitions.HPC := ReferenceRanges.FT3.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
@@ -575,19 +597,37 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'pmol/L';
     NormDefinitions.UOMC := 'ng/L';
-    NormDefinitions.LS  := 3.5;
-    NormDefinitions.HS  := 6.3;
-    NormDefinitions.LTS := 3.5;
-    NormDefinitions.HTS := 6.3;
-    NormDefinitions.LPS := 3.5;
-    NormDefinitions.HPS := 6.3;
-    NormDefinitions.LC  := 2.3;
-    NormDefinitions.HC  := 4.1;
-    NormDefinitions.LTC := 2.3;
-    NormDefinitions.HTC := 4.1;
-    NormDefinitions.LPC := 2.3;
-    NormDefinitions.HPC := 4.1;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.FT3.UOM)) > 0 then
+    begin
+      NormDefinitions.LS  := ReferenceRanges.FT3.ln;
+      NormDefinitions.HS  := ReferenceRanges.FT3.hn;
+      NormDefinitions.LTS := ReferenceRanges.FT3.lt;
+      NormDefinitions.HTS := ReferenceRanges.FT3.ht;
+      NormDefinitions.LPS := ReferenceRanges.FT3.lp;
+      NormDefinitions.HPS := ReferenceRanges.FT3.hp;
+      NormDefinitions.LC  := NaN;
+      NormDefinitions.HC  := NaN;
+      NormDefinitions.LTC := NaN;
+      NormDefinitions.HTC := NaN;
+      NormDefinitions.LPC := NaN;
+      NormDefinitions.HPC := NaN;
+    end
+    else
+    begin
+      NormDefinitions.LS  := NaN;
+      NormDefinitions.HS  := NaN;
+      NormDefinitions.LTS := NaN;
+      NormDefinitions.HTS := NaN;
+      NormDefinitions.LPS := NaN;
+      NormDefinitions.HPS := NaN;
+      NormDefinitions.LC  := ReferenceRanges.FT3.ln;
+      NormDefinitions.HC  := ReferenceRanges.FT3.hn;
+      NormDefinitions.LTC := ReferenceRanges.FT3.lt;
+      NormDefinitions.HTC := ReferenceRanges.FT3.ht;
+      NormDefinitions.LPC := ReferenceRanges.FT3.lp;
+      NormDefinitions.HPC := ReferenceRanges.FT3.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {TT4:}
@@ -618,19 +658,37 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'nmol/L';
     NormDefinitions.UOMC := 'mcg/L';
-    NormDefinitions.LS  := 64.4;
-    NormDefinitions.HS  := 144.4;
-    NormDefinitions.LTS := 64.4;
-    NormDefinitions.HTS := 144.4;
-    NormDefinitions.LPS := 64.4;
-    NormDefinitions.HPS := 144.4;
-    NormDefinitions.LC  := 50;
-    NormDefinitions.HC  := 120;
-    NormDefinitions.LTC := 50;
-    NormDefinitions.HTC := 120;
-    NormDefinitions.LPC := 50;
-    NormDefinitions.HPC := 120;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.TT4.UOM)) > 0 then
+    begin
+      NormDefinitions.LS  := ReferenceRanges.TT4.ln;
+      NormDefinitions.HS  := ReferenceRanges.TT4.hn;
+      NormDefinitions.LTS := ReferenceRanges.TT4.lt;
+      NormDefinitions.HTS := ReferenceRanges.TT4.ht;
+      NormDefinitions.LPS := ReferenceRanges.TT4.lp;
+      NormDefinitions.HPS := ReferenceRanges.TT4.hp;
+      NormDefinitions.LC  := NaN;
+      NormDefinitions.HC  := NaN;
+      NormDefinitions.LTC := NaN;
+      NormDefinitions.HTC := NaN;
+      NormDefinitions.LPC := NaN;
+      NormDefinitions.HPC := NaN;
+    end
+    else
+    begin
+      NormDefinitions.LS  := NaN;
+      NormDefinitions.HS  := NaN;
+      NormDefinitions.LTS := NaN;
+      NormDefinitions.HTS := NaN;
+      NormDefinitions.LPS := NaN;
+      NormDefinitions.HPS := NaN;
+      NormDefinitions.LC  := ReferenceRanges.TT4.ln;
+      NormDefinitions.HC  := ReferenceRanges.TT4.hn;
+      NormDefinitions.LTC := ReferenceRanges.TT4.lt;
+      NormDefinitions.HTC := ReferenceRanges.TT4.ht;
+      NormDefinitions.LPC := ReferenceRanges.TT4.lp;
+      NormDefinitions.HPC := ReferenceRanges.TT4.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
@@ -652,19 +710,37 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'nmol/L';
     NormDefinitions.UOMC := 'mcg/L';
-    NormDefinitions.LS  := 64.4;
-    NormDefinitions.HS  := 144.4;
-    NormDefinitions.LTS := 64.4;
-    NormDefinitions.HTS := 144.4;
-    NormDefinitions.LPS := 64.4;
-    NormDefinitions.HPS := 144.4;
-    NormDefinitions.LC  := 50;
-    NormDefinitions.HC  := 120;
-    NormDefinitions.LTC := 50;
-    NormDefinitions.HTC := 120;
-    NormDefinitions.LPC := 50;
-    NormDefinitions.HPC := 120;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.TT4.UOM)) > 0 then
+    begin
+      NormDefinitions.LS  := ReferenceRanges.TT4.ln;
+      NormDefinitions.HS  := ReferenceRanges.TT4.hn;
+      NormDefinitions.LTS := ReferenceRanges.TT4.lt;
+      NormDefinitions.HTS := ReferenceRanges.TT4.ht;
+      NormDefinitions.LPS := ReferenceRanges.TT4.lp;
+      NormDefinitions.HPS := ReferenceRanges.TT4.hp;
+      NormDefinitions.LC  := NaN;
+      NormDefinitions.HC  := NaN;
+      NormDefinitions.LTC := NaN;
+      NormDefinitions.HTC := NaN;
+      NormDefinitions.LPC := NaN;
+      NormDefinitions.HPC := NaN;
+    end
+    else
+    begin
+      NormDefinitions.LS  := NaN;
+      NormDefinitions.HS  := NaN;
+      NormDefinitions.LTS := NaN;
+      NormDefinitions.HTS := NaN;
+      NormDefinitions.LPS := NaN;
+      NormDefinitions.HPS := NaN;
+      NormDefinitions.LC  := ReferenceRanges.TT4.ln;
+      NormDefinitions.HC  := ReferenceRanges.TT4.hn;
+      NormDefinitions.LTC := ReferenceRanges.TT4.lt;
+      NormDefinitions.HTC := ReferenceRanges.TT4.ht;
+      NormDefinitions.LPC := ReferenceRanges.TT4.lp;
+      NormDefinitions.HPC := ReferenceRanges.TT4.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {TT3:}
@@ -695,19 +771,37 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'nmol/L';
     NormDefinitions.UOMC := 'mcg/L';
-    NormDefinitions.LS  := 1.1;
-    NormDefinitions.HS  := 2.8;
-    NormDefinitions.LTS := 1.1;
-    NormDefinitions.HTS := 2.8;
-    NormDefinitions.LPS := 1.1;
-    NormDefinitions.HPS := 2.8;
-    NormDefinitions.LC  := 0.7;
-    NormDefinitions.HC  := 1.8;
-    NormDefinitions.LTC := 0.7;
-    NormDefinitions.HTC := 1.8;
-    NormDefinitions.LPC := 0.7;
-    NormDefinitions.HPC := 1.8;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.FT4.UOM)) > 0 then
+    begin
+      NormDefinitions.LS  := ReferenceRanges.TT3.ln;
+      NormDefinitions.HS  := ReferenceRanges.TT3.hn;
+      NormDefinitions.LTS := ReferenceRanges.TT3.lt;
+      NormDefinitions.HTS := ReferenceRanges.TT3.ht;
+      NormDefinitions.LPS := ReferenceRanges.TT3.lp;
+      NormDefinitions.HPS := ReferenceRanges.TT3.hp;
+      NormDefinitions.LC  := NaN;
+      NormDefinitions.HC  := NaN;
+      NormDefinitions.LTC := NaN;
+      NormDefinitions.HTC := NaN;
+      NormDefinitions.LPC := NaN;
+      NormDefinitions.HPC := NaN;
+    end
+    else
+    begin
+      NormDefinitions.LS  := NaN;
+      NormDefinitions.HS  := NaN;
+      NormDefinitions.LTS := NaN;
+      NormDefinitions.HTS := NaN;
+      NormDefinitions.LPS := NaN;
+      NormDefinitions.HPS := NaN;
+      NormDefinitions.LC  := ReferenceRanges.TT3.ln;
+      NormDefinitions.HC  := ReferenceRanges.TT3.hn;
+      NormDefinitions.LTC := ReferenceRanges.TT3.lt;
+      NormDefinitions.HTC := ReferenceRanges.TT3.ht;
+      NormDefinitions.LPC := ReferenceRanges.TT3.lp;
+      NormDefinitions.HPC := ReferenceRanges.TT3.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
@@ -729,19 +823,37 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'nmol/L';
     NormDefinitions.UOMC := 'mcg/L';
-    NormDefinitions.LS  := 1.1;
-    NormDefinitions.HS  := 2.8;
-    NormDefinitions.LTS := 1.1;
-    NormDefinitions.HTS := 2.8;
-    NormDefinitions.LPS := 1.1;
-    NormDefinitions.HPS := 2.8;
-    NormDefinitions.LC  := 0.7;
-    NormDefinitions.HC  := 1.8;
-    NormDefinitions.LTC := 0.7;
-    NormDefinitions.HTC := 1.8;
-    NormDefinitions.LPC := 0.7;
-    NormDefinitions.HPC := 1.8;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.FT4.UOM)) > 0 then
+    begin
+      NormDefinitions.LS  := ReferenceRanges.TT3.ln;
+      NormDefinitions.HS  := ReferenceRanges.TT3.hn;
+      NormDefinitions.LTS := ReferenceRanges.TT3.lt;
+      NormDefinitions.HTS := ReferenceRanges.TT3.ht;
+      NormDefinitions.LPS := ReferenceRanges.TT3.lp;
+      NormDefinitions.HPS := ReferenceRanges.TT3.hp;
+      NormDefinitions.LC  := NaN;
+      NormDefinitions.HC  := NaN;
+      NormDefinitions.LTC := NaN;
+      NormDefinitions.HTC := NaN;
+      NormDefinitions.LPC := NaN;
+      NormDefinitions.HPC := NaN;
+    end
+    else
+    begin
+      NormDefinitions.LS  := NaN;
+      NormDefinitions.HS  := NaN;
+      NormDefinitions.LTS := NaN;
+      NormDefinitions.HTS := NaN;
+      NormDefinitions.LPS := NaN;
+      NormDefinitions.HPS := NaN;
+      NormDefinitions.LC  := ReferenceRanges.TT3.ln;
+      NormDefinitions.HC  := ReferenceRanges.TT3.hn;
+      NormDefinitions.LTC := ReferenceRanges.TT3.lt;
+      NormDefinitions.HTC := ReferenceRanges.TT3.ht;
+      NormDefinitions.LPC := ReferenceRanges.TT3.lp;
+      NormDefinitions.HPC := ReferenceRanges.TT3.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {SPINA:}
