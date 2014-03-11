@@ -544,6 +544,7 @@ var
   oldSeparator: Char;
   SI: boolean;
 begin
+  theFileName := UTF8ToSys(theFileName);
   returnCode := 0;           {no error}
   with gReferenceRanges do
     begin                   {define emtpy default values}

@@ -496,16 +496,16 @@ var
 begin
   if CDISCSaveDialog.Execute then
   begin
-    ReferenceRanges.TSH.ln := StrToFloat(TSHRRLEdit.Text);
-    ReferenceRanges.TSH.hn := StrToFloat(TSHRRHEdit.Text);
+    ReferenceRanges.TSH.ln := StrToFloatDef(TSHRRLEdit.Text, Math.NaN);
+    ReferenceRanges.TSH.hn := StrToFloatDef(TSHRRHEdit.Text, Math.NaN);
     ReferenceRanges.TSH.lt := Math.Nan;
     ReferenceRanges.TSH.ht := Math.Nan;
     ReferenceRanges.TSH.lp := Math.Nan;
     ReferenceRanges.TSH.hp := Math.Nan;
     if gPreferences.T4.Method = freeHormone then
     begin
-      ReferenceRanges.FT4.ln := StrToFloat(T4RRLEdit.Text);
-      ReferenceRanges.FT4.hn := StrToFloat(T4RRHEdit.Text);
+      ReferenceRanges.FT4.ln := StrToFloatDef(T4RRLEdit.Text, Math.NaN);
+      ReferenceRanges.FT4.hn := StrToFloatDef(T4RRHEdit.Text, Math.NaN);
       ReferenceRanges.FT4.lt := Math.Nan;
       ReferenceRanges.FT4.ht := Math.Nan;
       ReferenceRanges.FT4.lp := Math.Nan;
@@ -515,8 +515,8 @@ begin
     end
     else
     begin
-      ReferenceRanges.TT4.ln := StrToFloat(T4RRLEdit.Text);
-      ReferenceRanges.TT4.hn := StrToFloat(T4RRHEdit.Text);
+      ReferenceRanges.TT4.ln := StrToFloatDef(T4RRLEdit.Text, Math.NaN);
+      ReferenceRanges.TT4.hn := StrToFloatDef(T4RRHEdit.Text, Math.NaN);
       ReferenceRanges.TT4.lt := Math.Nan;
       ReferenceRanges.TT4.ht := Math.Nan;
       ReferenceRanges.TT4.lp := Math.Nan;
@@ -526,8 +526,8 @@ begin
     end;
     if gPreferences.T3.Method = freeHormone then
     begin
-      ReferenceRanges.FT3.ln := StrToFloat(T3RRLEdit.Text);
-      ReferenceRanges.FT3.hn := StrToFloat(T3RRHEdit.Text);
+      ReferenceRanges.FT3.ln := StrToFloatDef(T3RRLEdit.Text, Math.NaN);
+      ReferenceRanges.FT3.hn := StrToFloatDef(T3RRHEdit.Text, Math.NaN);
       ReferenceRanges.FT3.lt := Math.Nan;
       ReferenceRanges.FT3.ht := Math.Nan;
       ReferenceRanges.FT3.lp := Math.Nan;
@@ -537,8 +537,8 @@ begin
     end
     else
     begin
-      ReferenceRanges.TT3.ln := StrToFloat(T3RRLEdit.Text);
-      ReferenceRanges.TT3.hn := StrToFloat(T3RRHEdit.Text);
+      ReferenceRanges.TT3.ln := StrToFloatDef(T3RRLEdit.Text, Math.NaN);
+      ReferenceRanges.TT3.hn := StrToFloatDef(T3RRHEdit.Text, Math.NaN);
       ReferenceRanges.TT3.lt := Math.Nan;
       ReferenceRanges.TT3.ht := Math.Nan;
       ReferenceRanges.TT3.lp := Math.Nan;
@@ -546,6 +546,34 @@ begin
       ReferenceRanges.FT3.UOM := 'N/A';
       ReferenceRanges.TT3.UOM := T3UnitComboBox.Caption;
     end;
+    ReferenceRanges.GT.ln := StrToFloatDef(GTRRLEdit.Text, Math.NaN);
+    ReferenceRanges.GT.hn := StrToFloatDef(GTRRhEdit.Text, Math.NaN);
+    ReferenceRanges.GT.lt := Math.Nan;
+    ReferenceRanges.GT.ht := Math.Nan;
+    ReferenceRanges.GT.lp := Math.Nan;
+    ReferenceRanges.GT.hp := Math.Nan;
+    ReferenceRanges.GT.UOM := 'pmol/s';
+    ReferenceRanges.GD.ln := StrToFloatDef(GDRRLEdit.Text, Math.NaN);
+    ReferenceRanges.GD.hn := StrToFloatDef(GDRRhEdit.Text, Math.NaN);
+    ReferenceRanges.GD.lt := Math.Nan;
+    ReferenceRanges.GD.ht := Math.Nan;
+    ReferenceRanges.GD.lp := Math.Nan;
+    ReferenceRanges.GD.hp := Math.Nan;
+    ReferenceRanges.GD.UOM := 'nmol/s';
+    ReferenceRanges.TSHI.ln := StrToFloatDef(TSHIRRLEdit.Text, Math.NaN);
+    ReferenceRanges.TSHI.hn := StrToFloatDef(TSHIRRhEdit.Text, Math.NaN);
+    ReferenceRanges.TSHI.lt := Math.Nan;
+    ReferenceRanges.TSHI.ht := Math.Nan;
+    ReferenceRanges.TSHI.lp := Math.Nan;
+    ReferenceRanges.TSHI.hp := Math.Nan;
+    ReferenceRanges.TSHI.UOM := '';
+    ReferenceRanges.TTSI.ln := StrToFloatDef(TTSIRRLEdit.Text, Math.NaN);
+    ReferenceRanges.TTSI.hn := StrToFloatDef(TTSIRRhEdit.Text, Math.NaN);
+    ReferenceRanges.TTSI.lt := Math.Nan;
+    ReferenceRanges.TTSI.ht := Math.Nan;
+    ReferenceRanges.TTSI.lp := Math.Nan;
+    ReferenceRanges.TTSI.hp := Math.Nan;
+    ReferenceRanges.TTSI.UOM := '';
     SaveCDISC_RRFile(CDISCSaveDialog.FileName, ReferenceRanges, returnCode);
   end;
   if returnCode <> 0 then

@@ -1018,6 +1018,7 @@ var
 begin
   DateTimeToString(theDate, 'dddd"," dd mmmm yyyy', date);
   DateTimeToString(theTime, '"," t', time);
+  theDate := SysToUTF8(theDate);
   PrinterWriteln(H, currentX, currentY, '');
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
