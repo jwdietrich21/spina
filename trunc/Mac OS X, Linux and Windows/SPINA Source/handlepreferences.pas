@@ -186,7 +186,7 @@ var
 begin
   theString := NodeContent(theRoot, Name);
   if theString <> 'NA' then
-    theVar := StrToFloatDef(theString, NaN);
+    theVar := StrToFloatDef(theString, Math.Nan);
 end;
 
 function SimpleNode(Doc: TXMLDocument; Name, Value: string): TDOMNode;
@@ -495,39 +495,39 @@ begin
       gReferenceRanges.TT3.ln := gReferenceRanges.TT3.ln * UnitFactor(gReferenceRanges.TT3.UOM, T3UnitFactor[0]) / UnitFactor(gPreferences.T3.UOM, T3UnitFactor[0]);
       gReferenceRanges.TT3.hn := gReferenceRanges.TT3.hn * UnitFactor(gReferenceRanges.TT3.UOM, T3UnitFactor[0]) / UnitFactor(gPreferences.T3.UOM, T3UnitFactor[0]);
     end;
-  if IsNan(gReferenceRanges.TSH.ln) then
+  if IsNaN(gReferenceRanges.TSH.ln) then
     gTSHRR := NA_MARK
   else
     gTSHRR := FloatToStrF(gReferenceRanges.TSH.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TSH.hn, ffFixed, 5, 2) + ' mU/L';
-  if IsNan(gReferenceRanges.FT4.ln) then
+  if IsNaN(gReferenceRanges.FT4.ln) then
     gFT4RR := NA_MARK
   else
     gFT4RR := FloatToStrF(gReferenceRanges.FT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT4.hn, ffFixed, 5, 2) + ' ' + gPreferences.T4.UOM;
-  if IsNan(gReferenceRanges.FT3.ln) then
+  if IsNaN(gReferenceRanges.FT3.ln) then
     gFT3RR := NA_MARK
   else
     gFT3RR := FloatToStrF(gReferenceRanges.FT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.FT3.hn, ffFixed, 5, 2) + ' ' + gPreferences.T3.UOM;
-  if IsNan(gReferenceRanges.TT4.ln) then
+  if IsNaN(gReferenceRanges.TT4.ln) then
     gTT4RR := NA_MARK
   else
     gTT4RR := FloatToStrF(gReferenceRanges.TT4.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT4.hn, ffFixed, 5, 2) + ' ' + gPreferences.T4.UOM;
-  if IsNan(gReferenceRanges.TT3.ln) then
+  if IsNaN(gReferenceRanges.TT3.ln) then
     gTT3RR := NA_MARK
   else
     gTT3RR := FloatToStrF(gReferenceRanges.TT3.ln, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.TT3.hn, ffFixed, 5, 2) + ' ' + gPreferences.T3.UOM;
-  if IsNan(gReferenceRanges.GT.ln) then
+  if IsNaN(gReferenceRanges.GT.ln) then
     gGTRR := NA_MARK
   else
     gGTRR := FloatToStrF(gReferenceRanges.GT.ln * 1e12, ffFixed, 5, 2) + ' - ' + FloatToStrF(gReferenceRanges.GT.hn * 1e12, ffFixed, 5, 2) + ' pmol/s';
-  if IsNan(gReferenceRanges.GD.ln) then
+  if IsNaN(gReferenceRanges.GD.ln) then
     gGDRR := NA_MARK
   else
     gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
-  if IsNan(gReferenceRanges.TSHI.ln) then
+  if IsNaN(gReferenceRanges.TSHI.ln) then
     gTSHIRR := NA_MARK
   else
     gTSHIRR := FloatToStrF(gReferenceRanges.TSHI.ln, ffFixed, 5, 1) + ' - ' + FloatToStrF(gReferenceRanges.TSHI.hn, ffFixed, 5, 1) + ' ';
-  if IsNan(gReferenceRanges.TTSI.ln) then
+  if IsNaN(gReferenceRanges.TTSI.ln) then
     gTTSIRR := NA_MARK
   else
     gTTSIRR := FloatToStrF(gReferenceRanges.TTSI.ln, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.TTSI.hn, ffFixed, 5, 0) + ' ';
@@ -547,66 +547,66 @@ begin
   returnCode := 0;           {no error}
   with gReferenceRanges do
     begin                   {define emtpy default values}
-      TSH.ln := Math.NaN;
-      TSH.hn := Math.NaN;
-      FT4.ln := Math.NaN;
-      FT4.hn := Math.NaN;
-      TT4.ln := Math.NaN;
-      TT4.hn := Math.NaN;
-      FT3.ln := Math.NaN;
-      FT3.hn := Math.NaN;
-      TT3.ln := Math.NaN;
-      TT3.hn := Math.NaN;
-      GT.ln := Math.NaN;
-      GT.hn := Math.NaN;
-      GD.ln := Math.NaN;
-      GD.hn := Math.NaN;
-      TSHI.ln := Math.NaN;
-      TSHI.hn := Math.NaN;
-      TTSI.ln := Math.NaN;
-      TTSI.hn := Math.NaN;
+      TSH.ln := Math.Nan;
+      TSH.hn := Math.Nan;
+      FT4.ln := Math.Nan;
+      FT4.hn := Math.Nan;
+      TT4.ln := Math.Nan;
+      TT4.hn := Math.Nan;
+      FT3.ln := Math.Nan;
+      FT3.hn := Math.Nan;
+      TT3.ln := Math.Nan;
+      TT3.hn := Math.Nan;
+      GT.ln := Math.Nan;
+      GT.hn := Math.Nan;
+      GD.ln := Math.Nan;
+      GD.hn := Math.Nan;
+      TSHI.ln := Math.Nan;
+      TSHI.hn := Math.Nan;
+      TTSI.ln := Math.Nan;
+      TTSI.hn := Math.Nan;
     end;
   with gSIReferenceRanges do
     begin                   {define emtpy default values}
-      TSH.ln := Math.NaN;
-      TSH.hn := Math.NaN;
-      FT4.ln := Math.NaN;
-      FT4.hn := Math.NaN;
-      TT4.ln := Math.NaN;
-      TT4.hn := Math.NaN;
-      FT3.ln := Math.NaN;
-      FT3.hn := Math.NaN;
-      TT3.ln := Math.NaN;
-      TT3.hn := Math.NaN;
-      GT.ln := Math.NaN;
-      GT.hn := Math.NaN;
-      GD.ln := Math.NaN;
-      GD.hn := Math.NaN;
-      TSHI.ln := Math.NaN;
-      TSHI.hn := Math.NaN;
-      TTSI.ln := Math.NaN;
-      TTSI.hn := Math.NaN;
+      TSH.ln := Math.Nan;
+      TSH.hn := Math.Nan;
+      FT4.ln := Math.Nan;
+      FT4.hn := Math.Nan;
+      TT4.ln := Math.Nan;
+      TT4.hn := Math.Nan;
+      FT3.ln := Math.Nan;
+      FT3.hn := Math.Nan;
+      TT3.ln := Math.Nan;
+      TT3.hn := Math.Nan;
+      GT.ln := Math.Nan;
+      GT.hn := Math.Nan;
+      GD.ln := Math.Nan;
+      GD.hn := Math.Nan;
+      TSHI.ln := Math.Nan;
+      TSHI.hn := Math.Nan;
+      TTSI.ln := Math.Nan;
+      TTSI.hn := Math.Nan;
    end;
   with gConvReferenceRanges do
     begin                   {define emtpy default values}
-      TSH.ln := Math.NaN;
-      TSH.hn := Math.NaN;
-      FT4.ln := Math.NaN;
-      FT4.hn := Math.NaN;
-      TT4.ln := Math.NaN;
-      TT4.hn := Math.NaN;
-      FT3.ln := Math.NaN;
-      FT3.hn := Math.NaN;
-      TT3.ln := Math.NaN;
-      TT3.hn := Math.NaN;
-      GT.ln := Math.NaN;
-      GT.hn := Math.NaN;
-      GD.ln := Math.NaN;
-      GD.hn := Math.NaN;
-      TSHI.ln := Math.NaN;
-      TSHI.hn := Math.NaN;
-      TTSI.ln := Math.NaN;
-      TTSI.hn := Math.NaN;
+      TSH.ln := Math.Nan;
+      TSH.hn := Math.Nan;
+      FT4.ln := Math.Nan;
+      FT4.hn := Math.Nan;
+      TT4.ln := Math.Nan;
+      TT4.hn := Math.Nan;
+      FT3.ln := Math.Nan;
+      FT3.hn := Math.Nan;
+      TT3.ln := Math.Nan;
+      TT3.hn := Math.Nan;
+      GT.ln := Math.Nan;
+      GT.hn := Math.Nan;
+      GD.ln := Math.Nan;
+      GD.hn := Math.Nan;
+      TSHI.ln := Math.Nan;
+      TSHI.hn := Math.Nan;
+      TTSI.ln := Math.Nan;
+      TTSI.hn := Math.Nan;
     end;
   oldSeparator := DecimalSeparator;
   DecimalSeparator := DEC_POINT;
@@ -650,9 +650,9 @@ begin
                                       while assigned(NormalDefinitionNode) do
                                         begin
                                           if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
-                                             gReferenceRanges.GT.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN) / 1e12;
+                                             gReferenceRanges.GT.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan) / 1e12;
                                           if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
-                                             gReferenceRanges.GT.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN) / 1e12;
+                                             gReferenceRanges.GT.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan) / 1e12;
                                           NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                         end;
                                       break;
@@ -679,9 +679,9 @@ begin
                                       while assigned(NormalDefinitionNode) do
                                         begin
                                           if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
-                                             gReferenceRanges.GD.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN) / 1e9;
+                                             gReferenceRanges.GD.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan) / 1e9;
                                           if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
-                                             gReferenceRanges.GD.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN) / 1e9;
+                                             gReferenceRanges.GD.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan) / 1e9;
                                           NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                         end;
                                       break;
@@ -729,14 +729,14 @@ begin
                                       begin
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
                                           if SI then
-                                            gSIReferenceRanges.TSH.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.TSH.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.TSH.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.TSH.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
                                           if SI then
-                                            gSIReferenceRanges.TSH.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.TSH.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.TSH.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.TSH.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
                                   end;
@@ -774,14 +774,14 @@ begin
                                       begin
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
                                           if SI then
-                                            gSIReferenceRanges.FT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.FT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.FT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.FT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
                                           if SI then
-                                            gSIReferenceRanges.FT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.FT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.FT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.FT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
                                   end;
@@ -819,14 +819,14 @@ begin
                                       begin
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
                                           if SI then
-                                            gSIReferenceRanges.FT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.FT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.FT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.FT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
                                           if SI then
-                                            gSIReferenceRanges.FT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.FT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.FT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.FT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
                                   end;
@@ -864,14 +864,14 @@ begin
                                       begin
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
                                           if SI then
-                                            gSIReferenceRanges.TT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.TT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.TT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.TT4.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
                                           if SI then
-                                            gSIReferenceRanges.TT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.TT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.TT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.TT4.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
                                   end;
@@ -909,14 +909,14 @@ begin
                                       begin
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
                                           if SI then
-                                            gSIReferenceRanges.TT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.TT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.TT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.TT3.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
                                           if SI then
-                                            gSIReferenceRanges.TT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN)
+                                            gSIReferenceRanges.TT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan)
                                           else
-                                            gConvReferenceRanges.TT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                            gConvReferenceRanges.TT3.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
                                   end;
@@ -953,9 +953,9 @@ begin
                                     while assigned(NormalDefinitionNode) do
                                       begin
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
-                                           gReferenceRanges.TSHI.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                           gReferenceRanges.TSHI.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
-                                           gReferenceRanges.TSHI.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                           gReferenceRanges.TSHI.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
                                     break;
@@ -982,9 +982,9 @@ begin
                                     while assigned(NormalDefinitionNode) do
                                       begin
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'L') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'LN') then
-                                           gReferenceRanges.TTSI.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                           gReferenceRanges.TTSI.ln := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         if (AttributeValue(NormalDefinitionNode, 'NormalLevel') = 'H') or (AttributeValue(NormalDefinitionNode, 'AlertLevel') = 'HN') then
-                                           gReferenceRanges.TTSI.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), NaN);
+                                           gReferenceRanges.TTSI.hn := StrToFloatDef(AttributeValue(NormalDefinitionNode, 'Value'), Math.Nan);
                                         NormalDefinitionNode := NormalDefinitionNode.NextSibling;
                                       end;
                                     break;

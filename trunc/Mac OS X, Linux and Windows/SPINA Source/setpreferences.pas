@@ -498,27 +498,31 @@ begin
   begin
     ReferenceRanges.TSH.ln := StrToFloat(TSHRRLEdit.Text);
     ReferenceRanges.TSH.hn := StrToFloat(TSHRRHEdit.Text);
-    ReferenceRanges.TSH.lt := NaN;
-    ReferenceRanges.TSH.ht := NaN;
-    ReferenceRanges.TSH.lp := NaN;
-    ReferenceRanges.TSH.hp := NaN;
+    ReferenceRanges.TSH.lt := Math.Nan;
+    ReferenceRanges.TSH.ht := Math.Nan;
+    ReferenceRanges.TSH.lp := Math.Nan;
+    ReferenceRanges.TSH.hp := Math.Nan;
     if gPreferences.T4.Method = freeHormone then
     begin
       ReferenceRanges.FT4.ln := StrToFloat(T4RRLEdit.Text);
       ReferenceRanges.FT4.hn := StrToFloat(T4RRHEdit.Text);
-      ReferenceRanges.FT4.lt := NaN;
-      ReferenceRanges.FT4.ht := NaN;
-      ReferenceRanges.FT4.lp := NaN;
-      ReferenceRanges.FT4.hp := NaN;
+      ReferenceRanges.FT4.lt := Math.Nan;
+      ReferenceRanges.FT4.ht := Math.Nan;
+      ReferenceRanges.FT4.lp := Math.Nan;
+      ReferenceRanges.FT4.hp := Math.Nan;
+      ReferenceRanges.FT4.UOM := T4UnitComboBox.Caption;
+      ReferenceRanges.TT4.UOM := 'N/A';
     end
     else
     begin
       ReferenceRanges.TT4.ln := StrToFloat(T4RRLEdit.Text);
       ReferenceRanges.TT4.hn := StrToFloat(T4RRHEdit.Text);
-      ReferenceRanges.TT4.lt := NaN;
-      ReferenceRanges.TT4.ht := NaN;
-      ReferenceRanges.TT4.lp := NaN;
-      ReferenceRanges.TT4.hp := NaN;
+      ReferenceRanges.TT4.lt := Math.Nan;
+      ReferenceRanges.TT4.ht := Math.Nan;
+      ReferenceRanges.TT4.lp := Math.Nan;
+      ReferenceRanges.TT4.hp := Math.Nan;
+      ReferenceRanges.FT4.UOM := 'N/A';
+      ReferenceRanges.TT4.UOM := T4UnitComboBox.Caption;
     end;
     SaveCDISC_RRFile(CDISCSaveDialog.FileName, ReferenceRanges, returnCode);
   end;
