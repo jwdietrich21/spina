@@ -524,6 +524,28 @@ begin
       ReferenceRanges.FT4.UOM := 'N/A';
       ReferenceRanges.TT4.UOM := T4UnitComboBox.Caption;
     end;
+    if gPreferences.T3.Method = freeHormone then
+    begin
+      ReferenceRanges.FT3.ln := StrToFloat(T3RRLEdit.Text);
+      ReferenceRanges.FT3.hn := StrToFloat(T3RRHEdit.Text);
+      ReferenceRanges.FT3.lt := Math.Nan;
+      ReferenceRanges.FT3.ht := Math.Nan;
+      ReferenceRanges.FT3.lp := Math.Nan;
+      ReferenceRanges.FT3.hp := Math.Nan;
+      ReferenceRanges.FT3.UOM := T3UnitComboBox.Caption;
+      ReferenceRanges.TT3.UOM := 'N/A';
+    end
+    else
+    begin
+      ReferenceRanges.TT3.ln := StrToFloat(T3RRLEdit.Text);
+      ReferenceRanges.TT3.hn := StrToFloat(T3RRHEdit.Text);
+      ReferenceRanges.TT3.lt := Math.Nan;
+      ReferenceRanges.TT3.ht := Math.Nan;
+      ReferenceRanges.TT3.lp := Math.Nan;
+      ReferenceRanges.TT3.hp := Math.Nan;
+      ReferenceRanges.FT3.UOM := 'N/A';
+      ReferenceRanges.TT3.UOM := T3UnitComboBox.Caption;
+    end;
     SaveCDISC_RRFile(CDISCSaveDialog.FileName, ReferenceRanges, returnCode);
   end;
   if returnCode <> 0 then
