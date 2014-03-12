@@ -225,8 +225,8 @@ begin
   end
   else
   begin
-    theCase.TSHIs := gNotCalculable;
-    theCase.flaggedTSHIs := gNotCalculable;
+    theCase.TTSIs := gNotCalculable;
+    theCase.flaggedTTSIs := gNotCalculable;
   end;
 end;
 
