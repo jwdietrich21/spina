@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="4"/>
-      <BuildNr Value="515"/>
+      <BuildNr Value="517"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.4.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -75,8 +75,8 @@
       <Unit2>
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="2696"/>
-        <CursorPos X="1" Y="2711"/>
+        <TopLine Value="3224"/>
+        <CursorPos X="1" Y="3239"/>
         <UsageCount Value="12"/>
       </Unit2>
       <Unit3>
@@ -174,7 +174,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="50" Y="25"/>
-        <UsageCount Value="197"/>
+        <UsageCount Value="198"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit13>
@@ -212,7 +212,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="115"/>
         <CursorPos X="1" Y="128"/>
-        <UsageCount Value="164"/>
+        <UsageCount Value="165"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
@@ -253,7 +253,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="26"/>
         <CursorPos X="16" Y="31"/>
-        <UsageCount Value="151"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
       </Unit23>
       <Unit24>
@@ -281,7 +281,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="122"/>
         <CursorPos X="1" Y="140"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="87"/>
         <Loaded Value="True"/>
       </Unit26>
       <Unit27>
@@ -311,7 +311,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="143"/>
+        <UsageCount Value="144"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit29>
@@ -369,9 +369,9 @@
         <UnitName Value="SetPreferences"/>
         <EditorIndex Value="17"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
-        <UsageCount Value="96"/>
+        <TopLine Value="545"/>
+        <CursorPos X="1" Y="568"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit36>
@@ -386,7 +386,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="87"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit37>
@@ -496,7 +496,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="25" Y="1"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="69"/>
         <Loaded Value="True"/>
       </Unit51>
       <Unit52>
@@ -507,7 +507,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="2" Y="2"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
       </Unit52>
       <Unit53>
@@ -562,7 +562,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit59>
       <Unit60>
@@ -573,7 +573,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
       </Unit60>
       <Unit61>
@@ -584,7 +584,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="84" Y="25"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
       </Unit61>
       <Unit62>
@@ -595,7 +595,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
       </Unit62>
       <Unit63>
@@ -606,7 +606,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
       </Unit63>
       <Unit64>
@@ -653,14 +653,14 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="88" Y="848"/>
+        <TopLine Value="508"/>
+        <CursorPos X="27" Y="509"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <TopLine Value="82"/>
           <CursorPos X="150" Y="83"/>
         </ExtraEditor1>
-        <UsageCount Value="43"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
       </Unit69>
       <Unit70>
@@ -702,7 +702,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="71" Y="87"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="35"/>
         <Loaded Value="True"/>
       </Unit74>
       <Unit75>
@@ -715,124 +715,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="spina_engine.pas"/>
-        <Caret Line="137" Column="1" TopLine="115"/>
+        <Filename Value="cdisc.pas"/>
+        <Caret Line="389" Column="1" TopLine="366"/>
       </Position1>
       <Position2>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="667" Column="1" TopLine="654"/>
+        <Filename Value="cdisc.pas"/>
+        <Caret Line="390" Column="1" TopLine="367"/>
       </Position2>
       <Position3>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="443" Column="101" TopLine="429"/>
+        <Caret Line="391" Column="1" TopLine="368"/>
       </Position3>
       <Position4>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="558" Column="99" TopLine="549"/>
+        <Caret Line="392" Column="1" TopLine="369"/>
       </Position4>
       <Position5>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="557" Column="99" TopLine="548"/>
+        <Caret Line="393" Column="1" TopLine="370"/>
       </Position5>
       <Position6>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="556" Column="100" TopLine="548"/>
+        <Caret Line="394" Column="1" TopLine="371"/>
       </Position6>
       <Position7>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="557" Column="100" TopLine="548"/>
+        <Caret Line="395" Column="1" TopLine="372"/>
       </Position7>
       <Position8>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="559" Column="100" TopLine="548"/>
+        <Caret Line="396" Column="1" TopLine="373"/>
       </Position8>
       <Position9>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="560" Column="100" TopLine="548"/>
+        <Caret Line="397" Column="1" TopLine="374"/>
       </Position9>
       <Position10>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="561" Column="100" TopLine="548"/>
+        <Caret Line="398" Column="1" TopLine="375"/>
       </Position10>
       <Position11>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="565" Column="90" TopLine="548"/>
+        <Caret Line="399" Column="1" TopLine="376"/>
       </Position11>
       <Position12>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="566" Column="90" TopLine="548"/>
+        <Caret Line="400" Column="1" TopLine="377"/>
       </Position12>
       <Position13>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="567" Column="90" TopLine="548"/>
+        <Caret Line="401" Column="1" TopLine="378"/>
       </Position13>
       <Position14>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="568" Column="90" TopLine="548"/>
+        <Caret Line="402" Column="1" TopLine="379"/>
       </Position14>
       <Position15>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="569" Column="90" TopLine="548"/>
+        <Caret Line="403" Column="1" TopLine="380"/>
       </Position15>
       <Position16>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="570" Column="90" TopLine="548"/>
+        <Caret Line="404" Column="1" TopLine="381"/>
       </Position16>
       <Position17>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="588" Column="39" TopLine="565"/>
+        <Caret Line="405" Column="1" TopLine="382"/>
       </Position17>
       <Position18>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="599" Column="34" TopLine="576"/>
+        <Caret Line="409" Column="1" TopLine="386"/>
       </Position18>
       <Position19>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="608" Column="100" TopLine="585"/>
+        <Caret Line="410" Column="1" TopLine="387"/>
       </Position19>
       <Position20>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="609" Column="100" TopLine="586"/>
+        <Caret Line="411" Column="1" TopLine="388"/>
       </Position20>
       <Position21>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="610" Column="100" TopLine="587"/>
+        <Caret Line="412" Column="1" TopLine="389"/>
       </Position21>
       <Position22>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="611" Column="100" TopLine="588"/>
+        <Caret Line="413" Column="1" TopLine="390"/>
       </Position22>
       <Position23>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="612" Column="100" TopLine="589"/>
+        <Caret Line="414" Column="1" TopLine="391"/>
       </Position23>
       <Position24>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="613" Column="100" TopLine="590"/>
+        <Caret Line="415" Column="1" TopLine="392"/>
       </Position24>
       <Position25>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="617" Column="90" TopLine="594"/>
+        <Caret Line="416" Column="1" TopLine="393"/>
       </Position25>
       <Position26>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="618" Column="90" TopLine="595"/>
+        <Caret Line="417" Column="1" TopLine="394"/>
       </Position26>
       <Position27>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="619" Column="90" TopLine="596"/>
+        <Caret Line="419" Column="1" TopLine="396"/>
       </Position27>
       <Position28>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="620" Column="90" TopLine="597"/>
+        <Caret Line="420" Column="1" TopLine="397"/>
       </Position28>
       <Position29>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="621" Column="90" TopLine="598"/>
+        <Caret Line="421" Column="1" TopLine="398"/>
       </Position29>
       <Position30>
         <Filename Value="cdisc.pas"/>
-        <Caret Line="622" Column="90" TopLine="599"/>
+        <Caret Line="422" Column="1" TopLine="399"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -878,6 +878,15 @@ end;"/>
     </Other>
   </CompilerOptions>
   <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="setpreferences.pas"/>
+        <Line Value="657"/>
+      </Item1>
+    </BreakPoints>
     <Watches Count="7">
       <Item1>
         <Expression Value="gTSHIRR"/>

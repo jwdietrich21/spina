@@ -430,10 +430,10 @@ begin
     NormDefinitions.Sex  := 'F';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := 'pmol/L';
-    NormDefinitions.UOMC := 'ng/L';
     if pos(UpCase('mol'), UpCase(ReferenceRanges.FT4.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.FT4.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.FT4.ln;
       NormDefinitions.HS  := ReferenceRanges.FT4.hn;
       NormDefinitions.LTS := ReferenceRanges.FT4.lt;
@@ -449,6 +449,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.FT4.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
@@ -486,6 +488,8 @@ begin
     NormDefinitions.UOMC := 'ng/L';
     if pos(UpCase('mol'), UpCase(ReferenceRanges.FT4.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.FT4.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.FT4.ln;
       NormDefinitions.HS  := ReferenceRanges.FT4.hn;
       NormDefinitions.LTS := ReferenceRanges.FT4.lt;
@@ -501,6 +505,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.FT4.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
