@@ -553,6 +553,8 @@ begin
     NormDefinitions.UOMC := 'ng/L';
     if pos(UpCase('mol'), UpCase(ReferenceRanges.FT3.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.FT3.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.FT3.ln;
       NormDefinitions.HS  := ReferenceRanges.FT3.hn;
       NormDefinitions.LTS := ReferenceRanges.FT3.lt;
@@ -568,6 +570,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.FT3.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
@@ -605,6 +609,8 @@ begin
     NormDefinitions.UOMC := 'ng/L';
     if pos(UpCase('mol'), UpCase(ReferenceRanges.FT3.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.FT3.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.FT3.ln;
       NormDefinitions.HS  := ReferenceRanges.FT3.hn;
       NormDefinitions.LTS := ReferenceRanges.FT3.lt;
@@ -620,6 +626,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.FT3.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
@@ -666,6 +674,8 @@ begin
     NormDefinitions.UOMC := 'mcg/L';
     if pos(UpCase('mol'), UpCase(ReferenceRanges.TT4.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.TT4.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.TT4.ln;
       NormDefinitions.HS  := ReferenceRanges.TT4.hn;
       NormDefinitions.LTS := ReferenceRanges.TT4.lt;
@@ -681,6 +691,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.TT4.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
@@ -718,6 +730,8 @@ begin
     NormDefinitions.UOMC := 'mcg/L';
     if pos(UpCase('mol'), UpCase(ReferenceRanges.TT4.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.TT4.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.TT4.ln;
       NormDefinitions.HS  := ReferenceRanges.TT4.hn;
       NormDefinitions.LTS := ReferenceRanges.TT4.lt;
@@ -733,6 +747,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.TT4.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
@@ -777,8 +793,10 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'nmol/L';
     NormDefinitions.UOMC := 'mcg/L';
-    if pos(UpCase('mol'), UpCase(ReferenceRanges.FT4.UOM)) > 0 then
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.TT3.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.TT3.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.TT3.ln;
       NormDefinitions.HS  := ReferenceRanges.TT3.hn;
       NormDefinitions.LTS := ReferenceRanges.TT3.lt;
@@ -794,6 +812,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.TT3.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
@@ -829,8 +849,10 @@ begin
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'nmol/L';
     NormDefinitions.UOMC := 'mcg/L';
-    if pos(UpCase('mol'), UpCase(ReferenceRanges.FT4.UOM)) > 0 then
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.TT3.UOM)) > 0 then
     begin
+      NormDefinitions.UOMS := ReferenceRanges.TT3.UOM;
+      NormDefinitions.UOMC := 'N/A';
       NormDefinitions.LS  := ReferenceRanges.TT3.ln;
       NormDefinitions.HS  := ReferenceRanges.TT3.hn;
       NormDefinitions.LTS := ReferenceRanges.TT3.lt;
@@ -846,6 +868,8 @@ begin
     end
     else
     begin
+      NormDefinitions.UOMS := 'N/A';
+      NormDefinitions.UOMC := ReferenceRanges.TT3.UOM;
       NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
       NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
@@ -1961,4 +1985,4 @@ begin
   end;
 end;
 
-end.
+end.
