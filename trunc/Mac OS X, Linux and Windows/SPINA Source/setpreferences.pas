@@ -102,6 +102,10 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure GDRRHEditChange(Sender: TObject);
+    procedure GDRRLEditChange(Sender: TObject);
+    procedure GTRRHEditChange(Sender: TObject);
+    procedure GTRRLEditChange(Sender: TObject);
     procedure MarkMandatoryCheckChange(Sender: TObject);
     procedure GetMethodsAndUnits(const Sender: TObject);
     procedure MethodComboBoxChange(Sender: TObject);
@@ -109,19 +113,31 @@ type
     procedure ReadCDISCButtonClick(Sender: TObject);
     procedure RememberCheckBoxChange(Sender: TObject);
     procedure SaveCDISCButtonClick(Sender: TObject);
+    procedure SaveEditedReferenceRanges(theFile: String);
     procedure T3MethodComboBoxAdjust(Sender: TObject);
     procedure T3MethodComboBoxChange(Sender: TObject);
+    procedure T3RRHEditChange(Sender: TObject);
+    procedure T3RRLEDitChange(Sender: TObject);
     procedure T3UnitComboBoxChange(Sender: TObject);
     procedure T4MethodComboBoxAdjust(Sender: TObject);
     procedure T4MethodComboBoxChange(Sender: TObject);
+    procedure T4RRHEditChange(Sender: TObject);
+    procedure T4RRLEditChange(Sender: TObject);
     procedure T4UnitComboBoxChange(Sender: TObject);
+    procedure TSHIRRHEditChange(Sender: TObject);
+    procedure TSHIRRLEditChange(Sender: TObject);
+    procedure TSHRRHEditChange(Sender: TObject);
+    procedure TSHRRLEditChange(Sender: TObject);
     procedure TSHUnitComboBoxChange(Sender: TObject);
+    procedure TTSIRRHEditChange(Sender: TObject);
+    procedure TTSIRRLEditChange(Sender: TObject);
     procedure UpdateDisplay(Sender: TObject);
   private
     { private declarations }
     procedure ReadCDISCFile(Sender: TObject; thePath: String);
   public
     { public declarations }
+    Edited: boolean;
   end;
 
 var
@@ -212,6 +228,7 @@ begin
   TTSIRRHEdit.Text := FloatToStrF(gReferenceRanges.TTSI.hn, ffFixed, 5, 0);
   T4UnitLabel.Caption := gPreferences.T4.UOM;
   T3UnitLabel.Caption := gPreferences.T3.UOM;
+  Edited := false;
 end;
 
 procedure TPreferencesForm.AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
@@ -341,10 +358,40 @@ begin
   DisplayReferenceRanges(Sender);
 end;
 
+procedure TPreferencesForm.TTSIRRHEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.TTSIRRLEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
 procedure TPreferencesForm.T4UnitComboBoxChange(Sender: TObject);
 begin
   GetMethodsAndUnits(Sender);
   DisplayReferenceRanges(Sender);
+end;
+
+procedure TPreferencesForm.TSHIRRHEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.TSHIRRLEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.TSHRRHEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.TSHRRLEditChange(Sender: TObject);
+begin
+  Edited := true;
 end;
 
 procedure TPreferencesForm.T4MethodComboBoxChange(Sender: TObject);
@@ -352,6 +399,16 @@ begin
   MethodComboBoxChange(Sender);
   GetMethodsAndUnits(Sender);
   DisplayReferenceRanges(Sender);
+end;
+
+procedure TPreferencesForm.T4RRHEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.T4RRLEditChange(Sender: TObject);
+begin
+  Edited := true;
 end;
 
 procedure TPreferencesForm.T3UnitComboBoxChange(Sender: TObject);
@@ -365,6 +422,16 @@ begin
   MethodComboBoxChange(Sender);
   GetMethodsAndUnits(Sender);
   DisplayReferenceRanges(Sender);
+end;
+
+procedure TPreferencesForm.T3RRHEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.T3RRLEDitChange(Sender: TObject);
+begin
+  Edited := true;
 end;
 
 procedure CheckMandatoryColourising; {checks if mandatory fields should be coloured}
@@ -414,87 +481,11 @@ begin
   end;
 end;
 
-procedure TPreferencesForm.OKButtonClick(Sender: TObject);
-{save preferences}
+procedure TPreferencesForm.SaveEditedReferenceRanges(theFile: String);
 var
-  CDISCStream: TMemoryStream;
-  originalFileName: string;
-begin
-  GetMethodsAndUnits(Sender);
-  originalFileName := CDISCOpenDialog.FileName;
-  if (originalFileName <> '') and ((gCode = 0) or (gCode = 10)) then
-  begin
-    CDISCStream := TMemoryStream.Create;
-    try
-      CDISCStream.LoadFromFile(originalFileName);
-      CDISCStream.SaveToFile(RRFile);
-    finally
-      CDISCStream.Free;
-    end;
-    ComposeRRHints;
-  end;
-  CheckMandatoryColourising;
-  gPreferences.MSH_ID := SendingFacEdit.Text;
-  SavePreferences;
-  PreferencesForm.Close;
-  SPINA_UserInterface.GetPreferences;
-end;
-
-procedure TPreferencesForm.ReadCDISCFile(Sender: TObject; thePath: String);
-{reads an XML file that is compliant with CDISC lab model standards}
-var
-  theCode: integer;
-begin
-  GetReferenceValues(thePath, gCode);
-  if (gCode = 0) or (gCode = 10) then  {no error or new file created}
-    DisplayReferenceRanges(Sender)
-  else
-  begin
-    case gCode of
-      1: ShowMessage(RR_FORMAT_ERROR_MESSAGE);
-      2: ShowMessage(RR_SPINA_ERROR_MESSAGE);
-      6: ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
-    end;
-    GetReferenceValues(RRFile, theCode);
-  end;
-end;
-
-procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
-begin
-  if CDISCOpenDialog.Execute then
-  begin
-    ReadCDISCFile(Sender, CDISCOpenDialog.FileName);
-  end;
-end;
-
-procedure TPreferencesForm.RememberCheckBoxChange(Sender: TObject);
-begin
-  if RememberCheckBox.Checked then
-  begin
-    gPreferences.rememberUsedUnits := True;
-    T4MethodComboBox.Enabled := False;
-    T3MethodComboBox.Enabled := False;
-    TSHUnitComboBox.Enabled := False;
-    T4UnitComboBox.Enabled := False;
-    T3UnitComboBox.Enabled := False;
-  end
-  else
-  begin
-    gPreferences.rememberUsedUnits := False;
-    T4MethodComboBox.Enabled := True;
-    T3MethodComboBox.Enabled := True;
-    TSHUnitComboBox.Enabled := True;
-    T4UnitComboBox.Enabled := True;
-    T3UnitComboBox.Enabled := True;
-  end;
-end;
-
-procedure TPreferencesForm.SaveCDISCButtonClick(Sender: TObject);
-var
-  returnCode: integer;
   ReferenceRanges: tReferenceValues;
+  returnCode: integer;
 begin
-  if CDISCSaveDialog.Execute then
   begin
     ReferenceRanges.TSH.ln := StrToFloatDef(TSHRRLEdit.Text, Math.NaN);
     ReferenceRanges.TSH.hn := StrToFloatDef(TSHRRHEdit.Text, Math.NaN);
@@ -574,10 +565,96 @@ begin
     ReferenceRanges.TTSI.lp := Math.Nan;
     ReferenceRanges.TTSI.hp := Math.Nan;
     ReferenceRanges.TTSI.UOM := '';
-    SaveCDISC_RRFile(CDISCSaveDialog.FileName, ReferenceRanges, returnCode);
+    SaveCDISC_RRFile(theFile, ReferenceRanges, returnCode);
+    if returnCode <> 0 then
+      ShowMessage(SAVE_ERROR_MESSAGE);
   end;
-  if returnCode <> 0 then
-    ShowMessage(SAVE_ERROR_MESSAGE);
+end;
+
+procedure TPreferencesForm.OKButtonClick(Sender: TObject);
+{save preferences}
+var
+  CDISCStream: TMemoryStream;
+  originalFileName: string;
+begin
+  GetMethodsAndUnits(Sender);
+  originalFileName := CDISCOpenDialog.FileName;
+  if (originalFileName <> '') and ((gCode = 0) or (gCode = 10)) and (Edited = false) then
+  begin
+    CDISCStream := TMemoryStream.Create;
+    try
+      CDISCStream.LoadFromFile(originalFileName);
+      CDISCStream.SaveToFile(RRFile);
+    finally
+      CDISCStream.Free;
+    end;
+    ComposeRRHints;
+  end
+  else if Edited = true then
+  begin
+    SaveEditedReferenceRanges(RRFile);
+    ComposeRRHints;
+  end;
+  CheckMandatoryColourising;
+  gPreferences.MSH_ID := SendingFacEdit.Text;
+  SavePreferences;
+  PreferencesForm.Close;
+  SPINA_UserInterface.GetPreferences;
+end;
+
+procedure TPreferencesForm.ReadCDISCFile(Sender: TObject; thePath: String);
+{reads an XML file that is compliant with CDISC lab model standards}
+var
+  theCode: integer;
+begin
+  GetReferenceValues(thePath, gCode);
+  if (gCode = 0) or (gCode = 10) then  {no error or new file created}
+    DisplayReferenceRanges(Sender)
+  else
+  begin
+    case gCode of
+      1: ShowMessage(RR_FORMAT_ERROR_MESSAGE);
+      2: ShowMessage(RR_SPINA_ERROR_MESSAGE);
+      6: ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
+    end;
+    GetReferenceValues(RRFile, theCode);
+  end;
+end;
+
+procedure TPreferencesForm.ReadCDISCButtonClick(Sender: TObject);
+begin
+  if CDISCOpenDialog.Execute then
+  begin
+    ReadCDISCFile(Sender, CDISCOpenDialog.FileName);
+  end;
+end;
+
+procedure TPreferencesForm.RememberCheckBoxChange(Sender: TObject);
+begin
+  if RememberCheckBox.Checked then
+  begin
+    gPreferences.rememberUsedUnits := True;
+    T4MethodComboBox.Enabled := False;
+    T3MethodComboBox.Enabled := False;
+    TSHUnitComboBox.Enabled := False;
+    T4UnitComboBox.Enabled := False;
+    T3UnitComboBox.Enabled := False;
+  end
+  else
+  begin
+    gPreferences.rememberUsedUnits := False;
+    T4MethodComboBox.Enabled := True;
+    T3MethodComboBox.Enabled := True;
+    TSHUnitComboBox.Enabled := True;
+    T4UnitComboBox.Enabled := True;
+    T3UnitComboBox.Enabled := True;
+  end;
+end;
+
+procedure TPreferencesForm.SaveCDISCButtonClick(Sender: TObject);
+begin
+  if CDISCSaveDialog.Execute then
+    SaveEditedReferenceRanges(CDISCSaveDialog.FileName);
 end;
 
 procedure TPreferencesForm.FormActivate(Sender: TObject);
@@ -610,6 +687,27 @@ end;
 procedure TPreferencesForm.FormCreate(Sender: TObject);
 begin
   PageControl1.TabIndex := 0;
+  Edited := false;
+end;
+
+procedure TPreferencesForm.GDRRHEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.GDRRLEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.GTRRHEditChange(Sender: TObject);
+begin
+  Edited := true;
+end;
+
+procedure TPreferencesForm.GTRRLEditChange(Sender: TObject);
+begin
+  Edited := true;
 end;
 
 procedure TPreferencesForm.MarkMandatoryCheckChange(Sender: TObject);

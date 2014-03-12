@@ -256,6 +256,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
+          OnChange = TSHRRLEditChange
           TabOrder = 0
           Text = 'NaN'
         end
@@ -264,6 +265,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
+          OnChange = T4RRLEditChange
           TabOrder = 2
           Text = 'NaN'
         end
@@ -272,6 +274,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 55
           Width = 56
+          OnChange = T3RRLEDitChange
           TabOrder = 4
           Text = 'NaN'
         end
@@ -296,6 +299,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 81
           Width = 56
+          OnChange = GTRRLEditChange
           TabOrder = 6
           Text = 'NaN'
         end
@@ -304,6 +308,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 105
           Width = 56
+          OnChange = GDRRLEditChange
           TabOrder = 8
           Text = 'NaN'
         end
@@ -325,6 +330,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
+          OnChange = TSHRRHEditChange
           TabOrder = 1
           Text = 'NaN'
         end
@@ -333,6 +339,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
+          OnChange = T4RRHEditChange
           TabOrder = 3
           Text = 'NaN'
         end
@@ -341,6 +348,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 55
           Width = 56
+          OnChange = T3RRHEditChange
           TabOrder = 5
           Text = 'NaN'
         end
@@ -349,6 +357,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 81
           Width = 56
+          OnChange = GTRRHEditChange
           TabOrder = 7
           Text = 'NaN'
         end
@@ -357,6 +366,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 105
           Width = 56
+          OnChange = GDRRHEditChange
           TabOrder = 9
           Text = 'NaN'
         end
@@ -421,6 +431,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
+          OnChange = TSHIRRLEditChange
           TabOrder = 10
           Text = 'NaN'
         end
@@ -437,6 +448,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 7
           Width = 56
+          OnChange = TSHIRRHEditChange
           TabOrder = 11
           Text = 'NaN'
         end
@@ -445,6 +457,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
+          OnChange = TTSIRRLEditChange
           TabOrder = 12
           Text = 'NaN'
         end
@@ -461,6 +474,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Top = 31
           Width = 56
+          OnChange = TTSIRRHEditChange
           TabOrder = 13
           Text = 'NaN'
         end
