@@ -440,23 +440,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.FT4.ht;
       NormDefinitions.LPS := ReferenceRanges.FT4.lp;
       NormDefinitions.HPS := ReferenceRanges.FT4.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.FT4.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.FT4.ln;
       NormDefinitions.HC  := ReferenceRanges.FT4.hn;
       NormDefinitions.LTC := ReferenceRanges.FT4.lt;
@@ -496,23 +496,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.FT4.ht;
       NormDefinitions.LPS := ReferenceRanges.FT4.lp;
       NormDefinitions.HPS := ReferenceRanges.FT4.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, 'pmol/L', 'ng/L');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'ng/L');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.FT4.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, 'ng/L', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT4.ln, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT4.hn, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT4.lt, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT4.ht, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT4.lp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT4.hp, T4_MOLAR_MASS, ReferenceRanges.FT4.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.FT4.ln;
       NormDefinitions.HC  := ReferenceRanges.FT4.hn;
       NormDefinitions.LTC := ReferenceRanges.FT4.lt;
@@ -561,23 +561,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.FT3.ht;
       NormDefinitions.LPS := ReferenceRanges.FT3.lp;
       NormDefinitions.HPS := ReferenceRanges.FT3.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, 'pmol/L', 'pg/mL');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/mL');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.FT3.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.FT3.ln;
       NormDefinitions.HC  := ReferenceRanges.FT3.hn;
       NormDefinitions.LTC := ReferenceRanges.FT3.lt;
@@ -617,23 +617,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.FT3.ht;
       NormDefinitions.LPS := ReferenceRanges.FT3.lp;
       NormDefinitions.HPS := ReferenceRanges.FT3.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, 'pmol/L', 'pg/ml');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/mL');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pg/ml');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.FT3.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, 'pg/ml', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.FT3.ln, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.FT3.hn, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.FT3.lt, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.FT3.ht, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.FT3.lp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.FT3.hp, T3_MOLAR_MASS, ReferenceRanges.FT3.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.FT3.ln;
       NormDefinitions.HC  := ReferenceRanges.FT3.hn;
       NormDefinitions.LTC := ReferenceRanges.FT3.lt;
@@ -682,23 +682,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.TT4.ht;
       NormDefinitions.LPS := ReferenceRanges.TT4.lp;
       NormDefinitions.HPS := ReferenceRanges.TT4.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.TT4.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.TT4.ln;
       NormDefinitions.HC  := ReferenceRanges.TT4.hn;
       NormDefinitions.LTC := ReferenceRanges.TT4.lt;
@@ -738,23 +738,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.TT4.ht;
       NormDefinitions.LPS := ReferenceRanges.TT4.lp;
       NormDefinitions.HPS := ReferenceRanges.TT4.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, 'pmol/L', 'mcg/L');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'mcg/L');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.TT4.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, 'mcg/L', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT4.ln, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT4.hn, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT4.lt, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT4.ht, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT4.lp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT4.hp, T4_MOLAR_MASS, ReferenceRanges.TT4.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.TT4.ln;
       NormDefinitions.HC  := ReferenceRanges.TT4.hn;
       NormDefinitions.LTC := ReferenceRanges.TT4.lt;
@@ -803,23 +803,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.TT3.ht;
       NormDefinitions.LPS := ReferenceRanges.TT3.lp;
       NormDefinitions.HPS := ReferenceRanges.TT3.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.TT3.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.TT3.ln;
       NormDefinitions.HC  := ReferenceRanges.TT3.hn;
       NormDefinitions.LTC := ReferenceRanges.TT3.lt;
@@ -859,23 +859,23 @@ begin
       NormDefinitions.HTS := ReferenceRanges.TT3.ht;
       NormDefinitions.LPS := ReferenceRanges.TT3.lp;
       NormDefinitions.HPS := ReferenceRanges.TT3.hp;
-      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
-      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, 'pmol/L', 'mcg/L');
+      NormDefinitions.LC  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.HC  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'mcg/L');
     end
     else
     begin
       NormDefinitions.UOMS := 'N/A';
       NormDefinitions.UOMC := ReferenceRanges.TT3.UOM;
-      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
-      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, 'mcg/L', 'pmol/L');
+      NormDefinitions.LS  := ConvertedValue(ReferenceRanges.TT3.ln, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.HS  := ConvertedValue(ReferenceRanges.TT3.hn, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.TT3.lt, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.TT3.ht, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.TT3.lp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.TT3.hp, T3_MOLAR_MASS, ReferenceRanges.TT3.UOM, 'pmol/L');
       NormDefinitions.LC  := ReferenceRanges.TT3.ln;
       NormDefinitions.HC  := ReferenceRanges.TT3.hn;
       NormDefinitions.LTC := ReferenceRanges.TT3.lt;
@@ -1985,4 +1985,4 @@ begin
   end;
 end;
 
-end.
+end.
