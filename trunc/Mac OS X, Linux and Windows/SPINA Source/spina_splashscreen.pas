@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Grids, Menus, StdCtrls, SPINA_UserInterface;
+  ExtCtrls, Grids, Menus, StdCtrls, SPINA_UserInterface, VersionSupport;
 
 type
 
@@ -70,6 +70,7 @@ implementation
 
 procedure TSplashScreen.FormCreate(Sender: TObject);
 begin
+  VersionLabel.Caption := 'Version ' + GetFileVersion;
   refresh;
   {$IFDEF LCLcarbon}
   FormStyle:=fsNormal;
