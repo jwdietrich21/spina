@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
     <Version Value="9"/>
@@ -18,8 +18,9 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="4"/>
-      <BuildNr Value="36"/>
-      <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr Engine Unit Tests" ProductVersion="3.4.0"/>
+      <RevisionNr Value="1"/>
+      <BuildNr Value="38"/>
+      <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr Engine Unit Tests" ProductVersion="3.4.1"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>

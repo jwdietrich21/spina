@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectSession>
     <Version Value="9"/>
@@ -8,6 +8,7 @@
         <Filename Value="EngineUnitTests.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EngineUnitTests"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -22,7 +23,7 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
+        <CursorPos X="1" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <TopLine Value="719"/>
@@ -46,7 +47,6 @@
         <Filename Value="spina_types.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Types"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -256,4 +256,5 @@
       </Item7>
     </Watches>
   </Debugging>
+  <EditorMacros Count="0"/>
 </CONFIG>

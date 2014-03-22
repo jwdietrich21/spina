@@ -16,7 +16,7 @@ object ResultForm: TResultForm
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   Position = poMainFormCenter
-  LCLVersion = '1.0.14.0'
+  LCLVersion = '1.2.0.3'
   object Image1: TImage
     Left = 24
     Height = 80
@@ -188,7 +188,7 @@ object ResultForm: TResultForm
     Left = 112
     Height = 17
     Top = 8
-    Width = 68
+    Width = 57
     Caption = 'Ergebnis:'
     Font.Color = clBlack
     Font.Height = -13
