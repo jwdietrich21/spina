@@ -21,7 +21,7 @@ program spina_thyr;
 { See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}{$H+}
-{off $DEFINE DEBUG}
+{ $DEFINE debug}
 
 uses
   {$IFDEF UNIX}{$IFDEF UseCThreads}
@@ -31,19 +31,23 @@ uses
   Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
-  HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources;
+  HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources
+  {$IFDEF debug}
+  , SysUtils
+  {$ENDIF}
+  ;
 
 {{$IFDEF WINDOWS}{$R spina_thyr.rc}{$ENDIF}}
 
 {$R *.res}
 
 begin
+  {$IFDEF debug}
+  if FileExists('heaptrace.trc') then
+    DeleteFile('heaptrace.trc');
+  SetHeapTraceOutput('heaptrace.trc');
+  {$ENDIF}
   Application.Title:='SPINA Thyr';
-  {$IFDEF DEBUG}{$IFDEF UNIX}
-  SetHeapTraceOutput('~/heaptrace.trc');
-  {$ELSE}
-  SetHeapTraceOutput('c:\heaptrace.trc');
-  {$ENDIF}{$ENDIF}
   InitThyroidHormoneConversionFactors;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
