@@ -6,7 +6,7 @@ unit OBX;
 
 { HL7 support unit for observation / result segments }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -45,7 +45,7 @@ type
     obsValue: ansistring;
     Units: tCE;
     RefRange: tST;
-    AbnormFlags: tIS;
+    AbnormFlags: tIS;  // referred to as Interpretation Codes in HL7 2.7
     probability: tNM;
     Nature, status: tID;
     RRDate: tDTM;
@@ -56,6 +56,13 @@ type
     observMethod: tCE;
     EquipInstID: tEI;
     AnalysisDateTime: tDTM;
+    ObservationSite: tCWE;  // Introduced in HL7 2.7
+    ObservationInstanceID: tEI;  // Introduced in HL7 2.7
+    MoodCode: tCNE;  // Introduced in HL7 2.7
+    PerformingOrgName: tXON;  // Introduced in HL7 2.7
+    PerformingOrgAddr: tXAD;  // Introduced in HL7 2.7
+    PerformingOrgMedicalDirector: tXCN;  // Introduced in HL7 2.7
+    PatientResultsReleaseCat: tID;  // Introduced in HL7 2.7
   end;
 
 function OBX_Segment(message: THL7Message): THL7Segment;
@@ -66,11 +73,13 @@ procedure GetOBX(message: THL7Message; out SetID: tSI; out ValueType: tID;
   out Nature, status: tID; out RRDate: tDTM; UDAC: tST; out ObsDateTime: tDTM;
   out prodID: tCE; respObs: tXCN; observMethod: tCE; EquipInstID: tEI;
   out AnalysisDateTime: tDTM);
+  deprecated;
 procedure GetOBX(message: THL7Message; out SetID: str4; out ValueType: str2; out ObsID: str250;
   obsSubID: str20; out obsValue: AnsiString; out Units: str250; out RefRange: str60;
   AbnormFlags, probability: str5; out Nature: str2; out status: char; out RRDate: str26;
   UDAC: str20; out ObsDateTime: str26; out prodID, respObs, observMethod: str250;
   EquipInstID: str22; out AnalysisDateTime: str26);
+  deprecated;
 procedure SetOBX(message: THL7Message; aSegment: THL7Segment);
 procedure SetOBX(message: THL7Message; OBXRecord: tOBX);
 procedure SetOBX(message: THL7Message; SetID: tSI; ValueType: tID;
@@ -78,11 +87,13 @@ procedure SetOBX(message: THL7Message; SetID: tSI; ValueType: tID;
   RefRange: tST; AbnormFlags: tIS; probability: tNM; Nature, status: tID;
   RRDate: tDTM; UDAC: tST; ObsDateTime: tDTM; prodID: tCE; respObs: tXCN;
   observMethod: tCE; EquipInstID: tEI; AnalysisDateTime: tDTM);
+  deprecated;
 procedure SetOBX(message: THL7Message; SetID: str4; ValueType: str2; ObsID: str250;
   obsSubID: str20; obsValue: AnsiString; Units: str250; RefRange: str60;
   AbnormFlags, probability: str5; Nature: str2; status: char; RRDate: str26;
   UDAC: str20; ObsDateTime: str26; prodID, respObs, observMethod: str250;
   EquipInstID: str22; AnalysisDateTime: str26);
+  deprecated;
 
 implementation
 
@@ -127,6 +138,13 @@ begin
         observMethod := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         EquipInstID := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         AnalysisDateTime := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ObservationSite := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ObservationInstanceID := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        MoodCode := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        PerformingOrgName := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        PerformingOrgAddr := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        PerformingOrgMedicalDirector := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        PatientResultsReleaseCat := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end;
 end;
@@ -217,7 +235,11 @@ begin
       FieldSep + probability + FieldSep + Nature + FieldSep + status +
       FieldSep + RRDate + FieldSep + UDAC + FieldSep + ObsDateTime +
       FieldSep + prodID + FieldSep + respObs + FieldSep + observMethod +
-      FieldSep + EquipInstID + FieldSep + AnalysisDateTime + FieldSep;
+      FieldSep + EquipInstID + FieldSep + AnalysisDateTime + FieldSep +
+      ObservationSite + FieldSep + ObservationInstanceID + FieldSep +
+      MoodCode + FieldSep + PerformingOrgName + FieldSep + PerformingOrgAddr +
+      FieldSep + PerformingOrgMedicalDirector + FieldSep +
+      PatientResultsReleaseCat + FieldSep;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);
 end;
@@ -251,6 +273,13 @@ begin
   OBXRecord.observMethod := observMethod;
   OBXRecord.EquipInstID := EquipInstID;
   OBXRecord.AnalysisDateTime := AnalysisDateTime;
+  OBXRecord.ObservationSite := '';
+  OBXRecord.ObservationInstanceID := '';
+  OBXRecord.MoodCode := '';
+  OBXRecord.PerformingOrgName := '';
+  OBXRecord.PerformingOrgAddr := '';
+  OBXRecord.PerformingOrgMedicalDirector := '';
+  OBXRecord.PatientResultsReleaseCat := '';
   SetOBX(message, OBXRecord);
 end;
 
@@ -283,6 +312,13 @@ begin
   OBXRecord.observMethod := observMethod;
   OBXRecord.EquipInstID := EquipInstID;
   OBXRecord.AnalysisDateTime := AnalysisDateTime;
+  OBXRecord.ObservationSite := '';
+  OBXRecord.ObservationInstanceID := '';
+  OBXRecord.MoodCode := '';
+  OBXRecord.PerformingOrgName := '';
+  OBXRecord.PerformingOrgAddr := '';
+  OBXRecord.PerformingOrgMedicalDirector := '';
+  OBXRecord.PatientResultsReleaseCat := '';
   SetOBX(message, OBXRecord);
 end;
 

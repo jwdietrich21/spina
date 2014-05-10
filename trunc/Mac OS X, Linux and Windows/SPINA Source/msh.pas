@@ -6,7 +6,7 @@ unit MSH;
 
 { HL7 support unit for message headers }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -51,6 +51,8 @@ type
     messageLanguage: tCE;
     altCharHandlScheme: tID;
     profileID: tEI;
+    SendingRespOrg, ReceivingRespOrt: tXON;  // Introduced in HL7 2.7
+    SendingNetworkAddr, ReceivingNetworkAddr: tHD; // Introduced in HL7 2.7
   end;
 
 function MSH_Segment(message: THL7Message): THL7Segment;
@@ -62,6 +64,7 @@ procedure GetMSH(message: THL7Message; out delimiters: str5;
   sequenceNumber: tNM; out continuationPointer: str180;
   out AccAckType, AppAckType: tID; out countryCode: tID; out charSet: tID;
   out messageLanguage: tCE; out altCharHandlScheme: tID; out profileID: tEI);
+  deprecated;
 procedure GetMSH(message: THL7Message; out delimiters: str5;
   out sendingApp, sendingFac, receivingApp, receivingFac: str227;
   out dateTime: str26; out security: str40; out messageType: str15;
@@ -69,6 +72,7 @@ procedure GetMSH(message: THL7Message; out delimiters: str5;
   sequenceNumber: str15; out continuationPointer: str180;
   out AccAckType, AppAckType: Str2; out countryCode: str3; out charSet: str16;
   out messageLanguage: str250; out altCharHandlScheme: str20; out profileID: str427);
+  deprecated;
 procedure SetMSH(message: THL7Message; aSegment: THL7Segment);
 procedure SetMSH(message: THL7Message; MSHRecord: tMSH; autoDate: boolean);
 procedure SetMSH(message: THL7Message; delimiters: str5;
@@ -77,12 +81,14 @@ procedure SetMSH(message: THL7Message; delimiters: str5;
   continuationPointer: str180; AccAckType, AppAckType: tID;
   countryCode: tID; charSet: tID; messageLanguage: tCE;
   altCharHandlScheme: tID; profileID: tEI);
+  deprecated;
 procedure SetMSH(message: THL7Message; delimiters: str5;
   sendingApp, sendingFac, receivingApp, receivingFac: tHD; dateTime: tDTM;
   security: str40; messageType: tMSG; controlID: str20; processingID: tPT;
   versionID: tVID; sequenceNumber: tNM; continuationPointer: str180;
   AccAckType, AppAckType: tID; countryCode: tID; charSet: tID;
   messageLanguage: tCE; altCharHandlScheme: tID; profileID: tEI);
+  deprecated;
 procedure SetMSH(message: THL7Message; delimiters: str5;
   sendingApp, sendingFac, receivingApp, receivingFac: str227;
   security: str40; messageType: str15;
@@ -90,6 +96,7 @@ procedure SetMSH(message: THL7Message; delimiters: str5;
   continuationPointer: str180; AccAckType, AppAckType: Str2;
   countryCode: str3; charSet: str16; messageLanguage: str250;
   altCharHandlScheme: str20; profileID: str427);
+  deprecated;
 procedure SetMSH(message: THL7Message; delimiters: str5;
   sendingApp, sendingFac, receivingApp, receivingFac: str227;
   dateTime: str26; security: str40; messageType: str15; controlID: str20;
@@ -97,6 +104,7 @@ procedure SetMSH(message: THL7Message; delimiters: str5;
   continuationPointer: str180; AccAckType, AppAckType: Str2;
   countryCode: str3; charSet: str16; messageLanguage: str250;
   altCharHandlScheme: str20; profileID: str427);
+  deprecated;
 
 implementation
 
@@ -142,6 +150,10 @@ begin
         messageLanguage := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         altCharHandlScheme := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         profileID := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        SendingRespOrg := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ReceivingRespOrt := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        SendingNetworkAddr := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ReceivingNetworkAddr := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end;
 end;
@@ -247,7 +259,9 @@ begin
       continuationPointer + FieldSep + AccAckType + FieldSep + AppAckType +
       FieldSep + countryCode + FieldSep + charSet + FieldSep +
       messageLanguage + FieldSep + altCharHandlScheme + FieldSep +
-      profileID + FieldSep;
+      profileID + FieldSep + SendingRespOrg + FieldSep + ReceivingRespOrt +
+      FieldSep + SendingNetworkAddr + FieldSep + ReceivingNetworkAddr +
+      FieldSep;
   newSegment.contentString := theString;
   message.ReplaceSegment(MSH_ID, '0', newSegment, True);
 end;
@@ -283,6 +297,10 @@ begin
   MSHRecord.messageLanguage := messageLanguage;
   MSHRecord.altCharHandlScheme := altCharHandlScheme;
   MSHRecord.profileID := profileID;
+  MSHRecord.SendingRespOrg := '';
+  MSHRecord.ReceivingRespOrt := '';
+  MSHRecord.SendingNetworkAddr := '';
+  MSHRecord.ReceivingNetworkAddr := '';
   SetMSH(message, MSHRecord, true);
 end;
 
@@ -317,6 +335,10 @@ begin
   MSHRecord.messageLanguage := messageLanguage;
   MSHRecord.altCharHandlScheme := altCharHandlScheme;
   MSHRecord.profileID := profileID;
+  MSHRecord.SendingRespOrg := '';
+  MSHRecord.ReceivingRespOrt := '';
+  MSHRecord.SendingNetworkAddr := '';
+  MSHRecord.ReceivingNetworkAddr := '';
   SetMSH(message, MSHRecord, false);
 end;
 
@@ -351,6 +373,10 @@ begin
   MSHRecord.messageLanguage := messageLanguage;
   MSHRecord.altCharHandlScheme := altCharHandlScheme;
   MSHRecord.profileID := profileID;
+  MSHRecord.SendingRespOrg := '';
+  MSHRecord.ReceivingRespOrt := '';
+  MSHRecord.SendingNetworkAddr := '';
+  MSHRecord.ReceivingNetworkAddr := '';
   SetMSH(message, MSHRecord, true);
 end;
 
@@ -385,6 +411,10 @@ begin
   MSHRecord.messageLanguage := messageLanguage;
   MSHRecord.altCharHandlScheme := altCharHandlScheme;
   MSHRecord.profileID := profileID;
+  MSHRecord.SendingRespOrg := '';
+  MSHRecord.ReceivingRespOrt := '';
+  MSHRecord.SendingNetworkAddr := '';
+  MSHRecord.ReceivingNetworkAddr := '';
   SetMSH(message, MSHRecord, false);
 end;
 

@@ -6,7 +6,7 @@ unit NTE;
 
 { HL7 support unit for notes and comments segment }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -42,20 +42,26 @@ type
     CommentSource: tID;
     comment: tFT;
     commentType: tCE;
+    EnteredBy: tXCN; // Introduced in HL7 2.7
+    EnteredDateTime, EffectiveStartDate, ExpirationDate: tDTM; // Introduced in HL7 2.7
   end;
 
 function NTE_Segment(message: THL7Message): THL7Segment;
 procedure GetNTE(message: THL7Message; out NTERecord: tNTE);
 procedure GetNTE(message: THL7Message; out SetID: tSI; out CommentSource: tID;
   out comment: tFT; out commentType: tCE);
+  deprecated;
 procedure GetNTE(message: THL7Message; out SetID: str4; out CommentSource: str8;
   out comment: ansistring; out commentType: str250);
+  deprecated;
 procedure SetNTE(message: THL7Message; aSegment: THL7Segment);
 procedure SetNTE(message: THL7Message; NTERecord: tNTE);
 procedure SetNTE(message: THL7Message; SetID: tSI; CommentSource: tID;
   comment: tFT; commentType: tCE);
+  deprecated;
 procedure SetNTE(message: THL7Message; SetID: str4; CommentSource: str8;
   comment: ansistring; commentType: str250);
+  deprecated;
 
 implementation
 
@@ -85,6 +91,10 @@ begin
         CommentSource := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         comment := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         commentType := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        EnteredBy := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        EnteredDateTime := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        EffectiveStartDate := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ExpirationDate := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end;
 end;
@@ -132,7 +142,9 @@ begin
   newSegment := THL7Segment.Create(message, '');
   with NTERecord do
     theString := NTE_ID + FieldSep + SetID + FieldSep + CommentSource +
-      FieldSep + comment + FieldSep + commentType + FieldSep;
+      FieldSep + comment + FieldSep + commentType + FieldSep +
+      EnteredBy + FieldSep + EnteredDateTime + FieldSep + EffectiveStartDate +
+      FieldSep + ExpirationDate + FieldSep;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);
 end;
@@ -148,6 +160,10 @@ begin
   NTERecord.CommentSource := CommentSource;
   NTERecord.comment := comment;
   NTERecord.commentType := commentType;
+  NTERecord.EnteredBy := '';
+  NTERecord.EnteredDateTime := '';
+  NTERecord.EffectiveStartDate := '';
+  NTERecord.ExpirationDate := '';
   SetNTE(message, NTERecord);
 end;
 
@@ -162,6 +178,10 @@ begin
   NTERecord.CommentSource := CommentSource;
   NTERecord.comment := comment;
   NTERecord.commentType := commentType;
+  NTERecord.EnteredBy := '';
+  NTERecord.EnteredDateTime := '';
+  NTERecord.EffectiveStartDate := '';
+  NTERecord.ExpirationDate := '';
   SetNTE(message, NTERecord);
 end;
 

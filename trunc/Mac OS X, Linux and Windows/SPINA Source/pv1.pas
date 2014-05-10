@@ -6,7 +6,7 @@ unit PV1;
 
 { HL7 support unit for patient visit segments }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -74,6 +74,8 @@ type
     AlternateVisitID: tCX;
     VisitIndicator: tIS;
     OtherHealthcareProvider: tXCN;
+    ServiceEpisodeDescription: tST; // Introduced in HL7 2.7
+    ServiceEpisodeID: tCX; // Introduced in HL7 2.7
   end;
 
 function PV1_Segment(message: THL7Message): THL7Segment;
@@ -173,6 +175,10 @@ begin
         VisitIndicator := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         OtherHealthcareProvider :=
           curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ServiceEpisodeDescription :=
+          curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ServiceEpisodeID :=
+          curSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end;
 end;
@@ -213,7 +219,9 @@ begin
       FieldSep + AdmitDateTime + FieldSep + DischargeDateTime + FieldSep +
       CurrentPatientBalance + FieldSep + TotalCharges + FieldSep +
       TotalAdustments + FieldSep + TotalPayments + FieldSep + AlternateVisitID +
-      FieldSep + VisitIndicator + FieldSep + OtherHealthcareProvider + FieldSep;
+      FieldSep + VisitIndicator + FieldSep + OtherHealthcareProvider + FieldSep
+      + FieldSep + ServiceEpisodeDescription + FieldSep + ServiceEpisodeID +
+      FieldSep;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);
 end;

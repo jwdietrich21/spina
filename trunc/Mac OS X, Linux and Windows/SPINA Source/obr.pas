@@ -6,7 +6,7 @@ unit OBR;
 
 { HL7 support unit for observation request segments }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -40,7 +40,7 @@ type
   tOBR = record
     SetID: tSI;
     PlacOrdNumb, FillOrdNumb: tEI;
-    USI: tCE;
+    USI: tCE;  { Universal Service Identifier }
     Priority: tID;
     ReqDateTime, ObsDateTime, ObsEndDateTime: tDTM;
     CollectionVolume: tCQ;
@@ -66,6 +66,18 @@ type
     PrincipalResultInterpreter, AssistantResultInterpreter: tNDL;
     Technician, Transcriptionist: tNDL;
     ScheduledDateTime: tTS;
+    NumberOfSampleContainers: tNM;
+    TransportLogisticsOfCollSampl, CollectorsComment: tCE;
+    TransportArrangementResponsibility: tCE;
+    TransportArranged, EscortRequired: tID;
+    PlannedPatientTransportComment: tCE;
+    ProcedureCode, ProcedureCodeModifier: tCE;
+    PlacerSupplServiceInfo, FillerSupplServiceInfo: tCE;
+    MedicallyNecessaryDuplProcReason: tCWE;
+    ResultHandling: tIS;  // Introduced in HL7 2.7
+    ParentUniversalServiceID: tCWE; // Introduced in HL7 2.7
+    ObservationGroupID, ParentObservationGroupID: tEI; // Introduced in HL7 2.7
+    AltPlacerOrderNumber: tCX; // Introduced in HL7 2.7
   end;
 
 function OBR_Segment(message: THL7Message): THL7Segment;
@@ -73,15 +85,19 @@ procedure GetOBR(message: THL7Message; out OBRRecord: tOBR);
 procedure GetOBR(message: THL7Message; out SetID: tSI;
   out PlacOrdNumb, FillOrdNumb: tEI; out USI: tCE; out Priority: tID;
   out ReqDateTime, ObsDateTime, ObsEndDateTime: tDTM);
+  deprecated;
 procedure GetOBR(message: THL7Message; out SetID: str4;
   out PlacOrdNumb, FillOrdNumb: str22; out USI: str250; out Priority: Str2;
   out ReqDateTime, ObsDateTime, ObsEndDateTime: str26);
+  deprecated;
 procedure SetOBR(message: THL7Message; aSegment: THL7Segment);
 procedure SetOBR(message: THL7Message; OBRRecord: tOBR);
 procedure SetOBR(message: THL7Message; SetID: tSI; PlacOrdNumb, FillOrdNumb: tEI;
   USI: tCE; Priority: tID; ReqDateTime, ObsDateTime, ObsEndDateTime: tDTM);
+  deprecated;
 procedure SetOBR(message: THL7Message; SetID: str4; PlacOrdNumb, FillOrdNumb: str22;
   USI: str250; Priority: Str2; ReqDateTime, ObsDateTime, ObsEndDateTime: str26);
+  deprecated;
 
 implementation
 
@@ -150,6 +166,23 @@ begin
         Technician := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         Transcriptionist := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         ScheduledDateTime := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        NumberOfSampleContainers := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        TransportLogisticsOfCollSampl := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        CollectorsComment := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        TransportArrangementResponsibility := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        TransportArranged := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        EscortRequired := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        PlannedPatientTransportComment := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ProcedureCode := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ProcedureCodeModifier := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        PlacerSupplServiceInfo := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        FillerSupplServiceInfo := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        MedicallyNecessaryDuplProcReason := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ResultHandling := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ParentUniversalServiceID := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ObservationGroupID := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ParentObservationGroupID := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        AltPlacerOrderNumber := curSegment.FirstOccurrence.GetNextFieldContent(nextField)
       end;
   end;
 end;
@@ -224,7 +257,15 @@ begin
       FieldSep + TransportationMode + FieldSep + ReasonForStudy + FieldSep +
       PrincipalResultInterpreter + FieldSep + AssistantResultInterpreter +
       FieldSep + Technician + FieldSep + Transcriptionist + FieldSep +
-      ScheduledDateTime + FieldSep;
+      ScheduledDateTime + FieldSep + NumberOfSampleContainers + FieldSep +
+      TransportLogisticsOfCollSampl + FieldSep + CollectorsComment + FieldSep +
+      TransportArrangementResponsibility + FieldSep + TransportArranged +
+      FieldSep + EscortRequired + FieldSep + PlannedPatientTransportComment +
+      FieldSep + ProcedureCode + FieldSep + ProcedureCodeModifier + FieldSep +
+      PlacerSupplServiceInfo + FieldSep + FillerSupplServiceInfo + FieldSep +
+      MedicallyNecessaryDuplProcReason + FieldSep + ResultHandling + FieldSep +
+      ParentUniversalServiceID + FieldSep + ObservationGroupID + FieldSep +
+      ParentObservationGroupID + FieldSep + AltPlacerOrderNumber + FieldSep;
   end;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);
@@ -273,6 +314,23 @@ begin
   OBRRecord.Technician := '';
   OBRRecord.Transcriptionist := '';
   OBRRecord.ScheduledDateTime := '';
+  OBRRecord.NumberOfSampleContainers := '';
+  OBRRecord.TransportLogisticsOfCollSampl := '';
+  OBRRecord.CollectorsComment := '';
+  OBRRecord.TransportArrangementResponsibility := '';
+  OBRRecord.TransportArranged := '';
+  OBRRecord.EscortRequired := '';
+  OBRRecord.PlannedPatientTransportComment := '';
+  OBRRecord.ProcedureCode := '';
+  OBRRecord.ProcedureCodeModifier := '';
+  OBRRecord.PlacerSupplServiceInfo := '';
+  OBRRecord.FillerSupplServiceInfo := '';
+  OBRRecord.MedicallyNecessaryDuplProcReason := '';
+  OBRRecord.ResultHandling := '';
+  OBRRecord.ParentUniversalServiceID := '';
+  OBRRecord.ObservationGroupID := '';
+  OBRRecord.ParentObservationGroupID := '';
+  OBRRecord.AltPlacerOrderNumber := '';
   SetOBR(message, OBRRecord);
 end;
 
@@ -320,6 +378,23 @@ begin
   OBRRecord.Technician := '';
   OBRRecord.Transcriptionist := '';
   OBRRecord.ScheduledDateTime := '';
+  OBRRecord.NumberOfSampleContainers := '';
+  OBRRecord.TransportLogisticsOfCollSampl := '';
+  OBRRecord.CollectorsComment := '';
+  OBRRecord.TransportArrangementResponsibility := '';
+  OBRRecord.TransportArranged := '';
+  OBRRecord.EscortRequired := '';
+  OBRRecord.PlannedPatientTransportComment := '';
+  OBRRecord.ProcedureCode := '';
+  OBRRecord.ProcedureCodeModifier := '';
+  OBRRecord.PlacerSupplServiceInfo := '';
+  OBRRecord.FillerSupplServiceInfo := '';
+  OBRRecord.MedicallyNecessaryDuplProcReason := '';
+  OBRRecord.ResultHandling := '';
+  OBRRecord.ParentUniversalServiceID := '';
+  OBRRecord.ObservationGroupID := '';
+  OBRRecord.ParentObservationGroupID := '';
+  OBRRecord.AltPlacerOrderNumber := '';
   SetOBR(message, OBRRecord);
 end;
 

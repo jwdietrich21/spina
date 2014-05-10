@@ -6,7 +6,7 @@ unit EVN;
 
 { HL7 support unit for event type segments }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -51,11 +51,13 @@ procedure GetEVN(message: THL7Message; out EVNRecord: tEVN);
 procedure GetEVN(message: THL7Message; out evtTypeCode: char;
   out recDateTime, plannedDateTime: tDTM; out reasonCode: tCWE;
   out opID: tXCN; out evtOccurred: tDTM; out evtFacility: tHD);
+  deprecated;
 procedure SetEVN(message: THL7Message; aSegment: THL7Segment);
 procedure SetEVN(message: THL7message; EVNRecord: tEVN);
 procedure SetEVN(message: THL7Message; evtTypeCode: char;
   recDateTime, plannedDateTime: tDTM; reasonCode: tCWE; opID: tXCN;
   evtOccurred: tDTM; evtFacility: tHD);
+  deprecated;
 
 implementation
 

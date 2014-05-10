@@ -6,7 +6,7 @@ unit NK1;
 
 { HL7 support unit for next of kin segments }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -70,6 +70,7 @@ type
     Handicap: tIS;
     ContactPersonSocialSecurityNumber, BirthPlace: tST;
     VIPIndicator: tIS;
+    TelecomInformation, ContactPersonsTelecomInformation: tXTN; // Introduced in HL7 2.7
   end;
 
 function NK1_Segment(message: THL7Message): THL7Segment;
@@ -143,6 +144,8 @@ begin
           curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         BirthPlace := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         VIPIndicator := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        TelecomInformation := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ContactPersonsTelecomInformation := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end;
 end;
@@ -176,7 +179,9 @@ begin
       ContactPersonsTelephoneNumber + FieldSep + ContactPersonsAddress +
       FieldSep + Identifiers + FieldSep + JobStatus + FieldSep + Race +
       FieldSep + Handicap + FieldSep + ContactPersonSocialSecurityNumber +
-      FieldSep + BirthPlace + FieldSep + VIPIndicator;
+      FieldSep + BirthPlace + FieldSep + VIPIndicator + FieldSep +
+      TelecomInformation + FieldSep + ContactPersonsTelecomInformation +
+      FieldSep;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);
 end;

@@ -6,7 +6,7 @@ unit MSA;
 
 { HL7 support unit for message acknowledgement segments }
 
-{ Version 1.3 }
+{ Version 1.5 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -44,6 +44,8 @@ type
     exSeqNum: tNM;
     delAckType: char;
     ErrorCond: tCE;
+    MessageWaitingNumber: tNM; // Introduced in HL7 2.7
+    MessageWaitingPriority: tID; // Introduced in HL7 2.7
   end;
 
 function MSA_Segment(message: THL7Message): THL7Segment;
@@ -51,15 +53,19 @@ procedure GetMSA(message: THL7Message; out MSARecord: tMSA);
 procedure GetMSA(message: THL7Message; out AckCode: tID; out controlID: str20;
   out textMessage: str80; out exSeqNum: tNM; out delAckType: char;
   out ErrorCond: tCE);
+  deprecated;
 procedure GetMSA(message: THL7Message; out AckCode: str2; out controlID: str20;
   out textMessage: str80; out exSeqNum: Str15; out delAckType: char;
   out ErrorCond: Str250);
+  deprecated;
 procedure SetMSA(message: THL7Message; aSegment: THL7Segment);
 procedure SetMSA(message: THL7Message; MSARecord: tMSA);
 procedure SetMSA(message: THL7Message; AckCode: tID; controlID: str20;
   textMessage: str80; exSeqNum: tNM; delAckType: char; ErrorCond: tCE);
+  deprecated;
 procedure SetMSA(message: THL7Message; AckCode: str2; controlID: str20;
   textMessage: str80; exSeqNum: Str15; delAckType: char; ErrorCond: Str250);
+  deprecated;
 
 implementation
 
@@ -91,6 +97,8 @@ begin
         exSeqNum := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
         delAckType := char(0); // deprecated field
         ErrorCond := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        MessageWaitingNumber := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        MessageWaitingPriority := curSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end;
 end;
@@ -145,7 +153,8 @@ begin
   with MSArecord do
     theString := MSA_ID + FieldSep + AckCode + FieldSep + controlID +
     FieldSep + textMessage + FieldSep + exSeqNum + FieldSep +
-    delAckType + FieldSep + ErrorCond + FieldSep;
+    delAckType + FieldSep + ErrorCond + FieldSep + MessageWaitingNumber +
+    FieldSep + MessageWaitingPriority + FieldSep;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);
 end;
@@ -163,6 +172,8 @@ begin
   MSARecord.exSeqNum := exSeqNum;
   MSARecord.delAckType := delAckType;
   MSARecord.ErrorCond := ErrorCond;
+  MSARecord.MessageWaitingNumber := '';
+  MSARecord.MessageWaitingPriority := '';
   SetMSA(message, MSARecord);
 end;
 
@@ -179,6 +190,8 @@ begin
   MSARecord.exSeqNum := exSeqNum;
   MSARecord.delAckType := delAckType;
   MSARecord.ErrorCond := ErrorCond;
+  MSARecord.MessageWaitingNumber := '';
+  MSARecord.MessageWaitingPriority := '';
   SetMSA(message, MSARecord);
 end;
 
