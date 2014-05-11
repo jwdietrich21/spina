@@ -889,8 +889,15 @@ begin
 end;
 
 procedure THauptschirm.NewMenuItemClick(Sender: TObject);
+{ Inspired by Adnan Shameem's blog at }
+{ http://lazplanet.blogspot.de/2013/05/clear-all-edit-boxes-in-form.html }
+var
+  i : Integer;
 begin
-
+  for i := 0 to ComponentCount-1 do
+    if (Components[i] is TEdit) then
+      TEdit(Components[i]).Text := '';
+  ActiveControl := TSH_Text;
 end;
 
 procedure THauptschirm.MenuItem4Click(Sender: TObject);
