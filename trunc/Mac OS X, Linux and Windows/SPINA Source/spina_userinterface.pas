@@ -259,7 +259,7 @@ begin
 end;
 
 procedure AdjustUnitLabels;
-{determines labels from parsed unit strings}
+{determines labels and UOMs from parsed unit strings}
 var
   unitElements: TUnitElements;
   i, mpIndex, muIndex, vpIndex, j4: integer;
@@ -289,6 +289,7 @@ begin
 end;
 
 procedure THauptschirm.T4MethodComboBoxAdjust(Sender: TObject);
+{changes between free T4 and total T4}
 begin
   if Hauptschirm.T4MethodComboBox.Text = 'FT4' then
   begin
@@ -308,6 +309,7 @@ begin
 end;
 
 procedure THauptschirm.T3MethodComboBoxAdjust(Sender: TObject);
+{changes between free T3 and total T3}
 begin
   if Hauptschirm.T3MethodComboBox.Text = 'FT3' then
   begin
@@ -538,6 +540,8 @@ begin
 end;
 
 procedure HandleInput;
+{reads inputs and invokes calculation engine}
+{liest Eingabefelder und startet die Berechnungseinheit}
 var
   Size: byte;
   oldSeparator: char;

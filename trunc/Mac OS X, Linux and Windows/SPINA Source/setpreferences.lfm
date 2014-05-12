@@ -14,7 +14,7 @@ object PreferencesForm: TPreferencesForm
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.2.0.3'
+  LCLVersion = '1.2.2.0'
   object OKButton: TButton
     Left = 570
     Height = 25
@@ -535,22 +535,22 @@ object PreferencesForm: TPreferencesForm
     object TabSheet2: TTabSheet
       Caption = 'Sender ID'
       ClientHeight = 313
-      ClientWidth = 561
+      ClientWidth = 613
       object IDGroupBox: TGroupBox
         Left = 24
         Height = 72
         Top = 8
-        Width = 525
+        Width = 577
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Physician or Hospital ID:'
         ClientHeight = 50
-        ClientWidth = 517
+        ClientWidth = 569
         TabOrder = 0
         object SendingFacLabel: TLabel
           Left = 12
-          Height = 17
+          Height = 16
           Top = 16
-          Width = 89
+          Width = 88
           Caption = 'Facility Name:'
           ParentColor = False
         end
@@ -559,7 +559,7 @@ object PreferencesForm: TPreferencesForm
           Height = 21
           Hint = 'HL7 Sending and Receiving Facility'
           Top = 16
-          Width = 368
+          Width = 420
           Anchors = [akTop, akLeft, akRight]
           AutoSize = False
           ParentShowHint = False
@@ -571,16 +571,16 @@ object PreferencesForm: TPreferencesForm
     object TabSheet3: TTabSheet
       Caption = 'Div'
       ClientHeight = 313
-      ClientWidth = 561
+      ClientWidth = 613
       object GUIGroupBox: TGroupBox
         Left = 24
         Height = 58
         Top = 8
-        Width = 525
+        Width = 577
         Anchors = [akTop, akLeft, akRight]
         Caption = 'GUI'
         ClientHeight = 36
-        ClientWidth = 517
+        ClientWidth = 569
         TabOrder = 0
         object MarkMandatoryCheck: TCheckBox
           Left = 16

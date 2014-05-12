@@ -309,7 +309,7 @@ object AboutBox: TAboutBox
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.2.0.3'
+  LCLVersion = '1.2.2.0'
   object Button1: TButton
     Left = 192
     Height = 24
@@ -1536,8 +1536,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet2: TTabSheet
       Caption = 'Info'
-      ClientHeight = 403
-      ClientWidth = 418
+      ClientHeight = 318
+      ClientWidth = 416
       object Memo1: TMemo
         Left = 5
         Height = 394
@@ -1555,8 +1555,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet3: TTabSheet
       Caption = 'Acknowledgment'
-      ClientHeight = 409
-      ClientWidth = 418
+      ClientHeight = 318
+      ClientWidth = 416
       object Label3: TLabel
         Left = 21
         Height = 16
