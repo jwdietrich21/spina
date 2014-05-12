@@ -33,12 +33,12 @@ type
   { TResultForm }
 
   TResultForm = class(TForm)
-    Button1: TButton;
+    OKButton: TButton;
     Image1: TImage;
     Label1: TLabel;
     MessageField2: TMemo;
     MessageField1: TMemo;
-    procedure Button1Click(Sender: TObject);
+    procedure OKButtonClick(Sender: TObject);
     procedure UpdateResultDisplay(Sender: TObject);
   private
     { private declarations }
@@ -56,24 +56,29 @@ uses SPINA_UserInterface;
 { TResultForm }
 
 procedure TResultForm.UpdateResultDisplay(Sender: TObject);
+const
+  LINE_NUMBER = 5;
+  BOTTOM_MARGIN = 51;
 begin
   {Adjustments for small windows:}
-    if Screen.Width < ResultForm.Width then
-    begin
-      ResultForm.Width := Screen.Width - 13;
-      ResultForm.Left := (Screen.Width - ResultForm.Width) div 2;
-    end;
+  if Screen.Width < Width then
+  begin
+    Width := Screen.Width - 13;
+    Left := (Screen.Width - Width) div 2;
+  end;
+  {Adjustments for large fonts:}
+    Height := trunc(MessageField2.Top + LINE_NUMBER * 1.6 * abs(MessageField2.Font.Height) + BOTTOM_MARGIN);
   if gInterfaceLanguage = German then
     Label1.Caption := kResultHint1
   else
     Label1.Caption := kResultHint2;
-  ResultForm.MessageField1.text := gResultDialogString1;
-  ResultForm.MessageField2.text := gResultDialogString2;
-  ResultForm.messageField1.Hint := gReferenceValueString2;
-  ResultForm.messageField2.Hint := gReferenceValueString2;
+  MessageField1.text := gResultDialogString1;
+  MessageField2.text := gResultDialogString2;
+  messageField1.Hint := gReferenceValueString2;
+  messageField2.Hint := gReferenceValueString2;
 end;
 
-procedure TResultForm.Button1Click(Sender: TObject);
+procedure TResultForm.OKButtonClick(Sender: TObject);
 begin
   Close;
 end;

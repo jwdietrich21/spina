@@ -896,8 +896,11 @@ var
 begin
   for i := 0 to ComponentCount-1 do
     if (Components[i] is TEdit) then
-      TEdit(Components[i]).Text := '';
+      TEdit(Components[i]).Text := '0';
   ActiveControl := TSH_Text;
+  ResultField.Text := '';
+  HintField.Text := '';
+  HintField.Hint := '';
 end;
 
 procedure THauptschirm.MenuItem4Click(Sender: TObject);

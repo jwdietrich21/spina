@@ -2,7 +2,7 @@ object ResultForm: TResultForm
   Left = 320
   Height = 166
   Top = 313
-  Width = 688
+  Width = 691
   HorzScrollBar.Page = 440
   VertScrollBar.Page = 138
   AlphaBlend = True
@@ -11,12 +11,12 @@ object ResultForm: TResultForm
   BorderStyle = bsToolWindow
   Caption = '   Ergebnis'
   ClientHeight = 166
-  ClientWidth = 688
+  ClientWidth = 691
   Color = clWhite
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   Position = poMainFormCenter
-  LCLVersion = '1.2.0.3'
+  LCLVersion = '1.2.2.0'
   object Image1: TImage
     Left = 24
     Height = 80
@@ -186,9 +186,9 @@ object ResultForm: TResultForm
   end
   object Label1: TLabel
     Left = 112
-    Height = 17
+    Height = 16
     Top = 8
-    Width = 57
+    Width = 67
     Caption = 'Ergebnis:'
     Font.Color = clBlack
     Font.Height = -13
@@ -202,6 +202,7 @@ object ResultForm: TResultForm
     Height = 80
     Top = 32
     Width = 248
+    Anchors = [akTop, akLeft, akBottom]
     Font.Height = -12
     Lines.Strings = (
       'Hormones'
@@ -218,7 +219,7 @@ object ResultForm: TResultForm
     Left = 376
     Height = 79
     Top = 32
-    Width = 296
+    Width = 299
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -12
     Lines.Strings = (
@@ -231,15 +232,15 @@ object ResultForm: TResultForm
     TabOrder = 1
     TabStop = False
   end
-  object Button1: TButton
-    Left = 597
+  object OKButton: TButton
+    Left = 600
     Height = 24
     Top = 128
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'OK'
     Default = True
-    OnClick = Button1Click
+    OnClick = OKButtonClick
     TabOrder = 0
   end
 end

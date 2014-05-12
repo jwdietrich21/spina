@@ -126,16 +126,8 @@ implementation
 { TSPINAToolbar }
 
 procedure TSPINAToolbar.NewToolButtonClick(Sender: TObject);
-{ Inspired by Adnan Shameem's blog at }
-{ http://lazplanet.blogspot.de/2013/05/clear-all-edit-boxes-in-form.html }
-var
-  i : Integer;
 begin
-  for i := 0 to Hauptschirm.ComponentCount-1 do
-    if (Hauptschirm.Components[i] is TEdit) then
-      TEdit(Hauptschirm.Components[i]).Text := '';
-  Hauptschirm.ActiveControl := Hauptschirm.TSH_Text;
-  Hauptschirm.BringToFront;
+  Hauptschirm.NewMenuItemClick(Sender);
 end;
 
 procedure AdaptLanguages;
@@ -334,16 +326,8 @@ begin
 end;
 
 procedure TSPINAToolbar.NewMenuItemClick(Sender: TObject);
-{ Inspired by Adnan Shameem's blog at }
-{ http://lazplanet.blogspot.de/2013/05/clear-all-edit-boxes-in-form.html }
-var
-  i : Integer;
 begin
-  for i := 0 to Hauptschirm.ComponentCount-1 do
-    if (Hauptschirm.Components[i] is TEdit) then
-      TEdit(Hauptschirm.Components[i]).Text := '';
-  Hauptschirm.ActiveControl := Hauptschirm.TSH_Text;
-  Hauptschirm.BringToFront;
+  Hauptschirm.NewMenuItemClick(Sender);
 end;
 
 procedure TSPINAToolbar.OnlineInfoItemClick(Sender: TObject);
@@ -505,4 +489,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.
