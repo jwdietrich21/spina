@@ -16,7 +16,7 @@ object PreferencesForm: TPreferencesForm
   Position = poScreenCenter
   LCLVersion = '1.2.2.0'
   object OKButton: TButton
-    Left = 570
+    Left = 568
     Height = 25
     Top = 377
     Width = 75
@@ -574,12 +574,12 @@ object PreferencesForm: TPreferencesForm
       ClientWidth = 611
       object GUIGroupBox: TGroupBox
         Left = 24
-        Height = 184
+        Height = 64
         Top = 8
         Width = 575
         Anchors = [akTop, akLeft, akRight]
         Caption = 'GUI'
-        ClientHeight = 166
+        ClientHeight = 46
         ClientWidth = 571
         TabOrder = 0
         object MarkMandatoryCheck: TCheckBox
@@ -622,6 +622,7 @@ object PreferencesForm: TPreferencesForm
           RowCount = 7
           TabOrder = 1
           TitleFont.Style = [fsBold]
+          Visible = False
           ColWidths = (
             64
             69
