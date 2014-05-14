@@ -26,8 +26,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ComCtrls, Math, SPINA_Types, SPINA_Resources, CDISC,
-  HandlePreferences;
+  StdCtrls, ComCtrls, ExtCtrls, Grids, Math, SPINA_Types, SPINA_Resources,
+  CDISC, HandlePreferences;
 
 type
 
@@ -50,6 +50,7 @@ type
     Dashlabel1: TLabel;
     GTUnitLabel: TLabel;
     CDISCSaveDialog: TSaveDialog;
+    MandatoryFieldsGrid: TStringGrid;
     T3UnitLabel: TLabel;
     T4UnitLabel: TLabel;
     TSHIRRHEdit: TEdit;
@@ -688,6 +689,24 @@ procedure TPreferencesForm.FormCreate(Sender: TObject);
 begin
   PageControl1.TabIndex := 0;
   Edited := false;
+  MandatoryFieldsGrid.Rows[1].Text := 'TSH';
+  MandatoryFieldsGrid.Rows[2].Text := '(F)F4';
+  MandatoryFieldsGrid.Rows[3].Text := '(F)T3';
+  MandatoryFieldsGrid.Rows[4].Text := 'L-T4';
+  MandatoryFieldsGrid.Rows[5].Text := 'L-T3';
+  MandatoryFieldsGrid.Rows[6].Text := 'rhTSH';
+  MandatoryFieldsGrid.Cells[1, 1] := '+';
+  MandatoryFieldsGrid.Cells[1, 2] := '+';
+  MandatoryFieldsGrid.Cells[1, 4] := '--';
+  MandatoryFieldsGrid.Cells[2, 2] := '+';
+  MandatoryFieldsGrid.Cells[2, 3] := '+';
+  MandatoryFieldsGrid.Cells[2, 5] := '--';
+  MandatoryFieldsGrid.Cells[3, 1] := '+';
+  MandatoryFieldsGrid.Cells[3, 2] := '+';
+  MandatoryFieldsGrid.Cells[3, 6] := '--';
+  MandatoryFieldsGrid.Cells[4, 1] := '+';
+  MandatoryFieldsGrid.Cells[4, 2] := '+';
+  MandatoryFieldsGrid.Cells[4, 6] := '--';
 end;
 
 procedure TPreferencesForm.GDRRHEditChange(Sender: TObject);

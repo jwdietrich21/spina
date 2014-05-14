@@ -767,13 +767,15 @@ procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
 begin
   if gPreferences.colouriseMandatoryFields then
   begin {should mandatory fields be colourised?}
-    if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
+    {Parts of this procedure have been emporarily disabled to address}
+    {bug ticker item #13, before a better solution is found}
+    {if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
       Hauptschirm.TSH_Text.Color := clDefault
-    else
+    else}
       Hauptschirm.TSH_Text.Color := gPreferences.MandatoryColor;
-    if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
+    {if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
       Hauptschirm.FT4_Text.Color := clDefault
-    else
+    else}
       Hauptschirm.FT4_Text.Color := gPreferences.MandatoryColor;
     if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
       Hauptschirm.FT3_Text.Color := clDefault
