@@ -56,6 +56,8 @@ type
     Label11: TLabel;
     Label12: TLabel;
     Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -75,6 +77,7 @@ type
     procedure CloseAboutBox(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Label15Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure Label7Click(Sender: TObject);
     procedure Label9Click(Sender: TObject);
@@ -228,6 +231,11 @@ begin
   end
   else if (key = 87) and ((ssMeta in Shift) or (ssCtrl in Shift)) then
     self.Close;
+end;
+
+procedure TAboutBox.Label15Click(Sender: TObject);
+begin
+  OpenURL('http://puma-repository.sf.net');
 end;
 
 procedure TAboutBox.Label5Click(Sender: TObject);
