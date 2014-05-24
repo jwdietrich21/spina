@@ -18,7 +18,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="4"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="544"/>
+      <BuildNr Value="546"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.4.1"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -160,7 +160,7 @@
         <EditorIndex Value="14"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="84" Y="11"/>
+        <CursorPos X="93" Y="28"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -876,8 +876,8 @@ end;"/>
       <CompilerMessages>
         <UseMsgFile Value="True"/>
       </CompilerMessages>
-      <CustomOptions Value="//-k-macosx_version_min //-k10.4
-//-XR/Developer/SDKs/MacOSX10.4u.sdk/"/>
+      <CustomOptions Value="-k-macosx_version_min -k10.4
+-XR/Developer/SDKs/MacOSX10.4u.sdk/"/>
       <CompilerPath Value="$(CompPath)"/>
     </Other>
   </CompilerOptions>

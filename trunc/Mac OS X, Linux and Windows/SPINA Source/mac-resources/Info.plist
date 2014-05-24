@@ -9,7 +9,7 @@ of thyrotropic feedback control
 Programm zur Berechnung von Strukturparametern
 des thyreotropen Regelkreises
 
-Version 3.4.0
+Version 3.4.1
 
 (c) J. W. Dietrich, 1994 - 2014
 (c) Ludwig Maximilian University of Munich 1995 - 2002
@@ -26,7 +26,7 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleExecutable</key>
 	<string>SPINA Thyr</string>
 	<key>CFBundleVersion</key>
-	<string>3.4.0</string>
+	<string>3.4.1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleName</key>
@@ -36,11 +36,11 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleSignature</key>
 	<string>SPIt</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.4.0</string>
+	<string>3.4.1</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.4.0, ©1994-2014 J. W. Dietrich</string>
+	<string>3.4.1, ©1994-2014 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>3.4.0, ©1994-2014 J. W. Dietrich</string>
+	<string>3.4.1, ©1994-2014 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sf.spina.thyr</string>
 	<key>LSApplicationCategoryType</key>
