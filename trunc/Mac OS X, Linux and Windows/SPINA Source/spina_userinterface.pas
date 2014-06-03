@@ -767,20 +767,36 @@ procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
 begin
   if gPreferences.colouriseMandatoryFields then
   begin {should mandatory fields be colourised?}
-    {Parts of this procedure have been emporarily disabled to address}
-    {bug ticker item #13, before a better solution is found}
-    {if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
-      Hauptschirm.TSH_Text.Color := clDefault
-    else}
-      Hauptschirm.TSH_Text.Color := gPreferences.MandatoryColor;
-    {if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
-      Hauptschirm.FT4_Text.Color := clDefault
-    else}
-      Hauptschirm.FT4_Text.Color := gPreferences.MandatoryColor;
-    if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
-      Hauptschirm.FT3_Text.Color := clDefault
+    if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
+    begin
+      if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
+        Hauptschirm.TSH_Text.Color := clDefault
+      else
+        Hauptschirm.TSH_Text.Color := gPreferences.MandatoryColor;
+    end
     else
+    begin
+      Hauptschirm.TSH_Text.Color := gPreferences.MandatoryColor;
+    end;
+    if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
+    begin
+      if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
+        Hauptschirm.FT4_Text.Color := clDefault
+      else
+        Hauptschirm.FT4_Text.Color := gPreferences.MandatoryColor;
+    end
+    else
+    begin
+      Hauptschirm.FT4_Text.Color := gPreferences.MandatoryColor;
+    end;
+    if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
+    begin
+      Hauptschirm.FT3_Text.Color := clDefault;
+    end
+    else
+    begin
       Hauptschirm.FT3_Text.Color := gPreferences.MandatoryColor;
+    end;
   end
   else
   begin

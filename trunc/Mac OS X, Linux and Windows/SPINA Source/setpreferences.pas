@@ -107,6 +107,8 @@ type
     procedure GDRRLEditChange(Sender: TObject);
     procedure GTRRHEditChange(Sender: TObject);
     procedure GTRRLEditChange(Sender: TObject);
+    procedure MandatoryFieldsGridDrawCell(Sender: TObject; aCol, aRow: Integer;
+      aRect: TRect; aState: TGridDrawState);
     procedure MarkMandatoryCheckChange(Sender: TObject);
     procedure GetMethodsAndUnits(const Sender: TObject);
     procedure MethodComboBoxChange(Sender: TObject);
@@ -690,23 +692,23 @@ begin
   PageControl1.TabIndex := 0;
   Edited := false;
   MandatoryFieldsGrid.Rows[1].Text := 'TSH';
-  MandatoryFieldsGrid.Rows[2].Text := '(F)F4';
+  MandatoryFieldsGrid.Rows[2].Text := '(F)T4';
   MandatoryFieldsGrid.Rows[3].Text := '(F)T3';
   MandatoryFieldsGrid.Rows[4].Text := 'L-T4';
   MandatoryFieldsGrid.Rows[5].Text := 'L-T3';
   MandatoryFieldsGrid.Rows[6].Text := 'rhTSH';
   MandatoryFieldsGrid.Cells[1, 1] := '+';
   MandatoryFieldsGrid.Cells[1, 2] := '+';
-  MandatoryFieldsGrid.Cells[1, 4] := '--';
+  MandatoryFieldsGrid.Cells[1, 4] := '——';
   MandatoryFieldsGrid.Cells[2, 2] := '+';
   MandatoryFieldsGrid.Cells[2, 3] := '+';
-  MandatoryFieldsGrid.Cells[2, 5] := '--';
+  MandatoryFieldsGrid.Cells[2, 5] := '——';
   MandatoryFieldsGrid.Cells[3, 1] := '+';
   MandatoryFieldsGrid.Cells[3, 2] := '+';
-  MandatoryFieldsGrid.Cells[3, 6] := '--';
+  MandatoryFieldsGrid.Cells[3, 6] := '——';
   MandatoryFieldsGrid.Cells[4, 1] := '+';
   MandatoryFieldsGrid.Cells[4, 2] := '+';
-  MandatoryFieldsGrid.Cells[4, 6] := '--';
+  MandatoryFieldsGrid.Cells[4, 6] := '——';
 end;
 
 procedure TPreferencesForm.GDRRHEditChange(Sender: TObject);
@@ -727,6 +729,29 @@ end;
 procedure TPreferencesForm.GTRRLEditChange(Sender: TObject);
 begin
   Edited := true;
+end;
+
+procedure TPreferencesForm.MandatoryFieldsGridDrawCell(Sender: TObject; aCol,
+  aRow: Integer; aRect: TRect; aState: TGridDrawState);
+var
+  theContent: String;
+  MyTxtStyle: TTextStyle;
+begin
+  if (aCol > 0) and (aRow > 0) then
+  with MandatoryFieldsGrid do
+  begin
+    theContent := Cells[ACol, ARow];
+    if (theContent = '-') or (theContent = '——') or (theContent = '—') then
+      Canvas.Brush.Color := clRed
+    else if theContent = '+' then
+      Canvas.Brush.Color := clGreen
+    else
+      Canvas.Brush.Color := clGray;
+    Canvas.FillRect(aRect);
+    MyTxtStyle.Alignment := taCenter;
+    MyTxtStyle.Layout := tlCenter;
+    Canvas.TextRect(aRect, aRect.Left, aRect.Top, thecontent, MyTxtStyle);
+  end;
 end;
 
 procedure TPreferencesForm.MarkMandatoryCheckChange(Sender: TObject);
