@@ -849,53 +849,55 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +#0#9'TMenuItem'#12'SaveMenuItem'#7'Caption'#6#7'Sichern'#7'OnClick'#7#17'Sav'
   +'eMenuItemClick'#0#0#9'TMenuItem'#13'CloseMenuItem'#7'Caption'#6#10'Schlie'
   +#195#159'en'#8'ShortCut'#3'W'#16#7'OnClick'#7#18'CloseMenuItemClick'#0#0#9'T'
-  +'MenuItem'#11'Divider_1_1'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#17'PageSetupMe'
-  +'nuItem'#7'Caption'#6#12'Papierformat'#7'OnClick'#7#22'PageSetupMenuItemClic'
-  +'k'#0#0#9'TMenuItem'#13'PrintMenuItem'#7'Caption'#6#7'Drucken'#8'ShortCut'#3
-  +'P'#16#7'OnClick'#7#18'PrintMenuItemClick'#0#0#9'TMenuItem'#11'Divider_1_2'#7
-  +'Caption'#6#1'-'#0#0#9'TMenuItem'#12'QuitMenuItem'#7'Caption'#6#7'Beenden'#8
-  +'ShortCut'#3'Q'#16#7'OnClick'#7#13'Beenden1Click'#0#0#0#9'TMenuItem'#8'EditM'
-  +'enu'#7'Caption'#6#10'Bearbeiten'#0#9'TMenuItem'#12'UndoMenuItem'#6'Action'#7
-  +#9'EditUndo1'#4'Hint'#6#10'Widerrufen'#8'ShortCut'#3'Y'#16#7'OnClick'#7#17'U'
-  +'ndoMenuItemClick'#0#0#9'TMenuItem'#11'Divider_2_1'#7'Caption'#6#1'-'#0#0#9
-  +'TMenuItem'#11'CutMenuItem'#6'Action'#7#8'EditCut1'#8'ShortCut'#3'X'#16#7'On'
-  +'Click'#7#16'CutMenuItemClick'#0#0#9'TMenuItem'#12'CopyMenuItem'#6'Action'#7
-  +#9'EditCopy1'#8'ShortCut'#3'C'#16#7'OnClick'#7#17'CopyMenuItemClick'#0#0#9'T'
-  +'MenuItem'#13'PasteMenuItem'#6'Action'#7#10'EditPaste1'#8'ShortCut'#3'V'#16#7
-  +'OnClick'#7#18'PasteMenuItemClick'#0#0#9'TMenuItem'#14'DeleteMenuItem'#6'Act'
-  +'ion'#7#11'EditDelete1'#4'Hint'#6#8'L'#195#182'schen'#7'OnClick'#7#19'Delete'
-  +'MenuItemClick'#0#0#9'TMenuItem'#11'Divider_2_2'#7'Caption'#6#1'-'#0#0#9'TMe'
-  +'nuItem'#18'CopyResultMenuItem'#7'Caption'#6#17'Ergebnis kopieren'#8'ShortCu'
-  +'t'#3'R'#16#7'OnClick'#7#22'Ergebniskopieren1Click'#0#0#9'TMenuItem'#11'Divi'
-  +'der_2_3'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#18'WinPreferencesItem'#7'Captio'
-  +'n'#6#17'Einstellungen ...'#7'OnClick'#7#23'WinPreferencesItemClick'#0#0#0#9
-  +'TMenuItem'#8'HelpMenu'#7'Caption'#6#4'Help'#0#9'TMenuItem'#8'HelpItem'#7'Ca'
-  +'ption'#6#14'SPINA Help ...'#8'ShortCut'#3#189'0'#7'OnClick'#7#13'HelpItemCl'
-  +'ick'#0#0#9'TMenuItem'#14'OnlineInfoItem'#7'Caption'#6#15'Online Info ...'#7
-  +'OnClick'#7#19'OnlineInfoItemClick'#0#0#9'TMenuItem'#11'Divider_3_1'#7'Capti'
-  +'on'#6#1'-'#0#0#9'TMenuItem'#13'AboutMenuItem'#7'Caption'#6#11#195#156'ber S'
-  +'PINA'#7'OnClick'#7#11'HandleAbout'#0#0#0#0#11'TActionList'#11'ActionList1'#4
-  +'left'#3#176#0#3'top'#3#160#0#0#9'TEditUndo'#9'EditUndo1'#8'Category'#6#10'B'
-  +'earbeiten'#7'Caption'#6#13'&R'#195#188'ckg'#195#164'ngig'#10'ImageIndex'#2#5
-  +#8'ShortCut'#4#8#128#0#0#0#0#8'TEditCut'#8'EditCut1'#8'Category'#6#10'Bearbe'
-  +'iten'#7'Caption'#6#13'&Ausschneiden'#4'Hint'#6#12'Ausschneiden'#10'ImageInd'
-  +'ex'#2#6#8'ShortCut'#3'X@'#0#0#9'TEditCopy'#9'EditCopy1'#8'Category'#6#10'Be'
-  +'arbeiten'#7'Caption'#6#9'&Kopieren'#4'Hint'#6#8'Kopieren'#10'ImageIndex'#2#7
-  +#8'ShortCut'#3'C@'#0#0#10'TEditPaste'#10'EditPaste1'#8'Category'#6#10'Bearbe'
-  +'iten'#7'Caption'#6#10'&Einf'#195#188'gen'#4'Hint'#6#9'Einf'#195#188'gen'#10
-  +'ImageIndex'#2#8#8'ShortCut'#3'V@'#0#0#11'TEditDelete'#11'EditDelete1'#8'Cat'
-  +'egory'#6#10'Bearbeiten'#7'Caption'#6#9'&L'#195#182'schen'#10'ImageIndex'#2#9
-  +#8'ShortCut'#2'.'#0#0#0#16'TPageSetupDialog'#16'PageSetupDialog1'#4'left'#3
-  +#176#0#3'top'#2#8#0#0#19'TPrinterSetupDialog'#19'PrinterSetupDialog1'#4'left'
-  +#3#176#0#3'top'#2'8'#0#0#12'TPrintDialog'#12'PrintDialog1'#4'left'#3#176#0#3
-  +'top'#2'h'#0#0#10'TPopupMenu'#10'PopupMenu1'#4'left'#3#176#0#3'top'#3#216#0#0
-  +#9'TMenuItem'#9'PopupUndo'#7'Caption'#6#4'Undo'#10'ImageIndex'#2#5#7'OnClick'
-  +#7#14'PopupUndoClick'#0#0#9'TMenuItem'#9'PopupDiv1'#7'Caption'#6#1'-'#0#0#9
-  +'TMenuItem'#8'PopupCut'#7'Caption'#6#3'Cut'#10'ImageIndex'#2#6#7'OnClick'#7
-  +#13'PopupCutClick'#0#0#9'TMenuItem'#9'PopupCopy'#7'Caption'#6#4'Copy'#10'Ima'
-  +'geIndex'#2#7#7'OnClick'#7#14'PopupCopyClick'#0#0#9'TMenuItem'#10'PopupPaste'
-  +#7'Caption'#6#5'Paste'#10'ImageIndex'#2#8#7'OnClick'#7#15'PopupPasteClick'#0
-  +#0#9'TMenuItem'#9'PoputDiv2'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#15'PopupCopy'
-  +'Result'#7'Caption'#6#11'Copy Result'#10'ImageIndex'#2#10#7'OnClick'#7#20'Po'
-  ,'pupCopyResultClick'#0#0#0#0
+  +'MenuItem'#11'Divider_1_1'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#8'CaseItem'#7
+  +'Caption'#6#12'Falldaten...'#7'OnClick'#7#13'CaseItemClick'#0#0#9'TMenuItem'
+  +#11'Divider_1_2'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#17'PageSetupMenuItem'#7
+  +'Caption'#6#12'Papierformat'#7'OnClick'#7#22'PageSetupMenuItemClick'#0#0#9'T'
+  +'MenuItem'#13'PrintMenuItem'#7'Caption'#6#7'Drucken'#8'ShortCut'#3'P'#16#7'O'
+  +'nClick'#7#18'PrintMenuItemClick'#0#0#9'TMenuItem'#11'Divider_1_3'#7'Caption'
+  +#6#1'-'#0#0#9'TMenuItem'#12'QuitMenuItem'#7'Caption'#6#7'Beenden'#8'ShortCut'
+  +#3'Q'#16#7'OnClick'#7#13'Beenden1Click'#0#0#0#9'TMenuItem'#8'EditMenu'#7'Cap'
+  +'tion'#6#10'Bearbeiten'#0#9'TMenuItem'#12'UndoMenuItem'#6'Action'#7#9'EditUn'
+  +'do1'#4'Hint'#6#10'Widerrufen'#8'ShortCut'#3'Y'#16#7'OnClick'#7#17'UndoMenuI'
+  +'temClick'#0#0#9'TMenuItem'#11'Divider_2_1'#7'Caption'#6#1'-'#0#0#9'TMenuIte'
+  +'m'#11'CutMenuItem'#6'Action'#7#8'EditCut1'#8'ShortCut'#3'X'#16#7'OnClick'#7
+  +#16'CutMenuItemClick'#0#0#9'TMenuItem'#12'CopyMenuItem'#6'Action'#7#9'EditCo'
+  +'py1'#8'ShortCut'#3'C'#16#7'OnClick'#7#17'CopyMenuItemClick'#0#0#9'TMenuItem'
+  +#13'PasteMenuItem'#6'Action'#7#10'EditPaste1'#8'ShortCut'#3'V'#16#7'OnClick'
+  +#7#18'PasteMenuItemClick'#0#0#9'TMenuItem'#14'DeleteMenuItem'#6'Action'#7#11
+  +'EditDelete1'#4'Hint'#6#8'L'#195#182'schen'#7'OnClick'#7#19'DeleteMenuItemCl'
+  +'ick'#0#0#9'TMenuItem'#11'Divider_2_2'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#18
+  +'CopyResultMenuItem'#7'Caption'#6#17'Ergebnis kopieren'#8'ShortCut'#3'R'#16#7
+  +'OnClick'#7#22'Ergebniskopieren1Click'#0#0#9'TMenuItem'#11'Divider_2_3'#7'Ca'
+  +'ption'#6#1'-'#0#0#9'TMenuItem'#18'WinPreferencesItem'#7'Caption'#6#17'Einst'
+  +'ellungen ...'#7'OnClick'#7#23'WinPreferencesItemClick'#0#0#0#9'TMenuItem'#8
+  +'HelpMenu'#7'Caption'#6#4'Help'#0#9'TMenuItem'#8'HelpItem'#7'Caption'#6#14'S'
+  +'PINA Help ...'#8'ShortCut'#3#189'0'#7'OnClick'#7#13'HelpItemClick'#0#0#9'TM'
+  +'enuItem'#14'OnlineInfoItem'#7'Caption'#6#15'Online Info ...'#7'OnClick'#7#19
+  +'OnlineInfoItemClick'#0#0#9'TMenuItem'#11'Divider_3_1'#7'Caption'#6#1'-'#0#0
+  +#9'TMenuItem'#13'AboutMenuItem'#7'Caption'#6#11#195#156'ber SPINA'#7'OnClick'
+  +#7#11'HandleAbout'#0#0#0#0#11'TActionList'#11'ActionList1'#4'left'#3#176#0#3
+  +'top'#3#160#0#0#9'TEditUndo'#9'EditUndo1'#8'Category'#6#10'Bearbeiten'#7'Cap'
+  +'tion'#6#13'&R'#195#188'ckg'#195#164'ngig'#10'ImageIndex'#2#5#8'ShortCut'#4#8
+  +#128#0#0#0#0#8'TEditCut'#8'EditCut1'#8'Category'#6#10'Bearbeiten'#7'Caption'
+  +#6#13'&Ausschneiden'#4'Hint'#6#12'Ausschneiden'#10'ImageIndex'#2#6#8'ShortCu'
+  +'t'#3'X@'#0#0#9'TEditCopy'#9'EditCopy1'#8'Category'#6#10'Bearbeiten'#7'Capti'
+  +'on'#6#9'&Kopieren'#4'Hint'#6#8'Kopieren'#10'ImageIndex'#2#7#8'ShortCut'#3'C'
+  +'@'#0#0#10'TEditPaste'#10'EditPaste1'#8'Category'#6#10'Bearbeiten'#7'Caption'
+  +#6#10'&Einf'#195#188'gen'#4'Hint'#6#9'Einf'#195#188'gen'#10'ImageIndex'#2#8#8
+  +'ShortCut'#3'V@'#0#0#11'TEditDelete'#11'EditDelete1'#8'Category'#6#10'Bearbe'
+  +'iten'#7'Caption'#6#9'&L'#195#182'schen'#10'ImageIndex'#2#9#8'ShortCut'#2'.'
+  +#0#0#0#16'TPageSetupDialog'#16'PageSetupDialog1'#4'left'#3#176#0#3'top'#2#8#0
+  +#0#19'TPrinterSetupDialog'#19'PrinterSetupDialog1'#4'left'#3#176#0#3'top'#2
+  +'8'#0#0#12'TPrintDialog'#12'PrintDialog1'#4'left'#3#176#0#3'top'#2'h'#0#0#10
+  +'TPopupMenu'#10'PopupMenu1'#4'left'#3#176#0#3'top'#3#216#0#0#9'TMenuItem'#9
+  +'PopupUndo'#7'Caption'#6#4'Undo'#10'ImageIndex'#2#5#7'OnClick'#7#14'PopupUnd'
+  +'oClick'#0#0#9'TMenuItem'#9'PopupDiv1'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#8
+  +'PopupCut'#7'Caption'#6#3'Cut'#10'ImageIndex'#2#6#7'OnClick'#7#13'PopupCutCl'
+  +'ick'#0#0#9'TMenuItem'#9'PopupCopy'#7'Caption'#6#4'Copy'#10'ImageIndex'#2#7#7
+  +'OnClick'#7#14'PopupCopyClick'#0#0#9'TMenuItem'#10'PopupPaste'#7'Caption'#6#5
+  +'Paste'#10'ImageIndex'#2#8#7'OnClick'#7#15'PopupPasteClick'#0#0#9'TMenuItem'
+  ,#9'PoputDiv2'#7'Caption'#6#1'-'#0#0#9'TMenuItem'#15'PopupCopyResult'#7'Capti'
+  +'on'#6#11'Copy Result'#10'ImageIndex'#2#10#7'OnClick'#7#20'PopupCopyResultCl'
+  +'ick'#0#0#0#0
 ]);

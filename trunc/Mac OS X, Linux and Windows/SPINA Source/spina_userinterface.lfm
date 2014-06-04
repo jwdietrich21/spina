@@ -1035,6 +1035,13 @@ object Hauptschirm: THauptschirm
       object Divider_1_1: TMenuItem
         Caption = '-'
       end
+      object CaseItem: TMenuItem
+        Caption = 'Falldaten...'
+        OnClick = CaseItemClick
+      end
+      object Divider_1_2: TMenuItem
+        Caption = '-'
+      end
       object PageSetupMenuItem: TMenuItem
         Caption = 'Papierformat'
         OnClick = PageSetupMenuItemClick
@@ -1044,7 +1051,7 @@ object Hauptschirm: THauptschirm
         ShortCut = 4176
         OnClick = PrintMenuItemClick
       end
-      object Divider_1_2: TMenuItem
+      object Divider_1_3: TMenuItem
         Caption = '-'
       end
       object QuitMenuItem: TMenuItem

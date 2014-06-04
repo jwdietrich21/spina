@@ -1,0 +1,182 @@
+object CaseEditorForm: TCaseEditorForm
+  Left = 264
+  Height = 348
+  Top = 157
+  Width = 501
+  BorderStyle = bsDialog
+  Caption = 'Fall-Editor'
+  ClientHeight = 348
+  ClientWidth = 501
+  LCLVersion = '1.2.2.0'
+  object CaseIDEdit: TEdit
+    AnchorSideLeft.Control = CaseIDLabel
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 151
+    Height = 21
+    Top = 32
+    Width = 311
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 13
+    BorderSpacing.Right = 39
+    TabOrder = 0
+  end
+  object PIDEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 151
+    Height = 21
+    Top = 64
+    Width = 311
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 39
+    TabOrder = 1
+  end
+  object NameEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 151
+    Height = 21
+    Top = 96
+    Width = 311
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 39
+    TabOrder = 2
+  end
+  object PlacerEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 151
+    Height = 21
+    Top = 224
+    Width = 311
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 39
+    TabOrder = 5
+  end
+  object OBDateEdit: TDateEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = PlacerEdit
+    AnchorSideRight.Side = asrBottom
+    Left = 151
+    Height = 21
+    Top = 264
+    Width = 311
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    OKCaption = 'OK'
+    CancelCaption = 'Cancel'
+    DateOrder = doNone
+    ButtonWidth = 23
+    Anchors = [akTop, akLeft, akRight]
+    CharCase = ecNormal
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 6
+  end
+  object OKButton: TButton
+    AnchorSideRight.Control = PlacerEdit
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 388
+    Height = 25
+    Top = 302
+    Width = 74
+    Anchors = [akTop, akRight]
+    BorderSpacing.Bottom = 26
+    Caption = 'OK'
+    OnClick = OKButtonClick
+    TabOrder = 7
+  end
+  object CaseIDLabel: TLabel
+    Left = 24
+    Height = 13
+    Top = 40
+    Width = 114
+    Caption = 'Aufnahme- oder Fall-Nr.:'
+    ParentColor = False
+  end
+  object PIDLabel: TLabel
+    Left = 24
+    Height = 13
+    Top = 72
+    Width = 21
+    Caption = 'PID:'
+    ParentColor = False
+  end
+  object NameLabel: TLabel
+    Left = 24
+    Height = 13
+    Top = 104
+    Width = 31
+    Caption = 'Name:'
+    ParentColor = False
+  end
+  object DoBLabel: TLabel
+    Left = 24
+    Height = 13
+    Top = 168
+    Width = 69
+    Caption = 'Geburtsdatum:'
+    ParentColor = False
+  end
+  object PlacerLabel: TLabel
+    Left = 24
+    Height = 13
+    Top = 232
+    Width = 50
+    Caption = 'Einsender:'
+    ParentColor = False
+  end
+  object OBDateLabel: TLabel
+    Left = 24
+    Height = 13
+    Top = 272
+    Width = 104
+    Caption = 'Untersuchungsdatum:'
+    ParentColor = False
+  end
+  object DoBEdit: TDateEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = PlacerEdit
+    AnchorSideRight.Side = asrBottom
+    Left = 151
+    Height = 21
+    Top = 160
+    Width = 311
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    OKCaption = 'OK'
+    CancelCaption = 'Cancel'
+    DateOrder = doNone
+    ButtonWidth = 23
+    Anchors = [akTop, akLeft, akRight]
+    CharCase = ecNormal
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 4
+  end
+  object GivenNameEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 151
+    Height = 21
+    Top = 128
+    Width = 311
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 39
+    TabOrder = 3
+  end
+  object GivenNameLabel: TLabel
+    Left = 24
+    Height = 13
+    Top = 136
+    Width = 57
+    Caption = 'Vorname(n):'
+    ParentColor = False
+  end
+end

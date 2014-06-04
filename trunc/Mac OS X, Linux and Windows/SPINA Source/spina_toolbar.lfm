@@ -11,7 +11,7 @@ object SPINAToolbar: TSPINAToolbar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 88
+  ClientHeight = 68
   ClientWidth = 883
   DefaultMonitor = dmMainForm
   DockSite = True
@@ -157,10 +157,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 782
+    Left = 781
     Height = 16
     Top = 7
-    Width = 69
+    Width = 70
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
@@ -215,6 +215,13 @@ object SPINAToolbar: TSPINAToolbar
       object Divider_1_1: TMenuItem
         Caption = '-'
       end
+      object CaseItem: TMenuItem
+        Caption = 'Falldaten...'
+        OnClick = CaseItemClick
+      end
+      object Divider_1_2: TMenuItem
+        Caption = '-'
+      end
       object PageSetupMenuItem: TMenuItem
         Caption = 'Papierformat'
         OnClick = PageSetupMenuItemClick
@@ -224,7 +231,7 @@ object SPINAToolbar: TSPINAToolbar
         ShortCut = 4176
         OnClick = PrintMenuItemClick
       end
-      object Divider_1_2: TMenuItem
+      object Divider_1_3: TMenuItem
         Caption = '-'
       end
       object QuitMenuItem: TMenuItem
@@ -656,4 +663,4 @@ object SPINAToolbar: TSPINAToolbar
     left = 552
     top = 9
   end
-end
+end

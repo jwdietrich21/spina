@@ -52,7 +52,7 @@ type
     Divider_0_1: TMenuItem;
     Divider_0_2: TMenuItem;
     Divider_1_1: TMenuItem;
-    Divider_1_2: TMenuItem;
+    Divider_1_3: TMenuItem;
     Divider_2_1: TMenuItem;
     Divider_2_2: TMenuItem;
     Divider_2_3: TMenuItem;
@@ -61,6 +61,8 @@ type
     FileMenu: TMenuItem;
     HelpItem: TMenuItem;
     HelpMenu: TMenuItem;
+    CaseItem: TMenuItem;
+    Divider_1_2: TMenuItem;
     SaveMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
     ToolbarImageList: TImageList;
@@ -86,6 +88,7 @@ type
     WinPreferencesItem: TMenuItem;
     procedure AboutMenuItemClick(Sender: TObject);
     procedure AppleAboutMenuItemClick(Sender: TObject);
+    procedure CaseItemClick(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure CopyResultToolButtonClick(Sender: TObject);
@@ -388,6 +391,11 @@ begin
   ShowAboutBox;
 end;
 
+procedure TSPINAToolbar.CaseItemClick(Sender: TObject);
+begin
+  Hauptschirm.CaseItemClick(Sender);
+end;
+
 procedure TSPINAToolbar.AboutMenuItemClick(Sender: TObject);
 begin
   ShowAboutBox;
@@ -489,4 +497,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

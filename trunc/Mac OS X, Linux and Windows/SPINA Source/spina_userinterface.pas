@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
   gettext, SPINA_Types, SPINA_Resources, UnitConverter, SPINA_Engine, SPINA_AboutBox,
-  SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences,
+  SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences, CaseEditor,
   HandleImpEx, Math, LCLIntf
   {$IFDEF MSWINDOWS}
   , Windows
@@ -96,6 +96,8 @@ type
     HintField: TMemo;
     HintGroupBox: TGroupBox;
     Image1: TImage;
+    CaseItem: TMenuItem;
+    Divider_1_3: TMenuItem;
     SaveMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
     SPINALabel: TImage;
@@ -152,6 +154,7 @@ type
     procedure AppleMenuClick(Sender: TObject);
     procedure Beenden1Click(Sender: TObject);
     procedure Calculate_ButtonClick(Sender: TObject);
+    procedure CaseItemClick(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
     procedure CutMenuItemClick(Sender: TObject);
@@ -692,6 +695,11 @@ begin
   ResultForm.AlphaBlendValue := 220;
   Hauptschirm.HintField.Text := gAnleitung2;
   Hauptschirm.HintField.Hint := Hauptschirm.HintField.Text;
+end;
+
+procedure THauptschirm.CaseItemClick(Sender: TObject);
+begin
+  CaseEditorForm.ShowModal;
 end;
 
 procedure THauptschirm.CopyMenuItemClick(Sender: TObject);
