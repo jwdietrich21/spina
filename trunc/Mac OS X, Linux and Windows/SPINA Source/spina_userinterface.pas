@@ -210,7 +210,7 @@ var
   gcalcCounter: longint;
   gAppPath, gAppDir, gAppName: string;
   gGermanCodes: tCodeList;
-  tabX: integer;
+  tabX1, tabX2, tabX3: integer;
 {$IFDEF LCLCarbon}
   gItl0Handle: Intl0Hndl;
   gRegion: integer;
@@ -756,12 +756,13 @@ procedure THauptschirm.FormCreate(Sender: TObject);
 var
   theCode: integer;
 begin
-  Hauptschirm.HorzScrollBar.Visible := False;
-  Hauptschirm.VertScrollBar.Visible := False;
-  Hauptschirm.AutoScroll := False;
-  Hauptschirm.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
+  HorzScrollBar.Visible := False;
+  VertScrollBar.Visible := False;
+  AutoScroll := False;
+  SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
   GetPreferences;
   GetReferenceValues(RRFile, theCode);
+  //CaseEditorForm.FillCaseRecord(caseRecord);
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
@@ -992,14 +993,22 @@ begin
   Result := Round(AUnits * (ADPI / AnInch));
 end;
 
-procedure PrinterWriteln(H: integer; var currentX, currentY: integer; theString: string);
+procedure PrinterWriteln(H: integer; var currentX, currentY: integer; theString: string; bold: boolean);
 begin
+  if bold then
+    Printer.Canvas.Font.Style := [fsBold]
+  else
+    Printer.Canvas.Font.Style := [];
   Printer.Canvas.TextOut(currentX, currentY, theString);
   Inc(currentY, H);
 end;
 
-procedure PrinterWrite(H: integer; var currentX, currentY: integer; theString: string);
+procedure PrinterWrite(H: integer; var currentX, currentY: integer; theString: string; bold: boolean);
 begin
+  if bold then
+    Printer.Canvas.Font.Style := [fsBold]
+  else
+    Printer.Canvas.Font.Style := [];
   Printer.Canvas.TextOut(currentX, currentY, theString);
 end;
 
@@ -1010,46 +1019,79 @@ var
 begin
   theSize := Printer.Canvas.Font.Size;
   Printer.Canvas.Font.Size := trunc(theSize * 1.7);
-  Printer.Canvas.Font.Style := [fsBold];
-  PrinterWrite(H, currentX, currentY, 'SPINA Thyr Report');
+  PrinterWrite(H, currentX, currentY, 'SPINA Thyr Report', true);
   if gPreferences.MSH_ID <> '' then
   begin
     Printer.Canvas.Font.Size := theSize;
     IDWidth := Printer.Canvas.TextWidth(gPreferences.MSH_ID);
     IDPos.x := Printer.PageWidth - rightMargin - IDWidth;
     IDPos.y := currentY + H div 2;
-    PrinterWrite(H, IDPos.x, IDPos.y, gPreferences.MSH_ID);
+    PrinterWrite(H, IDPos.x, IDPos.y, gPreferences.MSH_ID, true);
     Printer.Canvas.Font.Size := trunc(theSize * 1.7);
   end;
-  PrinterWriteln(H, currentX, currentY, '');
-  PrinterWriteln(H, currentX, currentY, '');
-  PrinterWriteln(H, currentX, currentY, '');
+  PrinterWriteln(H, currentX, currentY, '', true);
+  PrinterWriteln(H, currentX, currentY, '', true);
+  PrinterWriteln(H, currentX, currentY, '', true);
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
-  PrinterWriteln(H, currentX, currentY, '');
-  PrinterWriteln(H, currentX, currentY, '');
+  PrinterWriteln(H, currentX, currentY, '', true);
   Printer.Canvas.Font.Style := [];
   Printer.Canvas.Font.Size := theSize;
   if gInterfaceLanguage = German then
   begin
-    PrinterWrite(H, currentX, currentY, kPatientenname1);
-    PrinterWriteln(H, tabX, currentY, kEinsender1);
-    PrinterWrite(H, currentX, currentY, kGeburtsdatum1);
-    PrinterWriteln(H, tabX, currentY, kUntersuchungsdatum1);
-    PrinterWriteln(H, currentX, currentY, '');
-    PrinterWriteln(H, currentX, currentY, '');
-    PrinterWriteln(H, currentX, currentY, '');
+    PrinterWrite(H, currentX, currentY, kPID1, false);
+    if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + ' / ' +
+      Hauptschirm.caseRecord.CaseID, true);
+    PrinterWriteln(H, currentX, currentY, '', true);
+    PrinterWrite(H, currentX, currentY, kPatientenname1, false);
+    if (Hauptschirm.caseRecord.Name <> '') and
+      (Hauptschirm.caseRecord.GivenNames <> '') then
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name + ', '
+        + Hauptschirm.caseRecord.GivenNames, true);
+    PrinterWrite(H, tabX2, currentY, kEinsender1, false);
+    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, true);
+    PrinterWrite(H, currentX, currentY, kGeburtsdatum1, false);
+    if not isNaN(Hauptschirm.caseRecord.DoBDate) then
+      PrinterWrite(H, tabX1, currentY, DateToStr(Hauptschirm.caseRecord.DoBDate)
+      , true);
+    PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum1, false);
+    if not isNaN(Hauptschirm.caseRecord.OBDate) then
+      PrinterWrite(H, tabX3, currentY, DateToStr(Hauptschirm.caseRecord.OBDate)
+      , true);
+    PrinterWriteln(H, currentX, currentY, '', false);
+    PrinterWriteln(H, currentX, currentY, '', false);
+    PrinterWriteln(H, currentX, currentY, '', false);
   end
   else
   begin
-    PrinterWrite(H, currentX, currentY, kPatientenname2);
-    PrinterWriteln(H, tabX, currentY, kEinsender2);
-    PrinterWrite(H, currentX, currentY, kGeburtsdatum2);
-    PrinterWriteln(H, tabX, currentY, kUntersuchungsdatum2);
-    PrinterWriteln(H, currentX, currentY, '');
-    PrinterWriteln(H, currentX, currentY, '');
-    PrinterWriteln(H, currentX, currentY, '');
+    PrinterWrite(H, currentX, currentY, kPID2, false);
+    if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + ' / ' +
+      Hauptschirm.caseRecord.CaseID, true);
+    PrinterWriteln(H, currentX, currentY, '', true);
+    PrinterWrite(H, currentX, currentY, kPatientenname2, false);
+    if (Hauptschirm.caseRecord.Name <> '') and
+      (Hauptschirm.caseRecord.GivenNames <> '') then
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name + ', '
+        + Hauptschirm.caseRecord.GivenNames, true);
+    PrinterWrite(H, tabX2, currentY, kEinsender2, false);
+    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, true);
+    PrinterWrite(H, currentX, currentY, kGeburtsdatum2, false);
+    if not isNaN(Hauptschirm.caseRecord.DoBDate) then
+      PrinterWrite(H, tabX1, currentY, DateToStr(Hauptschirm.caseRecord.DoBDate)
+      , true);
+    PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum2, false);
+    if not isNaN(Hauptschirm.caseRecord.OBDate) then
+      PrinterWrite(H, tabX3, currentY, DateToStr(Hauptschirm.caseRecord.OBDate)
+      , true);
+    PrinterWriteln(H, currentX, currentY, '', false);
+    PrinterWriteln(H, currentX, currentY, '', false);
+    PrinterWriteln(H, currentX, currentY, '', false);
   end;
+  Printer.Canvas.MoveTo(currentX, currentY - H div 2);
+  Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
+  PrinterWriteln(H, currentX, currentY, '', false);
 end;
 
 procedure PrintFooter(H: integer; var currentX, currentY, rightMargin: integer);
@@ -1059,14 +1101,14 @@ begin
   DateTimeToString(theDate, 'dddd"," dd mmmm yyyy', date);
   DateTimeToString(theTime, '"," t', time);
   theDate := SysToUTF8(theDate);
-  PrinterWriteln(H, currentX, currentY, '');
+  PrinterWriteln(H, currentX, currentY, '', false);
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   Printer.Canvas.Font.Color := clGray;
   PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName,
-    '  |  ', gDruckdatum, theDate, theTime));
-  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + GetFileVersion);
-  PrinterWriteln(H, currentX, currentY, '');
+    '  |  ', gDruckdatum, theDate, theTime), false);
+  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + GetFileVersion, false);
+  PrinterWriteln(H, currentX, currentY, '', false);
   Printer.Canvas.Font.Color := clBlack;
 end;
 
@@ -1077,6 +1119,7 @@ var
 begin
   if DoPrintSetup then
   begin
+    CaseEditorForm.FillCaseRecord(Hauptschirm.caseRecord);
     gTopMargin := 2;
     gLeftMargin := 2;
     gRightMargin := 2;
@@ -1096,8 +1139,13 @@ begin
       Printer.Canvas.Pen.Color := clBlack;
       Printer.Canvas.Pen.Width := 2;
       H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
-      tabX := Printer.PageWidth - marginXr - trunc(2.5 *
+      tabX1 := marginX + Printer.Canvas.TextWidth(gGeburtsdatum) + 130;
+      tabX2 := Printer.PageWidth - marginXr - trunc(2.5 *
         Printer.Canvas.TextWidth(gUntersuchungsdatum));
+      if gInterfaceLanguage = German then
+        tabX3 := tabX2 + Printer.Canvas.TextWidth(kFallnummer1) + 26
+      else
+        tabX3 := tabX2 + Printer.Canvas.TextWidth(kFallnummer2) + 26;
       PrintCaption(H, currentX, currentY, marginXr);
       lastPos := 1;
       lastY := currentY;
@@ -1109,7 +1157,7 @@ begin
         else
           resultLine := remainder;
         remainder := copy(remainder, returnPos + 2, length(remainder));
-        PrinterWriteln(H, currentX, currentY, resultLine);
+        PrinterWriteln(H, currentX, currentY, resultLine, false);
       until returnPos = 0;
       currentY := lastY;
       remainder := gReferenceValueString1;
@@ -1120,7 +1168,7 @@ begin
         else
           resultLine := remainder;
         remainder := copy(remainder, returnPos + 2, length(remainder));
-        PrinterWriteln(H, tabX, currentY, resultLine);
+        PrinterWriteln(H, tabX2, currentY, resultLine, false);
       until returnPos = 0;
       currentX := marginX;
       currentY := Printer.PageHeight - 5 * H;

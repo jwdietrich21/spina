@@ -50,6 +50,8 @@ type
     GT, GD, TSHI, rawTTSI, TTSI: real;
     GTs, GDs, flaggedGTs, flaggedGDs: Str255;
     TSHIs, TTSIs, flaggedTSHIs, flaggedTTSIs: Str255;
+    CaseID, PID, Name, GivenNames, Placer: string;
+    DoBDate, OBDate: TDateTime;
     MessageString: string[255];
   end;
 

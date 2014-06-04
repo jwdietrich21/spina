@@ -70,6 +70,7 @@ object CaseEditorForm: TCaseEditorForm
     OKCaption = 'OK'
     CancelCaption = 'Cancel'
     DateOrder = doNone
+    ButtonOnlyWhenFocused = True
     ButtonWidth = 23
     Anchors = [akTop, akLeft, akRight]
     CharCase = ecNormal
@@ -89,6 +90,7 @@ object CaseEditorForm: TCaseEditorForm
     Anchors = [akTop, akRight]
     BorderSpacing.Bottom = 26
     Caption = 'OK'
+    Default = True
     OnClick = OKButtonClick
     TabOrder = 7
   end
@@ -152,6 +154,7 @@ object CaseEditorForm: TCaseEditorForm
     OKCaption = 'OK'
     CancelCaption = 'Cancel'
     DateOrder = doNone
+    ButtonOnlyWhenFocused = True
     ButtonWidth = 23
     Anchors = [akTop, akLeft, akRight]
     CharCase = ecNormal
@@ -178,5 +181,21 @@ object CaseEditorForm: TCaseEditorForm
     Width = 57
     Caption = 'Vorname(n):'
     ParentColor = False
+  end
+  object CancelButton: TButton
+    AnchorSideRight.Control = OKButton
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 280
+    Height = 25
+    Top = 302
+    Width = 95
+    Anchors = [akTop, akRight]
+    BorderSpacing.Right = 13
+    BorderSpacing.Bottom = 26
+    Cancel = True
+    Caption = 'Abbrechen'
+    OnClick = CancelButtonClick
+    TabOrder = 8
   end
 end

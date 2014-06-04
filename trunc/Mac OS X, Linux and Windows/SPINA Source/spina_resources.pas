@@ -53,6 +53,10 @@ const
   kGeburtsdatum2 = 'Birth date: ';
   kEinsender1 = 'Einsender: ';
   kEinsender2 = 'Sender: ';
+  kPID1 = 'PID: ';
+  kPID2 = 'PID: ';
+  kFallnummer1 = 'Fall- / Aufnahmenummer: ';
+  kFallnummer2 = 'Case / Admission Number: ';
   kDruckdatum1 = 'Druckdatum: ';
   kDruckdatum2 = 'Printing Date: ';
   kBenutzername1 = 'Benutzerkennung: ';
@@ -98,4 +102,4 @@ const
 implementation
 
 end.
-
+
