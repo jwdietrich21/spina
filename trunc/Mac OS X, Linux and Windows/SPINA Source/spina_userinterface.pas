@@ -743,6 +743,7 @@ begin
   Hauptschirm.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
   Hauptschirm.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
   Hauptschirm.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
+  Hauptschirm.CaseItem.ShortCut := ShortCut(VK_S, modifierKey + [ssShift]);
   Hauptschirm.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
   Hauptschirm.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
   Hauptschirm.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
@@ -1042,23 +1043,23 @@ begin
     PrinterWrite(H, currentX, currentY, kPID1, false);
     if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
       PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + ' / ' +
-      Hauptschirm.caseRecord.CaseID, true);
-    PrinterWriteln(H, currentX, currentY, '', true);
+      Hauptschirm.caseRecord.CaseID, false);
+    PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWrite(H, currentX, currentY, kPatientenname1, false);
     if (Hauptschirm.caseRecord.Name <> '') and
       (Hauptschirm.caseRecord.GivenNames <> '') then
       PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name + ', '
-        + Hauptschirm.caseRecord.GivenNames, true);
+        + Hauptschirm.caseRecord.GivenNames, false);
     PrinterWrite(H, tabX2, currentY, kEinsender1, false);
-    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, true);
+    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, false);
     PrinterWrite(H, currentX, currentY, kGeburtsdatum1, false);
     if not isNaN(Hauptschirm.caseRecord.DoBDate) then
       PrinterWrite(H, tabX1, currentY, DateToStr(Hauptschirm.caseRecord.DoBDate)
-      , true);
+      , false);
     PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum1, false);
     if not isNaN(Hauptschirm.caseRecord.OBDate) then
       PrinterWrite(H, tabX3, currentY, DateToStr(Hauptschirm.caseRecord.OBDate)
-      , true);
+      , false);
     PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWriteln(H, currentX, currentY, '', false);
@@ -1068,23 +1069,23 @@ begin
     PrinterWrite(H, currentX, currentY, kPID2, false);
     if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
       PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + ' / ' +
-      Hauptschirm.caseRecord.CaseID, true);
-    PrinterWriteln(H, currentX, currentY, '', true);
+      Hauptschirm.caseRecord.CaseID, false);
+    PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWrite(H, currentX, currentY, kPatientenname2, false);
     if (Hauptschirm.caseRecord.Name <> '') and
       (Hauptschirm.caseRecord.GivenNames <> '') then
       PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name + ', '
-        + Hauptschirm.caseRecord.GivenNames, true);
+        + Hauptschirm.caseRecord.GivenNames, false);
     PrinterWrite(H, tabX2, currentY, kEinsender2, false);
-    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, true);
+    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, false);
     PrinterWrite(H, currentX, currentY, kGeburtsdatum2, false);
     if not isNaN(Hauptschirm.caseRecord.DoBDate) then
       PrinterWrite(H, tabX1, currentY, DateToStr(Hauptschirm.caseRecord.DoBDate)
-      , true);
+      , false);
     PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum2, false);
     if not isNaN(Hauptschirm.caseRecord.OBDate) then
       PrinterWrite(H, tabX3, currentY, DateToStr(Hauptschirm.caseRecord.OBDate)
-      , true);
+      , false);
     PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWriteln(H, currentX, currentY, '', false);
@@ -1139,13 +1140,13 @@ begin
       Printer.Canvas.Pen.Color := clBlack;
       Printer.Canvas.Pen.Width := 2;
       H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
-      tabX1 := marginX + Printer.Canvas.TextWidth(gGeburtsdatum) + 130;
+      tabX1 := marginX + Printer.Canvas.TextWidth(gGeburtsdatum) + GetPoints(1, ADPI);
       tabX2 := Printer.PageWidth - marginXr - trunc(2.5 *
         Printer.Canvas.TextWidth(gUntersuchungsdatum));
       if gInterfaceLanguage = German then
-        tabX3 := tabX2 + Printer.Canvas.TextWidth(kFallnummer1) + 26
+        tabX3 := tabX2 + Printer.Canvas.TextWidth(kFallnummer1) + GetPoints(0.5, ADPI)
       else
-        tabX3 := tabX2 + Printer.Canvas.TextWidth(kFallnummer2) + 26;
+        tabX3 := tabX2 + Printer.Canvas.TextWidth(kFallnummer2) + GetPoints(0.5, ADPI);
       PrintCaption(H, currentX, currentY, marginXr);
       lastPos := 1;
       lastY := currentY;

@@ -161,6 +161,7 @@ begin
     Hauptschirm.OpenMenuItem.Caption := 'Open';
     Hauptschirm.SaveMenuItem.Caption := 'Save';
     Hauptschirm.CloseMenuItem.Caption := 'Close';
+    Hauptschirm.CaseItem.Caption := 'Case Data...';
     Hauptschirm.PrintMenuItem.Caption := 'Print';
     Hauptschirm.PageSetupMenuItem.Caption := 'Page Setup...';
     Hauptschirm.QuitMenuItem.Caption := 'Quit';
@@ -187,6 +188,7 @@ begin
     SPINAToolbar.NewMenuItem.Caption := 'New Calculation...';
     SPINAToolbar.OpenMenuItem.Caption := 'Open';
     SPINAToolbar.SaveMenuItem.Caption := 'Save';
+    SPINAToolbar.CaseItem.Caption := 'Case Data...';
     SPINAToolbar.CloseMenuItem.Caption := 'Close';
     SPINAToolbar.PrintMenuItem.Caption := 'Print';
     SPINAToolbar.PageSetupMenuItem.Caption := 'Page Setup...';
@@ -306,7 +308,10 @@ begin
   SPINAToolbar.HelpItem.ShortCut := ShortCut(VK_F1, []);
   {$ENDIF}
   SPINAToolbar.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
+  SPINAToolbar.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
+  SPINAToolbar.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
   SPINAToolbar.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
+  SPINAToolbar.CaseItem.ShortCut := ShortCut(VK_S, modifierKey + [ssShift]);
   SPINAToolbar.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
   SPINAToolbar.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
   SPINAToolbar.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
@@ -497,4 +502,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.
