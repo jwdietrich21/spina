@@ -51,7 +51,7 @@ begin
   end;
 end;
 
-procedure SaveAsHL7file(acaseRecord: tCaseRecord);
+procedure SaveAsHL7file(aCaseRecord: tCaseRecord);
 var
   HL7Message: THL7Message;
   newSegment: THL7Segment;
@@ -242,6 +242,18 @@ begin
   end;
 end;
 
+procedure SaveAsTextFile(aCaseRecord: tCaseRecord);
+var
+  theString: ANSIString;
+begin
+  theString := aCaseRecord.PID + '/' + aCaseRecord.CaseID + kCR + kLF +
+    aCaseRecord.Name + ', ' + aCaseRecord.GivenNames + ' *' +
+    DateToStr(aCaseRecord.DoBDate) + kCR + kLF +
+    DateToStr(aCaseRecord.OBDate) + ' (' + aCaseRecord.Placer + ')'+
+    kCR + kLF + kCR + kLF + gResultString;
+  SaveStringToPath(theString, SPINAToolbar.SaveResultsDialog.FileName);
+end;
+
 procedure SaveResults(caseRecord: tCaseRecord);
 var
   filePath: string;
@@ -256,10 +268,10 @@ begin
         theFilterIndex := theFilterIndex + 1;
     {$ENDIF}
     case theFilterIndex of
-      1: SaveStringToPath(gResultString, SPINAToolbar.SaveResultsDialog.FileName);
+      1: SaveAsTextFile(caseRecord);
       2: SaveAsHL7file(caseRecord);
     end;
   end;
 end;
 
-end.
+end.
