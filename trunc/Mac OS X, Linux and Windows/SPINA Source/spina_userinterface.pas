@@ -892,6 +892,7 @@ end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
 begin
+  CaseEditorForm.FillCaseRecord(Hauptschirm.caseRecord);
   SaveResults(caseRecord);
 end;
 

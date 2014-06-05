@@ -25,8 +25,9 @@ unit HandleImpEx;
 interface
 
 uses
-  Classes, SysUtils, Dialogs, LCLVersion,
-  SPINA_Engine, SPINA_Types, HL7, MSH, MSA, OBR, OBX;
+  Classes, SysUtils, Dialogs, LCLVersion, Math,
+  SPINA_Engine, SPINA_Types, UnitConverter,
+  HL7, MSH, MSA, PID, PV1, OBR, OBX, SPM;
 
 procedure SaveResults(caseRecord: tCaseRecord);
 
@@ -56,6 +57,10 @@ var
   HL7Message: THL7Message;
   newSegment: THL7Segment;
   delimiters: str5;
+  thePID: tPID;
+  thePV1: tPV1;
+  theSPM: tSPM;
+  setIDcounter: integer;
   sendingApp, sendingFac, receivingApp, receivingFac: str227;
   dateTime: str26;
   security: str40;
@@ -124,6 +129,109 @@ begin
       AccAckType, AppAckType, countryCode, charSet,
       messageLanguage, altCharHandlScheme, profileID);
 
+    thePID.SetID := '1';
+    if isNaN(aCaseRecord.DoBDate) then
+      thePID.BirthDateTime := ''
+    else
+      thePID.BirthDateTime := EncodedDateTime(aCaseRecord.DoBDate);
+    thePID.PatientIDList := aCaseRecord.PID +
+      HL7Message.Delimiters.ComponentSeparator + aCaseRecord.CaseID;
+    thePID.PatientName := aCaseRecord.Name +
+      HL7Message.Delimiters.ComponentSeparator + aCaseRecord.GivenNames;
+    thePID.AdminSex := '';
+    thePID.AltPatID := '';
+    thePID.BirthOrder := '';
+    thePID.BirthPlace := '';
+    thePID.BreedCode := '';
+    thePID.BusinessPhone := '';
+    thePID.Citizenship := '';
+    thePID.CountyCode := '';
+    thePID.DriverLicenseNumber := '';
+    thePID.EthnicGroup := '';
+    thePID.HomePhoe := '';
+    thePID.IDReliabilityCode := '';
+    thePID.IDReliabilityIndicator := '';
+    thePID.IDUnknownIndicator := '';
+    thePID.LastUpdateDateTime := '';
+    thePID.LastUpdateFacility := '';
+    thePID.MaritalStatus := '';
+    thePID.MothersID := '';
+    thePID.MothersMaidenName := '';
+    thePID.MultipleBirthID := '';
+    thePID.Nationality := '';
+    thePID.SpeciesCode := '';
+    thePID.SSNNumber := '';
+    thePID.Strain := '';
+    thePID.TribalCitizenship := '';
+    thePID.VeteransMilitaryStatus := '';
+    thePID.PatientID := '';
+    thePID.AltPatID := '';
+    thePID.PatientAlias := '';
+    thePID.PatientAccountNumber := '';
+    thePID.PatientAddress := '';
+    thePID.PatientDeathDateTime := '';
+    thePID.PatientDeathIndicator := '';
+    thePID.PatientTelecomInformation :='';
+    SetPID(HL7Message, thePID);
+
+    thePV1.SetID := '1';
+    thePV1.AssignedPatientLocation := aCaseRecord.Placer;
+    thePV1.AccountStatus := '';
+    thePV1.AssignedPatientLocation := '';
+    thePV1.AdmissionType := '';
+    thePV1.AdmitDateTime := '';
+    thePV1.AccountStatus := '';
+    thePV1.AdmitSource := '';
+    thePV1.AdmittingDoctor := '';
+    thePV1.AlternateVisitID := '';
+    thePV1.AmbulatoryStatus := '';
+    thePV1.AttendingDoctor := '';
+    thePV1.BadDeptAgencyCode := '';
+    thePV1.BadDeptRecoveryAmount := '';
+    thePV1.BadDeptTransferAmount := '';
+    thePV1.BedStatus := '';
+    thePV1.ChargePriceIndicator := '';
+    thePV1.ConsultingDoctor := '';
+    thePV1.ContractAmount := '';
+    thePV1.ContractCode := '';
+    thePV1.ContractEffectiveDate := '';
+    thePV1.ContractPeriod := '';
+    thePV1.CourtesyCode := '';
+    thePV1.CreditRate := '';
+    thePV1.CurrentPatientBalance := '';
+    thePV1.DeleteAccountDate := '';
+    thePV1.DeleteAccountIndicator := '';
+    thePV1.DietType := '';
+    thePV1.DischargeDateTime := '';
+    thePV1.DischargeDisposition := '';
+    thePV1.DischargedToLocation := '';
+    thePV1.FinancialClass := '';
+    thePV1.HospitalService := '';
+    thePV1.InterestCode := '';
+    thePV1.OtherHealthcareProvider := '';
+    thePV1.PatientClass := '';
+    thePV1.PatientType := '';
+    thePV1.PendingLocation := '';
+    thePV1.PreadmitNumber := '';
+    thePV1.PriorPatientLocation := '';
+    thePV1.PreadmitTestIndicator := '';
+    thePV1.PriorTemporaryLocation := '';
+    thePV1.ReadmissionIndicator := '';
+    thePV1.ReferringDoctor := '';
+    thePV1.ServiceEpisodeDescription := '';
+    thePV1.ServiceEpisodeID := '';
+    thePV1.ServicingFacility := '';
+    thePV1.TemporaryLocation := '';
+    thePV1.TotalAdustments := '';
+    thePV1.TotalCharges := '';
+    thePV1.TotalPayments := '';
+    thePV1.TransferToBadDeptCode := '';
+    thePV1.TransferToBadDeptDate := '';
+    thePV1.VIPIndicator := '';
+    thePV1.VisitIndicator := '';
+    thePV1.VisitNumber := '';
+    SetPV1(Hl7Message, thePV1);
+
     SetID := '1';
     PlacOrdNumb := '';
     FillOrdNumb := '';
@@ -134,7 +242,165 @@ begin
     ObsEndDateTime := '';
     SetOBR(HL7Message, SetID, PlacOrdNumb, FillOrdNumb, USI,
       Priority, ReqDateTime, ObsDateTime, ObsEndDateTime);
-    SetID := '1';
+
+    setIDcounter := 1;
+
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
+    ValueType := 'NM';
+    ObsID := 'TSH';
+    obsSubID := 'TSH';
+    obsValue := FloatToStrF(acaseRecord.TSH, ffNumber, 5, 2);
+    Units := gReferenceRanges.TSH.UOM;
+    RefRange := FloatToStr(gReferenceRanges.TSH.ln) + ' - ' +
+      FloatToStr(gReferenceRanges.TSH.hn);
+    AbnormFlags := '';
+    probability := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    prodID := '';
+    respObs := '';
+    observMethod := '';
+    EquipInstID := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
+    ValueType := 'NM';
+    ObsID := 'FT4';
+    obsSubID := 'FT4';
+    obsValue := FloatToStrF(ConvertedValue(acaseRecord.FT4, T4_MOLAR_MASS,
+      'mol/l', gReferenceRanges.FT4.UOM), ffNumber, 5, 2);
+    Units := gReferenceRanges.FT4.UOM;
+    RefRange := FloatToStr(gReferenceRanges.FT4.ln) + ' - ' +
+      FloatToStr(gReferenceRanges.FT4.hn);
+    AbnormFlags := '';
+    probability := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    prodID := '';
+    respObs := '';
+    observMethod := '';
+    EquipInstID := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
+    ValueType := 'NM';
+    ObsID := 'FT3';
+    obsSubID := 'FT3';
+    obsValue := FloatToStrF(ConvertedValue(acaseRecord.FT3, T3_MOLAR_MASS,
+      'mol/l', gReferenceRanges.FT3.UOM), ffNumber, 5, 2);
+    Units := gReferenceRanges.FT3.UOM;;
+    RefRange := FloatToStr(gReferenceRanges.FT3.ln) + ' - ' +
+      FloatToStr(gReferenceRanges.FT3.hn);
+    AbnormFlags := '';
+    probability := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    prodID := '';
+    respObs := '';
+    observMethod := '';
+    EquipInstID := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
+    ValueType := 'NM';
+    ObsID := 'TT4';
+    obsSubID := 'TT4';
+    obsValue := FloatToStrF(ConvertedValue(acaseRecord.TT4, T4_MOLAR_MASS,
+      'mol/l', gReferenceRanges.TT4.UOM), ffNumber, 5, 2);
+    Units := gReferenceRanges.TT4.UOM;;
+    RefRange := FloatToStr(gReferenceRanges.TT4.ln) + ' - ' +
+      FloatToStr(gReferenceRanges.TT4.hn);
+    AbnormFlags := '';
+    probability := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    prodID := '';
+    respObs := '';
+    observMethod := '';
+    EquipInstID := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
+    ValueType := 'NM';
+    ObsID := 'TT3';
+    obsSubID := 'TT3';
+    obsValue := FloatToStrF(ConvertedValue(acaseRecord.TT3, T3_MOLAR_MASS,
+      'mol/l', gReferenceRanges.TT3.UOM), ffNumber, 5, 2);
+    Units := gReferenceRanges.TT3.UOM;;
+    RefRange := FloatToStr(gReferenceRanges.TT3.ln) + ' - ' +
+      FloatToStr(gReferenceRanges.TT3.hn);
+    AbnormFlags := '';
+    probability := '';
+    Nature := '';
+    status := 'F';
+    RRDate := '';
+    UDAC := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    prodID := '';
+    respObs := '';
+    observMethod := '';
+    EquipInstID := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID := 'SPINA-GT';
     obsSubID := 'GT';
@@ -148,7 +414,10 @@ begin
     status := 'F';
     RRDate := '';
     UDAC := '';
-    ObsDateTime := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     prodID := '';
     respObs := '';
     observMethod := '';
@@ -160,7 +429,8 @@ begin
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
 
-    SetID := '2';
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID := 'SPINA-GD';
     obsSubID := 'GD';
@@ -174,7 +444,10 @@ begin
     status := 'F';
     RRDate := '';
     UDAC := '';
-    ObsDateTime := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     prodID := '';
     respObs := '';
     observMethod := '';
@@ -186,7 +459,8 @@ begin
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
 
-    SetID := '3';
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID := 'TSHI';
     obsSubID := 'TSHI';
@@ -200,7 +474,10 @@ begin
     status := 'F';
     RRDate := '';
     UDAC := '';
-    ObsDateTime := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     prodID := '';
     respObs := '';
     observMethod := '';
@@ -212,7 +489,8 @@ begin
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
 
-    SetID := '4';
+    inc(setIDcounter);
+    SetID := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID := 'TTSI';
     obsSubID := 'TTSI';
@@ -226,7 +504,10 @@ begin
     status := 'F';
     RRDate := '';
     UDAC := '';
-    ObsDateTime := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     prodID := '';
     respObs := '';
     observMethod := '';
@@ -238,19 +519,69 @@ begin
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
 
+    theSPM.SetID := '1';
+    theSPM.AccessionID := '';
+    theSPM.ContainerCondition := '';
+    theSPM.ContainerType := '';
+    theSPM.GroupedSpecimenCount := '';
+    theSPM.NumberOfSpecimenContainers := '';
+    theSPM.otherSpecimenID := '';
+    theSPM.ShipmentID := '';
+    theSPM.SpecimenAdditives := '';
+    theSPM.SpecimenAppropriateness := '';
+    theSPM.SpecimenAvailability := '';
+    theSPM.SpecimenChildRole := '';
+    theSPM.SpecimenCollectionAmount := '';
+    if isNaN(aCaseRecord.OBDate) then
+      theSPM.SpecimenCollectionDateTime := ''
+    else
+      theSPM.SpecimenCollectionDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theSPM.SpecimenCollectionMethods := '';
+    theSPM.SpecimenCollectionSite := '';
+    theSPM.SpecimenCondition := '';
+    theSPM.SpecimenCurrentQuality := '';
+    theSPM.SpecimenDescription := '';
+    theSPM.SpecimenExpirDateTime := '';
+    theSPM.SpecimenHandlingCode := '';
+    theSPM.SpecimenID := '';
+    theSPM.SpecimenParentID := '';
+    theSPM.SpecimenQuality := '';
+    theSPM.SpecimenReceivedDateTime := '';
+    theSPM.SpecimenRejectReason := '';
+    theSPM.SpecimenRiskCode := '';
+    theSPM.SpecimenRole := '';
+    theSPM.SpecimenSourceSite := '';
+    theSPM.SpecimenSourceSiteMod := '';
+    theSPM.SpecimenType := '';
+    theSPM.SpecimenTypeMod := '';
+    SetSPM(Hl7Message, theSPM);
+
     WriteHL7File(HL7Message, SPINAToolbar.SaveResultsDialog.FileName);
   end;
 end;
 
 procedure SaveAsTextFile(aCaseRecord: tCaseRecord);
 var
-  theString: ANSIString;
+  theHeader, theString: ANSIString;
+  DOBDateString, OBDateString: string;
 begin
-  theString := aCaseRecord.PID + '/' + aCaseRecord.CaseID + kCR + kLF +
-    aCaseRecord.Name + ', ' + aCaseRecord.GivenNames + ' *' +
-    DateToStr(aCaseRecord.DoBDate) + kCR + kLF +
-    DateToStr(aCaseRecord.OBDate) + ' (' + aCaseRecord.Placer + ')'+
-    kCR + kLF + kCR + kLF + gResultString;
+  if isNaN(aCaseRecord.OBDate) then
+    OBDateString := ''
+  else
+    OBDateString := DateToStr(aCaseRecord.OBDate);
+  if isNaN(aCaseRecord.DoBDate) then
+    DOBDateString := ''
+  else
+    DOBDateString := DateToStr(aCaseRecord.DoBDate);
+  if aCaseRecord.Name = '' then
+    theHeader := ''
+  else
+    theHeader := aCaseRecord.PID + '/' + aCaseRecord.CaseID + kCR + kLF +
+      aCaseRecord.Name + ', ' + aCaseRecord.GivenNames + ' *' +
+      DOBDateString + kCR + kLF +
+      OBDateString + ' (' + aCaseRecord.Placer + ')'+
+      kCR + kLF + kCR + kLF;
+  theString := theHeader + gResultString;
   SaveStringToPath(theString, SPINAToolbar.SaveResultsDialog.FileName);
 end;
 

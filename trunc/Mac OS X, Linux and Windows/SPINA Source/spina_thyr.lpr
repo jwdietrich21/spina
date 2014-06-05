@@ -31,7 +31,8 @@ uses
   Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
-  HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources, CaseEditor
+  HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources, CaseEditor, pid,
+  pv1, spm
   {$IFDEF debug}
   , SysUtils
   {$ENDIF}
