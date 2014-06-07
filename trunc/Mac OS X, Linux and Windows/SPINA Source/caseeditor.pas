@@ -100,4 +100,4 @@ initialization
   {$I caseeditor.lrs}
 
 end.
-
+

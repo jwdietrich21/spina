@@ -83,6 +83,8 @@ type
     SaveToolButton: TToolButton;
     SPINAThyrLabel: TLabel;
     ToolBar1: TToolBar;
+    DividerTool3: TToolButton;
+    CaseEditorToolButton: TToolButton;
     UndoMenuItem: TMenuItem;
     UndoToolButton: TToolButton;
     WinPreferencesItem: TMenuItem;
