@@ -129,6 +129,7 @@ begin
       AccAckType, AppAckType, countryCode, charSet,
       messageLanguage, altCharHandlScheme, profileID);
 
+    FillChar(thePID, SizeOf(thePID), 0);
     thePID.SetID := '1';
     if isNaN(aCaseRecord.DoBDate) then
       thePID.BirthDateTime := ''
@@ -138,98 +139,11 @@ begin
       HL7Message.Delimiters.ComponentSeparator + aCaseRecord.CaseID;
     thePID.PatientName := aCaseRecord.Name +
       HL7Message.Delimiters.ComponentSeparator + aCaseRecord.GivenNames;
-    thePID.AdminSex := '';
-    thePID.AltPatID := '';
-    thePID.BirthOrder := '';
-    thePID.BirthPlace := '';
-    thePID.BreedCode := '';
-    thePID.BusinessPhone := '';
-    thePID.Citizenship := '';
-    thePID.CountyCode := '';
-    thePID.DriverLicenseNumber := '';
-    thePID.EthnicGroup := '';
-    thePID.HomePhoe := '';
-    thePID.IDReliabilityCode := '';
-    thePID.IDReliabilityIndicator := '';
-    thePID.IDUnknownIndicator := '';
-    thePID.LastUpdateDateTime := '';
-    thePID.LastUpdateFacility := '';
-    thePID.MaritalStatus := '';
-    thePID.MothersID := '';
-    thePID.MothersMaidenName := '';
-    thePID.MultipleBirthID := '';
-    thePID.Nationality := '';
-    thePID.SpeciesCode := '';
-    thePID.SSNNumber := '';
-    thePID.Strain := '';
-    thePID.TribalCitizenship := '';
-    thePID.VeteransMilitaryStatus := '';
-    thePID.PatientID := '';
-    thePID.AltPatID := '';
-    thePID.PatientAlias := '';
-    thePID.PatientAccountNumber := '';
-    thePID.PatientAddress := '';
-    thePID.PatientDeathDateTime := '';
-    thePID.PatientDeathIndicator := '';
-    thePID.PatientTelecomInformation :='';
     SetPID(HL7Message, thePID);
 
+    FillChar(thePV1, SizeOf(thePV1), 0);
     thePV1.SetID := '1';
     thePV1.AssignedPatientLocation := aCaseRecord.Placer;
-    thePV1.AccountStatus := '';
-    thePV1.AssignedPatientLocation := '';
-    thePV1.AdmissionType := '';
-    thePV1.AdmitDateTime := '';
-    thePV1.AccountStatus := '';
-    thePV1.AdmitSource := '';
-    thePV1.AdmittingDoctor := '';
-    thePV1.AlternateVisitID := '';
-    thePV1.AmbulatoryStatus := '';
-    thePV1.AttendingDoctor := '';
-    thePV1.BadDeptAgencyCode := '';
-    thePV1.BadDeptRecoveryAmount := '';
-    thePV1.BadDeptTransferAmount := '';
-    thePV1.BedStatus := '';
-    thePV1.ChargePriceIndicator := '';
-    thePV1.ConsultingDoctor := '';
-    thePV1.ContractAmount := '';
-    thePV1.ContractCode := '';
-    thePV1.ContractEffectiveDate := '';
-    thePV1.ContractPeriod := '';
-    thePV1.CourtesyCode := '';
-    thePV1.CreditRate := '';
-    thePV1.CurrentPatientBalance := '';
-    thePV1.DeleteAccountDate := '';
-    thePV1.DeleteAccountIndicator := '';
-    thePV1.DietType := '';
-    thePV1.DischargeDateTime := '';
-    thePV1.DischargeDisposition := '';
-    thePV1.DischargedToLocation := '';
-    thePV1.FinancialClass := '';
-    thePV1.HospitalService := '';
-    thePV1.InterestCode := '';
-    thePV1.OtherHealthcareProvider := '';
-    thePV1.PatientClass := '';
-    thePV1.PatientType := '';
-    thePV1.PendingLocation := '';
-    thePV1.PreadmitNumber := '';
-    thePV1.PriorPatientLocation := '';
-    thePV1.PreadmitTestIndicator := '';
-    thePV1.PriorTemporaryLocation := '';
-    thePV1.ReadmissionIndicator := '';
-    thePV1.ReferringDoctor := '';
-    thePV1.ServiceEpisodeDescription := '';
-    thePV1.ServiceEpisodeID := '';
-    thePV1.ServicingFacility := '';
-    thePV1.TemporaryLocation := '';
-    thePV1.TotalAdustments := '';
-    thePV1.TotalCharges := '';
-    thePV1.TotalPayments := '';
-    thePV1.TransferToBadDeptCode := '';
-    thePV1.TransferToBadDeptDate := '';
-    thePV1.VIPIndicator := '';
-    thePV1.VisitIndicator := '';
-    thePV1.VisitNumber := '';
     SetPV1(Hl7Message, thePV1);
 
     SetID := '1';
@@ -519,41 +433,12 @@ begin
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
 
+    FillChar(theSPM, SizeOf(theSPM), 0);
     theSPM.SetID := '1';
-    theSPM.AccessionID := '';
-    theSPM.ContainerCondition := '';
-    theSPM.ContainerType := '';
-    theSPM.GroupedSpecimenCount := '';
-    theSPM.NumberOfSpecimenContainers := '';
-    theSPM.otherSpecimenID := '';
-    theSPM.ShipmentID := '';
-    theSPM.SpecimenAdditives := '';
-    theSPM.SpecimenAppropriateness := '';
-    theSPM.SpecimenAvailability := '';
-    theSPM.SpecimenChildRole := '';
-    theSPM.SpecimenCollectionAmount := '';
     if isNaN(aCaseRecord.OBDate) then
       theSPM.SpecimenCollectionDateTime := ''
     else
       theSPM.SpecimenCollectionDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    theSPM.SpecimenCollectionMethods := '';
-    theSPM.SpecimenCollectionSite := '';
-    theSPM.SpecimenCondition := '';
-    theSPM.SpecimenCurrentQuality := '';
-    theSPM.SpecimenDescription := '';
-    theSPM.SpecimenExpirDateTime := '';
-    theSPM.SpecimenHandlingCode := '';
-    theSPM.SpecimenID := '';
-    theSPM.SpecimenParentID := '';
-    theSPM.SpecimenQuality := '';
-    theSPM.SpecimenReceivedDateTime := '';
-    theSPM.SpecimenRejectReason := '';
-    theSPM.SpecimenRiskCode := '';
-    theSPM.SpecimenRole := '';
-    theSPM.SpecimenSourceSite := '';
-    theSPM.SpecimenSourceSiteMod := '';
-    theSPM.SpecimenType := '';
-    theSPM.SpecimenTypeMod := '';
     SetSPM(Hl7Message, theSPM);
 
     WriteHL7File(HL7Message, SPINAToolbar.SaveResultsDialog.FileName);
@@ -605,4 +490,4 @@ begin
   end;
 end;
 
-end.
+end.

@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="574"/>
+      <BuildNr Value="575"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.5.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -503,6 +503,7 @@
         <Filename Value="handleimpex.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -718,7 +719,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CaseEditor"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="16"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -784,7 +784,7 @@
         <UsageCount Value="10"/>
       </Unit82>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="handleimpex.pas"/>
         <Caret Line="253" Column="1" TopLine="231"/>
@@ -897,6 +897,10 @@
         <Filename Value="caseeditor.pas"/>
         <Caret Line="38" Column="23" TopLine="30"/>
       </Position28>
+      <Position29>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="461" Column="96" TopLine="436"/>
+      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
