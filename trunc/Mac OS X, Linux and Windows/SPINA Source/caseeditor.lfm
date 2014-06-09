@@ -7,6 +7,7 @@ object CaseEditorForm: TCaseEditorForm
   Caption = 'Fall-Editor'
   ClientHeight = 360
   ClientWidth = 505
+  OnCreate = FormCreate
   LCLVersion = '1.2.2.0'
   object CaseIDEdit: TEdit
     AnchorSideLeft.Control = CaseIDLabel

@@ -51,6 +51,7 @@ type
     NameEdit: TEdit;
     procedure FillCaseRecord(var theCase: TCaseRecord);
     procedure CancelButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
   private
     { private declarations }
@@ -94,6 +95,11 @@ end;
 procedure TCaseEditorForm.CancelButtonClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TCaseEditorForm.FormCreate(Sender: TObject);
+begin
+
 end;
 
 initialization

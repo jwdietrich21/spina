@@ -28,7 +28,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Controls, SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
+  SysUtils, Forms, Controls,
+  SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
   HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources, CaseEditor, pid,
@@ -47,6 +48,10 @@ begin
   if FileExists('heaptrace.trc') then
     DeleteFile('heaptrace.trc');
   SetHeapTraceOutput('heaptrace.trc');
+  {$ENDIF}
+  {$IFDEF LCLCarbon}
+  //GetNSFormatSettings(DefaultFormatSettings);
+  DefaultFormatSettings.ShortDateFormat := 'dd/mm/yyyy';
   {$ENDIF}
   Application.Title:='SPINA Thyr';
   InitThyroidHormoneConversionFactors;
