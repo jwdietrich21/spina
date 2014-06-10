@@ -313,7 +313,7 @@ begin
   SPINAToolbar.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
   SPINAToolbar.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
   SPINAToolbar.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
-  SPINAToolbar.CaseItem.ShortCut := ShortCut(VK_S, modifierKey + [ssShift]);
+  SPINAToolbar.CaseItem.ShortCut := ShortCut(VK_C, modifierKey + [ssShift]);
   SPINAToolbar.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
   SPINAToolbar.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
   SPINAToolbar.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
@@ -504,4 +504,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

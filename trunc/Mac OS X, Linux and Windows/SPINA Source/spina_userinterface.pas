@@ -743,7 +743,7 @@ begin
   Hauptschirm.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
   Hauptschirm.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
   Hauptschirm.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
-  Hauptschirm.CaseItem.ShortCut := ShortCut(VK_S, modifierKey + [ssShift]);
+  Hauptschirm.CaseItem.ShortCut := ShortCut(VK_C, modifierKey + [ssShift]);
   Hauptschirm.PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
   Hauptschirm.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
   Hauptschirm.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);

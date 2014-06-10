@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="575"/>
+      <BuildNr Value="576"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.5.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -44,16 +44,15 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="83">
+    <Units Count="84">
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="spina_thyr"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="24"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="13"/>
-        <CursorPos X="38" Y="31"/>
+        <TopLine Value="1"/>
+        <CursorPos X="93" Y="4"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -65,10 +64,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="20"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="4" Y="2"/>
+        <CursorPos X="1" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -769,143 +769,72 @@
         <Loaded Value="True"/>
       </Unit80>
       <Unit81>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Developer\lazarus\lcl\editbtn.pas"/>
+        <Filename Value="C:\Developer\lazarus\lcl\editbtn.pas"/>
         <UnitName Value="EditBtn"/>
-        <IsVisibleTab Value="True"/>
-        <WindowIndex Value="1"/>
         <TopLine Value="7"/>
         <CursorPos X="20" Y="26"/>
         <UsageCount Value="10"/>
       </Unit81>
       <Unit82>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\rtl\objpas\sysutils\sysinth.inc"/>
+        <Filename Value="C:\usr\local\share\fpcsrc\rtl\objpas\sysutils\sysinth.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="22" Y="66"/>
         <UsageCount Value="10"/>
       </Unit82>
+      <Unit83>
+        <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\objpas\sysutils\sysinth.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="83" Y="5"/>
+        <UsageCount Value="10"/>
+      </Unit83>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="11" HistoryIndex="10">
       <Position1>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="260" Column="1" TopLine="238"/>
+        <Filename Value="caseeditor.pas"/>
+        <Caret Line="48" Column="26" TopLine="24"/>
       </Position1>
       <Position2>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="261" Column="1" TopLine="239"/>
+        <Filename Value="caseeditor.pas"/>
+        <Caret Line="48" Column="26" TopLine="24"/>
       </Position2>
       <Position3>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="895" Column="58" TopLine="176"/>
-      </Position3>
-      <Position4>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="10" Column="64" TopLine="1"/>
-      </Position4>
-      <Position5>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="134" Column="46" TopLine="124"/>
-      </Position5>
-      <Position6>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="264" Column="37" TopLine="242"/>
-      </Position6>
-      <Position7>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="295" Column="37" TopLine="273"/>
-      </Position7>
-      <Position8>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="326" Column="37" TopLine="304"/>
-      </Position8>
-      <Position9>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="357" Column="37" TopLine="335"/>
-      </Position9>
-      <Position10>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="388" Column="37" TopLine="366"/>
-      </Position10>
-      <Position11>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="418" Column="37" TopLine="396"/>
-      </Position11>
-      <Position12>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="448" Column="37" TopLine="426"/>
-      </Position12>
-      <Position13>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="478" Column="37" TopLine="456"/>
-      </Position13>
-      <Position14>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="508" Column="37" TopLine="486"/>
-      </Position14>
-      <Position15>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="539" Column="1" TopLine="515"/>
-      </Position15>
-      <Position16>
-        <Filename Value="spina_toolbar.pas"/>
-        <Caret Line="2" Column="1" TopLine="1"/>
-      </Position16>
-      <Position17>
-        <Filename Value="spina_toolbar.pas"/>
-        <Caret Line="421" Column="46" TopLine="419"/>
-      </Position17>
-      <Position18>
-        <Filename Value="spina_toolbar.pas"/>
-        <Caret Line="422" Column="46" TopLine="420"/>
-      </Position18>
-      <Position19>
-        <Filename Value="caseeditor.pas"/>
-        <Caret Line="38" Column="23" TopLine="30"/>
-      </Position19>
-      <Position20>
-        <Filename Value="caseeditor.pas"/>
-        <Caret Line="38" Column="23" TopLine="30"/>
-      </Position20>
-      <Position21>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="461" Column="96" TopLine="436"/>
-      </Position21>
-      <Position22>
-        <Filename Value="caseeditor.pas"/>
-        <Caret Line="48" Column="26" TopLine="24"/>
-      </Position22>
-      <Position23>
-        <Filename Value="caseeditor.pas"/>
-        <Caret Line="48" Column="26" TopLine="24"/>
-      </Position23>
-      <Position24>
         <Filename Value="spina_thyr.lpr"/>
         <Caret Line="53" Column="43" TopLine="35"/>
-      </Position24>
-      <Position25>
+      </Position3>
+      <Position4>
         <Filename Value="spina_userinterface.pas"/>
         <Caret Line="182" Column="33" TopLine="166"/>
-      </Position25>
-      <Position26>
+      </Position4>
+      <Position5>
         <Filename Value="caseeditor.pas"/>
         <Caret Line="48" Column="26" TopLine="1"/>
-      </Position26>
-      <Position27>
+      </Position5>
+      <Position6>
         <Filename Value="caseeditor.pas"/>
         <Caret Line="103" Column="1" TopLine="73"/>
-      </Position27>
-      <Position28>
+      </Position6>
+      <Position7>
         <Filename Value="spina_thyr.lpr"/>
         <Caret Line="31" Column="38" TopLine="1"/>
-      </Position28>
-      <Position29>
+      </Position7>
+      <Position8>
         <Filename Value="spina_thyr.lpr"/>
         <Caret Line="53" Column="46" TopLine="49"/>
-      </Position29>
-      <Position30>
+      </Position8>
+      <Position9>
         <Filename Value="spina_thyr.lpr"/>
         <Caret Line="31" Column="39" TopLine="1"/>
-      </Position30>
+      </Position9>
+      <Position10>
+        <Filename Value="spina_thyr.lpr"/>
+        <Caret Line="54" Column="24" TopLine="34"/>
+      </Position10>
+      <Position11>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="160" Column="71" TopLine="268"/>
+      </Position11>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1013,4 +942,4 @@ end;"/>
     </Exceptions>
   </Debugging>
   <EditorMacros Count="0"/>
-</CONFIG>
+</CONFIG>
