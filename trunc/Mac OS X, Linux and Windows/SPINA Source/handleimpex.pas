@@ -29,6 +29,12 @@ uses
   SPINA_Engine, SPINA_Types, UnitConverter,
   HL7, MSH, MSA, PID, PV1, OBR, OBX, SPM;
 
+const
+  ORU_R01_variant1 = 'ORU^R01';
+  ORU_R01_variant2 = 'ORU^R01^ORU_R01';
+  ACK_R01 = 'ACK^R01^ACK';
+  MDM_T01 = 'MDM^T01';
+
 procedure SaveResults(caseRecord: tCaseRecord);
 
 implementation
@@ -107,9 +113,8 @@ begin
     receivingApp := '';
     receivingFac := '';
     dateTime := EncodedDateTime(Now);
-    messageType := 'ADT^A04';
+    messageType := ORU_R01_variant1;
     security := '';
-    messageType := '';
     controlID := EncodedDateTime(Now) + IntToStr(random(13000));
     processingID := '';
     versionID := '';
@@ -490,4 +495,4 @@ begin
   end;
 end;
 
-end.
+end.
