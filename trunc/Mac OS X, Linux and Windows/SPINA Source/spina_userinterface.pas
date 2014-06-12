@@ -29,7 +29,7 @@ uses
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
   gettext, SPINA_Types, SPINA_Resources, UnitConverter, SPINA_Engine, SPINA_AboutBox,
   SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences, CaseEditor,
-  HandleImpEx, Math, LCLIntf
+  HandleImpEx, Math, LCLIntf, Barcode
   {$IFDEF MSWINDOWS}
   , Windows
   {$ENDIF}
@@ -195,6 +195,7 @@ type
     procedure WinPreferencesItemClick(Sender: TObject);
   private
     { private declarations }
+    caseIDBarCode: TBarcode;
   public
     { public declarations }
     caseRecord: tCaseRecord;
@@ -1039,6 +1040,17 @@ begin
   PrinterWriteln(H, currentX, currentY, '', true);
   Printer.Canvas.Font.Style := [];
   Printer.Canvas.Font.Size := theSize;
+  if Hauptschirm.caseRecord.CaseID <> '' then
+  begin;
+    Hauptschirm.caseIDBarCode.Top := currentY;
+    Hauptschirm.caseIDBarCode.Left := tabX2;
+    Hauptschirm.caseIDBarCode.Typ := bcCode128B;
+    Hauptschirm.caseIDBarCode.Modul := 2;
+    Hauptschirm.caseIDBarCode.Ratio := 2.0;
+    Hauptschirm.caseIDBarCode.Height := theSize * 3;
+    Hauptschirm.caseIDBarCode.Text := Hauptschirm.caseRecord.CaseID;
+    Hauptschirm.caseIDBarCode.DrawBarcode(Printer.Canvas);
+  end;
   if gInterfaceLanguage = German then
   begin
     PrinterWrite(H, currentX, currentY, kPID1, false);
@@ -1122,6 +1134,7 @@ begin
   if DoPrintSetup then
   begin
     CaseEditorForm.FillCaseRecord(Hauptschirm.caseRecord);
+    caseIDBarCode := TBarcode.Create(self);
     gTopMargin := 2;
     gLeftMargin := 2;
     gRightMargin := 2;
@@ -1176,6 +1189,7 @@ begin
       currentY := Printer.PageHeight - 5 * H;
       PrintFooter(H, currentX, currentY, marginXr);
       Printer.EndDoc;
+      caseIDBarCode.Destroy;
     except
       on E: Exception do
       begin
