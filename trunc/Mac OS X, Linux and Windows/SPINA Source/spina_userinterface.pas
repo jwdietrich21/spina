@@ -1045,7 +1045,7 @@ begin
     Hauptschirm.caseIDBarCode.Top := currentY;
     Hauptschirm.caseIDBarCode.Left := tabX2;
     Hauptschirm.caseIDBarCode.Typ := bcCode128B;
-    Hauptschirm.caseIDBarCode.Modul := 2;
+    Hauptschirm.caseIDBarCode.Modul := GetPoints(0.02, Printer.YDPI);
     Hauptschirm.caseIDBarCode.Ratio := 2.0;
     Hauptschirm.caseIDBarCode.Height := GetPoints(0.3, Printer.YDPI);
     Hauptschirm.caseIDBarCode.Text := Hauptschirm.caseRecord.CaseID;
@@ -1145,7 +1145,7 @@ begin
     marginX := GetPoints(gLeftMargin, ADPI);
     marginXr := GetPoints(gRightMargin, ADPI) div 2;
     Printer.Title := 'SPINA Thyr Report';
-    Printer.FileName := Printer.Title;
+    //Printer.FileName := Printer.Title;
     currentX := marginX;
     Printer.BeginDoc;
     try

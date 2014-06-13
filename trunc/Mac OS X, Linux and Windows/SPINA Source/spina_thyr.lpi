@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="590"/>
+      <BuildNr Value="591"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.5.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -44,7 +44,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="88">
+    <Units Count="86">
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -67,8 +67,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="21"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <TopLine Value="1027"/>
+        <CursorPos X="54" Y="1048"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -800,30 +800,14 @@
         <Loaded Value="True"/>
       </Unit84>
       <Unit85>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Developer\lazarus\lcl\lcltype.pp"/>
-        <UnitName Value="LCLType"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="2968"/>
-        <CursorPos X="1" Y="2986"/>
-        <UsageCount Value="10"/>
-      </Unit85>
-      <Unit86>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Developer\lazarus\components\printers\carbon\carbonprinters.inc"/>
+        <Filename Value="C:\Developer\lazarus\components\printers\carbon\carbonprinters.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="346"/>
         <CursorPos X="1" Y="366"/>
         <UsageCount Value="10"/>
-      </Unit86>
-      <Unit87>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Developer\lazarus\lcl\graphics.pp"/>
-        <UnitName Value="Graphics"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="42"/>
-        <CursorPos X="3" Y="60"/>
-        <UsageCount Value="10"/>
-      </Unit87>
+      </Unit85>
     </Units>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="24" HistoryIndex="23">
       <Position1>
         <Filename Value="Barcode.pas"/>
         <Caret Line="312" Column="25" TopLine="298"/>
@@ -882,11 +866,11 @@
       </Position14>
       <Position15>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="994" Column="10" TopLine="1042"/>
+        <Caret Line="1050" Column="58" TopLine="1043"/>
       </Position15>
       <Position16>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1050" Column="58" TopLine="1043"/>
+        <Caret Line="1050" Column="1" TopLine="1043"/>
       </Position16>
       <Position17>
         <Filename Value="spina_userinterface.pas"/>
@@ -894,36 +878,32 @@
       </Position17>
       <Position18>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1050" Column="1" TopLine="1043"/>
+        <Caret Line="996" Column="42" TopLine="977"/>
       </Position18>
       <Position19>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="996" Column="42" TopLine="977"/>
+        <Caret Line="996" Column="1" TopLine="977"/>
       </Position19>
       <Position20>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="996" Column="1" TopLine="977"/>
+        <Caret Line="997" Column="1" TopLine="977"/>
       </Position20>
       <Position21>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="997" Column="1" TopLine="977"/>
+        <Caret Line="1050" Column="50" TopLine="1034"/>
       </Position21>
       <Position22>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1050" Column="50" TopLine="1034"/>
+        <Caret Line="1043" Column="28" TopLine="1032"/>
       </Position22>
       <Position23>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1043" Column="28" TopLine="1032"/>
+        <Caret Line="182" Column="33" TopLine="181"/>
       </Position23>
       <Position24>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="182" Column="33" TopLine="181"/>
-      </Position24>
-      <Position25>
-        <Filename Value="spina_userinterface.pas"/>
         <Caret Line="1134" Column="41" TopLine="1129"/>
-      </Position25>
+      </Position24>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -998,4 +978,4 @@ end;"/>
     </Exceptions>
   </Debugging>
   <EditorMacros Count="0"/>
-</CONFIG>
+</CONFIG>
