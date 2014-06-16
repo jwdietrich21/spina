@@ -609,8 +609,8 @@ begin
       TTSI.ln := Math.Nan;
       TTSI.hn := Math.Nan;
     end;
-  oldSeparator := DecimalSeparator;
-  DecimalSeparator := DEC_POINT;
+  oldSeparator := DefaultFormatSettings.DecimalSeparator;
+  DefaultFormatSettings.DecimalSeparator := DEC_POINT;
   if not FileExists(theFileName) then
     begin
       SaveStandardCDISC_RRFile(theFileName, returnCode);  {saves a minimal standard file}
@@ -1034,7 +1034,7 @@ begin
       end;
     returnCode := 6;
   end;
-  DecimalSeparator := oldSeparator;
+  DefaultFormatSettings.DecimalSeparator := oldSeparator;
   ComposeRRStrings;
 end;
 

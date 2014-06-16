@@ -35,6 +35,7 @@ const
   ACK_R01 = 'ACK^R01^ACK';
   MDM_T01 = 'MDM^T01';
 
+procedure ReadCaseResults(caseRecord: tCaseRecord);
 procedure SaveResults(caseRecord: tCaseRecord);
 
 implementation
@@ -58,8 +59,9 @@ begin
   end;
 end;
 
-procedure SaveAsHL7file(aCaseRecord: tCaseRecord);
+procedure SaveAsHL7Message(aCaseRecord: tCaseRecord);
 var
+  oldSeparator: Char;
   HL7Message: THL7Message;
   newSegment: THL7Segment;
   delimiters: str5;
@@ -107,6 +109,8 @@ begin
     ShowMessage('HL7 Error')
   else
   begin
+    oldSeparator := DefaultFormatSettings.DecimalSeparator;
+    DefaultFormatSettings.DecimalSeparator := DEC_POINT;
     delimiters := STANDARD_DELIMITERS;
     sendingApp := 'SPINA Thyr';
     sendingFac := gPreferences.MSH_ID;
@@ -447,6 +451,7 @@ begin
     SetSPM(Hl7Message, theSPM);
 
     WriteHL7File(HL7Message, SPINAToolbar.SaveResultsDialog.FileName);
+    DefaultFormatSettings.DecimalSeparator := oldSeparator;
   end;
 end;
 
@@ -475,6 +480,29 @@ begin
   SaveStringToPath(theString, SPINAToolbar.SaveResultsDialog.FileName);
 end;
 
+procedure ReadHL7Message(aCaseRecord: tCaseRecord);
+begin
+
+end;
+
+procedure ReadCaseResults(caseRecord: tCaseRecord);
+var
+  filePath: string;
+  theFilterIndex: integer;
+begin
+  if SPINAToolbar.OpenCaseDialog.Execute then
+  begin
+    theFilterIndex := SPINAToolbar.OpenCaseDialog.FilterIndex;
+    {$IFDEF LCLcarbon}{compensates for a bug in older versions of carbon widgetset}
+      if (lcl_major < 2) and (lcl_minor < 2) then
+        theFilterIndex := theFilterIndex + 1;
+    {$ENDIF}
+    case theFilterIndex of
+      1: ReadHL7Message(caseRecord);
+    end;
+  end;
+end;
+
 procedure SaveResults(caseRecord: tCaseRecord);
 var
   filePath: string;
@@ -490,7 +518,7 @@ begin
     {$ENDIF}
     case theFilterIndex of
       1: SaveAsTextFile(caseRecord);
-      2: SaveAsHL7file(caseRecord);
+      2: SaveAsHL7Message(caseRecord);
     end;
   end;
 end;

@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls, LCLIntf,
   SPINA_Types, SPINA_Resources, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface,
-  SetPreferences, VersionSupport, spina_help, HandleImpEx;
+  SetPreferences, VersionSupport, spina_help, CaseEditor, HandleImpEx;
 
 type
 
@@ -63,6 +63,7 @@ type
     HelpMenu: TMenuItem;
     CaseItem: TMenuItem;
     Divider_1_2: TMenuItem;
+    OpenCaseDialog: TOpenDialog;
     SaveMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
     ToolbarImageList: TImageList;
@@ -105,6 +106,7 @@ type
     procedure NewMenuItemClick(Sender: TObject);
     procedure NewToolButtonClick(Sender: TObject);
     procedure OnlineInfoItemClick(Sender: TObject);
+    procedure OpenMenuItemClick(Sender: TObject);
     procedure OpenToolButtonClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PasteToolButtonClick(Sender: TObject);
@@ -161,7 +163,7 @@ begin
     Hauptschirm.FileMenu.Caption := 'File';
     Hauptschirm.NewMenuItem.Caption := 'New Calculation...';
     Hauptschirm.OpenMenuItem.Caption := 'Open';
-    Hauptschirm.SaveMenuItem.Caption := 'Save';
+    Hauptschirm.SaveMenuItem.Caption := 'Save as...';
     Hauptschirm.CloseMenuItem.Caption := 'Close';
     Hauptschirm.CaseItem.Caption := 'Case Data...';
     Hauptschirm.PrintMenuItem.Caption := 'Print';
@@ -189,7 +191,7 @@ begin
     SPINAToolbar.FileMenu.Caption := 'File';
     SPINAToolbar.NewMenuItem.Caption := 'New Calculation...';
     SPINAToolbar.OpenMenuItem.Caption := 'Open';
-    SPINAToolbar.SaveMenuItem.Caption := 'Save';
+    SPINAToolbar.SaveMenuItem.Caption := 'Save as...';
     SPINAToolbar.CaseItem.Caption := 'Case Data...';
     SPINAToolbar.CloseMenuItem.Caption := 'Close';
     SPINAToolbar.PrintMenuItem.Caption := 'Print';
@@ -226,6 +228,7 @@ begin
     SPINAToolbar.ToolBar1.Buttons[10].Hint := 'Paste';
     SPINAToolbar.ToolBar1.Buttons[11].Hint := 'Delete';
     SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Copy result';
+    SPINAToolbar.ToolBar1.Buttons[14].Hint := 'Edit case or patient record';
   end
   else
   begin
@@ -277,6 +280,7 @@ begin
     SPINAToolbar.ToolBar1.Buttons[10].Hint := 'Einfügen';
     SPINAToolbar.ToolBar1.Buttons[11].Hint := 'Löschen';
     SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Ergebnis kopieren';
+    SPINAToolbar.ToolBar1.Buttons[14].Hint := 'Fall- oder Patienteninformationen bearbeiten';
   end;
   AdaptMenus;
   Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
@@ -345,6 +349,11 @@ begin
   OpenURL(BASE_URL);
 end;
 
+procedure TSPINAToolbar.OpenMenuItemClick(Sender: TObject);
+begin
+  Hauptschirm.OpenMenuItemClick(Sender);
+end;
+
 procedure TSPINAToolbar.PageSetupMenuItemClick(Sender: TObject);
 begin
   Hauptschirm.PageSetupMenuItemClick(Sender);
@@ -375,17 +384,18 @@ end;
 
 procedure TSPINAToolbar.SaveAsToolButtonClick(Sender: TObject);
 begin
+  CaseEditorForm.FillCaseRecord(Hauptschirm.caseRecord);
   SaveResults(Hauptschirm.caseRecord);
 end;
 
 procedure TSPINAToolbar.SaveMenuItemClick(Sender: TObject);
 begin
-  SaveResults(Hauptschirm.caseRecord);
+  SaveAsToolButtonClick(Sender);
 end;
 
 procedure TSPINAToolbar.SaveToolButtonClick(Sender: TObject);
 begin
-  SaveResults(Hauptschirm.caseRecord);
+  SaveAsToolButtonClick(Sender);
 end;
 
 procedure TSPINAToolbar.SPINAThyrLabelClick(Sender: TObject);
@@ -475,7 +485,7 @@ end;
 
 procedure TSPINAToolbar.OpenToolButtonClick(Sender: TObject);
 begin
-
+  Hauptschirm.OpenMenuItemClick(Sender);
 end;
 
 procedure TSPINAToolbar.PrintToolButtonClick(Sender: TObject);

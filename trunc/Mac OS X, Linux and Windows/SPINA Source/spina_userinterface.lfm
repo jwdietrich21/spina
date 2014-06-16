@@ -15,7 +15,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 335
+  ClientHeight = 334
   ClientWidth = 753
   Color = clWhite
   Constraints.MinHeight = 350
@@ -323,7 +323,7 @@ object Hauptschirm: THauptschirm
   object Calculate_Button: TButton
     Left = 624
     Height = 24
-    Top = 297
+    Top = 296
     Width = 116
     Anchors = [akRight, akBottom]
     Caption = 'Berechnen'
@@ -399,12 +399,12 @@ object Hauptschirm: THauptschirm
   end
   object Panel1: TPanel
     Left = 13
-    Height = 283
+    Height = 282
     Top = 8
     Width = 727
     Anchors = [akTop, akLeft, akRight, akBottom]
     BevelOuter = bvNone
-    ClientHeight = 283
+    ClientHeight = 282
     ClientWidth = 727
     Color = clWhite
     ParentColor = False
@@ -412,7 +412,7 @@ object Hauptschirm: THauptschirm
     TabOrder = 5
     object TherapyCheckGroup: TCheckGroup
       Left = 509
-      Height = 80
+      Height = 79
       Hint = 'Bitte markieren Sie bei Substitutionstherapie die entsprechende Box.'
       Top = 8
       Width = 217
@@ -427,7 +427,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 62
+      ClientHeight = 61
       ClientWidth = 213
       Items.Strings = (
         'rhTSH-Substitution'
@@ -445,19 +445,19 @@ object Hauptschirm: THauptschirm
     end
     object ResultGroupBox: TGroupBox
       Left = 510
-      Height = 167
+      Height = 166
       Top = 112
       Width = 216
       Anchors = [akTop, akRight, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 149
+      ClientHeight = 148
       ClientWidth = 212
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 133
+        Height = 132
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -477,19 +477,19 @@ object Hauptschirm: THauptschirm
     end
     object HintGroupBox: TGroupBox
       Left = 3
-      Height = 167
+      Height = 166
       Top = 112
       Width = 216
       Anchors = [akTop, akLeft, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 149
+      ClientHeight = 148
       ClientWidth = 212
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 133
+        Height = 132
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -613,12 +613,12 @@ object Hauptschirm: THauptschirm
     end
     object ValuesGroupBox: TGroupBox
       Left = 231
-      Height = 271
+      Height = 270
       Top = 8
       Width = 271
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 253
+      ClientHeight = 252
       ClientWidth = 267
       ParentColor = False
       ParentShowHint = False
@@ -964,10 +964,10 @@ object Hauptschirm: THauptschirm
         Text = '0'
       end
       object Label1: TLabel
-        Left = 13
+        Left = 10
         Height = 13
         Top = 6
-        Width = 19
+        Width = 22
         Anchors = [akTop, akRight]
         Caption = 'TSH'
         ParentColor = False
@@ -979,9 +979,9 @@ object Hauptschirm: THauptschirm
     AnchorSideTop.Side = asrCenter
     Cursor = crHandPoint
     Left = 16
-    Height = 12
-    Top = 303
-    Width = 55
+    Height = 13
+    Top = 302
+    Width = 53
     Caption = 'SPINA Thyr'
     Font.Color = clBlack
     Font.Height = -10
@@ -1021,10 +1021,10 @@ object Hauptschirm: THauptschirm
       end
       object OpenMenuItem: TMenuItem
         Caption = 'Öffnen'
-        Enabled = False
+        OnClick = OpenMenuItemClick
       end
       object SaveMenuItem: TMenuItem
-        Caption = 'Sichern'
+        Caption = 'Sichern als...'
         OnClick = SaveMenuItemClick
       end
       object CloseMenuItem: TMenuItem

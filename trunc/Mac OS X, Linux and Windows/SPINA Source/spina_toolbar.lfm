@@ -44,7 +44,6 @@ object SPINAToolbar: TSPINAToolbar
       Hint = 'Open file...'
       Top = 2
       Caption = 'OpenToolButton'
-      Enabled = False
       ImageIndex = 1
       OnClick = OpenToolButtonClick
       ParentShowHint = False
@@ -216,10 +215,10 @@ object SPINAToolbar: TSPINAToolbar
       end
       object OpenMenuItem: TMenuItem
         Caption = 'Öffnen'
-        Enabled = False
+        OnClick = OpenMenuItemClick
       end
       object SaveMenuItem: TMenuItem
-        Caption = 'Sichern'
+        Caption = 'Sichern als...'
         OnClick = SaveMenuItemClick
       end
       object CloseMenuItem: TMenuItem
@@ -706,9 +705,18 @@ object SPINAToolbar: TSPINAToolbar
   end
   object SaveResultsDialog: TSaveDialog
     Title = 'Export'
+    DefaultExt = '.hl7'
     Filter = 'Text (*.txt)|*.txt|HL7 Version 2.x (*.hl7)|*.hl7'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
     left = 552
+    top = 9
+  end
+  object OpenCaseDialog: TOpenDialog
+    Title = 'Import'
+    DefaultExt = '.hl7'
+    Filter = 'HL7 Version 2.x (*.hl7)|*.hl7'
+    Options = [ofReadOnly, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
+    left = 648
     top = 9
   end
 end

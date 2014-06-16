@@ -166,6 +166,7 @@ type
     procedure FT4ItemsChange(Sender: TObject);
     procedure HandleAbout(Sender: TObject);
     procedure HelpItemClick(Sender: TObject);
+    procedure OpenMenuItemClick(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
     procedure SPINALabelClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
@@ -554,7 +555,7 @@ var
   TSH_Flag, T4_Flag, T3_Flag: string;
   FT4UpperLimitforTTSI: real;
 begin
-  oldSeparator := decimalSeparator;
+  oldSeparator := DefaultFormatSettings.decimalSeparator;
   TSH_Flag := '';
   T4_Flag := '';
   T3_Flag := '';
@@ -570,12 +571,12 @@ begin
     begin
       TSH_String := Hauptschirm.TSH_Text.Text;
       if pos(DEC_COMMA, TSH_String) > 0 then
-        decimalSeparator := DEC_COMMA
+        DefaultFormatSettings.decimalSeparator := DEC_COMMA
       else
-        decimalSeparator := DEC_POINT;
+        DefaultFormatSettings.decimalSeparator := DEC_POINT;
       TSH := StrToFloat(TSH_String);
       TSH := ConvertedValue(TSH, 1, 'mU/l', 'mU/l');
-      decimalSeparator := oldSeparator;
+      DefaultFormatSettings.decimalSeparator := oldSeparator;
       if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.hn)) then
         TSH_Flag := ''
       else if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
@@ -593,11 +594,11 @@ begin
     begin
       T4_String := Hauptschirm.FT4_Text.Text;
       if pos(DEC_COMMA, T4_String) > 0 then
-        decimalSeparator := DEC_COMMA
+        DefaultFormatSettings.decimalSeparator := DEC_COMMA
       else
-        decimalSeparator := DEC_POINT;
+        DefaultFormatSettings.decimalSeparator := DEC_POINT;
       T4 := StrToFloat(T4_String);
-      decimalSeparator := oldSeparator;
+      DefaultFormatSettings.decimalSeparator := oldSeparator;
       if gPreferences.T4.Method = freeHormone then  {free or total T4?}
       begin
         if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.hn)) then
@@ -627,11 +628,11 @@ begin
     begin
       T3_String := Hauptschirm.FT3_Text.Text;
       if pos(DEC_COMMA, T3_String) > 0 then
-        decimalSeparator := DEC_COMMA
+        DefaultFormatSettings.decimalSeparator := DEC_COMMA
       else
-        decimalSeparator := DEC_POINT;
+        DefaultFormatSettings.decimalSeparator := DEC_POINT;
       T3 := StrToFloat(T3_String);
-      decimalSeparator := oldSeparator;
+      DefaultFormatSettings.decimalSeparator := oldSeparator;
       if gPreferences.T3.Method = freeHormone then  {free or total T3?}
       begin
         if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.hn)) then
@@ -670,7 +671,7 @@ begin
       T3 := Math.NaN;
     end;
   end;
-  decimalSeparator := oldSeparator;
+  DefaultFormatSettings.decimalSeparator := oldSeparator;
   Hauptschirm.caseRecord := Calculate(TSH, T4, T3);
   FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
     T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
@@ -891,9 +892,14 @@ begin
   HelpWindow.ShowOnTop;
 end;
 
+procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
+begin
+  ReadCaseResults(caseRecord);
+end;
+
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
 begin
-  CaseEditorForm.FillCaseRecord(Hauptschirm.caseRecord);
+  CaseEditorForm.FillCaseRecord(caseRecord);
   SaveResults(caseRecord);
 end;
 
@@ -1302,12 +1308,12 @@ initialization
   if gSysLanguage = 'de' then
   begin
     gInterfaceLanguage := German;
-    DecimalSeparator := DEC_COMMA;
+    DefaultFormatSettings.DecimalSeparator := DEC_COMMA;
   end
   else
   begin
     gInterfaceLanguage := English;
-    DecimalSeparator := DEC_POINT;
+    DefaultFormatSettings.DecimalSeparator := DEC_POINT;
   end;
 
 finalization
