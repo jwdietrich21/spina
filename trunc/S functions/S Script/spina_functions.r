@@ -1,8 +1,8 @@
 ##########################################
 # SPINA-Thyr functions
 # Calculate GT and GD in S
-# Version 3.4
-# Last Change 20130323 by J. W. D.
+# Version 3.4.1
+# Last Change 20140617 by J. W. D.
 ##########################################
 
 estimated.GT <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
@@ -72,7 +72,7 @@ estimated.GDTT <- function(T4, T3) # T4 and T3 in nmol/l
   return(GD);
 }
 
-TTSI <- function(TSH, FT4, lu) # TSH in mU/l, FT4 in arbitrary unit
+estimated.TTSI <- function(TSH, FT4, lu) # TSH in mU/l, FT4 in arbitrary unit
 # lu: upper limit of FT4 reference range, same unit as FT4
 {
   TSH[which(TSH == 0)] = NA;
@@ -80,7 +80,7 @@ TTSI <- function(TSH, FT4, lu) # TSH in mU/l, FT4 in arbitrary unit
   return(ttsi);
 }
 
-TSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
+estimated.TSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
 {
   beta <- -0.1345;
   TSH[which(TSH == 0)] = NA;
@@ -88,11 +88,18 @@ TSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
   return(tshi);
 }
 
-sTSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
+estimated.sTSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
 {
-  stshi <- (TSHI(TSH, FT4) - 2.7) / 0.676;
+  stshi <- (estimated.TSHI(TSH, FT4) - 2.7) / 0.676;
   return(stshi);
 }
+
+# Alias functions renamed according to new nomenclature (SPINA-GT and SPINA-GD):
+
+SPINA.GT <- function(TSH, FT4) estimated.GT(TSH, FT4);
+SPINA.GD <- function(FT4, FT3) estimated.GD(FT4, FT3);
+SPINA.GTT <- function(TSH, T4) estimated.GTT(TSH, T4);
+SPINA.GDTT <- function(T4, T3) estimated.GDTT(T4, T3);
 
 # Test scenarios:
 
@@ -101,36 +108,36 @@ TSH <- 1;
 FT4 <- 16.5;
 FT3 <- 4.5;
 
-print(paste("GT^:", estimated.GT(TSH, FT4)));
-print(paste("GD^:", estimated.GD(FT4, FT3)));
+print(paste("GT^:", SPINA.GT(TSH, FT4)));
+print(paste("GD^:", SPINA.GD(FT4, FT3)));
 
 cat("\nScenario 10: GT = 1.08 pmol/s, GD = 336.2 nmol/s:\n");
 TSH <- 3.24;
 FT4 <- 7.7;
 FT3 <- 28;
 
-print(paste("GT^:", estimated.GT(TSH, FT4)));
-print(paste("GD^:", estimated.GD(FT4, FT3)));
+print(paste("GT^:", SPINA.GT(TSH, FT4)));
+print(paste("GD^:", SPINA.GD(FT4, FT3)));
 
 cat("\nScenario 11: GT = 3.37 pmol/s, GD = 63.7 nmol/s:\n");
 TSH <- 0.7;
 FT4 <- 9;
 FT3 <- 6.2;
 
-print(paste("GT^:", estimated.GT(TSH, FT4)));
-print(paste("GD^:", estimated.GD(FT4, FT3)));
+print(paste("GT^:", SPINA.GT(TSH, FT4)));
+print(paste("GD^:", SPINA.GD(FT4, FT3)));
 
 cat("\nScenarios 9 to 11 in vector form:\n");
 TSH <- c(1, 3.24, 0.7);
 FT4 <- c(16.5, 7.7, 9);
 FT3 <- c(4.5, 28, 6.2);
 
-print(paste("GT^:", estimated.GT(TSH, FT4)));
-print(paste("GD^:", estimated.GD(FT4, FT3)));
+print(paste("GT^:", SPINA.GT(TSH, FT4)));
+print(paste("GD^:", SPINA.GD(FT4, FT3)));
 
 cat("\nEvaluate pituitary function with TTSI, TSHI and sTSHI:\n");
 TSH <- c(21.97, 1.82, 0.29);
 FT4 <- c(6, 8, 8); # ng/l, upper limit of reference range: 20 ng/l
-print(paste("TTSI:", TTSI(TSH, FT4, 20)));
-print(paste("Jostel's TSHI:", TSHI(TSH, FT4 * 1.287)));
-print(paste("sTSHI:", sTSHI(TSH, FT4 * 1.287)));
+print(paste("TTSI:", estimated.TTSI(TSH, FT4, 20)));
+print(paste("Jostel's TSHI:", estimated.TSHI(TSH, FT4 * 1.287)));
+print(paste("sTSHI:", estimated.sTSHI(TSH, FT4 * 1.287)));
