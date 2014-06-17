@@ -1,6 +1,7 @@
 ##########################################
 # SPINA-Thyr functions
-# Calculate GT and GD in S
+# Calculate structure parameters of
+# thyroid homeostasis in S
 # Version 3.4.1
 # Last Change 20140617 by J. W. D.
 ##########################################
@@ -143,10 +144,27 @@ print(paste("Jostel's TSHI:", estimated.TSHI(TSH, FT4 * 1.287)));
 print(paste("sTSHI:", estimated.sTSHI(TSH, FT4 * 1.287)));
 
 # Example data
+
 # Source:
 # Pilo A, Iervasi G, Vitek F, Ferdeghini M, Cazzuola F, Bianchi R. Thyroidal and
 # peripheral production of 3,5,3'-triiodothyronine in humans by multicompartmental 
 # analysis. Am J Physiol. 1990 Apr;258(4 Pt 1):E715-26. PMID 2333963.
+
+# BSA: body surface area in m^2
+# IDV: initial distribution volume
+# TT4: total T4 in mcg/dl
+# TT3: total T3 in ng/ml
+# FT4: free T4 in pg/ml
+# FT3: free T3 in pg/ml
+# TT4.SI: total T4 in nmol/l
+# TT3.SI: total T3 in nmol/l
+# FT4.SI: free T4 in pmol/l
+# FT3.SI: free T3 in pmol/l
+# SR: secretion rate
+# CR.F, CR.S and CR.T: conversion rate (fast pool, slow pool and total)
+# PAR: plasma apperance rate
+# PR: production rate
+# CR.6, CR.2, CR.0: conversion ratio from 6-compartment, 2-compartment and noncompartmental model
 
 t3.mc <- data.frame(
 Sex = c("m", "f", "m", "m", "m", "m", "m", "m", "f", "m", "f", "m", "f", "f"), 
@@ -167,7 +185,14 @@ GT = SPINA.GT(c(1.2, 1.4, 1, 1.8, 1.5, 1.5, 2, 1.9, 1.4, 1.8, 1.1, 1.3, 2, 1.5),
 GD = SPINA.GD(c(10.1, 10.5, 8.8, 13.1, 11.1, 8.8, 10.2, 8.9, 6.9, 9, 10.5, 10.4, 11.8, 8.4) * 1.287, c(4.3, 5.7, 4.3, 4.4, 3.5, 3.4, 4.1, 4.1, 3.6, 2.6, 3.8, 4.1, 5, 4.3) * 1.54),
 SR.T4 = c(44.5, 55.5, 45.3, 59.3, 59.2, 41.5, 50.9, 57.7, 54.3, 51.8, 76.5, 61.1, 65.7, 62.9), 
 SR.T3 = c(1.98, 4.45, 7.05, 3.14, 5.95, 5.31, 3.51, 4.15, 0.91, 1.4, 2.89, 2.47, 2.64, 0.88),
-CR.F = c(12.3, 6.71, 8.73, 9.32, 8.75, 9.14, 10.6, 9.35, 7.9, 12.6, 13.1, 17.3, 14.5, 9.07),
-CR.S = c(3.7, 1.11, 1.06, 0.18, 1.2, 0.52, 0.4, 6.74, 3.39, 0.38, 1.55, 2.02, 2.37, 3.64),
-CR.T = c(12.3, 6.71, 8.73, 9.32, 8.75, 9.14, 10.6, 9.35, 7.9, 12.6, 13.1, 17.3, 14.5, 9.07) + c(3.7, 1.11, 1.06, 0.18, 1.2, 0.52, 0.4, 6.74, 3.39, 0.38, 1.55, 2.02, 2.37, 3.64)
+CR.F.mean = c(12.3, 6.71, 8.73, 9.32, 8.75, 9.14, 10.6, 9.35, 7.9, 12.6, 13.1, 17.3, 14.5, 9.07),
+CR.S.mean = c(3.7, 1.11, 1.06, 0.18, 1.2, 0.52, 0.4, 6.74, 3.39, 0.38, 1.55, 2.02, 2.37, 3.64),
+CR.T.mean = c(12.3, 6.71, 8.73, 9.32, 8.75, 9.14, 10.6, 9.35, 7.9, 12.6, 13.1, 17.3, 14.5, 9.07) + c(3.7, 1.11, 1.06, 0.18, 1.2, 0.52, 0.4, 6.74, 3.39, 0.38, 1.55, 2.02, 2.37, 3.64),
+PAR.T3 = c(16.7, 11.8, 16.4, 12.4, 15.5, 14.7, 14.2, 18.8, 11.4, 14.1, 16.9, 21.1, 18.5, 12.6),
+PR.T3.mean = c(18, 12.3, 16.8, 12.6, 15.9, 15, 14.5, 20.2, 12.2, 14.4, 17.5, 21.8, 19.5, 13.6),
+PR.T3 = c(20, 14.4, 18.9, 15.2, 17.6, 17.3, 16.1, 21.2, 12.9, 16.3, 19.8, 24.1, 22.4, 14.6),
+CR.S = c(12.3, 9.02, 11.7, 9.51, 10.6, 10.5, 9.5, 12.8, 7.74, 9.78, 12.2, 14.4, 13.9, 8.87),
+CR.6 = c(42.9, 16.9, 25.8, 19.2, 20.1, 27.8, 25.8, 33.4, 24.8, 30, 22.8, 37.9, 30.7, 24.1),
+CR.2 = c(41, 16.5, 25.7, 19.4, 19.9, 27.8, 25.8, 31.3, 23.9, 30.1, 22.7, 37.6, 30.2, 23.1),
+CR.0 = c(39.3, 15.6, 24.2, 18.5, 19.1, 26.9, 25.2, 30.8, 22.5, 29.1, 21.5, 35, 28.5, 22.5)
 )
