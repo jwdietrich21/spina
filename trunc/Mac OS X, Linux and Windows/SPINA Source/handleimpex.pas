@@ -138,7 +138,7 @@ begin
       AccAckType, AppAckType, countryCode, charSet,
       messageLanguage, altCharHandlScheme, profileID);
 
-    FillChar(thePID, SizeOf(thePID), 0);
+    ClearPID(thePID);
     thePID.SetID := '1';
     if isNaN(aCaseRecord.DoBDate) then
       thePID.BirthDateTime := ''
@@ -150,7 +150,7 @@ begin
       HL7Message.Delimiters.ComponentSeparator + aCaseRecord.GivenNames;
     SetPID(HL7Message, thePID);
 
-    FillChar(thePV1, SizeOf(thePV1), 0);
+    ClearPV1(thePV1);
     thePV1.SetID := '1';
     thePV1.AssignedPatientLocation := aCaseRecord.Placer;
     SetPV1(Hl7Message, thePV1);
@@ -442,7 +442,7 @@ begin
       UDAC, ObsDateTime, prodID, respObs, observMethod,
       EquipInstID, AnalysisDateTime);
 
-    FillChar(theSPM, SizeOf(theSPM), 0);
+    ClearSPM(theSPM);
     theSPM.SetID := '1';
     if isNaN(aCaseRecord.OBDate) then
       theSPM.SpecimenCollectionDateTime := ''
