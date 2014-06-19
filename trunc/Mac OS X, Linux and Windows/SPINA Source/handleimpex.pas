@@ -480,9 +480,56 @@ begin
   SaveStringToPath(theString, SPINAToolbar.SaveResultsDialog.FileName);
 end;
 
-procedure ReadHL7Message(aCaseRecord: tCaseRecord);
+procedure ReadHL7Message(theFile: String; var aCaseRecord: tCaseRecord);
+var
+  Count: integer;
+  theHL7Message: THL7Message;
+  theSegment: THL7Segment;
+  theMSHRecord: tMSH;
+  thePIDRecord: tPID;
+  thePV1Record: tPV1;
+  theOBRRecord: tOBR;
+  theOBXRecord: tOBX;
+  theField: THL7Field;
+  theComponent: THL7Component;
 begin
-
+  ReadHL7File(theHL7Message, theFile);
+  theSegment := theHL7Message.FirstSegment;
+  while theSegment <> nil do
+  begin
+    if theSegment.segmentType = 'MSH' then
+    begin
+      GetMSH(theHL7Message, theMSHRecord);
+      theHL7Message.HL7Version := theMSHRecord.versionID;
+    end;
+    if theSegment.segmentType = 'PID' then
+    begin
+      Count := 0;
+      GetPID(theHL7Message, thePIDRecord);
+      aCaseRecord.DoBDate := DecodeDateTime(thePIDRecord.BirthDateTime);
+      theField := theSegment.FirstOccurrence.FirstField;
+      while theField <> nil do
+      begin
+        Inc(Count);
+        if Count = 4 then
+        begin
+          theComponent := theField.FirstComponent;
+          aCaseRecord.PID := theComponent.contentString;
+          theComponent := theComponent.nextSibling;
+          aCaseRecord.CaseID := theComponent.contentString;
+        end;
+        if Count = 6 then
+        begin
+          theComponent := theField.FirstComponent;
+          aCaseRecord.Name := theComponent.contentString;
+          theComponent := theComponent.nextSibling;
+          aCaseRecord.GivenNames := theComponent.contentString;
+        end;
+        theField := theField.nextSibling;
+      end;
+    end;
+    theSegment := theSegment.nextSibling;
+  end;
 end;
 
 procedure ReadCaseResults(caseRecord: tCaseRecord);
@@ -498,7 +545,7 @@ begin
         theFilterIndex := theFilterIndex + 1;
     {$ENDIF}
     case theFilterIndex of
-      1: ReadHL7Message(caseRecord);
+      1: ReadHL7Message(SPINAToolbar.OpenCaseDialog.FileName, caseRecord);
     end;
   end;
 end;
@@ -523,4 +570,4 @@ begin
   end;
 end;
 
-end.
+end.
