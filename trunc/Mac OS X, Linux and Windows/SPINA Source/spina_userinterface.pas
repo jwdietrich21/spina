@@ -677,7 +677,11 @@ begin
   end;
   DefaultFormatSettings.decimalSeparator := oldSeparator;
   Hauptschirm.caseRecord := Calculate(TSH, T4, T3);
-  FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
+  if gPreferences.T4.isSI then
+    FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
+    T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l')
+  else
+    FT4UpperLimitforTTSI := ConvertedValue(gReferenceRanges.FT4.hn,
     T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
   InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
   FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
