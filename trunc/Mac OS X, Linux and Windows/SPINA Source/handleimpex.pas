@@ -35,7 +35,7 @@ const
   ACK_R01 = 'ACK^R01^ACK';
   MDM_T01 = 'MDM^T01';
 
-procedure ReadCaseResults(caseRecord: tCaseRecord);
+procedure ReadCaseResults(var caseRecord: tCaseRecord);
 procedure SaveResults(caseRecord: tCaseRecord);
 
 implementation
@@ -168,7 +168,6 @@ begin
 
     setIDcounter := 1;
 
-    inc(setIDcounter);
     SetID := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID := 'TSH';
@@ -482,6 +481,7 @@ end;
 
 procedure ReadHL7Message(theFile: String; var aCaseRecord: tCaseRecord);
 var
+  oldSeparator: Char;
   Count: integer;
   theHL7Message: THL7Message;
   theSegment: THL7Segment;
@@ -493,6 +493,8 @@ var
   theField: THL7Field;
   theComponent: THL7Component;
 begin
+  oldSeparator := DefaultFormatSettings.DecimalSeparator;
+  DefaultFormatSettings.DecimalSeparator := DEC_POINT;
   ReadHL7File(theHL7Message, theFile);
   theSegment := theHL7Message.FirstSegment;
   while theSegment <> nil do
@@ -528,11 +530,40 @@ begin
         theField := theField.nextSibling;
       end;
     end;
+    if theSegment.segmentType = 'PV1' then
+    begin
+      GetPV1(theHL7Message, thePV1Record);
+      aCaseRecord.Placer := thePV1Record.AssignedPatientLocation;
+    end;
+    if theSegment.segmentType = 'OBX' then
+    begin
+      GetOBX(theSegment, theOBXRecord);
+      if theOBXRecord.ObsID = 'TSH' then
+        aCaseRecord.TSH := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'FT4' then
+        aCaseRecord.FT4 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'FT3' then
+        aCaseRecord.FT3 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'TT4' then
+        aCaseRecord.TT4 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'TT3' then
+        aCaseRecord.TT3 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'SPINA-GT' then
+        aCaseRecord.GT := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'SPINA-GD' then
+        aCaseRecord.GD := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'TSHI' then
+        aCaseRecord.TSHI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if theOBXRecord.ObsID = 'TTSI' then
+        aCaseRecord.TTSI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      aCaseRecord.OBDate := DecodeDateTime(theOBXRecord.ObsDateTime);
+    end;
     theSegment := theSegment.nextSibling;
   end;
+  DefaultFormatSettings.DecimalSeparator := oldSeparator;
 end;
 
-procedure ReadCaseResults(caseRecord: tCaseRecord);
+procedure ReadCaseResults(var caseRecord: tCaseRecord);
 var
   filePath: string;
   theFilterIndex: integer;
@@ -570,4 +601,4 @@ begin
   end;
 end;
 
-end.
+end.

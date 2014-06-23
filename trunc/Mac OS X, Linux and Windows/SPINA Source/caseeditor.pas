@@ -52,6 +52,7 @@ type
     procedure FillCaseRecord(var theCase: TCaseRecord);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
   private
     { private declarations }
@@ -102,8 +103,19 @@ begin
 
 end;
 
+procedure TCaseEditorForm.FormShow(Sender: TObject);
+begin
+  CaseIDEdit.Text := Hauptschirm.caseRecord.CaseID;
+  PIDEdit.Text := Hauptschirm.caseRecord.PID;
+  NameEdit.Text := Hauptschirm.caseRecord.Name;
+  GivenNameEdit.Text := Hauptschirm.caseRecord.GivenNames;
+  DoBEdit.Date := Hauptschirm.caseRecord.DoBDate;
+  PlacerEdit.Text := Hauptschirm.caseRecord.Placer;
+  OBDateEdit.Date := Hauptschirm.caseRecord.OBDate;
+end;
+
 initialization
   {$I caseeditor.lrs}
 
 end.
-
+

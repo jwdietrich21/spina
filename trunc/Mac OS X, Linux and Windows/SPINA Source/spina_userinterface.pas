@@ -151,6 +151,9 @@ type
     UndoMenuItem: TMenuItem;
     ValuesGroupBox: TGroupBox;
     WinPreferencesItem: TMenuItem;
+    procedure FormPaint(Sender: TObject);
+    procedure FormWindowStateChange(Sender: TObject);
+    procedure ShowValues(Sender: TObject);
     procedure AppleMenuClick(Sender: TObject);
     procedure Beenden1Click(Sender: TObject);
     procedure Calculate_ButtonClick(Sender: TObject);
@@ -160,6 +163,7 @@ type
     procedure CutMenuItemClick(Sender: TObject);
     procedure DeleteMenuItemClick(Sender: TObject);
     procedure Ergebniskopieren1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure MarkMandatoryFields(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -775,6 +779,11 @@ begin
   Hauptschirm.ResultField.CopyToClipboard;
 end;
 
+procedure THauptschirm.FormShow(Sender: TObject);
+begin
+  ShowValues(Sender);
+end;
+
 procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
 begin
   if gPreferences.colouriseMandatoryFields then
@@ -859,20 +868,21 @@ begin
   {Adjustments for small screens:}
   if Screen.Width < Hauptschirm.Width then
   begin
-    Hauptschirm.SPINALabel.Visible := False;
-    Hauptschirm.HintGroupBox.Visible := False;
-    Hauptschirm.HintField.Visible := False;
-    Hauptschirm.Width := Hauptschirm.Constraints.MinWidth;
-    Hauptschirm.Left := (Screen.Width - Hauptschirm.Width) div 2;
+    SPINALabel.Visible := False;
+    HintGroupBox.Visible := False;
+    HintField.Visible := False;
+    Width := Constraints.MinWidth;
+    Left := (Screen.Width - Width) div 2;
   end;
   {Some preparations in startup situation:}
   if gStartup then
   begin
-    Hauptschirm.TSH_Text.SetFocus;
-    Hauptschirm.VertScrollBar.Visible := False;
-    Hauptschirm.AutoScroll := False;
+    TSH_Text.SetFocus;
+    VertScrollBar.Visible := False;
+    AutoScroll := False;
   end;
-  Hauptschirm.MarkMandatoryFields(Sender);
+  ShowValues(Sender);
+  MarkMandatoryFields(Sender);
   gLastActiveCustomForm := Hauptschirm;
 end;
 
@@ -880,6 +890,29 @@ end;
 procedure THauptschirm.HandleAbout(Sender: TObject);
 begin
   ShowAboutBox;
+end;
+
+procedure THauptschirm.ShowValues(Sender: TObject);
+begin
+  TSH_Text.Text := FloatToStr(caseRecord.TSH);
+  if caseRecord.FT4 > 0 then
+    FT4_Text.Text := FloatToStr(caseRecord.FT4)
+  else
+    FT4_Text.Text := FloatToStr(caseRecord.TT4);
+  if caseRecord.FT3 > 0 then
+    FT3_Text.Text := FloatToStr(caseRecord.FT3)
+  else
+    FT3_Text.Text := FloatToStr(caseRecord.TT3);
+end;
+
+procedure THauptschirm.FormPaint(Sender: TObject);
+begin
+  ShowValues(Sender);
+end;
+
+procedure THauptschirm.FormWindowStateChange(Sender: TObject);
+begin
+  ShowValues(Sender);
 end;
 
 procedure THauptschirm.AppleMenuClick(Sender: TObject);
@@ -895,6 +928,7 @@ end;
 procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
 begin
   ReadCaseResults(caseRecord);
+  ShowValues(Sender);
 end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);

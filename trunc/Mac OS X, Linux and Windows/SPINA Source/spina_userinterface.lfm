@@ -318,6 +318,9 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu
   OnActivate = FormActivate
   OnCreate = FormCreate
+  OnPaint = FormPaint
+  OnShow = FormShow
+  OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
   LCLVersion = '1.2.2.0'
   object Calculate_Button: TButton
