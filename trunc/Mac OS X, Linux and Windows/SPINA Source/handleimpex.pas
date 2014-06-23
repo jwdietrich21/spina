@@ -539,19 +539,48 @@ begin
     begin
       GetOBX(theSegment, theOBXRecord);
       if theOBXRecord.ObsID = 'TSH' then
-        aCaseRecord.TSH := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        begin
+          aCaseRecord.TSH := StrToFloatDef(theOBXRecord.obsValue, NaN);
+          aCaseRecord.TSH_UOM := theOBXRecord.Units;
+        end;
       if theOBXRecord.ObsID = 'FT4' then
-        aCaseRecord.FT4 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        begin
+          aCaseRecord.FT4 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+          aCaseRecord.FT4_UOM := theOBXRecord.Units;
+          aCaseRecord.FT4 := ConvertedValue(acaseRecord.FT4, T4_MOLAR_MASS,
+            aCaseRecord.FT4_UOM, 'mol/l');
+        end;
       if theOBXRecord.ObsID = 'FT3' then
-        aCaseRecord.FT3 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        begin
+          aCaseRecord.FT3 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+          aCaseRecord.FT3_UOM := theOBXRecord.Units;
+          aCaseRecord.FT3 := ConvertedValue(acaseRecord.FT3, T3_MOLAR_MASS,
+            aCaseRecord.FT3_UOM, 'mol/l');
+        end;
       if theOBXRecord.ObsID = 'TT4' then
-        aCaseRecord.TT4 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        begin
+          aCaseRecord.TT4 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+          aCaseRecord.TT4_UOM := theOBXRecord.Units;
+          aCaseRecord.TT4 := ConvertedValue(acaseRecord.TT4, T4_MOLAR_MASS,
+            aCaseRecord.TT4_UOM, 'mol/l');
+        end;
       if theOBXRecord.ObsID = 'TT3' then
-        aCaseRecord.TT3 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        begin
+          aCaseRecord.TT3 := StrToFloatDef(theOBXRecord.obsValue, NaN);
+          aCaseRecord.TT3_UOM := theOBXRecord.Units;
+          aCaseRecord.TT3 := ConvertedValue(acaseRecord.TT3, T3_MOLAR_MASS,
+            aCaseRecord.TT3_UOM, 'mol/l');
+        end;
       if theOBXRecord.ObsID = 'SPINA-GT' then
-        aCaseRecord.GT := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        begin
+          aCaseRecord.GT := StrToFloatDef(theOBXRecord.obsValue, NaN);
+          aCaseRecord.GT_UOM := theOBXRecord.Units;
+        end;
       if theOBXRecord.ObsID = 'SPINA-GD' then
-        aCaseRecord.GD := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        begin
+          aCaseRecord.GD := StrToFloatDef(theOBXRecord.obsValue, NaN);
+          aCaseRecord.GD_UOM := theOBXRecord.Units;
+        end;
       if theOBXRecord.ObsID = 'TSHI' then
         aCaseRecord.TSHI := StrToFloatDef(theOBXRecord.obsValue, NaN);
       if theOBXRecord.ObsID = 'TTSI' then

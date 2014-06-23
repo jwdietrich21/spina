@@ -153,7 +153,7 @@ type
     WinPreferencesItem: TMenuItem;
     procedure FormPaint(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
-    procedure ShowValues(Sender: TObject);
+    procedure InsertValues(Sender: TObject);
     procedure AppleMenuClick(Sender: TObject);
     procedure Beenden1Click(Sender: TObject);
     procedure Calculate_ButtonClick(Sender: TObject);
@@ -781,7 +781,7 @@ end;
 
 procedure THauptschirm.FormShow(Sender: TObject);
 begin
-  ShowValues(Sender);
+
 end;
 
 procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
@@ -881,7 +881,6 @@ begin
     VertScrollBar.Visible := False;
     AutoScroll := False;
   end;
-  ShowValues(Sender);
   MarkMandatoryFields(Sender);
   gLastActiveCustomForm := Hauptschirm;
 end;
@@ -892,27 +891,31 @@ begin
   ShowAboutBox;
 end;
 
-procedure THauptschirm.ShowValues(Sender: TObject);
+procedure THauptschirm.InsertValues(Sender: TObject);
 begin
   TSH_Text.Text := FloatToStr(caseRecord.TSH);
   if caseRecord.FT4 > 0 then
-    FT4_Text.Text := FloatToStr(caseRecord.FT4)
+    FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT4, T4_MOLAR_MASS,
+      'mol/l', T4UnitComboBox.Caption))
   else
-    FT4_Text.Text := FloatToStr(caseRecord.TT4);
+    FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT4, T4_MOLAR_MASS,
+      'mol/l', T4UnitComboBox.Caption));
   if caseRecord.FT3 > 0 then
-    FT3_Text.Text := FloatToStr(caseRecord.FT3)
+    FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT3, T3_MOLAR_MASS,
+      'mol/l', T3UnitComboBox.Caption))
   else
-    FT3_Text.Text := FloatToStr(caseRecord.TT3);
+    FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT3, T3_MOLAR_MASS,
+      'mol/l', T3UnitComboBox.Caption));
 end;
 
 procedure THauptschirm.FormPaint(Sender: TObject);
 begin
-  ShowValues(Sender);
+
 end;
 
 procedure THauptschirm.FormWindowStateChange(Sender: TObject);
 begin
-  ShowValues(Sender);
+
 end;
 
 procedure THauptschirm.AppleMenuClick(Sender: TObject);
@@ -928,7 +931,7 @@ end;
 procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
 begin
   ReadCaseResults(caseRecord);
-  ShowValues(Sender);
+  InsertValues(Sender);
 end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
