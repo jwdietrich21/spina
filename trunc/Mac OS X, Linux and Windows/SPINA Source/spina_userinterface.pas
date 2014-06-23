@@ -578,7 +578,7 @@ begin
         DefaultFormatSettings.decimalSeparator := DEC_COMMA
       else
         DefaultFormatSettings.decimalSeparator := DEC_POINT;
-      TSH := StrToFloat(TSH_String);
+      TSH := StrToFloatDef(TSH_String, Math.NaN);
       TSH := ConvertedValue(TSH, 1, 'mU/l', 'mU/l');
       DefaultFormatSettings.decimalSeparator := oldSeparator;
       if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.hn)) then
@@ -601,7 +601,7 @@ begin
         DefaultFormatSettings.decimalSeparator := DEC_COMMA
       else
         DefaultFormatSettings.decimalSeparator := DEC_POINT;
-      T4 := StrToFloat(T4_String);
+      T4 := StrToFloatDef(T4_String, Math.NaN);
       DefaultFormatSettings.decimalSeparator := oldSeparator;
       if gPreferences.T4.Method = freeHormone then  {free or total T4?}
       begin
@@ -635,7 +635,7 @@ begin
         DefaultFormatSettings.decimalSeparator := DEC_COMMA
       else
         DefaultFormatSettings.decimalSeparator := DEC_POINT;
-      T3 := StrToFloat(T3_String);
+      T3 := StrToFloatDef(T3_String, Math.NaN);
       DefaultFormatSettings.decimalSeparator := oldSeparator;
       if gPreferences.T3.Method = freeHormone then  {free or total T3?}
       begin
@@ -894,13 +894,13 @@ end;
 procedure THauptschirm.InsertValues(Sender: TObject);
 begin
   TSH_Text.Text := FloatToStr(caseRecord.TSH);
-  if caseRecord.FT4 > 0 then
+  if caseRecord.FT4 >= 0 then
     FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT4, T4_MOLAR_MASS,
       'mol/l', T4UnitComboBox.Caption))
   else
     FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT4, T4_MOLAR_MASS,
       'mol/l', T4UnitComboBox.Caption));
-  if caseRecord.FT3 > 0 then
+  if caseRecord.FT3 >= 0 then
     FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT3, T3_MOLAR_MASS,
       'mol/l', T3UnitComboBox.Caption))
   else

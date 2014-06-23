@@ -99,7 +99,7 @@ begin
     end;
   end;
   tempRecord.TSH := TSH;
-  if not isNan(TSH) and (TSH > 0) and not gT4Therapy then
+  if not isNan(TSH) and (TSH > 0) and not isNan(T4) and not gT4Therapy then
   begin
     case gPreferences.T4.Method of
       freeHormone:
@@ -111,7 +111,7 @@ begin
   end
   else
     tempRecord.GT := NaN;
-  if not isNan(T4) and (T4 > 0) and not gT3Therapy then
+  if not isNan(T4) and (T4 > 0) and not isNan(T3) and not gT3Therapy then
   begin
     case gPreferences.T4.Method of
       freeHormone:
@@ -129,7 +129,8 @@ begin
   end
   else
     tempRecord.GD := NaN;
-  if (gPreferences.T4.Method = freeHormone) and not isNan(TSH) and (TSH > 0) and not gTSHTherapy then
+  if (gPreferences.T4.Method = freeHormone) and not isNan(TSH) and (TSH > 0)
+    and not isNan(T4)  and not gTSHTherapy then
   begin
     tempRecord.TSHI := ln(TSH) + 0.1345 * T4 * 1e12;
   end
@@ -142,7 +143,8 @@ end;
 
 procedure InsertTTSI(var theCase: tCaseRecord; FT4UpperLimit: real);
 begin
-  if (gPreferences.T4.Method = freeHormone) and not isNan(theCase.TSH) and not isNan(FT4UpperLimit) and not gTSHTherapy then
+  if (gPreferences.T4.Method = freeHormone) and not isNan(theCase.TSH) and
+    not isNan(FT4UpperLimit) and not isNan(theCase.FT4) and not gTSHTherapy then
   begin
     theCase.TTSI := 100 * theCase.TSH * theCase.FT4 / FT4UpperLimit;
   end
