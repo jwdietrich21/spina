@@ -920,18 +920,38 @@ end;
 procedure THauptschirm.InsertValues(Sender: TObject);
 begin
   TSH_Text.Text := FloatToStr(caseRecord.TSH);
-  if caseRecord.FT4 >= 0 then
-    FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT4, T4_MOLAR_MASS,
-      'mol/l', T4UnitComboBox.Caption))
-  else
-    FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT4, T4_MOLAR_MASS,
+  if not isNaN(caseRecord.FT4) then
+    begin
+      T4MethodComboBox.ItemIndex := 0;
+      T4MethodComboBoxAdjust(Sender);
+      T4UnitComboBox.Caption := caseRecord.FT4_UOM;
+      FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT4, T4_MOLAR_MASS,
       'mol/l', T4UnitComboBox.Caption));
-  if caseRecord.FT3 >= 0 then
-    FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT3, T3_MOLAR_MASS,
-      'mol/l', T3UnitComboBox.Caption))
+    end
   else
-    FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT3, T3_MOLAR_MASS,
+    begin
+      T4MethodComboBox.ItemIndex := 1;
+      T4MethodComboBoxAdjust(Sender);
+      T4UnitComboBox.Caption := caseRecord.TT4_UOM;
+      FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT4, T4_MOLAR_MASS,
+      'mol/l', T4UnitComboBox.Caption));
+    end;
+  if not isNaN(caseRecord.FT3) then
+    begin
+      T3MethodComboBox.ItemIndex := 0;
+      T3MethodComboBoxAdjust(Sender);
+      T3UnitComboBox.Caption := caseRecord.FT3_UOM;
+      FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT3, T3_MOLAR_MASS,
+      'mol/l', T3UnitComboBox.Caption))
+    end
+  else
+    begin
+      T3MethodComboBox.ItemIndex := 1;
+      T3MethodComboBoxAdjust(Sender);
+      T3UnitComboBox.Caption := caseRecord.TT3_UOM;
+      FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT3, T3_MOLAR_MASS,
       'mol/l', T3UnitComboBox.Caption));
+    end;
 end;
 
 procedure THauptschirm.FormPaint(Sender: TObject);

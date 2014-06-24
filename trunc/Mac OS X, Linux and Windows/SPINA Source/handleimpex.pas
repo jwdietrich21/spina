@@ -585,6 +585,14 @@ begin
         aCaseRecord.TSHI := StrToFloatDef(theOBXRecord.obsValue, NaN);
       if theOBXRecord.ObsID = 'TTSI' then
         aCaseRecord.TTSI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if IsNaN(aCaseRecord.FT4) then
+        gPreferences.T4.Method := totalHormone
+      else
+        gPreferences.T4.Method := freeHormone;
+      if IsNaN(aCaseRecord.FT3) then
+        gPreferences.T3.Method := totalHormone
+      else
+        gPreferences.T3.Method := freeHormone;
       aCaseRecord.OBDate := DecodeDateTime(theOBXRecord.ObsDateTime);
     end;
     theSegment := theSegment.nextSibling;
@@ -630,4 +638,4 @@ begin
   end;
 end;
 
-end.
+end.
