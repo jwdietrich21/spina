@@ -38,6 +38,8 @@ type
     DoBEdit: TDateEdit;
     GivenNameEdit: TEdit;
     GivenNameLabel: TLabel;
+    VisitGroupBox: TGroupBox;
+    PatientGroupBox: TGroupBox;
     OBDateLabel: TLabel;
     CancelButton: TButton;
     PlacerLabel: TLabel;
