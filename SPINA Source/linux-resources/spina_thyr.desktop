@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SPINA Thyr
+Comment=SPINA Thyr
+Exec="/home/pi/SPINA Thyr 3.4.2 for Linux/SPINA Source/SPINA Thyr"
+Terminal=false
+Type=Application
+Icon=spina_thyr.png
+Categories=Application;Education;Science
