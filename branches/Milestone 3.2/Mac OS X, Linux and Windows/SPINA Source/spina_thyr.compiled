@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<CONFIG>
-  <Compiler Value="/usr/local/bin/ppcppc" Date="1238925281"/>
-  <Params Value=" -MObjFPC -Sgi -CX -O1 -gl -XX  -k-framework -kCarbon -k-framework -kOpenGL -k'-dylib_file' -k'/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib:/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib' -WG -vewnhi -l -Fu/Developer/lazarus/components/printers/lib/powerpc-darwin/carbon/ -Fu/Developer/lazarus/lcl/units/powerpc-darwin/ -Fu/Developer/lazarus/lcl/units/powerpc-darwin/carbon/ -Fu/Developer/lazarus/packager/units/powerpc-darwin/ &quot;-Fu/Volumes/G4 Dokumente/Projekte/SPINA/SPINA Thyr/Software und Webdienste/SPINA Thyr ab 3.0/SPINA-Thyr Lazarus/3.2.0/SPINA Source/&quot; -Fu. &quot;-oSPINA Thyr&quot; -dLCL -dLCLcarbon spina_thyr.lpr"/>
-</CONFIG>
