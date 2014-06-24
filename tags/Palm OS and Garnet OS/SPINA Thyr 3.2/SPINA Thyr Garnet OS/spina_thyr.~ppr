@@ -1,0 +1,82 @@
+program spina_thyr(Cmd: Word; CmdPBP: Pointer; LaunchFlags: Word): LongWord;
+
+{$CREATOR 'appl'}
+
+uses
+  PSL,
+  main_form in 'main_form.pas';
+
+resource
+  VERSION 1 '1.0';
+  APPICONNAME 1000 'Project';
+  ICON 1000 'IconLBW.bmp' 'IconLC.bmp';
+  ICON 1001 'IconSBW.bmp' 'IconSC.bmp';
+
+const
+  AlertIncompatible = AutoID;
+
+resource
+  ALERT AlertIncompatible ERROR
+  BEGIN
+    TITLE 'Incompatible'
+    MESSAGE 'System version ^1 or higher is required'
+    BUTTONS 'OK'
+  END;
+
+function StartApplication: Boolean;
+begin
+  Result := PSApplication.CheckROMVersion($2003000); // PalmOS version
+  if not Result then
+  begin
+    FrmCustomAlert(AlertIncompatible, '2.0', nil, nil);
+    Exit;
+  end;
+
+  FrmGotoForm(Form1);
+end;
+
+procedure StopApplication;
+begin
+  FrmCloseAllForms;
+end;
+
+function ApplicationHandleEvent(var Event: EventType): Boolean;
+var
+  FormID: UInt16;
+  Form: FormPtr;
+begin
+  Result := False;
+  if Event.eType = frmLoadEvent then
+  begin
+    FormID := Event.frmLoad.formID;
+    Form := FrmInitForm(FormID);
+    FrmSetActiveForm(Form);
+    case FormID of
+      Form1: FrmSetEventHandler(Form, main_form.HandleEvent);
+    end;
+    Result := True;
+  end
+end;
+
+procedure EventLoop;
+var
+  Event: EventType;
+  Error: UInt16;
+begin
+  repeat
+    EvtGetEvent(Event, evtWaitForever);
+    if not SysHandleEvent(Event) then
+      if not MenuHandleEvent(nil, Event, Error) then
+        if not ApplicationHandleEvent(Event) then
+          FrmDispatchEvent(Event);
+  until Event.eType = appStopEvent;
+end;
+
+begin
+  if Cmd = sysAppLaunchCmdNormalLaunch then
+    if StartApplication then
+    begin
+      EventLoop;
+      StopApplication;
+    end;
+end.
