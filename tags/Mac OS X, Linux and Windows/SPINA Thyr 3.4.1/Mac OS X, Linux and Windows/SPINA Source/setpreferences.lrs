@@ -148,11 +148,11 @@ LazarusResources.Add('TPreferencesForm','FORMDATA',[
   +'nge'#8'TabOrder'#2#0#0#0#11'TStringGrid'#19'MandatoryFieldsGrid'#4'Left'#3
   +#200#0#6'Height'#3#141#0#3'Top'#2#8#5'Width'#3'X'#1#7'Anchors'#11#5'akTop'#6
   +'akLeft'#7'akRight'#0#15'AutoFillColumns'#9#7'Columns'#14#1#13'Title.Caption'
-  +#6#8'SPINA-GT'#5'Width'#2'E'#0#1#13'Title.Caption'#6#8'SPINA-GD'#5'Width'#2
-  +'E'#0#1#13'Title.Caption'#6#9'TSH-Index'#5'Width'#2'E'#0#1#13'Title.Caption'
-  +#6#4'TTSI'#5'Width'#2'H'#0#0#7'Enabled'#8#4'Flat'#9#10'Font.Style'#11#6'fsBo'
+  +#6#8'SPINA-GT'#5'Width'#2'A'#0#1#13'Title.Caption'#6#8'SPINA-GD'#5'Width'#2
+  +'A'#0#1#13'Title.Caption'#6#9'TSH-Index'#5'Width'#2'A'#0#1#13'Title.Caption'
+  +#6#4'TTSI'#5'Width'#2'C'#0#0#7'Enabled'#8#4'Flat'#9#10'Font.Style'#11#6'fsBo'
   +'ld'#0#10'ParentFont'#8#8'RowCount'#2#7#8'TabOrder'#2#1#15'TitleFont.Style'
-  +#11#6'fsBold'#0#7'Visible'#8#9'ColWidths'#1#2'@'#2'E'#2'E'#2'E'#2'H'#0#0#0#0
+  +#11#6'fsBold'#0#7'Visible'#8#9'ColWidths'#1#2'@'#2'A'#2'A'#2'A'#2'C'#0#0#0#0
   +#0#0#11'TOpenDialog'#15'CDISCOpenDialog'#10'DefaultExt'#6#4'.xml'#6'Filter'#6
   +'&CDISC Lab Model 1.0.1 file (XML)|*.xml'#7'Options'#11#15'ofPathMustExist'
   +#15'ofFileMustExist'#14'ofEnableSizing'#12'ofViewDetail'#13'ofAutoPreview'#0

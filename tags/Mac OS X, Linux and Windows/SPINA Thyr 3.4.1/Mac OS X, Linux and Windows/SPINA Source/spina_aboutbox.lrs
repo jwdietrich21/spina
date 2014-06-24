@@ -351,7 +351,7 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'eight'#3'E'#1#3'Top'#2#8#5'Width'#3#168#1#10'ActivePage'#7#9'TabSheet1'#7'A'
   +'nchors'#11#5'akTop'#6'akLeft'#8'akBottom'#0#8'TabIndex'#2#0#8'TabOrder'#2#1
   +#8'OnChange'#7#10'TabsChange'#0#9'TTabSheet'#9'TabSheet1'#7'Caption'#6#7'Ver'
-  +'sion'#12'ClientHeight'#3#30#1#11'ClientWidth'#3#162#1#0#6'TImage'#6'Image1'
+  +'sion'#12'ClientHeight'#3'+'#1#11'ClientWidth'#3#160#1#0#6'TImage'#6'Image1'
   +#6'Cursor'#7#7'crArrow'#4'Left'#2#21#6'Height'#3#251#0#3'Top'#2#12#5'Width'#3
   +'z'#1#7'OnClick'#7#8'ClickURL'#12'Picture.Data'#10#166#131#0#0#23'TPortableN'
   +'etworkGraphic'#138#131#0#0#137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0#1'z'#0#0
@@ -1772,41 +1772,41 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +#184#168#18'\'#186'q'#225#194'E'#149#224#210#141#11#23'.'#170#132#255#7#0#0
   +#255#255#3#0#152'g'#189'8'#14'J\J'#0#0#0#0'IEND'#174'B`'#130#11'Transparent'
   +#9#0#0#6'TLabel'#12'VersionLabel'#4'Left'#2#21#6'Height'#2#13#3'Top'#2'd'#5
-  +'Width'#2'G'#7'Caption'#6#13'Version 3.4.x'#11'Font.Height'#2#245#10'Font.Pi'
+  +'Width'#2'='#7'Caption'#6#13'Version 3.4.x'#11'Font.Height'#2#245#10'Font.Pi'
   +'tch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'C'
-  +'opyrightLabel1'#4'Left'#2#21#6'Height'#2#13#3'Top'#2'~'#5'Width'#2'Q'#7'Cap'
+  +'opyrightLabel1'#4'Left'#2#21#6'Height'#2#13#3'Top'#2'~'#5'Width'#2'G'#7'Cap'
   +'tion'#6#16#194#169' 1997 '#226#128#147' 2014'#11'Font.Height'#2#245#10'Font'
   +'.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15
-  +'CopyrightLabel2'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#140#0#5'Width'#2'E'#7
+  +'CopyrightLabel2'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#140#0#5'Width'#2'@'#7
   +'Caption'#6#14'J. W. Dietrich'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpV'
   +'ariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLabel'
-  +'3'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#164#0#5'Width'#2'm'#7'Caption'#6#20
+  +'3'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#164#0#5'Width'#2'^'#7'Caption'#6#20
   +'In Cooperation with:'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'
   +#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLabel4'#4'Left'
-  +#2#21#6'Height'#2#13#3'Top'#3#190#0#5'Width'#3#147#0#7'Caption'#6#25'Kliniku'
+  +#2#21#6'Height'#2#13#3'Top'#3#190#0#5'Width'#3#131#0#7'Caption'#6#25'Kliniku'
   +'m der LMU M'#195#188'nchen'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVar'
   +'iable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLabel5'
-  +#4'Left'#2#21#6'Height'#2#13#3'Top'#3#204#0#5'Width'#3#134#0#7'Caption'#6#25
-  +'Universit'#195#164'tsklinikum Ulm'#11'Font.Height'#2#245#10'Font.Pitch'#7#10
+  +#4'Left'#2#21#6'Height'#2#13#3'Top'#3#204#0#5'Width'#2'r'#7'Caption'#6#25'Un'
+  +'iversit'#195#164'tsklinikum Ulm'#11'Font.Height'#2#245#10'Font.Pitch'#7#10
   +'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLa'
-  +'bel6'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#218#0#5'Width'#3#135#0#7'Caption'
-  +#6#24'Ruhr-Universit'#195#164't Bochum'#11'Font.Height'#2#245#10'Font.Pitch'
-  +#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#4'URL1'#6
-  +'Cursor'#7#11'crHandPoint'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#4#1#5'Width'
-  ,#3#157#0#7'Caption'#6#28'spina.medical-cybernetics.de'#10'Font.Color'#7#6'cl'
-  +'Navy'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'
-  +#8#10'ParentFont'#8#7'OnClick'#7#9'URL1Click'#0#0#6'TLabel'#4'URL2'#22'Ancho'
-  +'rSideLeft.Control'#7#7'Divider'#19'AnchorSideLeft.Side'#7#9'asrBottom'#6'Cu'
-  +'rsor'#7#11'crHandPoint'#4'Left'#3#188#0#6'Height'#2#13#3'Top'#3#4#1#5'Width'
-  +#2't'#18'BorderSpacing.Left'#2#3#7'Caption'#6#21'spina.sourceforge.net'#10'F'
-  +'ont.Color'#7#6'clNavy'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'
+  +'bel6'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#218#0#5'Width'#2'v'#7'Caption'#6
+  +#24'Ruhr-Universit'#195#164't Bochum'#11'Font.Height'#2#245#10'Font.Pitch'#7
+  +#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#4'URL1'#6'C'
+  +'ursor'#7#11'crHandPoint'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#4#1#5'Width'#3
+  ,#136#0#7'Caption'#6#28'spina.medical-cybernetics.de'#10'Font.Color'#7#6'clNa'
+  +'vy'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8
+  +#10'ParentFont'#8#7'OnClick'#7#9'URL1Click'#0#0#6'TLabel'#4'URL2'#22'AnchorS'
+  +'ideLeft.Control'#7#7'Divider'#19'AnchorSideLeft.Side'#7#9'asrBottom'#6'Curs'
+  +'or'#7#11'crHandPoint'#4'Left'#3#165#0#6'Height'#2#13#3'Top'#3#4#1#5'Width'#2
+  +'f'#18'BorderSpacing.Left'#2#3#7'Caption'#6#21'spina.sourceforge.net'#10'Fon'
+  +'t.Color'#7#6'clNavy'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'
   +#11'ParentColor'#8#10'ParentFont'#8#7'OnClick'#7#9'URL2Click'#0#0#6'TLabel'
   +#15'CopyrightLabel7'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#232#0#5'Width'#3
-  +#191#0#7'Caption'#6'#Universit'#195#164'tsklinikum Bergmannsheil'#11'Font.He'
+  +#165#0#7'Caption'#6'#Universit'#195#164'tsklinikum Bergmannsheil'#11'Font.He'
   +'ight'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'
   +#8#0#0#6'TLabel'#7'Divider'#22'AnchorSideLeft.Control'#7#4'URL1'#19'AnchorSi'
-  +'deLeft.Side'#7#9'asrBottom'#4'Left'#3#181#0#6'Height'#2#13#3'Top'#3#4#1#5'W'
-  +'idth'#2#4#18'BorderSpacing.Left'#2#3#7'Caption'#6#1'|'#10'Font.Color'#4#255
+  +'deLeft.Side'#7#9'asrBottom'#4'Left'#3#160#0#6'Height'#2#13#3'Top'#3#4#1#5'W'
+  +'idth'#2#2#18'BorderSpacing.Left'#2#3#7'Caption'#6#1'|'#10'Font.Color'#4#255
   +#128#0#0#11'Font.Height'#2#245#11'ParentColor'#8#10'ParentFont'#8#0#0#0#9'TT'
   +'abSheet'#9'TabSheet2'#7'Caption'#6#4'Info'#12'ClientHeight'#3#30#1#11'Clien'
   +'tWidth'#3#162#1#0#5'TMemo'#5'Memo1'#4'Left'#2#5#6'Height'#3'j'#1#3'Top'#2#4

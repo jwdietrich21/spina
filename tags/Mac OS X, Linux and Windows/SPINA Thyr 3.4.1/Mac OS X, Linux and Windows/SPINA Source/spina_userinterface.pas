@@ -8,7 +8,7 @@ unit SPINA_UserInterface;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 3.4.1 }
+{ Version 3.4.2 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -668,7 +668,11 @@ begin
   end;
   decimalSeparator := oldSeparator;
   Hauptschirm.caseRecord := Calculate(TSH, T4, T3);
-  FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
+  if gPreferences.T4.isSI then
+    FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
+    T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l')
+  else
+    FT4UpperLimitforTTSI := ConvertedValue(gReferenceRanges.FT4.hn,
     T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
   InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
   FormatCase(Hauptschirm.caseRecord, gReferenceRanges);

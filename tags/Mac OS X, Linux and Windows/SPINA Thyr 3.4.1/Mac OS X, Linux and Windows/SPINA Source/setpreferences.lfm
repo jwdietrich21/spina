@@ -601,19 +601,19 @@ object PreferencesForm: TPreferencesForm
           Columns = <          
             item
               Title.Caption = 'SPINA-GT'
-              Width = 69
+              Width = 65
             end          
             item
               Title.Caption = 'SPINA-GD'
-              Width = 69
+              Width = 65
             end          
             item
               Title.Caption = 'TSH-Index'
-              Width = 69
+              Width = 65
             end          
             item
               Title.Caption = 'TTSI'
-              Width = 72
+              Width = 67
             end>
           Enabled = False
           Flat = True
@@ -625,10 +625,10 @@ object PreferencesForm: TPreferencesForm
           Visible = False
           ColWidths = (
             64
-            69
-            69
-            69
-            72
+            65
+            65
+            65
+            67
           )
         end
       end
