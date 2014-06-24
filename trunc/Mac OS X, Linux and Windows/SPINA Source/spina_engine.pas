@@ -74,6 +74,7 @@ var
   GTFlag, GDFlag: string;
   FT4, TT4, TT3: real;
 begin
+  FillChar(tempRecord, SizeOf(tCaseRecord), 0); // empties record
   case gPreferences.T4.Method of
     freeHormone:
     begin

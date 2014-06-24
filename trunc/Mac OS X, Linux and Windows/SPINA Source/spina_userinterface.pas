@@ -228,6 +228,7 @@ procedure AdaptMenus;
 procedure AdjustUnitLabels;
 procedure ComposeRRHints;
 procedure GetPreferences;
+procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
 
 implementation
 
@@ -548,6 +549,19 @@ begin
   {$ENDIF}
 end;
 
+procedure CopyPatientData(fromCaseRecord: tCaseRecord; var toCaseRecord: tCaseRecord);
+{ restores meta-information like PID, which is necessary since }
+{ the Calculate function of SPINA Engine creates a new case record }
+begin
+  toCaseRecord.CaseID := fromCaseRecord.CaseID;
+  toCaseRecord.PID := fromCaseRecord.PID;
+  toCaseRecord.Name := fromCaseRecord.Name;
+  toCaseRecord.GivenNames := fromCaseRecord.GivenNames;
+  toCaseRecord.DoBDate := fromCaseRecord.DoBDate;
+  toCaseRecord.OBDate := fromCaseRecord.OBDate;
+  toCaseRecord.Placer := fromCaseRecord.Placer;
+end;
+
 procedure HandleInput;
 {reads inputs and invokes calculation engine}
 {liest Eingabefelder und startet die Berechnungseinheit}
@@ -558,7 +572,9 @@ var
   TSH_String, T4_String, T3_String: Str255;
   TSH_Flag, T4_Flag, T3_Flag: string;
   FT4UpperLimitforTTSI: real;
+  storedCaseRecord: tCaseRecord;
 begin
+  storedCaseRecord := Hauptschirm.caseRecord; // stores meta-information like PID
   oldSeparator := DefaultFormatSettings.decimalSeparator;
   TSH_Flag := '';
   T4_Flag := '';
@@ -694,6 +710,7 @@ begin
     strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs, kCR,
       kLF, '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF, '   TSHI: ',
       Hauptschirm.caseRecord.TSHIs, kCR, kLF, '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
+  CopyPatientData(storedCaseRecord, Hauptschirm.caseRecord);
   ShowMessage(TSH_String, T4_String, T3_String, strucPars);
 end;
 
@@ -725,6 +742,11 @@ end;
 procedure THauptschirm.DeleteMenuItemClick(Sender: TObject);
 begin
   ActionList1.Actions[4].Execute;
+end;
+
+procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
+begin
+  FillChar(aCaseRecord, SizeOf(tCaseRecord), 0); // empties record
 end;
 
 procedure AdaptMenus;
@@ -773,7 +795,7 @@ begin
   SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
   GetPreferences;
   GetReferenceValues(RRFile, theCode);
-  //CaseEditorForm.FillCaseRecord(caseRecord);
+  NewCaseRecord(caseRecord);
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
