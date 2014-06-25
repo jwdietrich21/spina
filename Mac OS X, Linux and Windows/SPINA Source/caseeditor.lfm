@@ -1,0 +1,221 @@
+object CaseEditorForm: TCaseEditorForm
+  Left = 264
+  Height = 411
+  Top = 157
+  Width = 609
+  BorderStyle = bsDialog
+  Caption = 'Fall-Editor'
+  ClientHeight = 411
+  ClientWidth = 609
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '1.2.2.0'
+  object Bevel2: TBevel
+    Left = 24
+    Height = 82
+    Top = 224
+    Width = 562
+    Anchors = [akTop, akLeft, akRight]
+  end
+  object Bevel1: TBevel
+    Left = 24
+    Height = 178
+    Top = 32
+    Width = 560
+    Anchors = [akTop, akLeft, akRight]
+  end
+  object OKButton: TButton
+    AnchorSideRight.Control = PlacerEdit
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 475
+    Height = 25
+    Top = 344
+    Width = 74
+    Anchors = [akTop, akRight]
+    BorderSpacing.Bottom = 26
+    Caption = 'OK'
+    Default = True
+    OnClick = OKButtonClick
+    TabOrder = 0
+  end
+  object CancelButton: TButton
+    AnchorSideRight.Control = OKButton
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 367
+    Height = 25
+    Top = 344
+    Width = 95
+    Anchors = [akTop, akRight]
+    BorderSpacing.Right = 13
+    BorderSpacing.Bottom = 26
+    Cancel = True
+    Caption = 'Abbrechen'
+    OnClick = CancelButtonClick
+    TabOrder = 1
+  end
+  object CaseIDEdit: TEdit
+    AnchorSideLeft.Control = CaseIDLabel
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 158
+    Height = 21
+    Top = 43
+    Width = 391
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 13
+    BorderSpacing.Right = 60
+    TabOrder = 2
+  end
+  object PIDEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 158
+    Height = 21
+    Top = 75
+    Width = 391
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 60
+    TabOrder = 3
+  end
+  object NameEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 158
+    Height = 21
+    Top = 107
+    Width = 391
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 60
+    TabOrder = 4
+  end
+  object GivenNameEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 158
+    Height = 21
+    Top = 139
+    Width = 391
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 60
+    TabOrder = 5
+  end
+  object DoBEdit: TDateEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = PIDEdit
+    AnchorSideRight.Side = asrCenter
+    Left = 158
+    Height = 21
+    Top = 171
+    Width = 390
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames, dsShowWeekNumbers]
+    OKCaption = 'OK'
+    CancelCaption = 'Cancel'
+    DateOrder = doNone
+    ButtonOnlyWhenFocused = True
+    ButtonWidth = 23
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 7
+    CharCase = ecNormal
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 6
+  end
+  object PIDLabel: TLabel
+    Left = 31
+    Height = 13
+    Top = 81
+    Width = 21
+    Caption = 'PID:'
+    ParentColor = False
+    OnClick = PIDLabelClick
+  end
+  object NameLabel: TLabel
+    Left = 31
+    Height = 13
+    Top = 113
+    Width = 31
+    Caption = 'Name:'
+    ParentColor = False
+  end
+  object GivenNameLabel: TLabel
+    Left = 31
+    Height = 13
+    Top = 145
+    Width = 57
+    Caption = 'Vorname(n):'
+    ParentColor = False
+  end
+  object DoBLabel: TLabel
+    Left = 31
+    Height = 13
+    Top = 178
+    Width = 69
+    Caption = 'Geburtsdatum:'
+    ParentColor = False
+  end
+  object OBDateEdit: TDateEdit
+    AnchorSideLeft.Control = PlacerEdit
+    AnchorSideRight.Control = PlacerEdit
+    AnchorSideRight.Side = asrCenter
+    Left = 158
+    Height = 21
+    Top = 264
+    Width = 390
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    OKCaption = 'OK'
+    CancelCaption = 'Cancel'
+    DefaultToday = True
+    DateOrder = doNone
+    ButtonOnlyWhenFocused = True
+    ButtonWidth = 23
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 7
+    CharCase = ecNormal
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 7
+  end
+  object PlacerEdit: TEdit
+    AnchorSideLeft.Control = CaseIDEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 158
+    Height = 21
+    Top = 235
+    Width = 391
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 60
+    TabOrder = 8
+  end
+  object PlacerLabel: TLabel
+    Left = 31
+    Height = 13
+    Top = 241
+    Width = 50
+    Caption = 'Einsender:'
+    ParentColor = False
+  end
+  object OBDateLabel: TLabel
+    Left = 31
+    Height = 13
+    Top = 272
+    Width = 104
+    Caption = 'Untersuchungsdatum:'
+    ParentColor = False
+  end
+  object CaseIDLabel: TLabel
+    Left = 31
+    Height = 13
+    Top = 49
+    Width = 114
+    Caption = 'Aufnahme- oder Fall-Nr.:'
+    ParentColor = False
+  end
+end

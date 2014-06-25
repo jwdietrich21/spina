@@ -1,0 +1,71 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TCaseEditorForm','FORMDATA',[
+  'TPF0'#15'TCaseEditorForm'#14'CaseEditorForm'#4'Left'#3#8#1#6'Height'#3#155#1
+  +#3'Top'#3#157#0#5'Width'#3'a'#2#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#11
+  +'Fall-Editor'#12'ClientHeight'#3#155#1#11'ClientWidth'#3'a'#2#8'OnCreate'#7
+  +#10'FormCreate'#6'OnShow'#7#8'FormShow'#10'LCLVersion'#6#7'1.2.2.0'#0#6'TBev'
+  +'el'#6'Bevel2'#4'Left'#2#24#6'Height'#2'R'#3'Top'#3#224#0#5'Width'#3'2'#2#7
+  +'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#0#0#6'TBevel'#6'Bevel1'#4'Left'
+  +#2#24#6'Height'#3#178#0#3'Top'#2' '#5'Width'#3'0'#2#7'Anchors'#11#5'akTop'#6
+  +'akLeft'#7'akRight'#0#0#0#7'TButton'#8'OKButton'#23'AnchorSideRight.Control'
+  +#7#10'PlacerEdit'#20'AnchorSideRight.Side'#7#9'asrBottom'#24'AnchorSideBotto'
+  +'m.Control'#7#5'Owner'#21'AnchorSideBottom.Side'#7#9'asrBottom'#4'Left'#3#219
+  +#1#6'Height'#2#25#3'Top'#3'X'#1#5'Width'#2'J'#7'Anchors'#11#5'akTop'#7'akRig'
+  +'ht'#0#20'BorderSpacing.Bottom'#2#26#7'Caption'#6#2'OK'#7'Default'#9#7'OnCli'
+  +'ck'#7#13'OKButtonClick'#8'TabOrder'#2#0#0#0#7'TButton'#12'CancelButton'#23
+  +'AnchorSideRight.Control'#7#8'OKButton'#24'AnchorSideBottom.Control'#7#5'Own'
+  +'er'#21'AnchorSideBottom.Side'#7#9'asrBottom'#4'Left'#3'o'#1#6'Height'#2#25#3
+  +'Top'#3'X'#1#5'Width'#2'_'#7'Anchors'#11#5'akTop'#7'akRight'#0#19'BorderSpac'
+  +'ing.Right'#2#13#20'BorderSpacing.Bottom'#2#26#6'Cancel'#9#7'Caption'#6#9'Ab'
+  +'brechen'#7'OnClick'#7#17'CancelButtonClick'#8'TabOrder'#2#1#0#0#5'TEdit'#10
+  +'CaseIDEdit'#22'AnchorSideLeft.Control'#7#11'CaseIDLabel'#19'AnchorSideLeft.'
+  +'Side'#7#9'asrBottom'#23'AnchorSideRight.Control'#7#5'Owner'#20'AnchorSideRi'
+  +'ght.Side'#7#9'asrBottom'#4'Left'#3#158#0#6'Height'#2#21#3'Top'#2'+'#5'Width'
+  +#3#135#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#18'BorderSpacing.Left'
+  +#2#13#19'BorderSpacing.Right'#2'<'#8'TabOrder'#2#2#0#0#5'TEdit'#7'PIDEdit'#22
+  +'AnchorSideLeft.Control'#7#10'CaseIDEdit'#23'AnchorSideRight.Control'#7#5'Ow'
+  +'ner'#20'AnchorSideRight.Side'#7#9'asrBottom'#4'Left'#3#158#0#6'Height'#2#21
+  +#3'Top'#2'K'#5'Width'#3#135#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0
+  +#19'BorderSpacing.Right'#2'<'#8'TabOrder'#2#3#0#0#5'TEdit'#8'NameEdit'#22'An'
+  +'chorSideLeft.Control'#7#10'CaseIDEdit'#23'AnchorSideRight.Control'#7#5'Owne'
+  +'r'#20'AnchorSideRight.Side'#7#9'asrBottom'#4'Left'#3#158#0#6'Height'#2#21#3
+  +'Top'#2'k'#5'Width'#3#135#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#19
+  +'BorderSpacing.Right'#2'<'#8'TabOrder'#2#4#0#0#5'TEdit'#13'GivenNameEdit'#22
+  +'AnchorSideLeft.Control'#7#10'CaseIDEdit'#23'AnchorSideRight.Control'#7#5'Ow'
+  +'ner'#20'AnchorSideRight.Side'#7#9'asrBottom'#4'Left'#3#158#0#6'Height'#2#21
+  +#3'Top'#3#139#0#5'Width'#3#135#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'
+  +#0#19'BorderSpacing.Right'#2'<'#8'TabOrder'#2#5#0#0#9'TDateEdit'#7'DoBEdit'
+  +#22'AnchorSideLeft.Control'#7#10'CaseIDEdit'#23'AnchorSideRight.Control'#7#7
+  +'PIDEdit'#20'AnchorSideRight.Side'#7#9'asrCenter'#4'Left'#3#158#0#6'Height'#2
+  +#21#3'Top'#3#171#0#5'Width'#3#134#1#23'CalendarDisplaySettings'#11#14'dsShow'
+  +'Headings'#14'dsShowDayNames'#17'dsShowWeekNumbers'#0#9'OKCaption'#6#2'OK'#13
+  +'CancelCaption'#6#6'Cancel'#9'DateOrder'#7#6'doNone'#21'ButtonOnlyWhenFocuse'
+  +'d'#9#11'ButtonWidth'#2#23#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#19
+  +'BorderSpacing.Right'#2#7#8'CharCase'#7#8'ecNormal'#9'NumGlyphs'#2#1#9'MaxLe'
+  +'ngth'#2#0#8'TabOrder'#2#6#0#0#6'TLabel'#8'PIDLabel'#4'Left'#2#31#6'Height'#2
+  +#13#3'Top'#2'Q'#5'Width'#2#21#7'Caption'#6#4'PID:'#11'ParentColor'#8#7'OnCli'
+  +'ck'#7#13'PIDLabelClick'#0#0#6'TLabel'#9'NameLabel'#4'Left'#2#31#6'Height'#2
+  +#13#3'Top'#2'q'#5'Width'#2#31#7'Caption'#6#5'Name:'#11'ParentColor'#8#0#0#6
+  +'TLabel'#14'GivenNameLabel'#4'Left'#2#31#6'Height'#2#13#3'Top'#3#145#0#5'Wid'
+  +'th'#2'9'#7'Caption'#6#11'Vorname(n):'#11'ParentColor'#8#0#0#6'TLabel'#8'DoB'
+  +'Label'#4'Left'#2#31#6'Height'#2#13#3'Top'#3#178#0#5'Width'#2'E'#7'Caption'#6
+  +#13'Geburtsdatum:'#11'ParentColor'#8#0#0#9'TDateEdit'#10'OBDateEdit'#22'Anch'
+  +'orSideLeft.Control'#7#10'PlacerEdit'#23'AnchorSideRight.Control'#7#10'Place'
+  +'rEdit'#20'AnchorSideRight.Side'#7#9'asrCenter'#4'Left'#3#158#0#6'Height'#2
+  +#21#3'Top'#3#8#1#5'Width'#3#134#1#23'CalendarDisplaySettings'#11#14'dsShowHe'
+  +'adings'#14'dsShowDayNames'#0#9'OKCaption'#6#2'OK'#13'CancelCaption'#6#6'Can'
+  +'cel'#12'DefaultToday'#9#9'DateOrder'#7#6'doNone'#21'ButtonOnlyWhenFocused'#9
+  +#11'ButtonWidth'#2#23#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#19'Borde'
+  +'rSpacing.Right'#2#7#8'CharCase'#7#8'ecNormal'#9'NumGlyphs'#2#1#9'MaxLength'
+  +#2#0#8'TabOrder'#2#7#0#0#5'TEdit'#10'PlacerEdit'#22'AnchorSideLeft.Control'#7
+  +#10'CaseIDEdit'#23'AnchorSideRight.Control'#7#5'Owner'#20'AnchorSideRight.Si'
+  +'de'#7#9'asrBottom'#4'Left'#3#158#0#6'Height'#2#21#3'Top'#3#235#0#5'Width'#3
+  +#135#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#19'BorderSpacing.Right'
+  +#2'<'#8'TabOrder'#2#8#0#0#6'TLabel'#11'PlacerLabel'#4'Left'#2#31#6'Height'#2
+  +#13#3'Top'#3#241#0#5'Width'#2'2'#7'Caption'#6#10'Einsender:'#11'ParentColor'
+  +#8#0#0#6'TLabel'#11'OBDateLabel'#4'Left'#2#31#6'Height'#2#13#3'Top'#3#16#1#5
+  ,'Width'#2'h'#7'Caption'#6#19'Untersuchungsdatum:'#11'ParentColor'#8#0#0#6'TL'
+  +'abel'#11'CaseIDLabel'#4'Left'#2#31#6'Height'#2#13#3'Top'#2'1'#5'Width'#2'r'
+  +#7'Caption'#6#24'Aufnahme- oder Fall-Nr.:'#11'ParentColor'#8#0#0#0
+]);
