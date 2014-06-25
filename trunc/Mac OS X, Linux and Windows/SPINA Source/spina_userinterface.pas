@@ -1017,13 +1017,17 @@ procedure THauptschirm.NewMenuItemClick(Sender: TObject);
 var
   i : Integer;
 begin
+  NewCaseRecord(caseRecord);
   for i := 0 to ComponentCount-1 do
     if (Components[i] is TEdit) then
       TEdit(Components[i]).Text := '0';
   ActiveControl := TSH_Text;
   ResultField.Text := '';
-  HintField.Text := '';
-  HintField.Hint := '';
+  TherapyCheckGroup.Checked[0] := false;
+  TherapyCheckGroup.Checked[1] := false;
+  TherapyCheckGroup.Checked[2] := false;
+  HintField.Text := gAnleitung1;
+  HintField.Hint := gAnleitung1;
 end;
 
 procedure THauptschirm.MenuItem4Click(Sender: TObject);

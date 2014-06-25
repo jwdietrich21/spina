@@ -1018,7 +1018,6 @@ object Hauptschirm: THauptschirm
       Caption = 'Ablage'
       object NewMenuItem: TMenuItem
         Caption = 'Neue Berechnung…'
-        Enabled = False
         ShortCut = 4174
         OnClick = NewMenuItemClick
       end

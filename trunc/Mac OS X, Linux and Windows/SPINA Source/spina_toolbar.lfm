@@ -11,7 +11,7 @@ object SPINAToolbar: TSPINAToolbar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 88
+  ClientHeight = 68
   ClientWidth = 883
   DefaultMonitor = dmMainForm
   DockSite = True
@@ -33,7 +33,6 @@ object SPINAToolbar: TSPINAToolbar
       Hint = 'Neue Berechnung...'
       Top = 2
       Caption = 'NewToolButton'
-      Enabled = False
       ImageIndex = 0
       OnClick = NewToolButtonClick
       ParentShowHint = False
@@ -173,10 +172,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 782
+    Left = 781
     Height = 16
     Top = 7
-    Width = 69
+    Width = 70
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
@@ -721,4 +720,4 @@ object SPINAToolbar: TSPINAToolbar
     left = 648
     top = 9
   end
-end
+end
