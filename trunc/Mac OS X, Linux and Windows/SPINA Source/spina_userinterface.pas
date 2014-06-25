@@ -29,7 +29,7 @@ uses
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
   gettext, SPINA_Types, SPINA_Resources, UnitConverter, SPINA_Engine, SPINA_AboutBox,
   SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences, CaseEditor,
-  HandleImpEx, Math, LCLIntf, Barcode
+  HandleImpEx, Math, InterfaceBase, LCLIntf, Barcode
   {$IFDEF MSWINDOWS}
   , Windows
   {$ENDIF}

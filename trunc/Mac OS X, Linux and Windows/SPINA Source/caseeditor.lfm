@@ -3,6 +3,7 @@ object CaseEditorForm: TCaseEditorForm
   Height = 386
   Top = 157
   Width = 572
+  ActiveControl = CaseIDEdit
   BorderStyle = bsDialog
   Caption = 'Fall-Editor'
   ClientHeight = 386
@@ -61,10 +62,10 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 158
-    Height = 21
+    Left = 205
+    Height = 22
     Top = 43
-    Width = 351
+    Width = 304
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 13
     BorderSpacing.Right = 63
@@ -74,10 +75,10 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideLeft.Control = CaseIDEdit
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 158
-    Height = 21
+    Left = 205
+    Height = 22
     Top = 75
-    Width = 351
+    Width = 304
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 63
     TabOrder = 3
@@ -86,10 +87,10 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideLeft.Control = CaseIDEdit
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 158
-    Height = 21
+    Left = 205
+    Height = 22
     Top = 107
-    Width = 351
+    Width = 304
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 63
     TabOrder = 4
@@ -98,10 +99,10 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideLeft.Control = CaseIDEdit
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 158
-    Height = 21
+    Left = 205
+    Height = 22
     Top = 139
-    Width = 351
+    Width = 304
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 63
     TabOrder = 5
@@ -110,10 +111,10 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideLeft.Control = CaseIDEdit
     AnchorSideRight.Control = PIDEdit
     AnchorSideRight.Side = asrCenter
-    Left = 158
-    Height = 21
+    Left = 205
+    Height = 22
     Top = 171
-    Width = 350
+    Width = 303
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames, dsShowWeekNumbers]
     OKCaption = 'OK'
     CancelCaption = 'Cancel'
@@ -129,34 +130,34 @@ object CaseEditorForm: TCaseEditorForm
   end
   object PIDLabel: TLabel
     Left = 31
-    Height = 13
+    Height = 16
     Top = 81
-    Width = 21
+    Width = 25
     Caption = 'PID:'
     ParentColor = False
     OnClick = PIDLabelClick
   end
   object NameLabel: TLabel
     Left = 31
-    Height = 13
+    Height = 16
     Top = 113
-    Width = 31
+    Width = 40
     Caption = 'Name:'
     ParentColor = False
   end
   object GivenNameLabel: TLabel
     Left = 31
-    Height = 13
+    Height = 16
     Top = 145
-    Width = 57
+    Width = 77
     Caption = 'Vorname(n):'
     ParentColor = False
   end
   object DoBLabel: TLabel
     Left = 31
-    Height = 13
+    Height = 16
     Top = 178
-    Width = 69
+    Width = 94
     Caption = 'Geburtsdatum:'
     ParentColor = False
   end
@@ -164,10 +165,10 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideLeft.Control = PlacerEdit
     AnchorSideRight.Control = PlacerEdit
     AnchorSideRight.Side = asrCenter
-    Left = 158
-    Height = 21
+    Left = 205
+    Height = 22
     Top = 264
-    Width = 350
+    Width = 304
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
     OKCaption = 'OK'
     CancelCaption = 'Cancel'
@@ -186,36 +187,36 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideLeft.Control = CaseIDEdit
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 158
-    Height = 21
+    Left = 205
+    Height = 22
     Top = 235
-    Width = 351
+    Width = 304
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 63
     TabOrder = 8
   end
   object PlacerLabel: TLabel
     Left = 31
-    Height = 13
+    Height = 16
     Top = 241
-    Width = 50
+    Width = 66
     Caption = 'Einsender:'
     ParentColor = False
   end
   object OBDateLabel: TLabel
     Left = 31
-    Height = 13
+    Height = 16
     Top = 272
-    Width = 104
+    Width = 139
     Caption = 'Untersuchungsdatum:'
     ParentColor = False
   end
   object CaseIDLabel: TLabel
     Left = 31
-    Height = 13
+    Height = 16
     Top = 49
-    Width = 114
+    Width = 161
     Caption = 'Aufnahme- oder Fall-Nr.:'
     ParentColor = False
   end
-end
+end
