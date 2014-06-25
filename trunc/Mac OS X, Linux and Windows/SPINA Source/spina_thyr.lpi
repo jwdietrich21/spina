@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="628"/>
+      <BuildNr Value="629"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="3.5.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -722,7 +722,7 @@
         <EditorIndex Value="16"/>
         <WindowIndex Value="0"/>
         <TopLine Value="93"/>
-        <CursorPos X="78" Y="100"/>
+        <CursorPos X="68" Y="115"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
