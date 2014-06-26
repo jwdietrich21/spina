@@ -151,6 +151,7 @@ type
     UndoMenuItem: TMenuItem;
     ValuesGroupBox: TGroupBox;
     WinPreferencesItem: TMenuItem;
+    procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
     procedure FormPaint(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
     procedure InsertValues(Sender: TObject);
@@ -601,7 +602,10 @@ begin
         TSH_Flag := ''
       else if (TSH < gReferenceRanges.TSH.ln) or (TSH > gReferenceRanges.TSH.hn) then
         TSH_Flag := REF_RANGE_FLAG;
-      TSH_String := FloatToStrF(TSH, ffFixed, 3, 2) + TSH_Flag;
+      if IsNaN(TSH) then
+        TSH_String := NA_MARK
+      else
+        TSH_String := FloatToStrF(TSH, ffFixed, 3, 2) + TSH_Flag;
     end;
     Size := Hauptschirm.FT4_Text.GetTextLen;
     {Laenge des Strings in FT4_Text ermitteln}
@@ -633,7 +637,10 @@ begin
         else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
           T4_Flag := REF_RANGE_FLAG;
       end;
-      T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
+      if IsNaN(T4) then
+        T4_String := NA_MARK
+      else
+        T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
       T4 := ConvertedValue(T4, T4_MOLAR_MASS,
         Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
     end;
@@ -667,7 +674,10 @@ begin
         else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
           T3_Flag := REF_RANGE_FLAG;
       end;
-      T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
+      if IsNaN(T3) then
+        T3_String := NA_MARK
+      else
+        T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
       T3 := ConvertedValue(T3, T3_MOLAR_MASS, Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
     end;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
@@ -918,8 +928,12 @@ begin
 end;
 
 procedure THauptschirm.InsertValues(Sender: TObject);
+{ Inserts values of case record into appropriate fields of form }
 begin
-  TSH_Text.Text := FloatToStr(caseRecord.TSH);
+  if not isNaN(caseRecord.TSH) then
+    TSH_Text.Text := FloatToStr(caseRecord.TSH)
+  else
+    TSH_Text.Text := '';
   if not isNaN(caseRecord.FT4) then
     begin
       T4MethodComboBox.ItemIndex := 0;
@@ -957,6 +971,13 @@ end;
 procedure THauptschirm.FormPaint(Sender: TObject);
 begin
 
+end;
+
+procedure THauptschirm.FormDropFiles(Sender: TObject;
+  const FileNames: array of String);
+begin
+  ReadHL7Message(FileNames[0], Hauptschirm.caseRecord);
+  InsertValues(Sender);
 end;
 
 procedure THauptschirm.FormWindowStateChange(Sender: TObject);
@@ -1112,10 +1133,13 @@ procedure PrintCaption(H: integer; var currentX, currentY, rightMargin: integer)
 var
   theSize, IDWidth: integer;
   IDPos: TPoint;
+  slash: string[3];
 begin
+  { Print main header: }
   theSize := Printer.Canvas.Font.Size;
   Printer.Canvas.Font.Size := trunc(theSize * 1.7);
   PrinterWrite(H, currentX, currentY, 'SPINA Thyr Report', true);
+  { Print hospital / physician / placer ID: }
   if gPreferences.MSH_ID <> '' then
   begin
     Printer.Canvas.Font.Size := theSize;
@@ -1133,6 +1157,7 @@ begin
   PrinterWriteln(H, currentX, currentY, '', true);
   Printer.Canvas.Font.Style := [];
   Printer.Canvas.Font.Size := theSize;
+  { Print bar code: }
   if Hauptschirm.caseRecord.CaseID <> '' then
   begin;
     Hauptschirm.caseIDBarCode.Top := currentY;
@@ -1144,11 +1169,16 @@ begin
     Hauptschirm.caseIDBarCode.Text := Hauptschirm.caseRecord.CaseID;
     Hauptschirm.caseIDBarCode.DrawBarcode(Printer.Canvas);
   end;
+  { Print case-specific entries: }
+  if (Hauptschirm.caseRecord.PID <> '') and (Hauptschirm.caseRecord.CaseID <> '') then
+    slash := ' / '
+  else
+    slash := '';
   if gInterfaceLanguage = German then
   begin
     PrinterWrite(H, currentX, currentY, kPID1, false);
     if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
-      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + ' / ' +
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + slash +
       Hauptschirm.caseRecord.CaseID, false);
     PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWrite(H, currentX, currentY, kPatientenname1, false);
@@ -1174,7 +1204,7 @@ begin
   begin
     PrinterWrite(H, currentX, currentY, kPID2, false);
     if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
-      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + ' / ' +
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + slash +
       Hauptschirm.caseRecord.CaseID, false);
     PrinterWriteln(H, currentX, currentY, '', false);
     PrinterWrite(H, currentX, currentY, kPatientenname2, false);

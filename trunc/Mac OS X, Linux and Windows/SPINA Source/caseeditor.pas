@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, EditBtn, ExtCtrls, Math, SPINA_Engine;
+  StdCtrls, EditBtn, ExtCtrls, Math, SPINA_Engine, HandleImpEx;
 
 type
 
@@ -54,6 +54,7 @@ type
     procedure FillCaseRecord(var theCase: TCaseRecord);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure PIDLabelClick(Sender: TObject);
@@ -111,15 +112,29 @@ begin
 
 end;
 
+procedure TCaseEditorForm.FormDropFiles(Sender: TObject;
+  const FileNames: array of String);
+begin
+  ReadHL7Message(FileNames[0], Hauptschirm.caseRecord);
+  FormShow(Sender);
+end;
+
 procedure TCaseEditorForm.FormShow(Sender: TObject);
 begin
+  ActiveControl := CaseIDEdit;
   CaseIDEdit.Text := Hauptschirm.caseRecord.CaseID;
   PIDEdit.Text := Hauptschirm.caseRecord.PID;
   NameEdit.Text := Hauptschirm.caseRecord.Name;
   GivenNameEdit.Text := Hauptschirm.caseRecord.GivenNames;
-  DoBEdit.Date := Hauptschirm.caseRecord.DoBDate;
+  if not isNaN(Hauptschirm.caseRecord.DoBDate) then
+    DoBEdit.Date := Hauptschirm.caseRecord.DoBDate
+  else
+    DOBEdit.Text := '';
   PlacerEdit.Text := Hauptschirm.caseRecord.Placer;
-  OBDateEdit.Date := Hauptschirm.caseRecord.OBDate;
+  if not isNaN(Hauptschirm.caseRecord.OBDate) then
+    OBDateEdit.Date := Hauptschirm.caseRecord.OBDate
+  else
+    OBDateEdit.Text := '';
 end;
 
 initialization

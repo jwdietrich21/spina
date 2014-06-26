@@ -35,6 +35,7 @@ const
   ACK_R01 = 'ACK^R01^ACK';
   MDM_T01 = 'MDM^T01';
 
+procedure ReadHL7Message(theFile: String; var aCaseRecord: tCaseRecord);
 procedure ReadCaseResults(var caseRecord: tCaseRecord);
 procedure SaveResults(caseRecord: tCaseRecord);
 
