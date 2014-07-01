@@ -24,9 +24,12 @@ program spina_thyr;
 { $DEFINE debug}
 
 uses
-  {$IFDEF UNIX}{$IFDEF UseCThreads}
+  {$IFDEF UNIX}
+  clocale,
+  {$IFDEF UseCThreads}
   cthreads,
-  {$ENDIF}{$ENDIF}
+  {$ENDIF}
+  {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   SysUtils, Forms, Controls,
   SPINA_UserInterface, SPINA_SplashScreen, SPINA_AboutBox,
@@ -34,6 +37,9 @@ uses
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
   HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources, CaseEditor, pid,
   pv1, spm
+  {$IFDEF LCLCarbon}
+  , MacOSAll
+  {$ENDIF}
   {$IFDEF debug}
   , SysUtils
   {$ENDIF}
@@ -51,8 +57,9 @@ begin
   {$ENDIF}
   {$IFDEF LCLCarbon}
   //GetNSFormatSettings(DefaultFormatSettings);
-  DefaultFormatSettings.DateSeparator := '/'; {for testing only}
-  DefaultFormatSettings.ShortDateFormat := 'dd/mm/yyyy';
+  //DefaultFormatSettings.DateSeparator := '/'; {for testing only}
+  //DefaultFormatSettings.ShortDateFormat := 'dd/mm/yyyy';
+  //DefaultFormatSettings.LongDateFormat := 'dd. mmmm yyyy';
   {$ENDIF}
   Application.Title:='SPINA Thyr';
   InitThyroidHormoneConversionFactors;
