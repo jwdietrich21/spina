@@ -122,6 +122,8 @@ end;
 procedure TCaseEditorForm.FormShow(Sender: TObject);
 begin
   ActiveControl := CaseIDEdit;
+  DoBEdit.DateFormatChanged;
+  OBDateEdit.DateFormatChanged;
   CaseIDEdit.Text := Hauptschirm.caseRecord.CaseID;
   PIDEdit.Text := Hauptschirm.caseRecord.PID;
   NameEdit.Text := Hauptschirm.caseRecord.Name;
@@ -141,4 +143,4 @@ initialization
   {$I caseeditor.lrs}
 
 end.
-
+

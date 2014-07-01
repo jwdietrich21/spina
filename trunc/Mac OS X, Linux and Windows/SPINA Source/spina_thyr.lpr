@@ -51,6 +51,7 @@ begin
   {$ENDIF}
   {$IFDEF LCLCarbon}
   //GetNSFormatSettings(DefaultFormatSettings);
+  DefaultFormatSettings.DateSeparator := '/'; {for testing only}
   DefaultFormatSettings.ShortDateFormat := 'dd/mm/yyyy';
   {$ENDIF}
   Application.Title:='SPINA Thyr';
