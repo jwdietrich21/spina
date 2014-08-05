@@ -633,8 +633,8 @@ begin
         theFilterIndex := theFilterIndex + 1;
     {$ENDIF}
     case theFilterIndex of
-      1: SaveAsTextFile(caseRecord);
-      2: SaveAsHL7Message(caseRecord);
+      1: SaveAsHL7Message(caseRecord);
+      2: SaveAsTextFile(caseRecord);
     end;
   end;
 end;
