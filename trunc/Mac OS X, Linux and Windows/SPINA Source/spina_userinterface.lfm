@@ -324,7 +324,7 @@ object Hauptschirm: THauptschirm
   OnShow = FormShow
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.4.0'
   object Calculate_Button: TButton
     Left = 624
     Height = 24

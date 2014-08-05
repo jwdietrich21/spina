@@ -384,7 +384,7 @@ end;
 
 procedure TSPINAToolbar.SaveAsToolButtonClick(Sender: TObject);
 begin
-  CaseEditorForm.FillCaseRecord(Hauptschirm.caseRecord);
+  CaseEditorForm.SetCaseRecord(Hauptschirm.caseRecord);
   SaveResults(Hauptschirm.caseRecord);
 end;
 
@@ -514,4 +514,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

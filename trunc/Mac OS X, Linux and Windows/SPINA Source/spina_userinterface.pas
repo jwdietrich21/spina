@@ -998,12 +998,13 @@ end;
 procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
 begin
   ReadCaseResults(caseRecord);
+  CaseEditorForm.FillFromCaseRecord(caseRecord);
   InsertValues(Sender);
 end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
 begin
-  CaseEditorForm.FillCaseRecord(caseRecord);
+  CaseEditorForm.SetCaseRecord(caseRecord);
   SaveResults(caseRecord);
 end;
 
@@ -1256,7 +1257,7 @@ var
 begin
   if DoPrintSetup then
   begin
-    CaseEditorForm.FillCaseRecord(Hauptschirm.caseRecord);
+    CaseEditorForm.SetCaseRecord(Hauptschirm.caseRecord);
     caseIDBarCode := TBarcode.Create(self);
     gTopMargin := 2;
     gLeftMargin := 2;

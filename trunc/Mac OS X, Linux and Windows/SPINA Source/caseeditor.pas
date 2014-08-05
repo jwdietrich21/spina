@@ -51,7 +51,8 @@ type
     PlacerEdit: TEdit;
     PIDEdit: TEdit;
     NameEdit: TEdit;
-    procedure FillCaseRecord(var theCase: TCaseRecord);
+    procedure FillFromCaseRecord(var theCase: TCaseRecord);
+    procedure SetCaseRecord(var theCase: TCaseRecord);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
@@ -74,7 +75,20 @@ uses
 
 { TCaseEditorForm }
 
-procedure TCaseEditorForm.FillCaseRecord(var theCase: TCaseRecord);
+procedure TCaseEditorForm.FillFromCaseRecord(var theCase: TCaseRecord);
+{ fills edit fields of dialog according with the contents of the case record }
+begin
+  CaseIDEdit.Text := theCase.CaseID;
+  PIDEdit.Text := theCase.PID;
+  NameEdit.Text := theCase.Name;
+  GivenNameEdit.Text := theCase.GivenNames;
+  DoBEdit.Date := theCase.DoBDate;
+  PlacerEdit.Text := theCase.Placer;
+  OBDateEdit.Date := theCase.OBDate;
+end;
+
+procedure TCaseEditorForm.SetCaseRecord(var theCase: TCaseRecord);
+{ reads contents of dialog box and sets the case record appropriately }
 begin
   theCase.CaseID := CaseIDEdit.Text;
   theCase.PID := PIDEdit.Text;
@@ -93,7 +107,7 @@ end;
 
 procedure TCaseEditorForm.OKButtonClick(Sender: TObject);
 begin
-  FillCaseRecord(Hauptschirm.caseRecord);
+  SetCaseRecord(Hauptschirm.caseRecord);
   Close;
 end;
 
@@ -143,4 +157,4 @@ initialization
   {$I caseeditor.lrs}
 
 end.
-
+
