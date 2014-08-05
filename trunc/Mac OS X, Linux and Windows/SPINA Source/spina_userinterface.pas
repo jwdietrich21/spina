@@ -1000,6 +1000,7 @@ begin
   ReadCaseResults(caseRecord);
   CaseEditorForm.FillFromCaseRecord(caseRecord);
   InsertValues(Sender);
+  HandleInput;
 end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
