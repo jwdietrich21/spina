@@ -36,7 +36,7 @@ uses
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
   HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources, CaseEditor, pid,
-  pv1, spm
+  pv1, spm, nte
   {$IFDEF LCLCarbon}
   , MacOSAll
   {$ENDIF}

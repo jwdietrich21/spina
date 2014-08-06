@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, Dialogs, LCLVersion, Math, FileUtil,
   SPINA_Engine, SPINA_Types, UnitConverter,
-  HL7, MSH, MSA, PID, PV1, OBR, OBX, SPM;
+  HL7, MSH, MSA, NTE, PID, PV1, OBR, OBX, SPM;
 
 const
   ORU_R01_variant1 = 'ORU^R01';
@@ -69,6 +69,7 @@ var
   thePID: tPID;
   thePV1: tPV1;
   theSPM: tSPM;
+  theNTE: tNTE;
   setIDcounter: integer;
   sendingApp, sendingFac, receivingApp, receivingFac: str227;
   dateTime: str26;
@@ -166,6 +167,12 @@ begin
     ObsEndDateTime := '';
     SetOBR(HL7Message, SetID, PlacOrdNumb, FillOrdNumb, USI,
       Priority, ReqDateTime, ObsDateTime, ObsEndDateTime);
+
+    ClearNTE(theNTE);
+    theNTE.SetID := '1';
+    theNTE.CommentSource := 'O';
+    theNTE.comment := 'Test';
+    SetNTE(HL7Message, theNTE);
 
     setIDcounter := 1;
 

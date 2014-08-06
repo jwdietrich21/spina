@@ -110,7 +110,7 @@ var
   gStartup: boolean;
   T4UnitLabel, T3UnitLabel: array[0..MAXFACTORS - 1] of Str3;
   T4UnitFactor, T3UnitFactor: array[0..MAXFACTORS - 1] of real;
-  gTSHTherapy, gT4Therapy, gT3Therapy, gUseReferenceRanges: boolean;
+  gUseReferenceRanges: boolean;
   gPrefsDir, gPrefsFileName: String;
   gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR, gTSHIRR, gTTSIRR: string;
   gPreferences: tPreferences;

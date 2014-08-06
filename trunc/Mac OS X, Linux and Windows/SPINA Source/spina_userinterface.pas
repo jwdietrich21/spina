@@ -229,7 +229,6 @@ procedure AdaptMenus;
 procedure AdjustUnitLabels;
 procedure ComposeRRHints;
 procedure GetPreferences;
-procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
 
 implementation
 
@@ -580,6 +579,11 @@ begin
   TSH_Flag := '';
   T4_Flag := '';
   T3_Flag := '';
+  Hauptschirm.caseRecord.TSH := NaN;
+  Hauptschirm.caseRecord.FT4 := NaN;
+  Hauptschirm.caseRecord.TT4 := NaN;
+  Hauptschirm.caseRecord.FT3 := NaN;
+  Hauptschirm.caseRecord.TT3 := NaN;
   try
     Size := Hauptschirm.TSH_Text.GetTextLen;
     {Laenge des Strings in TSH_Text ermitteln}
@@ -597,6 +601,7 @@ begin
         DefaultFormatSettings.decimalSeparator := DEC_POINT;
       TSH := StrToFloatDef(TSH_String, Math.NaN);
       TSH := ConvertedValue(TSH, 1, 'mU/l', 'mU/l');
+      Hauptschirm.caseRecord.TSH := TSH;
       DefaultFormatSettings.decimalSeparator := oldSeparator;
       if (isNan(gReferenceRanges.TSH.ln) or isNan(gReferenceRanges.TSH.hn)) then
         TSH_Flag := ''
@@ -643,6 +648,10 @@ begin
         T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
       T4 := ConvertedValue(T4, T4_MOLAR_MASS,
         Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
+      if gPreferences.T4.Method = freeHormone then
+        Hauptschirm.caseRecord.FT4 := T4
+      else
+        Hauptschirm.caseRecord.TT4 := T4;
     end;
     Size := Hauptschirm.FT3_Text.GetTextLen;
     {Laenge des Strings in FT3_Text ermitteln}
@@ -679,19 +688,23 @@ begin
       else
         T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
       T3 := ConvertedValue(T3, T3_MOLAR_MASS, Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
+      if gPreferences.T3.Method = freeHormone then
+        Hauptschirm.caseRecord.FT3 := T3
+      else
+        Hauptschirm.caseRecord.TT3 := T3;
     end;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
-      gTSHTherapy := True
+      Hauptschirm.caseRecord.TSHTherapy := True
     else
-      gTSHTherapy := False;
+      Hauptschirm.caseRecord.TSHTherapy := False;
     if Hauptschirm.TherapyCheckGroup.Checked[1] then
-      gT4Therapy := True
+      Hauptschirm.caseRecord.T4Therapy := True
     else
-      gT4Therapy := False;
+      Hauptschirm.caseRecord.T4Therapy := False;
     if Hauptschirm.TherapyCheckGroup.Checked[2] then
-      gT3Therapy := True
+      Hauptschirm.caseRecord.T3Therapy := True
     else
-      gT3Therapy := False;
+      Hauptschirm.caseRecord.T3Therapy := False;
   except
     on ex: Exception do
     begin
@@ -702,7 +715,7 @@ begin
     end;
   end;
   DefaultFormatSettings.decimalSeparator := oldSeparator;
-  Hauptschirm.caseRecord := Calculate(TSH, T4, T3);
+  Calculate(Hauptschirm.caseRecord);
   if gPreferences.T4.isSI then
     FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
     T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l')
@@ -752,11 +765,6 @@ end;
 procedure THauptschirm.DeleteMenuItemClick(Sender: TObject);
 begin
   ActionList1.Actions[4].Execute;
-end;
-
-procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
-begin
-  FillChar(aCaseRecord, SizeOf(tCaseRecord), 0); // empties record
 end;
 
 procedure AdaptMenus;

@@ -100,7 +100,6 @@ type
 
 var
   testCaseRecord: tCaseRecord;
-  TSH, T4, T3: real;
   TSH_String, T4_String, T3_String: String;
 
 implementation
@@ -430,16 +429,15 @@ procedure TEngineTestCases.TestCase1;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
-  TSH := NaN;
-  T4 := NaN;
-  T3 := NaN;
+  NewCaseRecord(testCaseRecord);
+  testCaseRecord.TSH := NaN;
+  testCaseRecord.FT4 := NaN;
+  testCaseRecord.FT3 := NaN;
   lReferenceRanges.FT4.ln := 7;
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue(isNaN(testCaseRecord.GT));
@@ -458,16 +456,15 @@ procedure TEngineTestCases.TestCase2;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
-  TSH := 0;
-  T4 := 0;
-  T3 := 0;
+  NewCaseRecord(testCaseRecord);
+  testCaseRecord.TSH := 0;
+  testCaseRecord.FT4 := 0;
+  testCaseRecord.FT3 := 0;
   lReferenceRanges.FT4.ln := 7;
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  Calculate(testCaseRecord);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   FormatCase(testCaseRecord, gReferenceRanges);
   AssertTrue(isNaN(testCaseRecord.GT));
@@ -485,8 +482,7 @@ procedure TEngineTestCases.TestCase3;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '1 mU/l';
   T4_String := '2 ng/dl';
   T3_String := '3 pg/ml';
@@ -494,10 +490,10 @@ begin
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 7.29e-12) and (testCaseRecord.GT < 1.01 * 7.29e-12));
@@ -518,8 +514,7 @@ procedure TEngineTestCases.TestCase4;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '1 mU/l';
   T4_String := '1.3 ng/dl';
   T3_String := '3 pg/ml';
@@ -527,10 +522,10 @@ begin
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
@@ -547,20 +542,19 @@ procedure TEngineTestCases.TestCase5;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '0.5 mU/l';
   T4_String := '1.5 ng/dl';
   T3_String := '4 pg/ml';
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
   lReferenceRanges.FT4.ln := 0.7;
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 9.47e-12) and (testCaseRecord.GT < 1.01 * 9.47e-12));
@@ -577,8 +571,7 @@ procedure TEngineTestCases.TestCase6;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '0.3 mU/l';
   T4_String := '1.6 ng/dl';
   T3_String := '5 pg/ml';
@@ -586,10 +579,10 @@ begin
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 15.81e-12) and (testCaseRecord.GT < 1.01 * 15.81e-12));
@@ -606,8 +599,7 @@ procedure TEngineTestCases.TestCase7;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '0.01 mU/l';
   T4_String := '2.2 ng/dl';
   T3_String := '6 pg/ml';
@@ -615,10 +607,10 @@ begin
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 589.99e-12) and (testCaseRecord.GT < 1.01 * 589.99e-12));
@@ -635,8 +627,7 @@ procedure TEngineTestCases.TestCase8;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '3.9 mU/l';
   T4_String := '0.8 ng/dl';
   T3_String := '2 pg/ml';
@@ -644,10 +635,10 @@ begin
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 1.33e-12) and (testCaseRecord.GT < 1.01 * 1.33e-12));
@@ -664,8 +655,7 @@ procedure TEngineTestCases.TestCase9;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '7 mU/l';
   T4_String := '0.8 ng/dl';
   T3_String := '2 pg/ml';
@@ -673,10 +663,10 @@ begin
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.084e-12));
@@ -693,8 +683,7 @@ procedure TEngineTestCases.TestCase10;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '13 mU/l';
   T4_String := '0.4 ng/dl';
   T3_String := '1 pg/ml';
@@ -702,10 +691,10 @@ begin
   lReferenceRanges.FT4.hn := 2;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/dl', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 0.47e-12) and (testCaseRecord.GT < 1.01 * 0.47e-12));
@@ -722,8 +711,7 @@ procedure TEngineTestCases.TestCase11;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '1 mU/l';
   T4_String := '13 ng/l';
   T3_String := '4.5 pmol/l';
@@ -731,10 +719,10 @@ begin
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, lReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 4.74e-12) and (testCaseRecord.GT < 1.01 * 4.74e-12));
@@ -751,16 +739,15 @@ procedure TEngineTestCases.TestCase12;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
-  TSH := 1;
-  T4 := 16.5e-12;
-  T3 := 4.5e-12;
+  NewCaseRecord(testCaseRecord);
+  testCaseRecord.TSH := 1;
+  testCaseRecord.FT4 := 16.5e-12;
+  testCaseRecord.FT3 := 4.5e-12;
   lReferenceRanges.FT4.ln := 7;
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 4.70e-12) and (testCaseRecord.GT < 1.01 * 4.70e-12));
@@ -781,16 +768,15 @@ procedure TEngineTestCases.TestCase13;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
-  TSH := 3.24;
-  T4 := 7.7e-12;
-  T3 := 28e-12;
+  NewCaseRecord(testCaseRecord);
+  testCaseRecord.TSH := 3.24;
+  testCaseRecord.FT4 := 7.7e-12;
+  testCaseRecord.FT3 := 28e-12;
   lReferenceRanges.FT4.ln := 7;
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 1.08e-12) and (testCaseRecord.GT < 1.01 * 1.08e-12));
@@ -811,16 +797,15 @@ procedure TEngineTestCases.TestCase14;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
-  TSH := 0.7;
-  T4 := 9e-12;
-  T3 := 6.2e-12;
+  NewCaseRecord(testCaseRecord);
+  testCaseRecord.TSH := 0.7;
+  testCaseRecord.FT4 := 9e-12;
+  testCaseRecord.FT3 := 6.2e-12;
   lReferenceRanges.FT4.ln := 7;
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 3.37e-12) and (testCaseRecord.GT < 1.01 * 3.37e-12));
@@ -841,8 +826,7 @@ procedure TEngineTestCases.TestCase15;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := totalHormone;
-  gPreferences.T3.Method := totalHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '0.86 mU/l';
   T4_String := '163 nmol/l';
   T3_String := '3 nmol/l';
@@ -850,10 +834,10 @@ begin
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.TT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.TT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 7.53e-12) and (testCaseRecord.GT < 1.01 * 7.53e-12));
@@ -872,8 +856,7 @@ procedure TEngineTestCases.TestCase16;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := freeHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '0.2 mU/l';
   T4_String := '4 ng/l';
   T3_String := '2 pmol/l';
@@ -881,10 +864,10 @@ begin
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.FT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 5.73e-12) and (testCaseRecord.GT < 1.01 * 5.73e-12));
@@ -901,8 +884,7 @@ procedure TEngineTestCases.TestCase17;
 var
   lReferenceRanges, lSIReferenceRanges: tReferenceValues;
 begin
-  gPreferences.T4.Method := freeHormone;
-  gPreferences.T3.Method := totalHormone;
+  NewCaseRecord(testCaseRecord);
   TSH_String := '16.13 mU/l';
   T4_String := '24 ng/l';
   T3_String := '1.9 µg/l';
@@ -910,10 +892,10 @@ begin
   lReferenceRanges.FT4.hn := 20;
   lSIReferenceRanges.FT4.ln := ConvertedValue(lReferenceRanges.FT4.ln, T4_MOLAR_MASS, 'ng/l', 'mol/l');
   lSIReferenceRanges.FT4.hn := ConvertedValue(lReferenceRanges.FT4.hn, T4_MOLAR_MASS, 'ng/l', 'mol/l');
-  TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
-  T4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
-  T3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
-  testCaseRecord := Calculate(TSH, T4, T3);
+  testCaseRecord.TSH := ValueFromUnit(TSH_String, 1, 'mU/l');
+  testCaseRecord.FT4 := ValueFromUnit(T4_String, T4_MOLAR_MASS, 'mol/l');
+  testCaseRecord.TT3 := ValueFromUnit(T3_String, T3_MOLAR_MASS, 'mol/l');
+  Calculate(testCaseRecord);
   FormatCase(testCaseRecord, gReferenceRanges);
   InsertTTSI(testCaseRecord, lSIReferenceRanges.FT4.hn);
   AssertTrue((testCaseRecord.GT > 0.99 * 2.73e-12) and (testCaseRecord.GT < 1.01 * 2.73e-12));

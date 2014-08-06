@@ -19,7 +19,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="4"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="42"/>
+      <BuildNr Value="43"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr Engine Unit Tests" ProductVersion="3.4.1"/>
     </VersionInfo>
     <BuildModes Count="1">
