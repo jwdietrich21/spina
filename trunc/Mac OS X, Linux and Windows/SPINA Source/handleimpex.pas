@@ -25,7 +25,7 @@ unit HandleImpEx;
 interface
 
 uses
-  Classes, SysUtils, Dialogs, LCLVersion, Math,
+  Classes, SysUtils, Dialogs, LCLVersion, Math, FileUtil,
   SPINA_Engine, SPINA_Types, UnitConverter,
   HL7, MSH, MSA, PID, PV1, OBR, OBX, SPM;
 
@@ -450,7 +450,7 @@ begin
       theSPM.SpecimenCollectionDateTime := EncodedDateTime(aCaseRecord.OBDate);
     SetSPM(Hl7Message, theSPM);
 
-    WriteHL7File(HL7Message, SPINAToolbar.SaveResultsDialog.FileName);
+    WriteHL7File(HL7Message, UTF8ToSys(SPINAToolbar.SaveResultsDialog.FileName));
     DefaultFormatSettings.DecimalSeparator := oldSeparator;
   end;
 end;
@@ -477,7 +477,7 @@ begin
       OBDateString + ' (' + aCaseRecord.Placer + ')'+
       kCR + kLF + kCR + kLF;
   theString := theHeader + gResultString;
-  SaveStringToPath(theString, SPINAToolbar.SaveResultsDialog.FileName);
+  SaveStringToPath(theString, UTF8ToSys(SPINAToolbar.SaveResultsDialog.FileName));
 end;
 
 procedure ReadHL7Message(theFile: String; var aCaseRecord: tCaseRecord);
@@ -614,7 +614,7 @@ begin
         theFilterIndex := theFilterIndex + 1;
     {$ENDIF}
     case theFilterIndex of
-      1: ReadHL7Message(SPINAToolbar.OpenCaseDialog.FileName, caseRecord);
+      1: ReadHL7Message(UTF8ToSys(SPINAToolbar.OpenCaseDialog.FileName), caseRecord);
     end;
   end;
 end;
