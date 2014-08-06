@@ -572,18 +572,16 @@ var
   TSH_String, T4_String, T3_String: Str255;
   TSH_Flag, T4_Flag, T3_Flag: string;
   FT4UpperLimitforTTSI: real;
-  storedCaseRecord: tCaseRecord;
 begin
-  storedCaseRecord := Hauptschirm.caseRecord; // stores meta-information like PID
   oldSeparator := DefaultFormatSettings.decimalSeparator;
   TSH_Flag := '';
   T4_Flag := '';
   T3_Flag := '';
-  Hauptschirm.caseRecord.TSH := NaN;
-  Hauptschirm.caseRecord.FT4 := NaN;
-  Hauptschirm.caseRecord.TT4 := NaN;
-  Hauptschirm.caseRecord.FT3 := NaN;
-  Hauptschirm.caseRecord.TT3 := NaN;
+  Hauptschirm.caseRecord.TSH := Math.NaN; // clears entry to enable disctinction
+  Hauptschirm.caseRecord.FT4 := Math.NaN; // between total and free hormone
+  Hauptschirm.caseRecord.TT4 := Math.NaN; // method
+  Hauptschirm.caseRecord.FT3 := Math.NaN;
+  Hauptschirm.caseRecord.TT3 := Math.NaN;
   try
     Size := Hauptschirm.TSH_Text.GetTextLen;
     {Laenge des Strings in TSH_Text ermitteln}
@@ -733,7 +731,6 @@ begin
     strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs, kCR,
       kLF, '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF, '   TSHI: ',
       Hauptschirm.caseRecord.TSHIs, kCR, kLF, '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
-  CopyPatientData(storedCaseRecord, Hauptschirm.caseRecord);
   ShowMessage(TSH_String, T4_String, T3_String, strucPars);
 end;
 

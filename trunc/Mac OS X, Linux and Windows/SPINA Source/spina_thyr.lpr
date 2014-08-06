@@ -61,7 +61,7 @@ begin
   //DefaultFormatSettings.ShortDateFormat := 'dd/mm/yyyy';
   //DefaultFormatSettings.LongDateFormat := 'dd. mmmm yyyy';
   {$ENDIF}
-  Application.Title:='SPINA Thyr';
+  Application.Title := 'SPINA Thyr';
   InitThyroidHormoneConversionFactors;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
@@ -104,10 +104,10 @@ begin
   Application.Run;
   if (SplashScreen<>nil) then begin
     SplashScreen.Free;
-    SplashScreen:=nil;
+    SplashScreen := nil;
   end;
   if gPreferences.rememberUsedUnits then
     SavePreferences;
   Hauptschirm.Free;
-  Hauptschirm:=nil;
+  Hauptschirm := nil;
 end.

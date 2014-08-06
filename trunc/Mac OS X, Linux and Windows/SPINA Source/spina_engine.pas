@@ -71,6 +71,15 @@ implementation
 procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
 begin
   FillChar(aCaseRecord, SizeOf(tCaseRecord), 0); // empties record
+  aCaseRecord.TSH := NaN;
+  aCaseRecord.FT4 := NaN;
+  aCaseRecord.FT3 := NaN;
+  aCaseRecord.TT4 := NaN;
+  aCaseRecord.TT3 := NaN;
+  aCaseRecord.GT := NaN;
+  aCaseRecord.GD := NaN;
+  aCaseRecord.TSHI := NaN;
+  aCaseRecord.TTSI := NaN;
 end;
 
 procedure Calculate(var theCaseRecord: tCaseRecord);
