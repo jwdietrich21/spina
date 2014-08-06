@@ -982,7 +982,9 @@ procedure THauptschirm.FormDropFiles(Sender: TObject;
   const FileNames: array of String);
 begin
   ReadHL7Message(FileNames[0], Hauptschirm.caseRecord);
+  CaseEditorForm.FillFromCaseRecord(caseRecord);
   InsertValues(Sender);
+  HandleInput;
 end;
 
 procedure THauptschirm.FormWindowStateChange(Sender: TObject);
