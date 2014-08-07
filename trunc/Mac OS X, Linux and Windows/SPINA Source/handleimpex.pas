@@ -62,7 +62,7 @@ end;
 
 procedure SaveAsHL7Message(aCaseRecord: tCaseRecord);
 var
-  oldSeparator: Char;
+  oldSeparator, t4substFlag, t3substFlag, tshsubstFlag: Char;
   HL7Message: THL7Message;
   newSegment: THL7Segment;
   delimiters: str5;
@@ -168,10 +168,26 @@ begin
     SetOBR(HL7Message, SetID, PlacOrdNumb, FillOrdNumb, USI,
       Priority, ReqDateTime, ObsDateTime, ObsEndDateTime);
 
+    if aCaseRecord.T4Therapy then
+      t4substFlag := 'T'
+    else
+      t4substFlag := 'F';
+    if aCaseRecord.T3Therapy then
+      t3substFlag := 'T'
+    else
+      t3substFlag := 'F';
+    if aCaseRecord.TSHTherapy then
+      tshsubstFlag := 'T'
+    else
+      tshsubstFlag := 'F';
     ClearNTE(theNTE);
     theNTE.SetID := '1';
     theNTE.CommentSource := 'O';
-    theNTE.comment := 'Test';
+    theNTE.comment := 'L-T4' + HL7Message.Delimiters.SubcomponentSeparator
+      + t4substFlag + HL7Message.Delimiters.ComponentSeparator
+      + 'L-T3' + HL7Message.Delimiters.SubcomponentSeparator + t3substFlag
+      + HL7Message.Delimiters.ComponentSeparator
+      + 'rh-TSH' + HL7Message.Delimiters.SubcomponentSeparator + tshsubstFlag;
     SetNTE(HL7Message, theNTE);
 
     setIDcounter := 1;
