@@ -71,13 +71,13 @@ implementation
 procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
 begin
   FillChar(aCaseRecord, SizeOf(tCaseRecord), 0); // empties record
-  aCaseRecord.TSH := NaN;
-  aCaseRecord.FT4 := NaN;
-  aCaseRecord.FT3 := NaN;
-  aCaseRecord.TT4 := NaN;
-  aCaseRecord.TT3 := NaN;
-  aCaseRecord.GT := NaN;
-  aCaseRecord.GD := NaN;
+  aCaseRecord.TSH  := NaN;
+  aCaseRecord.FT4  := NaN;
+  aCaseRecord.FT3  := NaN;
+  aCaseRecord.TT4  := NaN;
+  aCaseRecord.TT3  := NaN;
+  aCaseRecord.GT   := NaN;
+  aCaseRecord.GD   := NaN;
   aCaseRecord.TSHI := NaN;
   aCaseRecord.TTSI := NaN;
 end;
@@ -87,43 +87,51 @@ procedure Calculate(var theCaseRecord: tCaseRecord);
  {TSH is expected in mU/l, T4 and T3 in mol/l}
 var
   GTFlag, GDFlag: string;
-  T4, T3:  real;
+  T4, T3: real;
 begin
   with theCaseRecord do
   begin
     if not isNan(TSH) and (TSH > 0) and not isNan(TT4) and not T4Therapy then
-      GT := betaT * (DT + TSH) * TT4 / (alphaT * TSH)
+      GT := betaT * (DT + TSH) * TT4 / (alphaT * TSH) {total T4 used}
     else if not isNan(TSH) and (TSH > 0) and not isNan(FT4) and not T4Therapy then
     begin
-      T4 := (1 + k41 * TBG + k42 * TBPA) * FT4; {T4 = FT4}
+      T4 := (1 + k41 * TBG + k42 * TBPA) * FT4; {free T4 used}
       GT := betaT * (DT + TSH) * T4 / (alphaT * TSH);
     end
     else
       GT := NaN;
-    if not isNan(TT4) and (TT4 > 0) and not isNan(TT3) and not T3Therapy then
+    if not isNan(TT4) and (TT4 > 0) then
     begin
-      T4 := TT4 / (1 + k41 * TBG + k42 * TBPA);
-      GD := beta31 * (kM1 + T4) * TT3 / (alpha31 * T4);
+      if not isNan(TT3) and not T3Therapy then
+      begin
+        T4 := TT4 / (1 + k41 * TBG + k42 * TBPA);
+        GD := beta31 * (kM1 + T4) * TT3 / (alpha31 * T4);
+      end
+      else if not isNan(FT3) and not T3Therapy then
+      begin
+        T4 := TT4 / (1 + k41 * TBG + k42 * TBPA);
+        T3 := (1 + k30 * TBG) * FT3;
+        GD := beta31 * (kM1 + T4) * T3 / (alpha31 * T4);
+      end
+      else
+        GD := NaN;
     end
-    else if not isNan(FT4) and (FT4 > 0) and not isNan(TT3) and not T3Therapy then
+    else if not isNan(FT4) and (FT4 > 0) then
     begin
-      GD := beta31 * (kM1 + FT4) * TT3 / (alpha31 * FT4);
-    end
-    else if not isNan(TT4) and (TT4 > 0) and not isNan(FT3) and not T3Therapy then
-    begin
-      T4 := TT4 / (1 + k41 * TBG + k42 * TBPA);
-      T3 := (1 + k30 * TBG) * FT3;
-      GD := beta31 * (kM1 + T4) * T3 / (alpha31 * T4);
-    end
-    else if not isNan(FT4) and (FT4 > 0) and not isNan(FT3) and not T3Therapy then
-    begin
-      T3 := (1 + k30 * TBG) * FT3;
-      GD := beta31 * (kM1 + FT4) * T3 / (alpha31 * FT4);
-    end
-    else
-      GD := NaN;
-    if not isNan(FT4) and (FT4 > 0) and not isNan(TSH) and
-      (TSH > 0) and not TSHTherapy then
+      if not isNan(TT3) and not T3Therapy then
+      begin
+        GD := beta31 * (kM1 + FT4) * TT3 / (alpha31 * FT4);
+      end
+      else if not isNan(FT3) and not T3Therapy then
+      begin
+        T3 := (1 + k30 * TBG) * FT3;
+        GD := beta31 * (kM1 + FT4) * T3 / (alpha31 * FT4);
+      end
+      else
+        GD := NaN;
+    end;
+    if not isNan(FT4) and (FT4 > 0) and not isNan(TSH) and (TSH > 0) and
+      not TSHTherapy then
     begin
       TSHI := ln(TSH) + 0.1345 * FT4 * 1e12;
     end
@@ -136,8 +144,8 @@ end;
 
 procedure InsertTTSI(var theCase: tCaseRecord; FT4UpperLimit: real);
 begin
-  if not isNan(theCase.FT4) and not isNan(theCase.TSH) and
-    not isNan(FT4UpperLimit) and not theCase.TSHTherapy then
+  if not isNan(theCase.FT4) and not isNan(theCase.TSH) and not
+    isNan(FT4UpperLimit) and not theCase.TSHTherapy then
   begin
     theCase.TTSI := 100 * theCase.TSH * theCase.FT4 / FT4UpperLimit;
   end
@@ -170,8 +178,8 @@ begin
     theCase.GTs := FloatToStrF(1e12 * theCase.GT, ffFixed, 5, 2);
     theCase.GTs := concat(theCase.GTs, ' pmol/s');
     if not isNaN(gReferenceRanges.GT.ln) and not isNan(gReferenceRanges.GT.hn) and
-      ((theCase.GT < gReferenceRanges.GT.ln) or
-      (theCase.GT > gReferenceRanges.GT.hn)) then
+      ((theCase.GT < gReferenceRanges.GT.ln) or (theCase.GT >
+      gReferenceRanges.GT.hn)) then
       GTFlag := REF_RANGE_FLAG;
     theCase.flaggedGTs := FloatToStrF(1e12 * theCase.GT, ffFixed, 5, 2);
     theCase.flaggedGTs := concat(theCase.flaggedGTs, GTFlag, ' pmol/s ');
@@ -186,8 +194,8 @@ begin
     theCase.GDs := FloatToStrF(1e9 * theCase.GD, ffFixed, 5, 2);
     theCase.GDs := concat(theCase.GDs, ' nmol/s');
     if not isNaN(gReferenceRanges.GD.ln) and not isNan(gReferenceRanges.GD.hn) and
-      ((theCase.GD < gReferenceRanges.GD.ln) or (theCase.GD >
-      gReferenceRanges.GD.hn)) then
+      ((theCase.GD < gReferenceRanges.GD.ln) or
+      (theCase.GD > gReferenceRanges.GD.hn)) then
       GDFlag := REF_RANGE_FLAG;
     theCase.flaggedGDs := FloatToStrF(1e9 * theCase.GD, ffFixed, 5, 2);
     theCase.flaggedGDs := concat(theCase.flaggedGDs, GDFlag, ' nmol/s ');
