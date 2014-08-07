@@ -12,7 +12,7 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="68" Y="1"/>
+        <CursorPos X="72" Y="6"/>
         <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -260,4 +260,4 @@
     </Watches>
   </Debugging>
   <EditorMacros Count="0"/>
-</CONFIG>
+</CONFIG>
