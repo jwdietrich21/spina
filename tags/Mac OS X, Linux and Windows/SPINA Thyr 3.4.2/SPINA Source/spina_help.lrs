@@ -1,0 +1,48 @@
+LazarusResources.Add('THelpWindow','FORMDATA',[
+  'TPF0'#11'THelpWindow'#10'HelpWindow'#4'Left'#3'j'#1#6'Height'#3#255#0#3'Top'
+  +#3#207#0#5'Width'#3'b'#2#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0
+  +#7'Caption'#6#10'SPINA Help'#12'ClientHeight'#3#255#0#11'ClientWidth'#3'b'#2
+  +#5'Color'#7#7'clWhite'#21'Constraints.MinHeight'#3#200#0#20'Constraints.MinW'
+  +'idth'#3'^'#1#8'OnCreate'#7#10'FormCreate'#8'Position'#7#14'poScreenCenter'
+  +#10'LCLVersion'#6#7'1.2.2.0'#0#6'TLabel'#6'Label1'#4'Left'#2'P'#6'Height'#2
+  +#22#3'Top'#2'"'#5'Width'#2'i'#7'Caption'#6#10'SPINA Help'#11'Font.Height'#2
+  +#238#10'Font.Style'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#0#0#6
+  +'TLabel'#6'Label3'#6'Cursor'#7#11'crHandPoint'#4'Left'#2'('#6'Height'#2#13#3
+  +'Top'#3#128#0#5'Width'#3#138#0#7'Caption'#6#28'Information about the method'
+  +#10'Font.Color'#7#6'clNavy'#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8
+  +#10'ParentFont'#8#7'OnClick'#7#11'Label3Click'#0#0#6'TLabel'#6'Label4'#6'Cur'
+  +'sor'#7#11'crHandPoint'#4'Left'#2'('#6'Height'#2#13#3'Top'#2'P'#5'Width'#2'6'
+  +#7'Caption'#6#11'Online Help'#10'Font.Color'#7#6'clNavy'#11'Font.Height'#2#13
+  +#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#7'OnClic'
+  +'k'#7#11'Label4Click'#0#0#6'TImage'#6'Image1'#4'Left'#2'('#6'Height'#2' '#3
+  +'Top'#2#24#5'Width'#2' '#8'AutoSize'#9#7'OnClick'#7#11'Image1Click'#12'Pictu'
+  +'re.Data'#10#160#1#0#0#23'TPortableNetworkGraphic'#132#1#0#0#137'PNG'#13#10
+  +#26#10#0#0#0#13'IHDR'#0#0#0' '#0#0#0' '#8#6#0#0#0'szz'#244#0#0#0#4'gAMA'#0#0
+  +#217#4#220#178#218#2#0#0#0#25'tEXtSoftware'#0'GraphicConverter5]H'#238#0#0#1
+  +#22'IDATx'#156#236#148#219#13#194'0'#12'E'#179#9'_'#140#194#4#236#208#157':V'
+  +#7'`'#5'V'#8'D'#194#144#186'~\''m'#249#137'%KU'#19#251#30#219'IR'#26'6L'#177
+  +'<'#167'\'#220'Z?\<O'#178#136#7#167#230'3r'#138#226'{'#0#172#196#223#254'H'#8
+  +#192'dC'#160#213#240#202#139#227#0'F'#0'R'#141'$'#30#3#152#219#1'Dq#'#223'6'
+  +#240#19#180#220#174':'#128#145'L'#171#254'yA'#0'X'#187#162#0'<G'#189'7<'#127
+  +'K'#196#132#19#170#199#230#207'6{g'#128#198#228#21#129'w'#0#12#210#174#149't'
+  +#133'a'#241'/'#0'z'#13'Yb'#173#237'q'#0#197'W'#226'B'#7#196#234'#'#15#16'o'
+  +#173'x'#154#5#241#13#128#226'q'#0#238'F'#139#189#246#227#0'Zr'#239#159'q'#245
+  +#160#7#200#4#232't'#26#19#4'p$'#4'$'#190''''#0#205#254'o'#0#252#150#132#172
+  +#14#238#17#135#15'_K'#23'(9ow'#189#222#5#160'%'#231#149'Y'#235'M'#226'd'#148
+  +#152'*Y'#238#191#239#226#245#190#250#127's'#213#26#132#228#222#190']'#196#135
+  +#157'e/'#0#0#0#255#255#3#0'z'#172#245#244'8\R'#177#0#0#0#0'IEND'#174'B`'#130
+  +#0#0#6'TLabel'#6'Label2'#4'Left'#2'('#6'Height'#2#9#3'Top'#2'`'#5'Width'#3
+  +#199#0#7'Caption'#6'?Get a short introduction, a full handbook and tutorials'
+  +' online.'#11'Font.Height'#2#10#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLa'
+  +'bel'#6'Label5'#4'Left'#2'('#6'Height'#2#9#3'Top'#3#144#0#5'Width'#3#181#0#7
+  +'Caption'#6'2References and background information about SPINA.'#11'Font.Hei'
+  +'ght'#2#10#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#6'Label6'#6'Curs'
+  +'or'#7#11'crHandPoint'#4'Left'#2'('#6'Height'#2#13#3'Top'#3#168#0#5'Width'#2
+  +'7'#7'Caption'#6#12'Version info'#10'Font.Color'#7#6'clNavy'#10'Font.Pitch'#7
+  +#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#7'OnClick'#7#11'Label6Cli'
+  +'ck'#0#0#6'TLabel'#6'Label7'#4'Left'#2'('#6'Height'#2' '#3'Top'#3#184#0#5'Wi'
+  +'dth'#3#29#2#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#8'AutoSize'#8#7'C'
+  +'aption'#6'aGet information about the version of this application and inform'
+  +'ation on the runtime environment.'#11'Font.Height'#2#10#11'ParentColor'#8#10
+  +'ParentFont'#8#8'WordWrap'#9#0#0#0
+]);
