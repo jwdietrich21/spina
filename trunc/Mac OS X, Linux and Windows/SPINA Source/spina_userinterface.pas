@@ -896,12 +896,14 @@ end;
 
 procedure THauptschirm.TherapyCheckGroupClick(Sender: TObject);
 begin
-  Hauptschirm.MarkMandatoryFields(Sender);
+  MarkMandatoryFields(Sender);
+  HandleInput;
 end;
 
 procedure THauptschirm.TherapyCheckGroupItemClick(Sender: TObject; Index: integer);
 begin
   Hauptschirm.MarkMandatoryFields(Sender);
+  HandleInput;
 end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
