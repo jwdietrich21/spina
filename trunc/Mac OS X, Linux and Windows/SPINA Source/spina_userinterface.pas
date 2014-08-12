@@ -973,6 +973,18 @@ begin
       FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT3, T3_MOLAR_MASS,
       'mol/l', T3UnitComboBox.Caption));
     end;
+  if caseRecord.TSHTherapy then
+    TherapyCheckGroup.Checked[0] := true
+  else
+    TherapyCheckGroup.Checked[0] := false;
+  if caseRecord.T4Therapy then
+    TherapyCheckGroup.Checked[1] := true
+  else
+    TherapyCheckGroup.Checked[1] := false;
+  if caseRecord.T3Therapy then
+    TherapyCheckGroup.Checked[2] := true
+  else
+    TherapyCheckGroup.Checked[2] := false;
 end;
 
 procedure THauptschirm.FormPaint(Sender: TObject);
