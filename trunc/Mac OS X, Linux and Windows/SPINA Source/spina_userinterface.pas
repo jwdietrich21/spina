@@ -41,7 +41,7 @@ uses
   , baseunix // for fpgetuid
   {$ENDIF}
   {$IFDEF LCLCarbon}
-  , MacOSAll
+  , MacOSAll, CarbonProc
   {$ENDIF}
   , lazutf8, Printers, ComCtrls, PrintersDlgs;
 
@@ -221,6 +221,8 @@ var
 {$IFDEF LCLCarbon}
   gItl0Handle: Intl0Hndl;
   gRegion: integer;
+  theFormatString: string;
+  theFormatter: CFDateFormatterRef;
 {$ENDIF}
   gTopMargin, gBottomMargin, gLeftMargin, gRightMargin: double;
   gLineSpacing: integer;
@@ -228,6 +230,7 @@ var
 procedure AdaptMenus;
 procedure AdjustUnitLabels;
 procedure ComposeRRHints;
+procedure GetMacDateFormats;
 procedure GetPreferences;
 
 implementation
@@ -339,6 +342,24 @@ begin
 end;
 
 { THauptschirm }
+
+procedure GetMacDateFormats;
+begin
+  {$IFDEF LCLCarbon}
+  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault, CFLocaleCopyCurrent, kCFDateFormatterMediumStyle, kCFDateFormatterNoStyle);
+  theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
+  if pos('.', theFormatString) > 0 then
+    DefaultFormatSettings.DateSeparator := '.'
+  else if pos('/', theFormatString) > 0 then
+    DefaultFormatSettings.DateSeparator := '/'
+  else if pos('-', theFormatString) > 0 then
+    DefaultFormatSettings.DateSeparator := '-';
+  DefaultFormatSettings.ShortDateFormat := theFormatString;
+  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault, CFLocaleCopyCurrent, kCFDateFormatterLongStyle, kCFDateFormatterNoStyle);
+  theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
+  DefaultFormatSettings.LongDateFormat := theFormatString;
+  {$ENDIF}
+end;
 
 procedure GetPreferences;
 {gets preferences and adjust controls in the main form accordingly}

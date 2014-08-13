@@ -55,12 +55,7 @@ begin
     DeleteFile('heaptrace.trc');
   SetHeapTraceOutput('heaptrace.trc');
   {$ENDIF}
-  {$IFDEF LCLCarbon}
-  //GetNSFormatSettings(DefaultFormatSettings);
-  //DefaultFormatSettings.DateSeparator := '/'; {for testing only}
-  //DefaultFormatSettings.ShortDateFormat := 'dd/mm/yyyy';
-  //DefaultFormatSettings.LongDateFormat := 'dd. mmmm yyyy';
-  {$ENDIF}
+  GetMacDateFormats;
   Application.Title := 'SPINA Thyr';
   InitThyroidHormoneConversionFactors;
   Application.Initialize;
@@ -101,6 +96,7 @@ begin
   Hauptschirm.AlphaBlendValue := 255;
   Application.CreateForm(THelpWindow, HelpWindow);
   Application.CreateForm(TCaseEditorForm, CaseEditorForm);
+  Application.BringToFront;
   Application.Run;
   if (SplashScreen<>nil) then begin
     SplashScreen.Free;
