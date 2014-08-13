@@ -30,8 +30,9 @@ uses
   HL7, MSH, MSA, NTE, PID, PV1, OBR, OBX, SPM;
 
 const
-  ORU_R01_variant1 = 'ORU^R01';
+  ORU_R01_variant1 = 'ORU^R01'; // Unsolicited transmission of an observation
   ORU_R01_variant2 = 'ORU^R01^ORU_R01';
+  ORU_R04    = 'ORU^R04'; //Response to query
   ACK_R01    = 'ACK^R01^ACK';
   MDM_T01    = 'MDM^T01';
   LT4_CODE   = 'L-T4';
@@ -125,13 +126,13 @@ begin
     messageType  := ORU_R01_variant1;
     security     := '';
     controlID    := EncodedDateTime(Now) + IntToStr(random(13000));
-    processingID := '';
-    versionID    := '';
+    processingID := 'P^A';
+    versionID    := ''; // ignored; will be filled-in automatically by PUMA
     sequenceNumber := '';
     continuationPointer := '';
     AccAckType   := '';
     AppAckType   := '';
-    countryCode  := '276';
+    countryCode  := '';
     charSet      := '';
     messageLanguage := '';
     altCharHandlScheme := '';
