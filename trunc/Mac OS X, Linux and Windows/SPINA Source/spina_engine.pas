@@ -91,6 +91,10 @@ var
 begin
   with theCaseRecord do
   begin
+    GT   := NaN;
+    GD   := NaN;
+    TSHI := NaN;
+    TTSI := NaN;
     if not isNan(TSH) and (TSH > 0) and not isNan(TT4) and not T4Therapy then
       GT := betaT * (DT + TSH) * TT4 / (alphaT * TSH) {total T4 used}
     else if not isNan(TSH) and (TSH > 0) and not isNan(FT4) and not T4Therapy then

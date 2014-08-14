@@ -647,6 +647,12 @@ begin
         DefaultFormatSettings.decimalSeparator := DEC_POINT;
       T4 := StrToFloatDef(T4_String, Math.NaN);
       DefaultFormatSettings.decimalSeparator := oldSeparator;
+      if IsNaN(T4) then
+      begin
+        T4_String := NA_MARK;
+        T4_Flag := '';
+      end
+      else begin
       if gPreferences.T4.Method = freeHormone then  {free or total T4?}
       begin
         if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.hn)) then
@@ -654,23 +660,20 @@ begin
         else if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
           T4_Flag := REF_RANGE_FLAG;
       end
-      else
-      begin
+      else begin
         if (isNan(gReferenceRanges.TT4.ln) or isNan(gReferenceRanges.TT4.hn)) then
           T4_Flag := ''
         else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
           T4_Flag := REF_RANGE_FLAG;
       end;
-      if IsNaN(T4) then
-        T4_String := NA_MARK
-      else
-        T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
+      T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
       T4 := ConvertedValue(T4, T4_MOLAR_MASS,
         Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
       if gPreferences.T4.Method = freeHormone then
         Hauptschirm.caseRecord.FT4 := T4
       else
         Hauptschirm.caseRecord.TT4 := T4;
+      end;
     end;
     Size := Hauptschirm.FT3_Text.GetTextLen;
     {Laenge des Strings in FT3_Text ermitteln}
@@ -688,6 +691,11 @@ begin
         DefaultFormatSettings.decimalSeparator := DEC_POINT;
       T3 := StrToFloatDef(T3_String, Math.NaN);
       DefaultFormatSettings.decimalSeparator := oldSeparator;
+      if IsNaN(T3) then
+      begin
+        T3_String := NA_MARK;
+        T3_Flag := '';
+      end else begin
       if gPreferences.T3.Method = freeHormone then  {free or total T3?}
       begin
         if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.hn)) then
@@ -702,15 +710,13 @@ begin
         else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
           T3_Flag := REF_RANGE_FLAG;
       end;
-      if IsNaN(T3) then
-        T3_String := NA_MARK
-      else
-        T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
+      T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
       T3 := ConvertedValue(T3, T3_MOLAR_MASS, Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
       if gPreferences.T3.Method = freeHormone then
         Hauptschirm.caseRecord.FT3 := T3
       else
         Hauptschirm.caseRecord.TT3 := T3;
+      end;
     end;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
       Hauptschirm.caseRecord.TSHTherapy := True
@@ -731,6 +737,11 @@ begin
       TSH := Math.NaN;
       T4 := Math.NaN;
       T3 := Math.NaN;
+      Hauptschirm.caseRecord.TSH := Math.NaN;
+      Hauptschirm.caseRecord.FT4 := Math.NaN;
+      Hauptschirm.caseRecord.TT4 := Math.NaN;
+      Hauptschirm.caseRecord.FT3 := Math.NaN;
+      Hauptschirm.caseRecord.TT3 := Math.NaN;
     end;
   end;
   DefaultFormatSettings.decimalSeparator := oldSeparator;
