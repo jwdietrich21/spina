@@ -8,7 +8,7 @@ program spina_thyr;
 { Programm  zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 3.5.0 }
+{ Version 4.0.0 }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -36,7 +36,7 @@ uses
   SPINA_ResultDialog, SPINA_Engine, Printer4Lazarus, SPINA_Types,
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
   HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources, CaseEditor, pid,
-  pv1, spm, nte
+  pv1, spm, nte, mllp
   {$IFDEF LCLCarbon}
   , MacOSAll
   {$ENDIF}

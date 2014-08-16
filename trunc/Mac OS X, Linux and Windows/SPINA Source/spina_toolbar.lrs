@@ -1,11 +1,13 @@
+{ This is an automatically generated lazarus resource file }
+
 LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   'TPF0'#13'TSPINAToolbar'#12'SPINAToolbar'#4'Left'#3#19#1#6'Height'#2'X'#3'Top'
   +#2'w'#5'Width'#3's'#3#21'HorzScrollBar.Visible'#8#21'VertScrollBar.Visible'#8
   +#5'Align'#7#5'alTop'#7'Anchors'#11#0#8'AutoSize'#9#11'BorderIcons'#11#12'biS'
   +'ystemMenu'#10'biMinimize'#0#11'BorderStyle'#7#12'bsToolWindow'#7'Caption'#6
-  +#5'SPINA'#12'ClientHeight'#2'D'#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
+  +#5'SPINA'#12'ClientHeight'#2'X'#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
   +#10'dmMainForm'#8'DockSite'#9#4'Menu'#7#8'MainMenu'#7'OnClose'#7#9'FormClose'
-  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#7'1.2.4.0'#7'Visible'#9#0#8'T'
+  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#7'1.2.2.0'#7'Visible'#9#0#8'T'
   +'ToolBar'#8'ToolBar1'#4'Left'#2#0#6'Height'#2#26#3'Top'#2#0#5'Width'#3's'#3#7
   +'Caption'#6#8'ToolBar1'#6'Images'#7#16'ToolbarImageList'#8'TabOrder'#2#0#0#11
   +'TToolButton'#13'NewToolButton'#4'Left'#2#1#4'Hint'#6#18'Neue Berechnung...'
@@ -48,7 +50,7 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +'olButton'#4'Left'#3#13#1#4'Hint'#6#27'Edit case or patient record'#3'Top'#2
   +#2#7'Caption'#6#20'CaseEditorToolButton'#10'ImageIndex'#2#11#7'OnClick'#7#13
   +'CaseItemClick'#14'ParentShowHint'#8#8'ShowHint'#9#0#0#0#6'TLabel'#14'SPINAT'
-  +'hyrLabel'#4'Left'#3#13#3#6'Height'#2#16#3'Top'#2#7#5'Width'#2'F'#9'Alignmen'
+  +'hyrLabel'#4'Left'#3#14#3#6'Height'#2#16#3'Top'#2#7#5'Width'#2'E'#9'Alignmen'
   +'t'#7#14'taRightJustify'#7'Anchors'#11#5'akTop'#7'akRight'#0#7'Caption'#6#10
   +'SPINA Thyr'#10'Font.Color'#7#6'clGray'#11'Font.Height'#2#243#11'ParentColor'
   +#8#10'ParentFont'#8#7'OnClick'#7#19'SPINAThyrLabelClick'#0#0#9'TMainMenu'#8
