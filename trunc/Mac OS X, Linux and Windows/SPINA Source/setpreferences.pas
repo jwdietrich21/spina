@@ -51,6 +51,8 @@ type
     GTUnitLabel: TLabel;
     CDISCSaveDialog: TSaveDialog;
     MandatoryFieldsGrid: TStringGrid;
+    PlacerEdit: TEdit;
+    PlacerLabel: TLabel;
     T3UnitLabel: TLabel;
     T4UnitLabel: TLabel;
     TSHIRRHEdit: TEdit;
@@ -158,6 +160,7 @@ uses
 procedure TPreferencesForm.UpdateDisplay(Sender: TObject);
 {I18n: Adapts labels etc. to system language}
 begin
+  PlacerLabel.Caption := gEinsender;
   if gInterfaceLanguage = German then
     begin
       MethodLabel.Caption := kMethodLabel1;
@@ -600,6 +603,7 @@ begin
   end;
   CheckMandatoryColourising;
   gPreferences.MSH_ID := SendingFacEdit.Text;
+  gPreferences.Placer_ID := PlacerEdit.Text;
   SavePreferences;
   PreferencesForm.Close;
   SPINA_UserInterface.GetPreferences;
@@ -677,6 +681,7 @@ begin
     RememberCheckBox.Checked := False;
   DisplayReferenceRanges(Sender);
   SendingFacEdit.Text := gPreferences.MSH_ID;
+  PlacerEdit.Text := gPreferences.Placer_ID;
 end;
 
 procedure TPreferencesForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);

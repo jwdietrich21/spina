@@ -274,6 +274,14 @@ begin
     {$ENDIF}
     RootNode.AppendChild(ElementNode);
 
+    ElementNode := Doc.CreateElement('placer');
+    {$IFDEF LCLCarbon}
+    TDOMElement(ElementNode).SetAttribute('id', UTF8Decode(gPreferences.Placer_ID));
+    {$ELSE}
+    TDOMElement(ElementNode).SetAttribute('id', UTF8ToSys(gPreferences.Placer_ID));
+    {$ENDIF}
+    RootNode.AppendChild(ElementNode);
+
     if not DirectoryExists(PreferencesFolder) then
       if not CreateDir(PreferencesFolder) then
         ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
@@ -390,7 +398,17 @@ begin
          gPreferences.MSH_ID := SysToUTF8(RootNode.Attributes[0].NodeValue);
          {$ENDIF}
 
-      if (gPreferences.TSH.UOM = 'NA') or (gPreferences.T4.UOM = 'NA') or (gPreferences.T3.UOM = 'NA') then
+       RootNode := Doc.DocumentElement.FindNode('placer');
+
+      if RootNode <> nil then
+        if RootNode.HasAttributes and (RootNode.Attributes.Length>0) then
+         {$IFDEF LCLCarbon}
+         gPreferences.Placer_ID := UTF8Encode(RootNode.Attributes[0].NodeValue);
+         {$ELSE}
+         gPreferences.Placer_ID := SysToUTF8(RootNode.Attributes[0].NodeValue);
+         {$ENDIF}
+
+         if (gPreferences.TSH.UOM = 'NA') or (gPreferences.T4.UOM = 'NA') or (gPreferences.T3.UOM = 'NA') then
         CreateNewPreferences;  {fall-back solution, if file is corrupt or in obsolete format}
       gPreferences.new := false;
     finally

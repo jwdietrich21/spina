@@ -843,6 +843,7 @@ begin
   GetPreferences;
   GetReferenceValues(RRFile, theCode);
   NewCaseRecord(caseRecord);
+  caseRecord.Placer := gPreferences.Placer_ID;
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
@@ -1094,6 +1095,7 @@ var
   i : Integer;
 begin
   NewCaseRecord(caseRecord);
+  caseRecord.Placer := gPreferences.Placer_ID;
   for i := 0 to ComponentCount-1 do
     if (Components[i] is TEdit) then
       TEdit(Components[i]).Text := '0';
@@ -1476,6 +1478,8 @@ initialization
   if gUserName = '' then
   gUserName := GetEnvironmentVariableUTF8('USER');
   {$ENDIF}
+
+  {gSysLanguage := 'en';  // for testing }
 
   if gSysLanguage = 'de' then
   begin

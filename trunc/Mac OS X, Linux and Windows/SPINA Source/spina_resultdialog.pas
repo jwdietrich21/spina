@@ -38,6 +38,7 @@ type
     Label1: TLabel;
     MessageField2: TMemo;
     MessageField1: TMemo;
+    procedure FormCreate(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure UpdateResultDisplay(Sender: TObject);
   private
@@ -81,6 +82,14 @@ end;
 procedure TResultForm.OKButtonClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TResultForm.FormCreate(Sender: TObject);
+begin
+  if gInterfaceLanguage = German then
+    Caption := kResult1
+  else
+    Caption := kResult2;
 end;
 
 initialization

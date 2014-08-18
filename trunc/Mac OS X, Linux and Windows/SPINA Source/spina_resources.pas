@@ -52,7 +52,7 @@ const
   kGeburtsdatum1 = 'Geburtsdatum: ';
   kGeburtsdatum2 = 'Birth date: ';
   kEinsender1 = 'Einsender: ';
-  kEinsender2 = 'Sender: ';
+  kEinsender2 = 'Placer: ';
   kPID1 = 'PID: ';
   kPID2 = 'PID: ';
   kFallnummer1 = 'Fall- / Aufnahmenummer: ';
@@ -98,8 +98,23 @@ const
   kGroupCaption31 = 'Praxis- oder Klinik-ID';
   kGroupCaption32 = 'Physician or Hospital ID';
 
+  kCaseEditor1 = 'Fall-Editor';
+  kCaseEditor2 = 'Case Editor';
+  kCaseID1 = 'Aufnahme- oder Fall-Nr.:';
+  kCaseID2 = 'Admission or case ID:';
+  kName1 = 'Name:';
+  kName2 = 'Family name:';
+  kGivenName1 = 'Vorname(n):';
+  kGivenName2 = 'Given name(s):';
+  kDOB1 = 'Geburtsdatum:';
+  kDOB2 = 'Date of Birth:';
+  kOB1 = 'Untersuchungsdatum:';
+  kOB2 = 'Date of investigation:';
+
+  kResult1 = '   Ergebnis';
+  kResult2 = '   Result';
 
 implementation
 
 end.
-
+

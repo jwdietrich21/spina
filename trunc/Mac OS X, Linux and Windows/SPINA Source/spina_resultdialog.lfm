@@ -15,8 +15,9 @@ object ResultForm: TResultForm
   Color = clWhite
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
+  OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.4.0'
   object Image1: TImage
     Left = 24
     Height = 80
@@ -186,9 +187,9 @@ object ResultForm: TResultForm
   end
   object Label1: TLabel
     Left = 112
-    Height = 17
+    Height = 16
     Top = 8
-    Width = 57
+    Width = 67
     Caption = 'Ergebnis:'
     Font.Color = clBlack
     Font.Height = -13

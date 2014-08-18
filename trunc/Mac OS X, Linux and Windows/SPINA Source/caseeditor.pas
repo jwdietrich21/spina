@@ -26,7 +26,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, EditBtn, ExtCtrls, Math, SPINA_Engine, HandleImpEx;
+  StdCtrls, EditBtn, ExtCtrls, Math, SPINA_Types, SPINA_Resources,
+  SPINA_Engine, HandleImpEx;
 
 type
 
@@ -123,7 +124,28 @@ end;
 
 procedure TCaseEditorForm.FormCreate(Sender: TObject);
 begin
-
+  if gInterfaceLanguage = German then
+  begin
+    Caption := kCaseEditor1;
+    CancelButton.Caption := kCancel1;
+    CaseIDLabel.Caption := kCaseID1;
+    NameLabel.Caption := kName1;
+    GivenNameLabel.Caption := kGivenName1;
+    DoBLabel.Caption := kDOB1;
+    PlacerLabel.Caption := kEinsender1;
+    OBDateLabel.Caption := kOB1;
+  end
+  else
+  begin
+    Caption := kCaseEditor2;
+    CancelButton.Caption := kCancel2;
+    CaseIDLabel.Caption := kCaseID2;
+    NameLabel.Caption := kName2;
+    GivenNameLabel.Caption := kGivenName2;
+    DoBLabel.Caption := kDOB2;
+    PlacerLabel.Caption := kEinsender2;
+    OBDateLabel.Caption := kOB2;
+  end;
 end;
 
 procedure TCaseEditorForm.FormDropFiles(Sender: TObject;
@@ -136,7 +158,7 @@ end;
 procedure TCaseEditorForm.FormShow(Sender: TObject);
 begin
   ActiveControl := CaseIDEdit;
-  DoBEdit.DateFormatChanged;
+  DoBEdit.DateFormatChanged; // adapts display style to system settings
   OBDateEdit.DateFormatChanged;
   CaseIDEdit.Text := Hauptschirm.caseRecord.CaseID;
   PIDEdit.Text := Hauptschirm.caseRecord.PID;
@@ -157,4 +179,4 @@ initialization
   {$I caseeditor.lrs}
 
 end.
-
+
