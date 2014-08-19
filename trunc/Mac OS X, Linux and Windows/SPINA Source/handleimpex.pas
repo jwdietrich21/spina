@@ -571,34 +571,6 @@ begin
         if theComponent <> nil then
           aCaseRecord.GivenNames := theComponent.contentString;
       end;
-      {theField := theSegment.FirstOccurrence.FirstField;
-      while theField <> nil do
-      begin
-        Inc(Count);
-        if Count = 4 then
-        begin
-          theComponent    := theField.FirstComponent;
-          if theComponent <> nil then
-          begin
-            aCaseRecord.PID := theComponent.contentString;
-            theComponent    := theComponent.nextSibling;
-            if theComponent <> nil then
-              aCaseRecord.CaseID := theComponent.contentString;
-          end;
-        end;
-        if Count = 6 then
-        begin
-          theComponent     := theField.FirstComponent;
-          if theComponent <> nil then
-          begin
-            aCaseRecord.Name := theComponent.contentString;
-            theComponent     := theComponent.nextSibling;
-            if theComponent <> nil then
-              aCaseRecord.GivenNames := theComponent.contentString;
-          end;
-        end;
-        theField := theField.nextSibling;
-      end;  }
     end;
     if theSegment.segmentType = 'PV1' then
     begin
