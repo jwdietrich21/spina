@@ -83,9 +83,11 @@ begin
   PIDEdit.Text := theCase.PID;
   NameEdit.Text := theCase.Name;
   GivenNameEdit.Text := theCase.GivenNames;
-  DoBEdit.Date := theCase.DoBDate;
+  if not isNaN(theCase.DoBDate) then
+    DoBEdit.Date := theCase.DoBDate;
   PlacerEdit.Text := theCase.Placer;
-  OBDateEdit.Date := theCase.OBDate;
+  if not isNaN(theCase.OBDate) then
+    OBDateEdit.Date := theCase.OBDate;
 end;
 
 procedure TCaseEditorForm.SetCaseRecord(var theCase: TCaseRecord);

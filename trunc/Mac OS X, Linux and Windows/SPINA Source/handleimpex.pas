@@ -35,6 +35,10 @@ const
   ORU_R04    = 'ORU^R04'; //Response to query
   ACK_R01    = 'ACK^R01^ACK';
   MDM_T01    = 'MDM^T01';
+  OUL_R21    = 'OUL^R21'; // Unsolicited laboratory observation
+  OUL_R22    = 'OUL^R22'; // specimen oriented observation
+  OUL_R23    = 'OUL^R23'; // specimen container oriented observation
+  OUL_R24    = 'OUL^R24'; // (order oriented observation
   LT4_CODE   = 'L-T4';
   LT3_CODE   = 'L-T3';
   RHTSH_CODE = 'rh-TSH';
@@ -533,9 +537,7 @@ var
 begin
   oldSeparator := DefaultFormatSettings.DecimalSeparator;
   DefaultFormatSettings.DecimalSeparator := DEC_POINT;
-  aCaseRecord.T4Therapy := False;
-  aCaseRecord.T3Therapy := False;
-  aCaseRecord.TSHTherapy := False;
+  NewCaseRecord(aCaseRecord);
   ReadHL7File(theHL7Message, theFile);
   theSegment := theHL7Message.FirstSegment;
   while theSegment <> nil do
@@ -557,16 +559,24 @@ begin
         if Count = 4 then
         begin
           theComponent    := theField.FirstComponent;
-          aCaseRecord.PID := theComponent.contentString;
-          theComponent    := theComponent.nextSibling;
-          aCaseRecord.CaseID := theComponent.contentString;
+          if theComponent <> nil then
+          begin
+            aCaseRecord.PID := theComponent.contentString;
+            theComponent    := theComponent.nextSibling;
+            if theComponent <> nil then
+              aCaseRecord.CaseID := theComponent.contentString;
+          end;
         end;
         if Count = 6 then
         begin
           theComponent     := theField.FirstComponent;
-          aCaseRecord.Name := theComponent.contentString;
-          theComponent     := theComponent.nextSibling;
-          aCaseRecord.GivenNames := theComponent.contentString;
+          if theComponent <> nil then
+          begin
+            aCaseRecord.Name := theComponent.contentString;
+            theComponent     := theComponent.nextSibling;
+            if theComponent <> nil then
+              aCaseRecord.GivenNames := theComponent.contentString;
+          end;
         end;
         theField := theField.nextSibling;
       end;
@@ -724,4 +734,4 @@ begin
   end;
 end;
 
-end.
+end.
