@@ -552,7 +552,26 @@ begin
       Count := 0;
       GetPID(theHL7Message, thePIDRecord);
       aCaseRecord.DoBDate := DecodeDateTime(thePIDRecord.BirthDateTime);
-      theField := theSegment.FirstOccurrence.FirstField;
+      theField := THL7Field.Create(nil, thePIDRecord.PatientIDList);
+      theComponent := theField.FirstComponent;
+      if theComponent <> nil then
+      begin
+        aCaseRecord.PID := theComponent.contentString;
+        theComponent    := theComponent.nextSibling;
+        if theComponent <> nil then
+          aCaseRecord.CaseID := theComponent.contentString;
+      end;
+      theField.Destroy;
+      theField := THL7Field.Create(nil, thePIDRecord.PatientName);
+      theComponent := theField.FirstComponent;
+      if theComponent <> nil then
+      begin
+        aCaseRecord.Name := theComponent.contentString;
+        theComponent     := theComponent.nextSibling;
+        if theComponent <> nil then
+          aCaseRecord.GivenNames := theComponent.contentString;
+      end;
+      {theField := theSegment.FirstOccurrence.FirstField;
       while theField <> nil do
       begin
         Inc(Count);
@@ -579,7 +598,7 @@ begin
           end;
         end;
         theField := theField.nextSibling;
-      end;
+      end;  }
     end;
     if theSegment.segmentType = 'PV1' then
     begin
