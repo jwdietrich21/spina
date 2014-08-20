@@ -20,7 +20,7 @@ unit HandleImpEx;
  { Source code released under the BSD License }
  { See http://spina.medical-cybernetics.de for details }
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}{$J}
 
 interface
 
@@ -28,6 +28,11 @@ uses
   Classes, SysUtils, Dialogs, LCLVersion, Math, FileUtil,
   SPINA_Engine, SPINA_Types, UnitConverter, VersionSupport,
   HL7, MSH, MSA, NTE, PID, PV1, OBR, OBX, SPM;
+
+type
+  TLOINCRecord = record
+    code, short, long: string;
+  end;
 
 const
   ORU_R01_variant1 = 'ORU^R01'; // Unsolicited transmission of an observation
@@ -42,6 +47,26 @@ const
   LT4_CODE   = 'L-T4';
   LT3_CODE   = 'L-T3';
   RHTSH_CODE = 'rh-TSH';
+  LOINC_TSH_1: TLoincRecord = (code: '3016-3'; short: 'TSH SerPl-aCnc';
+    long: 'Thyrotropin [Units/volume] in Serum or Plasma');
+  LOINC_TSH_2: TLoincRecord = (code: '11580-8'; short: 'TSH SerPl DL<=0.005 mU/L aCnc';
+    long: 'Thyrotropin [Units/volume] in Serum or Plasma by Detection limit <= 0.005 mU/L');
+  LOINC_FT4_1: TLoincRecord = (code: '3024-7'; short: 'T4 Free SerPl-mCnc';
+    long: 'Thyroxine (T4) free [Mass/volume] in Serum or Plasma');
+  LOINC_FT4_2: TLoincRecord = (code: '14920-3'; short: 'Free T4 SerPl-sCnc';
+    long: 'Thyroxine (T4) free [Moles/volume] in Serum or Plasma');
+  LOINC_TT4_1: TLoincRecord = (code: '3026-2'; short: 'T4 SerPl-mCnc';
+    long: 'Thyroxine (T4) [Mass/volume] in Serum or Plasma');
+  LOINC_TT4_2: TLoincRecord = (code: '14921-1'; short: 'T4 SerPl-sCnc';
+    long: 'Thyroxine (T4) [Moles/volume] in Serum or Plasma');
+  LOINC_FT3_1: TLoincRecord = (code: '3051-0'; short: 'T3Free SerPl-mCnc';
+    long: 'Triiodothyronine (T3) Free [Mass/volume] in Serum or Plasma');
+  LOINC_FT3_2: TLoincRecord = (code: '14928-6'; short: 'T3Free SerPl-sCnc';
+    long: 'Triiodothyronine (T3) Free [Moles/volume] in Serum or Plasma');
+  LOINC_TT3_1: TLoincRecord = (code: '3053-6'; short: 'T3 SerPl-mCnc';
+    long: 'Triiodothyronine (T3) [Mass/volume] in Serum or Plasma');
+  LOINC_TT3_2: TLoincRecord = (code: '14930-2'; short: 'T3 SerPl-sCnc';
+    long: 'Triiodothyronine (T3) [Moles/volume] in Serum or Plasma');
 
 procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
 procedure ReadCaseResults(var caseRecord: tCaseRecord);
@@ -519,6 +544,19 @@ begin
   SaveStringToPath(theString, UTF8ToSys(SPINAToolbar.SaveResultsDialog.FileName));
 end;
 
+function isLOINCTerm(ObsID: string; LOINCTerm: TLoincRecord): boolean;
+begin
+  if (pos(LOINCTerm.code, ObsID) > 0) or
+  (pos(LOINCTerm.long, ObsID) > 0) or
+  (pos(LOINCTerm.short, ObsID) > 0) or
+  (pos(LOINCTerm.code, ObsID) > 0) or
+  (pos(LOINCTerm.long, ObsID) > 0) or
+  (pos(LOINCTerm.short, ObsID) > 0) then
+    result := true
+  else
+    result := false;
+end;
+
 procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
 var
   oldSeparator: char;
@@ -552,7 +590,7 @@ begin
       Count := 0;
       GetPID(theHL7Message, thePIDRecord);
       aCaseRecord.DoBDate := DecodeDateTime(thePIDRecord.BirthDateTime);
-      theField := THL7Field.Create(nil, thePIDRecord.PatientIDList);
+      theField     := THL7Field.Create(nil, thePIDRecord.PatientIDList);
       theComponent := theField.FirstComponent;
       if theComponent <> nil then
       begin
@@ -562,7 +600,7 @@ begin
           aCaseRecord.CaseID := theComponent.contentString;
       end;
       theField.Destroy;
-      theField := THL7Field.Create(nil, thePIDRecord.PatientName);
+      theField     := THL7Field.Create(nil, thePIDRecord.PatientName);
       theComponent := theField.FirstComponent;
       if theComponent <> nil then
       begin
@@ -625,52 +663,63 @@ begin
     if theSegment.segmentType = 'OBX' then
     begin
       GetOBX(theSegment, theOBXRecord);
-      if theOBXRecord.ObsID = 'TSH' then
+      if (pos('TSH', theOBXRecord.ObsID) > 0) and
+        (pos('TSHI', theOBXRecord.ObsID) = 0) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_TSH_1) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_TSH_2) then
       begin
         aCaseRecord.TSH     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.TSH_UOM := theOBXRecord.Units;
       end;
-      if theOBXRecord.ObsID = 'FT4' then
+      if (pos('FT4', theOBXRecord.ObsID) > 0) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_FT4_1) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_FT4_2) then
       begin
         aCaseRecord.FT4     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.FT4_UOM := theOBXRecord.Units;
         aCaseRecord.FT4     :=
           ConvertedValue(acaseRecord.FT4, T4_MOLAR_MASS, aCaseRecord.FT4_UOM, 'mol/l');
       end;
-      if theOBXRecord.ObsID = 'FT3' then
+      if (pos('FT3', theOBXRecord.ObsID) > 0) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_FT3_1) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_FT3_2) then
       begin
         aCaseRecord.FT3     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.FT3_UOM := theOBXRecord.Units;
         aCaseRecord.FT3     :=
           ConvertedValue(acaseRecord.FT3, T3_MOLAR_MASS, aCaseRecord.FT3_UOM, 'mol/l');
       end;
-      if theOBXRecord.ObsID = 'TT4' then
+      if (pos('TT4', theOBXRecord.ObsID) > 0) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_TT4_1) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_TT4_2) then
       begin
         aCaseRecord.TT4     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.TT4_UOM := theOBXRecord.Units;
         aCaseRecord.TT4     :=
           ConvertedValue(acaseRecord.TT4, T4_MOLAR_MASS, aCaseRecord.TT4_UOM, 'mol/l');
       end;
-      if theOBXRecord.ObsID = 'TT3' then
+      if (pos('TT3', theOBXRecord.ObsID) > 0) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_TT3_1) or
+        isLOINCTerm(theOBXRecord.ObsID, LOINC_TT3_2) then
       begin
         aCaseRecord.TT3     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.TT3_UOM := theOBXRecord.Units;
         aCaseRecord.TT3     :=
           ConvertedValue(acaseRecord.TT3, T3_MOLAR_MASS, aCaseRecord.TT3_UOM, 'mol/l');
       end;
-      if theOBXRecord.ObsID = 'SPINA-GT' then
+      if pos('SPINA-GT', theOBXRecord.ObsID) > 0 then
       begin
         aCaseRecord.GT     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.GT_UOM := theOBXRecord.Units;
       end;
-      if theOBXRecord.ObsID = 'SPINA-GD' then
+      if pos('SPINA-GD', theOBXRecord.ObsID) > 0 then
       begin
         aCaseRecord.GD     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.GD_UOM := theOBXRecord.Units;
       end;
-      if theOBXRecord.ObsID = 'TSHI' then
+      if pos('TSHI', theOBXRecord.ObsID) > 0 then
         aCaseRecord.TSHI := StrToFloatDef(theOBXRecord.obsValue, NaN);
-      if theOBXRecord.ObsID = 'TTSI' then
+      if pos('TTSI', theOBXRecord.ObsID) > 0 then
         aCaseRecord.TTSI := StrToFloatDef(theOBXRecord.obsValue, NaN);
       if IsNaN(aCaseRecord.FT4) then
         gPreferences.T4.Method := totalHormone
