@@ -44,6 +44,9 @@ const
   OUL_R22    = 'OUL^R22'; // specimen oriented observation
   OUL_R23    = 'OUL^R23'; // specimen container oriented observation
   OUL_R24    = 'OUL^R24'; // (order oriented observation
+  NND_ORU_V2_0_profile = 'NND_ORU_v2.0^PHINProfileID^2.16.840.1.114222.4.10.3^ISO~'
+      + 'Gen_Case_Map_v1.0^PHINMsgMapID^2.16.840.1.114222.4.10.4^ISO';
+  NA_DTM     = '00000000000000';
   LT4_CODE   = 'L-T4';
   LT3_CODE   = 'L-T3';
   RHTSH_CODE = 'rh-TSH';
@@ -165,7 +168,7 @@ begin
     charSet      := '';
     messageLanguage := '';
     altCharHandlScheme := '';
-    profileID    := '';
+    profileID    := ORU_R01_variant2;
     SetMSH(HL7Message, delimiters, sendingApp,
       sendingFac, receivingApp, receivingFac, dateTime,
       security, messageType, controlID, processingID,
@@ -192,11 +195,11 @@ begin
 
     SetID    := '1';
     PlacOrdNumb := '';
-    FillOrdNumb := '';
+    FillOrdNumb := EncodedDateTime(Now) + IntToStr(random(13000));
     USI      := 'SPINA Thyr';
     Priority := '';
     ReqDateTime := EncodedDateTime(Now);
-    ObsDateTime := '';
+    ObsDateTime := NA_DTM;
     ObsEndDateTime := '';
     SetOBR(HL7Message, SetID, PlacOrdNumb, FillOrdNumb, USI,
       Priority, ReqDateTime, ObsDateTime, ObsEndDateTime);
@@ -234,7 +237,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'TSH';
-    obsSubID  := 'TSH';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(acaseRecord.TSH, ffNumber, 5, 2);
     Units     := gReferenceRanges.TSH.UOM;
     RefRange  := FloatToStr(gReferenceRanges.TSH.ln) + ' - ' +
@@ -264,7 +267,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'FT4';
-    obsSubID  := 'FT4';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT4, T4_MOLAR_MASS,
       'mol/l', gReferenceRanges.FT4.UOM), ffNumber, 5, 2);
     Units     := gReferenceRanges.FT4.UOM;
@@ -295,7 +298,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'FT3';
-    obsSubID  := 'FT3';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT3, T3_MOLAR_MASS,
       'mol/l', gReferenceRanges.FT3.UOM), ffNumber, 5, 2);
     Units     := gReferenceRanges.FT3.UOM;
@@ -327,7 +330,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'TT4';
-    obsSubID  := 'TT4';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT4, T4_MOLAR_MASS,
       'mol/l', gReferenceRanges.TT4.UOM), ffNumber, 5, 2);
     Units     := gReferenceRanges.TT4.UOM;
@@ -359,7 +362,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'TT3';
-    obsSubID  := 'TT3';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT3, T3_MOLAR_MASS,
       'mol/l', gReferenceRanges.TT3.UOM), ffNumber, 5, 2);
     Units     := gReferenceRanges.TT3.UOM;
@@ -391,7 +394,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'SPINA-GT';
-    obsSubID  := 'GT';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(acaseRecord.GT * 1E12, ffNumber, 5, 2);
     Units     := 'pmol/s';
     RefRange  := FloatToStr(gReferenceRanges.GT.ln * 1E12) + ' - ' +
@@ -421,7 +424,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'SPINA-GD';
-    obsSubID  := 'GD';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(acaseRecord.GD * 1E9, ffNumber, 5, 2);
     Units     := 'nmol/s';
     RefRange  := FloatToStr(gReferenceRanges.GD.ln * 1E9) + ' - ' +
@@ -451,7 +454,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'TSHI';
-    obsSubID  := 'TSHI';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(acaseRecord.TSHI, ffNumber, 5, 2);
     Units     := '';
     RefRange  := FloatToStr(gReferenceRanges.TSHI.ln) + ' - ' +
@@ -481,7 +484,7 @@ begin
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
     ObsID     := 'TTSI';
-    obsSubID  := 'TTSI';
+    obsSubID  := '1';
     obsValue  := FloatToStrF(acaseRecord.TTSI, ffNumber, 5, 2);
     Units     := '';
     RefRange  := FloatToStr(gReferenceRanges.TTSI.ln) + ' - ' +

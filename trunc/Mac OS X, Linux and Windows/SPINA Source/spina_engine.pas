@@ -55,7 +55,7 @@ type
     CaseID, PID, Name, GivenNames, Placer: string;
     DoBDate, OBDate: TDateTime;
     TSHTherapy, T4Therapy, T3Therapy: boolean;
-    MessageString:   string[255];
+    MessageString: string[255];
   end;
 
 var
