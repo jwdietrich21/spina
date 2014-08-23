@@ -67,8 +67,33 @@ See http://spina.medical-cybernetics.de for details
 				<string>****</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>hl7</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>text/plain</string>
+				<string>application/hl7-v2</string>
+				<string>multipart/x-hl7-cdalevel-one</string>
+				<string>application/hl7-v2+er7</string>
+			</array>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>fold</string>
+				<string>disk</string>
+				<string>****</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>HL7 message</string>
+		</dict>
 	</array>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.4.0</string>
+  <key>NSHighResolutionCapable</key>
+  <true/>
 </dict>
 </plist>
