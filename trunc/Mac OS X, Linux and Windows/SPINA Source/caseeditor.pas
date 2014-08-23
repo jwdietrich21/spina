@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, EditBtn, ExtCtrls, Math, SPINA_Types, SPINA_Resources,
-  SPINA_Engine, HandleImpEx;
+  SPINA_AboutBox, SPINA_Engine, HandleImpEx;
 
 type
 
@@ -126,6 +126,11 @@ end;
 
 procedure TCaseEditorForm.FormCreate(Sender: TObject);
 begin
+  if YosemiteORNewer then
+  begin
+    OKButton.Height := 22;
+    CancelButton.Height := 22;
+  end;
   if gInterfaceLanguage = German then
   begin
     Caption := kCaseEditor1;
@@ -181,4 +186,4 @@ initialization
   {$I caseeditor.lrs}
 
 end.
-
+

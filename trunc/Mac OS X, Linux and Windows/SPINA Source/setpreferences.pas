@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ComCtrls, ExtCtrls, Grids, Math, SPINA_Types, SPINA_Resources,
-  CDISC, HandlePreferences;
+  SPINA_AboutBox, CDISC, HandlePreferences;
 
 type
 
@@ -694,6 +694,13 @@ end;
 
 procedure TPreferencesForm.FormCreate(Sender: TObject);
 begin
+  if YosemiteORNewer then
+  begin
+    OKButton.Height := 22;
+    CancelButton.Height := 22;
+    ReadCDISCButton.Height := 22;
+    SaveCDISCButton.Height := 22;
+  end;
   PageControl1.TabIndex := 0;
   Edited := false;
   MandatoryFieldsGrid.Rows[1].Text := 'TSH';

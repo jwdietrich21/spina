@@ -310,7 +310,7 @@ object AboutBox: TAboutBox
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
   LCLVersion = '1.2.2.0'
-  object Button1: TButton
+  object OKButton: TButton
     Left = 192
     Height = 24
     Top = 349

@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, SPINA_Types, SPINA_Resources;
+  ExtCtrls, StdCtrls, SPINA_Types, SPINA_Resources, SPINA_AboutBox;
 
 type
 
@@ -86,6 +86,8 @@ end;
 
 procedure TResultForm.FormCreate(Sender: TObject);
 begin
+  if YosemiteORNewer then
+    OKButton.Height := 22;
   if gInterfaceLanguage = German then
     Caption := kResult1
   else

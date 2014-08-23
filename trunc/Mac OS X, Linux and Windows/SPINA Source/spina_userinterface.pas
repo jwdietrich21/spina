@@ -836,6 +836,8 @@ procedure THauptschirm.FormCreate(Sender: TObject);
 var
   theCode: integer;
 begin
+  if YosemiteORNewer then
+    Calculate_Button.Height := 22;
   HorzScrollBar.Visible := False;
   VertScrollBar.Visible := False;
   AutoScroll := False;

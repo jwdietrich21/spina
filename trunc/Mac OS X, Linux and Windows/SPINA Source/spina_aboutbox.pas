@@ -42,7 +42,7 @@ type
   { TAboutBox }
 
   TAboutBox = class(TForm)
-    Button1: TButton;
+    OKButton: TButton;
     CopyrightLabel1: TLabel;
     CopyrightLabel2: TLabel;
     CopyrightLabel3: TLabel;
@@ -95,6 +95,7 @@ var
   gExtendedInfo: boolean;
 
 procedure ShowAboutBox;
+function YosemiteORNewer: Boolean;
 
 implementation
 
@@ -206,6 +207,23 @@ begin
     end;
 end;
 
+function YosemiteORNewer: Boolean;
+{ returns true, if this app runs on Mac OS X 10.10 Yosemite or newer }
+var
+  {$IFDEF LCLcarbon}
+  Major, Minor, Bugfix: SInt32;
+  theError: SInt16;
+  {$ENDIF}
+begin
+  result := false;
+  {$IFDEF LCLcarbon}
+  theError := Gestalt(gestaltSystemVersionMinor, Minor);
+  if TheError = 0 then
+    if Minor >= 10 then
+      result := true;
+  {$ENDIF}
+end;
+
 { TAboutBox }
 
 procedure TAboutBox.CloseAboutBox(Sender: TObject);
@@ -215,6 +233,8 @@ end;
 
 procedure TAboutBox.FormCreate(Sender: TObject);
 begin
+  if YosemiteOrNewer then
+    OKButton.Height := 22;
   VersionLabel.Caption := 'Version ' + GetFileVersion;
 end;
 
