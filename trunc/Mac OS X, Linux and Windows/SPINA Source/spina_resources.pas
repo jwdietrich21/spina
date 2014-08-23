@@ -35,8 +35,8 @@ const
     'Bitte geben Sie die gemessenen Werte für TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".'#13#10#13#10'Im Falle einer Substitutionstherapie klicken Sie bitte auf die Boxen rechts in diesem Fenster unter "Therapie".';
   kAnleitung12 =
     'Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".'#13#10#13#10'In case of substitution therapy please click the corresponding boxes in the right of this window under the captionn "Therapy".';
-  kAnleitung21 = 'Sie können das Ergebnis nun ausdrucken oder in die Zwischenablage kopieren.';
-  kAnleitung22 = 'You may want to print or copy the result now.';
+  kAnleitung21 = 'Sie können das Ergebnis nun sichern, ausdrucken oder in die Zwischenablage kopieren.';
+  kAnleitung22 = 'You may want to save, print or copy the result now.';
   kVerhaltensparameter1 = 'Verhaltensparameter:';
   kVerhaltensparameter2 = 'Behavioural parameters:';
   kStrukturparameter1 = 'Strukturparameter:';
@@ -117,4 +117,4 @@ const
 implementation
 
 end.
-
+

@@ -20,7 +20,7 @@ unit spina_toolbar;
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
 
-{$mode objfpc}
+{$mode objfpc}{$H+}
 
 interface
 

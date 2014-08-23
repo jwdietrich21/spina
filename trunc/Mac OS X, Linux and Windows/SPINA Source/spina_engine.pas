@@ -47,10 +47,11 @@ const
 type
   tCaseRecord = record
     TSH, FT4, FT3, TT4, TT3: real;
-    GT, GD, TSHI, rawTTSI, TTSI: real;
+    GT, GD, LS, TSHI, rawTTSI, TTSI: real;
     TSH_UOM, FT4_UOM, FT3_UOM, TT4_UOM, TT3_UOM: Str255;
     GT_UOM, GD_UOM:  str255;
     GTs, GDs, flaggedGTs, flaggedGDs: Str255;
+    LSs, flaggedLSs: Str255;
     TSHIs, TTSIs, flaggedTSHIs, flaggedTTSIs: Str255;
     CaseID, PID, Name, GivenNames, Placer: string;
     DoBDate, OBDate: TDateTime;
