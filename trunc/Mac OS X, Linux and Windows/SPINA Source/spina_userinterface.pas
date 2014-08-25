@@ -172,6 +172,7 @@ type
     procedure HandleAbout(Sender: TObject);
     procedure HelpItemClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
+    procedure CheckEntries(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
     procedure SPINALabelClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
@@ -851,8 +852,8 @@ end;
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
 {copy result}
 begin
-  Hauptschirm.ResultField.SelectAll;
-  Hauptschirm.ResultField.CopyToClipboard;
+  ResultField.SelectAll;
+  ResultField.CopyToClipboard;
 end;
 
 procedure THauptschirm.FormShow(Sender: TObject);
@@ -1057,6 +1058,14 @@ begin
   CaseEditorForm.FillFromCaseRecord(caseRecord);
   InsertValues(Sender);
   HandleInput;
+end;
+
+procedure THauptschirm.CheckEntries(Sender: TObject);
+begin
+  if ResultField.Lines.Count > 0 then
+    PopupMenu1.Items[6].Enabled := true
+  else
+    PopupMenu1.Items[6].Enabled := false;
 end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);

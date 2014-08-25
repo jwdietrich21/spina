@@ -209,8 +209,8 @@ end;
 
 function YosemiteORNewer: Boolean;
 { returns true, if this app runs on Mac OS X 10.10 Yosemite or newer }
-var
   {$IFDEF LCLcarbon}
+var
   Major, Minor, Bugfix: SInt32;
   theError: SInt16;
   {$ENDIF}
