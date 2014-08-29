@@ -483,6 +483,36 @@ begin
     Inc(setIDcounter);
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
+    ObsID     := 'sTSHI';
+    obsSubID  := '1';
+    obsValue  := FloatToStrF(acaseRecord.sTSHI, ffNumber, 5, 2);
+    Units     := '';
+    RefRange  := FloatToStr(gReferenceRanges.sTSHI.ln) + ' - +' +
+      FloatToStr(gReferenceRanges.sTSHI.hn);
+    AbnormFlags := '';
+    probability := '';
+    Nature    := '';
+    status    := 'F';
+    RRDate    := '';
+    UDAC      := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    prodID := '';
+    respObs      := '';
+    observMethod := '';
+    EquipInstID  := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    Inc(setIDcounter);
+    SetID     := IntToStr(setIDcounter);
+    ValueType := 'NM';
     ObsID     := 'TTSI';
     obsSubID  := '1';
     obsValue  := FloatToStrF(acaseRecord.TTSI, ffNumber, 5, 2);

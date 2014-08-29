@@ -1,6 +1,6 @@
 object Hauptschirm: THauptschirm
   Left = 271
-  Height = 354
+  Height = 365
   Top = 220
   Width = 753
   HorzScrollBar.Visible = False
@@ -16,7 +16,7 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 335
+  ClientHeight = 346
   ClientWidth = 753
   Color = clWhite
   Constraints.MinHeight = 350
@@ -324,11 +324,11 @@ object Hauptschirm: THauptschirm
   OnShow = FormShow
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.4.0'
   object Calculate_Button: TButton
     Left = 624
     Height = 24
-    Top = 297
+    Top = 308
     Width = 116
     Anchors = [akRight, akBottom]
     Caption = 'Berechnen'
@@ -404,12 +404,12 @@ object Hauptschirm: THauptschirm
   end
   object Panel1: TPanel
     Left = 13
-    Height = 283
+    Height = 294
     Top = 8
     Width = 727
     Anchors = [akTop, akLeft, akRight, akBottom]
     BevelOuter = bvNone
-    ClientHeight = 283
+    ClientHeight = 294
     ClientWidth = 727
     Color = clWhite
     ParentColor = False
@@ -417,7 +417,7 @@ object Hauptschirm: THauptschirm
     TabOrder = 5
     object TherapyCheckGroup: TCheckGroup
       Left = 509
-      Height = 80
+      Height = 91
       Hint = 'Bitte markieren Sie bei Substitutionstherapie die entsprechende Box.'
       Top = 8
       Width = 217
@@ -432,7 +432,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 62
+      ClientHeight = 73
       ClientWidth = 213
       Items.Strings = (
         'rhTSH-Substitution'
@@ -450,19 +450,19 @@ object Hauptschirm: THauptschirm
     end
     object ResultGroupBox: TGroupBox
       Left = 510
-      Height = 167
+      Height = 178
       Top = 112
       Width = 216
       Anchors = [akTop, akRight, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 149
+      ClientHeight = 160
       ClientWidth = 212
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 133
+        Height = 144
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -482,19 +482,19 @@ object Hauptschirm: THauptschirm
     end
     object HintGroupBox: TGroupBox
       Left = 3
-      Height = 167
+      Height = 178
       Top = 112
       Width = 216
       Anchors = [akTop, akLeft, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 149
+      ClientHeight = 160
       ClientWidth = 212
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 133
+        Height = 144
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -618,12 +618,12 @@ object Hauptschirm: THauptschirm
     end
     object ValuesGroupBox: TGroupBox
       Left = 231
-      Height = 271
+      Height = 282
       Top = 8
       Width = 271
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 253
+      ClientHeight = 264
       ClientWidth = 267
       ParentColor = False
       ParentShowHint = False
@@ -632,7 +632,7 @@ object Hauptschirm: THauptschirm
       object Image1: TImage
         Left = 26
         Height = 229
-        Top = 14
+        Top = 16
         Width = 240
         Anchors = [akTop, akRight]
         Picture.Data = {
@@ -845,7 +845,7 @@ object Hauptschirm: THauptschirm
         Left = 106
         Height = 21
         Hint = '(F)T4'
-        Top = 221
+        Top = 223
         Width = 56
         Anchors = [akTop, akRight]
         TabOrder = 1
@@ -855,7 +855,7 @@ object Hauptschirm: THauptschirm
         Left = 202
         Height = 21
         Hint = '(F)T3'
-        Top = 26
+        Top = 28
         Width = 54
         Anchors = [akTop, akRight]
         TabOrder = 2
@@ -865,7 +865,7 @@ object Hauptschirm: THauptschirm
         Left = 10
         Height = 21
         Hint = 'Maßeinheit'
-        Top = 50
+        Top = 52
         Width = 66
         Anchors = [akTop, akRight]
         Font.Height = -11
@@ -884,7 +884,7 @@ object Hauptschirm: THauptschirm
         Left = 168
         Height = 21
         Hint = 'Maßeinheit'
-        Top = 221
+        Top = 223
         Width = 67
         Anchors = [akTop, akRight]
         Font.Height = -11
@@ -924,7 +924,7 @@ object Hauptschirm: THauptschirm
         Left = 202
         Height = 21
         Hint = 'Methode'
-        Top = 2
+        Top = 4
         Width = 56
         Anchors = [akTop, akRight]
         Font.Height = -11
@@ -943,7 +943,7 @@ object Hauptschirm: THauptschirm
         Left = 44
         Height = 21
         Hint = 'Methode'
-        Top = 221
+        Top = 223
         Width = 56
         Anchors = [akTop, akRight]
         Font.Height = -11
@@ -962,7 +962,7 @@ object Hauptschirm: THauptschirm
         Left = 10
         Height = 21
         Hint = 'TSH'
-        Top = 26
+        Top = 28
         Width = 56
         Anchors = [akTop, akRight]
         TabOrder = 0
@@ -985,7 +985,7 @@ object Hauptschirm: THauptschirm
     Cursor = crHandPoint
     Left = 16
     Height = 12
-    Top = 303
+    Top = 314
     Width = 55
     Caption = 'SPINA Thyr'
     Font.Color = clBlack

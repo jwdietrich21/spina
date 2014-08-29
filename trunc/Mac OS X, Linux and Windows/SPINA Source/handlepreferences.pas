@@ -545,6 +545,10 @@ begin
     gTSHIRR := NA_MARK
   else
     gTSHIRR := FloatToStrF(gReferenceRanges.TSHI.ln, ffFixed, 5, 1) + ' - ' + FloatToStrF(gReferenceRanges.TSHI.hn, ffFixed, 5, 1) + ' ';
+  if IsNaN(gReferenceRanges.sTSHI.ln) then
+    gsTSHIRR := NA_MARK
+  else
+    gsTSHIRR := FloatToStrF(gReferenceRanges.sTSHI.ln, ffFixed, 5, 2) + ' - +' + FloatToStrF(gReferenceRanges.sTSHI.hn, ffFixed, 5, 2) + ' ';
   if IsNaN(gReferenceRanges.TTSI.ln) then
     gTTSIRR := NA_MARK
   else
@@ -584,6 +588,10 @@ begin
       TSHI.hn := Math.Nan;
       TTSI.ln := Math.Nan;
       TTSI.hn := Math.Nan;
+      sTSHI.ln := -2;
+      sTSHI.hn := 2;
+      meanTSHI := 2.7; { standard values reported by ... }
+      sdTSHI := 0.676; { Jostel et al. 2009 }
     end;
   with gSIReferenceRanges do
     begin                   {define emtpy default values}
@@ -605,6 +613,10 @@ begin
       TSHI.hn := Math.Nan;
       TTSI.ln := Math.Nan;
       TTSI.hn := Math.Nan;
+      sTSHI.ln := -2;
+      sTSHI.hn := 2;
+      meanTSHI := 2.7; { standard values reported by ... }
+      sdTSHI := 0.676; { Jostel et al. 2009 }
    end;
   with gConvReferenceRanges do
     begin                   {define emtpy default values}
@@ -626,7 +638,11 @@ begin
       TSHI.hn := Math.Nan;
       TTSI.ln := Math.Nan;
       TTSI.hn := Math.Nan;
-    end;
+      sTSHI.ln := -2;
+      sTSHI.hn := 2;
+      meanTSHI := 2.7; { standard values reported by ... }
+      sdTSHI := 0.676; { Jostel et al. 2009 }
+   end;
   oldSeparator := DefaultFormatSettings.DecimalSeparator;
   DefaultFormatSettings.DecimalSeparator := DEC_POINT;
   if not FileExists(theFileName) then
@@ -1049,6 +1065,10 @@ begin
         TSHI.hn := 4.1;
         TTSI.ln := 122;
         TTSI.hn := 150;
+        sTSHI.ln := -2;
+        sTSHI.hn := 2;
+        meanTSHI := 2.7; { standard values reported by ... }
+        sdTSHI := 0.676; { Jostel et al. 2009 }
       end;
     returnCode := 6;
   end;

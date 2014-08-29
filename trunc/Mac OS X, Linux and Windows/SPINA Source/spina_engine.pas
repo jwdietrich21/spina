@@ -47,12 +47,12 @@ const
 type
   tCaseRecord = record
     TSH, FT4, FT3, TT4, TT3: real;
-    GT, GD, LS, TSHI, rawTTSI, TTSI: real;
+    GT, GD, LS, TSHI, sTSHI, rawTTSI, TTSI: real;
     TSH_UOM, FT4_UOM, FT3_UOM, TT4_UOM, TT3_UOM: Str255;
     GT_UOM, GD_UOM:  str255;
     GTs, GDs, flaggedGTs, flaggedGDs: Str255;
     LSs, flaggedLSs: Str255;
-    TSHIs, TTSIs, flaggedTSHIs, flaggedTTSIs: Str255;
+    TSHIs, sTSHIs, TTSIs, flaggedTSHIs, flaggedsTSHIs, flaggedTTSIs: Str255;
     CaseID, PID, Name, GivenNames, Placer: string;
     DoBDate, OBDate: TDateTime;
     TSHTherapy, T4Therapy, T3Therapy: boolean;
@@ -65,6 +65,7 @@ var
 procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
 procedure Calculate(var theCaseRecord: tCaseRecord);
 procedure InsertTTSI(var theCase: tCaseRecord; FT4UpperLimit: real);
+procedure Insert_sTSHI(var theCase: tCaseRecord; referenceRanges: tReferenceValues);
 procedure FormatCase(var theCase: tCaseRecord; referenceRanges: tReferenceValues);
 
 implementation
@@ -80,6 +81,7 @@ begin
   aCaseRecord.GT   := NaN;
   aCaseRecord.GD   := NaN;
   aCaseRecord.TSHI := NaN;
+  aCaseRecord.sTSHI := NaN;
   aCaseRecord.TTSI := NaN;
 end;
 
@@ -148,6 +150,9 @@ begin
 end;
 
 procedure InsertTTSI(var theCase: tCaseRecord; FT4UpperLimit: real);
+{ Inserts TTSI into tCaseRecord }
+{ implemented as external function in order to make the main Calculate ... }
+{ function independent from application-specific reference ranges }
 begin
   if not isNan(theCase.FT4) and not isNan(theCase.TSH) and not
     isNan(FT4UpperLimit) and not theCase.TSHTherapy then
@@ -155,9 +160,7 @@ begin
     theCase.TTSI := 100 * theCase.TSH * theCase.FT4 / FT4UpperLimit;
   end
   else
-  begin
     theCase.TTSI := NaN;
-  end;
   if not isNaN(theCase.TTSI) then
   begin
     theCase.TTSIs := FloatToStrF(theCase.TTSI, ffFixed, 5, 2);
@@ -170,24 +173,50 @@ begin
   end;
 end;
 
+procedure Insert_sTSHI(var theCase: tCaseRecord;
+  referenceRanges: tReferenceValues);
+{ Inserts TTSI into tCaseRecord }
+{ implemented as external function in order to make the main Calculate ... }
+{ function independent from application-specific reference ranges }
+begin
+  if not isNaN(theCase.TTSI) and not isNaN(referenceRanges.meanTSHI) and not
+    isNan(referenceRanges.sdTSHI) and not theCase.TSHTherapy then
+    begin
+      theCase.sTSHI :=
+        (theCase.TSHI - referenceRanges.meanTSHI) / referenceRanges.sdTSHI;
+    end
+  else
+    theCase.sTSHI := NaN;
+  if not isNaN(theCase.sTSHI) then
+  begin
+    theCase.sTSHIs := FloatToStrF(theCase.sTSHI, ffFixed, 5, 2);
+    theCase.flaggedsTSHIs := FloatToStrF(theCase.sTSHI, ffFixed, 5, 2);
+  end
+  else
+  begin
+    theCase.sTSHIs := gNotCalculable;
+    theCase.flaggedsTSHIs := gNotCalculable;
+  end;
+end;
+
 procedure FormatCase(var theCase: tCaseRecord; referenceRanges: tReferenceValues);
 var
-  GTFlag, GDFlag, TSHIFlag, TTSIFlag: string;
+  GTFlag, GDFlag, TSHIFlag, sTSHIFlag, TTSIFlag: string;
 begin
   GTFlag   := '';
   GDFlag   := '';
   TSHIFlag := '';
+  sTSHIFlag := '';
   TTSIFlag := '';
   if not isNaN(theCase.GT) then
   begin
     theCase.GTs := FloatToStrF(1e12 * theCase.GT, ffFixed, 5, 2);
-    theCase.GTs := concat(theCase.GTs, ' pmol/s');
     if not isNaN(gReferenceRanges.GT.ln) and not isNan(gReferenceRanges.GT.hn) and
       ((theCase.GT < gReferenceRanges.GT.ln) or (theCase.GT >
       gReferenceRanges.GT.hn)) then
       GTFlag := REF_RANGE_FLAG;
-    theCase.flaggedGTs := FloatToStrF(1e12 * theCase.GT, ffFixed, 5, 2);
-    theCase.flaggedGTs := concat(theCase.flaggedGTs, GTFlag, ' pmol/s ');
+    theCase.flaggedGTs := concat(theCase.GTs, GTFlag, ' pmol/s ');
+    theCase.GTs := concat(theCase.GTs, ' pmol/s');
   end
   else
   begin
@@ -197,13 +226,12 @@ begin
   if not isNaN(theCase.GD) then
   begin
     theCase.GDs := FloatToStrF(1e9 * theCase.GD, ffFixed, 5, 2);
-    theCase.GDs := concat(theCase.GDs, ' nmol/s');
     if not isNaN(gReferenceRanges.GD.ln) and not isNan(gReferenceRanges.GD.hn) and
       ((theCase.GD < gReferenceRanges.GD.ln) or
       (theCase.GD > gReferenceRanges.GD.hn)) then
       GDFlag := REF_RANGE_FLAG;
-    theCase.flaggedGDs := FloatToStrF(1e9 * theCase.GD, ffFixed, 5, 2);
-    theCase.flaggedGDs := concat(theCase.flaggedGDs, GDFlag, ' nmol/s ');
+    theCase.flaggedGDs := concat(theCase.GDs, GDFlag, ' nmol/s ');
+    theCase.GDs := concat(theCase.GDs, ' nmol/s');
   end
   else
   begin
@@ -217,13 +245,26 @@ begin
       ((theCase.TSHI < gReferenceRanges.TSHI.ln) or
       (theCase.TSHI > gReferenceRanges.TSHI.hn)) then
       TSHIFlag := REF_RANGE_FLAG;
-    theCase.flaggedTSHIs := FloatToStrF(theCase.TSHI, ffFixed, 5, 1);
-    theCase.flaggedTSHIs := concat(theCase.flaggedTSHIs, TSHIFlag);
+    theCase.flaggedTSHIs := concat(theCase.TSHIs, TSHIFlag);
   end
   else
   begin
     theCase.TSHIs := gNotCalculable;
     theCase.flaggedTSHIs := gNotCalculable;
+  end;
+  if not isNaN(theCase.sTSHI) then
+  begin
+    theCase.sTSHIs := FloatToStrF(theCase.sTSHI, ffFixed, 5, 2);
+    if not isNaN(gReferenceRanges.sTSHI.ln) and not isNan(gReferenceRanges.sTSHI.hn) and
+      ((theCase.sTSHI < gReferenceRanges.sTSHI.ln) or
+      (theCase.sTSHI > gReferenceRanges.sTSHI.hn)) then
+      sTSHIFlag := REF_RANGE_FLAG;
+    theCase.flaggedsTSHIs := concat(theCase.sTSHIs, TSHIFlag);
+  end
+  else
+  begin
+    theCase.sTSHIs := gNotCalculable;
+    theCase.flaggedsTSHIs := gNotCalculable;
   end;
   if not isNaN(theCase.TTSI) then
   begin
@@ -232,8 +273,7 @@ begin
       ((theCase.TTSI < gReferenceRanges.TTSI.ln) or
       (theCase.TTSI > gReferenceRanges.TTSI.hn)) then
       TTSIFlag := REF_RANGE_FLAG;
-    theCase.flaggedTTSIs := FloatToStrF(theCase.TTSI, ffFixed, 5, 0);
-    theCase.flaggedTTSIs := concat(theCase.flaggedTTSIs, TTSIFlag);
+    theCase.flaggedTTSIs := concat(theCase.TTSIs, TTSIFlag);
   end
   else
   begin
