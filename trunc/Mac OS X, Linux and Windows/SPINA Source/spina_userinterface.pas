@@ -356,9 +356,11 @@ begin
   else if pos('-', theFormatString) > 0 then
     DefaultFormatSettings.DateSeparator := '-';
   DefaultFormatSettings.ShortDateFormat := theFormatString;
+  CFRelease(theFormatter);
   theFormatter := CFDateFormatterCreate(kCFAllocatorDefault, CFLocaleCopyCurrent, kCFDateFormatterLongStyle, kCFDateFormatterNoStyle);
   theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
   DefaultFormatSettings.LongDateFormat := theFormatString;
+  CFRelease(theFormatter);
   {$ENDIF}
 end;
 
