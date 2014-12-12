@@ -16,7 +16,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
-      <BuildNr Value="729"/>
+      <BuildNr Value="733"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.0.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -43,7 +43,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="103">
+    <Units Count="102">
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -63,11 +63,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="23"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="19" Y="2"/>
+        <CursorPos X="91" Y="12"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -175,10 +174,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_ResultDialog"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="26"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="64"/>
-        <CursorPos X="29" Y="91"/>
+        <TopLine Value="1"/>
+        <CursorPos X="2" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -216,7 +216,7 @@
         <EditorIndex Value="16"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="4" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit18>
@@ -287,7 +287,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="52" Y="24"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="162"/>
         <Loaded Value="True"/>
       </Unit26>
       <Unit27>
@@ -377,7 +377,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="10" Y="1"/>
-        <UsageCount Value="171"/>
+        <UsageCount Value="172"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit36>
@@ -392,7 +392,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="4" Y="2"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="162"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit37>
@@ -502,7 +502,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="19" Y="2"/>
-        <UsageCount Value="143"/>
+        <UsageCount Value="144"/>
         <Loaded Value="True"/>
       </Unit51>
       <Unit52>
@@ -518,7 +518,7 @@
           <TopLine Value="536"/>
           <CursorPos X="28" Y="50"/>
         </ExtraEditor1>
-        <UsageCount Value="141"/>
+        <UsageCount Value="142"/>
         <Loaded Value="True"/>
       </Unit52>
       <Unit53>
@@ -578,7 +578,7 @@
           <TopLine Value="34"/>
           <CursorPos X="20" Y="65"/>
         </ExtraEditor1>
-        <UsageCount Value="136"/>
+        <UsageCount Value="137"/>
         <Loaded Value="True"/>
       </Unit59>
       <Unit60>
@@ -589,7 +589,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="33" Y="2"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="131"/>
         <Loaded Value="True"/>
       </Unit60>
       <Unit61>
@@ -600,7 +600,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="3" Y="87"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="131"/>
         <Loaded Value="True"/>
       </Unit61>
       <Unit62>
@@ -611,7 +611,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="60" Y="59"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="131"/>
         <Loaded Value="True"/>
       </Unit62>
       <Unit63>
@@ -622,7 +622,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="131"/>
         <Loaded Value="True"/>
       </Unit63>
       <Unit64>
@@ -675,7 +675,7 @@
           <TopLine Value="82"/>
           <CursorPos X="150" Y="83"/>
         </ExtraEditor1>
-        <UsageCount Value="118"/>
+        <UsageCount Value="119"/>
         <Loaded Value="True"/>
       </Unit69>
       <Unit70>
@@ -718,7 +718,7 @@
         <TopLine Value="1"/>
         <CursorPos X="5" Y="2"/>
         <ExtraEditorCount Value="1"/>
-        <UsageCount Value="109"/>
+        <UsageCount Value="110"/>
         <Loaded Value="True"/>
       </Unit74>
       <Unit75>
@@ -739,7 +739,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="5" Y="2"/>
-        <UsageCount Value="87"/>
+        <UsageCount Value="88"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit76>
@@ -759,7 +759,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="25"/>
         <CursorPos X="1" Y="105"/>
-        <UsageCount Value="80"/>
+        <UsageCount Value="81"/>
         <Loaded Value="True"/>
       </Unit78>
       <Unit79>
@@ -770,7 +770,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="4" Y="2"/>
-        <UsageCount Value="80"/>
+        <UsageCount Value="81"/>
         <Loaded Value="True"/>
       </Unit79>
       <Unit80>
@@ -781,7 +781,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="77"/>
         <Loaded Value="True"/>
       </Unit80>
       <Unit81>
@@ -876,7 +876,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="42" Y="3"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="47"/>
         <Loaded Value="True"/>
       </Unit92>
       <Unit93>
@@ -941,7 +941,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit100>
       <Unit101>
@@ -952,135 +952,127 @@
         <CursorPos X="3" Y="2102"/>
         <UsageCount Value="10"/>
       </Unit101>
-      <Unit102>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\univint\src\CFBase.pas"/>
-        <UnitName Value="CFBase"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="460"/>
-        <CursorPos X="11" Y="478"/>
-        <UsageCount Value="10"/>
-      </Unit102>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="455" Column="7" TopLine="436"/>
+        <Caret Line="567" Column="8" TopLine="548"/>
       </Position1>
       <Position2>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="456" Column="7" TopLine="436"/>
+        <Caret Line="548" Column="12" TopLine="530"/>
       </Position2>
       <Position3>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="472" Column="7" TopLine="441"/>
+        <Caret Line="551" Column="28" TopLine="530"/>
       </Position3>
       <Position4>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="485" Column="7" TopLine="467"/>
+        <Caret Line="2" Column="2" TopLine="1"/>
       </Position4>
       <Position5>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="498" Column="7" TopLine="468"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="176" Column="23" TopLine="156"/>
       </Position5>
       <Position6>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="511" Column="7" TopLine="493"/>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="2" Column="1" TopLine="1"/>
       </Position6>
       <Position7>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="516" Column="12" TopLine="493"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="189" Column="26" TopLine="167"/>
       </Position7>
       <Position8>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="567" Column="8" TopLine="548"/>
+        <Caret Line="1006" Column="44" TopLine="988"/>
       </Position8>
       <Position9>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="548" Column="12" TopLine="530"/>
+        <Caret Line="601" Column="35" TopLine="579"/>
       </Position9>
       <Position10>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="551" Column="28" TopLine="530"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="757" Column="38" TopLine="739"/>
       </Position10>
       <Position11>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="2" Column="2" TopLine="1"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="768" Column="14" TopLine="745"/>
       </Position11>
       <Position12>
         <Filename Value="spina_engine.pas"/>
-        <Caret Line="176" Column="23" TopLine="156"/>
+        <Caret Line="246" Column="40" TopLine="234"/>
       </Position12>
       <Position13>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="2" Column="1" TopLine="1"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="209" Column="19" TopLine="193"/>
       </Position13>
       <Position14>
-        <Filename Value="spina_engine.pas"/>
-        <Caret Line="189" Column="26" TopLine="167"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="775" Column="78" TopLine="746"/>
       </Position14>
       <Position15>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="1006" Column="44" TopLine="988"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="505" Column="57" TopLine="487"/>
       </Position15>
       <Position16>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="601" Column="35" TopLine="579"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="462" Column="38" TopLine="443"/>
       </Position16>
       <Position17>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="757" Column="38" TopLine="739"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="1066" Column="1" TopLine="1"/>
       </Position17>
       <Position18>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="768" Column="14" TopLine="745"/>
+        <Caret Line="462" Column="38" TopLine="443"/>
       </Position18>
       <Position19>
-        <Filename Value="spina_engine.pas"/>
-        <Caret Line="246" Column="40" TopLine="234"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="458" Column="19" TopLine="443"/>
       </Position19>
       <Position20>
         <Filename Value="spina_engine.pas"/>
-        <Caret Line="209" Column="19" TopLine="193"/>
+        <Caret Line="2" Column="1" TopLine="1"/>
       </Position20>
       <Position21>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="775" Column="78" TopLine="746"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="551" Column="133" TopLine="533"/>
       </Position21>
       <Position22>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="505" Column="57" TopLine="487"/>
+        <Caret Line="362" Column="12" TopLine="342"/>
       </Position22>
       <Position23>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="462" Column="38" TopLine="443"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="69" Column="21" TopLine="43"/>
       </Position23>
       <Position24>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="1066" Column="1" TopLine="1"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="2" Column="19" TopLine="1"/>
       </Position24>
       <Position25>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="462" Column="38" TopLine="443"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="177" Column="23" TopLine="167"/>
       </Position25>
       <Position26>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="458" Column="19" TopLine="443"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="68" Column="11" TopLine="49"/>
       </Position26>
       <Position27>
-        <Filename Value="spina_engine.pas"/>
-        <Caret Line="2" Column="1" TopLine="1"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="763" Column="3" TopLine="745"/>
       </Position27>
       <Position28>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="551" Column="133" TopLine="533"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="202" Column="13" TopLine="185"/>
       </Position28>
       <Position29>
-        <Filename Value="spina_thyr.lpr"/>
-        <Caret Line="1" Column="86" TopLine="73"/>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="214" Column="18" TopLine="185"/>
       </Position29>
       <Position30>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="362" Column="12" TopLine="342"/>
+        <Caret Line="2" Column="1" TopLine="869"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -1129,25 +1121,22 @@ end;"/>
     </Other>
   </CompilerOptions>
   <Debugging>
-    <Watches Count="6">
+    <Watches Count="5">
       <Item1>
-        <Expression Value="theOBXRecord.ObsID"/>
+        <Expression Value="referenceRanges.GD.hn"/>
       </Item1>
       <Item2>
-        <Expression Value="theOBXRecord.obsValue"/>
+        <Expression Value="referenceRanges.GD.ln"/>
       </Item2>
       <Item3>
-        <Expression Value="theOBXRecord.Units"/>
+        <Expression Value="meanGD"/>
       </Item3>
       <Item4>
-        <Expression Value="aCaseRecord"/>
+        <Expression Value="sdGD"/>
       </Item4>
       <Item5>
-        <Expression Value="Hauptschirm.caseRecord"/>
+        <Expression Value="theCase.ZGD"/>
       </Item5>
-      <Item6>
-        <Expression Value="Hauptschirm.caseRecord.sTSHI"/>
-      </Item6>
     </Watches>
     <Exceptions Count="2">
       <Item1>
@@ -1159,4 +1148,4 @@ end;"/>
     </Exceptions>
   </Debugging>
   <EditorMacros Count="0"/>
-</CONFIG>
+</CONFIG>

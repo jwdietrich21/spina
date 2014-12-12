@@ -47,10 +47,10 @@ const
 type
   tCaseRecord = record
     TSH, FT4, FT3, TT4, TT3: real;
-    GT, GD, LS, TSHI, sTSHI, rawTTSI, TTSI: real;
+    GT, GD, ZGD, LS, TSHI, sTSHI, rawTTSI, TTSI: real;
     TSH_UOM, FT4_UOM, FT3_UOM, TT4_UOM, TT3_UOM: Str255;
     GT_UOM, GD_UOM:  str255;
-    GTs, GDs, flaggedGTs, flaggedGDs: Str255;
+    GTs, GDs, ZGDs, flaggedGTs, flaggedGDs, flaggedZGDs: Str255;
     LSs, flaggedLSs: Str255;
     TSHIs, sTSHIs, TTSIs, flaggedTSHIs, flaggedsTSHIs, flaggedTTSIs: Str255;
     CaseID, PID, Name, GivenNames, Placer: string;
@@ -66,6 +66,7 @@ procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
 procedure Calculate(var theCaseRecord: tCaseRecord);
 procedure InsertTTSI(var theCase: tCaseRecord; FT4UpperLimit: real);
 procedure Insert_sTSHI(var theCase: tCaseRecord; referenceRanges: tReferenceValues);
+procedure Insert_ZGD(var theCase: tCaseRecord; referenceRanges: tReferenceValues);
 procedure FormatCase(var theCase: tCaseRecord; referenceRanges: tReferenceValues);
 
 implementation
@@ -197,6 +198,36 @@ begin
     theCase.sTSHIs := gNotCalculable;
     theCase.flaggedsTSHIs := gNotCalculable;
   end;
+end;
+
+procedure Insert_ZGD(var theCase: tCaseRecord; referenceRanges: tReferenceValues
+  );
+{ Inserts z-transformed value for GD into tCaseRecord }
+{ implemented as external function in order to make the main Calculate ... }
+{ function independent from application-specific reference ranges }
+var
+  meanGD, sdGD: real;
+begin
+  if not isNaN(theCase.GD) and not isNaN(referenceRanges.GD.ln) and not
+    isNan(referenceRanges.GD.hn) and not theCase.T3Therapy then
+    begin
+      {the following calculations make sense since GD is symmetrically distributed}
+      meanGD := (referenceRanges.GD.hn + referenceRanges.GD.ln) / 2;
+      sdGD := (referenceRanges.GD.hn - referenceRanges.GD.ln) / 4;
+      theCase.ZGD := (theCase.GD - meanGD) / sdGD;
+    end
+  else
+    theCase.ZGD := NaN;
+  if not isNaN(theCase.ZGD) then
+    begin
+      theCase.ZGDs := FloatToStrF(theCase.zGD, ffFixed, 5, 2);
+      theCase.flaggedZGDs := theCase.ZGDs;
+    end
+  else
+    begin
+      theCase.ZGDs := gNotCalculable;
+      theCase.flaggedZGDs := gNotCalculable;
+    end;
 end;
 
 procedure FormatCase(var theCase: tCaseRecord; referenceRanges: tReferenceValues);

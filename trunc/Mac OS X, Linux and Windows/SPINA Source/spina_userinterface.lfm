@@ -1,6 +1,6 @@
 object Hauptschirm: THauptschirm
   Left = 271
-  Height = 365
+  Height = 385
   Top = 220
   Width = 753
   HorzScrollBar.Visible = False
@@ -324,7 +324,7 @@ object Hauptschirm: THauptschirm
   OnShow = FormShow
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.6.0'
   object Calculate_Button: TButton
     Left = 624
     Height = 24
@@ -342,7 +342,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'ng/dl'
       'ng/l'
@@ -359,7 +359,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'µg/l'
       'µg/dl'
@@ -375,7 +375,7 @@ object Hauptschirm: THauptschirm
     Top = 200
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'pg/ml'
       'ng/l'
@@ -391,7 +391,7 @@ object Hauptschirm: THauptschirm
     Top = 224
     Width = 41
     Enabled = False
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       'µg/l'
       'ng/dl'
@@ -432,8 +432,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 88
-      ClientWidth = 209
+      ClientHeight = 92
+      ClientWidth = 213
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
@@ -457,12 +457,12 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 175
-      ClientWidth = 208
+      ClientHeight = 179
+      ClientWidth = 212
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 159
+        Height = 163
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -489,12 +489,12 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 175
-      ClientWidth = 208
+      ClientHeight = 179
+      ClientWidth = 212
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 159
+        Height = 163
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -623,16 +623,16 @@ object Hauptschirm: THauptschirm
       Width = 271
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 279
-      ClientWidth = 263
+      ClientHeight = 283
+      ClientWidth = 267
       ParentColor = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
       object Image1: TImage
-        Left = 22
+        Left = 26
         Height = 229
-        Top = 16
+        Top = 25
         Width = 240
         Anchors = [akTop, akRight]
         Picture.Data = {
@@ -842,34 +842,34 @@ object Hauptschirm: THauptschirm
         Transparent = True
       end
       object FT4_Text: TEdit
-        Left = 102
-        Height = 22
+        Left = 106
+        Height = 21
         Hint = '(F)T4'
-        Top = 223
+        Top = 232
         Width = 56
         Anchors = [akTop, akRight]
         TabOrder = 1
         Text = '0'
       end
       object FT3_Text: TEdit
-        Left = 198
-        Height = 22
+        Left = 202
+        Height = 21
         Hint = '(F)T3'
-        Top = 28
+        Top = 37
         Width = 54
         Anchors = [akTop, akRight]
         TabOrder = 2
         Text = '0'
       end
       object TSHUnitComboBox: TComboBox
-        Left = 6
+        Left = 10
         Height = 21
         Hint = 'Maßeinheit'
-        Top = 52
+        Top = 61
         Width = 66
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'mU/l'
@@ -881,14 +881,14 @@ object Hauptschirm: THauptschirm
         Text = 'mU/l'
       end
       object T4UnitComboBox: TComboBox
-        Left = 164
+        Left = 168
         Height = 21
         Hint = 'Maßeinheit'
-        Top = 223
+        Top = 232
         Width = 67
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'ng/dl'
@@ -901,14 +901,14 @@ object Hauptschirm: THauptschirm
         Text = 'ng/dl'
       end
       object T3UnitComboBox: TComboBox
-        Left = 196
+        Left = 200
         Height = 21
         Hint = 'Maßeinheit'
-        Top = 50
+        Top = 59
         Width = 66
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'pg/ml'
@@ -921,14 +921,14 @@ object Hauptschirm: THauptschirm
         Text = 'pg/ml'
       end
       object T3MethodComboBox: TComboBox
-        Left = 198
+        Left = 202
         Height = 21
         Hint = 'Methode'
-        Top = 4
+        Top = 13
         Width = 56
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'FT3'
@@ -940,14 +940,14 @@ object Hauptschirm: THauptschirm
         Text = 'FT3'
       end
       object T4MethodComboBox: TComboBox
-        Left = 40
+        Left = 44
         Height = 21
         Hint = 'Methode'
-        Top = 223
+        Top = 232
         Width = 56
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 0
+        ItemHeight = 13
         ItemIndex = 0
         Items.Strings = (
           'FT4'
@@ -959,20 +959,20 @@ object Hauptschirm: THauptschirm
         Text = 'FT4'
       end
       object TSH_Text: TEdit
-        Left = 6
-        Height = 22
+        Left = 10
+        Height = 21
         Hint = 'TSH'
-        Top = 28
+        Top = 37
         Width = 56
         Anchors = [akTop, akRight]
         TabOrder = 0
         Text = '0'
       end
       object Label1: TLabel
-        Left = 3
-        Height = 16
-        Top = 6
-        Width = 25
+        Left = 10
+        Height = 13
+        Top = 15
+        Width = 22
         Anchors = [akTop, akRight]
         Caption = 'TSH'
         ParentColor = False
@@ -984,7 +984,7 @@ object Hauptschirm: THauptschirm
     AnchorSideTop.Side = asrCenter
     Cursor = crHandPoint
     Left = 16
-    Height = 12
+    Height = 13
     Top = 333
     Width = 53
     Caption = 'SPINA Thyr'

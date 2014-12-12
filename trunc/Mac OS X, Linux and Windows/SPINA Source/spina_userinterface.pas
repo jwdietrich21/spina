@@ -761,10 +761,12 @@ begin
     T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
   InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
   Insert_sTSHI(Hauptschirm.caseRecord, gReferenceRanges);
+  Insert_ZGD(Hauptschirm.caseRecord, gReferenceRanges);
   FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
   if gUseReferenceRanges then
     strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs,
       kCR, kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs, kCR,
+      kLF, '   zGD: ', Hauptschirm.caseRecord.flaggedZGDs, kCR,
       kLF, '   TSHI: ', Hauptschirm.caseRecord.flaggedTSHIs, kCR,
       kLF, '   sTSHI: ', Hauptschirm.caseRecord.flaggedsTSHIs, kCR,
       kLF, '   TTSI: ', Hauptschirm.caseRecord.flaggedTTSIs)

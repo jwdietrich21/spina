@@ -1,6 +1,6 @@
 object ResultForm: TResultForm
   Left = 320
-  Height = 191
+  Height = 212
   Top = 313
   Width = 691
   HorzScrollBar.Page = 440
@@ -10,14 +10,14 @@ object ResultForm: TResultForm
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = '   Ergebnis'
-  ClientHeight = 191
+  ClientHeight = 212
   ClientWidth = 691
   Color = clWhite
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.6.0'
   object Image1: TImage
     Left = 24
     Height = 80
@@ -187,9 +187,9 @@ object ResultForm: TResultForm
   end
   object Label1: TLabel
     Left = 112
-    Height = 17
+    Height = 16
     Top = 8
-    Width = 57
+    Width = 67
     Caption = 'Ergebnis:'
     Font.Color = clBlack
     Font.Height = -13
@@ -200,7 +200,7 @@ object ResultForm: TResultForm
   end
   object MessageField1: TMemo
     Left = 112
-    Height = 105
+    Height = 126
     Top = 32
     Width = 248
     Anchors = [akTop, akLeft, akBottom]
@@ -218,7 +218,7 @@ object ResultForm: TResultForm
   end
   object MessageField2: TMemo
     Left = 376
-    Height = 104
+    Height = 125
     Top = 32
     Width = 299
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -236,7 +236,7 @@ object ResultForm: TResultForm
   object OKButton: TButton
     Left = 600
     Height = 24
-    Top = 153
+    Top = 174
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'OK'

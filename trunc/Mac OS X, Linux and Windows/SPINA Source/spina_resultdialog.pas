@@ -58,7 +58,7 @@ uses SPINA_UserInterface;
 
 procedure TResultForm.UpdateResultDisplay(Sender: TObject);
 const
-  LINE_NUMBER = 5;
+  LINE_NUMBER = 7;
   BOTTOM_MARGIN = 51;
 begin
   {Adjustments for small windows:}
