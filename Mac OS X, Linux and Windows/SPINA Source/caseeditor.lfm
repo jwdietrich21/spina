@@ -13,7 +13,7 @@ object CaseEditorForm: TCaseEditorForm
   OnDropFiles = FormDropFiles
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.6.0'
   object Bevel2: TBevel
     Left = 24
     Height = 82

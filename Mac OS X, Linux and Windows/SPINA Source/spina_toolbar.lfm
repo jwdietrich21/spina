@@ -18,7 +18,7 @@ object SPINAToolbar: TSPINAToolbar
   Menu = MainMenu
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.6.0'
   Visible = True
   object ToolBar1: TToolBar
     Left = 0
