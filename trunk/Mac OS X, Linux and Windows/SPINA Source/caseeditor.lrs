@@ -6,7 +6,7 @@ LazarusResources.Add('TCaseEditorForm','FORMDATA',[
   +'ropFiles'#9#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#11'Fall-Editor'#12'C'
   +'lientHeight'#3#130#1#11'ClientWidth'#3'<'#2#8'OnCreate'#7#10'FormCreate'#11
   +'OnDropFiles'#7#13'FormDropFiles'#6'OnShow'#7#8'FormShow'#8'Position'#7#14'p'
-  +'oScreenCenter'#10'LCLVersion'#6#7'1.2.2.0'#0#6'TBevel'#6'Bevel2'#4'Left'#2
+  +'oScreenCenter'#10'LCLVersion'#6#7'1.2.6.0'#0#6'TBevel'#6'Bevel2'#4'Left'#2
   +#24#6'Height'#2'R'#3'Top'#3#224#0#5'Width'#3#13#2#7'Anchors'#11#5'akTop'#6'a'
   +'kLeft'#7'akRight'#0#0#0#6'TBevel'#6'Bevel1'#4'Left'#2#24#6'Height'#3#178#0#3
   +'Top'#2' '#5'Width'#3#11#2#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#0#0

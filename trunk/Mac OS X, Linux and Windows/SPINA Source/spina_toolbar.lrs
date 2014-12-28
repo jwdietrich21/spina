@@ -7,7 +7,7 @@ LazarusResources.Add('TSPINAToolbar','FORMDATA',[
   +'ystemMenu'#10'biMinimize'#0#11'BorderStyle'#7#12'bsToolWindow'#7'Caption'#6
   +#5'SPINA'#12'ClientHeight'#2'X'#11'ClientWidth'#3's'#3#14'DefaultMonitor'#7
   +#10'dmMainForm'#8'DockSite'#9#4'Menu'#7#8'MainMenu'#7'OnClose'#7#9'FormClose'
-  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#7'1.2.2.0'#7'Visible'#9#0#8'T'
+  +#8'OnCreate'#7#10'FormCreate'#10'LCLVersion'#6#7'1.2.6.0'#7'Visible'#9#0#8'T'
   +'ToolBar'#8'ToolBar1'#4'Left'#2#0#6'Height'#2#26#3'Top'#2#0#5'Width'#3's'#3#7
   +'Caption'#6#8'ToolBar1'#6'Images'#7#16'ToolbarImageList'#8'TabOrder'#2#0#0#11
   +'TToolButton'#13'NewToolButton'#4'Left'#2#1#4'Hint'#6#18'Neue Berechnung...'
