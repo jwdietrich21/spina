@@ -417,10 +417,10 @@ object Hauptschirm: THauptschirm
     TabOrder = 5
     object TherapyCheckGroup: TCheckGroup
       Left = 509
-      Height = 130
+      Height = 90
       Hint = 'Bitte markieren Sie bei Substitutionstherapie die entsprechende Box.'
       Top = 8
-      Width = 217
+      Width = 215
       Anchors = [akTop, akRight, akBottom]
       AutoFill = True
       Caption = 'Therapie:'
@@ -432,8 +432,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 108
-      ClientWidth = 209
+      ClientHeight = 68
+      ClientWidth = 207
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
