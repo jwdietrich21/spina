@@ -41,6 +41,7 @@ uses
     {$IFDEF LCLCarbon}
       , MacOSAll
     {$ENDIF}
+  , Unix
   {$ENDIF},
   UnitConverter, CDISC;
 
