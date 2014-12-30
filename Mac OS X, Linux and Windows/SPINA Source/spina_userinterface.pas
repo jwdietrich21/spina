@@ -263,7 +263,7 @@ begin
   fbl := Copy(l, 1, 2);
   dispose(buffer);
   {$ELSE}
-  {$IFDEF LINUX}
+  {$IFDEF UNIX}
   fbl := Copy(GetEnvironmentVariable('LC_CTYPE'), 1, 2);
     {$ELSE}
   GetLanguageIDs(l, fbl);

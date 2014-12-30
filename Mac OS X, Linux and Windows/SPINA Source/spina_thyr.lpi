@@ -16,7 +16,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
-      <BuildNr Value="739"/>
+      <BuildNr Value="741"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.0 Mercator" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.0.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -48,10 +48,11 @@
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="spina_thyr"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="28"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="47"/>
-        <CursorPos X="1" Y="69"/>
+        <TopLine Value="1"/>
+        <CursorPos X="91" Y="29"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -66,7 +67,7 @@
         <EditorIndex Value="24"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="7" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -282,7 +283,6 @@
         <Filename Value="handlepreferences.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -973,123 +973,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="775" Column="78" TopLine="746"/>
+        <Caret Line="505" Column="57" TopLine="487"/>
       </Position1>
       <Position2>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="505" Column="57" TopLine="487"/>
+        <Caret Line="462" Column="38" TopLine="443"/>
       </Position2>
       <Position3>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="462" Column="38" TopLine="443"/>
-      </Position3>
-      <Position4>
         <Filename Value="handlepreferences.pas"/>
         <Caret Line="1066" Column="1" TopLine="1"/>
+      </Position3>
+      <Position4>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="462" Column="38" TopLine="443"/>
       </Position4>
       <Position5>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="462" Column="38" TopLine="443"/>
+        <Caret Line="458" Column="19" TopLine="443"/>
       </Position5>
       <Position6>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="458" Column="19" TopLine="443"/>
-      </Position6>
-      <Position7>
         <Filename Value="spina_engine.pas"/>
         <Caret Line="2" Column="1" TopLine="1"/>
-      </Position7>
-      <Position8>
+      </Position6>
+      <Position7>
         <Filename Value="handlepreferences.pas"/>
         <Caret Line="551" Column="133" TopLine="533"/>
-      </Position8>
-      <Position9>
+      </Position7>
+      <Position8>
         <Filename Value="spina_userinterface.pas"/>
         <Caret Line="362" Column="12" TopLine="342"/>
-      </Position9>
-      <Position10>
+      </Position8>
+      <Position9>
         <Filename Value="spina_engine.pas"/>
         <Caret Line="69" Column="21" TopLine="43"/>
-      </Position10>
-      <Position11>
+      </Position9>
+      <Position10>
         <Filename Value="spina_userinterface.pas"/>
         <Caret Line="2" Column="19" TopLine="1"/>
+      </Position10>
+      <Position11>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="177" Column="23" TopLine="167"/>
       </Position11>
       <Position12>
         <Filename Value="spina_engine.pas"/>
-        <Caret Line="177" Column="23" TopLine="167"/>
+        <Caret Line="68" Column="11" TopLine="49"/>
       </Position12>
       <Position13>
-        <Filename Value="spina_engine.pas"/>
-        <Caret Line="68" Column="11" TopLine="49"/>
-      </Position13>
-      <Position14>
         <Filename Value="spina_userinterface.pas"/>
         <Caret Line="763" Column="3" TopLine="745"/>
+      </Position13>
+      <Position14>
+        <Filename Value="spina_engine.pas"/>
+        <Caret Line="202" Column="13" TopLine="185"/>
       </Position14>
       <Position15>
         <Filename Value="spina_engine.pas"/>
-        <Caret Line="202" Column="13" TopLine="185"/>
+        <Caret Line="214" Column="18" TopLine="185"/>
       </Position15>
       <Position16>
-        <Filename Value="spina_engine.pas"/>
-        <Caret Line="214" Column="18" TopLine="185"/>
+        <Filename Value="spina_types.pas"/>
+        <Caret Line="116" Column="64" TopLine="97"/>
       </Position16>
       <Position17>
         <Filename Value="spina_types.pas"/>
-        <Caret Line="116" Column="64" TopLine="97"/>
+        <Caret Line="2" Column="6" TopLine="1"/>
       </Position17>
       <Position18>
-        <Filename Value="spina_types.pas"/>
-        <Caret Line="2" Column="6" TopLine="1"/>
+        <Filename Value="spina_thyr.lpr"/>
+        <Caret Line="2" Column="2" TopLine="1"/>
       </Position18>
       <Position19>
         <Filename Value="spina_thyr.lpr"/>
-        <Caret Line="2" Column="2" TopLine="1"/>
+        <Caret Line="69" Column="1" TopLine="50"/>
       </Position19>
       <Position20>
-        <Filename Value="spina_thyr.lpr"/>
-        <Caret Line="69" Column="1" TopLine="50"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="172" Column="18" TopLine="154"/>
       </Position20>
       <Position21>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="172" Column="18" TopLine="154"/>
+        <Caret Line="161" Column="1" TopLine="153"/>
       </Position21>
       <Position22>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="161" Column="1" TopLine="153"/>
+        <Caret Line="184" Column="24" TopLine="162"/>
       </Position22>
       <Position23>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="184" Column="24" TopLine="162"/>
+        <Caret Line="2" Column="2" TopLine="1"/>
       </Position23>
       <Position24>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="2" Column="2" TopLine="1"/>
+        <Filename Value="spina_thyr.lpr"/>
+        <Caret Line="69" Column="1" TopLine="47"/>
       </Position24>
       <Position25>
-        <Filename Value="spina_thyr.lpr"/>
-        <Caret Line="69" Column="1" TopLine="47"/>
-      </Position25>
-      <Position26>
         <Filename Value="handlepreferences.pas"/>
         <Caret Line="185" Column="27" TopLine="167"/>
+      </Position25>
+      <Position26>
+        <Filename Value="spina_thyr.lpr"/>
+        <Caret Line="69" Column="1" TopLine="47"/>
       </Position26>
       <Position27>
-        <Filename Value="spina_thyr.lpr"/>
-        <Caret Line="69" Column="1" TopLine="47"/>
-      </Position27>
-      <Position28>
         <Filename Value="handlepreferences.pas"/>
         <Caret Line="185" Column="13" TopLine="167"/>
-      </Position28>
-      <Position29>
+      </Position27>
+      <Position28>
         <Filename Value="spina_thyr.lpr"/>
         <Caret Line="69" Column="1" TopLine="47"/>
-      </Position29>
-      <Position30>
+      </Position28>
+      <Position29>
         <Filename Value="handlepreferences.pas"/>
         <Caret Line="185" Column="1" TopLine="167"/>
+      </Position29>
+      <Position30>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="2" Column="7" TopLine="1"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -1138,15 +1138,6 @@ end;"/>
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="1">
-      <Item1>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="spina_thyr.lpr"/>
-        <Line Value="69"/>
-      </Item1>
-    </BreakPoints>
     <Watches Count="6">
       <Item1>
         <Expression Value="referenceRanges.GD.hn"/>
