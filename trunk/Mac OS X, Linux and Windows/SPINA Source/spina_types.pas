@@ -112,7 +112,7 @@ var
   T4UnitLabel, T3UnitLabel: array[0..MAXFACTORS - 1] of Str3;
   T4UnitFactor, T3UnitFactor: array[0..MAXFACTORS - 1] of real;
   gUseReferenceRanges: boolean;
-  gPrefsDir, gPrefsFileName: String;
+  gHostName, gPrefsDir, gPrefsFileName: String;
   gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR, gTSHIRR, gsTSHIRR, gTTSIRR: string;
   gPreferences: tPreferences;
   gPrefsFile: tPrefsFile;

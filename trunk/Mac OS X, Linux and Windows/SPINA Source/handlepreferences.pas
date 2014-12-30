@@ -46,6 +46,7 @@ uses
 
 function DecodeGreek(theString: string): string;
 function EncodeGreek(theString: string): string;
+function ComputerName: String;
 function GetPreferencesFile: String;
 function GetPreferencesFolder: String;
 function RRFile: String;
@@ -157,6 +158,32 @@ begin
   theFlags := [rfReplaceAll, rfIgnoreCase];
   result := UTF8Decode(StringReplace(theString, 'mc', #194#181, theFlags));
 end;
+
+function ComputerName: String;
+{inspired by Zoran's post at http://forum.lazarus.freepascal.org/index.php?topic=23622.0 }
+{$IFDEF mswindows}
+const
+  INFO_BUFFER_SIZE = 32767;
+var
+  Buffer: array[0..INFO_BUFFER_SIZE] of WideChar;
+  Ret: DWORD;
+begin
+  Ret:= INFO_BUFFER_SIZE;
+  If (GetComputerNameW(@Buffer[0],Ret)) then
+  begin
+    result := UTF8Encode(WideString(Buffer));
+  end
+  else
+  begin
+    result := 'ERROR_NO_COMPUTERNAME_RETURNED';
+  End;
+End;
+{$ENDIF}
+{$IFDEF UNIX}
+begin
+  result := GetHostName;
+end;
+{$ENDIF}
 
 function NodeContent(theRoot: TDOMNode; Name: string): string;
   {supports XML routines, gets the contents of a node in a file}
