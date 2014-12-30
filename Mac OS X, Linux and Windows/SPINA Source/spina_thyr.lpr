@@ -66,6 +66,7 @@ begin
   SplashScreen.AlphaBlendValue := 200;
   Application.ProcessMessages;
   gStartup := true;
+  gHostName := ComputerName;
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TResultForm, ResultForm);
   Application.CreateForm(TPreferencesForm, PreferencesForm);
