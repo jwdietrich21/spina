@@ -9,7 +9,7 @@ of thyrotropic feedback control
 Programm zur Berechnung von Strukturparametern
 des thyreotropen Regelkreises
 
-Version 4.0.0
+Version 3.4.2
 
 (c) J. W. Dietrich, 1994 - 2014
 (c) Ludwig Maximilian University of Munich 1995 - 2002
@@ -26,9 +26,14 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleExecutable</key>
 	<string>SPINA Thyr</string>
 	<key>CFBundleVersion</key>
-	<string>4.0.0</string>
+	<string>3.4.2</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+    <string>de</string>
+  </array>
 	<key>CFBundleName</key>
 	<string>SPINA Thyr</string>
 	<key>CFBundlePackageType</key>
@@ -36,11 +41,11 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleSignature</key>
 	<string>SPIt</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.0</string>
+	<string>3.4.2</string>
 	<key>CFBundleGetInfoString</key>
-	<string>4.0.0, ©1994-2014 J. W. Dietrich</string>
+	<string>3.4.2, ©1994-2014 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>4.0.0, ©1994-2014 J. W. Dietrich</string>
+	<string>3.4.2, ©1994-2014 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sf.spina.thyr</string>
 	<key>LSApplicationCategoryType</key>
@@ -67,33 +72,8 @@ See http://spina.medical-cybernetics.de for details
 				<string>****</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>hl7</string>
-			</array>
-			<key>CFBundleTypeMIMETypes</key>
-			<array>
-				<string>text/plain</string>
-				<string>application/hl7-v2</string>
-				<string>multipart/x-hl7-cdalevel-one</string>
-				<string>application/hl7-v2+er7</string>
-			</array>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>fold</string>
-				<string>disk</string>
-				<string>****</string>
-			</array>
-			<key>CFBundleTypeName</key>
-			<string>HL7 message</string>
-		</dict>
 	</array>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.4.0</string>
-  <key>NSHighResolutionCapable</key>
-  <true/>
 </dict>
 </plist>
