@@ -100,7 +100,7 @@ tReferenceNormDefinitions = record
        startDateTime: string
 end;
 tReferenceValues = record
-       TSH, FT4, FT3, TT4, TT3, GT, GD, TSHI, sTSHI, TTSI: tReferenceAlerts;
+       TSH, FT4, FT3, TT4, TT3, GT, GD, sGD, TSHI, sTSHI, TTSI: tReferenceAlerts;
        meanTSHI, sdTSHI: real;
 end;
 
@@ -113,7 +113,7 @@ var
   T4UnitFactor, T3UnitFactor: array[0..MAXFACTORS - 1] of real;
   gUseReferenceRanges: boolean;
   gHostName, gPrefsDir, gPrefsFileName: String;
-  gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR, gTSHIRR, gsTSHIRR, gTTSIRR: string;
+  gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR, gsGDRR, gTSHIRR, gsTSHIRR, gTTSIRR: string;
   gPreferences: tPreferences;
   gPrefsFile: tPrefsFile;
   gAnleitung1, gAnleitung2, gVerhaltensparameter, gStrukturparameter, gReferenzbereiche: string;

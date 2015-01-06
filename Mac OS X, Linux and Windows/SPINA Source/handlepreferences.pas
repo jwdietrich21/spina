@@ -569,6 +569,10 @@ begin
     gGDRR := NA_MARK
   else
     gGDRR := FloatToStrF(gReferenceRanges.GD.ln * 1e9, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.GD.hn * 1e9, ffFixed, 5, 0) + ' nmol/s';
+  if IsNaN(gReferenceRanges.sGD.ln) then
+    gsGDRR := NA_MARK
+  else
+    gsGDRR := FloatToStrF(gReferenceRanges.sGD.ln, ffFixed, 5, 2) + ' - +' + FloatToStrF(gReferenceRanges.sGD.hn, ffFixed, 5, 2) + ' ';
   if IsNaN(gReferenceRanges.TSHI.ln) then
     gTSHIRR := NA_MARK
   else
@@ -612,6 +616,8 @@ begin
       GT.hn := Math.Nan;
       GD.ln := Math.Nan;
       GD.hn := Math.Nan;
+      sGD.ln := -2;
+      sGD.hn := 2;
       TSHI.ln := Math.Nan;
       TSHI.hn := Math.Nan;
       TTSI.ln := Math.Nan;
@@ -637,6 +643,8 @@ begin
       GT.hn := Math.Nan;
       GD.ln := Math.Nan;
       GD.hn := Math.Nan;
+      sGD.ln := -2;
+      sGD.hn := 2;
       TSHI.ln := Math.Nan;
       TSHI.hn := Math.Nan;
       TTSI.ln := Math.Nan;
@@ -662,6 +670,8 @@ begin
       GT.hn := Math.Nan;
       GD.ln := Math.Nan;
       GD.hn := Math.Nan;
+      sGD.ln := -2;
+      sGD.hn := 2;
       TSHI.ln := Math.Nan;
       TSHI.hn := Math.Nan;
       TTSI.ln := Math.Nan;
