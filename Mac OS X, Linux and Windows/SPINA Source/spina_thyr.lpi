@@ -16,8 +16,8 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
-      <BuildNr Value="741"/>
-      <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.0 Mercator" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.0.0"/>
+      <BuildNr Value="743"/>
+      <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.0 Mercator" LegalCopyright="1994-2015 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.0.0"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="default" Default="True"/>
@@ -49,10 +49,10 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="spina_thyr"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="28"/>
+        <EditorIndex Value="27"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="91" Y="29"/>
+        <CursorPos X="77" Y="20"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -64,10 +64,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
-        <EditorIndex Value="24"/>
+        <EditorIndex Value="23"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="7" Y="2"/>
+        <CursorPos X="19" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -126,10 +126,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_SplashScreen"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="2" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -155,10 +155,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_AboutBox"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="19"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="10"/>
-        <CursorPos X="1" Y="26"/>
+        <TopLine Value="1"/>
+        <CursorPos X="5" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <TopLine Value="84"/>
@@ -175,10 +175,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_ResultDialog"/>
-        <EditorIndex Value="27"/>
+        <EditorIndex Value="26"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="24" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -213,7 +213,7 @@
         <Filename Value="spina_engine.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Engine"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="16"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
@@ -265,7 +265,7 @@
       <Unit24>
         <Filename Value="versionsupport.pas"/>
         <UnitName Value="VersionSupport"/>
-        <EditorIndex Value="21"/>
+        <EditorIndex Value="20"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="3" Y="4"/>
@@ -313,10 +313,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="spina_toolbar"/>
-        <EditorIndex Value="22"/>
+        <EditorIndex Value="21"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="7" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -373,10 +373,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SetPreferences"/>
-        <EditorIndex Value="26"/>
+        <EditorIndex Value="25"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="172"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -388,10 +388,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="spina_help"/>
-        <EditorIndex Value="25"/>
+        <EditorIndex Value="24"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="16" Y="2"/>
         <UsageCount Value="162"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -509,10 +509,10 @@
         <Filename Value="handleimpex.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="17"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="4" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <TopLine Value="536"/>
@@ -569,7 +569,7 @@
         <Filename Value="hl7.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HL7"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
@@ -585,7 +585,7 @@
         <Filename Value="obx.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="OBX"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="33" Y="2"/>
@@ -596,7 +596,7 @@
         <Filename Value="msa.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MSA"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="3" Y="87"/>
@@ -607,7 +607,7 @@
         <Filename Value="msh.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MSH"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="60" Y="59"/>
@@ -618,7 +618,7 @@
         <Filename Value="obr.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="OBR"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
@@ -735,10 +735,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CaseEditor"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="18"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="2"/>
+        <CursorPos X="2" Y="2"/>
         <UsageCount Value="88"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -755,7 +755,7 @@
         <Filename Value="pid.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PID"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="25"/>
         <CursorPos X="1" Y="105"/>
@@ -766,7 +766,7 @@
         <Filename Value="pv1.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PV1"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="4" Y="2"/>
@@ -777,7 +777,7 @@
         <Filename Value="spm.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPM"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="2"/>
@@ -808,7 +808,7 @@
       <Unit84>
         <Filename Value="Barcode.pas"/>
         <UnitName Value="Barcode"/>
-        <EditorIndex Value="23"/>
+        <EditorIndex Value="22"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="10" Y="2"/>
@@ -872,7 +872,7 @@
         <Filename Value="nte.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="NTE"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="42" Y="3"/>
@@ -937,7 +937,7 @@
         <Filename Value="mllp.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MLLP"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
@@ -960,14 +960,12 @@
         <UsageCount Value="10"/>
       </Unit102>
       <Unit103>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\rtl\unix\unix.pp"/>
+        <Filename Value="C:\usr\local\share\fpcsrc\rtl\unix\unix.pp"/>
         <UnitName Value="Unix"/>
-        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="108"/>
         <CursorPos X="24" Y="125"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit103>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
@@ -1168,4 +1166,4 @@ end;"/>
     </Exceptions>
   </Debugging>
   <EditorMacros Count="0"/>
-</CONFIG>
+</CONFIG>
