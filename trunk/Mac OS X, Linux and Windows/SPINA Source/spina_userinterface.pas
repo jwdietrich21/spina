@@ -457,26 +457,26 @@ begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
         kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
         concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
         'FT4:  ', gFT4RR, kCR, kLF, 'FT3:  ', gFT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF,
-        'TTSI: ', GTTSIRR);
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
+        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end
     else if gPreferences.T3.Method = totalHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
         kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
         concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
         'FT4:  ', gFT4RR, kCR, kLF, 'TT3:  ', gTT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF,
-        'TTSI: ', GTTSIRR);
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
+        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end;
   end
   else
@@ -486,26 +486,26 @@ begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
         kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
         concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
         'TT4:  ', gTT4RR, kCR, kLF, 'FT3:  ', gFT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF,
-        'TTSI: ', GTTSIRR);
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
+        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end
     else if gPreferences.T3.Method = totalHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
         kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
         concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
         'TT4:  ', gTT4RR, kCR, kLF, 'TT3:  ', gTT3RR, kCR, kLF, kCR,
         kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF,
-        'TTSI: ', GTTSIRR);
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
+        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end;
   end;
   Hauptschirm.ResultField.Hint := gReferenceValueString2;
@@ -761,12 +761,12 @@ begin
     T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
   InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
   Insert_sTSHI(Hauptschirm.caseRecord, gReferenceRanges);
-  Insert_ZGD(Hauptschirm.caseRecord, gReferenceRanges);
+  Insert_sGD(Hauptschirm.caseRecord, gReferenceRanges);
   FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
   if gUseReferenceRanges then
     strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs,
       kCR, kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs, kCR,
-      kLF, '   zGD: ', Hauptschirm.caseRecord.flaggedZGDs, kCR,
+      kLF, '   sGD: ', Hauptschirm.caseRecord.flaggedsGDs, kCR,
       kLF, '   TSHI: ', Hauptschirm.caseRecord.flaggedTSHIs, kCR,
       kLF, '   sTSHI: ', Hauptschirm.caseRecord.flaggedsTSHIs, kCR,
       kLF, '   TTSI: ', Hauptschirm.caseRecord.flaggedTTSIs)
