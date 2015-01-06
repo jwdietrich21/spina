@@ -8,9 +8,9 @@ unit engine_testcase;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.0.0 }
+{ Version 4.0.0 (Mercator) }
 
-{ (c) J. W. Dietrich, 1994 - 2014 }
+{ (c) J. W. Dietrich, 1994 - 2015 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
 { (c) Ruhr University of Bochum 2005 - 2014 }

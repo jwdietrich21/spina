@@ -10,10 +10,10 @@ unit spina_help;
 
 { Version 4.0.0 (Mercator) }
 
-{ (c) J. W. Dietrich, 1994 - 2014 }
+{ (c) J. W. Dietrich, 1994 - 2015 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2014 }
+{ (c) Ruhr University of Bochum 2005 - 2015 }
 
 { This unit implements a basic help system }
 
