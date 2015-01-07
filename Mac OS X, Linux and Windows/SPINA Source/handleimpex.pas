@@ -47,8 +47,8 @@ const
   NND_ORU_V2_0_profile = 'NND_ORU_v2.0^PHINProfileID^2.16.840.1.114222.4.10.3^ISO~'
       + 'Gen_Case_Map_v1.0^PHINMsgMapID^2.16.840.1.114222.4.10.4^ISO';
   NA_DTM     = '00000000000000';
-  LT4_CODE   = 'L-T4';
-  LT3_CODE   = 'L-T3';
+  LT4_CODE   = 'L-T4';    // substitution therapy with L-thyroxine
+  LT3_CODE   = 'L-T3';    // substitution therapy with liothyronine
   RHTSH_CODE = 'rh-TSH';
   LOINC_TSH_1: TLoincRecord = (code: '3016-3'; short: 'TSH SerPl-aCnc';
     long: 'Thyrotropin [Units/volume] in Serum or Plasma');
@@ -453,6 +453,36 @@ begin
     Inc(setIDcounter);
     SetID     := IntToStr(setIDcounter);
     ValueType := 'NM';
+    ObsID     := 'SPINA-sGD';
+    obsSubID  := '1';
+    obsValue  := FloatToStrF(acaseRecord.sGD, ffNumber, 5, 2);
+    Units     := '';
+    RefRange  := FloatToStr(gReferenceRanges.sGD.ln) + ' - +' +
+      FloatToStr(gReferenceRanges.sGD.hn);
+    AbnormFlags := '';
+    probability := '';
+    Nature    := '';
+    status    := 'F';
+    RRDate    := '';
+    UDAC      := '';
+    if isNaN(aCaseRecord.OBDate) then
+      ObsDateTime := ''
+    else
+      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    prodID := '';
+    respObs      := '';
+    observMethod := '';
+    EquipInstID  := '';
+    AnalysisDateTime := '';
+    SetOBX(HL7Message, SetID, ValueType, ObsID,
+      obsSubID, obsValue, Units, RefRange,
+      AbnormFlags, probability, Nature, status, RRDate,
+      UDAC, ObsDateTime, prodID, respObs, observMethod,
+      EquipInstID, AnalysisDateTime);
+
+    Inc(setIDcounter);
+    SetID     := IntToStr(setIDcounter);
+    ValueType := 'NM';
     ObsID     := 'TSHI';
     obsSubID  := '1';
     obsValue  := FloatToStrF(acaseRecord.TSHI, ffNumber, 5, 2);
@@ -750,8 +780,14 @@ begin
         aCaseRecord.GD     := StrToFloatDef(theOBXRecord.obsValue, NaN);
         aCaseRecord.GD_UOM := theOBXRecord.Units;
       end;
+      if pos('SPINA-sGD', theOBXRecord.ObsID) > 0 then
+      begin
+        aCaseRecord.sGD    := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
       if pos('TSHI', theOBXRecord.ObsID) > 0 then
         aCaseRecord.TSHI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      if pos('sTSHI', theOBXRecord.ObsID) > 0 then
+        aCaseRecord.sTSHI := StrToFloatDef(theOBXRecord.obsValue, NaN);
       if pos('TTSI', theOBXRecord.ObsID) > 0 then
         aCaseRecord.TTSI := StrToFloatDef(theOBXRecord.obsValue, NaN);
       if IsNaN(aCaseRecord.FT4) then
