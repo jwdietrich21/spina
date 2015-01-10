@@ -28,6 +28,10 @@ uses
   Classes, SysUtils, Forms, Graphics;
 
 const
+  sOK = 0;
+  sNegative = 101;
+  sOutOfRange = 102;
+
   T4_MOLAR_MASS = 776.87; {molar mass of T4}
   T3_MOLAR_MASS = 650.97; {molar mass of T3}
   kTAB = chr(9);
@@ -120,6 +124,7 @@ var
   gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
   gPreferencesHint: string;
+  gNegativeError: string;
   gcalcTitle, gcalcString, gNotCalculableString: Str255;
   gExplanationString: Str255;
   gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;

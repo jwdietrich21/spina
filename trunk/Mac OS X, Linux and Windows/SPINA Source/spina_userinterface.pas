@@ -151,7 +151,7 @@ type
     UndoMenuItem: TMenuItem;
     ValuesGroupBox: TGroupBox;
     WinPreferencesItem: TMenuItem;
-    procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
+    procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
     procedure FormPaint(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
     procedure InsertValues(Sender: TObject);
@@ -347,7 +347,8 @@ end;
 procedure GetMacDateFormats;
 begin
   {$IFDEF LCLCarbon}
-  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault, CFLocaleCopyCurrent, kCFDateFormatterMediumStyle, kCFDateFormatterNoStyle);
+  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
+    CFLocaleCopyCurrent, kCFDateFormatterMediumStyle, kCFDateFormatterNoStyle);
   theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
   if pos('.', theFormatString) > 0 then
     DefaultFormatSettings.DateSeparator := '.'
@@ -357,7 +358,8 @@ begin
     DefaultFormatSettings.DateSeparator := '-';
   DefaultFormatSettings.ShortDateFormat := theFormatString;
   CFRelease(theFormatter);
-  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault, CFLocaleCopyCurrent, kCFDateFormatterLongStyle, kCFDateFormatterNoStyle);
+  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
+    CFLocaleCopyCurrent, kCFDateFormatterLongStyle, kCFDateFormatterNoStyle);
   theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
   DefaultFormatSettings.LongDateFormat := theFormatString;
   CFRelease(theFormatter);
@@ -456,27 +458,29 @@ begin
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
-        kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR,
+        kLF, gGDRR, kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF,
+        gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
-        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
-        'FT4:  ', gFT4RR, kCR, kLF, 'FT3:  ', gFT3RR, kCR, kLF, kCR,
-        kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
-        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
+        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR,
+        kLF, 'FT4:  ', gFT4RR, kCR, kLF, 'FT3:  ', gFT3RR, kCR, kLF,
+        kCR, kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR,
+        kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end
     else if gPreferences.T3.Method = totalHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gFT4RR,
-        kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR,
+        kLF, gGDRR, kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF,
+        gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
-        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
-        'FT4:  ', gFT4RR, kCR, kLF, 'TT3:  ', gTT3RR, kCR, kLF, kCR,
-        kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
-        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
+        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR,
+        kLF, 'FT4:  ', gFT4RR, kCR, kLF, 'TT3:  ', gTT3RR, kCR, kLF,
+        kCR, kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR,
+        kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end;
   end
   else
@@ -485,27 +489,29 @@ begin
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
-        kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gFT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR,
+        kLF, gGDRR, kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF,
+        gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
-        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
-        'TT4:  ', gTT4RR, kCR, kLF, 'FT3:  ', gFT3RR, kCR, kLF, kCR,
-        kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
-        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
+        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR,
+        kLF, 'TT4:  ', gTT4RR, kCR, kLF, 'FT3:  ', gFT3RR, kCR, kLF,
+        kCR, kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR,
+        kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end
     else if gPreferences.T3.Method = totalHormone then
     begin
       gReferenceValueString1 :=
         concat(gReferenzbereiche, kCR, kLF, gTSHRR, kCR, kLF, gTT4RR,
-        kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR, kLF, gGDRR,
-        kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF, gsTSHIRR, kCR, kLF, GTTSIRR);
+        kCR, kLF, gTT3RR, kCR, kLF, kCR, kLF, kCR, kLF, gGTRR, kCR,
+        kLF, gGDRR, kCR, kLF, gsGDRR, kCR, kLF, gTSHIRR, kCR, kLF,
+        gsTSHIRR, kCR, kLF, GTTSIRR);
       gReferenceValueString2 :=
-        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR, kLF,
-        'TT4:  ', gTT4RR, kCR, kLF, 'TT3:  ', gTT3RR, kCR, kLF, kCR,
-        kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
-        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR, kLF,
-        'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
+        concat(gReferenzbereiche, kCR, kLF, 'TSH:  ', gTSHRR, kCR,
+        kLF, 'TT4:  ', gTT4RR, kCR, kLF, 'TT3:  ', gTT3RR, kCR, kLF,
+        kCR, kLF, kCR, kLF, 'GT:  ', gGTRR, kCR, kLF, 'GD:  ', gGDRR,
+        kCR, kLF, 'sGD:  ', gsGDRR, kCR, kLF, 'TSHI: ', gTSHIRR, kCR,
+        kLF, 'sTSHI: ', gsTSHIRR, kCR, kLF, 'TTSI: ', GTTSIRR);
     end;
   end;
   Hauptschirm.ResultField.Hint := gReferenceValueString2;
@@ -539,15 +545,15 @@ begin
   if LeftStr(TSH_String, 3) = NA_MARK then
     TSH_withUnit := NA_MARK
   else
-    TSH_withUnit :=  concat(TSH_String, ' ', gTSHUnit);
+    TSH_withUnit := concat(TSH_String, ' ', gTSHUnit);
   if LeftStr(T4_String, 3) = NA_MARK then
     T4_withUnit := NA_MARK
   else
-    T4_withUnit :=  concat(T4_String, ' ', gT4Unit);
+    T4_withUnit := concat(T4_String, ' ', gT4Unit);
   if LeftStr(T3_String, 3) = NA_MARK then
     T3_withUnit := NA_MARK
   else
-    T3_withUnit :=  concat(T3_String, ' ', gT3Unit);
+    T3_withUnit := concat(T3_String, ' ', gT3Unit);
   vhString := concat(gVerhaltensparameter, kCR, kLF, '   TSH: ',
     TSH_withUnit, kCR, kLF, T4Label, T4_withUnit, kCR, kLF, T3Label, T3_withUnit);
   theString := concat(vhString, kCR, kLF, kCR, kLF, gStrukturparameter,
@@ -590,7 +596,7 @@ begin
   toCaseRecord.Placer := fromCaseRecord.Placer;
 end;
 
-procedure HandleInput;
+procedure HandleInput(var status: integer);
 {reads inputs and invokes calculation engine}
 {liest Eingabefelder und startet die Berechnungseinheit}
 var
@@ -601,6 +607,7 @@ var
   TSH_Flag, T4_Flag, T3_Flag: string;
   FT4UpperLimitforTTSI: real;
 begin
+  status := sOK;
   oldSeparator := DefaultFormatSettings.decimalSeparator;
   TSH_Flag := '';
   T4_Flag := '';
@@ -659,27 +666,29 @@ begin
         T4_String := NA_MARK;
         T4_Flag := '';
       end
-      else begin
-      if gPreferences.T4.Method = freeHormone then  {free or total T4?}
-      begin
-        if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.hn)) then
-          T4_Flag := ''
-        else if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
-          T4_Flag := REF_RANGE_FLAG;
-      end
-      else begin
-        if (isNan(gReferenceRanges.TT4.ln) or isNan(gReferenceRanges.TT4.hn)) then
-          T4_Flag := ''
-        else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
-          T4_Flag := REF_RANGE_FLAG;
-      end;
-      T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
-      T4 := ConvertedValue(T4, T4_MOLAR_MASS,
-        Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
-      if gPreferences.T4.Method = freeHormone then
-        Hauptschirm.caseRecord.FT4 := T4
       else
-        Hauptschirm.caseRecord.TT4 := T4;
+      begin
+        if gPreferences.T4.Method = freeHormone then  {free or total T4?}
+        begin
+          if (isNan(gReferenceRanges.FT4.ln) or isNan(gReferenceRanges.FT4.hn)) then
+            T4_Flag := ''
+          else if (T4 < gReferenceRanges.FT4.ln) or (T4 > gReferenceRanges.FT4.hn) then
+            T4_Flag := REF_RANGE_FLAG;
+        end
+        else
+        begin
+          if (isNan(gReferenceRanges.TT4.ln) or isNan(gReferenceRanges.TT4.hn)) then
+            T4_Flag := ''
+          else if (T4 < gReferenceRanges.TT4.ln) or (T4 > gReferenceRanges.TT4.hn) then
+            T4_Flag := REF_RANGE_FLAG;
+        end;
+        T4_String := FloatToStrF(T4, ffFixed, 3, 2) + T4_Flag;
+        T4 := ConvertedValue(T4, T4_MOLAR_MASS,
+          Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
+        if gPreferences.T4.Method = freeHormone then
+          Hauptschirm.caseRecord.FT4 := T4
+        else
+          Hauptschirm.caseRecord.TT4 := T4;
       end;
     end;
     Size := Hauptschirm.FT3_Text.GetTextLen;
@@ -702,27 +711,30 @@ begin
       begin
         T3_String := NA_MARK;
         T3_Flag := '';
-      end else begin
-      if gPreferences.T3.Method = freeHormone then  {free or total T3?}
-      begin
-        if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.hn)) then
-          T3_Flag := ''
-        else if (T3 < gReferenceRanges.FT3.ln) or (T3 > gReferenceRanges.FT3.hn) then
-          T3_Flag := REF_RANGE_FLAG;
       end
       else
       begin
-        if (isNan(gReferenceRanges.TT3.ln) or isNan(gReferenceRanges.TT3.hn)) then
-          T3_Flag := ''
-        else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
-          T3_Flag := REF_RANGE_FLAG;
-      end;
-      T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
-      T3 := ConvertedValue(T3, T3_MOLAR_MASS, Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
-      if gPreferences.T3.Method = freeHormone then
-        Hauptschirm.caseRecord.FT3 := T3
-      else
-        Hauptschirm.caseRecord.TT3 := T3;
+        if gPreferences.T3.Method = freeHormone then  {free or total T3?}
+        begin
+          if (isNan(gReferenceRanges.FT3.ln) or isNan(gReferenceRanges.FT3.hn)) then
+            T3_Flag := ''
+          else if (T3 < gReferenceRanges.FT3.ln) or (T3 > gReferenceRanges.FT3.hn) then
+            T3_Flag := REF_RANGE_FLAG;
+        end
+        else
+        begin
+          if (isNan(gReferenceRanges.TT3.ln) or isNan(gReferenceRanges.TT3.hn)) then
+            T3_Flag := ''
+          else if (T3 < gReferenceRanges.TT3.ln) or (T3 > gReferenceRanges.TT3.hn) then
+            T3_Flag := REF_RANGE_FLAG;
+        end;
+        T3_String := FloatToStrF(T3, ffFixed, 3, 2) + T3_Flag;
+        T3 := ConvertedValue(T3, T3_MOLAR_MASS,
+          Hauptschirm.T3UnitComboBox.Caption, 'mol/l');
+        if gPreferences.T3.Method = freeHormone then
+          Hauptschirm.caseRecord.FT3 := T3
+        else
+          Hauptschirm.caseRecord.TT3 := T3;
       end;
     end;
     if Hauptschirm.TherapyCheckGroup.Checked[0] then
@@ -752,39 +764,59 @@ begin
     end;
   end;
   DefaultFormatSettings.decimalSeparator := oldSeparator;
-  Calculate(Hauptschirm.caseRecord);
-  if gPreferences.T4.isSI then
-    FT4UpperLimitforTTSI := ConvertedValue(gSIReferenceRanges.FT4.hn,
-    T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l')
-  else
-    FT4UpperLimitforTTSI := ConvertedValue(gReferenceRanges.FT4.hn,
-    T4_MOLAR_MASS, Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
-  InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
-  Insert_sTSHI(Hauptschirm.caseRecord, gReferenceRanges);
-  Insert_sGD(Hauptschirm.caseRecord, gReferenceRanges);
-  FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
-  if gUseReferenceRanges then
-    strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs,
-      kCR, kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs, kCR,
-      kLF, '   sGD: ', Hauptschirm.caseRecord.flaggedsGDs, kCR,
-      kLF, '   TSHI: ', Hauptschirm.caseRecord.flaggedTSHIs, kCR,
-      kLF, '   sTSHI: ', Hauptschirm.caseRecord.flaggedsTSHIs, kCR,
-      kLF, '   TTSI: ', Hauptschirm.caseRecord.flaggedTTSIs)
-  else
-    strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs, kCR,
-      kLF, '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF, '   TSHI: ',
-      Hauptschirm.caseRecord.TSHIs, kCR, kLF, '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
-  ShowMessage(TSH_String, T4_String, T3_String, strucPars);
+  with Hauptschirm.caseRecord do
+    if (isNan(TSH) or (TSH >= 0)) and (isNan(FT4) or (FT4 >= 0)) and
+      (isNan(TT4) or (TT4 >= 0)) and (isNan(FT3) or (FT3 >= 0)) and
+      (isNan(TT3) or (TT3 >= 0)) then
+    begin
+      Calculate(Hauptschirm.caseRecord);
+      if gPreferences.T4.isSI then
+        FT4UpperLimitforTTSI :=
+          ConvertedValue(gSIReferenceRanges.FT4.hn, T4_MOLAR_MASS,
+          Hauptschirm.T4UnitComboBox.Caption, 'mol/l')
+      else
+        FT4UpperLimitforTTSI :=
+          ConvertedValue(gReferenceRanges.FT4.hn, T4_MOLAR_MASS,
+          Hauptschirm.T4UnitComboBox.Caption, 'mol/l');
+      InsertTTSI(Hauptschirm.caseRecord, FT4UpperLimitforTTSI);
+      Insert_sTSHI(Hauptschirm.caseRecord, gReferenceRanges);
+      Insert_sGD(Hauptschirm.caseRecord, gReferenceRanges);
+      FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
+      if gUseReferenceRanges then
+        strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs,
+          kCR, kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs,
+          kCR, kLF, '   sGD: ', Hauptschirm.caseRecord.flaggedsGDs,
+          kCR, kLF, '   TSHI: ', Hauptschirm.caseRecord.flaggedTSHIs,
+          kCR, kLF, '   sTSHI: ', Hauptschirm.caseRecord.flaggedsTSHIs,
+          kCR, kLF, '   TTSI: ', Hauptschirm.caseRecord.flaggedTTSIs)
+      else
+        strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs,
+          kCR, kLF, '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF,
+          '   TSHI: ', Hauptschirm.caseRecord.TSHIs, kCR, kLF,
+          '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
+      ShowMessage(TSH_String, T4_String, T3_String, strucPars);
+    end
+    else
+    begin
+      bell;
+      MessageDlg(gNegativeError, mtWarning, [mbOK], 0);
+      status := sNegative;
+    end;
 end;
 
 procedure THauptschirm.Calculate_ButtonClick(Sender: TObject);
 {invokes calculation engine}
+var
+  status: integer;
 begin
-  HandleInput;
-  ResultForm.Visible := True;
-  ResultForm.AlphaBlendValue := 220;
-  Hauptschirm.HintField.Text := gAnleitung2;
-  Hauptschirm.HintField.Hint := Hauptschirm.HintField.Text;
+  HandleInput(status);
+  if status = sOK then
+  begin
+    ResultForm.Visible := True;
+    ResultForm.AlphaBlendValue := 220;
+    Hauptschirm.HintField.Text := gAnleitung2;
+    Hauptschirm.HintField.Hint := Hauptschirm.HintField.Text;
+  end;
 end;
 
 procedure THauptschirm.CaseItemClick(Sender: TObject);
@@ -941,15 +973,19 @@ begin
 end;
 
 procedure THauptschirm.TherapyCheckGroupClick(Sender: TObject);
+var
+  status: integer;
 begin
   MarkMandatoryFields(Sender);
-  HandleInput;
+  HandleInput(status);
 end;
 
 procedure THauptschirm.TherapyCheckGroupItemClick(Sender: TObject; Index: integer);
+var
+  status: integer;
 begin
   Hauptschirm.MarkMandatoryFields(Sender);
-  HandleInput;
+  HandleInput(status);
 end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
@@ -988,49 +1024,49 @@ begin
   else
     TSH_Text.Text := '';
   if not isNaN(caseRecord.FT4) then
-    begin
-      T4MethodComboBox.ItemIndex := 0;
-      T4MethodComboBoxAdjust(Sender);
-      T4UnitComboBox.Caption := caseRecord.FT4_UOM;
-      FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT4, T4_MOLAR_MASS,
-      'mol/l', T4UnitComboBox.Caption));
-    end
+  begin
+    T4MethodComboBox.ItemIndex := 0;
+    T4MethodComboBoxAdjust(Sender);
+    T4UnitComboBox.Caption := caseRecord.FT4_UOM;
+    FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT4,
+      T4_MOLAR_MASS, 'mol/l', T4UnitComboBox.Caption));
+  end
   else
-    begin
-      T4MethodComboBox.ItemIndex := 1;
-      T4MethodComboBoxAdjust(Sender);
-      T4UnitComboBox.Caption := caseRecord.TT4_UOM;
-      FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT4, T4_MOLAR_MASS,
-      'mol/l', T4UnitComboBox.Caption));
-    end;
+  begin
+    T4MethodComboBox.ItemIndex := 1;
+    T4MethodComboBoxAdjust(Sender);
+    T4UnitComboBox.Caption := caseRecord.TT4_UOM;
+    FT4_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT4,
+      T4_MOLAR_MASS, 'mol/l', T4UnitComboBox.Caption));
+  end;
   if not isNaN(caseRecord.FT3) then
-    begin
-      T3MethodComboBox.ItemIndex := 0;
-      T3MethodComboBoxAdjust(Sender);
-      T3UnitComboBox.Caption := caseRecord.FT3_UOM;
-      FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT3, T3_MOLAR_MASS,
-      'mol/l', T3UnitComboBox.Caption))
-    end
+  begin
+    T3MethodComboBox.ItemIndex := 0;
+    T3MethodComboBoxAdjust(Sender);
+    T3UnitComboBox.Caption := caseRecord.FT3_UOM;
+    FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.FT3,
+      T3_MOLAR_MASS, 'mol/l', T3UnitComboBox.Caption));
+  end
   else
-    begin
-      T3MethodComboBox.ItemIndex := 1;
-      T3MethodComboBoxAdjust(Sender);
-      T3UnitComboBox.Caption := caseRecord.TT3_UOM;
-      FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT3, T3_MOLAR_MASS,
-      'mol/l', T3UnitComboBox.Caption));
-    end;
+  begin
+    T3MethodComboBox.ItemIndex := 1;
+    T3MethodComboBoxAdjust(Sender);
+    T3UnitComboBox.Caption := caseRecord.TT3_UOM;
+    FT3_Text.Text := FloatToStr(ConvertedValue(caseRecord.TT3,
+      T3_MOLAR_MASS, 'mol/l', T3UnitComboBox.Caption));
+  end;
   if caseRecord.TSHTherapy then
-    TherapyCheckGroup.Checked[0] := true
+    TherapyCheckGroup.Checked[0] := True
   else
-    TherapyCheckGroup.Checked[0] := false;
+    TherapyCheckGroup.Checked[0] := False;
   if caseRecord.T4Therapy then
-    TherapyCheckGroup.Checked[1] := true
+    TherapyCheckGroup.Checked[1] := True
   else
-    TherapyCheckGroup.Checked[1] := false;
+    TherapyCheckGroup.Checked[1] := False;
   if caseRecord.T3Therapy then
-    TherapyCheckGroup.Checked[2] := true
+    TherapyCheckGroup.Checked[2] := True
   else
-    TherapyCheckGroup.Checked[2] := false;
+    TherapyCheckGroup.Checked[2] := False;
 end;
 
 procedure THauptschirm.FormPaint(Sender: TObject);
@@ -1038,13 +1074,14 @@ begin
 
 end;
 
-procedure THauptschirm.FormDropFiles(Sender: TObject;
-  const FileNames: array of String);
+procedure THauptschirm.FormDropFiles(Sender: TObject; const FileNames: array of string);
+var
+  status: integer;
 begin
   ReadHL7Message(FileNames[0], Hauptschirm.caseRecord);
   CaseEditorForm.FillFromCaseRecord(caseRecord);
   InsertValues(Sender);
-  HandleInput;
+  HandleInput(status);
 end;
 
 procedure THauptschirm.FormWindowStateChange(Sender: TObject);
@@ -1063,19 +1100,21 @@ begin
 end;
 
 procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
+var
+  status: integer;
 begin
   ReadCaseResults(caseRecord);
   CaseEditorForm.FillFromCaseRecord(caseRecord);
   InsertValues(Sender);
-  HandleInput;
+  HandleInput(status);
 end;
 
 procedure THauptschirm.CheckEntries(Sender: TObject);
 begin
   if ResultField.Lines.Count > 0 then
-    PopupMenu1.Items[6].Enabled := true
+    PopupMenu1.Items[6].Enabled := True
   else
-    PopupMenu1.Items[6].Enabled := false;
+    PopupMenu1.Items[6].Enabled := False;
 end;
 
 procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
@@ -1113,18 +1152,18 @@ procedure THauptschirm.NewMenuItemClick(Sender: TObject);
 { Inspired by Adnan Shameem's blog at }
 { http://lazplanet.blogspot.de/2013/05/clear-all-edit-boxes-in-form.html }
 var
-  i : Integer;
+  i: integer;
 begin
   NewCaseRecord(caseRecord);
   caseRecord.Placer := gPreferences.Placer_ID;
-  for i := 0 to ComponentCount-1 do
+  for i := 0 to ComponentCount - 1 do
     if (Components[i] is TEdit) then
       TEdit(Components[i]).Text := '0';
   ActiveControl := TSH_Text;
   ResultField.Text := '';
-  TherapyCheckGroup.Checked[0] := false;
-  TherapyCheckGroup.Checked[1] := false;
-  TherapyCheckGroup.Checked[2] := false;
+  TherapyCheckGroup.Checked[0] := False;
+  TherapyCheckGroup.Checked[1] := False;
+  TherapyCheckGroup.Checked[2] := False;
   HintField.Text := gAnleitung1;
   HintField.Hint := gAnleitung1;
 end;
@@ -1188,7 +1227,8 @@ begin
   Result := Round(AUnits * (ADPI / AnInch));
 end;
 
-procedure PrinterWriteln(H: integer; var currentX, currentY: integer; theString: string; bold: boolean);
+procedure PrinterWriteln(H: integer; var currentX, currentY: integer;
+  theString: string; bold: boolean);
 begin
   if bold then
     Printer.Canvas.Font.Style := [fsBold]
@@ -1198,7 +1238,8 @@ begin
   Inc(currentY, H);
 end;
 
-procedure PrinterWrite(H: integer; var currentX, currentY: integer; theString: string; bold: boolean);
+procedure PrinterWrite(H: integer; var currentX, currentY: integer;
+  theString: string; bold: boolean);
 begin
   if bold then
     Printer.Canvas.Font.Style := [fsBold]
@@ -1216,7 +1257,7 @@ begin
   { Print main header: }
   theSize := Printer.Canvas.Font.Size;
   Printer.Canvas.Font.Size := trunc(theSize * 1.7);
-  PrinterWrite(H, currentX, currentY, 'SPINA Thyr Report', true);
+  PrinterWrite(H, currentX, currentY, 'SPINA Thyr Report', True);
   { Print hospital / physician / placer ID: }
   if gPreferences.MSH_ID <> '' then
   begin
@@ -1224,20 +1265,21 @@ begin
     IDWidth := Printer.Canvas.TextWidth(gPreferences.MSH_ID);
     IDPos.x := Printer.PageWidth - rightMargin - IDWidth;
     IDPos.y := currentY + H div 2;
-    PrinterWrite(H, IDPos.x, IDPos.y, gPreferences.MSH_ID, true);
+    PrinterWrite(H, IDPos.x, IDPos.y, gPreferences.MSH_ID, True);
     Printer.Canvas.Font.Size := trunc(theSize * 1.7);
   end;
-  PrinterWriteln(H, currentX, currentY, '', true);
-  PrinterWriteln(H, currentX, currentY, '', true);
-  PrinterWriteln(H, currentX, currentY, '', true);
+  PrinterWriteln(H, currentX, currentY, '', True);
+  PrinterWriteln(H, currentX, currentY, '', True);
+  PrinterWriteln(H, currentX, currentY, '', True);
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
-  PrinterWriteln(H, currentX, currentY, '', true);
+  PrinterWriteln(H, currentX, currentY, '', True);
   Printer.Canvas.Font.Style := [];
   Printer.Canvas.Font.Size := theSize;
   { Print bar code: }
   if Hauptschirm.caseRecord.CaseID <> '' then
-  begin;
+  begin
+    ;
     Hauptschirm.caseIDBarCode.Top := currentY;
     Hauptschirm.caseIDBarCode.Left := tabX2;
     Hauptschirm.caseIDBarCode.Typ := bcCode128B;
@@ -1254,59 +1296,59 @@ begin
     slash := '';
   if gInterfaceLanguage = German then
   begin
-    PrinterWrite(H, currentX, currentY, kPID1, false);
+    PrinterWrite(H, currentX, currentY, kPID1, False);
     if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
-      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + slash +
-      Hauptschirm.caseRecord.CaseID, false);
-    PrinterWriteln(H, currentX, currentY, '', false);
-    PrinterWrite(H, currentX, currentY, kPatientenname1, false);
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID +
+        slash + Hauptschirm.caseRecord.CaseID, False);
+    PrinterWriteln(H, currentX, currentY, '', False);
+    PrinterWrite(H, currentX, currentY, kPatientenname1, False);
     if (Hauptschirm.caseRecord.Name <> '') and
       (Hauptschirm.caseRecord.GivenNames <> '') then
-      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name + ', '
-        + Hauptschirm.caseRecord.GivenNames, false);
-    PrinterWrite(H, tabX2, currentY, kEinsender1, false);
-    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, false);
-    PrinterWrite(H, currentX, currentY, kGeburtsdatum1, false);
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name +
+        ', ' + Hauptschirm.caseRecord.GivenNames, False);
+    PrinterWrite(H, tabX2, currentY, kEinsender1, False);
+    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, False);
+    PrinterWrite(H, currentX, currentY, kGeburtsdatum1, False);
     if not isNaN(Hauptschirm.caseRecord.DoBDate) then
       PrinterWrite(H, tabX1, currentY, DateToStr(Hauptschirm.caseRecord.DoBDate)
-      , false);
-    PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum1, false);
+        , False);
+    PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum1, False);
     if not isNaN(Hauptschirm.caseRecord.OBDate) then
       PrinterWrite(H, tabX3, currentY, DateToStr(Hauptschirm.caseRecord.OBDate)
-      , false);
-    PrinterWriteln(H, currentX, currentY, '', false);
-    PrinterWriteln(H, currentX, currentY, '', false);
-    PrinterWriteln(H, currentX, currentY, '', false);
+        , False);
+    PrinterWriteln(H, currentX, currentY, '', False);
+    PrinterWriteln(H, currentX, currentY, '', False);
+    PrinterWriteln(H, currentX, currentY, '', False);
   end
   else
   begin
-    PrinterWrite(H, currentX, currentY, kPID2, false);
+    PrinterWrite(H, currentX, currentY, kPID2, False);
     if (Hauptschirm.caseRecord.PID <> '') or (Hauptschirm.caseRecord.CaseID <> '') then
-      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID + slash +
-      Hauptschirm.caseRecord.CaseID, false);
-    PrinterWriteln(H, currentX, currentY, '', false);
-    PrinterWrite(H, currentX, currentY, kPatientenname2, false);
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.PID +
+        slash + Hauptschirm.caseRecord.CaseID, False);
+    PrinterWriteln(H, currentX, currentY, '', False);
+    PrinterWrite(H, currentX, currentY, kPatientenname2, False);
     if (Hauptschirm.caseRecord.Name <> '') and
       (Hauptschirm.caseRecord.GivenNames <> '') then
-      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name + ', '
-        + Hauptschirm.caseRecord.GivenNames, false);
-    PrinterWrite(H, tabX2, currentY, kEinsender2, false);
-    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, false);
-    PrinterWrite(H, currentX, currentY, kGeburtsdatum2, false);
+      PrinterWrite(H, tabX1, currentY, Hauptschirm.caseRecord.Name +
+        ', ' + Hauptschirm.caseRecord.GivenNames, False);
+    PrinterWrite(H, tabX2, currentY, kEinsender2, False);
+    PrinterWriteln(H, tabX3, currentY, Hauptschirm.caseRecord.Placer, False);
+    PrinterWrite(H, currentX, currentY, kGeburtsdatum2, False);
     if not isNaN(Hauptschirm.caseRecord.DoBDate) then
       PrinterWrite(H, tabX1, currentY, DateToStr(Hauptschirm.caseRecord.DoBDate)
-      , false);
-    PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum2, false);
+        , False);
+    PrinterWrite(H, tabX2, currentY, kUntersuchungsdatum2, False);
     if not isNaN(Hauptschirm.caseRecord.OBDate) then
       PrinterWrite(H, tabX3, currentY, DateToStr(Hauptschirm.caseRecord.OBDate)
-      , false);
-    PrinterWriteln(H, currentX, currentY, '', false);
-    PrinterWriteln(H, currentX, currentY, '', false);
-    PrinterWriteln(H, currentX, currentY, '', false);
+        , False);
+    PrinterWriteln(H, currentX, currentY, '', False);
+    PrinterWriteln(H, currentX, currentY, '', False);
+    PrinterWriteln(H, currentX, currentY, '', False);
   end;
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
-  PrinterWriteln(H, currentX, currentY, '', false);
+  PrinterWriteln(H, currentX, currentY, '', False);
 end;
 
 procedure PrintFooter(H: integer; var currentX, currentY, rightMargin: integer);
@@ -1316,14 +1358,14 @@ begin
   DateTimeToString(theDate, 'dddd"," dd mmmm yyyy', date);
   DateTimeToString(theTime, '"," t', time);
   theDate := SysToUTF8(theDate);
-  PrinterWriteln(H, currentX, currentY, '', false);
+  PrinterWriteln(H, currentX, currentY, '', False);
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   Printer.Canvas.Font.Color := clGray;
   PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName,
-    '  |  ', gDruckdatum, theDate, theTime), false);
-  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + GetFileVersion, false);
-  PrinterWriteln(H, currentX, currentY, '', false);
+    '  |  ', gDruckdatum, theDate, theTime), False);
+  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + GetFileVersion, False);
+  PrinterWriteln(H, currentX, currentY, '', False);
   Printer.Canvas.Font.Color := clBlack;
 end;
 
@@ -1357,8 +1399,8 @@ begin
       Printer.Canvas.Pen.Width := 2;
       H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
       tabX1 := marginX + Printer.Canvas.TextWidth(gGeburtsdatum) + GetPoints(1, ADPI);
-      tabX2 := Printer.PageWidth - marginXr - trunc(2.5 *
-        Printer.Canvas.TextWidth(gUntersuchungsdatum));
+      tabX2 := Printer.PageWidth - marginXr -
+        trunc(2.5 * Printer.Canvas.TextWidth(gUntersuchungsdatum));
       if gInterfaceLanguage = German then
         tabX3 := tabX2 + Printer.Canvas.TextWidth(kFallnummer1) + GetPoints(0.5, ADPI)
       else
@@ -1374,7 +1416,7 @@ begin
         else
           resultLine := remainder;
         remainder := copy(remainder, returnPos + 2, length(remainder));
-        PrinterWriteln(H, currentX, currentY, resultLine, false);
+        PrinterWriteln(H, currentX, currentY, resultLine, False);
       until returnPos = 0;
       currentY := lastY;
       remainder := gReferenceValueString1;
@@ -1385,7 +1427,7 @@ begin
         else
           resultLine := remainder;
         remainder := copy(remainder, returnPos + 2, length(remainder));
-        PrinterWriteln(H, tabX2, currentY, resultLine, false);
+        PrinterWriteln(H, tabX2, currentY, resultLine, False);
       until returnPos = 0;
       currentX := marginX;
       currentY := Printer.PageHeight - 5 * H;
@@ -1497,7 +1539,7 @@ initialization
   gUserName := SysToUtf8(GetUserName(fpgetuid));
   {$ENDIF}
   if gUserName = '' then
-  gUserName := GetEnvironmentVariableUTF8('USER');
+    gUserName := GetEnvironmentVariableUTF8('USER');
   {$ENDIF}
 
   {gSysLanguage := 'en';  // for testing }

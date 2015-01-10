@@ -98,6 +98,9 @@ const
   kGroupCaption31 = 'Praxis- oder Klinik-ID';
   kGroupCaption32 = 'Physician or Hospital ID';
 
+  kNegativeError1 = 'Bitte überprüfen Sie die Daten:' + LineEnding + 'Wenigstens einer der eingegebenen Werte ist negativ.';
+  kNegativeError2 = 'Please check data:' + LineEnding + 'At least one of the entered values is negative.';
+
   kCaseEditor1 = 'Fall-Editor';
   kCaseEditor2 = 'Case Editor';
   kCaseID1 = 'Aufnahme- oder Fall-Nr.:';
@@ -117,4 +120,4 @@ const
 implementation
 
 end.
-
+
