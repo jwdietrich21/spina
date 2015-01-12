@@ -230,6 +230,7 @@ begin
     SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Copy result';
     SPINAToolbar.ToolBar1.Buttons[14].Hint := 'Edit case or patient record';
     gNegativeError := kNegativeError2;
+    gReferenceRangeError := kReferenceRangeError2;
   end
   else
   begin
@@ -283,6 +284,7 @@ begin
     SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Ergebnis kopieren';
     SPINAToolbar.ToolBar1.Buttons[14].Hint := 'Fall- oder Patienteninformationen bearbeiten';
     gNegativeError := kNegativeError1;
+    gReferenceRangeError := kReferenceRangeError1;
   end;
   AdaptMenus;
   Hauptschirm.ValuesGroupBox.Caption := gVerhaltensparameter;
@@ -516,4 +518,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.

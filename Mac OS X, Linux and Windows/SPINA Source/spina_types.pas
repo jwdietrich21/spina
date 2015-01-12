@@ -124,7 +124,7 @@ var
   gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
   gPreferencesHint: string;
-  gNegativeError: string;
+  gNegativeError, gReferenceRangeError: string;
   gcalcTitle, gcalcString, gNotCalculableString: Str255;
   gExplanationString: Str255;
   gRefExp, gGTRef, gGDRef, gSignalString, gParameterString: Str255;

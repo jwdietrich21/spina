@@ -21,6 +21,7 @@ unit HandlePreferences;
 { See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}
+{$ASSERTIONS ON}
 
 {Return codes of procedure GetReferenceValues:
 0: No Error.
@@ -45,8 +46,6 @@ uses
   {$ENDIF},
   UnitConverter, CDISC;
 
-function DecodeGreek(theString: string): string;
-function EncodeGreek(theString: string): string;
 function ComputerName: String;
 function GetPreferencesFile: String;
 function GetPreferencesFolder: String;
@@ -142,24 +141,6 @@ begin
      RRFile := GetPreferencesFolder + SPINA_THYR_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
-function EncodeGreek(theString: string): string;
-{encodes greek mu letter as ASCII substitution sequence}
-var
-  theFlags: TReplaceFlags;
-begin
-  theFlags := [rfReplaceAll, rfIgnoreCase];
-  Result := StringReplace(theString, #194#181, 'mc', theFlags);
-end;
-
-function DecodeGreek(theString: string): string;
-{decodes ASCII substitution sequence for greek mu letter}
-var
-  theFlags: TReplaceFlags;
-begin
-  theFlags := [rfReplaceAll, rfIgnoreCase];
-  result := UTF8Decode(StringReplace(theString, 'mc', #194#181, theFlags));
-end;
-
 function ComputerName: String;
 {inspired by Zoran's post at http://forum.lazarus.freepascal.org/index.php?topic=23622.0 }
 {$IFDEF mswindows}
@@ -222,6 +203,7 @@ function SimpleNode(Doc: TXMLDocument; Name, Value: string): TDOMNode;
 var
   ItemNode, TextNode: TDOMNode;
 begin
+  assert(assigned(Doc));
   ItemNode := Doc.CreateElement(Name);
   TextNode := Doc.CreateTextNode(UTF8Decode(Value));
   ItemNode.AppendChild(TextNode);
@@ -254,9 +236,8 @@ var
 begin
   theFileName := GetPreferencesFile;
   PreferencesFolder := GetPreferencesFolder;
+  Doc := TXMLDocument.Create;
   try
-    Doc := TXMLDocument.Create;
-
     {StartComment := Doc.CreateComment('SPINA Preferences');
     RootNode.AppendChild(StartComment);}
 
@@ -362,13 +343,15 @@ begin
   XMLfound := false;
   theFileName := GetPreferencesFile;
   if FileExists(theFileName) then {simple check for XML file}
-  try
+  begin
     theFileHandle := FileOpen(theFileName, fmOpenRead);
-    FileRead(theFileHandle, theString, SizeOf(theString));
-    if pos('xml', LowerCase(theString)) > 0 then
-      XMLfound := true;
-  finally
-    FileClose(theFileHandle);
+    try
+      FileRead(theFileHandle, theString, SizeOf(theString));
+      if pos('xml', LowerCase(theString)) > 0 then
+        XMLfound := true;
+    finally
+      FileClose(theFileHandle);
+    end;
   end;
   if XMLfound then {file present and marked as XML file}
     try
@@ -692,6 +675,7 @@ begin
   if FileExists(theFileName) then       {could this file be created (or did it already exist)?}
   try
     ReadXMLFile(Doc, theFileName);
+    assert(assigned(Doc));
     RootNode := Doc.DocumentElement.FindNode('Study');
     if assigned(RootNode) then
       if AttributeValue(RootNode, 'ID') = 'SPIt' then
