@@ -20,7 +20,9 @@ unit SPINA_UserInterface;
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
 
-{$mode objfpc}{$H+}
+{$mode objfpc}
+{$H+}
+{$ASSERTIONS ON}
 
 interface
 
@@ -228,6 +230,7 @@ var
   gTopMargin, gBottomMargin, gLeftMargin, gRightMargin: double;
   gLineSpacing: integer;
 
+procedure bell;
 procedure AdaptMenus;
 procedure AdjustUnitLabels;
 procedure ComposeRRHints;
@@ -1374,6 +1377,7 @@ var
   H, ADPI, marginX, marginXr, currentX, currentY, lastY, returnPos, lastPos: integer;
   resultLine, remainder: string;
 begin
+  assert(assigned(Printer));
   if DoPrintSetup then
   begin
     CaseEditorForm.SetCaseRecord(Hauptschirm.caseRecord);

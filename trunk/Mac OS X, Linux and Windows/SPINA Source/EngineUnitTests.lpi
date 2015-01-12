@@ -17,7 +17,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
-      <BuildNr Value="55"/>
+      <BuildNr Value="56"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="SPINA Thyr 4.0 Mercator" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr Engine Unit Tests" ProductVersion="4.0.0"/>
     </VersionInfo>
     <BuildModes Count="1">

@@ -100,6 +100,8 @@ const
 
   kNegativeError1 = 'Bitte überprüfen Sie die Daten:' + LineEnding + 'Wenigstens einer der eingegebenen Werte ist negativ.';
   kNegativeError2 = 'Please check data:' + LineEnding + 'At least one of the entered values is negative.';
+  kReferenceRangeError1 = 'Bitte überprüfen Sie Ihre Eingabe:' + LineEnding + 'Die Obergrenze mindestens eines Referenzbereichs ist kleiner als die Untergrenze.';
+  kReferenceRangeError2 = 'Please check your input:' + LineEnding + 'The upper bound of at least one reference range is lower than its lower bound.';
 
   kCaseEditor1 = 'Fall-Editor';
   kCaseEditor2 = 'Case Editor';
@@ -120,4 +122,4 @@ const
 implementation
 
 end.
-
+

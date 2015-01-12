@@ -20,7 +20,10 @@ unit HandleImpEx;
  { Source code released under the BSD License }
  { See http://spina.medical-cybernetics.de for details }
 
-{$mode objfpc}{$H+}{$J}
+{$mode objfpc}
+{$H+}
+{$J}
+{$ASSERTIONS ON}
 
 interface
 
@@ -86,8 +89,8 @@ var
   stringBuffer: ^string;
 begin
   textLength := length(theString);
+  textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
   try
-    textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
     { write string to stream while avoiding to write the initial length }
     textFile.WriteBuffer(theString[1], textLength);
   finally
@@ -609,7 +612,8 @@ end;
 
 function isLOINCTerm(ObsID: string; LOINCTerm: TLoincRecord): boolean;
 begin
-  if (pos(LOINCTerm.code, ObsID) > 0) or
+  if obsID = '' then result := false
+  else if (pos(LOINCTerm.code, ObsID) > 0) or
   (pos(LOINCTerm.long, ObsID) > 0) or
   (pos(LOINCTerm.short, ObsID) > 0) or
   (pos(LOINCTerm.code, ObsID) > 0) or
@@ -636,10 +640,12 @@ var
   theComponent, nextComponent: THL7Component;
   theSubComponent, nextSubComponent: THL7SubComponent;
 begin
+  assert(theFile <> '');
   oldSeparator := DefaultFormatSettings.DecimalSeparator;
   DefaultFormatSettings.DecimalSeparator := DEC_POINT;
   NewCaseRecord(aCaseRecord);
   ReadHL7File(theHL7Message, theFile);
+  assert(assigned(theHL7Message));
   theSegment := theHL7Message.FirstSegment;
   while theSegment <> nil do
   begin
