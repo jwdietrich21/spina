@@ -1546,8 +1546,6 @@ initialization
     gUserName := GetEnvironmentVariableUTF8('USER');
   {$ENDIF}
 
-  {gSysLanguage := 'en';  // for testing }
-
   if gSysLanguage = 'de' then
   begin
     gInterfaceLanguage := German;

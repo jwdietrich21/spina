@@ -17,7 +17,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
-      <BuildNr Value="764"/>
+      <BuildNr Value="766"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.0 Mercator" LegalCopyright="1994-2015 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.0.0"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -49,10 +49,11 @@
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="spina_thyr"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="27"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="54" Y="15"/>
+        <CursorPos X="1" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -67,7 +68,7 @@
         <EditorIndex Value="23"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="5" Y="2"/>
+        <CursorPos X="1" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -178,7 +179,7 @@
         <EditorIndex Value="26"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="24" Y="2"/>
+        <CursorPos X="1" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -257,7 +258,7 @@
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="9" Y="2"/>
+        <CursorPos X="1" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -268,7 +269,7 @@
         <EditorIndex Value="20"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="3" Y="4"/>
+        <CursorPos X="75" Y="8"/>
         <UsageCount Value="85"/>
         <Loaded Value="True"/>
       </Unit24>
@@ -286,7 +287,7 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="2" Y="2"/>
+        <CursorPos X="1" Y="2"/>
         <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit26>
@@ -315,8 +316,8 @@
         <UnitName Value="spina_toolbar"/>
         <EditorIndex Value="21"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="275"/>
-        <CursorPos X="19" Y="286"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -669,7 +670,7 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="2" Y="2"/>
+        <CursorPos X="1" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <TopLine Value="82"/>
@@ -713,7 +714,6 @@
         <Filename Value="spina_resources.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Resources"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -1141,7 +1141,9 @@ end;"/>
     </CodeGeneration>
     <Linking>
       <Debugging>
+        <GenerateDebugInfo Value="False"/>
         <DebugInfoType Value="dsDwarf2Set"/>
+        <StripSymbols Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>
       <Options>

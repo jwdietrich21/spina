@@ -86,6 +86,7 @@ end;
 
 procedure TResultForm.FormCreate(Sender: TObject);
 begin
+  { adapt button height on newer versions of Mac OS X: }
   if YosemiteORNewer then
     OKButton.Height := 22;
   if gInterfaceLanguage = German then
