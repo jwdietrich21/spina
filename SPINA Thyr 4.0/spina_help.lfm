@@ -1,0 +1,123 @@
+object HelpWindow: THelpWindow
+  Left = 362
+  Height = 255
+  Top = 207
+  Width = 610
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'SPINA Help'
+  ClientHeight = 255
+  ClientWidth = 610
+  Color = clWhite
+  Constraints.MinHeight = 200
+  Constraints.MinWidth = 350
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.2.6.0'
+  object Label1: TLabel
+    Left = 80
+    Height = 22
+    Top = 34
+    Width = 105
+    Caption = 'SPINA Help'
+    Font.Height = -18
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Cursor = crHandPoint
+    Left = 40
+    Height = 13
+    Top = 128
+    Width = 138
+    Caption = 'Information about the method'
+    Font.Color = clNavy
+    Font.Pitch = fpVariable
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label3Click
+  end
+  object Label4: TLabel
+    Cursor = crHandPoint
+    Left = 40
+    Height = 13
+    Top = 80
+    Width = 54
+    Caption = 'Online Help'
+    Font.Color = clNavy
+    Font.Height = 13
+    Font.Pitch = fpVariable
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label4Click
+  end
+  object Image1: TImage
+    Left = 40
+    Height = 32
+    Top = 24
+    Width = 32
+    AutoSize = True
+    OnClick = Image1Click
+    Picture.Data = {
+      1754506F727461626C654E6574776F726B477261706869638401000089504E47
+      0D0A1A0A0000000D4948445200000020000000200806000000737A7AF4000000
+      0467414D410000D904DCB2DA020000001974455874536F667477617265004772
+      6170686963436F6E766572746572355D48EE0000011649444154789CEC94DB0D
+      C2300C45B3095F8CC204ECD09D3A56076005560844C290BA7E5C276DF989254B
+      5513FB1EDB49521A364CB13CA75CDC5A3F5C3C4FB28807A7E633728AE27B00AC
+      C4DFFE4808C06443A0D5F0CA8BE3004600528D241E0398DB01447123DF36F013
+      B4DCAE3A80914CABFE79410058BBA2003C47BD373C7F4BC48413AAC7E6CF367B
+      6780C6E4158177000CD2AE95748561F12F007A0D5962ADED7100C557E24207C4
+      EA230F106FAD789A05F10D80E27100EE468BBDF6E3005A72EF9F71F5A007C804
+      E8741A130470240424BE2700CDFE6F00FC9684AC0EEE11870F5F4B1728396F77
+      BDDE05A025E79559EB4DE26494982A59EEBFEFE2F5BEFA7F73D51A84E4DEBE5D
+      C4879D652F000000FFFF03007AACF5F4385C52B10000000049454E44AE426082
+    }
+  end
+  object Label2: TLabel
+    Left = 40
+    Height = 9
+    Top = 96
+    Width = 199
+    Caption = 'Get a short introduction, a full handbook and tutorials online.'
+    Font.Height = 10
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 40
+    Height = 9
+    Top = 144
+    Width = 181
+    Caption = 'References and background information about SPINA.'
+    Font.Height = 10
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Cursor = crHandPoint
+    Left = 40
+    Height = 13
+    Top = 168
+    Width = 55
+    Caption = 'Version info'
+    Font.Color = clNavy
+    Font.Pitch = fpVariable
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label6Click
+  end
+  object Label7: TLabel
+    Left = 40
+    Height = 32
+    Top = 184
+    Width = 541
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'Get information about the version of this application and information on the runtime environment.'
+    Font.Height = 10
+    ParentColor = False
+    ParentFont = False
+    WordWrap = True
+  end
+end
