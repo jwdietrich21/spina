@@ -156,6 +156,7 @@ type
     procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
     procedure FormPaint(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
+    procedure PrepareUnits(var caseRecord: tCaseRecord);
     procedure InsertValues(Sender: TObject);
     procedure AppleMenuClick(Sender: TObject);
     procedure Beenden1Click(Sender: TObject);
@@ -1019,6 +1020,19 @@ begin
   ShowAboutBox;
 end;
 
+procedure THauptschirm.PrepareUnits(var caseRecord: tCaseRecord);
+begin
+  caseRecord.TSH_UOM := TSHUnitComboBox.Caption;
+  if T4MethodComboBox.Caption = 'FT4' then
+    caseRecord.FT4_UOM := T4UnitComboBox.Caption
+  else
+    caseRecord.TT4_UOM := T4UnitComboBox.Caption;
+  if T3MethodComboBox.Caption = 'FT3' then
+    caseRecord.FT3_UOM := T3UnitComboBox.Caption
+  else
+    caseRecord.TT3_UOM := T3UnitComboBox.Caption;
+end;
+
 procedure THauptschirm.InsertValues(Sender: TObject);
 { Inserts values of case record into appropriate fields of form }
 begin
@@ -1106,6 +1120,7 @@ procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
 var
   status: integer;
 begin
+  PrepareUnits(caseRecord);
   ReadCaseResults(caseRecord);
   CaseEditorForm.FillFromCaseRecord(caseRecord);
   InsertValues(Sender);
