@@ -8,7 +8,7 @@ unit SPINA_Engine;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.0.0 (Mercator) }
+{ Version 4.0.1 (Mercator) }
 
 { (c) J. W. Dietrich, 1994 - 2015 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -164,9 +164,8 @@ procedure InsertTTSI(var theCase: tCaseRecord; FT4UpperLimit: real);
 { implemented as external function in order to make the main Calculate ... }
 { function independent from application-specific reference ranges }
 begin
-  assert(FT4UpperLimit > 0, kError102);
   if not isNan(theCase.FT4) and not isNan(theCase.TSH) and not
-    isNan(FT4UpperLimit) and not theCase.TSHTherapy then
+    isNan(FT4UpperLimit) and not theCase.TSHTherapy and (FT4UpperLimit > 0) then
   begin
     theCase.TTSI := 100 * theCase.TSH * theCase.FT4 / FT4UpperLimit;
   end
