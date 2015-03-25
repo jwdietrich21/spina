@@ -518,4 +518,4 @@ end;
 initialization
   {$I spina_toolbar.lrs}
 
-end.
+end.
