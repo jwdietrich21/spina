@@ -3,7 +3,7 @@
 # Calculate structure parameters of
 # thyroid homeostasis in S
 # Version 4.0.0
-# Last Change 20140823 by J. W. D.
+# Last Change 20150325 by J. W. D.
 ##########################################
 
 estimated.GT <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
@@ -89,10 +89,16 @@ estimated.TSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
   return(tshi);
 }
 
-estimated.sTSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
+estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676) # TSH in mU/l, FT4 in pmol/l
 {
-  stshi <- (estimated.TSHI(TSH, FT4) - 2.7) / 0.676;
+  stshi <- (estimated.TSHI(TSH, FT4) - mean) / sd;
   return(stshi);
+}
+
+estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5) # T4 and T3 in nmol/l
+{
+  sgd <- (estimated.GD(FT4, FT3) - mean) / sd;
+  return(sgd);
 }
 
 # Alias functions renamed according to new nomenclature (SPINA-GT and SPINA-GD):
@@ -101,6 +107,7 @@ SPINA.GT <- function(TSH, FT4) estimated.GT(TSH, FT4);
 SPINA.GD <- function(FT4, FT3) estimated.GD(FT4, FT3);
 SPINA.GTT <- function(TSH, T4) estimated.GTT(TSH, T4);
 SPINA.GDTT <- function(T4, T3) estimated.GDTT(T4, T3);
+SPINA.sGD <- function(FT4, FT3, mean = 30, sd = 5) estimated.sGD(FT4, FT3, mean, sd);
 
 # Test scenarios:
 
@@ -111,6 +118,7 @@ FT3 <- 4.5;
 
 print(paste("GT^:", SPINA.GT(TSH, FT4)));
 print(paste("GD^:", SPINA.GD(FT4, FT3)));
+print(paste("sGD^:", SPINA.sGD(FT4, FT3)));
 
 cat("\nScenario 10: GT = 1.08 pmol/s, GD = 336.2 nmol/s:\n");
 TSH <- 3.24;
@@ -119,6 +127,7 @@ FT3 <- 28;
 
 print(paste("GT^:", SPINA.GT(TSH, FT4)));
 print(paste("GD^:", SPINA.GD(FT4, FT3)));
+print(paste("sGD^:", SPINA.sGD(FT4, FT3)));
 
 cat("\nScenario 11: GT = 3.37 pmol/s, GD = 63.7 nmol/s:\n");
 TSH <- 0.7;
@@ -127,6 +136,7 @@ FT3 <- 6.2;
 
 print(paste("GT^:", SPINA.GT(TSH, FT4)));
 print(paste("GD^:", SPINA.GD(FT4, FT3)));
+print(paste("sGD^:", SPINA.sGD(FT4, FT3)));
 
 cat("\nScenarios 9 to 11 in vector form:\n");
 TSH <- c(1, 3.24, 0.7);
@@ -135,6 +145,7 @@ FT3 <- c(4.5, 28, 6.2);
 
 print(paste("GT^:", SPINA.GT(TSH, FT4)));
 print(paste("GD^:", SPINA.GD(FT4, FT3)));
+print(paste("sGD^:", SPINA.sGD(FT4, FT3)));
 
 cat("\nEvaluate pituitary function with TTSI, TSHI and sTSHI:\n");
 TSH <- c(21.97, 1.82, 0.29);
