@@ -1118,13 +1118,22 @@ end;
 
 procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
 var
+  theNewCaseRecord: tCaseRecord;
   status: integer;
 begin
-  PrepareUnits(caseRecord);
-  ReadCaseResults(caseRecord);
-  CaseEditorForm.FillFromCaseRecord(caseRecord);
-  InsertValues(Sender);
-  HandleInput(status);
+  NewCaseRecord(theNewCaseRecord);
+  PrepareUnits(theNewCaseRecord);
+  ReadCaseResults(theNewCaseRecord);
+  { Is this a valid case record? }
+  if not isNan(theNewCaseRecord.TSH) or not isNan(theNewCaseRecord.FT4)
+  or not isNan(theNewCaseRecord.FT3) or not isNan(theNewCaseRecord.TT4)
+  or not isNan(theNewCaseRecord.TT3) then
+  begin
+    caseRecord := theNewCaseRecord;
+    CaseEditorForm.FillFromCaseRecord(caseRecord);
+    InsertValues(Sender);
+    HandleInput(status);
+  end;
 end;
 
 procedure THauptschirm.CheckEntries(Sender: TObject);
