@@ -85,7 +85,6 @@ Hoermann R, Midgley JE, Larisch R, Dietrich JW (2013). Is pituitary TSH an adequ
 
 Midgley JE, Hoermann R, Larisch R, Dietrich JW (2013). Physiological states and functional relation between thyrotropin and free thyroxine in thyroid health and disease: in vivo and in silico data suggest a hierarchical model. J Clin Pathol. 2013 Apr;66(4):335-42. doi: 10.1136/jclinpath-2012-201213. PMID 23423518.
 
-Hoermann R, Midgley JE, Giacobino A, Eckl WA, Wahl HG, Dietrich JW, Larisch R (2014).
-Homeostatic equilibria between free thyroid hormones and pituitary thyrotropin
-are modulated by various influences including age, body mass index and treatment.
-Clin Endocrinol (Oxf). 2014 Dec;81(6):907-15. doi: 10.1111/cen.12527. PMID 24953754.
+Hoermann R, Midgley JE, Giacobino A, Eckl WA, Wahl HG, Dietrich JW, Larisch R (2014). Homeostatic equilibria between free thyroid hormones and pituitary thyrotropin are modulated by various influences including age, body mass index and treatment. Clin Endocrinol (Oxf). 2014 Dec;81(6):907-15. doi: 10.1111/cen.12527. PMID 24953754.
+
+Hoermann R, Midgley JE, Larisch R, Dietrich JW. Integration of Peripheral and Glandular Regulation of Triiodothyronine Production by Thyrotropin in Untreated and Thyroxine-Treated Subjects. Horm Metab Res. 2015 Mar 6. PMID 25750078.
