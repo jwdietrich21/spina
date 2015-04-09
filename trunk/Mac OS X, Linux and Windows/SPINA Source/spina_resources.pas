@@ -25,7 +25,7 @@ unit SPINA_Resources;
 interface
 
 uses
-  Classes, SysUtils, SPINA_Types;
+  Classes, SysUtils;
 
 const
   { Language 1: German (deutsch); language 2: English }
