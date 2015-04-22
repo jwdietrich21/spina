@@ -14,7 +14,7 @@ object PreferencesForm: TPreferencesForm
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object OKButton: TButton
     Left = 566
     Height = 25

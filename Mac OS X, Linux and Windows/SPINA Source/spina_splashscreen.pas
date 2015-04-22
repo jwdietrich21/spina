@@ -8,7 +8,7 @@ unit SPINA_SplashScreen;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.0.1 (Mercator) }
+{ Version 4.0.2 (Mercator) }
 
 { (c) J. W. Dietrich, 1994 - 2015 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }

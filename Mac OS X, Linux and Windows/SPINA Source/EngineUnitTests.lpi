@@ -17,9 +17,10 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
-      <RevisionNr Value="1"/>
-      <BuildNr Value="59"/>
-      <StringTable Comments="For unit testing only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="SPINA Thyr 4.0 Mercator" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr Engine Unit Tests" ProductVersion="4.0.1"/>
+      <RevisionNr Value="2"/>
+      <BuildNr Value="60"/>
+      <Attributes pvaDebug="True"/>
+      <StringTable Comments="For unit testing only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="SPINA Thyr 4.0.2 Mercator" LegalCopyright="J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr Engine Unit Tests" ProductVersion="4.0.2"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -49,7 +50,6 @@
       <Unit0>
         <Filename Value="EngineUnitTests.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="EngineUnitTests"/>
       </Unit0>
       <Unit1>
         <Filename Value="engine_testcase.pas"/>
@@ -78,12 +78,6 @@
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
     </SearchPaths>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

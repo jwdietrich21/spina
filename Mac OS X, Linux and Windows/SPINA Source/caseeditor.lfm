@@ -13,7 +13,7 @@ object CaseEditorForm: TCaseEditorForm
   OnDropFiles = FormDropFiles
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object Bevel2: TBevel
     Left = 24
     Height = 82
@@ -126,7 +126,6 @@ object CaseEditorForm: TCaseEditorForm
     ButtonWidth = 23
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 7
-    CharCase = ecNormal
     NumGlyphs = 1
     MaxLength = 0
     TabOrder = 6
@@ -181,7 +180,6 @@ object CaseEditorForm: TCaseEditorForm
     ButtonWidth = 23
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 7
-    CharCase = ecNormal
     NumGlyphs = 1
     MaxLength = 0
     TabOrder = 8
@@ -222,4 +220,4 @@ object CaseEditorForm: TCaseEditorForm
     Caption = 'Aufnahme- oder Fall-Nr.:'
     ParentColor = False
   end
-end
+end

@@ -6,7 +6,7 @@ LazarusResources.Add('TCaseEditorForm','FORMDATA',[
   +'ropFiles'#9#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#11'Fall-Editor'#12'C'
   +'lientHeight'#3#130#1#11'ClientWidth'#3'<'#2#8'OnCreate'#7#10'FormCreate'#11
   +'OnDropFiles'#7#13'FormDropFiles'#6'OnShow'#7#8'FormShow'#8'Position'#7#14'p'
-  +'oScreenCenter'#10'LCLVersion'#6#7'1.2.6.0'#0#6'TBevel'#6'Bevel2'#4'Left'#2
+  +'oScreenCenter'#10'LCLVersion'#6#7'1.4.0.4'#0#6'TBevel'#6'Bevel2'#4'Left'#2
   +#24#6'Height'#2'R'#3'Top'#3#224#0#5'Width'#3#13#2#7'Anchors'#11#5'akTop'#6'a'
   +'kLeft'#7'akRight'#0#0#0#6'TBevel'#6'Bevel1'#4'Left'#2#24#6'Height'#3#178#0#3
   +'Top'#2' '#5'Width'#3#13#2#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#0#0
@@ -43,31 +43,30 @@ LazarusResources.Add('TCaseEditorForm','FORMDATA',[
   +#3'/'#1#23'CalendarDisplaySettings'#11#14'dsShowHeadings'#14'dsShowDayNames'
   +#0#9'OKCaption'#6#2'OK'#13'CancelCaption'#6#6'Cancel'#9'DateOrder'#7#6'doNon'
   +'e'#21'ButtonOnlyWhenFocused'#9#11'ButtonWidth'#2#23#7'Anchors'#11#5'akTop'#6
-  +'akLeft'#7'akRight'#0#19'BorderSpacing.Right'#2#7#8'CharCase'#7#8'ecNormal'#9
-  +'NumGlyphs'#2#1#9'MaxLength'#2#0#8'TabOrder'#2#6#0#0#6'TLabel'#8'PIDLabel'#4
-  +'Left'#2#31#6'Height'#2#16#3'Top'#2'Q'#5'Width'#2#25#7'Caption'#6#4'PID:'#11
-  +'ParentColor'#8#7'OnClick'#7#13'PIDLabelClick'#0#0#6'TLabel'#9'NameLabel'#4
-  +'Left'#2#31#6'Height'#2#16#3'Top'#2'q'#5'Width'#2'('#7'Caption'#6#5'Name:'#11
-  +'ParentColor'#8#0#0#6'TLabel'#14'GivenNameLabel'#4'Left'#2#31#6'Height'#2#16
-  +#3'Top'#3#145#0#5'Width'#2'M'#7'Caption'#6#11'Vorname(n):'#11'ParentColor'#8
-  +#0#0#6'TLabel'#8'DoBLabel'#4'Left'#2#31#6'Height'#2#16#3'Top'#3#178#0#5'Widt'
-  +'h'#2'^'#7'Caption'#6#13'Geburtsdatum:'#11'ParentColor'#8#0#0#9'TDateEdit'#10
-  +'OBDateEdit'#22'AnchorSideLeft.Control'#7#10'PlacerEdit'#23'AnchorSideRight.'
-  +'Control'#7#10'PlacerEdit'#20'AnchorSideRight.Side'#7#9'asrCenter'#4'Left'#3
-  +#205#0#6'Height'#2#22#3'Top'#3#10#1#5'Width'#3'0'#1#23'CalendarDisplaySettin'
-  +'gs'#11#14'dsShowHeadings'#14'dsShowDayNames'#0#9'OKCaption'#6#2'OK'#13'Canc'
-  +'elCaption'#6#6'Cancel'#12'DefaultToday'#9#9'DateOrder'#7#6'doNone'#21'Butto'
-  +'nOnlyWhenFocused'#9#11'ButtonWidth'#2#23#7'Anchors'#11#5'akTop'#6'akLeft'#7
-  +'akRight'#0#19'BorderSpacing.Right'#2#7#8'CharCase'#7#8'ecNormal'#9'NumGlyph'
-  +'s'#2#1#9'MaxLength'#2#0#8'TabOrder'#2#8#0#0#5'TEdit'#10'PlacerEdit'#22'Anch'
-  +'orSideLeft.Control'#7#10'CaseIDEdit'#23'AnchorSideRight.Control'#7#5'Owner'
-  +#20'AnchorSideRight.Side'#7#9'asrBottom'#4'Left'#3#205#0#6'Height'#2#22#3'To'
-  +'p'#3#235#0#5'Width'#3'0'#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#19
-  +'BorderSpacing.Right'#2'?'#8'TabOrder'#2#7#0#0#6'TLabel'#11'PlacerLabel'#4'L'
-  +'eft'#2#31#6'Height'#2#16#3'Top'#3#241#0#5'Width'#2'B'#7'Caption'#6#10'Einse'
-  ,'nder:'#11'ParentColor'#8#0#0#6'TLabel'#11'OBDateLabel'#4'Left'#2#31#6'Heigh'
-  +'t'#2#16#3'Top'#3#16#1#5'Width'#3#139#0#7'Caption'#6#19'Untersuchungsdatum:'
-  +#11'ParentColor'#8#0#0#6'TLabel'#11'CaseIDLabel'#4'Left'#2#31#6'Height'#2#16
-  +#3'Top'#2'1'#5'Width'#3#161#0#7'Caption'#6#24'Aufnahme- oder Fall-Nr.:'#11'P'
-  +'arentColor'#8#0#0#0
-]);
+  +'akLeft'#7'akRight'#0#19'BorderSpacing.Right'#2#7#9'NumGlyphs'#2#1#9'MaxLeng'
+  +'th'#2#0#8'TabOrder'#2#6#0#0#6'TLabel'#8'PIDLabel'#4'Left'#2#31#6'Height'#2
+  +#16#3'Top'#2'Q'#5'Width'#2#25#7'Caption'#6#4'PID:'#11'ParentColor'#8#7'OnCli'
+  +'ck'#7#13'PIDLabelClick'#0#0#6'TLabel'#9'NameLabel'#4'Left'#2#31#6'Height'#2
+  +#16#3'Top'#2'q'#5'Width'#2'('#7'Caption'#6#5'Name:'#11'ParentColor'#8#0#0#6
+  +'TLabel'#14'GivenNameLabel'#4'Left'#2#31#6'Height'#2#16#3'Top'#3#145#0#5'Wid'
+  +'th'#2'M'#7'Caption'#6#11'Vorname(n):'#11'ParentColor'#8#0#0#6'TLabel'#8'DoB'
+  +'Label'#4'Left'#2#31#6'Height'#2#16#3'Top'#3#178#0#5'Width'#2'^'#7'Caption'#6
+  +#13'Geburtsdatum:'#11'ParentColor'#8#0#0#9'TDateEdit'#10'OBDateEdit'#22'Anch'
+  +'orSideLeft.Control'#7#10'PlacerEdit'#23'AnchorSideRight.Control'#7#10'Place'
+  +'rEdit'#20'AnchorSideRight.Side'#7#9'asrCenter'#4'Left'#3#205#0#6'Height'#2
+  +#22#3'Top'#3#10#1#5'Width'#3'0'#1#23'CalendarDisplaySettings'#11#14'dsShowHe'
+  +'adings'#14'dsShowDayNames'#0#9'OKCaption'#6#2'OK'#13'CancelCaption'#6#6'Can'
+  +'cel'#12'DefaultToday'#9#9'DateOrder'#7#6'doNone'#21'ButtonOnlyWhenFocused'#9
+  +#11'ButtonWidth'#2#23#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#19'Borde'
+  +'rSpacing.Right'#2#7#9'NumGlyphs'#2#1#9'MaxLength'#2#0#8'TabOrder'#2#8#0#0#5
+  +'TEdit'#10'PlacerEdit'#22'AnchorSideLeft.Control'#7#10'CaseIDEdit'#23'Anchor'
+  +'SideRight.Control'#7#5'Owner'#20'AnchorSideRight.Side'#7#9'asrBottom'#4'Lef'
+  +'t'#3#205#0#6'Height'#2#22#3'Top'#3#235#0#5'Width'#3'0'#1#7'Anchors'#11#5'ak'
+  +'Top'#6'akLeft'#7'akRight'#0#19'BorderSpacing.Right'#2'?'#8'TabOrder'#2#7#0#0
+  +#6'TLabel'#11'PlacerLabel'#4'Left'#2#31#6'Height'#2#16#3'Top'#3#241#0#5'Widt'
+  +'h'#2'B'#7'Caption'#6#10'Einsender:'#11'ParentColor'#8#0#0#6'TLabel'#11'OBDa'
+  ,'teLabel'#4'Left'#2#31#6'Height'#2#16#3'Top'#3#16#1#5'Width'#3#139#0#7'Capti'
+  +'on'#6#19'Untersuchungsdatum:'#11'ParentColor'#8#0#0#6'TLabel'#11'CaseIDLabe'
+  +'l'#4'Left'#2#31#6'Height'#2#16#3'Top'#2'1'#5'Width'#3#161#0#7'Caption'#6#24
+  +'Aufnahme- oder Fall-Nr.:'#11'ParentColor'#8#0#0#0
+]);
