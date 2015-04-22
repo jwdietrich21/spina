@@ -352,7 +352,7 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +'ormActivate'#8'OnCreate'#7#10'FormCreate'#11'OnDropFiles'#7#13'FormDropFile'
   +'s'#7'OnPaint'#7#9'FormPaint'#6'OnShow'#7#8'FormShow'#19'OnWindowStateChange'
   +#7#21'FormWindowStateChange'#14'ParentBiDiMode'#8#8'Position'#7#14'poScreenC'
-  +'enter'#10'LCLVersion'#6#7'1.2.6.0'#0#7'TButton'#16'Calculate_Button'#4'Left'
+  +'enter'#10'LCLVersion'#6#7'1.4.0.4'#0#7'TButton'#16'Calculate_Button'#4'Left'
   +#3's'#2#6'Height'#2#24#3'Top'#3'G'#1#5'Width'#2't'#7'Anchors'#11#7'akRight'#8
   +'akBottom'#0#7'Caption'#6#9'Berechnen'#7'Default'#9#7'OnClick'#7#21'Calculat'
   +'e_ButtonClick'#8'TabOrder'#2#0#0#0#9'TComboBox'#8'FT4Items'#4'Left'#3#128#0
@@ -404,13 +404,13 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +#4'Hint'#6#29'Das Ergebnis Ihrer Berechnung'#3'Top'#2#5#5'Width'#3#200#0#7'A'
   +'nchors'#11#5'akTop'#6'akLeft'#8'akBottom'#0#11'BorderStyle'#7#6'bsNone'#8'D'
   +'ragMode'#7#11'dmAutomatic'#11'Font.Height'#2#246#9'Font.Name'#6#6'Geneva'#13
-  +'Lines.Strings'#1#6#12'MessageField'#6#1' '#0#11'ParentColor'#9#10'ParentFon'
-  +'t'#8#14'ParentShowHint'#8#8'ReadOnly'#9#10'ScrollBars'#7#14'ssAutoVertical'
-  +#8'ShowHint'#9#8'TabOrder'#2#0#0#0#0#6'TImage'#10'SPINALabel'#6'Cursor'#7#11
-  +'crHandPoint'#4'Left'#2#3#6'Height'#3#130#0#3'Top'#2#16#5'Width'#3#159#0#7'O'
-  +'nClick'#7#15'SPINALabelClick'#12'Picture.Data'#10#28#11#0#0#23'TPortableNet'
-  +'workGraphic'#0#11#0#0#137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0#0#130#0#0#0'I'
-  +#8#2#0#0#1#9'IYK'#0#0#0#25'tEXtSoftware'#0'GraphicConverter5]H'#238#0#0#10
+  +'Lines.Strings'#1#6#12'MessageField'#6#1' '#6#0#0#11'ParentColor'#9#10'Paren'
+  +'tFont'#8#14'ParentShowHint'#8#8'ReadOnly'#9#10'ScrollBars'#7#14'ssAutoVerti'
+  +'cal'#8'ShowHint'#9#8'TabOrder'#2#0#0#0#0#6'TImage'#10'SPINALabel'#6'Cursor'
+  +#7#11'crHandPoint'#4'Left'#2#3#6'Height'#3#130#0#3'Top'#2#16#5'Width'#3#159#0
+  +#7'OnClick'#7#15'SPINALabelClick'#12'Picture.Data'#10#28#11#0#0#23'TPortable'
+  +'NetworkGraphic'#0#11#0#0#137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0#0#130#0#0#0
+  +'I'#8#2#0#0#1#9'IYK'#0#0#0#25'tEXtSoftware'#0'GraphicConverter5]H'#238#0#0#10
   +#162'IDATx'#156#236'\'#171#159#234'<'#16#229#207#168']'#185#18#185#246'J$'
   +#178#22#185#18#137'E"'#145#181'++'#145#181#149#149#200'Zded'#190#164#211#14
   +#147#201#163'ix'#222#239#238#249'q'#247#182'%Mrr'#242#156'LXH'#13#209#21#127

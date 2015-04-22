@@ -309,7 +309,7 @@ object AboutBox: TAboutBox
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object OKButton: TButton
     Left = 192
     Height = 24
@@ -1546,6 +1546,7 @@ object AboutBox: TAboutBox
         Anchors = [akTop, akLeft, akBottom]
         Lines.Strings = (
           'Memo1'
+          ''
         )
         OnKeyDown = FormKeyDown
         ReadOnly = True
@@ -1693,4 +1694,4 @@ object AboutBox: TAboutBox
       end
     end
   end
-end
+end

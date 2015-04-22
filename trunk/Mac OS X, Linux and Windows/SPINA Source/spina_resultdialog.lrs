@@ -7,7 +7,7 @@ LazarusResources.Add('TResultForm','FORMDATA',[
   +'BorderStyle'#7#12'bsToolWindow'#7'Caption'#6#11'   Ergebnis'#12'ClientHeigh'
   +'t'#3#212#0#11'ClientWidth'#3#179#2#5'Color'#7#7'clWhite'#9'FormStyle'#7#11
   +'fsStayOnTop'#10'OnActivate'#7#19'UpdateResultDisplay'#8'OnCreate'#7#10'Form'
-  +'Create'#8'Position'#7#16'poMainFormCenter'#10'LCLVersion'#6#7'1.2.6.0'#0#6
+  +'Create'#8'Position'#7#16'poMainFormCenter'#10'LCLVersion'#6#7'1.4.0.4'#0#6
   +'TImage'#6'Image1'#4'Left'#2#24#6'Height'#2'P'#3'Top'#2' '#5'Width'#2'I'#12
   +'Picture.Data'#10#194#19#0#0#7'TBitmap'#182#19#0#0'BM'#182#19#0#0#0#0#0#0'6'
   +#4#0#0'('#0#0#0'='#0#0#0'>'#0#0#0#1#0#8#0#0#0#0#0#128#15#0#0#19#11#0#0#19#11
@@ -195,13 +195,13 @@ LazarusResources.Add('TResultForm','FORMDATA',[
   +'tyle'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#0#0#5'TMemo'#13'Mes'
   ,'sageField1'#4'Left'#2'p'#6'Height'#2'~'#3'Top'#2' '#5'Width'#3#248#0#7'Anch'
   +'ors'#11#5'akTop'#6'akLeft'#8'akBottom'#0#11'Font.Height'#2#244#13'Lines.Str'
-  +'ings'#1#6#8'Hormones'#0#10'ParentFont'#8#14'ParentShowHint'#8#8'ReadOnly'#9
-  +#8'ShowHint'#9#8'TabOrder'#2#2#7'TabStop'#8#8'WordWrap'#8#0#0#5'TMemo'#13'Me'
-  +'ssageField2'#4'Left'#3'x'#1#6'Height'#2'}'#3'Top'#2' '#5'Width'#3'+'#1#7'An'
-  +'chors'#11#5'akTop'#6'akLeft'#7'akRight'#8'akBottom'#0#11'Font.Height'#2#244
-  +#13'Lines.Strings'#1#6#21'Structural Parameters'#0#10'ParentFont'#8#14'Paren'
-  +'tShowHint'#8#8'ReadOnly'#9#8'ShowHint'#9#8'TabOrder'#2#1#7'TabStop'#8#0#0#7
-  +'TButton'#8'OKButton'#4'Left'#3'X'#2#6'Height'#2#24#3'Top'#3#174#0#5'Width'#2
-  +'K'#7'Anchors'#11#7'akRight'#8'akBottom'#0#7'Caption'#6#2'OK'#7'Default'#9#7
-  +'OnClick'#7#13'OKButtonClick'#8'TabOrder'#2#0#0#0#0
+  +'ings'#1#6#8'Hormones'#6#0#0#10'ParentFont'#8#14'ParentShowHint'#8#8'ReadOnl'
+  +'y'#9#8'ShowHint'#9#8'TabOrder'#2#2#7'TabStop'#8#8'WordWrap'#8#0#0#5'TMemo'
+  +#13'MessageField2'#4'Left'#3'x'#1#6'Height'#2'}'#3'Top'#2' '#5'Width'#3'+'#1
+  +#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#8'akBottom'#0#11'Font.Height'#2
+  +#244#13'Lines.Strings'#1#6#21'Structural Parameters'#6#0#0#10'ParentFont'#8
+  +#14'ParentShowHint'#8#8'ReadOnly'#9#8'ShowHint'#9#8'TabOrder'#2#1#7'TabStop'
+  +#8#0#0#7'TButton'#8'OKButton'#4'Left'#3'X'#2#6'Height'#2#24#3'Top'#3#174#0#5
+  +'Width'#2'K'#7'Anchors'#11#7'akRight'#8'akBottom'#0#7'Caption'#6#2'OK'#7'Def'
+  +'ault'#9#7'OnClick'#7#13'OKButtonClick'#8'TabOrder'#2#0#0#0#0
 ]);

@@ -8,7 +8,7 @@ unit CaseEditor;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.0.1 (Mercator) }
+{ Version 4.0.2 (Mercator) }
 
 { (c) J. W. Dietrich, 1994 - 2015 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -165,8 +165,8 @@ end;
 procedure TCaseEditorForm.FormShow(Sender: TObject);
 begin
   ActiveControl := CaseIDEdit;
-  DoBEdit.DateFormatChanged; // adapts display style to system settings
-  OBDateEdit.DateFormatChanged;
+  //DoBEdit.DateFormatChanged; // adapts display style to system settings
+  //OBDateEdit.DateFormatChanged;
   CaseIDEdit.Text := Hauptschirm.caseRecord.CaseID;
   PIDEdit.Text := Hauptschirm.caseRecord.PID;
   NameEdit.Text := Hauptschirm.caseRecord.Name;
@@ -186,4 +186,4 @@ initialization
   {$I caseeditor.lrs}
 
 end.
-
+

@@ -2,23 +2,23 @@ unit HandleImpEx;
 
 { SPINA-Thyr }
 
- { Application for calculating structure parameters }
- { of thyrotropic feedback control }
+{ Application for calculating structure parameters }
+{ of thyrotropic feedback control }
 
- { Programm zur Berechnung von Strukturparametern }
- { des thyreotropen Regelkreises }
+{ Programm zur Berechnung von Strukturparametern }
+{ des thyreotropen Regelkreises }
 
-{ Version 4.0.1 (Mercator) }
+{ Version 4.0.2 (Mercator) }
 
- { (c) J. W. Dietrich, 1994 - 2015 }
- { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
- { (c) University of Ulm Hospitals 2002-2004 }
- { (c) Ruhr University of Bochum 2005 - 2014 }
+{ (c) J. W. Dietrich, 1994 - 2015 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2014 }
 
 { This unit handles import and export of laboratory results and calculations }
 
- { Source code released under the BSD License }
- { See http://spina.medical-cybernetics.de for details }
+{ Source code released under the BSD License }
+{ See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}
 {$H+}
@@ -849,4 +849,4 @@ begin
   end;
 end;
 
-end.
+end.
