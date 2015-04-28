@@ -6,7 +6,7 @@ unit MLLP;
 
 { HL7 support unit for MLLP (minimal lower layer protocol) }
 
-{ Version 1.6.1 }
+{ Version 2.0.1 (Hermes) }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
