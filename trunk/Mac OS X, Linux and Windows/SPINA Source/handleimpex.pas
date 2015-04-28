@@ -104,46 +104,14 @@ var
   oldSeparator, t4substFlag, t3substFlag, tshsubstFlag: char;
   HL7Message: THL7Message;
   newSegment: THL7Segment;
-  delimiters: str5;
+  theMSH:   tMSH;
+  theOBR:   tOBR;
+  theOBX:   tOBX;
   thePID:   tPID;
   thePV1:   tPV1;
   theSPM:   tSPM;
   theNTE:   tNTE;
   setIDcounter: integer;
-  sendingApp, sendingFac, receivingApp, receivingFac: str227;
-  dateTime: str26;
-  security: str40;
-  messageType: str15;
-  controlID: str20;
-  processingID: str3;
-  versionID: str60;
-  sequenceNumber: str15;
-  continuationPointer: str180;
-  AccAckType, AppAckType: Str2;
-  countryCode: str3;
-  charSet:  str16;
-  messageLanguage: str250;
-  altCharHandlScheme: str20;
-  profileID: str427;
-  SetID:    str4;
-  PlacOrdNumb, FillOrdNumb: str22;
-  USI:      str250;
-  Priority: Str2;
-  ReqDateTime, ObsDateTime, ObsEndDateTime: str26;
-  ValueType: str2;
-  ObsID:    str250;
-  obsSubID: str20;
-  obsValue, obsValue2: ansistring;
-  Units:    str250;
-  RefRange: str60;
-  AbnormFlags, probability: str5;
-  Nature:   str2;
-  status:   char;
-  RRDate:   str26;
-  UDAC:     str20;
-  prodID, respObs, observMethod: str250;
-  EquipInstID: str22;
-  AnalysisDateTime: str26;
 begin
   HL7Message := THL7Message.Create('2.5');
   if HL7Message = nil then
@@ -152,32 +120,28 @@ begin
   begin
     oldSeparator := DefaultFormatSettings.DecimalSeparator;
     DefaultFormatSettings.DecimalSeparator := DEC_POINT;
-    delimiters   := STANDARD_DELIMITERS;
-    sendingApp   := 'SPINA Thyr';
-    sendingFac   := gPreferences.MSH_ID;
-    receivingApp := '';
-    receivingFac := '';
-    dateTime     := EncodedDateTime(Now);
-    messageType  := ORU_R01_variant1;
-    security     := '';
-    controlID    := EncodedDateTime(Now) + IntToStr(random(13000));
-    processingID := 'P^A';
-    versionID    := ''; // ignored; will be filled-in automatically by PUMA
-    sequenceNumber := '';
-    continuationPointer := '';
-    AccAckType   := '';
-    AppAckType   := '';
-    countryCode  := '';
-    charSet      := '';
-    messageLanguage := '';
-    altCharHandlScheme := '';
-    profileID    := ORU_R01_variant2;
-    SetMSH(HL7Message, delimiters, sendingApp,
-      sendingFac, receivingApp, receivingFac, dateTime,
-      security, messageType, controlID, processingID,
-      versionID, sequenceNumber, continuationPointer,
-      AccAckType, AppAckType, countryCode, charSet,
-      messageLanguage, altCharHandlScheme, profileID);
+    clearMSH(theMSH);
+    theMSH.delimiters   := STANDARD_DELIMITERS;
+    theMSH.sendingApp   := 'SPINA Thyr';
+    theMSH.sendingFac   := gPreferences.MSH_ID;
+    theMSH.receivingApp := '';
+    theMSH.receivingFac := '';
+    theMSH.dateTime     := EncodedDateTime(Now);
+    theMSH.messageType  := ORU_R01_variant1;
+    theMSH.security     := '';
+    theMSH.controlID    := EncodedDateTime(Now) + IntToStr(random(13000));
+    theMSH.processingID := 'P^A';
+    theMSH.versionID    := ''; // ignored; will be filled-in automatically by PUMA
+    theMSH.sequenceNumber := '';
+    theMSH.continuationPointer := '';
+    theMSH.AccAckType   := '';
+    theMSH.AppAckType   := '';
+    theMSH.countryCode  := '';
+    theMSH.charSet      := '';
+    theMSH.messageLanguage := '';
+    theMSH.altCharHandlScheme := '';
+    theMSH.profileID    := ORU_R01_variant2;
+    SetMSH(HL7Message, theMSH, true);
 
     ClearPID(thePID);
     thePID.SetID := '1';
@@ -196,16 +160,16 @@ begin
     thePV1.AssignedPatientLocation := aCaseRecord.Placer;
     SetPV1(Hl7Message, thePV1);
 
-    SetID    := '1';
-    PlacOrdNumb := '';
-    FillOrdNumb := EncodedDateTime(Now) + IntToStr(random(13000));
-    USI      := 'SPINA Thyr';
-    Priority := '';
-    ReqDateTime := EncodedDateTime(Now);
-    ObsDateTime := NA_DTM;
-    ObsEndDateTime := '';
-    SetOBR(HL7Message, SetID, PlacOrdNumb, FillOrdNumb, USI,
-      Priority, ReqDateTime, ObsDateTime, ObsEndDateTime);
+    ClearOBR(theOBR);
+    theOBR.SetID    := '1';
+    theOBR.PlacOrdNumb := '';
+    theOBR.FillOrdNumb := EncodedDateTime(Now) + IntToStr(random(13000));
+    theOBR.USI      := 'SPINA Thyr';
+    theOBR.Priority := '';
+    theOBR.ReqDateTime := EncodedDateTime(Now);
+    theOBR.ObsDateTime := NA_DTM;
+    theOBR.ObsEndDateTime := '';
+    SetOBR(HL7Message, theOBR);
 
     ClearNTE(theNTE);
     theNTE.SetID   := '1';
@@ -237,341 +201,308 @@ begin
 
     setIDcounter := 1;
 
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'TSH';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(acaseRecord.TSH, ffNumber, 5, 2);
-    Units     := gReferenceRanges.TSH.UOM;
-    RefRange  := FloatToStr(gReferenceRanges.TSH.ln) + ' - ' +
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'TSH';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(acaseRecord.TSH, ffNumber, 5, 2);
+    theOBX.Units     := gReferenceRanges.TSH.UOM;
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.TSH.ln) + ' - ' +
       FloatToStr(gReferenceRanges.TSH.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'FT4';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT4, T4_MOLAR_MASS,
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'FT4';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT4, T4_MOLAR_MASS,
       'mol/l', gReferenceRanges.FT4.UOM), ffNumber, 5, 2);
-    Units     := gReferenceRanges.FT4.UOM;
-    RefRange  := FloatToStr(gReferenceRanges.FT4.ln) + ' - ' +
+    theOBX.Units     := gReferenceRanges.FT4.UOM;
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.FT4.ln) + ' - ' +
       FloatToStr(gReferenceRanges.FT4.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'FT3';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT3, T3_MOLAR_MASS,
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'FT3';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT3, T3_MOLAR_MASS,
       'mol/l', gReferenceRanges.FT3.UOM), ffNumber, 5, 2);
-    Units     := gReferenceRanges.FT3.UOM;
+    theOBX.Units     := gReferenceRanges.FT3.UOM;
     ;
-    RefRange := FloatToStr(gReferenceRanges.FT3.ln) + ' - ' +
+    theOBX.RefRange := FloatToStr(gReferenceRanges.FT3.ln) + ' - ' +
       FloatToStr(gReferenceRanges.FT3.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature := '';
-    status := 'F';
-    RRDate := '';
-    UDAC := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'TT4';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT4, T4_MOLAR_MASS,
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'TT4';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT4, T4_MOLAR_MASS,
       'mol/l', gReferenceRanges.TT4.UOM), ffNumber, 5, 2);
-    Units     := gReferenceRanges.TT4.UOM;
+    theOBX.Units     := gReferenceRanges.TT4.UOM;
     ;
-    RefRange := FloatToStr(gReferenceRanges.TT4.ln) + ' - ' +
+    theOBX.RefRange := FloatToStr(gReferenceRanges.TT4.ln) + ' - ' +
       FloatToStr(gReferenceRanges.TT4.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature := '';
-    status := 'F';
-    RRDate := '';
-    UDAC := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'TT3';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT3, T3_MOLAR_MASS,
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'TT3';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT3, T3_MOLAR_MASS,
       'mol/l', gReferenceRanges.TT3.UOM), ffNumber, 5, 2);
-    Units     := gReferenceRanges.TT3.UOM;
+    theOBX.Units     := gReferenceRanges.TT3.UOM;
     ;
-    RefRange := FloatToStr(gReferenceRanges.TT3.ln) + ' - ' +
+    theOBX.RefRange := FloatToStr(gReferenceRanges.TT3.ln) + ' - ' +
       FloatToStr(gReferenceRanges.TT3.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature := '';
-    status := 'F';
-    RRDate := '';
-    UDAC := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'SPINA-GT';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(acaseRecord.GT * 1E12, ffNumber, 5, 2);
-    Units     := 'pmol/s';
-    RefRange  := FloatToStr(gReferenceRanges.GT.ln * 1E12) + ' - ' +
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'SPINA-GT';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(acaseRecord.GT * 1E12, ffNumber, 5, 2);
+    theOBX.Units     := 'pmol/s';
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.GT.ln * 1E12) + ' - ' +
       FloatToStr(gReferenceRanges.GT.hn * 1E12);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'SPINA-GD';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(acaseRecord.GD * 1E9, ffNumber, 5, 2);
-    Units     := 'nmol/s';
-    RefRange  := FloatToStr(gReferenceRanges.GD.ln * 1E9) + ' - ' +
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'SPINA-GD';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(acaseRecord.GD * 1E9, ffNumber, 5, 2);
+    theOBX.Units     := 'nmol/s';
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.GD.ln * 1E9) + ' - ' +
       FloatToStr(gReferenceRanges.GD.hn * 1E9);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'SPINA-sGD';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(acaseRecord.sGD, ffNumber, 5, 2);
-    Units     := '';
-    RefRange  := FloatToStr(gReferenceRanges.sGD.ln) + ' - +' +
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'SPINA-sGD';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(acaseRecord.sGD, ffNumber, 5, 2);
+    theOBX.Units     := '';
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.sGD.ln) + ' - +' +
       FloatToStr(gReferenceRanges.sGD.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'TSHI';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(acaseRecord.TSHI, ffNumber, 5, 2);
-    Units     := '';
-    RefRange  := FloatToStr(gReferenceRanges.TSHI.ln) + ' - ' +
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'TSHI';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(acaseRecord.TSHI, ffNumber, 5, 2);
+    theOBX.Units     := '';
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.TSHI.ln) + ' - ' +
       FloatToStr(gReferenceRanges.TSHI.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'sTSHI';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(acaseRecord.sTSHI, ffNumber, 5, 2);
-    Units     := '';
-    RefRange  := FloatToStr(gReferenceRanges.sTSHI.ln) + ' - +' +
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'sTSHI';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(acaseRecord.sTSHI, ffNumber, 5, 2);
+    theOBX.Units     := '';
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.sTSHI.ln) + ' - +' +
       FloatToStr(gReferenceRanges.sTSHI.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     Inc(setIDcounter);
-    SetID     := IntToStr(setIDcounter);
-    ValueType := 'NM';
-    ObsID     := 'TTSI';
-    obsSubID  := '1';
-    obsValue  := FloatToStrF(acaseRecord.TTSI, ffNumber, 5, 2);
-    Units     := '';
-    RefRange  := FloatToStr(gReferenceRanges.TTSI.ln) + ' - ' +
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+    theOBX.ObsID     := 'TTSI';
+    theOBX.obsSubID  := '1';
+    theOBX.obsValue  := FloatToStrF(acaseRecord.TTSI, ffNumber, 5, 2);
+    theOBX.Units     := '';
+    theOBX.RefRange  := FloatToStr(gReferenceRanges.TTSI.ln) + ' - ' +
       FloatToStr(gReferenceRanges.TTSI.hn);
-    AbnormFlags := '';
-    probability := '';
-    Nature    := '';
-    status    := 'F';
-    RRDate    := '';
-    UDAC      := '';
+    theOBX.AbnormFlags := '';
+    theOBX.probability := '';
+    theOBX.Nature    := '';
+    theOBX.status    := 'F';
+    theOBX.RRDate    := '';
+    theOBX.UDAC      := '';
     if isNaN(aCaseRecord.OBDate) then
-      ObsDateTime := ''
+      theOBX.ObsDateTime := ''
     else
-      ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
-    prodID := '';
-    respObs      := '';
-    observMethod := '';
-    EquipInstID  := '';
-    AnalysisDateTime := '';
-    SetOBX(HL7Message, SetID, ValueType, ObsID,
-      obsSubID, obsValue, Units, RefRange,
-      AbnormFlags, probability, Nature, status, RRDate,
-      UDAC, ObsDateTime, prodID, respObs, observMethod,
-      EquipInstID, AnalysisDateTime);
+      theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    theOBX.prodID := '';
+    theOBX.respObs      := '';
+    theOBX.observMethod := '';
+    theOBX.EquipInstID  := '';
+    theOBX.AnalysisDateTime := '';
+    SetOBX(HL7Message, theOBX);
 
     ClearSPM(theSPM);
     theSPM.SetID := '1';
