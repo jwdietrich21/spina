@@ -6,25 +6,25 @@ unit OBX;
 
 { HL7 support unit for observation / result segments }
 
-{ Version 1.6.1 }
+{ Version 2.0.1 (Hermes) }
 
- { (c) J. W. Dietrich, 1994 - 2014 }
- { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
- { (c) University of Ulm Hospitals 2002-2004 }
- { (c) Ruhr University of Bochum 2005 - 2014 }
+{ (c) J. W. Dietrich, 1994 - 2014 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2014 }
 
 { Parser and compiler for HL7 messages }
 
 { Source code released under the BSD License }
 
- { See the file "license.txt", included in this distribution, }
- { for details about the copyright. }
- { Current versions and additional information are available from }
- { http://puma-repository.sf.net }
+{ See the file "license.txt", included in this distribution, }
+{ for details about the copyright. }
+{ Current versions and additional information are available from }
+{ http://puma-repository.sf.net }
 
- { This program is distributed in the hope that it will be useful, }
- { but WITHOUT ANY WARRANTY; without even the implied warranty of }
- { MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
+{ This program is distributed in the hope that it will be useful, }
+{ but WITHOUT ANY WARRANTY; without even the implied warranty of }
+{ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
 
 {$mode objfpc}{$H+}
 
@@ -63,6 +63,7 @@ type
     PerformingOrgAddr: tXAD;  // Introduced in HL7 2.7
     PerformingOrgMedicalDirector: tXCN;  // Introduced in HL7 2.7
     PatientResultsReleaseCat: tID;  // Introduced in HL7 2.7
+    RootCause, LocalProcessControl: tCWE;  // Introduced in HL7 2.8
   end;
 
 function OBX_Segment(message: THL7Message): THL7Segment;
@@ -147,6 +148,10 @@ begin
         PerformingOrgMedicalDirector :=
           aSegment.FirstOccurrence.GetNextFieldContent(nextField);
         PatientResultsReleaseCat :=
+          aSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        RootCause :=
+          aSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        LocalProcessControl :=
           aSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end
@@ -252,7 +257,8 @@ begin
       ObservationSite + FieldSep + ObservationInstanceID + FieldSep +
       MoodCode + FieldSep + PerformingOrgName + FieldSep + PerformingOrgAddr +
       FieldSep + PerformingOrgMedicalDirector + FieldSep +
-      PatientResultsReleaseCat + FieldSep;
+      PatientResultsReleaseCat + FieldSep + RootCause + FieldSep +
+      LocalProcessControl + FieldSep;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);
 end;

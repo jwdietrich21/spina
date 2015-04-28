@@ -6,7 +6,7 @@ unit OBR;
 
 { HL7 support unit for observation request segments }
 
-{ Version 1.6.1 }
+{ Version 2.0.1 (Hermes) }
 
 { (c) J. W. Dietrich, 1994 - 2014 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -78,6 +78,7 @@ type
     ParentUniversalServiceID: tCWE; // Introduced in HL7 2.7
     ObservationGroupID, ParentObservationGroupID: tEI; // Introduced in HL7 2.7
     AltPlacerOrderNumber: tCX; // Introduced in HL7 2.7
+    ParentOrder: tEIP; // Introduced in HL7 2.7.1
   end;
 
 function OBR_Segment(message: THL7Message): THL7Segment;
@@ -182,7 +183,8 @@ begin
         ParentUniversalServiceID := aSegment.FirstOccurrence.GetNextFieldContent(nextField);
         ObservationGroupID := aSegment.FirstOccurrence.GetNextFieldContent(nextField);
         ParentObservationGroupID := aSegment.FirstOccurrence.GetNextFieldContent(nextField);
-        AltPlacerOrderNumber := aSegment.FirstOccurrence.GetNextFieldContent(nextField)
+        AltPlacerOrderNumber := aSegment.FirstOccurrence.GetNextFieldContent(nextField);
+        ParentOrder := aSegment.FirstOccurrence.GetNextFieldContent(nextField);
       end;
   end
   else
@@ -277,7 +279,8 @@ begin
       PlacerSupplServiceInfo + FieldSep + FillerSupplServiceInfo + FieldSep +
       MedicallyNecessaryDuplProcReason + FieldSep + ResultHandling + FieldSep +
       ParentUniversalServiceID + FieldSep + ObservationGroupID + FieldSep +
-      ParentObservationGroupID + FieldSep + AltPlacerOrderNumber + FieldSep;
+      ParentObservationGroupID + FieldSep + AltPlacerOrderNumber + FieldSep +
+      ParentOrder + FieldSep;
   end;
   newSegment.contentString := theString;
   message.AddSegment(newSegment);

@@ -6,25 +6,26 @@ unit HL7;
 
 { HL7 base unit }
 
-{ Version 1.6.1 }
+{ Version 2.0.1 (Hermes) }
 
- { (c) J. W. Dietrich, 1994 - 2014 }
- { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
- { (c) University of Ulm Hospitals 2002-2004 }
- { (c) Ruhr University of Bochum 2005 - 2014 }
+{ (c) Johannes W. Dietrich, 1994 - 2015 }
+{ (c) Marek Skorupski 2015 }
+{ (c) Ludwig Maximilian University of Munich 1995 - 2002 }
+{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) Ruhr University of Bochum 2005 - 2015 }
 
 { Parser and compiler for HL7 messages }
 
 { Source code released under the BSD License }
 
- { See the file "license.txt", included in this distribution, }
- { for details about the copyright. }
- { Current versions and additional information are available from }
- { http://puma-repository.sf.net }
+{ See the file "license.txt", included in this distribution, }
+{ for details about the copyright. }
+{ Current versions and additional information are available from }
+{ http://puma-repository.sf.net }
 
- { This program is distributed in the hope that it will be useful, }
- { but WITHOUT ANY WARRANTY; without even the implied warranty of }
- { MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
+{ This program is distributed in the hope that it will be useful, }
+{ but WITHOUT ANY WARRANTY; without even the implied warranty of }
+{ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
 
 {
 Status code of HL7 message:
@@ -50,13 +51,13 @@ const
   ksLF   = #10;
   ksCRLF = #13#10;
 
-  noErr      = 0;
-  termErr    = 2;
-  unsuppVers = 4;
-  saveErr    = 6;
-  readErr    = 7;
+  noErr       = 0;
+  termErr     = 2;
+  unsuppVers  = 4;
+  saveErr     = 6;
+  readErr     = 7;
   segNotFound = 8;
-  createErr  = 9;
+  createErr   = 9;
 
   STANDARD_FIELD_SEP  = '|';
   STANDARD_COMP_SEP   = '^';
@@ -64,7 +65,7 @@ const
   STANDARD_ESC_SEP    = '\';
   STANDARD_SUBC_SEP   = '&';
   STANDARD_DELIMITERS = STANDARD_FIELD_SEP + STANDARD_COMP_SEP +
-    STANDARD_REP_SEP + STANDARD_ESC_SEP + STANDARD_SUBC_SEP;
+    STANDARD_REP_SEP + STANDARD_ESC_SEP + STANDARD_SUBC_SEP; // '|^~\&'
   SEGMENT_DELIMITER   = ksCR;
 
   ACKNOWLEDGEMENT_OK = 'AA';
@@ -115,70 +116,40 @@ const
 
 type
 
-  str2 = string
-
-    [2];
-  str3 = string
-
-    [3];
-  str4 = string
-
-    [4];
-  str5 = string
-
-    [5];
-  str8  = string
-
-    [8];
-  str15 = string
-
-    [15];
-  str16 = string
-
-    [16];
-  str20 = string
-
-    [20];
-  str22 = string
-
-    [22];
-  str25 = string
-
-    [25];
-  str26 = string
-
-    [26];
-  str40 = string
-
-    [40];
-  str50 = string
-
-    [50];
-  str53 = string
-
-    [53];
-  str60 = string
-
-    [60];
-  str80 = string
-
-    [80];
-  str180 = string
-
-    [180];
-  str227 = string
-
-    [227];
-  str241 = string
-
-    [241];
-  str250 = string
-
-    [250];
+  str1 = string[1];
+  str2 = string[2];
+  str3 = string[3];
+  str4 = string[4];
+  str5 = string[5];
+  str6 = string[6];
+  str8  = string[8];
+  str10 = string[10];
+  str12 = string[12];
+  str15 = string[15];
+  str16 = string[16];
+  str20 = string[20];
+  str22 = string[22];
+  str25 = string[25];
+  str26 = string[26];
+  str40 = string[40];
+  str50 = string[50];
+  str53 = string[53];
+  str60 = string[60];
+  str80 = string[80];
+  str100 = string[100];
+  str120 = string[120];
+  str180 = string[180];
+  str200 = string[200];
+  str227 = string[227];
+  str241 = string[241];
+  str250 = string[250];
   str427 = ansistring;
 
   tCE  = str250;      { HL7 CE type (Coded entry, deprecated as of HL7 v2.6) }
+  tCK  = str100;      { HL7 2.4 CK type (Composite ID with check digit, deprecated) }
+  tCM  = str40;       { HL7 2.4 CM type (Composite, deprecated) }
   tCNE = ansistring;  { HL7 2.6 CNE type (Coded with no exceptions) }
+  tCP  = ansistring;  { HL7 CP type (composite price) }
   tCWE = ansistring;  { HL7 2.6 CWE type (coded with exceptions) }
   tCX  = str250;      { HL7 CX type (Extended composite ID with check digit) }
   tCQ  = ansistring;  { HL7 CQ type (Composite quantity with units) }
@@ -191,32 +162,32 @@ type
   tEIP = ansistring;  { HL7 EIP type (Entity identifier pair) }
   tELD = ansistring;
   { HL7 ELD type (Error location and description, deprecated as of HL7 v2.5) }
-  tERL = str180;     { HL7 ERL type (Error location) }
+  tERL = str180;      { HL7 ERL type (Error location) }
   tFC  = str50;       { HL7 FC type (Financial class) }
   tFT  = ansistring;  { HL7 FT type (Formatted text data) }
   tHD  = ansistring;  { HL7 HD type (Hierarchic designator) }
   tID  = ansistring;  { HL7 ID type (Coded value for HL7 defined tables) }
   tIS  = str20;       { HL7 2.5 IS type (Coded value for user-defined tables) }
-  tJCC = ansistring; { HL7 JCC type (Job code/class) }
-  tMSG = str15;      { HL7 MSG type (Message type) }
-  tMOC = ansistring; { HL7 MOC type (Money and charge code) }
-  tNDL = ansistring; { HL7 NDL type (Name with date and location) }
+  tJCC = ansistring;  { HL7 JCC type (Job code/class) }
+  tMSG = str15;       { HL7 MSG type (Message type) }
+  tMOC = ansistring;  { HL7 MOC type (Money and charge code) }
+  tNDL = ansistring;  { HL7 NDL type (Name with date and location) }
   tNM  = str16;       { HL7 NM type (ASCII-represented number) }
   tPL  = str80;       { HL7 PL type (Person location) }
-  tPRL = ansistring; { HL7 PRL type (Parent result link) }
+  tPRL = ansistring;  { HL7 PRL type (Parent result link) }
   tPT  = str3;        { HL7 PT type (Processing type) }
   tSI  = str4;        { HL7 SI type (Sequence ID) }
-  tSPS = ansistring; { HL7 SPS type (Specimen source, deprecated as of HL7 v2.5) }
+  tSPS = ansistring;  { HL7 SPS type (Specimen source, deprecated as of HL7 v2.5) }
   tST  = ansistring;  { HL7 ST type (Dtring data ) }
   tTQ  = str250;      { HL7 TQ type (timing/quantity, deprecated as of HL7 v2.6) }
   tTS  = str26;       { HL7 2.5 TS type (Time stamp, deprecated as of HL7 v2.6) }
-  tVID = str60;      { HL7 VID type (Version identifier) }
-  tXAD = str250;     { HL7 XAD type (Extended address) }
-  tXCN = str250;     { HL7 XCN type (Extended composite ID number and name for persons) }
+  tVID = str60;       { HL7 VID type (Version identifier) }
+  tXAD = str250;      { HL7 XAD type (Extended address) }
+  tXCN = str250;      { HL7 XCN type (Extended composite ID number and name for persons) }
   tXON = ansistring;
   { HL7 XON type (Extended composite name and identification number for organizations) }
-  tXPN = str250;     { HL7 XPN type (Extended person name) }
-  tXTN = str250;     { HL7 XAD type (Extended telecommunications number) }
+  tXPN = str250;      { HL7 XPN type (Extended person name) }
+  tXTN = str250;      { HL7 XAD type (Extended telecommunications number) }
 
   THL7Delimiters = record
     SegmentTerminator, FieldSeparator, ComponentSeparator: char;
@@ -255,6 +226,7 @@ type
     FlOwner:     THL7Message;
     procedure ParseMessageString(const aString: ansistring);
     function CompiledMessageString: ansistring;
+    function GetnthOccurrence(index: integer): THL7Occurrence;
   public
     FirstOccurrence: THL7Occurrence;
     constructor Create(owner: THL7Message; SegmentText: ansistring);
@@ -265,6 +237,7 @@ type
       Write ParseMessageString;
     property previousSibling: THL7Segment Read FPreviousSibling;
     property nextSibling: THL7Segment Read FNextSibling;
+    property Occurrence[i: integer]: THL7Occurrence Read GetnthOccurrence;
     property segmentType: str3 Read SegmentName Write SegmentName;
   end;
 
@@ -275,6 +248,7 @@ type
     FPreviousSibling, FNextSibling: THL7Occurrence;
     procedure ParseMessageString(const aString: ansistring);
     function CompiledMessageString: ansistring;
+    function GetnthField(index: integer): THL7Field;
   public
     FirstField: THL7Field;
     constructor Create(owner: THL7Segment; OccurrencesText: ansistring);
@@ -286,6 +260,7 @@ type
       Write ParseMessageString;
     property previousSibling: THL7Occurrence Read FPreviousSibling;
     property nextSibling: THL7Occurrence Read FNextSibling;
+    property Field[i: integer]: THL7Field Read GetnthField;
   end;
 
   { THL7Field }
@@ -295,6 +270,7 @@ type
     FPreviousSibling, FNextSibling: THL7Field;
     procedure ParseMessageString(const aString: ansistring);
     function CompiledMessageString: ansistring;
+    function GetnthComponent(index: integer): THL7Component;
   public
     FirstComponent: THL7Component;
     constructor Create(owner: THL7Occurrence; FieldText: ansistring);
@@ -305,6 +281,7 @@ type
       Write ParseMessageString;
     property previousSibling: THL7Field Read FPreviousSibling;
     property nextSibling: THL7Field Read FNextSibling;
+    property Component[i: integer]: THL7Component Read GetnthComponent;
   end;
 
   { THL7Component }
@@ -314,6 +291,7 @@ type
     FPreviousSibling, FNextSibling: THL7Component;
     procedure ParseMessageString(const aString: ansistring);
     function CompiledMessageString: ansistring;
+    function GetnthSubComponent(index: integer): THL7SubComponent;
   public
     FirstSubComponent: THL7SubComponent;
     constructor Create(owner: THL7Field; ComponentText: ansistring);
@@ -324,6 +302,7 @@ type
       Write ParseMessageString;
     property previousSibling: THL7Component Read FPreviousSibling;
     property nextSibling: THL7Component Read FNextSibling;
+    property SubComponent[i: integer]: THL7SubComponent Read GetnthSubComponent;
   end;
 
   { THL7SubComponent }
@@ -355,6 +334,7 @@ type
     procedure SetHL7Version(const aValue: string);
     procedure ParseMessageString(const aString: ansistring);
     function CompiledMessageString: ansistring;
+    function GetnthSegment(index: integer): THL7Segment;
   public
     ControlID:    Str20;
     FirstSegment: THL7Segment;
@@ -368,6 +348,7 @@ type
     destructor Destroy; override;
     property HL7Version: string Read HL7_version Write SetHL7Version;
     property Delimiters: THL7Delimiters Read HL7Delimiters Write HL7Delimiters;
+    property Segment[i: integer]: THL7Segment Read GetnthSegment;
     function FoundSegment(const aSegmentName, SetID: Str3): THL7Segment;
     function FoundSegment(const aSegmentName, SetID: Str3;
       beginWith: THL7Segment): THL7Segment;
@@ -722,6 +703,23 @@ begin
   end;
 end;
 
+function THL7Component.GetnthSubComponent(index: integer): THL7SubComponent;
+var
+  i: integer;
+  theSubComponent: THL7SubComponent;
+begin
+  Result := nil;
+  if self = nil then exit;
+  theSubComponent := self.firstSubComponent;
+  for i := 0 to index - 1 do
+  begin
+    if theSubComponent = nil then break
+    else
+    theSubComponent := theSubComponent.nextSibling;
+  end;
+  Result := theSubComponent;
+end;
+
 constructor THL7Component.Create(owner: THL7Field; ComponentText: ansistring);
 begin
   inherited Create;
@@ -843,6 +841,23 @@ begin
   end;
 end;
 
+function THL7Field.GetnthComponent(index: integer): THL7Component;
+var
+  i: integer;
+  theComponent: THL7Component;
+begin
+  Result := nil;
+  if self = nil then exit;
+  theComponent := self.firstComponent;
+  for i := 0 to index - 1 do
+  begin
+    if theComponent = nil then break
+    else
+    theComponent := theComponent.nextSibling;
+  end;
+  Result := theComponent;
+end;
+
 constructor THL7Field.Create(owner: THL7Occurrence; FieldText: ansistring);
 begin
   inherited Create;
@@ -942,6 +957,23 @@ end;
 function THL7Occurrence.CompiledMessageString: ansistring;
 begin
   Result := FText;
+end;
+
+function THL7Occurrence.GetnthField(index: integer): THL7Field;
+var
+  i: integer;
+  theField: THL7Field;
+begin
+  Result := nil;
+  if self = nil then exit;
+  theField := self.FirstField;
+  for i := 0 to index - 1 do
+  begin
+    if theField = nil then break
+    else
+    theField := theField.nextSibling;
+  end;
+  Result := theField;
 end;
 
 constructor THL7Occurrence.Create(owner: THL7Segment; OccurrencesText: ansistring);
@@ -1067,6 +1099,23 @@ begin
   end;
 end;
 
+function THL7Segment.GetnthOccurrence(index: integer): THL7Occurrence;
+var
+  i: integer;
+  theOccurrence: THL7Occurrence;
+begin
+  Result := nil;
+  if self = nil then exit;
+  theOccurrence := self.firstOccurrence;
+  for i := 0 to index - 1 do
+  begin
+    if theOccurrence = nil then break
+    else
+    theOccurrence := theOccurrence.nextSibling;
+  end;
+  Result := theOccurrence;
+end;
+
 constructor THL7Segment.Create(owner: THL7Message; SegmentText: ansistring);
 begin
   inherited Create;
@@ -1151,6 +1200,22 @@ begin
   end;
 end;
 
+function THL7Message.GetnthSegment(index: integer): THL7Segment;
+var
+  i: integer;
+  theSegment: THL7Segment;
+begin
+  Result := nil;
+  if self = nil then exit;
+  theSegment := self.firstSegment;
+  for i := 0 to index - 1 do
+  begin
+    if theSegment = nil then break
+    else
+    theSegment := theSegment.nextSibling;
+  end;
+  Result := theSegment;
+end;
 
 procedure THL7Message.ParseDelimiters(DelimiterDefinition: ansistring);
 begin
