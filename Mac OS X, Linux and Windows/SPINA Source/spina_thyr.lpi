@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="784"/>
+      <BuildNr Value="785"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.0.2 Mercator" LegalCopyright="1994-2015 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.0.2"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -48,6 +48,7 @@
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="33"/>
         <CursorPos Y="2"/>
         <UsageCount Value="200"/>
@@ -430,10 +431,8 @@
         <Filename Value="handleimpex.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="23"/>
-        <TopLine Value="102"/>
-        <CursorPos X="5" Y="124"/>
+        <CursorPos X="49" Y="4"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="3"/>
@@ -499,9 +498,8 @@
         <CursorPos X="69" Y="10"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
-          <IsVisibleTab Value="True"/>
           <EditorIndex Value="-1"/>
-          <WindowIndex Value="1"/>
+          <WindowIndex Value="-1"/>
           <TopLine Value="43"/>
           <CursorPos X="33" Y="2"/>
         </ExtraEditor1>
