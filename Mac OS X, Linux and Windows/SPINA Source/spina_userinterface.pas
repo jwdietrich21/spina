@@ -1093,12 +1093,22 @@ end;
 
 procedure THauptschirm.FormDropFiles(Sender: TObject; const FileNames: array of string);
 var
-  status: integer;
+  j, status: integer;
+  thePath: String;
 begin
-  ReadHL7Message(FileNames[0], Hauptschirm.caseRecord);
-  CaseEditorForm.FillFromCaseRecord(caseRecord);
-  InsertValues(Sender);
-  HandleInput(status);
+  thePath := FileNames[0];
+  j := pos('://', thePath);
+  if DirectoryExists(thePath) then
+    Dialogs.ShowMessage(FOLDER_NOT_SUPPORTED_MESSAGE)
+  else if ((j > 0) and (j < 6)) then
+    Dialogs.ShowMessage(URLS_NOT_SUPPORTED_MESSAGE)
+  else if FileExists(thePath) then
+  begin
+    ReadHL7Message(thePath, Hauptschirm.caseRecord);
+    CaseEditorForm.FillFromCaseRecord(caseRecord);
+    InsertValues(Sender);
+    HandleInput(status);
+  end;
 end;
 
 procedure THauptschirm.FormWindowStateChange(Sender: TObject);

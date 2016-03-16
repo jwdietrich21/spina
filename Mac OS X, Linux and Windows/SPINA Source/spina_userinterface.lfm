@@ -325,7 +325,7 @@ object Hauptschirm: THauptschirm
   OnWindowStateChange = FormWindowStateChange
   ParentBiDiMode = False
   Position = poScreenCenter
-  LCLVersion = '1.4.0.4'
+  LCLVersion = '1.4.4.0'
   object Calculate_Button: TButton
     Left = 627
     Height = 24
@@ -509,6 +509,7 @@ object Hauptschirm: THauptschirm
         Lines.Strings = (
           'MessageField'
           ' '
+          ''
           ''
         )
         ParentColor = True
