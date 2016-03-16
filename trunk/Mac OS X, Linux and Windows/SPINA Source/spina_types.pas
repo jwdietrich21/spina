@@ -58,6 +58,8 @@ const
   RR_FORMAT_ERROR_MESSAGE = 'The CDISC Lab model XML file is malformatted.';
   RR_SPINA_ERROR_MESSAGE = 'Definitions for structure parameters in CDISC Lab model XML file are missing.';
   PREFERENCES_SAVE_ERROR_MESSAGE = 'The preferences could not be saved permanently, however, they are valid for this session.';
+  FOLDER_NOT_SUPPORTED_MESSAGE = 'Folders are not supported in this version of SPINA Thyr.';
+  URLS_NOT_SUPPORTED_MESSAGE = 'URLs are not supported in this version of SPINA Thyr.';
 
   MAXFACTORS = 10; {for measurement units and preferences}
 

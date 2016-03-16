@@ -38,6 +38,7 @@ type
     AboutMenuItem: TMenuItem;
     AppleAboutMenuItem: TMenuItem;
     AppleMenu: TMenuItem;
+    ApplicationProperties1: TApplicationProperties;
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     CopyResultMenuItem: TMenuItem;
@@ -91,6 +92,8 @@ type
     WinPreferencesItem: TMenuItem;
     procedure AboutMenuItemClick(Sender: TObject);
     procedure AppleAboutMenuItemClick(Sender: TObject);
+    procedure ApplicationProperties1DropFiles(Sender: TObject;
+      const FileNames: array of String);
     procedure CaseItemClick(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
@@ -410,6 +413,12 @@ end;
 procedure TSPINAToolbar.AppleAboutMenuItemClick(Sender: TObject);
 begin
   ShowAboutBox;
+end;
+
+procedure TSPINAToolbar.ApplicationProperties1DropFiles(Sender: TObject;
+  const FileNames: array of String);
+begin
+  Hauptschirm.FormDropFiles(Sender, FileNames);
 end;
 
 procedure TSPINAToolbar.CaseItemClick(Sender: TObject);
