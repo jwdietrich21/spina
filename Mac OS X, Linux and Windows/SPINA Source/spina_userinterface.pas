@@ -10,10 +10,10 @@ unit SPINA_UserInterface;
 
 { Version 4.0.2 (Mercator) }
 
-{ (c) J. W. Dietrich, 1994 - 2015 }
+{ (c) J. W. Dietrich, 1994 - 2016 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2015 }
+{ (c) Ruhr University of Bochum 2005 - 2016 }
 
 { This unit implements the GUI }
 
@@ -153,6 +153,7 @@ type
     UndoMenuItem: TMenuItem;
     ValuesGroupBox: TGroupBox;
     WinPreferencesItem: TMenuItem;
+    procedure OpenFileList(Sender: TObject; const FileNames: array of string);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
     procedure FormPaint(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
@@ -903,8 +904,16 @@ begin
 end;
 
 procedure THauptschirm.FormShow(Sender: TObject);
+var
+  i: integer;
+  FileNames: array of string;
 begin
-
+  { opens files that have been dropped onto the icon before starting: }
+  SetLength(FileNames, ParamCount);
+  For i:=1 to ParamCount do
+    FileNames[i - 1] := ParamStr(i);
+  if ParamCount > 0 then
+    OpenFileList(Sender, FileNames);
 end;
 
 procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
@@ -1091,7 +1100,7 @@ begin
 
 end;
 
-procedure THauptschirm.FormDropFiles(Sender: TObject; const FileNames: array of string);
+procedure THauptschirm.OpenFileList(Sender: TObject; const FileNames: array of string);
 var
   j, status: integer;
   thePath: String;
@@ -1109,6 +1118,11 @@ begin
     InsertValues(Sender);
     HandleInput(status);
   end;
+end;
+
+procedure THauptschirm.FormDropFiles(Sender: TObject; const FileNames: array of string);
+begin
+  OpenFileList(Sender, FileNames);
 end;
 
 procedure THauptschirm.FormWindowStateChange(Sender: TObject);

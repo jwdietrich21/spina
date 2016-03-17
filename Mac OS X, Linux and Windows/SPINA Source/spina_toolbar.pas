@@ -10,10 +10,10 @@ unit spina_toolbar;
 
 { Version 4.0.2 (Mercator) }
 
-{ (c) J. W. Dietrich, 1994 - 2015 }
+{ (c) J. W. Dietrich, 1994 - 2016 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2013 }
+{ (c) Ruhr University of Bochum 2005 - 2016 }
 
 { This unit implements a common toolbar, a menu bar and localization routines }
 
