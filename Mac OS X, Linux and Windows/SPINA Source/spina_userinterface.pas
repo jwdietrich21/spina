@@ -50,6 +50,7 @@ uses
 const
   AnInch = 2.54;
   MaxLen = 256;
+  MAIN_FORM_TITLE = 'SPINA Thyr';
 
 type
 
@@ -175,6 +176,7 @@ type
     procedure FT4ItemsChange(Sender: TObject);
     procedure HandleAbout(Sender: TObject);
     procedure HelpItemClick(Sender: TObject);
+    procedure ReadCaseRecord(Sender: TObject; const theCaseRecord: tCaseRecord);
     procedure OpenMenuItemClick(Sender: TObject);
     procedure CheckEntries(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
@@ -894,6 +896,7 @@ begin
   GetReferenceValues(RRFile, theCode);
   NewCaseRecord(caseRecord);
   caseRecord.Placer := gPreferences.Placer_ID;
+  caption := MAIN_FORM_TITLE;
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
@@ -1101,10 +1104,13 @@ begin
 end;
 
 procedure THauptschirm.OpenFileList(Sender: TObject; const FileNames: array of string);
+{ Open case from file via drag and drop }
 var
-  j, status: integer;
+  theCaseRecord: tCaseRecord;
+  j: integer;
   thePath: String;
 begin
+  NewCaseRecord(theCaseRecord);
   thePath := FileNames[0];
   j := pos('://', thePath);
   if DirectoryExists(thePath) then
@@ -1113,10 +1119,8 @@ begin
     Dialogs.ShowMessage(URLS_NOT_SUPPORTED_MESSAGE)
   else if FileExists(thePath) then
   begin
-    ReadHL7Message(thePath, Hauptschirm.caseRecord);
-    CaseEditorForm.FillFromCaseRecord(caseRecord);
-    InsertValues(Sender);
-    HandleInput(status);
+    ReadHL7Message(thePath, theCaseRecord);
+    ReadCaseRecord(Sender, theCaseRecord);
   end;
 end;
 
@@ -1140,23 +1144,39 @@ begin
   HelpWindow.ShowOnTop;
 end;
 
-procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
+procedure THauptschirm.ReadCaseRecord(Sender: TObject; const theCaseRecord: tCaseRecord);
+{ reads theCaseRecord, validates the results and fills caseRecord of main form }
 var
-  theNewCaseRecord: tCaseRecord;
   status: integer;
 begin
-  NewCaseRecord(theNewCaseRecord);
-  PrepareUnits(theNewCaseRecord);
-  ReadCaseResults(theNewCaseRecord);
   { Is this a valid case record? }
-  if not isNan(theNewCaseRecord.TSH) or not isNan(theNewCaseRecord.FT4)
-  or not isNan(theNewCaseRecord.FT3) or not isNan(theNewCaseRecord.TT4)
-  or not isNan(theNewCaseRecord.TT3) then
+  if isNan(theCaseRecord.TSH) and isNan(theCaseRecord.FT4)
+  and isNan(theCaseRecord.FT3) and isNan(theCaseRecord.TT4)
+  and isNan(theCaseRecord.TT3) then
+    Dialogs.ShowMessage(FILE_FORMAT_MESSAGE)
+  else
   begin
-    caseRecord := theNewCaseRecord;
-    CaseEditorForm.FillFromCaseRecord(caseRecord);
+    caseRecord := theCaseRecord;
+    if not gStartup then
+      CaseEditorForm.FillFromCaseRecord(caseRecord);
     InsertValues(Sender);
+    caption := MAIN_FORM_TITLE + ': ' + caseRecord.Name + ', ' +
+      caseRecord.GivenNames + ', * ' +  DateToStr(caseRecord.DoBDate) +
+      ' | ' + DateToStr(caseRecord.OBDate);
     HandleInput(status);
+  end;
+end;
+
+procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
+{ Open case from file via main menu or toolbar }
+var
+  theCaseRecord: tCaseRecord;
+begin
+  if not gStartup then
+  begin
+    NewCaseRecord(theCaseRecord);
+    OpenCaseResults(theCaseRecord);
+    ReadCaseRecord(Sender, theCaseRecord);
   end;
 end;
 
@@ -1217,6 +1237,7 @@ begin
   TherapyCheckGroup.Checked[2] := False;
   HintField.Text := gAnleitung1;
   HintField.Hint := gAnleitung1;
+  caption := MAIN_FORM_TITLE;
 end;
 
 procedure THauptschirm.MenuItem4Click(Sender: TObject);
@@ -1414,7 +1435,7 @@ begin
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   Printer.Canvas.Font.Color := clGray;
   PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName,
-    '  |  ', gDruckdatum, theDate, theTime), False);
+    '  |  ', gDruckdatum, DateToStr(date), theTime), False);
   PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + GetFileVersion, False);
   PrinterWriteln(H, currentX, currentY, '', False);
   Printer.Canvas.Font.Color := clBlack;

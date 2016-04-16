@@ -54,6 +54,7 @@ const
 
   IMPLEMENTATION_MESSAGE = 'This function is not implemented in this version of SPINA Thyr.';
   FORMAT_MESSAGE = 'Please check your input.';
+  FILE_FORMAT_MESSAGE = 'File format error.';
   SAVE_ERROR_MESSAGE = 'Error saving the file';
   RR_FORMAT_ERROR_MESSAGE = 'The CDISC Lab model XML file is malformatted.';
   RR_SPINA_ERROR_MESSAGE = 'Definitions for structure parameters in CDISC Lab model XML file are missing.';

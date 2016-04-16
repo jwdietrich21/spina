@@ -75,7 +75,7 @@ const
     long: 'Triiodothyronine (T3) [Moles/volume] in Serum or Plasma');
 
 procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
-procedure ReadCaseResults(var caseRecord: tCaseRecord);
+procedure OpenCaseResults(var caseRecord: tCaseRecord);
 procedure SaveResults(caseRecord: tCaseRecord);
 
 implementation
@@ -742,7 +742,7 @@ begin
   DefaultFormatSettings.DecimalSeparator := oldSeparator;
 end;
 
-procedure ReadCaseResults(var caseRecord: tCaseRecord);
+procedure OpenCaseResults(var caseRecord: tCaseRecord);
 var
   filePath: string;
   theFilterIndex: integer;
