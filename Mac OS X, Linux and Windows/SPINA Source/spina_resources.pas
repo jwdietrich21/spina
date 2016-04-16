@@ -8,7 +8,7 @@ unit SPINA_Resources;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.0.2 (Mercator) }
+{ Version 4.1.0 (Bonfire) }
 
 { (c) J. W. Dietrich, 1994 - 2016 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
