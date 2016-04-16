@@ -91,12 +91,12 @@ begin
   AboutBox.Tabs.TabIndex := 0;
   AboutBox.Close;
   ResultForm.Close;
+  Application.CreateForm(THelpWindow, HelpWindow);
+  Application.CreateForm(TCaseEditorForm, CaseEditorForm);
   gStartup := false;
   SPINAToolbar.Show;
   gUseReferenceRanges := true;
   Hauptschirm.AlphaBlendValue := 255;
-  Application.CreateForm(THelpWindow, HelpWindow);
-  Application.CreateForm(TCaseEditorForm, CaseEditorForm);
   Application.BringToFront;
   Application.Run;
   if (SplashScreen<>nil) then begin
