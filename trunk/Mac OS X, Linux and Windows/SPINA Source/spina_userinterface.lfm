@@ -512,6 +512,7 @@ object Hauptschirm: THauptschirm
           ''
           ''
           ''
+          ''
         )
         ParentColor = True
         ParentFont = False
@@ -878,13 +879,14 @@ object Hauptschirm: THauptschirm
         ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
-          'mU/l'
-          'µU/ml'
+          'mIU/l'
+          'µIU/ml'
+          ''
         )
         OnChange = TSHUnitComboBoxChange
         ParentFont = False
         TabOrder = 3
-        Text = 'mU/l'
+        Text = 'mIU/l'
       end
       object T4UnitComboBox: TComboBox
         Left = 164

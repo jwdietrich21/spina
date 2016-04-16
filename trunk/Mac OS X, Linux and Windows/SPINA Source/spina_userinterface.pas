@@ -8,7 +8,7 @@ unit SPINA_UserInterface;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.0.2 (Mercator) }
+{ Version 4.1.0 (Bonfire) }
 
 { (c) J. W. Dietrich, 1994 - 2016 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -212,6 +212,7 @@ type
   public
     { public declarations }
     caseRecord: tCaseRecord;
+    caseReferenceRanges: tReferenceValues;
   end;
 
 var
@@ -897,6 +898,7 @@ begin
   NewCaseRecord(caseRecord);
   caseRecord.Placer := gPreferences.Placer_ID;
   caption := MAIN_FORM_TITLE;
+  caseReferenceRanges := gReferenceRanges;
 end;
 
 procedure THauptschirm.Ergebniskopieren1Click(Sender: TObject);
@@ -1157,8 +1159,6 @@ begin
   else
   begin
     caseRecord := theCaseRecord;
-    if not gStartup then
-      CaseEditorForm.FillFromCaseRecord(caseRecord);
     InsertValues(Sender);
     caption := MAIN_FORM_TITLE + ': ' + caseRecord.Name + ', ' +
       caseRecord.GivenNames + ', * ' +  DateToStr(caseRecord.DoBDate) +
