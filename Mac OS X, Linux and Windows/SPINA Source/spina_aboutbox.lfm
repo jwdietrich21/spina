@@ -308,8 +308,9 @@ object AboutBox: TAboutBox
   }
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.4.4.0'
+  LCLVersion = '1.6.0.4'
   object OKButton: TButton
     Left = 192
     Height = 24
@@ -326,15 +327,15 @@ object AboutBox: TAboutBox
     Height = 325
     Top = 8
     Width = 424
-    ActivePage = TabSheet3
+    ActivePage = TabSheet4
     Anchors = [akTop, akLeft, akBottom]
-    TabIndex = 2
+    TabIndex = 3
     TabOrder = 1
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
-      ClientHeight = 299
-      ClientWidth = 416
+      ClientHeight = 286
+      ClientWidth = 418
       object Image1: TImage
         Cursor = crArrow
         Left = 21
@@ -1404,7 +1405,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 100
-        Width = 61
+        Width = 71
         Caption = 'Version 3.4.x'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1415,7 +1416,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 126
-        Width = 71
+        Width = 81
         Caption = '© 1997 – 2015'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1426,7 +1427,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 140
-        Width = 64
+        Width = 69
         Caption = 'J. W. Dietrich'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1437,7 +1438,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 164
-        Width = 94
+        Width = 109
         Caption = 'In Cooperation with:'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1448,7 +1449,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 190
-        Width = 131
+        Width = 147
         Caption = 'Klinikum der LMU München'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1459,7 +1460,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 204
-        Width = 114
+        Width = 134
         Caption = 'Universitätsklinikum Ulm'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1470,7 +1471,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 218
-        Width = 118
+        Width = 135
         Caption = 'Ruhr-Universität Bochum'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1482,7 +1483,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 260
-        Width = 136
+        Width = 157
         Caption = 'spina.medical-cybernetics.de'
         Font.Color = clNavy
         Font.Height = -11
@@ -1495,10 +1496,10 @@ object AboutBox: TAboutBox
         AnchorSideLeft.Control = Divider
         AnchorSideLeft.Side = asrBottom
         Cursor = crHandPoint
-        Left = 165
+        Left = 188
         Height = 13
         Top = 260
-        Width = 102
+        Width = 116
         BorderSpacing.Left = 3
         Caption = 'spina.sourceforge.net'
         Font.Color = clNavy
@@ -1512,7 +1513,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 232
-        Width = 165
+        Width = 191
         Caption = 'Universitätsklinikum Bergmannsheil'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1522,10 +1523,10 @@ object AboutBox: TAboutBox
       object Divider: TLabel
         AnchorSideLeft.Control = URL1
         AnchorSideLeft.Side = asrBottom
-        Left = 160
+        Left = 181
         Height = 13
         Top = 260
-        Width = 2
+        Width = 4
         BorderSpacing.Left = 3
         Caption = '|'
         Font.Color = 33023
@@ -1540,12 +1541,13 @@ object AboutBox: TAboutBox
       ClientWidth = 418
       object Memo1: TMemo
         Left = 5
-        Height = 362
+        Height = 270
         Top = 4
         Width = 408
         Anchors = [akTop, akLeft, akBottom]
         Lines.Strings = (
           'Memo1'
+          ''
           ''
           ''
         )
@@ -1692,6 +1694,93 @@ object AboutBox: TAboutBox
         ParentColor = False
         ParentFont = False
         OnClick = Label15Click
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'Impressum'
+      ClientHeight = 286
+      ClientWidth = 418
+      object Memo2: TMemo
+        Left = 5
+        Height = 270
+        Top = 4
+        Width = 408
+        Lines.Strings = (
+          'Impressum'
+          'Angaben gemäß § 5 des Telemediengesetzes (TMG)'
+          ''
+          'Dr. Johannes W. Dietrich'
+          ''
+          'BG Universitätsklinikum Bergmannsheil gGmbH'
+          'Bürkle-de-la-Camp-Platz 1'
+          'D-44789 Bochum, NRW'
+          'Vertreten durch: '
+          'Ralf Wenzel'
+          'Johannes Schmitz'
+          'Umsatzsteuer-ID: DE 253171225'
+          'Umsatzsteuer-Identifikationsnummer gemäß §27a'
+          'Umsatzsteuergesetz: DE 253171225'
+          ''
+          'Aufsichtsbehörde:'
+          'Ministerium für Gesundheit, Emanzipation, Pflege und Alter'
+          'des Landes Nordrhein-Westfalen, Horionplatz 1, D-40213'
+          'Düsseldorf, NRW'
+          ''
+          'Berufsbezeichnung:'
+          'Ärzte'
+          'Zuständige Kammer: Ärztekammer Westfalen-Lippe'
+          'Verliehen durch: Bundesrepublik Deutschland'
+          'Es gelten folgende berufsrechtliche Regelungen: Arzt'
+          'Gesetzbuch Regelungen einsehbar unter: http:/'
+          'www.aerztekammer-nrw.de.'
+          ''
+          ''
+          'Haftungsausschluss: '
+          ''
+          'Haftung für Links'
+          ''
+          'Unser Angebot enthält Links zu externen Webseiten Dritter,'
+          'auf deren Inhalte wir keinen Einfluss haben. Deshalb können'
+          'wir für diese fremden Inhalte auch keine Gewähr'
+          'übernehmen. Für die Inhalte der verlinkten Seiten ist stets'
+          'der jeweilige Anbieter oder Betreiber der Seiten'
+          'verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt'
+          'der Verlinkung auf mögliche Rechtsverstöße überprüft.'
+          'Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung'
+          'nicht erkennbar. Eine permanente inhaltliche Kontrolle der'
+          'verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte'
+          'einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden'
+          'von Rechtsverletzungen werden wir derartige Links'
+          'umgehend entfernen.'
+          ''
+          'Datenschutz'
+          ''
+          'Die Nutzung unserer Webseite ist in der Regel ohne Angabe'
+          'personenbezogener Daten möglich. Soweit auf unseren'
+          'Seiten personenbezogene Daten (beispielsweise Name,'
+          'Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies,'
+          'soweit möglich, stets auf freiwilliger Basis. Diese Daten'
+          'werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte'
+          'weitergegeben. '
+          'Wir weisen darauf hin, dass die Datenübertragung im Internet'
+          '(z.B. bei der Kommunikation per E-Mail) Sicherheitslücken'
+          'aufweisen kann. Ein lückenloser Schutz der Daten vor dem'
+          'Zugriff durch Dritte ist nicht möglich. '
+          'Der Nutzung von im Rahmen der Impressumspflicht'
+          'veröffentlichten Kontaktdaten durch Dritte zur Übersendung'
+          'von nicht ausdrücklich angeforderter Werbung und'
+          'Informationsmaterialien wird hiermit ausdrücklich'
+          'widersprochen. Die Betreiber der Seiten behalten sich'
+          'ausdrücklich rechtliche Schritte im Falle der unverlangten'
+          'Zusendung von Werbeinformationen, etwa durch Spam-Mails,'
+          'vor.'
+          ''
+          'Ursprüngliche Version dieses Impressums erstellt durch'
+          'impressum-generator.de.'
+        )
+        ReadOnly = True
+        ScrollBars = ssAutoBoth
+        TabOrder = 0
       end
     end
   end
