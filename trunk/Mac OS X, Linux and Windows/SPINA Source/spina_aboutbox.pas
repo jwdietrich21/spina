@@ -42,6 +42,7 @@ type
   { TAboutBox }
 
   TAboutBox = class(TForm)
+    Memo2: TMemo;
     OKButton: TButton;
     CopyrightLabel1: TLabel;
     CopyrightLabel2: TLabel;
@@ -70,6 +71,7 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
     URL1: TLabel;
     URL2: TLabel;
     VersionLabel: TLabel;
@@ -77,6 +79,7 @@ type
     procedure CloseAboutBox(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
     procedure Label15Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure Label7Click(Sender: TObject);
@@ -251,6 +254,13 @@ begin
   end
   else if (key = 87) and ((ssMeta in Shift) or (ssCtrl in Shift)) then
     self.Close;
+end;
+
+procedure TAboutBox.FormShow(Sender: TObject);
+begin
+  Memo2.SelStart := 0;
+  Memo2.SelLength := 0;
+  Memo2.VertScrollBar.Position := 0;
 end;
 
 procedure TAboutBox.Label15Click(Sender: TObject);
