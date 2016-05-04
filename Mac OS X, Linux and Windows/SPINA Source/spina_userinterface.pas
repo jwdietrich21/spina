@@ -45,7 +45,7 @@ uses
   {$IFDEF LCLCarbon}
   , MacOSAll, CarbonProc
   {$ENDIF}
-  , lazutf8, Printers, ComCtrls, PrintersDlgs;
+  , lazutf8, Printers, ComCtrls, Buttons, PrintersDlgs;
 
 const
   AnInch = 2.54;
@@ -119,7 +119,6 @@ type
     N6: TMenuItem;
     NewMenuItem: TMenuItem;
     OnlineInfoItem: TMenuItem;
-    PageSetupDialog1: TPageSetupDialog;
     PageSetupMenuItem: TMenuItem;
     Panel1: TPanel;
     PasteMenuItem: TMenuItem;
@@ -131,8 +130,6 @@ type
     PopupPaste: TMenuItem;
     PopupUndo: TMenuItem;
     PoputDiv2: TMenuItem;
-    PrintDialog1: TPrintDialog;
-    PrinterSetupDialog1: TPrinterSetupDialog;
     PrintMenuItem: TMenuItem;
     QuitMenuItem: TMenuItem;
     Rckgngig1: TMenuItem;
@@ -243,6 +240,9 @@ procedure GetMacDateFormats;
 procedure GetPreferences;
 
 implementation
+
+uses
+  spina_toolbar;
 
 function GetOSLanguage: string;
   {platform-independent method to read the language of the user interface}
@@ -577,7 +577,7 @@ procedure bell; {platform-independent implementation of acustical warning}
 var
   s: longint;
 begin
-  {$IFDEF win32}
+  {$IFDEF Windows}
   MessageBeep(0);
   {$ELSE}
     {$IFDEF LCLCarbon}
@@ -1254,6 +1254,7 @@ function DoPageSetup: boolean;
 var
   D: TPageSetupDialog;
 begin
+  SPINAToolbar.BringToFront;
   D := TPageSetupDialog.Create(nil);
   try
     Result := D.Execute;
@@ -1266,6 +1267,7 @@ function DoPrintSetup: boolean;
 var
   D: TPrintDialog;
 begin
+  SPINAToolbar.BringToFront;
   D := TPrintDialog.Create(nil);
   try
     Result := D.Execute;

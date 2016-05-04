@@ -1698,8 +1698,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet4: TTabSheet
       Caption = 'Impressum'
-      ClientHeight = 286
-      ClientWidth = 418
+      ClientHeight = 297
+      ClientWidth = 416
       object Memo2: TMemo
         Left = 5
         Height = 270

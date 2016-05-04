@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdCtrls, LCLIntf, ComCtrls, DOS, SPINA_Types, VersionSupport,
   HandlePreferences
-  {$IFDEF win32}
+  {$IFDEF Windows}
   , Windows, Win32Proc
   {$ELSE}
     {$IFDEF LCLCarbon}

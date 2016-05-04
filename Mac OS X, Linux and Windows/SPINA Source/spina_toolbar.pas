@@ -25,10 +25,11 @@ unit spina_toolbar;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, ComCtrls, LCLIntf,
-  SPINA_Types, SPINA_Resources, SPINA_Engine, SPINA_AboutBox, SPINA_Userinterface,
-  SetPreferences, VersionSupport, spina_help, CaseEditor, HandleImpEx;
+  Classes, SysUtils, FileUtil, PrintersDlgs, LResources, Forms, Controls,
+  Graphics, Dialogs, ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList,
+  ComCtrls, LCLIntf, SPINA_Types, SPINA_Resources, SPINA_Engine, SPINA_AboutBox,
+  SPINA_Userinterface, SetPreferences, VersionSupport, spina_help, CaseEditor,
+  HandleImpEx;
 
 type
 
@@ -65,6 +66,7 @@ type
     CaseItem: TMenuItem;
     Divider_1_2: TMenuItem;
     OpenCaseDialog: TOpenDialog;
+    PrintDialog1: TPrintDialog;
     SaveMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
     ToolbarImageList: TImageList;
@@ -87,6 +89,8 @@ type
     ToolBar1: TToolBar;
     DividerTool3: TToolButton;
     CaseEditorToolButton: TToolButton;
+    DividerTool4: TToolButton;
+    InfoToolButton: TToolButton;
     UndoMenuItem: TMenuItem;
     UndoToolButton: TToolButton;
     WinPreferencesItem: TMenuItem;
@@ -120,6 +124,7 @@ type
     procedure SaveMenuItemClick(Sender: TObject);
     procedure SaveToolButtonClick(Sender: TObject);
     procedure SPINAThyrLabelClick(Sender: TObject);
+    procedure InfoToolButtonClick(Sender: TObject);
     procedure UndoToolButtonClick(Sender: TObject);
     procedure WinPreferencesItemClick(Sender: TObject);
   private
@@ -232,6 +237,7 @@ begin
     SPINAToolbar.ToolBar1.Buttons[11].Hint := 'Delete';
     SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Copy result';
     SPINAToolbar.ToolBar1.Buttons[14].Hint := 'Edit case or patient record';
+    SPINAToolbar.ToolBar1.Buttons[16].Hint := 'Masthead and app info';
     gNegativeError := kNegativeError2;
     gReferenceRangeError := kReferenceRangeError2;
   end
@@ -286,6 +292,7 @@ begin
     SPINAToolbar.ToolBar1.Buttons[11].Hint := 'Löschen';
     SPINAToolbar.ToolBar1.Buttons[12].Hint := 'Ergebnis kopieren';
     SPINAToolbar.ToolBar1.Buttons[14].Hint := 'Fall- oder Patienteninformationen bearbeiten';
+    SPINAToolbar.ToolBar1.Buttons[16].Hint := 'Impressum und Programminformationen';
     gNegativeError := kNegativeError1;
     gReferenceRangeError := kReferenceRangeError1;
   end;
@@ -406,6 +413,11 @@ begin
 end;
 
 procedure TSPINAToolbar.SPINAThyrLabelClick(Sender: TObject);
+begin
+  ShowAboutBox;
+end;
+
+procedure TSPINAToolbar.InfoToolButtonClick(Sender: TObject);
 begin
   ShowAboutBox;
 end;
