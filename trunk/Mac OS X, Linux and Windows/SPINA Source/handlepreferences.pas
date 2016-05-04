@@ -36,7 +36,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, SPINA_Types, DOM, XMLRead, XMLWrite, StrUtils, Math
-  {$IFDEF win32}
+  {$IFDEF Windows}
   , Windows
   {$ELSE}
     {$IFDEF LCLCarbon}
