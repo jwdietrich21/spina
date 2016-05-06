@@ -1508,8 +1508,11 @@ begin
       PrinterWriteln(H, currentX, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, '', False);
-      PrinterWriteln(H, currentX, currentY, gUncertified2, False);
-      PrinterWriteln(H, currentX, currentY, gUncertified3, False);
+      if not gCEcertified then
+      begin
+        PrinterWriteln(H, currentX, currentY, gUncertified2, False);
+        PrinterWriteln(H, currentX, currentY, gUncertified4, False);
+      end;
       Printer.Canvas.Font.Color := clBlack;
       currentX := marginX;
       currentY := Printer.PageHeight - 5 * H;

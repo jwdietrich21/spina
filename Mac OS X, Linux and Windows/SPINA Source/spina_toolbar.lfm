@@ -193,10 +193,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 781
-    Height = 16
+    Left = 787
+    Height = 17
     Top = 7
-    Width = 70
+    Width = 64
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
