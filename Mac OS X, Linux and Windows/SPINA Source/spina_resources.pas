@@ -103,6 +103,13 @@ const
   kReferenceRangeError1 = 'Bitte überprüfen Sie Ihre Eingabe:' + LineEnding + 'Die Obergrenze mindestens eines Referenzbereichs ist kleiner als die Untergrenze.';
   kReferenceRangeError2 = 'Please check your input:' + LineEnding + 'The upper bound of at least one reference range is lower than its lower bound.';
 
+  kUncertified11 = ' (Nur für Forschungszwecke)';
+  kUncertified12 = ' (Research use only)';
+  kUncertified21 = 'Berechnet mit SPINA Thyr (Forschungsversion).';
+  kUncertified22 = 'Calculated with SPINA Thyr (research version).';
+  kUncertified31 = 'Einsatz nur zu wissenschaftlichen Zwecken im Rahmen klinischer Studien.';
+  kUncertified32 = 'Clinical trial and scientific use only.';
+
   kCaseEditor1 = 'Fall-Editor';
   kCaseEditor2 = 'Case Editor';
   kCaseID1 = 'Aufnahme- oder Fall-Nr.:';

@@ -162,6 +162,9 @@ begin
     gPatientenname := kPatientenname2;
     gGeburtsdatum := kGeburtsdatum2;
     gUntersuchungsdatum := kUntersuchungsdatum2;
+    gUncertified1 := kUncertified12;
+    gUncertified2 := kUncertified22;
+    gUncertified3 := kUncertified32;
     gEinsender := kEinsender2;
     gBenutzername := kBenutzername2;
     gDruckdatum := kDruckdatum2;
@@ -276,6 +279,9 @@ begin
     gPatientenname := kPatientenname1;
     gGeburtsdatum := kGeburtsdatum1;
     gUntersuchungsdatum := kUntersuchungsdatum1;
+    gUncertified1 := kUncertified11;
+    gUncertified2 := kUncertified21;
+    gUncertified3 := kUncertified31;
     gEinsender := kEinsender1;
     gBenutzername := kBenutzername1;
     gDruckdatum := kDruckdatum1;
