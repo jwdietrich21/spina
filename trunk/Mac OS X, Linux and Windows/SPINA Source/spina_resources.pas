@@ -35,7 +35,8 @@ const
     'Bitte geben Sie die gemessenen Werte für TSH, T4 (oder FT4) und T3 (oder FT3) ein und klicken Sie dann auf "Berechnen".'#13#10#13#10'Im Falle einer Substitutionstherapie klicken Sie bitte auf die Boxen rechts in diesem Fenster unter "Therapie".';
   kAnleitung12 =
     'Please enter simultaneously obtained values for TSH, T4 (or FT4) and T3 (or FT3), and click on "Calculate".'#13#10#13#10'In case of substitution therapy please click the corresponding boxes in the right of this window under the captionn "Therapy".';
-  kAnleitung21 = 'Sie können das Ergebnis nun sichern, ausdrucken oder in die Zwischenablage kopieren.';
+  kAnleitung21 =
+    'Sie können das Ergebnis nun sichern, ausdrucken oder in die Zwischenablage kopieren.';
   kAnleitung22 = 'You may want to save, print or copy the result now.';
   kVerhaltensparameter1 = 'Verhaltensparameter:';
   kVerhaltensparameter2 = 'Behavioural parameters:';
@@ -67,8 +68,10 @@ const
   kTherapyHint2 = 'Therapy:';
   kHintCaption1 = 'Hinweis:';
   kHintCaption2 = 'Hint:';
-  kPreferencesHint1 = 'Die Voreinstellungsdatei wurde neu angelegt. Bitte überprüfen Sie Parameter und Maßeinheiten.';
-  kPreferencesHint2 = 'A new preferences file has been created. Please check parameters and measurement units.';
+  kPreferencesHint1 =
+    'Die Voreinstellungsdatei wurde neu angelegt. Bitte überprüfen Sie Parameter und Maßeinheiten.';
+  kPreferencesHint2 =
+    'A new preferences file has been created. Please check parameters and measurement units.';
   kPreferences1 = 'Einstellungen';
   kPreferences2 = 'Preferences';
   kMethodLabel1 = 'Methode';
@@ -98,17 +101,24 @@ const
   kGroupCaption31 = 'Praxis- oder Klinik-ID';
   kGroupCaption32 = 'Physician or Hospital ID';
 
-  kNegativeError1 = 'Bitte überprüfen Sie die Daten:' + LineEnding + 'Wenigstens einer der eingegebenen Werte ist negativ.';
-  kNegativeError2 = 'Please check data:' + LineEnding + 'At least one of the entered values is negative.';
-  kReferenceRangeError1 = 'Bitte überprüfen Sie Ihre Eingabe:' + LineEnding + 'Die Obergrenze mindestens eines Referenzbereichs ist kleiner als die Untergrenze.';
-  kReferenceRangeError2 = 'Please check your input:' + LineEnding + 'The upper bound of at least one reference range is lower than its lower bound.';
+  kNegativeError1 = 'Bitte überprüfen Sie die Daten:' + LineEnding +
+    'Wenigstens einer der eingegebenen Werte ist negativ.';
+  kNegativeError2 = 'Please check data:' + LineEnding +
+    'At least one of the entered values is negative.';
+  kReferenceRangeError1 = 'Bitte überprüfen Sie Ihre Eingabe:' +
+    LineEnding + 'Die Obergrenze mindestens eines Referenzbereichs ist kleiner als die Untergrenze.';
+  kReferenceRangeError2 = 'Please check your input:' + LineEnding +
+    'The upper bound of at least one reference range is lower than its lower bound.';
 
   kUncertified11 = ' (Nur für Forschungszwecke)';
   kUncertified12 = ' (Research use only)';
-  kUncertified21 = 'Berechnet mit SPINA Thyr (Forschungsversion).';
-  kUncertified22 = 'Calculated with SPINA Thyr (research version).';
-  kUncertified31 = 'Einsatz nur zu wissenschaftlichen Zwecken im Rahmen klinischer Studien.';
-  kUncertified32 = 'Clinical trial and scientific use only.';
+  kUncertified21 =
+    'Einsatz für Forschungszwecke nach §3 und §6 MPG und Art. 1(2)h der Richtlinie 93/42/EWG des Rates.';
+  kUncertified22 = 'Research use according to article 1(2)h of the council directive 93/42/EEC.';
+  kUncertified31 = 'Einsatz nur zu Forschungszwecken.';
+  kUncertified32 = 'Researh use only.';
+  kUnCertified41 = 'Die Verwendung ist gemäß GCP, nach §12 MPG und Anhang X der Richtlinie 93/42/EWG zu dokumentieren.';
+  kUnCertified42 = 'Usage has to be documented in accordance with GCP and annex X of the council directive 93/42/EEC.';
 
   kCaseEditor1 = 'Fall-Editor';
   kCaseEditor2 = 'Case Editor';
@@ -129,4 +139,3 @@ const
 implementation
 
 end.
-

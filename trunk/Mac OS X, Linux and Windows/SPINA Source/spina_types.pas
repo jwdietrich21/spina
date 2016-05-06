@@ -129,7 +129,7 @@ var
   gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
   gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender,
     gDruckdatum: string;
-  gUncertified1, gUncertified2, gUncertified3: string;
+  gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
   gPreferencesHint: string;
   gNegativeError, gReferenceRangeError: string;
   gcalcTitle, gcalcString, gNotCalculableString: Str255;

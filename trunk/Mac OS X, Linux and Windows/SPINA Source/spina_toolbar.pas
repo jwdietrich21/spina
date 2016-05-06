@@ -165,6 +165,7 @@ begin
     gUncertified1 := kUncertified12;
     gUncertified2 := kUncertified22;
     gUncertified3 := kUncertified32;
+    gUncertified4 := kUncertified42;
     gEinsender := kEinsender2;
     gBenutzername := kBenutzername2;
     gDruckdatum := kDruckdatum2;
@@ -282,6 +283,7 @@ begin
     gUncertified1 := kUncertified11;
     gUncertified2 := kUncertified21;
     gUncertified3 := kUncertified31;
+    gUncertified4 := kUncertified41;
     gEinsender := kEinsender1;
     gBenutzername := kBenutzername1;
     gDruckdatum := kDruckdatum1;

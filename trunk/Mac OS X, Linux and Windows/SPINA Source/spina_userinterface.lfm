@@ -339,11 +339,11 @@ object Hauptschirm: THauptschirm
   end
   object FT4Items: TComboBox
     Left = 128
-    Height = 21
+    Height = 23
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 15
     Items.Strings = (
       'ng/dl'
       'ng/l'
@@ -356,11 +356,11 @@ object Hauptschirm: THauptschirm
   end
   object T4Items: TComboBox
     Left = 184
-    Height = 21
+    Height = 23
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 15
     Items.Strings = (
       'µg/l'
       'µg/dl'
@@ -372,11 +372,11 @@ object Hauptschirm: THauptschirm
   end
   object FT3Items: TComboBox
     Left = 184
-    Height = 21
+    Height = 23
     Top = 200
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 15
     Items.Strings = (
       'pg/ml'
       'ng/l'
@@ -388,11 +388,11 @@ object Hauptschirm: THauptschirm
   end
   object T3Items: TComboBox
     Left = 184
-    Height = 21
+    Height = 23
     Top = 224
     Width = 41
     Enabled = False
-    ItemHeight = 13
+    ItemHeight = 15
     Items.Strings = (
       'µg/l'
       'ng/dl'
@@ -433,7 +433,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 74
+      ClientHeight = 72
       ClientWidth = 210
       Color = clWhite
       Items.Strings = (
@@ -460,12 +460,12 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 179
+      ClientHeight = 177
       ClientWidth = 212
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 163
+        Height = 161
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -492,12 +492,12 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 179
+      ClientHeight = 177
       ClientWidth = 212
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 163
+        Height = 161
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -630,7 +630,7 @@ object Hauptschirm: THauptschirm
       Width = 271
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 283
+      ClientHeight = 281
       ClientWidth = 267
       ParentColor = False
       ParentShowHint = False
@@ -850,7 +850,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 106
-        Height = 21
+        Height = 23
         Hint = '(F)T4'
         Top = 232
         Width = 56
@@ -860,7 +860,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 202
-        Height = 21
+        Height = 23
         Hint = '(F)T3'
         Top = 37
         Width = 54
@@ -968,7 +968,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = 10
-        Height = 21
+        Height = 23
         Hint = 'TSH'
         Top = 37
         Width = 56
@@ -978,7 +978,7 @@ object Hauptschirm: THauptschirm
       end
       object Label1: TLabel
         Left = 10
-        Height = 13
+        Height = 15
         Top = 15
         Width = 22
         Anchors = [akTop, akRight]
@@ -992,9 +992,9 @@ object Hauptschirm: THauptschirm
     AnchorSideTop.Side = asrCenter
     Cursor = crHandPoint
     Left = 16
-    Height = 13
+    Height = 12
     Top = 333
-    Width = 53
+    Width = 49
     Caption = 'SPINA Thyr'
     Font.Color = clBlack
     Font.Height = -10
