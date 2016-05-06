@@ -1504,6 +1504,13 @@ begin
         remainder := copy(remainder, returnPos + 2, length(remainder));
         PrinterWriteln(H, tabX2, currentY, resultLine, False);
       until returnPos = 0;
+      Printer.Canvas.Font.Color := clGray;
+      PrinterWriteln(H, currentX, currentY, '', False);
+      PrinterWriteln(H, currentX, currentY, '', False);
+      PrinterWriteln(H, currentX, currentY, '', False);
+      PrinterWriteln(H, currentX, currentY, gUncertified2, False);
+      PrinterWriteln(H, currentX, currentY, gUncertified3, False);
+      Printer.Canvas.Font.Color := clBlack;
       currentX := marginX;
       currentY := Printer.PageHeight - 5 * H;
       PrintFooter(H, currentX, currentY, marginXr);

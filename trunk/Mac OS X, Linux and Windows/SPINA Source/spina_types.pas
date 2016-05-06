@@ -115,17 +115,21 @@ tPrefsFile = file of tPreferences;
 tInterfaceLanguage = (English, German);
 
 var
-  gStartup: boolean;
+  gStartup, gCEcertified: boolean;
   T4UnitLabel, T3UnitLabel: array[0..MAXFACTORS - 1] of Str3;
   T4UnitFactor, T3UnitFactor: array[0..MAXFACTORS - 1] of real;
   gUseReferenceRanges: boolean;
   gHostName, gPrefsDir, gPrefsFileName: String;
-  gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR, gsGDRR, gTSHIRR, gsTSHIRR, gTTSIRR: string;
+  gTSHRR, gFT4RR, gTT4RR, gFT3RR, gTT3RR, gGTRR, gGDRR, gsGDRR, gTSHIRR,
+    gsTSHIRR, gTTSIRR: string;
   gPreferences: tPreferences;
   gPrefsFile: tPrefsFile;
-  gAnleitung1, gAnleitung2, gVerhaltensparameter, gStrukturparameter, gReferenzbereiche: string;
+  gAnleitung1, gAnleitung2, gVerhaltensparameter, gStrukturparameter,
+    gReferenzbereiche: string;
   gResultHint, gHintCaption, gTherapyHint, gBenutzername: string;
-  gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender, gDruckdatum: string;
+  gPatientenname, gGeburtsdatum, gUntersuchungsdatum, gEinsender,
+    gDruckdatum: string;
+  gUncertified1, gUncertified2, gUncertified3: string;
   gPreferencesHint: string;
   gNegativeError, gReferenceRangeError: string;
   gcalcTitle, gcalcString, gNotCalculableString: Str255;

@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
-  Left = 383
+  Left = 271
   Height = 385
-  Top = 249
+  Top = 220
   Width = 753
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False

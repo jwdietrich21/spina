@@ -55,6 +55,7 @@ begin
     DeleteFile('heaptrace.trc');
   SetHeapTraceOutput('heaptrace.trc');
   {$ENDIF}
+  gCEcertified := false;
   GetMacDateFormats;
   Application.Title := 'SPINA Thyr';
   InitThyroidHormoneConversionFactors;
