@@ -310,6 +310,7 @@ begin
   Hauptschirm.ResultGroupBox.Caption := gResultHint;
   Hauptschirm.TherapyCheckGroup.Caption := gTherapyHint;
   Hauptschirm.ValuesGroupBox.Hint := gAnleitung1;
+  Hauptschirm.Caption := Hauptschirm.Caption + gUncertified1;
   if gPreferences.new then ShowMessage(gPreferencesHint);
 end;
 
