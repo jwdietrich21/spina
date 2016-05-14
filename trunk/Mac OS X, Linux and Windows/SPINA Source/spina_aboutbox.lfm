@@ -1550,6 +1550,7 @@ object AboutBox: TAboutBox
           ''
           ''
           ''
+          ''
         )
         OnKeyDown = FormKeyDown
         ReadOnly = True
@@ -1698,8 +1699,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet4: TTabSheet
       Caption = 'Impressum'
-      ClientHeight = 297
-      ClientWidth = 416
+      ClientHeight = 286
+      ClientWidth = 418
       object Memo2: TMemo
         Left = 5
         Height = 270
@@ -1730,9 +1731,11 @@ object AboutBox: TAboutBox
           'Ärzte'
           'Zuständige Kammer: Ärztekammer Westfalen-Lippe'
           'Verliehen durch: Bundesrepublik Deutschland'
-          'Es gelten folgende berufsrechtliche Regelungen: Arzt'
-          'Gesetzbuch Regelungen einsehbar unter: http:/'
-          'www.aerztekammer-nrw.de.'
+          'Es gelten die berufsrechtlichen Regelungen der '
+          'Bundesärzteordnung und weitere Gesetze, Verordnungen'
+          'und Richtlinien, die unter'
+          'http://www.bundesaerztekammer.de und '
+          'http://www.aekwl.de einsehbar sind.'
           ''
           ''
           'Haftungsausschluss: '
@@ -1777,6 +1780,7 @@ object AboutBox: TAboutBox
           ''
           'Ursprüngliche Version dieses Impressums erstellt durch'
           'impressum-generator.de.'
+          ''
         )
         ReadOnly = True
         ScrollBars = ssAutoBoth

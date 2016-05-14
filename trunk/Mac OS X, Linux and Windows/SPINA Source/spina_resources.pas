@@ -110,13 +110,13 @@ const
   kReferenceRangeError2 = 'Please check your input:' + LineEnding +
     'The upper bound of at least one reference range is lower than its lower bound.';
 
-  kUncertified11 = ' (Nur für Forschungszwecke)';
-  kUncertified12 = ' (Research use only)';
+  kUncertified11 = ' (Version für Forschungszwecke)';
+  kUncertified12 = ' (Research version)';
   kUncertified21 =
     'Einsatz für Forschungszwecke nach §3 und §6 MPG und Art. 1(2)h der Richtlinie 93/42/EWG des Rates.';
   kUncertified22 = 'Research use according to article 1(2)h of the council directive 93/42/EEC.';
   kUncertified31 = 'Einsatz nur zu Forschungszwecken.';
-  kUncertified32 = 'Researh use only.';
+  kUncertified32 = 'Research use only.';
   kUnCertified41 = 'Die Verwendung ist gemäß GCP, nach §12 MPG und Anhang X der Richtlinie 93/42/EWG zu dokumentieren.';
   kUnCertified42 = 'Usage has to be documented in accordance with GCP and annex X of the council directive 93/42/EEC.';
 

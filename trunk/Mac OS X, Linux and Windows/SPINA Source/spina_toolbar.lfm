@@ -11,7 +11,7 @@ object SPINAToolbar: TSPINAToolbar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 68
+  ClientHeight = 88
   ClientWidth = 883
   DefaultMonitor = dmMainForm
   DockSite = True
@@ -193,10 +193,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 787
-    Height = 17
+    Left = 782
+    Height = 16
     Top = 7
-    Width = 64
+    Width = 69
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
