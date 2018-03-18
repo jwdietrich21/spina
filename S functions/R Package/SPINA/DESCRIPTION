@@ -1,0 +1,15 @@
+Package: SPINA
+Type: Package
+Title: Structure Parameter Inference Approach with R
+Version: 4.1.0
+Date: 2018-03-18
+Maintainer: Johannes W. Dietrich <johannes.dietrich@ruhr-uni-bochum.de>
+Authors@R: c(person("Johannes W.", "Dietrich", 
+                     email = "johannes.dietrich@ruhr-uni-bochum.de",
+                     role = c("aut", "cph", "cre"))
+URL: http://spina.sf.net/
+Author: Johannes W. Dietrich [aut, cph, cre]
+Description: The functions described in this document are able to calculate structure
+parameters of endocrine homeostatic systems with the statistical environment R.
+License: BSD
+Depends: R (>= 3.0.0)
