@@ -1,76 +1,27 @@
 \name{estimated.GDTT}
 \alias{estimated.GDTT}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-}
-\description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-}
+\title{Calculated Sum Activity of Step-Up Deiodinases (SPINA-GD)}
+\description{Calculate total step-up deiodinase activity (SPINA-GD) from total hormone concentrations}
 \usage{
 estimated.GDTT(T4, T3)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{T4}{
-%%     ~~Describe \code{T4} here~~
+  \item{T4}{{Total thyroxine (TT4) concentration in nmol/L.}}
+  \item{T3}{Total triiodothyronine (TT3) concentation in pmol/L}
 }
-  \item{T3}{
-%%     ~~Describe \code{T3} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+\details{This function is able to do vectorised calculations.}
+\value{{This function returns step-up deiodinase activity as a numeric result representing a single value or a vector, depending on the vector length of the arguments. Results are in nmol/s.}
 \references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
+Dietrich J. W., Landgrafe G., Fotiadou E. H. 2012 TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. \emph{J Thyroid Res}. 2012;2012:351864. doi: 10.1155/2012/351864. PMID: 23365787; PMCID: PMC3544290.
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+Dietrich J. W., Landgrafe-Mende G., Wiora E., Chatzitomaris A., Klein H. H., Midgley J. E., Hoermann R. 2016 Calculated Parameters of Thyroid Homeostasis: Emerging Tools for  Differential Diagnosis and Clinical Research. \empf{Front Endocrinol (Lausanne)}. 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+}
+\author{Johannes W. Dietrich}
+\note{The software functions described in this document are intended for research
+use only. Hormone levels should have been obtained simultaneously in order to avoid
+bias by transition effects.}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{SPINA.GD}}, \code{\link{estimated.GT}}, \code{\link{SPINA.GT}}, \code{\link{estimated.GD}}, \code{\link{SPINA.GDTT}}, \code{\link{estimated.GTT}}, \code{\link{SPINA.GTT}}, \code{\link{estimated.sGD}}, \code{\link{SPINA.sGD}}, \code{\link{estimated.TSHI}}, \code{\link{ estimated.sTSHI}}, \code{\link{estimated.TTSI}},
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (T4, T3) 
-{
-    pico.factor <- 1e+12
-    nano.factor <- 1e+09
-    TBG <- 3e-07
-    TBPA <- 4.5e-06
-    k30 <- 2e+09
-    k41 <- 2e+10
-    k42 <- 2e+08
-    alpha31 <- 0.026
-    beta31 <- 8e-06
-    kM1 <- 5e-07
-    T4[which(T4 == 0)] = NA
-    T3 <- T3/pico.factor
-    T4 <- T4/pico.factor
-    FT4 <- T4/(1 + k41 * TBG + k42 * TBPA)
-    GD <- beta31 * (kM1 + FT4) * T3/(alpha31 * FT4) * nano.factor
-    return(GD)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{SPINA}
