@@ -6,10 +6,9 @@ Date: 2018-03-19
 Maintainer: Johannes W. Dietrich <johannes.dietrich@ruhr-uni-bochum.de>
 Authors@R: c(person("Johannes W.", "Dietrich", 
                      email = "johannes.dietrich@ruhr-uni-bochum.de",
-                     role = c("aut", "cph", "cre"))
+                     role = c("aut", "cph", "cre")))
 URL: http://spina.sf.net/
 Author: Johannes W. Dietrich [aut, cph, cre]
-Description: The functions described in this document help calculating structure
-parameters of endocrine homeostatic systems with the statistical environment R.
-License: BSD
+Description: The functions provided by the package "SPINA" and described in this document help calculating structure parameters of endocrine homeostatic systems with the statistical environment R.
+License: BSD_3_clause + file LICENSE
 Depends: R (>= 3.0.0)

@@ -1,69 +1,35 @@
 \name{estimated.GTT}
 \alias{estimated.GTT}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-}
-\description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-}
+\title{Calculated Thyroid's Secretory Capacity (SPINA-GT)}
+\description{Calculate thyroid's secretory capacity (SPINA-GT) from equilibrium TSH and total T4 concentrations.  }
 \usage{
 estimated.GTT(TSH, T4)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{TSH}{
-%%     ~~Describe \code{TSH} here~~
+  \item{TSH}{Thyrotropin (TSH) concentration in mIU/l}
+  \item{T4}{Total thyroxine (TT4) concentration in nmol/L}
 }
-  \item{T4}{
-%%     ~~Describe \code{T4} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+\details{This function is able to do vectorised calculations.  }
+\value{This function returns thyroid's secretory capacity as a numeric result representing a single value or a vector, depending on the vector length of the arguments. Results are in pmol/s.  }
 \references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
+Dietrich J. W., Landgrafe G., Fotiadou E. H. 2012 TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. \emph{J Thyroid Res}. 2012;2012:351864. doi: 10.1155/2012/351864. PMID: 23365787; PMCID: PMC3544290.
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+Dietrich J. W., Landgrafe-Mende G., Wiora E., Chatzitomaris A., Klein H. H., Midgley J. E., Hoermann R. 2016 Calculated Parameters of Thyroid Homeostasis: Emerging Tools for  Differential Diagnosis and Clinical Research. \emph{Front Endocrinol (Lausanne)}. 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+}
+\author{Johannes W. Dietrich}
+\note{The software functions described in this document are intended for research
+use only. Hormone levels should have been obtained simultaneously in order to avoid
+bias by transition effects.}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{SPINA.GT}}, \code{\link{estimated.GT}}, \code{\link{SPINA.GTT}}, \code{\link{SPINA.GD}}, \code{\link{estimated.GD}}, \code{\link{SPINA.GDTT}}, \code{\link{estimated.GDTT}}, \code{\link{SPINA.sGD}}, \code{\link{estimated.sGD}}, \code{\link{estimated.TSHI}}, \code{\link{estimated.sTSHI}}, \code{\link{estimated.TTSI}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (TSH, T4) 
-{
-    pico.factor <- 1e+12
-    nano.factor <- 1e+09
-    alphaT <- 0.1
-    betaT <- 1.1e-06
-    DT <- 2.75
-    TSH[which(TSH == 0)] = NA
-    T4 <- T4/nano.factor
-    GT <- betaT * (DT + TSH) * T4/(alphaT * TSH) * pico.factor
-    return(GT)
-  }
+TSH <- c(1, 3.24, 0.7);
+FT4 <- c(16.5, 7.7, 9);
+FT3 <- c(4.5, 28, 6.2);
+print(paste("GT^:", SPINA.GT(TSH, FT4)));
+print(paste("GD^:", SPINA.GD(FT4, FT3)));
+print(paste("sGD^:", SPINA.sGD(FT4, FT3)));
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{SPINA}
