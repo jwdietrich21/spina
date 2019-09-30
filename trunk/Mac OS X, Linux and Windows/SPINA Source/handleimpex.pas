@@ -10,10 +10,10 @@ unit HandleImpEx;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2016 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
+{ (c) Ruhr University of Bochum 2005 - 2019 }
 
 { This unit handles import and export of laboratory results and calculations }
 
@@ -22,14 +22,14 @@ unit HandleImpEx;
 
 {$mode objfpc}
 {$H+}
-{$J}
+//{$J}
 {$ASSERTIONS ON}
 
 interface
 
 uses
   Classes, SysUtils, Dialogs, LCLVersion, Math, FileUtil,
-  SPINA_Engine, SPINA_Types, UnitConverter, VersionSupport,
+  SPINA_Engine, SPINA_Types, UnitConverter, EnvironmentInfo,
   HL7, MSH, MSA, NTE, PID, PV1, OBR, OBX, SPM;
 
 type
@@ -174,7 +174,7 @@ begin
     ClearNTE(theNTE);
     theNTE.SetID   := '1';
     theNTE.CommentSource := 'O';
-    theNTE.comment := 'Data source: SPINA Thyr ' + GetFileVersion;
+    theNTE.comment := 'Data source: SPINA Thyr ' + FileVersion;
     SetNTE(HL7Message, theNTE);
 
     if aCaseRecord.T4Therapy then
@@ -512,7 +512,7 @@ begin
       theSPM.SpecimenCollectionDateTime := EncodedDateTime(aCaseRecord.OBDate);
     SetSPM(Hl7Message, theSPM);
 
-    WriteHL7File(HL7Message, UTF8ToSys(SPINAToolbar.SaveResultsDialog.FileName));
+    WriteHL7File(HL7Message, SPINAToolbar.SaveResultsDialog.FileName);
     DefaultFormatSettings.DecimalSeparator := oldSeparator;
   end;
 end;
@@ -538,7 +538,7 @@ begin
       DOBDateString + kCR + kLF + OBDateString + ' (' + aCaseRecord.Placer +
       ')' + kCR + kLF + kCR + kLF;
   theString := theHeader + gResultString;
-  SaveStringToPath(theString, UTF8ToSys(SPINAToolbar.SaveResultsDialog.FileName));
+  SaveStringToPath(theString, SPINAToolbar.SaveResultsDialog.FileName);
 end;
 
 function isLOINCTerm(ObsID: string; LOINCTerm: TLoincRecord): boolean;
@@ -755,7 +755,7 @@ begin
       theFilterIndex := theFilterIndex + 1;
     {$ENDIF}
     case theFilterIndex of
-      1: ReadHL7Message(UTF8ToSys(SPINAToolbar.OpenCaseDialog.FileName), caseRecord);
+      1: ReadHL7Message(SPINAToolbar.OpenCaseDialog.FileName, caseRecord);
     end;
   end;
 end;

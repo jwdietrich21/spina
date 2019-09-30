@@ -10,10 +10,10 @@ unit SPINA_SplashScreen;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2016 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
+{ (c) Ruhr University of Bochum 2005 - 2019 }
 
 { This unit implements a splash screen }
 
@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Grids, Menus, StdCtrls, SPINA_UserInterface, VersionSupport;
+  ExtCtrls, Grids, Menus, StdCtrls, SPINA_UserInterface, EnvironmentInfo;
 
 type
 
@@ -70,7 +70,7 @@ implementation
 
 procedure TSplashScreen.FormCreate(Sender: TObject);
 begin
-  VersionLabel.Caption := 'Version ' + GetFileVersion;
+  VersionLabel.Caption := 'Version ' + FileVersion;
   refresh;
   {$IFDEF LCLcarbon}
   FormStyle:=fsNormal;

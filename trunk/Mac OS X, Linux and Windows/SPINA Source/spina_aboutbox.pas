@@ -10,10 +10,10 @@ unit SPINA_AboutBox;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2016 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
+{ (c) Ruhr University of Bochum 2005 - 2019 }
 
 { This unit displays an information dialog }
 
@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, LCLIntf, ComCtrls, DOS, SPINA_Types, VersionSupport,
+  ExtCtrls, StdCtrls, LCLIntf, ComCtrls, DOS, SPINA_Types, EnvironmentInfo,
   HandlePreferences
   {$IFDEF Windows}
   , Windows, Win32Proc
@@ -161,50 +161,20 @@ begin
       {The following lines provide additional information}
       {on the software installation}
       AboutBox.Memo1.Lines.Clear;
-      AboutBox.Memo1.Lines.Add('SPINA Thyr ' + GetFileVersion);
+      AboutBox.Memo1.Lines.Add('SPINA Thyr ' + FileVersion);
       AboutBox.Memo1.Lines.Add('');
       AboutBox.Memo1.Lines.Add('Licence: BSD');
       AboutBox.Memo1.Lines.Add('');
-      AboutBox.Memo1.Lines.Add('File version: ' + GetFileVersion);
+      AboutBox.Memo1.Lines.Add('File version: ' + FileVersion);
       AboutBox.Memo1.Lines.Add('');
       AboutBox.Memo1.Lines.Add('Build Date: ' + {$I %DATE%} + ', ' + {$I %TIME%});
       AboutBox.Memo1.Lines.Add('');
       AboutBox.Memo1.Lines.Add('Developed with Lazarus / Free Pascal');
-      AboutBox.Memo1.Lines.Add('Built for '+ GetTargetInfo);
-      AboutBox.Memo1.Lines.Add('with '+ GetCompilerInfo + ' on '+ GetCompiledDate);
-      AboutBox.Memo1.Lines.Add('and using '+ GetLCLVersion + ' and ' + GetWidgetset);
+      AboutBox.Memo1.Lines.Add('Built for ' + PlatformInfo.OS + ' (' + PlatformInfo.CPU + ')');
+      AboutBox.Memo1.Lines.Add('with ' + CompilerVersion + ' on '+ DateOfCompilingAsString);
+      AboutBox.Memo1.Lines.Add('and using ' + EnvironmentInfo.LCLVersion + ' with ' + CurrentWidgetSet);
       AboutBox.Memo1.Lines.Add('');
-      {$IFDEF LCLcarbon}
-      theError := Gestalt(gestaltSystemVersionMajor, Major);
-      if theError = 0 then
-        MajVer := IntToStr(Major)
-      else
-        MajVer := '';
-      theError := Gestalt(gestaltSystemVersionMinor, Minor);
-      if theError = 0 then
-        MinVer := IntToStr(Minor)
-      else
-        MinVer := '';
-      theError := Gestalt(gestaltSystemVersionBugFix, Bugfix);
-      if theError = 0 then
-        BugfixVer := IntToStr(Bugfix)
-      else
-        BugfixVer := '';
-      if SystemStem <> 'Mac OS X 10.' then
-        SystemStem := 'Mac OS ' + MajVer + '.';
-      VersionString := SystemStem + MinVer + '.' + BugfixVer;
-      {$ELSE}
-      {$IFDEF WINDOWS}
-      MajVer := IntToStr(Win32MajorVersion);
-      MinVer := IntToStr(Win32MinorVersion);
-      VersionString := SystemStem + MajVer + '.' + MinVer;
-      {$ELSE}
-      MajVer := IntToStr(Lo(DosVersion) - 4);
-      MinVer := IntToStr(Hi(DosVersion));
-      VersionString := SystemStem + MajVer + '.' + MinVer;
-      {$ENDIF}
-      {$ENDIF}
-      AboutBox.Memo1.Lines.Add('Operating system: ' + GetOS + ' (' + VersionString + ')');
+      AboutBox.Memo1.Lines.Add('Operating system: ' + PlatformInfo.OS + ' (' + SystemVersion + ')');
       AboutBox.AlphaBlendValue := 255;
       AboutBox.ShowModal;
     end;
@@ -238,7 +208,7 @@ procedure TAboutBox.FormCreate(Sender: TObject);
 begin
   if YosemiteOrNewer then
     OKButton.Height := 22;
-  VersionLabel.Caption := 'Version ' + GetFileVersion;
+  VersionLabel.Caption := 'Version ' + FileVersion;
 end;
 
 procedure TAboutBox.FormKeyDown(Sender: TObject; var Key: Word;

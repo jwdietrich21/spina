@@ -10,9 +10,9 @@ unit SPINA_ResultDialog;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 20165 }
 
 { This unit delivers a dialog box with calculation results }

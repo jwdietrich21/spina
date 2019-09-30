@@ -10,10 +10,10 @@ unit CDISC;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2016 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
+{ (c) Ruhr University of Bochum 2005 - 2019 }
 
 { This unit handles CDISC XML files for reference ranges }
 
@@ -1210,7 +1210,7 @@ begin
     NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
-    writeXMLFile(Doc, UTF8ToSys(theFileName));
+    writeXMLFile(Doc, theFileName);  // was writeXMLFile(Doc, UTF8ToSys(theFileName));
 
     returnCode := 0;
   finally
