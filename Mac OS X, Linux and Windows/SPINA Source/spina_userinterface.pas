@@ -851,7 +851,6 @@ procedure AdaptMenus;
 {platform-sensitive adjustmens of menus}
 var
   modifierKey: TShiftState;
-  theForm: TForm;
 begin
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];
@@ -861,6 +860,18 @@ begin
   Hauptschirm.Divider_2_3.Visible := False;
   Hauptschirm.WinPreferencesItem.Visible := False;
   {$ELSE}
+  {$IFDEF LCLCocoa}
+  modifierKey := [ssMeta];
+  Hauptschirm.AboutMenuItem.Visible := False;
+  Hauptschirm.Divider_3_1.Visible := False;
+  Hauptschirm.AppleMenu.Visible := True;
+  Hauptschirm.Divider_2_3.Visible := False;
+  Hauptschirm.WinPreferencesItem.Visible := False;
+  Hauptschirm.Color := clDefault;
+  Hauptschirm.TSH_Text.Color := clDefault;
+  Hauptschirm.FT4_Text.Color := clDefault;
+  Hauptschirm.FT3_Text.Color := clDefault;;
+  {$ELSE}
   modifierKey := [ssCtrl];
   Hauptschirm.AboutMenuItem.Visible := True;
   Hauptschirm.Divider_3_1.Visible := True;
@@ -868,6 +879,7 @@ begin
   Hauptschirm.Divider_2_3.Visible := True;
   Hauptschirm.WinPreferencesItem.Visible := True;
   Hauptschirm.HelpItem.ShortCut := ShortCut(VK_F1, []);
+  {$ENDIF}
   {$ENDIF}
   Hauptschirm.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
   Hauptschirm.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
@@ -922,7 +934,14 @@ begin
 end;
 
 procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
+var
+  MandatoryColor: TColor;
 begin
+  {$IFDEF LCLCocoa}
+  MandatoryColor := clDefault;
+  {$ELSE}
+  MandatoryColor := gPreferences.MandatoryColor;
+  {$ENDIF}
   if gPreferences.colouriseMandatoryFields then
   begin {should mandatory fields be colourised?}
     if Hauptschirm.TherapyCheckGroup.Checked[0] then {rhTSH therapy}
@@ -930,22 +949,22 @@ begin
       if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
         Hauptschirm.TSH_Text.Color := clDefault
       else
-        Hauptschirm.TSH_Text.Color := gPreferences.MandatoryColor;
+        Hauptschirm.TSH_Text.Color := MandatoryColor;
     end
     else
     begin
-      Hauptschirm.TSH_Text.Color := gPreferences.MandatoryColor;
+      Hauptschirm.TSH_Text.Color := MandatoryColor;
     end;
     if Hauptschirm.TherapyCheckGroup.Checked[1] then {T4 substitution}
     begin
       if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
         Hauptschirm.FT4_Text.Color := clDefault
       else
-        Hauptschirm.FT4_Text.Color := gPreferences.MandatoryColor;
+        Hauptschirm.FT4_Text.Color := MandatoryColor;
     end
     else
     begin
-      Hauptschirm.FT4_Text.Color := gPreferences.MandatoryColor;
+      Hauptschirm.FT4_Text.Color := MandatoryColor;
     end;
     if Hauptschirm.TherapyCheckGroup.Checked[2] then {T3 substitution}
     begin
@@ -953,7 +972,7 @@ begin
     end
     else
     begin
-      Hauptschirm.FT3_Text.Color := gPreferences.MandatoryColor;
+      Hauptschirm.FT3_Text.Color := MandatoryColor;
     end;
   end
   else
