@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
@@ -23,18 +23,25 @@
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="default" Default="True"/>
+      <SharedMatrixOptions Count="1">
+        <Item1 ID="577517658593" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+      </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
-      <IgnoreBinaries Value="False"/>
-      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
-      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
     </PublishOptions>
     <RunParams>
       <local>
-        <FormatVersion Value="1"/>
         <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
       </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default">
+          <local>
+            <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+          </local>
+        </Mode0>
+      </Modes>
     </RunParams>
     <RequiredPackages Count="2">
       <Item1>
@@ -63,7 +70,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
         <EditorIndex Value="25"/>
-        <CursorPos Y="1149"/>
+        <TopLine Value="36"/>
+        <CursorPos X="24" Y="45"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -263,9 +271,10 @@
         <Filename Value="handlepreferences.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="566"/>
-        <CursorPos X="46" Y="16"/>
+        <TopLine Value="88"/>
+        <CursorPos X="15" Y="112"/>
         <UsageCount Value="186"/>
         <Loaded Value="True"/>
       </Unit26>
@@ -657,9 +666,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CaseEditor"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="20"/>
-        <TopLine Value="38"/>
+        <TopLine Value="39"/>
         <CursorPos X="82" Y="53"/>
         <UsageCount Value="112"/>
         <Loaded Value="True"/>
@@ -955,7 +963,7 @@
         <UsageCount Value="10"/>
       </Unit120>
     </Units>
-    <JumpHistory Count="24" HistoryIndex="23">
+    <JumpHistory Count="25" HistoryIndex="24">
       <Position1>
         <Filename Value="spina_userinterface.pas"/>
         <Caret Line="1175" TopLine="1144"/>
@@ -1052,6 +1060,10 @@
         <Filename Value="handleimpex.pas"/>
         <Caret Line="77" Column="25" TopLine="49"/>
       </Position24>
+      <Position25>
+        <Filename Value="caseeditor.pas"/>
+        <Caret Line="53" Column="82" TopLine="39"/>
+      </Position25>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

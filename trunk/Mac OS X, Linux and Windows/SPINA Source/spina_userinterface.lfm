@@ -16,9 +16,8 @@ object Hauptschirm: THauptschirm
   ChildSizing.EnlargeVertical = crsScaleChilds
   ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
   ChildSizing.ShrinkVertical = crsHomogenousChildResize
-  ClientHeight = 365
+  ClientHeight = 385
   ClientWidth = 753
-  Color = clWhite
   Constraints.MinHeight = 350
   Constraints.MinWidth = 520
   Icon.Data = {
@@ -325,11 +324,11 @@ object Hauptschirm: THauptschirm
   OnWindowStateChange = FormWindowStateChange
   ParentBiDiMode = False
   Position = poScreenCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.4.0'
   object Calculate_Button: TButton
     Left = 624
     Height = 24
-    Top = 327
+    Top = 344
     Width = 116
     Anchors = [akRight, akBottom]
     Caption = 'Berechnen'
@@ -339,11 +338,11 @@ object Hauptschirm: THauptschirm
   end
   object FT4Items: TComboBox
     Left = 128
-    Height = 23
+    Height = 21
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       'ng/dl'
       'ng/l'
@@ -356,11 +355,11 @@ object Hauptschirm: THauptschirm
   end
   object T4Items: TComboBox
     Left = 184
-    Height = 23
+    Height = 21
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       'µg/l'
       'µg/dl'
@@ -372,11 +371,11 @@ object Hauptschirm: THauptschirm
   end
   object FT3Items: TComboBox
     Left = 184
-    Height = 23
+    Height = 21
     Top = 200
     Width = 41
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       'pg/ml'
       'ng/l'
@@ -388,11 +387,11 @@ object Hauptschirm: THauptschirm
   end
   object T3Items: TComboBox
     Left = 184
-    Height = 23
+    Height = 21
     Top = 224
     Width = 41
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       'µg/l'
       'ng/dl'
@@ -405,14 +404,13 @@ object Hauptschirm: THauptschirm
   end
   object Panel1: TPanel
     Left = 13
-    Height = 313
+    Height = 333
     Top = 8
     Width = 727
     Anchors = [akTop, akLeft, akRight, akBottom]
     BevelOuter = bvNone
-    ClientHeight = 313
+    ClientHeight = 333
     ClientWidth = 727
-    Color = clWhite
     ParentColor = False
     PopupMenu = PopupMenu1
     TabOrder = 5
@@ -433,9 +431,8 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 72
-      ClientWidth = 210
-      Color = clWhite
+      ClientHeight = 70
+      ClientWidth = 206
       Items.Strings = (
         'rhTSH-Substitution'
         'T4-Substitution'
@@ -453,19 +450,20 @@ object Hauptschirm: THauptschirm
     end
     object ResultGroupBox: TGroupBox
       Left = 510
-      Height = 197
-      Top = 112
+      Height = 206
+      Top = 106
       Width = 216
       Anchors = [akTop, akRight, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 177
-      ClientWidth = 212
+      ClientHeight = 184
+      ClientWidth = 208
+      ParentColor = False
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 161
+        Height = 168
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -485,19 +483,20 @@ object Hauptschirm: THauptschirm
     end
     object HintGroupBox: TGroupBox
       Left = 3
-      Height = 197
-      Top = 112
+      Height = 206
+      Top = 106
       Width = 216
       Anchors = [akTop, akLeft, akBottom]
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 177
-      ClientWidth = 212
+      ClientHeight = 184
+      ClientWidth = 208
+      ParentColor = False
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 161
+        Height = 168
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -625,19 +624,19 @@ object Hauptschirm: THauptschirm
     end
     object ValuesGroupBox: TGroupBox
       Left = 231
-      Height = 301
+      Height = 304
       Top = 8
       Width = 271
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 281
-      ClientWidth = 267
+      ClientHeight = 282
+      ClientWidth = 263
       ParentColor = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
       object Image1: TImage
-        Left = 26
+        Left = 22
         Height = 229
         Top = 25
         Width = 240
@@ -849,8 +848,8 @@ object Hauptschirm: THauptschirm
         Transparent = True
       end
       object FT4_Text: TEdit
-        Left = 106
-        Height = 23
+        Left = 102
+        Height = 22
         Hint = '(F)T4'
         Top = 232
         Width = 56
@@ -859,8 +858,8 @@ object Hauptschirm: THauptschirm
         Text = '0'
       end
       object FT3_Text: TEdit
-        Left = 202
-        Height = 23
+        Left = 198
+        Height = 22
         Hint = '(F)T3'
         Top = 37
         Width = 54
@@ -869,14 +868,14 @@ object Hauptschirm: THauptschirm
         Text = '0'
       end
       object TSHUnitComboBox: TComboBox
-        Left = 10
+        Left = 6
         Height = 21
         Hint = 'Maßeinheit'
         Top = 61
         Width = 66
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'mIU/l'
@@ -889,14 +888,14 @@ object Hauptschirm: THauptschirm
         Text = 'mIU/l'
       end
       object T4UnitComboBox: TComboBox
-        Left = 168
+        Left = 164
         Height = 21
         Hint = 'Maßeinheit'
         Top = 232
         Width = 67
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'ng/dl'
@@ -909,14 +908,14 @@ object Hauptschirm: THauptschirm
         Text = 'ng/dl'
       end
       object T3UnitComboBox: TComboBox
-        Left = 200
+        Left = 196
         Height = 21
         Hint = 'Maßeinheit'
         Top = 59
         Width = 66
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'pg/ml'
@@ -929,14 +928,14 @@ object Hauptschirm: THauptschirm
         Text = 'pg/ml'
       end
       object T3MethodComboBox: TComboBox
-        Left = 202
+        Left = 198
         Height = 21
         Hint = 'Methode'
         Top = 13
         Width = 56
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'FT3'
@@ -948,14 +947,14 @@ object Hauptschirm: THauptschirm
         Text = 'FT3'
       end
       object T4MethodComboBox: TComboBox
-        Left = 44
+        Left = 40
         Height = 21
         Hint = 'Methode'
         Top = 232
         Width = 56
         Anchors = [akTop, akRight]
         Font.Height = -11
-        ItemHeight = 13
+        ItemHeight = 0
         ItemIndex = 0
         Items.Strings = (
           'FT4'
@@ -967,8 +966,8 @@ object Hauptschirm: THauptschirm
         Text = 'FT4'
       end
       object TSH_Text: TEdit
-        Left = 10
-        Height = 23
+        Left = 6
+        Height = 22
         Hint = 'TSH'
         Top = 37
         Width = 56
@@ -977,10 +976,10 @@ object Hauptschirm: THauptschirm
         Text = '0'
       end
       object Label1: TLabel
-        Left = 10
-        Height = 15
+        Left = 3
+        Height = 16
         Top = 15
-        Width = 22
+        Width = 25
         Anchors = [akTop, akRight]
         Caption = 'TSH'
         ParentColor = False
@@ -993,8 +992,8 @@ object Hauptschirm: THauptschirm
     Cursor = crHandPoint
     Left = 16
     Height = 12
-    Top = 333
-    Width = 49
+    Top = 350
+    Width = 53
     Caption = 'SPINA Thyr'
     Font.Color = clBlack
     Font.Height = -10
