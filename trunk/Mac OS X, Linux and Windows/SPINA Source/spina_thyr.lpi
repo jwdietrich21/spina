@@ -17,7 +17,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="814"/>
+      <BuildNr Value="815"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.1.0 Bonfire" LegalCopyright="1994-2019 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.1.0"/>
     </VersionInfo>
@@ -52,7 +52,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="121">
+    <Units Count="126">
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -69,10 +69,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="25"/>
-        <TopLine Value="941"/>
-        <CursorPos X="51" Y="964"/>
+        <TopLine Value="894"/>
+        <CursorPos Y="910"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -88,43 +87,43 @@
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
         <TopLine Value="3224"/>
         <CursorPos Y="3239"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit2>
       <Unit3>
         <Filename Value="C:\lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="8225"/>
         <CursorPos Y="8244"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit3>
       <Unit4>
         <Filename Value="C:\lazarus\lcl\include\buttons.inc"/>
         <TopLine Value="133"/>
         <CursorPos Y="151"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit4>
       <Unit5>
         <Filename Value="C:\lazarus\lcl\include\menuitem.inc"/>
         <TopLine Value="394"/>
         <CursorPos Y="415"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit5>
       <Unit6>
         <Filename Value="unit1.lfm"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit6>
       <Unit7>
         <Filename Value="C:\lazarus\lcl\menus.pp"/>
         <TopLine Value="506"/>
         <CursorPos X="52" Y="519"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit7>
       <Unit8>
         <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\classesh.inc"/>
         <TopLine Value="85"/>
         <CursorPos X="5" Y="106"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="10"/>
       </Unit8>
       <Unit9>
         <Filename Value="spina_splashscreen.pas"/>
@@ -134,6 +133,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_SplashScreen"/>
         <EditorIndex Value="8"/>
+        <TopLine Value="51"/>
         <CursorPos X="23" Y="2"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -143,14 +143,14 @@
         <Filename Value="C:\lazarus\lcl\interfaces\win32\win32wscontrols.pp"/>
         <TopLine Value="212"/>
         <CursorPos Y="233"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit10>
       <Unit11>
         <Filename Value="C:\lazarus\lcl\include\customform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2623"/>
         <CursorPos Y="2642"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="10"/>
       </Unit11>
       <Unit12>
         <Filename Value="spina_aboutbox.pas"/>
@@ -188,24 +188,24 @@
         <Filename Value="C:\Developer\lazarus\components\printers\carbon\carbonprndialogs.inc"/>
         <TopLine Value="23"/>
         <CursorPos X="41" Y="38"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="10"/>
       </Unit14>
       <Unit15>
         <Filename Value="C:\Developer\lazarus\lcl\include\canvas.inc"/>
         <TopLine Value="1524"/>
         <CursorPos Y="1538"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit15>
       <Unit16>
         <Filename Value="C:\Developer\lazarus\lcl\printers.pas"/>
         <TopLine Value="421"/>
         <CursorPos Y="435"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit16>
       <Unit17>
         <Filename Value="C:\lazarus\lcl\printers.pas"/>
         <CursorPos Y="424"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit17>
       <Unit18>
         <Filename Value="spina_engine.pas"/>
@@ -220,25 +220,25 @@
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\cssmkrapi.pas"/>
         <TopLine Value="315"/>
         <CursorPos X="120" Y="337"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit19>
       <Unit20>
         <Filename Value="C:\Developer\lazarus\lcl\lcltype.pp"/>
         <TopLine Value="2894"/>
         <CursorPos Y="2911"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit20>
       <Unit21>
         <Filename Value="C:\Developer\lazarus\lcl\include\customform.inc"/>
         <TopLine Value="2821"/>
         <CursorPos Y="2838"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit21>
       <Unit22>
         <Filename Value="C:\Developer\lazarus\lcl\include\application.inc"/>
         <TopLine Value="2071"/>
         <CursorPos Y="2088"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit22>
       <Unit23>
         <Filename Value="spina_types.pas"/>
@@ -260,34 +260,34 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="68"/>
         <CursorPos X="5" Y="87"/>
-        <UsageCount Value="90"/>
+        <UsageCount Value="89"/>
       </Unit24>
       <Unit25>
         <Filename Value="C:\Developer\lazarus\lcl\include\control.inc"/>
         <TopLine Value="4155"/>
         <CursorPos Y="4172"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit25>
       <Unit26>
         <Filename Value="handlepreferences.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="352"/>
-        <CursorPos X="24" Y="372"/>
-        <UsageCount Value="186"/>
+        <CursorPos X="33" Y="109"/>
+        <UsageCount Value="191"/>
         <Loaded Value="True"/>
       </Unit26>
       <Unit27>
         <Filename Value="C:\Endokrinologie\SD\TFC\SimThyr\code\trunk\simoptions.lfm"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit27>
       <Unit28>
         <Filename Value="C:\lazarus\lcl\lclclasses.pp"/>
         <TopLine Value="17"/>
         <CursorPos X="26" Y="36"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit28>
       <Unit29>
         <Filename Value="spina_toolbar.pas"/>
@@ -307,35 +307,35 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1393"/>
         <CursorPos Y="1412"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit30>
       <Unit31>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\fcl-xml\src\xmlread.pp"/>
         <TopLine Value="29"/>
         <CursorPos X="11" Y="44"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit31>
       <Unit32>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\fcl-xml\src\dom.pp"/>
         <TopLine Value="875"/>
         <CursorPos X="27" Y="1019"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit32>
       <Unit33>
         <Filename Value="spina_userinterface.lrs"/>
         <CursorPos Y="1104"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="10"/>
       </Unit33>
       <Unit34>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\fp.pas"/>
         <CursorPos X="10" Y="890"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit34>
       <Unit35>
         <Filename Value="C:\Developer\lazarus\lcl\include\customactionlist.inc"/>
         <TopLine Value="43"/>
         <CursorPos Y="61"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit35>
       <Unit36>
         <Filename Value="setpreferences.pas"/>
@@ -345,9 +345,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SetPreferences"/>
         <EditorIndex Value="27"/>
-        <TopLine Value="795"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="196"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit36>
@@ -359,75 +357,75 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="26"/>
         <CursorPos X="46" Y="16"/>
-        <UsageCount Value="186"/>
+        <UsageCount Value="191"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit37>
       <Unit38>
         <Filename Value="spina_toolbar.lfm"/>
         <TopLine Value="201"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit38>
       <Unit39>
         <Filename Value="vs-chs01\users\Developer\lazarus\lcl\include\customform.inc"/>
         <TopLine Value="138"/>
         <CursorPos Y="155"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit39>
       <Unit40>
         <Filename Value="C:\Developer\lazarus\lcl\graphics.pp"/>
         <TopLine Value="39"/>
         <CursorPos X="3" Y="56"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit40>
       <Unit41>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\objpas\sysutils\osutilsh.inc"/>
         <TopLine Value="26"/>
         <CursorPos X="10" Y="44"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit41>
       <Unit42>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\win\wininc\redef.inc"/>
         <TopLine Value="612"/>
         <CursorPos X="10" Y="628"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit42>
       <Unit43>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
         <TopLine Value="1688"/>
         <CursorPos X="3" Y="1706"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit43>
       <Unit44>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\packages\fcl-base\src\gettext.pp"/>
         <CursorPos X="13" Y="72"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit44>
       <Unit45>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\objpas\sysutils\osutil.inc"/>
         <TopLine Value="90"/>
         <CursorPos X="3" Y="93"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit45>
       <Unit46>
         <Filename Value="C:\lazarus\lcl\include\buttoncontrol.inc"/>
         <TopLine Value="38"/>
         <CursorPos Y="56"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit46>
       <Unit47>
         <Filename Value="C:\lazarus\lcl\lclmessageglue.pas"/>
         <TopLine Value="100"/>
         <CursorPos Y="117"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit47>
       <Unit48>
         <Filename Value="C:\lazarus\lcl\interfaces\win32\win32callback.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2652"/>
         <CursorPos Y="2671"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit48>
       <Unit49>
         <Filename Value="C:\lazarus\lcl\interfaces\win32\win32wsforms.pp"/>
@@ -435,13 +433,13 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="368"/>
         <CursorPos Y="386"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit49>
       <Unit50>
         <Filename Value="measurementparser.pas"/>
         <TopLine Value="21"/>
         <CursorPos X="49" Y="29"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="19"/>
       </Unit50>
       <Unit51>
         <Filename Value="unitconverter.pas"/>
@@ -449,7 +447,7 @@
         <UnitName Value="UnitConverter"/>
         <EditorIndex Value="6"/>
         <CursorPos X="32" Y="4"/>
-        <UsageCount Value="168"/>
+        <UsageCount Value="173"/>
         <Loaded Value="True"/>
       </Unit51>
       <Unit52>
@@ -464,43 +462,43 @@
           <TopLine Value="6"/>
           <CursorPos X="26" Y="29"/>
         </ExtraEditor1>
-        <UsageCount Value="166"/>
+        <UsageCount Value="171"/>
         <Loaded Value="True"/>
       </Unit52>
       <Unit53>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\objpas\classes\classesh.inc"/>
         <TopLine Value="862"/>
         <CursorPos X="30" Y="879"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit53>
       <Unit54>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\objpas\classes\streams.inc"/>
         <TopLine Value="1163"/>
         <CursorPos Y="1198"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit54>
       <Unit55>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\inc\systemh.inc"/>
         <TopLine Value="796"/>
         <CursorPos X="14" Y="814"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit55>
       <Unit56>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\inc\system.inc"/>
         <TopLine Value="610"/>
         <CursorPos X="3" Y="612"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit56>
       <Unit57>
         <Filename Value="C:\lazarus\lcl\dialogs.pp"/>
         <CursorPos X="3" Y="215"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit57>
       <Unit58>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\packages\fcl-xml\src\dom.pp"/>
         <TopLine Value="3118"/>
         <CursorPos X="38" Y="3144"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit58>
       <Unit59>
         <Filename Value="hl7.pas"/>
@@ -513,7 +511,7 @@
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="161"/>
+        <UsageCount Value="166"/>
         <Loaded Value="True"/>
       </Unit59>
       <Unit60>
@@ -529,7 +527,7 @@
           <TopLine Value="43"/>
           <CursorPos X="33" Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="155"/>
+        <UsageCount Value="160"/>
         <Loaded Value="True"/>
       </Unit60>
       <Unit61>
@@ -538,7 +536,7 @@
         <UnitName Value="MSA"/>
         <EditorIndex Value="9"/>
         <CursorPos X="49" Y="13"/>
-        <UsageCount Value="155"/>
+        <UsageCount Value="160"/>
         <Loaded Value="True"/>
       </Unit61>
       <Unit62>
@@ -555,7 +553,7 @@
           <TopLine Value="275"/>
           <CursorPos X="3" Y="285"/>
         </ExtraEditor1>
-        <UsageCount Value="155"/>
+        <UsageCount Value="160"/>
         <Loaded Value="True"/>
       </Unit62>
       <Unit63>
@@ -571,35 +569,35 @@
           <TopLine Value="37"/>
           <CursorPos X="13" Y="14"/>
         </ExtraEditor1>
-        <UsageCount Value="155"/>
+        <UsageCount Value="160"/>
         <Loaded Value="True"/>
       </Unit63>
       <Unit64>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\inc\systemh.inc"/>
         <TopLine Value="566"/>
         <CursorPos X="40" Y="584"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit64>
       <Unit65>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\GestaltEqu.pas"/>
         <CursorPos X="66" Y="273"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit65>
       <Unit66>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\MacTypes.pas"/>
         <TopLine Value="421"/>
         <CursorPos X="9" Y="438"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit66>
       <Unit67>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\inc\wstringh.inc"/>
         <CursorPos X="11" Y="32"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit67>
       <Unit68>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\win\wininc\ascdef.inc"/>
         <CursorPos X="10" Y="59"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit68>
       <Unit69>
         <Filename Value="cdisc.pas"/>
@@ -612,30 +610,30 @@
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="143"/>
+        <UsageCount Value="148"/>
         <Loaded Value="True"/>
       </Unit69>
       <Unit70>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\inc\heaph.inc"/>
         <TopLine Value="65"/>
         <CursorPos X="10" Y="93"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit70>
       <Unit71>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\Folders.pas"/>
         <TopLine Value="192"/>
         <CursorPos X="9" Y="209"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit71>
       <Unit72>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\Files.pas"/>
         <TopLine Value="419"/>
         <CursorPos X="9" Y="436"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit72>
       <Unit73>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\MacOSAll.pas"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit73>
       <Unit74>
         <Filename Value="spina_resources.pas"/>
@@ -650,14 +648,14 @@
           <TopLine Value="93"/>
           <CursorPos X="53" Y="105"/>
         </ExtraEditor1>
-        <UsageCount Value="134"/>
+        <UsageCount Value="139"/>
         <Loaded Value="True"/>
       </Unit74>
       <Unit75>
         <Filename Value="C:\lazarus\fpc\2.6.2\source\rtl\objpas\sysutils\datih.inc"/>
         <TopLine Value="95"/>
         <CursorPos X="10" Y="112"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit75>
       <Unit76>
         <Filename Value="caseeditor.pas"/>
@@ -669,7 +667,7 @@
         <EditorIndex Value="20"/>
         <TopLine Value="39"/>
         <CursorPos X="82" Y="53"/>
-        <UsageCount Value="112"/>
+        <UsageCount Value="117"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit76>
@@ -677,7 +675,7 @@
         <Filename Value="C:\Developer\lazarus\lcl\menus.pp"/>
         <TopLine Value="395"/>
         <CursorPos X="10" Y="412"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit77>
       <Unit78>
         <Filename Value="pid.pas"/>
@@ -685,7 +683,7 @@
         <UnitName Value="PID"/>
         <EditorIndex Value="12"/>
         <CursorPos X="49" Y="13"/>
-        <UsageCount Value="105"/>
+        <UsageCount Value="110"/>
         <Loaded Value="True"/>
       </Unit78>
       <Unit79>
@@ -694,7 +692,7 @@
         <UnitName Value="PV1"/>
         <EditorIndex Value="13"/>
         <CursorPos X="49" Y="13"/>
-        <UsageCount Value="105"/>
+        <UsageCount Value="110"/>
         <Loaded Value="True"/>
       </Unit79>
       <Unit80>
@@ -703,73 +701,73 @@
         <UnitName Value="SPM"/>
         <EditorIndex Value="16"/>
         <CursorPos X="49" Y="13"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="106"/>
         <Loaded Value="True"/>
       </Unit80>
       <Unit81>
         <Filename Value="C:\Developer\lazarus\lcl\editbtn.pas"/>
         <TopLine Value="7"/>
         <CursorPos X="20" Y="26"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit81>
       <Unit82>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\objpas\sysutils\sysinth.inc"/>
         <CursorPos X="22" Y="66"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit82>
       <Unit83>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\objpas\sysutils\sysinth.inc"/>
         <CursorPos X="83" Y="5"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit83>
       <Unit84>
         <Filename Value="Barcode.pas"/>
         <EditorIndex Value="24"/>
         <CursorPos X="16" Y="423"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="38"/>
         <Loaded Value="True"/>
       </Unit84>
       <Unit85>
         <Filename Value="C:\Developer\lazarus\components\printers\carbon\carbonprinters.inc"/>
         <TopLine Value="346"/>
         <CursorPos Y="366"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit85>
       <Unit86>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\objpas\classes\classesh.inc"/>
         <TopLine Value="640"/>
         <CursorPos X="21" Y="657"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit86>
       <Unit87>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\objpas\classes\stringl.inc"/>
         <TopLine Value="663"/>
         <CursorPos X="3" Y="669"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit87>
       <Unit88>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\PMCoreDeprecated.pas"/>
         <TopLine Value="1296"/>
         <CursorPos X="25" Y="1327"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit88>
       <Unit89>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\PMDefinitions.pas"/>
         <TopLine Value="175"/>
         <CursorPos X="9" Y="194"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit89>
       <Unit90>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\PMCore.pas"/>
         <TopLine Value="768"/>
         <CursorPos X="58" Y="782"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit90>
       <Unit91>
         <Filename Value="C:\lazarus\components\lazutils\fileutil.pas"/>
         <TopLine Value="199"/>
         <CursorPos X="10" Y="217"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit91>
       <Unit92>
         <Filename Value="nte.pas"/>
@@ -777,49 +775,49 @@
         <UnitName Value="NTE"/>
         <EditorIndex Value="11"/>
         <CursorPos X="49" Y="13"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="76"/>
         <Loaded Value="True"/>
       </Unit92>
       <Unit93>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\win\sysutils.pp"/>
         <TopLine Value="108"/>
         <CursorPos X="5" Y="122"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit93>
       <Unit94>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\DateTimeUtils.pas"/>
         <TopLine Value="996"/>
         <CursorPos X="2" Y="21"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit94>
       <Unit95>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\CFDate.pas"/>
         <TopLine Value="219"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit95>
       <Unit96>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\CFDateFormatter.pas"/>
         <TopLine Value="172"/>
         <CursorPos X="9" Y="190"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit96>
       <Unit97>
         <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\CFBase.pas"/>
         <TopLine Value="286"/>
         <CursorPos X="75" Y="303"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit97>
       <Unit98>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\objpas\sysutils\sysstrh.inc"/>
         <TopLine Value="155"/>
         <CursorPos X="23" Y="172"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit98>
       <Unit99>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\objpas\sysutils\sysstr.inc"/>
         <TopLine Value="1015"/>
         <CursorPos X="4" Y="1019"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit99>
       <Unit100>
         <Filename Value="mllp.pas"/>
@@ -827,74 +825,74 @@
         <UnitName Value="MLLP"/>
         <EditorIndex Value="17"/>
         <CursorPos X="48" Y="13"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="65"/>
         <Loaded Value="True"/>
       </Unit100>
       <Unit101>
         <Filename Value="C:\lazarus\lcl\editbtn.pas"/>
         <TopLine Value="2099"/>
         <CursorPos X="3" Y="2102"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit101>
       <Unit102>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\win\wininc\redef.inc"/>
         <TopLine Value="448"/>
         <CursorPos X="40" Y="448"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit102>
       <Unit103>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\unix\unix.pp"/>
         <TopLine Value="108"/>
         <CursorPos X="24" Y="125"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit103>
       <Unit104>
         <Filename Value="C:\Developer\lazarus\lcl\dialogs.pp"/>
         <TopLine Value="14"/>
         <CursorPos X="3" Y="32"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit104>
       <Unit105>
         <Filename Value="C:\usr\local\share\fpcsrc\rtl\unix\sysunixh.inc"/>
         <TopLine Value="10"/>
         <CursorPos X="2" Y="28"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit105>
       <Unit106>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\packages\fcl-xml\src\dom.pp"/>
         <TopLine Value="274"/>
         <CursorPos X="14" Y="292"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit106>
       <Unit107>
         <Filename Value="C:\Developer\lazarus\lcl\include\filedialog.inc"/>
         <TopLine Value="35"/>
         <CursorPos Y="53"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit107>
       <Unit108>
         <Filename Value="C:\Developer\lazarus\lcl\include\toolbutton.inc"/>
         <TopLine Value="116"/>
         <CursorPos Y="133"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit108>
       <Unit109>
         <Filename Value="C:\Developer\lazarus\lcl\include\wincontrol.inc"/>
         <TopLine Value="5273"/>
         <CursorPos Y="5291"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit109>
       <Unit110>
         <Filename Value="C:\Developer\lazarus\lcl\lclmessageglue.pas"/>
         <TopLine Value="95"/>
         <CursorPos Y="112"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit110>
       <Unit111>
         <Filename Value="C:\Developer\lazarus\lcl\interfaces\carbon\carbonobject.inc"/>
         <TopLine Value="676"/>
         <CursorPos Y="694"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit111>
       <Unit112>
         <Filename Value="C:\Developer\lazarus 1.4.4\lcl\dialogs.pp"/>
@@ -902,33 +900,33 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="505"/>
         <CursorPos X="11" Y="522"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit112>
       <Unit113>
         <Filename Value="Developer\lazarus 1.4.4\lcl\dialogs.pp"/>
         <UnitName Value="Dialogs"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="22" Y="522"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit113>
       <Unit114>
         <Filename Value="Developer\lazarus 1.4.4\lcl\include\customform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2520"/>
         <CursorPos X="14" Y="2537"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit114>
       <Unit115>
         <Filename Value="Samples\Sample_0.hl7"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit115>
       <Unit116>
         <Filename Value="Samples\Sample_2.hl7"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="6"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit116>
       <Unit117>
@@ -936,7 +934,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="125"/>
         <CursorPos X="11" Y="143"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit117>
       <Unit118>
         <Filename Value="environmentinfo.pas"/>
@@ -945,7 +943,7 @@
         <EditorIndex Value="22"/>
         <TopLine Value="24"/>
         <CursorPos X="46" Y="43"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit118>
       <Unit119>
@@ -953,136 +951,170 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="65"/>
         <CursorPos X="10" Y="84"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit119>
       <Unit120>
         <Filename Value="C:\lazarus\lcl\interfaces\win32\win32object.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="381"/>
         <CursorPos Y="399"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit120>
+      <Unit121>
+        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\cocoaint\src\CocoaAll.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="31"/>
+        <UsageCount Value="10"/>
+      </Unit121>
+      <Unit122>
+        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\cocoaint\src\foundation\NSPathUtilities.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="25" Y="67"/>
+        <UsageCount Value="11"/>
+      </Unit122>
+      <Unit123>
+        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\cocoaint\src\foundation\NSArray.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="30"/>
+        <CursorPos X="3" Y="51"/>
+        <UsageCount Value="10"/>
+      </Unit123>
+      <Unit124>
+        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\rtl\objpas\sysutils\osutilsh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="26"/>
+        <CursorPos X="25" Y="41"/>
+        <UsageCount Value="10"/>
+      </Unit124>
+      <Unit125>
+        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\rtl\unix\sysutils.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1490"/>
+        <CursorPos X="3" Y="1493"/>
+        <UsageCount Value="10"/>
+      </Unit125>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1178" TopLine="1147"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position1>
       <Position2>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1114" TopLine="1095"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="138" TopLine="111"/>
       </Position2>
       <Position3>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1127" TopLine="1096"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position3>
       <Position4>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1132" TopLine="1101"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position4>
       <Position5>
-        <Filename Value="spina_toolbar.pas"/>
-        <Caret Line="442" Column="14" TopLine="424"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position5>
       <Position6>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1362" TopLine="1344"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position6>
       <Position7>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1364" TopLine="1344"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="138" TopLine="111"/>
       </Position7>
       <Position8>
-        <Filename Value="spina_help.pas"/>
-        <Caret Line="16" Column="46"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position8>
       <Position9>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1154" TopLine="1135"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position9>
       <Position10>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1362" TopLine="1344"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position10>
       <Position11>
-        <Filename Value="caseeditor.pas"/>
-        <Caret Line="72" Column="103" TopLine="62"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position11>
       <Position12>
-        <Filename Value="handleimpex.pas"/>
-        <Caret Line="77" Column="25" TopLine="49"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="138" TopLine="111"/>
       </Position12>
       <Position13>
-        <Filename Value="caseeditor.pas"/>
-        <Caret Line="53" Column="82" TopLine="39"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position13>
       <Position14>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="45" Column="24" TopLine="36"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position14>
       <Position15>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1017" Column="53" TopLine="993"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position15>
       <Position16>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="964" Column="24" TopLine="696"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position16>
       <Position17>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="45" Column="20" TopLine="29"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position17>
       <Position18>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="46" Column="21" TopLine="29"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position18>
       <Position19>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="226" Column="18" TopLine="210"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position19>
       <Position20>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="251" Column="20" TopLine="250"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position20>
       <Position21>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="260" Column="20" TopLine="250"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position21>
       <Position22>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="357" Column="20" TopLine="361"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position22>
       <Position23>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="583" Column="22" TopLine="568"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="138" TopLine="111"/>
       </Position23>
       <Position24>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="855" Column="59" TopLine="847"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position24>
       <Position25>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="934" Column="38" TopLine="930"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="129" TopLine="112"/>
       </Position25>
       <Position26>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="945" Column="39" TopLine="929"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" TopLine="112"/>
       </Position26>
       <Position27>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="374" Column="9" TopLine="358"/>
+        <Caret Line="129" TopLine="112"/>
       </Position27>
       <Position28>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="377" Column="11" TopLine="358"/>
+        <Caret Line="124" TopLine="112"/>
       </Position28>
       <Position29>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="372" Column="24" TopLine="352"/>
+        <Caret Line="129" TopLine="112"/>
       </Position29>
       <Position30>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="945" Column="39" TopLine="929"/>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="124" Column="17" TopLine="112"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
