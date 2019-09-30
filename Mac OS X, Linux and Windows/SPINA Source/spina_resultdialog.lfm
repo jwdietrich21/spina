@@ -12,12 +12,11 @@ object ResultForm: TResultForm
   Caption = '   Ergebnis'
   ClientHeight = 212
   ClientWidth = 691
-  Color = clWhite
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.4.0'
   object Image1: TImage
     Left = 24
     Height = 80
@@ -187,9 +186,9 @@ object ResultForm: TResultForm
   end
   object Label1: TLabel
     Left = 112
-    Height = 16
+    Height = 17
     Top = 8
-    Width = 67
+    Width = 57
     Caption = 'Ergebnis:'
     Font.Color = clBlack
     Font.Height = -13

@@ -57,7 +57,7 @@ begin
   {$ENDIF}
   gCEcertified := false;
   GetMacDateFormats;
-  Application.Title := 'SPINA Thyr';
+  Application.Title:='SPINA Thyr';
   InitThyroidHormoneConversionFactors;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);

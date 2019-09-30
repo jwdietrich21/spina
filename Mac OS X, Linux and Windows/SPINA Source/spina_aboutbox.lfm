@@ -10,7 +10,6 @@ object AboutBox: TAboutBox
   Caption = 'Über SPINA Thyr'
   ClientHeight = 390
   ClientWidth = 451
-  Color = clWhite
   Icon.Data = {
     962400000000010008001010020000000000B000000086000000101000000000
     000028010000360100001010000000000000680500005E020000101000000000
@@ -310,7 +309,7 @@ object AboutBox: TAboutBox
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.4.0'
   object OKButton: TButton
     Left = 192
     Height = 24
@@ -1699,8 +1698,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet4: TTabSheet
       Caption = 'Impressum'
-      ClientHeight = 297
-      ClientWidth = 416
+      ClientHeight = 286
+      ClientWidth = 418
       object Memo2: TMemo
         Left = 5
         Height = 270
