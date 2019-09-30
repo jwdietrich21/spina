@@ -93,6 +93,7 @@ type
     FT3_Text: TEdit;
     FT4Items: TComboBox;
     FT4_Text: TEdit;
+    LabelGroupBox: TGroupBox;
     HelpItem: TMenuItem;
     HelpMenu: TMenuItem;
     Hintergrundbild: TImage;

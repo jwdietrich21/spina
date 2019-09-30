@@ -41,6 +41,10 @@ uses
   {$ELSE}
     {$IFDEF LCLCarbon}
       , MacOSAll
+    {$ELSE}
+      {$IFDEF LCLCocoa}
+        , CocoaAll
+      {$ENDIF}
     {$ENDIF}
   , Unix
   {$ENDIF},
@@ -84,8 +88,12 @@ var
   {$IFDEF LCLCarbon}
   theError: OSErr;
   theRef: FSRef;
-  {$ENDIF}
   pathBuffer: PChar;
+  {$ELSE}
+  {$IFDEF LCLCocoa}
+  PathArray: NSArray;
+  {$ENDIF}
+  {$ENDIF}
 begin
   {$IFDEF LCLCarbon} {standard method for macOS Carbon}
     try
@@ -109,7 +117,14 @@ begin
       Freemem(pathBuffer);
     end
   {$ELSE}
+  {$IFDEF LCLCocoa}
+    //GetPreferencesFolder := NSApplicationSupportDirectory;
+    //PathArray := NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, true);
+    //GetPreferencesFolder := '~/Library/Preferences/';
+    GetPreferencesFolder := GetAppConfigDir(false);
+  {$ELSE}
     GetPreferencesFolder := GetAppConfigDir(false); {standard method for Linux and Windows}
+  {$ENDIF}
   {$ENDIF}
 end;
 
@@ -118,7 +133,7 @@ function GetPreferencesFile: String;
 var
   prefsFolder: String;
 begin
-  {$IFDEF LCLCarbon}
+  {$IFDEF DARWIN}
     prefsFolder := GetPreferencesFolder;
     if prefsFolder = '' then
       GetPreferencesFile := ''
