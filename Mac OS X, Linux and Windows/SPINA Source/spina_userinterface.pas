@@ -10,10 +10,10 @@ unit SPINA_UserInterface;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2016 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
+{ (c) Ruhr University of Bochum 2005 - 2019 }
 
 { This unit implements the GUI }
 
@@ -28,7 +28,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, VersionSupport,
+  ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, EnvironmentInfo,
   gettext, SPINA_Types, SPINA_Resources, UnitConverter, SPINA_Engine, SPINA_AboutBox,
   SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences, CaseEditor,
   HandleImpEx, Math, InterfaceBase, LCLIntf, Barcode
@@ -892,7 +892,7 @@ begin
   HorzScrollBar.Visible := False;
   VertScrollBar.Visible := False;
   AutoScroll := False;
-  SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
+  SPINAThyrLabel.Caption := 'SPINA Thyr ' + FileVersion;
   GetPreferences;
   GetReferenceValues(RRFile, theCode);
   NewCaseRecord(caseRecord);
@@ -1150,6 +1150,7 @@ procedure THauptschirm.ReadCaseRecord(Sender: TObject; const theCaseRecord: tCas
 { reads theCaseRecord, validates the results and fills caseRecord of main form }
 var
   status: integer;
+  DoBDateStr, OBDateStr: String;
 begin
   { Is this a valid case record? }
   if isNan(theCaseRecord.TSH) and isNan(theCaseRecord.FT4)
@@ -1160,9 +1161,18 @@ begin
   begin
     caseRecord := theCaseRecord;
     InsertValues(Sender);
+    CaseEditorForm.FillFromCaseRecord(caseRecord);
+    if IsNaN(caseRecord.DoBDate) then
+      DOBDateStr := ''
+    else
+      DOBDateStr := DateToStr(caseRecord.DoBDate);
+    if IsNaN(caseRecord.OBDate) then
+      OBDateStr := ''
+    else
+      OBDateStr := DateToStr(caseRecord.OBDate);
     caption := MAIN_FORM_TITLE + ': ' + caseRecord.Name + ', ' +
-      caseRecord.GivenNames + ', * ' +  DateToStr(caseRecord.DoBDate) +
-      ' | ' + DateToStr(caseRecord.OBDate);
+      caseRecord.GivenNames + ', * ' + DOBDateStr +
+      ' | ' + OBDateStr;
     HandleInput(status);
   end;
 end;
@@ -1438,7 +1448,7 @@ begin
   Printer.Canvas.Font.Color := clGray;
   PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName,
     '  |  ', gDruckdatum, DateToStr(date), theTime), False);
-  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + GetFileVersion, False);
+  PrinterWriteln(H, currentX, currentY, 'SPINA Thyr ' + FileVersion, False);
   PrinterWriteln(H, currentX, currentY, '', False);
   Printer.Canvas.Font.Color := clBlack;
 end;

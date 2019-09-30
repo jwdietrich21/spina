@@ -10,10 +10,10 @@ unit spina_toolbar;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2016 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
+{ (c) Ruhr University of Bochum 2005 - 2019 }
 
 { This unit implements a common toolbar, a menu bar and localization routines }
 
@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, FileUtil, PrintersDlgs, LResources, Forms, Controls,
   Graphics, Dialogs, ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList,
   ComCtrls, LCLIntf, SPINA_Types, SPINA_Resources, SPINA_Engine, SPINA_AboutBox,
-  SPINA_Userinterface, SetPreferences, VersionSupport, spina_help, CaseEditor,
+  SPINA_Userinterface, SetPreferences, EnvironmentInfo, spina_help, CaseEditor,
   HandleImpEx;
 
 type
@@ -318,7 +318,7 @@ procedure TSPINAToolbar.FormCreate(Sender: TObject);
 var
   modifierKey: TShiftState;
 begin
-  SPINAToolbar.SPINAThyrLabel.Caption := 'SPINA Thyr ' + GetFileVersion;
+  SPINAToolbar.SPINAThyrLabel.Caption := 'SPINA Thyr ' + FileVersion;
   AdaptLanguages;
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];

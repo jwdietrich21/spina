@@ -1,7 +1,7 @@
 object Hauptschirm: THauptschirm
   Left = 271
   Height = 385
-  Top = 220
+  Top = 186
   Width = 753
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -325,7 +325,7 @@ object Hauptschirm: THauptschirm
   OnWindowStateChange = FormWindowStateChange
   ParentBiDiMode = False
   Position = poScreenCenter
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '1.8.4.0'
   object Calculate_Button: TButton
     Left = 624
     Height = 24

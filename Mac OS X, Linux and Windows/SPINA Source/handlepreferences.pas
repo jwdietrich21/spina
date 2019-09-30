@@ -10,10 +10,10 @@ unit HandlePreferences;
 
 { Version 4.1.0 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2016 }
+{ (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
-{ (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2016 }
+{ (c) University of Ulm Hospitals 2002 - 2004 }
+{ (c) Ruhr University of Bochum 2005 - 2019 }
 
 { This unit handles global application preferences }
 
@@ -279,7 +279,7 @@ begin
     {$IFDEF LCLCarbon}
     TDOMElement(ElementNode).SetAttribute('id', UTF8Decode(gPreferences.MSH_ID));
     {$ELSE}
-    TDOMElement(ElementNode).SetAttribute('id', UTF8ToSys(gPreferences.MSH_ID));
+    TDOMElement(ElementNode).SetAttribute('id', gPreferences.MSH_ID);
     {$ENDIF}
     RootNode.AppendChild(ElementNode);
 
@@ -287,7 +287,7 @@ begin
     {$IFDEF LCLCarbon}
     TDOMElement(ElementNode).SetAttribute('id', UTF8Decode(gPreferences.Placer_ID));
     {$ELSE}
-    TDOMElement(ElementNode).SetAttribute('id', UTF8ToSys(gPreferences.Placer_ID));
+    TDOMElement(ElementNode).SetAttribute('id', gPreferences.Placer_ID);
     {$ENDIF}
     RootNode.AppendChild(ElementNode);
 
@@ -406,7 +406,7 @@ begin
          {$IFDEF LCLCarbon}
          gPreferences.MSH_ID := UTF8Encode(RootNode.Attributes[0].NodeValue);
          {$ELSE}
-         gPreferences.MSH_ID := SysToUTF8(RootNode.Attributes[0].NodeValue);
+         gPreferences.MSH_ID := RootNode.Attributes[0].NodeValue;
          {$ENDIF}
 
        RootNode := Doc.DocumentElement.FindNode('placer');
@@ -416,7 +416,7 @@ begin
          {$IFDEF LCLCarbon}
          gPreferences.Placer_ID := UTF8Encode(RootNode.Attributes[0].NodeValue);
          {$ELSE}
-         gPreferences.Placer_ID := SysToUTF8(RootNode.Attributes[0].NodeValue);
+         gPreferences.Placer_ID := RootNode.Attributes[0].NodeValue;
          {$ENDIF}
 
          if (gPreferences.TSH.UOM = 'NA') or (gPreferences.T4.UOM = 'NA') or (gPreferences.T3.UOM = 'NA') then
@@ -581,7 +581,7 @@ var
   oldSeparator: Char;
   SI: boolean;
 begin
-  theFileName := UTF8ToSys(theFileName);
+  //theFileName := UTF8ToSys(theFileName);
   returnCode := 0;           {no error}
   with gReferenceRanges do
     begin                   {define emtpy default values}

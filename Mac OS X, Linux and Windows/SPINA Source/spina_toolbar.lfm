@@ -11,14 +11,14 @@ object SPINAToolbar: TSPINAToolbar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'SPINA'
-  ClientHeight = 88
+  ClientHeight = 68
   ClientWidth = 883
   DefaultMonitor = dmMainForm
   DockSite = True
   Menu = MainMenu
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '1.8.4.0'
   Visible = True
   object ToolBar1: TToolBar
     Left = 0
@@ -72,7 +72,6 @@ object SPINAToolbar: TSPINAToolbar
       Left = 93
       Height = 22
       Top = 2
-      Width = 5
       Caption = 'DividerTool1'
       Style = tbsDivider
     end
@@ -90,7 +89,6 @@ object SPINAToolbar: TSPINAToolbar
       Left = 121
       Height = 22
       Top = 2
-      Width = 5
       Caption = 'DividerTool2'
       Style = tbsDivider
     end
@@ -159,7 +157,6 @@ object SPINAToolbar: TSPINAToolbar
       Left = 264
       Height = 22
       Top = 2
-      Width = 5
       Caption = 'DividerTool3'
       Style = tbsDivider
     end
@@ -177,7 +174,6 @@ object SPINAToolbar: TSPINAToolbar
       Left = 292
       Height = 22
       Top = 2
-      Width = 8
       Caption = 'DividerTool4'
       Style = tbsSeparator
     end
@@ -193,10 +189,10 @@ object SPINAToolbar: TSPINAToolbar
     end
   end
   object SPINAThyrLabel: TLabel
-    Left = 782
-    Height = 16
+    Left = 787
+    Height = 17
     Top = 7
-    Width = 69
+    Width = 64
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'SPINA Thyr'
