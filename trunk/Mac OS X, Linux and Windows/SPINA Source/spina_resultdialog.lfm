@@ -12,6 +12,7 @@ object ResultForm: TResultForm
   Caption = '   Ergebnis'
   ClientHeight = 212
   ClientWidth = 691
+  Constraints.MinHeight = 212
   FormStyle = fsStayOnTop
   OnActivate = UpdateResultDisplay
   OnCreate = FormCreate
@@ -19,7 +20,7 @@ object ResultForm: TResultForm
   LCLVersion = '2.0.4.0'
   object Image1: TImage
     Left = 24
-    Height = 80
+    Height = 125
     Top = 32
     Width = 73
     Picture.Data = {
@@ -186,13 +187,10 @@ object ResultForm: TResultForm
   end
   object Label1: TLabel
     Left = 112
-    Height = 17
+    Height = 16
     Top = 8
-    Width = 57
+    Width = 62
     Caption = 'Ergebnis:'
-    Font.Color = clBlack
-    Font.Height = -13
-    Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
@@ -203,7 +201,7 @@ object ResultForm: TResultForm
     Top = 32
     Width = 248
     Anchors = [akTop, akLeft, akBottom]
-    Font.Height = -12
+    Constraints.MinHeight = 125
     Lines.Strings = (
       'Hormones'
       ''
@@ -223,7 +221,7 @@ object ResultForm: TResultForm
     Top = 32
     Width = 299
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Font.Height = -12
+    Constraints.MinHeight = 125
     Lines.Strings = (
       'Structural Parameters'
       ''
