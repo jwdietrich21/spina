@@ -21,19 +21,19 @@
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.1.0 Bonfire" LegalCopyright="1994-2019 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.1.0"/>
     </VersionInfo>
+    <MacroValues Count="1">
+      <Macro1 Name="LCLWidgetType" Value="cocoa"/>
+    </MacroValues>
     <BuildModes Count="1">
       <Item1 Name="default" Default="True"/>
       <SharedMatrixOptions Count="1">
-        <Item1 ID="577517658593" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item1 ID="577517658593" Modes="default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
     </PublishOptions>
     <RunParams>
-      <local>
-        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
-      </local>
       <FormatVersion Value="2"/>
       <Modes Count="1">
         <Mode0 Name="default">
@@ -69,9 +69,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="25"/>
-        <TopLine Value="36"/>
-        <CursorPos X="24" Y="45"/>
+        <TopLine Value="993"/>
+        <CursorPos X="3" Y="997"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -271,10 +272,9 @@
         <Filename Value="handlepreferences.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <TopLine Value="88"/>
-        <CursorPos X="15" Y="112"/>
+        <CursorPos X="64" Y="92"/>
         <UsageCount Value="186"/>
         <Loaded Value="True"/>
       </Unit26>
@@ -963,7 +963,7 @@
         <UsageCount Value="10"/>
       </Unit120>
     </Units>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="spina_userinterface.pas"/>
         <Caret Line="1175" TopLine="1144"/>
@@ -1064,6 +1064,10 @@
         <Filename Value="caseeditor.pas"/>
         <Caret Line="53" Column="82" TopLine="39"/>
       </Position25>
+      <Position26>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="45" Column="24" TopLine="36"/>
+      </Position26>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

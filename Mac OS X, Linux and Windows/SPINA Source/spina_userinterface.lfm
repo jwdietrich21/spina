@@ -440,6 +440,7 @@ object Hauptschirm: THauptschirm
       )
       OnClick = TherapyCheckGroupClick
       OnItemClick = TherapyCheckGroupItemClick
+      ParentFont = False
       ParentColor = False
       ParentShowHint = False
       ShowHint = True
@@ -460,6 +461,7 @@ object Hauptschirm: THauptschirm
       ClientHeight = 184
       ClientWidth = 208
       ParentColor = False
+      ParentFont = False
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
@@ -470,8 +472,6 @@ object Hauptschirm: THauptschirm
         Anchors = [akTop, akLeft, akBottom]
         BorderStyle = bsNone
         DragMode = dmAutomatic
-        Font.Height = -10
-        Font.Name = 'Geneva'
         ParentColor = True
         ParentFont = False
         ParentShowHint = False
@@ -493,6 +493,7 @@ object Hauptschirm: THauptschirm
       ClientHeight = 184
       ClientWidth = 208
       ParentColor = False
+      ParentFont = False
       TabOrder = 2
       object HintField: TMemo
         Left = 4
@@ -503,8 +504,6 @@ object Hauptschirm: THauptschirm
         Anchors = [akTop, akLeft, akBottom]
         BorderStyle = bsNone
         DragMode = dmAutomatic
-        Font.Height = -10
-        Font.Name = 'Geneva'
         Lines.Strings = (
           'MessageField'
           ' '
@@ -632,6 +631,7 @@ object Hauptschirm: THauptschirm
       ClientHeight = 282
       ClientWidth = 263
       ParentColor = False
+      ParentFont = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
@@ -995,7 +995,6 @@ object Hauptschirm: THauptschirm
     Top = 350
     Width = 53
     Caption = 'SPINA Thyr'
-    Font.Color = clBlack
     Font.Height = -10
     ParentColor = False
     ParentFont = False
