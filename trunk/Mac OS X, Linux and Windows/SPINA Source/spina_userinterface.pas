@@ -21,6 +21,9 @@ unit SPINA_UserInterface;
 { See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}
+{$IFDEF LCLCocoa}
+  {$modeswitch objectivec1}
+{$ENDIF}
 {$H+}
 {$ASSERTIONS ON}
 
@@ -44,6 +47,9 @@ uses
   {$ENDIF}
   {$IFDEF LCLCarbon}
   , MacOSAll, CarbonProc
+  {$ENDIF}
+  {$IFDEF LCLCocoa}
+  , MacOSAll, CocoaAll, CocoaUtils
   {$ENDIF}
   , lazutf8, Printers, ComCtrls, Buttons, PrintersDlgs;
 
@@ -280,6 +286,23 @@ begin
   {$ENDIF}
   Result := fbl;
 end;
+
+{$IFDEF LCLCocoa}
+
+{The following two functions were suggested by Hansaplast at https://forum.lazarus.freepascal.org/index.php/topic,43111.msg304366.html}
+
+// Retrieve key's string value from user preferences. Result is encoded using NSStrToStr's default encoding.
+function GetPrefString(const KeyName : string) : string;
+begin
+  Result := NSStringToString(NSUserDefaults.standardUserDefaults.stringForKey(NSStr(@KeyName[1])));
+end;
+
+// IsDarkTheme: Detects if the Dark Theme (true) has been enabled or not (false)
+function IsDarkTheme: boolean;
+begin
+  Result := pos('DARK',UpperCase(GetPrefString('AppleInterfaceStyle'))) > 0;
+end;
+{$ENDIF}
 
 procedure AdjustUnitLabels;
 {determines labels and UOMs from parsed unit strings}
@@ -1122,7 +1145,18 @@ end;
 
 procedure THauptschirm.FormPaint(Sender: TObject);
 begin
-
+  {$IFDEF LCLCocoa}
+  if IsDarkTheme then
+  begin
+    Hintfield.Font.Color := clWhite;
+    ResultField.Font.Color := clWhite;
+  end
+  else
+  begin
+    Hintfield.Font.Color := clDefault;
+    ResultField.Font.Color := clDefault;
+  end
+  {$ENDIF}
 end;
 
 procedure THauptschirm.OpenFileList(Sender: TObject; const FileNames: array of string);
