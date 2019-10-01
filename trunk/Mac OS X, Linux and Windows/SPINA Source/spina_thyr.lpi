@@ -71,8 +71,8 @@
         <UnitName Value="SPINA_UserInterface"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="25"/>
-        <TopLine Value="1146"/>
-        <CursorPos X="40" Y="1157"/>
+        <TopLine Value="1148"/>
+        <CursorPos X="40" Y="1159"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -1006,123 +1006,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" TopLine="112"/>
+        <Caret Line="129" TopLine="112"/>
       </Position1>
       <Position2>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="129" TopLine="112"/>
+        <Caret Line="124" TopLine="112"/>
       </Position2>
       <Position3>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" TopLine="112"/>
+        <Caret Line="129" TopLine="112"/>
       </Position3>
       <Position4>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="129" TopLine="112"/>
+        <Caret Line="124" TopLine="112"/>
       </Position4>
       <Position5>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" TopLine="112"/>
+        <Caret Line="129" TopLine="112"/>
       </Position5>
       <Position6>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="129" TopLine="112"/>
+        <Caret Line="124" TopLine="112"/>
       </Position6>
       <Position7>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" TopLine="112"/>
+        <Caret Line="129" TopLine="112"/>
       </Position7>
       <Position8>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="129" TopLine="112"/>
+        <Caret Line="138" TopLine="111"/>
       </Position8>
       <Position9>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="138" TopLine="111"/>
+        <Caret Line="124" TopLine="112"/>
       </Position9>
       <Position10>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" TopLine="112"/>
+        <Caret Line="129" TopLine="112"/>
       </Position10>
       <Position11>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="129" TopLine="112"/>
+        <Caret Line="124" TopLine="112"/>
       </Position11>
       <Position12>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" TopLine="112"/>
+        <Caret Line="129" TopLine="112"/>
       </Position12>
       <Position13>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="129" TopLine="112"/>
+        <Caret Line="124" TopLine="112"/>
       </Position13>
       <Position14>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" TopLine="112"/>
+        <Caret Line="129" TopLine="112"/>
       </Position14>
       <Position15>
         <Filename Value="handlepreferences.pas"/>
-        <Caret Line="129" TopLine="112"/>
+        <Caret Line="124" Column="17" TopLine="112"/>
       </Position15>
       <Position16>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="124" Column="17" TopLine="112"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="910" TopLine="894"/>
       </Position16>
       <Position17>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="910" TopLine="894"/>
+        <Caret Line="1125" Column="3" TopLine="785"/>
       </Position17>
       <Position18>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1125" Column="3" TopLine="785"/>
+        <Caret Line="287" TopLine="285"/>
       </Position18>
       <Position19>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="287" TopLine="285"/>
+        <Caret Line="1143" Column="17" TopLine="1139"/>
       </Position19>
       <Position20>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="1143" Column="17" TopLine="1139"/>
+        <Caret Line="297" Column="75" TopLine="285"/>
       </Position20>
       <Position21>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="297" Column="75" TopLine="285"/>
+        <Caret Line="291" Column="13" TopLine="275"/>
       </Position21>
       <Position22>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="291" Column="13" TopLine="275"/>
+        <Caret Line="49" Column="3" TopLine="27"/>
       </Position22>
       <Position23>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="49" Column="3" TopLine="27"/>
+        <Caret Line="294" Column="29" TopLine="278"/>
       </Position23>
       <Position24>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="294" Column="29" TopLine="278"/>
+        <Caret Line="49" Column="15" TopLine="33"/>
       </Position24>
       <Position25>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="49" Column="15" TopLine="33"/>
+        <Caret Line="294" Column="13" TopLine="278"/>
       </Position25>
       <Position26>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="294" Column="13" TopLine="278"/>
+        <Caret Line="49" Column="29" TopLine="33"/>
       </Position26>
       <Position27>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="49" Column="29" TopLine="33"/>
+        <Caret Line="294" Column="30" TopLine="278"/>
       </Position27>
       <Position28>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="294" Column="30" TopLine="278"/>
+        <Caret Line="293" Column="6" TopLine="279"/>
       </Position28>
       <Position29>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="293" Column="6" TopLine="279"/>
+        <Caret Line="1157" Column="40" TopLine="1146"/>
       </Position29>
       <Position30>
         <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="26" Column="9" TopLine="48"/>
+        <Caret Line="1158" Column="40" TopLine="1147"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
