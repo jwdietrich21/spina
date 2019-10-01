@@ -472,6 +472,7 @@ object Hauptschirm: THauptschirm
         Anchors = [akTop, akLeft, akBottom]
         BorderStyle = bsNone
         DragMode = dmAutomatic
+        Font.Height = 9
         ParentColor = True
         ParentFont = False
         ParentShowHint = False
@@ -504,6 +505,7 @@ object Hauptschirm: THauptschirm
         Anchors = [akTop, akLeft, akBottom]
         BorderStyle = bsNone
         DragMode = dmAutomatic
+        Font.Height = 9
         Lines.Strings = (
           'MessageField'
           ' '
