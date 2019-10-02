@@ -79,6 +79,7 @@ type
     procedure CloseAboutBox(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label15Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
@@ -224,6 +225,16 @@ begin
   end
   else if (key = 87) and ((ssMeta in Shift) or (ssCtrl in Shift)) then
     self.Close;
+end;
+
+procedure TAboutBox.FormPaint(Sender: TObject);
+begin
+  {$IFDEF LCLCocoa}
+  if IsDarkTheme = false then
+    Color := clWhite;
+  {$ELSE}
+  Color := clWhite;
+  {$ENDIF}
 end;
 
 procedure TAboutBox.FormShow(Sender: TObject);

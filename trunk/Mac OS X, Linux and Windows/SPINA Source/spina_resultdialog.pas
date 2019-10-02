@@ -39,6 +39,7 @@ type
     MessageField2: TMemo;
     MessageField1: TMemo;
     procedure FormCreate(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure UpdateResultDisplay(Sender: TObject);
   private
@@ -94,6 +95,17 @@ begin
   else
     Caption := kResult2;
 end;
+
+procedure TResultForm.FormPaint(Sender: TObject);
+begin
+  {$IFDEF LCLCocoa}
+  if IsDarkTheme = false then
+    Color := clWhite;
+  {$ELSE}
+  Color := clWhite;
+  {$ENDIF}
+end;
+
 
 initialization
   {$I spina_resultdialog.lrs}

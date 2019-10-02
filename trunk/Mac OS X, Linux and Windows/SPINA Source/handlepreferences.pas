@@ -88,12 +88,12 @@ var
   {$IFDEF LCLCarbon}
   theError: OSErr;
   theRef: FSRef;
-  pathBuffer: PChar;
   {$ELSE}
   {$IFDEF LCLCocoa}
   PathArray: NSArray;
   {$ENDIF}
   {$ENDIF}
+  pathBuffer: PChar;
 begin
   {$IFDEF LCLCarbon} {standard method for macOS Carbon}
     try

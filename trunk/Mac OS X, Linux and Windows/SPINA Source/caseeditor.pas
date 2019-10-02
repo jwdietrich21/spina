@@ -55,6 +55,7 @@ type
     PIDEdit: TEdit;
     NameEdit: TEdit;
     procedure FillFromCaseRecord(var theCase: TCaseRecord);
+    procedure FormPaint(Sender: TObject);
     procedure SetCaseRecord(var theCase: TCaseRecord);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -90,6 +91,16 @@ begin
   PlacerEdit.Text := theCase.Placer;
   if not isNaN(theCase.OBDate) then
     OBDateEdit.Date := theCase.OBDate;
+end;
+
+procedure TCaseEditorForm.FormPaint(Sender: TObject);
+begin
+  {$IFDEF LCLCocoa}
+  if IsDarkTheme = false then
+    Color := clWhite;
+  {$ELSE}
+  Color := clWhite;
+  {$ENDIF}
 end;
 
 procedure TCaseEditorForm.SetCaseRecord(var theCase: TCaseRecord);
