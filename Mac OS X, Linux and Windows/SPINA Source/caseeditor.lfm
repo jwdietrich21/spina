@@ -11,6 +11,7 @@ object CaseEditorForm: TCaseEditorForm
   ClientWidth = 572
   OnCreate = FormCreate
   OnDropFiles = FormDropFiles
+  OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '1.8.4.0'

@@ -1153,9 +1153,20 @@ begin
   end
   else
   begin
+    Color := clWhite;
+    Panel1.Color := clWhite;
+    ValuesGroupBox.Color := clWhite;
+    HintGroupBox.Color := clWhite;
+    ResultGroupBox.Color := clWhite;
     Hintfield.Font.Color := clDefault;
     ResultField.Font.Color := clDefault;
   end
+  {$ELSE}
+  Color := clWhite;
+  Panel1.Color := clWhite;
+  ValuesGroupBox.Color := clWhite;
+  HintGroupBox.Color := clWhite;
+  ResultGroupBox.Color := clWhite;
   {$ENDIF}
 end;
 
@@ -1531,7 +1542,7 @@ begin
     currentX := marginX;
     Printer.BeginDoc;
     try
-      Printer.Canvas.Font := HintField.Font;
+      Printer.Canvas.Font.Name := gPreferences.PrintFont;
       Printer.Canvas.Font.Size := 9;
       Printer.Canvas.Font.Style := [];
       Printer.Canvas.Pen.Color := clBlack;

@@ -34,6 +34,8 @@ type
   { TPreferencesForm }
 
   TPreferencesForm = class(TForm)
+    FontsCombobox: TComboBox;
+    PrintingGroupbox: TGroupBox;
     SaveCDISCButton: TButton;
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
@@ -102,9 +104,11 @@ type
     procedure DisplayReferenceRanges(Sender: TObject);
     procedure AdjustMethods(Sender: TObject; T4Method, T3Method: tLabMethod);
     procedure CancelButtonClick(Sender: TObject);
+    procedure FontsComboboxChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
     procedure GDRRHEditChange(Sender: TObject);
     procedure GDRRLEditChange(Sender: TObject);
     procedure GTRRHEditChange(Sender: TObject);
@@ -637,6 +641,7 @@ begin
   CheckMandatoryColourising;
   gPreferences.MSH_ID := SendingFacEdit.Text;
   gPreferences.Placer_ID := PlacerEdit.Text;
+  gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
   SavePreferences;
   if ReferenceRangesOK then
     begin
@@ -703,6 +708,8 @@ begin
 end;
 
 procedure TPreferencesForm.FormActivate(Sender: TObject);
+var
+  helveticapos: integer;
 begin
   UpdateDisplay(Sender);
   if gPreferences.colouriseMandatoryFields then
@@ -720,6 +727,15 @@ begin
   DisplayReferenceRanges(Sender);
   SendingFacEdit.Text := gPreferences.MSH_ID;
   PlacerEdit.Text := gPreferences.Placer_ID;
+  FontsCombobox.Items.Assign(Screen.Fonts);
+  helveticapos := FontsCombobox.Items.IndexOf('Helvetica');
+  if helveticapos = -1 then
+    helveticapos := FontsCombobox.Items.IndexOf('Arial');
+  if helveticapos >= 0 then
+    begin
+      FontsCombobox.ItemIndex := helveticapos;
+    end;
+  gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
 end;
 
 procedure TPreferencesForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -759,6 +775,16 @@ begin
   MandatoryFieldsGrid.Cells[4, 1] := '+';
   MandatoryFieldsGrid.Cells[4, 2] := '+';
   MandatoryFieldsGrid.Cells[4, 6] := '——';
+end;
+
+procedure TPreferencesForm.FormPaint(Sender: TObject);
+begin
+  {$IFDEF LCLCocoa}
+  if IsDarkTheme = false then
+    Color := clWhite;
+  {$ELSE}
+  Color := clWhite;
+  {$ENDIF}
 end;
 
 procedure TPreferencesForm.GDRRHEditChange(Sender: TObject);
@@ -821,6 +847,11 @@ begin
     gConvReferenceRanges := gSavedConvReferenceRanges;
   end;
   PreferencesForm.Close;
+end;
+
+procedure TPreferencesForm.FontsComboboxChange(Sender: TObject);
+begin
+
 end;
 
 initialization
