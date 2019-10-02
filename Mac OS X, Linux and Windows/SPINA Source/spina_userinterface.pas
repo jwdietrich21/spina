@@ -21,9 +21,6 @@ unit SPINA_UserInterface;
 { See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}
-{$IFDEF LCLCocoa}
-  {$modeswitch objectivec1}
-{$ENDIF}
 {$H+}
 {$ASSERTIONS ON}
 
@@ -32,9 +29,10 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, EnvironmentInfo,
-  gettext, SPINA_Types, SPINA_Resources, UnitConverter, SPINA_Engine, SPINA_AboutBox,
-  SPINA_ResultDialog, spina_help, HandlePreferences, SetPreferences, CaseEditor,
-  HandleImpEx, Math, InterfaceBase, LCLIntf, Barcode
+  gettext, SPINA_Types, SPINA_Resources, SPINA_GUIServices, UnitConverter,
+  SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog, spina_help,
+  HandlePreferences, SetPreferences, CaseEditor, HandleImpEx, Math,
+  InterfaceBase, LCLIntf, Barcode
   {$IFDEF MSWINDOWS}
   , Windows
   {$ENDIF}
@@ -250,59 +248,6 @@ implementation
 
 uses
   spina_toolbar;
-
-function GetOSLanguage: string;
-  {platform-independent method to read the language of the user interface}
-var
-  l, fbl: string;
-  {$IFDEF LCLCarbon}
-  theLocaleRef: CFLocaleRef;
-  locale: CFStringRef;
-  buffer: StringPtr;
-  bufferSize: CFIndex;
-  encoding: CFStringEncoding;
-  success: boolean;
-  {$ENDIF}
-begin
-  {$IFDEF LCLCarbon}
-  theLocaleRef := CFLocaleCopyCurrent;
-  locale := CFLocaleGetIdentifier(theLocaleRef);
-  encoding := 0;
-  bufferSize := 256;
-  buffer := new(StringPtr);
-  success := CFStringGetPascalString(locale, buffer, bufferSize, encoding);
-  if success then
-    l := string(buffer^)
-  else
-    l := '';
-  fbl := Copy(l, 1, 2);
-  dispose(buffer);
-  {$ELSE}
-  {$IFDEF UNIX}
-  fbl := Copy(GetEnvironmentVariable('LC_CTYPE'), 1, 2);
-    {$ELSE}
-  GetLanguageIDs(l, fbl);
-    {$ENDIF}
-  {$ENDIF}
-  Result := fbl;
-end;
-
-{$IFDEF LCLCocoa}
-
-{The following two functions were suggested by Hansaplast at https://forum.lazarus.freepascal.org/index.php/topic,43111.msg304366.html}
-
-// Retrieve key's string value from user preferences. Result is encoded using NSStrToStr's default encoding.
-function GetPrefString(const KeyName : string) : string;
-begin
-  Result := NSStringToString(NSUserDefaults.standardUserDefaults.stringForKey(NSStr(@KeyName[1])));
-end;
-
-// IsDarkTheme: Detects if the Dark Theme (true) has been enabled or not (false)
-function IsDarkTheme: boolean;
-begin
-  Result := pos('DARK',UpperCase(GetPrefString('AppleInterfaceStyle'))) > 0;
-end;
-{$ENDIF}
 
 procedure AdjustUnitLabels;
 {determines labels and UOMs from parsed unit strings}

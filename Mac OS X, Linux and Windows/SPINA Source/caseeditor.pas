@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, EditBtn, ExtCtrls, Math, SPINA_Types, SPINA_Resources,
-  SPINA_AboutBox, SPINA_Engine, HandleImpEx;
+  SPINA_GUIServices, SPINA_AboutBox, SPINA_Engine, HandleImpEx;
 
 type
 
