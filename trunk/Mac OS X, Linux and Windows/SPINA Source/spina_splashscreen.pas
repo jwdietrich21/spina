@@ -43,6 +43,7 @@ type
     Divider: TLabel;
     IdleTimer1: TIdleTimer;
     Image1: TImage;
+    Image2: TImage;
     URL1: TLabel;
     URL2: TLabel;
     VersionLabel: TLabel;

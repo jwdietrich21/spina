@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdCtrls, LCLIntf, ComCtrls, DOS, SPINA_Types, EnvironmentInfo,
-  HandlePreferences
+  HandlePreferences, SPINA_GUIServices
   {$IFDEF Windows}
   , Windows, Win32Proc
   {$ELSE}
@@ -42,6 +42,7 @@ type
   { TAboutBox }
 
   TAboutBox = class(TForm)
+    Image2: TImage;
     Memo2: TMemo;
     OKButton: TButton;
     CopyrightLabel1: TLabel;
