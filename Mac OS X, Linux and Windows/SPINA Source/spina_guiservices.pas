@@ -28,14 +28,16 @@ unit SPINA_GUIServices;
 interface
 
 uses
-  Classes, SysUtils
+  Classes, SysUtils, gettext
   {$IFDEF LCLCocoa}
   , MacOSAll, CocoaAll, CocoaUtils
   {$ENDIF}
   ;
 
 function GetOSLanguage: string;
+{$IFDEF LCLCocoa}
 function IsDarkTheme: boolean;
+{$ENDIF}
 
 implementation
 
