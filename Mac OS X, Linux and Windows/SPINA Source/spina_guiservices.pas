@@ -29,8 +29,12 @@ interface
 
 uses
   Classes, SysUtils, gettext
+  {$IFDEF LCLCarbon}
+  , MacOSAll
+  {$ELSE}
   {$IFDEF LCLCocoa}
   , MacOSAll, CocoaAll, CocoaUtils
+  {$ENDIF}
   {$ENDIF}
   ;
 

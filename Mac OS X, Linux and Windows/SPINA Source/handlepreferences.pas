@@ -43,7 +43,7 @@ uses
       , MacOSAll
     {$ELSE}
       {$IFDEF LCLCocoa}
-        , CocoaAll
+        , CocoaAll, MacOSAll
       {$ENDIF}
     {$ENDIF}
   , Unix
@@ -90,6 +90,8 @@ var
   theRef: FSRef;
   {$ELSE}
   {$IFDEF LCLCocoa}
+  theError: OSErr;
+  theRef: FSRef;
   PathArray: NSArray;
   {$ENDIF}
   {$ENDIF}
@@ -121,7 +123,27 @@ begin
     //GetPreferencesFolder := NSApplicationSupportDirectory;
     //PathArray := NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, true);
     //GetPreferencesFolder := '~/Library/Preferences/';
-    GetPreferencesFolder := GetAppConfigDir(false);
+    //GetPreferencesFolder := GetAppConfigDir(false);
+    try
+      pathBuffer := Allocmem(kMaxPath);
+    except on exception do
+      begin
+        GetPreferencesFolder := '';
+        exit;
+      end
+    end;
+    try
+      Fillchar(pathBuffer^, kMaxPath, #0);
+      Fillchar(theRef, Sizeof(theRef), #0);
+      theError := FSFindFolder(kOnAppropriateDisk, kPreferencesFolderType, kDontCreateFolder, theRef);
+      if (pathBuffer <> nil) and (theError = noErr) then
+      begin
+        theError := FSRefMakePath(theRef, pathBuffer, kMaxPath);
+        if theError = noErr then GetPreferencesFolder := UTF8ToAnsi(StrPas(pathBuffer)) + '/';
+      end;
+    finally
+      Freemem(pathBuffer);
+    end
   {$ELSE}
     GetPreferencesFolder := GetAppConfigDir(false); {standard method for Linux and Windows}
   {$ENDIF}
