@@ -276,11 +276,14 @@ procedure TPreferencesForm.AdjustCombos(Sender: TObject);
 var
   found: boolean;
   i: integer;
+  ReplaceFlags: TReplaceFlags;
 begin
   AdjustMethods(Sender, gPreferences.T4.Method, gPreferences.T3.Method);
   found := False;
   with gPreferences do
   begin
+    ReplaceFlags := [];
+    StringReplace(TSH.UOM, 'IU', 'U', ReplaceFlags);
     for i := 0 to TSHUnitComboBox.Items.Count - 1 do
     begin
       if TSH.UOM = TSHUnitComboBox.Items[i] then
