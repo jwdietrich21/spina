@@ -109,6 +109,9 @@ begin
   {$IFDEF LCLcarbon}
   OSVersion := 'Mac OS X 10.';
   {$ELSE}
+  {$IFDEF LCLCocoa}
+  OSVersion := 'macOS 10.';
+  {$ELSE}
   {$IFDEF Linux}
   OSVersion := 'Linux Kernel ';
   {$ELSE}
@@ -138,6 +141,7 @@ begin
   //  OSVersion := 'Windows 8 '
   else
     OSVersion := 'Windows ';
+  {$ENDIF}
   {$ENDIF}
   {$ENDIF}
   {$ENDIF}
@@ -190,12 +194,18 @@ var
   theError: SInt16;
   {$ENDIF}
 begin
+  {$IFDEF LCLCocoa}
+  result := true;
+  {$ELSE}
   result := false;
   {$IFDEF LCLcarbon}
   theError := Gestalt(gestaltSystemVersionMinor, Minor);
   if TheError = 0 then
     if Minor >= 10 then
       result := true;
+  {$ELSE}
+  result := false;
+  {$ENDIF}
   {$ENDIF}
 end;
 
@@ -231,8 +241,15 @@ end;
 procedure TAboutBox.FormPaint(Sender: TObject);
 begin
   {$IFDEF LCLCocoa}
-  if IsDarkTheme = false then
+  if IsDarkTheme = true then
+  begin
+    Memo1.Font.Color := clWhite;
+  end
+  else
+  begin
     Color := clWhite;
+    Memo1.Font.Color := clBlack;
+  end;
   {$ELSE}
   Color := clWhite;
   {$ENDIF}
