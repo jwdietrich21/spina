@@ -1524,6 +1524,9 @@ begin
         remainder := copy(remainder, returnPos + 2, length(remainder));
         PrinterWriteln(H, tabX2, currentY, resultLine, False);
       until returnPos = 0;
+      PrinterWriteln(H, currentX, currentY, '', False);
+      PrinterWriteln(H, currentX, currentY, '', False);
+      PrinterWriteln(H, currentX, currentY, Hauptschirm.caseRecord.Comment, False);
       Printer.Canvas.Font.Color := clGray;
       PrinterWriteln(H, currentX, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, '', False);

@@ -199,6 +199,12 @@ begin
       HL7Message.Delimiters.SubcomponentSeparator + tshsubstFlag;
     SetNTE(HL7Message, theNTE);
 
+    ClearNTE(theNTE);
+    theNTE.SetID   := '3';
+    theNTE.CommentSource := 'O';
+    theNTE.comment := aCaseRecord.Comment;
+    SetNTE(HL7Message, theNTE);
+
     setIDcounter := 1;
 
     ClearOBX(theOBX);
@@ -658,6 +664,10 @@ begin
           end;
           theComponent := theComponent.nextSibling;
         end;
+      end
+      else if theNTERecord.SetID = '3' then
+      begin
+        aCaseRecord.Comment := theNTERecord.comment;
       end;
     end;
     if theSegment.segmentType = 'OBX' then
