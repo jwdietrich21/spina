@@ -91,6 +91,7 @@ begin
   PlacerEdit.Text := theCase.Placer;
   if not isNaN(theCase.OBDate) then
     OBDateEdit.Date := theCase.OBDate;
+  CommentEdit.Text := theCase.Comment;
 end;
 
 procedure TCaseEditorForm.FormPaint(Sender: TObject);
@@ -119,6 +120,7 @@ begin
     theCase.OBDate := NaN
   else
     theCase.OBDate := OBDateEdit.Date;
+  theCase.Comment := CommentEdit.Text;
 end;
 
 procedure TCaseEditorForm.OKButtonClick(Sender: TObject);
