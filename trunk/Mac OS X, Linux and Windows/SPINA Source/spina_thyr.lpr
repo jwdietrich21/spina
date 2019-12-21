@@ -37,7 +37,7 @@ uses
   HandlePreferences, spina_toolbar, SetPreferences, spina_help, unitconverter,
   HandleImpEx, HL7, obx, msa, msh, obr, CDISC, SPINA_Resources, CaseEditor, pid,
   pv1, spm, nte, mllp, SPINA_GUIServices
-  {$IFDEF LCLCarbon}
+  {$IFDEF Darwin}
   , MacOSAll
   {$ENDIF}
   {$IFDEF debug}
@@ -75,7 +75,7 @@ begin
   with SPINAToolbar do
   begin
     hide;
-    {$IFDEF LCLCarbon}
+    {$IFDEF Darwin}
     left := 0;
     top := 20;
     width := Screen.Width;

@@ -31,7 +31,7 @@ uses
   {$IFDEF Windows}
   , Windows, Win32Proc
   {$ELSE}
-    {$IFDEF LCLCarbon}
+    {$IFDEF Darwin}
   , MacOSAll
     {$ENDIF}
   , Unix
@@ -151,7 +151,7 @@ end;
 procedure ShowAboutBox;
 var
   SystemStem, MajVer, MinVer, BugfixVer, VersionString: Str255;
-  {$IFDEF LCLcarbon}
+  {$IFDEF Darwin}
   Major, Minor, Bugfix: SInt32;
   theError: SInt16;
   {$ENDIF}

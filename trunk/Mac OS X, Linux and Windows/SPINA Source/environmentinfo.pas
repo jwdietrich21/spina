@@ -14,7 +14,7 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, LCLVersion, DOS
-  {$IFDEF LCLCarbon}
+  {$IFDEF Darwin}
   , MacOSAll
   {$ENDIF}
   {$IFDEF WINDOWS}
@@ -177,6 +177,8 @@ begin
   else
     OSVersion := 'Mac OS X 10.';
   {$ELSE}
+  {$IFDEF LCLCocoa}
+  OSVersion := 'macOS 10';
   {$IFDEF Linux}
   OSVersion := 'Linux Kernel ';
   {$ELSE}
@@ -218,6 +220,7 @@ begin
   {$ENDIF}
   {$ENDIF}
   {$ENDIF}
+  {$ENDIF}
 end;
 
 function YosemiteORNewer: boolean;
@@ -228,14 +231,18 @@ var
   theError: SInt16;
   {$ENDIF}
 begin
-  Result := False;
+  {$IFDEF LCLCocoa}
+  result := true;
+  {$ELSE}
+  result := false;
   {$IFDEF LCLcarbon}
-  theError := Gestalt(gestaltSystemVersionMinor, Major);
-  if theError = 0 then
-    theError := Gestalt(gestaltSystemVersionMinor, Minor);
+  theError := Gestalt(gestaltSystemVersionMinor, Minor);
   if TheError = 0 then
-    if (Major = 10) and (Minor >= 10) or (Major > 10) then
-      Result := True;
+    if Minor >= 10 then
+      result := true;
+  {$ELSE}
+  result := false;
+  {$ENDIF}
   {$ENDIF}
 end;
 
@@ -247,15 +254,19 @@ var
   theError: SInt16;
 {$ENDIF}
 begin
-  Result := False;
-{$IFDEF LCLcarbon}
+  {$IFDEF LCLCocoa}
+  result := true;
+  {$ELSE}
+  result := false;
+  {$IFDEF LCLcarbon}
   theError := Gestalt(gestaltSystemVersionMinor, Major);
   if theError = 0 then
     theError := Gestalt(gestaltSystemVersionMinor, Minor);
   if theError = 0 then
     if (Major = 10) and (Minor >= 12) or (Major > 10) then
       Result := True;
-{$ENDIF}
+  {$ENDIF}
+  {$ENDIF}
 end;
 
 function XPORNewer: boolean;
@@ -323,13 +334,13 @@ end;
 function SystemVersion: String;
 var
   SystemStem, MajVer, MinVer, BugfixVer: String;
-  {$IFDEF LCLcarbon}
+  {$IFDEF Darwin}
   Major, Minor, Bugfix: SInt32;
   theError: SInt16;
   {$ENDIF}
 begin
   SystemStem := OSVersion;
-  {$IFDEF LCLcarbon}
+  {$IFDEF Darwin}
   theError := Gestalt(gestaltSystemVersionMajor, Major);
   if theError = 0 then
     MajVer := IntToStr(Major)
