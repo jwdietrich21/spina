@@ -80,7 +80,14 @@ implementation
 procedure THelpWindow.FormCreate(Sender: TObject);
 {i18n}
 begin
-  {$IFDEF LCLCarbon}
+  Label1.Font.Color := clBlack;
+  Label2.Font.Color := clBlack;
+  Label5.Font.Color := clBlack;
+  Label7.Font.Color := clBlack;
+  Label3.Font.Color := clNavy;
+  Label4.Font.Color := clNavy;
+  Label6.Font.Color := clNavy;
+  {$IFDEF Darwin}
   Label3.Font.Height := 13;
   Label4.Font.Height := 13;
   Label6.Font.Height := 13;

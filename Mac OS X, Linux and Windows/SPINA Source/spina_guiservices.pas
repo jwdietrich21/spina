@@ -49,7 +49,7 @@ function GetOSLanguage: string;
   {platform-independent method to read the language of the user interface}
 var
   l, fbl: string;
-  {$IFDEF LCLCarbon}
+  {$IFDEF Darwin}
   theLocaleRef: CFLocaleRef;
   locale: CFStringRef;
   buffer: StringPtr;
@@ -58,7 +58,7 @@ var
   success: boolean;
   {$ENDIF}
 begin
-  {$IFDEF LCLCarbon}
+  {$IFDEF Darwin}
   theLocaleRef := CFLocaleCopyCurrent;
   locale := CFLocaleGetIdentifier(theLocaleRef);
   encoding := 0;

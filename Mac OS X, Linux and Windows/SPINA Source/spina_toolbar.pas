@@ -222,13 +222,13 @@ begin
     SPINAToolbar.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
     SPINAToolbar.HelpItem.Caption := 'SPINA Help ...';
     SPINAToolbar.OnlineInfoItem.Caption := 'Online Info ...';
-       {$IFDEF LCLcarbon}
+    {$IFDEF Darwin}
     Hauptschirm.HelpMenu.Caption := 'Help';
     SPINAToolbar.HelpMenu.Caption := 'Help';
-      {$ELSE}
+    {$ELSE}
     Hauptschirm.HelpMenu.Caption := '?';
     SPINAToolbar.HelpMenu.Caption := '?';
-      {$ENDIF}
+    {$ENDIF}
     SPINAToolbar.ToolBar1.Buttons[0].Hint := 'New Calculation ...';
     SPINAToolbar.ToolBar1.Buttons[1].Hint := 'Open ...';
     SPINAToolbar.ToolBar1.Buttons[2].Hint := 'Save';
@@ -247,21 +247,21 @@ begin
   end
   else
   begin
-      {$IFDEF LCLcarbon}
+    {$IFDEF Darwin}
     Hauptschirm.FileMenu.Caption := 'Ablage';
     Hauptschirm.UndoMenuItem.Caption := 'Widerrufen';
     Hauptschirm.HelpMenu.Caption := 'Hilfe';
     SPINAToolbar.FileMenu.Caption := 'Ablage';
     SPINAToolbar.UndoMenuItem.Caption := 'Widerrufen';
     SPINAToolbar.HelpMenu.Caption := 'Hilfe';
-      {$ELSE}
+    {$ELSE}
     Hauptschirm.FileMenu.Caption := 'Datei';
     Hauptschirm.UndoMenuItem.Caption := 'Rückgängig';
     Hauptschirm.HelpMenu.Caption := '?';
     SPINAToolbar.FileMenu.Caption := 'Datei';
     SPINAToolbar.UndoMenuItem.Caption := 'Rückgängig';
     SPINAToolbar.HelpMenu.Caption := '?';
-      {$ENDIF}
+    {$ENDIF}
     Hauptschirm.HelpItem.Caption := 'SPINA-Hilfe ...';
     SPINAToolbar.HelpItem.Caption := 'SPINA-Hilfe ...';
     Hauptschirm.OnlineInfoItem.Caption := 'Online-Info ...';
@@ -320,7 +320,7 @@ var
 begin
   SPINAToolbar.SPINAThyrLabel.Caption := 'SPINA Thyr ' + FileVersion;
   AdaptLanguages;
-  {$IFDEF LCLcarbon}
+  {$IFDEF Darwin}
   modifierKey := [ssMeta];
   SPINAToolbar.AboutMenuItem.Visible := False;
   SPINAToolbar.Divider_3_1.Visible := False;

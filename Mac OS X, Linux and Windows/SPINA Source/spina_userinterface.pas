@@ -228,7 +228,7 @@ var
   gAppPath, gAppDir, gAppName: string;
   gGermanCodes: tCodeList;
   tabX1, tabX2, tabX3: integer;
-{$IFDEF LCLCarbon}
+{$IFDEF Darwin}
   gItl0Handle: Intl0Hndl;
   gRegion: integer;
   theFormatString: string;
@@ -323,7 +323,7 @@ end;
 
 procedure GetMacDateFormats;
 begin
-  {$IFDEF LCLCarbon}
+  {$IFDEF Darwin}
   theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
     CFLocaleCopyCurrent, kCFDateFormatterMediumStyle, kCFDateFormatterNoStyle);
   theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
@@ -549,14 +549,14 @@ begin
   {$IFDEF Windows}
   MessageBeep(0);
   {$ELSE}
-    {$IFDEF LCLCarbon}
+  {$IFDEF Darwin}
   SysBeep(30);
-    {$ELSE}
+  {$ELSE}
   s := fpSystem('echo -ne ''\007''');
   {s := fpSystem('echo -ne "\a"');}
   {s := fpSystem('tput bel');}
   {beep;}
-    {$ENDIF}
+  {$ENDIF}
   {$ENDIF}
 end;
 
@@ -1290,6 +1290,8 @@ begin
   SPINAToolbar.BringToFront;
   D := TPrintDialog.Create(nil);
   try
+    D.FromPage := 1;
+    D.ToPage := 1;
     Result := D.Execute;
   finally
     D.Free;
