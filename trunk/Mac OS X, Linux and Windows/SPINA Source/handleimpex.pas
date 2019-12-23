@@ -73,6 +73,10 @@ const
     long: 'Triiodothyronine (T3) [Mass/volume] in Serum or Plasma');
   LOINC_TT3_2: TLoincRecord = (code: '14930-2'; short: 'T3 SerPl-sCnc';
     long: 'Triiodothyronine (T3) [Moles/volume] in Serum or Plasma');
+  LOINC_SPINA_GT: TLoincRecord = (code: '82368-2'; short: 'Thyr secr cap SerPl Calc SPINA-sRate';
+    long: 'Thyroid secretory capacity [Moles/time] in Serum or Plasma by Calculated.SPINA');
+  LOINC_SPINA_GD: TLoincRecord = (code: '82367-4'; short: 'Per deiod act SerPl Calc SPINA-sRate';
+    long: 'Peripheral deiodinase activity [Moles/time] in Serum or Plasma by Calculated.SPINA');
 
 procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
 procedure OpenCaseResults(var caseRecord: tCaseRecord);
