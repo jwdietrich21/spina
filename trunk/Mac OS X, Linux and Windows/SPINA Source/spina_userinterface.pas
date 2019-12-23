@@ -39,7 +39,7 @@ uses
   {$IFDEF UNIX}
   , Unix
   {$IF (DEFINED(LINUX)) OR (DEFINED(FREEBSD))}
-  , users // not available on OSX
+  , users // not available on macOS and other implementations of OSX
   {$ENDIF}
   , baseunix // for fpgetuid
   {$ENDIF}

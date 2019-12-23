@@ -195,6 +195,7 @@ begin
     OBDateEdit.Date := Hauptschirm.caseRecord.OBDate
   else
     OBDateEdit.Text := '';
+  CommentEdit.Text := Hauptschirm.caseRecord.Comment;
 end;
 
 initialization
