@@ -54,8 +54,10 @@ const
   LT3_CODE   = 'L-T3';    // substitution therapy with liothyronine
   RHTSH_CODE = 'rh-TSH';
   LOINC_TSH_1: TLoincRecord = (code: '3016-3'; short: 'TSH SerPl-aCnc';
-    long: 'Thyrotropin [Units/volume] in Serum or Plasma');
-  LOINC_TSH_2: TLoincRecord = (code: '11580-8'; short: 'TSH SerPl DL<=0.005 mU/L aCnc';
+    long: 'Thyrotropin [Units/volume] in Serum or Plasma'); // 1st gen assays
+  LOINC_TSH_2: TLoincRecord = (code: '11579-0'; short: 'TSH SerPl DL<=0.005 mU/L aCnc';
+    long: 'Thyrotropin [Units/volume] in Serum or Plasma by Detection limit <= 0.05 mIU/L');
+  LOINC_TSH_3: TLoincRecord = (code: '11580-8'; short: 'TSH SerPl DL<=0.005 mU/L aCnc';
     long: 'Thyrotropin [Units/volume] in Serum or Plasma by Detection limit <= 0.005 mU/L');
   LOINC_FT4_1: TLoincRecord = (code: '3024-7'; short: 'T4 Free SerPl-mCnc';
     long: 'Thyroxine (T4) free [Mass/volume] in Serum or Plasma');
@@ -77,6 +79,7 @@ const
     long: 'Thyroid secretory capacity [Moles/time] in Serum or Plasma by Calculated.SPINA');
   LOINC_SPINA_GD: TLoincRecord = (code: '82367-4'; short: 'Per deiod act SerPl Calc SPINA-sRate';
     long: 'Peripheral deiodinase activity [Moles/time] in Serum or Plasma by Calculated.SPINA');
+  LOINC_LABEL = 'LN';
 
 procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
 procedure OpenCaseResults(var caseRecord: tCaseRecord);
@@ -214,7 +217,13 @@ begin
     ClearOBX(theOBX);
     theOBX.SetID     := IntToStr(setIDcounter);
     theOBX.ValueType := 'NM';
-    theOBX.ObsID     := 'TSH';
+    if gPreferences.exportLOINC then
+      theOBX.ObsID        := LOINC_TSH_3.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'TSH'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+    else
+      theOBX.ObsID        := 'TSH';
     theOBX.obsSubID  := '1';
     theOBX.obsValue  := FloatToStrF(acaseRecord.TSH, ffNumber, 5, 2);
     theOBX.Units     := gReferenceRanges.TSH.UOM;
@@ -241,7 +250,21 @@ begin
     ClearOBX(theOBX);
     theOBX.SetID     := IntToStr(setIDcounter);
     theOBX.ValueType := 'NM';
-    theOBX.ObsID     := 'FT4';
+    if gPreferences.exportLOINC then
+      begin
+      if pos('mol', gReferenceRanges.FT4.UOM) > 0 then  // SI unit
+        theOBX.ObsID      := LOINC_FT4_2.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'FT4'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      else
+        theOBX.ObsID      := LOINC_FT4_1.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'FT4'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      end
+    else
+      theOBX.ObsID     := 'FT4';
     theOBX.obsSubID  := '1';
     theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT4, T4_MOLAR_MASS,
       'mol/l', gReferenceRanges.FT4.UOM), ffNumber, 5, 2);
@@ -269,7 +292,21 @@ begin
     ClearOBX(theOBX);
     theOBX.SetID     := IntToStr(setIDcounter);
     theOBX.ValueType := 'NM';
-    theOBX.ObsID     := 'FT3';
+    if gPreferences.exportLOINC then
+      begin
+      if pos('mol', gReferenceRanges.FT3.UOM) > 0 then  // SI unit
+        theOBX.ObsID      := LOINC_FT3_2.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'FT3'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      else
+        theOBX.ObsID      := LOINC_FT3_1.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'FT3'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      end
+    else
+      theOBX.ObsID     := 'FT3';
     theOBX.obsSubID  := '1';
     theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.FT3, T3_MOLAR_MASS,
       'mol/l', gReferenceRanges.FT3.UOM), ffNumber, 5, 2);
@@ -298,12 +335,25 @@ begin
     ClearOBX(theOBX);
     theOBX.SetID     := IntToStr(setIDcounter);
     theOBX.ValueType := 'NM';
-    theOBX.ObsID     := 'TT4';
+    if gPreferences.exportLOINC then
+      begin
+      if pos('mol', gReferenceRanges.TT4.UOM) > 0 then  // SI unit
+        theOBX.ObsID      := LOINC_FT4_2.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'TT4'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      else
+        theOBX.ObsID      := LOINC_TT4_1.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'TT4'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      end
+    else
+      theOBX.ObsID     := 'TT4';
     theOBX.obsSubID  := '1';
     theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT4, T4_MOLAR_MASS,
       'mol/l', gReferenceRanges.TT4.UOM), ffNumber, 5, 2);
     theOBX.Units     := gReferenceRanges.TT4.UOM;
-    ;
     theOBX.RefRange := FloatToStr(gReferenceRanges.TT4.ln) + ' - ' +
       FloatToStr(gReferenceRanges.TT4.hn);
     theOBX.AbnormFlags := '';
@@ -327,7 +377,21 @@ begin
     ClearOBX(theOBX);
     theOBX.SetID     := IntToStr(setIDcounter);
     theOBX.ValueType := 'NM';
-    theOBX.ObsID     := 'TT3';
+    if gPreferences.exportLOINC then
+      begin
+      if pos('mol', gReferenceRanges.TT3.UOM) > 0 then  // SI unit
+        theOBX.ObsID      := LOINC_TT3_2.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'TT3'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      else
+        theOBX.ObsID      := LOINC_TT3_1.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'TT3'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+      end
+    else
+      theOBX.ObsID     := 'TT3';
     theOBX.obsSubID  := '1';
     theOBX.obsValue  := FloatToStrF(ConvertedValue(acaseRecord.TT3, T3_MOLAR_MASS,
       'mol/l', gReferenceRanges.TT3.UOM), ffNumber, 5, 2);
@@ -356,7 +420,13 @@ begin
     ClearOBX(theOBX);
     theOBX.SetID     := IntToStr(setIDcounter);
     theOBX.ValueType := 'NM';
-    theOBX.ObsID     := 'SPINA-GT';
+    if gPreferences.exportLOINC then
+      theOBX.ObsID        := LOINC_SPINA_GT.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'SPINA-GT'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+    else
+      theOBX.ObsID        := 'SPINA-GT';
     theOBX.obsSubID  := '1';
     theOBX.obsValue  := FloatToStrF(acaseRecord.GT * 1E12, ffNumber, 5, 2);
     theOBX.Units     := 'pmol/s';
@@ -383,7 +453,13 @@ begin
     ClearOBX(theOBX);
     theOBX.SetID     := IntToStr(setIDcounter);
     theOBX.ValueType := 'NM';
-    theOBX.ObsID     := 'SPINA-GD';
+    if gPreferences.exportLOINC then
+      theOBX.ObsID        := LOINC_SPINA_GD.code
+                          + HL7Message.Delimiters.ComponentSeparator + 'SPINA-GD'
+                          + HL7Message.Delimiters.ComponentSeparator
+                          + LOINC_LABEL
+    else
+      theOBX.ObsID        := 'SPINA-GD';
     theOBX.obsSubID  := '1';
     theOBX.obsValue  := FloatToStrF(acaseRecord.GD * 1E9, ffNumber, 5, 2);
     theOBX.Units     := 'nmol/s';

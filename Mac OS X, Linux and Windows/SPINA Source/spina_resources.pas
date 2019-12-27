@@ -94,8 +94,8 @@ const
   kPflichtfelder2 = 'Mark mandatory fields by colouring';
   kPrefsCaption11 = 'Hormonspiegel';
   kPrefsCaption12 = 'Hormone levels';
-  kPrefsCaption21 = 'Absender-ID';
-  kPrefsCaption22 = 'Sender ID';
+  kPrefsCaption21 = 'HL7-Nachrichten';
+  kPrefsCaption22 = 'HL7 messages';
   kPrefsCaption31 = 'Sonstiges';
   kPrefsCaption32 = 'Other';
   kGroupCaption31 = 'Praxis- oder Klinik-ID';

@@ -369,9 +369,11 @@ begin
   begin
     for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count - 1 do
     begin
-      if TSH.UOM = Hauptschirm.TSHUnitComboBox.Items[i] then
+      if TSH.UOM = '' then
+        found := true // prevents adding an empty entry
+      else if TSH.UOM = Hauptschirm.TSHUnitComboBox.Items[i] then
       begin
-        found := True;
+        found := true;
         Hauptschirm.TSHUnitComboBox.ItemIndex := i;
         break;
       end;
@@ -384,7 +386,9 @@ begin
     TSH.PopupItem := Hauptschirm.TSHUnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T4UnitComboBox.Items.Count - 1 do
     begin
-      if T4.UOM = Hauptschirm.T4UnitComboBox.Items[i] then
+      if T4.UOM = '' then
+        found := true // prevents adding an empty entry
+      else if T4.UOM = Hauptschirm.T4UnitComboBox.Items[i] then
       begin
         found := True;
         Hauptschirm.T4UnitComboBox.ItemIndex := i;
@@ -399,7 +403,9 @@ begin
     T4.PopUpItem := Hauptschirm.T4UnitComboBox.ItemIndex;
     for i := 0 to Hauptschirm.T3UnitComboBox.Items.Count - 1 do
     begin
-      if T3.UOM = Hauptschirm.T3UnitComboBox.Items[i] then
+      if T3.UOM = '' then
+        found := true // prevents adding an empty entry
+      else if T3.UOM = Hauptschirm.T3UnitComboBox.Items[i] then
       begin
         found := True;
         Hauptschirm.T3UnitComboBox.ItemIndex := i;

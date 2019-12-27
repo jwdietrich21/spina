@@ -34,6 +34,8 @@ type
   { TPreferencesForm }
 
   TPreferencesForm = class(TForm)
+    VariableGroupBox: TGroupBox;
+    LOINCCheck: TCheckBox;
     FontsCombobox: TComboBox;
     PrintingGroupbox: TGroupBox;
     SaveCDISCButton: TButton;
@@ -645,6 +647,10 @@ begin
   gPreferences.MSH_ID := SendingFacEdit.Text;
   gPreferences.Placer_ID := PlacerEdit.Text;
   gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
+  if LOINCCheck.Checked then
+    gPreferences.exportLOINC := true
+  else
+    gPreferences.exportLOINC := false;
   SavePreferences;
   if ReferenceRangesOK then
     begin
@@ -727,6 +733,10 @@ begin
     RememberCheckBox.Checked := True
   else
     RememberCheckBox.Checked := False;
+  if gPreferences.exportLOINC then
+    LOINCCheck.Checked := true
+  else
+    LOINCCheck.Checked := false;
   DisplayReferenceRanges(Sender);
   SendingFacEdit.Text := gPreferences.MSH_ID;
   PlacerEdit.Text := gPreferences.Placer_ID;

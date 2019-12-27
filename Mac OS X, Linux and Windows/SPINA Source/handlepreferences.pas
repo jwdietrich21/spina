@@ -280,7 +280,7 @@ begin
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('mshinfo');
-    {$IFDEF LCLCarbon}
+    {$IFDEF Darwin}
     TDOMElement(ElementNode).SetAttribute('id', UTF8Decode(gPreferences.MSH_ID));
     {$ELSE}
     TDOMElement(ElementNode).SetAttribute('id', gPreferences.MSH_ID);
@@ -288,11 +288,18 @@ begin
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('placer');
-    {$IFDEF LCLCarbon}
+    {$IFDEF Darwin}
     TDOMElement(ElementNode).SetAttribute('id', UTF8Decode(gPreferences.Placer_ID));
     {$ELSE}
     TDOMElement(ElementNode).SetAttribute('id', gPreferences.Placer_ID);
     {$ENDIF}
+    RootNode.AppendChild(ElementNode);
+
+    ElementNode := Doc.CreateElement('LOINC');
+    if gPreferences.exportLOINC then
+      ElementNode.AppendChild(SimpleNode(Doc, 'export', 'true'))
+    else
+      ElementNode.AppendChild(SimpleNode(Doc, 'export', 'false'));
     RootNode.AppendChild(ElementNode);
 
     if not DirectoryExists(PreferencesFolder) then
@@ -317,6 +324,7 @@ begin
     begin
       rememberUsedUnits := true;
       colouriseMandatoryFields := true;
+      exportLOINC := true;
       T4.Method := freeHormone;
       T3.Method := freeHormone;
       TSH.UOM := TSH_UNIT;
@@ -382,6 +390,13 @@ begin
         except
           gPreferences.MandatoryColor := clDefault;
         end;
+
+      RootNode := Doc.DocumentElement.FindNode('LOINC');
+      theString := NodeContent(RootNode, 'export');
+      if theString = 'true' then
+        gPreferences.exportLOINC := true
+      else
+        gPreferences.exportLOINC := false;
 
       RootNode := Doc.DocumentElement.FindNode('methods');
       theString := NodeContent(RootNode, 'T4');
