@@ -370,7 +370,11 @@ begin
     for i := 0 to Hauptschirm.TSHUnitComboBox.Items.Count - 1 do
     begin
       if TSH.UOM = '' then
-        found := true // prevents adding an empty entry
+        begin
+          found := true; // prevents adding an empty entry
+          Hauptschirm.TSHUnitComboBox.ItemIndex := 0;
+          break;
+        end
       else if TSH.UOM = Hauptschirm.TSHUnitComboBox.Items[i] then
       begin
         found := true;

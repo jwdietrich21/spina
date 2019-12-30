@@ -338,14 +338,20 @@ procedure TPreferencesForm.GetMethodsAndUnits(const Sender: TObject);
 begin
   if not RememberCheckBox.Checked then
   begin
+    if Hauptschirm.TSHUnitComboBox.Items.Count < TSHUnitComboBox.Items.Count then
+      Hauptschirm.TSHUnitComboBox.Items.Add(TSHUnitComboBox.Items[TSHUnitComboBox.ItemIndex]);
     Hauptschirm.TSHUnitComboBox.ItemIndex := TSHUnitComboBox.ItemIndex;
     Hauptschirm.TSHUnitComboBoxChange(Sender);
     Hauptschirm.T4MethodComboBox.ItemIndex := T4MethodComboBox.ItemIndex;
     Hauptschirm.T4MethodComboBoxChange(Sender);
+    if Hauptschirm.T4UnitComboBox.Items.Count < T4UnitComboBox.Items.Count then
+      Hauptschirm.T4UnitComboBox.Items.Add(T4UnitComboBox.Items[T4UnitComboBox.ItemIndex]);
     Hauptschirm.T4UnitComboBox.ItemIndex := T4UnitComboBox.ItemIndex;
     Hauptschirm.T4UnitComboBoxChange(Sender);
     Hauptschirm.T3MethodComboBox.ItemIndex := T3MethodComboBox.ItemIndex;
     Hauptschirm.T3MethodComboBoxChange(Sender);
+    if Hauptschirm.T3UnitComboBox.Items.Count < T3UnitComboBox.Items.Count then
+      Hauptschirm.T3UnitComboBox.Items.Add(T3UnitComboBox.Items[T3UnitComboBox.ItemIndex]);
     Hauptschirm.T3UnitComboBox.ItemIndex := T3UnitComboBox.ItemIndex;
     Hauptschirm.T3UnitComboBoxChange(Sender);
   end;
