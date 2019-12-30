@@ -194,9 +194,9 @@ begin
     Hauptschirm.AppleAboutMenuItem.Caption := 'SPINA-Thyr Info...';
     Hauptschirm.HelpItem.Caption := 'SPINA Help ...';
     Hauptschirm.OnlineInfoItem.Caption := 'Online Info ...';
-    Hauptschirm.TSHUnitComboBox.Hint := 'Measurement unit';
-    Hauptschirm.T4UnitComboBox.Hint := 'Measurement unit';
-    Hauptschirm.T3UnitComboBox.Hint := 'Measurement unit';
+    Hauptschirm.TSHUnitComboBox.Hint := 'Unit of measurement';
+    Hauptschirm.T4UnitComboBox.Hint := 'Unit of measurement';
+    Hauptschirm.T3UnitComboBox.Hint := 'Unit of measurement';
     Hauptschirm.T4MethodComboBox.Hint := 'Method';
     Hauptschirm.T3MethodComboBox.Hint := 'Method';
     Hauptschirm.TherapyCheckGroup.Hint := 'Please mark on therapy';
