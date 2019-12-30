@@ -26,7 +26,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, Grids, Menus, StdCtrls, SPINA_UserInterface, EnvironmentInfo;
+  ExtCtrls, Grids, Menus, StdCtrls, SPINA_UserInterface, EnvironmentInfo,
+  SPINA_GUIServices;
 
 type
 
@@ -42,8 +43,10 @@ type
     CopyrightLabel7: TLabel;
     Divider: TLabel;
     IdleTimer1: TIdleTimer;
-    Image1: TImage;
-    Image2: TImage;
+    SPINALabel: TImage;
+    Logo: TImage;
+    LogoDark: TImage;
+    LogoLight: TImage;
     URL1: TLabel;
     URL2: TLabel;
     VersionLabel: TLabel;
@@ -78,6 +81,15 @@ begin
   {$ELSE}
   FormStyle:=fsStayOnTop;
   {$ENDIF}
+  {$IFDEF LCLCocoa}
+  if IsDarkTheme = true then
+  begin
+    Color := clDefault;
+    SPINALabel.Picture := Hauptschirm.ImageContainerDark.Picture;
+    Logo.Picture := LogoDark.Picture;
+  end
+  {$ENDIF}
+
 end;
 
 procedure TSplashScreen.IdleTimer1Timer(Sender: TObject);
