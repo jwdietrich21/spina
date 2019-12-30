@@ -97,6 +97,8 @@ type
     FT3_Text: TEdit;
     FT4Items: TComboBox;
     FT4_Text: TEdit;
+    ImageContainerDark: TImage;
+    ImageContainerLight: TImage;
     LabelGroupBox: TGroupBox;
     HelpItem: TMenuItem;
     HelpMenu: TMenuItem;
@@ -109,7 +111,6 @@ type
     SaveMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
     SPINALabel: TImage;
-    ImageList1: TImageList;
     Kopieren1: TMenuItem;
     Label1: TLabel;
     Logo: TImage;
@@ -125,7 +126,7 @@ type
     NewMenuItem: TMenuItem;
     OnlineInfoItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
-    Panel1: TPanel;
+    MainPanel: TPanel;
     PasteMenuItem: TMenuItem;
     PopupCopy: TMenuItem;
     PopupCopyResult: TMenuItem;
@@ -1103,22 +1104,29 @@ begin
   {$IFDEF LCLCocoa}
   if IsDarkTheme then
   begin
+    Color := clDefault;
+    MainPanel.Color := clDefault;
+    ValuesGroupBox.Color := clDefault;
+    HintGroupBox.Color := clDefault;
+    ResultGroupBox.Color := clDefault;
     Hintfield.Font.Color := clWhite;
     ResultField.Font.Color := clWhite;
+    SPINALabel.Picture := ImageContainerDark.Picture;
   end
   else
   begin
     Color := clWhite;
-    Panel1.Color := clWhite;
+    MainPanel.Color := clWhite;
     ValuesGroupBox.Color := clWhite;
     HintGroupBox.Color := clWhite;
     ResultGroupBox.Color := clWhite;
     Hintfield.Font.Color := clDefault;
     ResultField.Font.Color := clDefault;
+    SPINALabel.Picture := ImageContainerLight.Picture;
   end
   {$ELSE}
   Color := clWhite;
-  Panel1.Color := clWhite;
+  MainPanel.Color := clWhite;
   ValuesGroupBox.Color := clWhite;
   HintGroupBox.Color := clWhite;
   ResultGroupBox.Color := clWhite;

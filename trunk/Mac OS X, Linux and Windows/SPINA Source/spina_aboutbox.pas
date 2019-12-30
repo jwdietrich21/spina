@@ -42,7 +42,7 @@ type
   { TAboutBox }
 
   TAboutBox = class(TForm)
-    Image2: TImage;
+    Logo: TImage;
     Memo2: TMemo;
     OKButton: TButton;
     CopyrightLabel1: TLabel;
@@ -53,7 +53,7 @@ type
     CopyrightLabel6: TLabel;
     CopyrightLabel7: TLabel;
     Divider: TLabel;
-    Image1: TImage;
+    SPINALabel: TImage;
     Label10: TLabel;
     Label11: TLabel;
     Label12: TLabel;
@@ -103,6 +103,9 @@ procedure ShowAboutBox;
 function YosemiteORNewer: Boolean;
 
 implementation
+
+uses
+  SPINA_Userinterface, SPINA_SplashScreen;
 
 function OSVersion: Str255; {returns the major version of the operating system}
 begin
@@ -243,13 +246,30 @@ begin
   {$IFDEF LCLCocoa}
   if IsDarkTheme = true then
   begin
+    Color := clDefault;
     Memo1.Font.Color := clWhite;
+    SPINALabel.Picture := Hauptschirm.ImageContainerDark.Picture;
+    Logo.Picture := SplashScreen.LogoDark.Picture;
+    URL1.Font.Color := clSkyBlue;
+    URL2.Font.Color := clSkyBlue;
+    Label5.Font.Color := clSkyBlue;
+    Label7.Font.Color := clSkyBlue;
+    Label9.Font.Color := clSkyBlue;
+    Label15.Font.Color := clSkyBlue;
   end
   else
   begin
     Color := clWhite;
     Memo1.Font.Color := clBlack;
-  end;
+    SPINALabel.Picture := Hauptschirm.ImageContainerDark.Picture;
+    Logo.Picture := SplashScreen.LogoLight.Picture;
+    URL1.Font.Color := clNavy;
+    URL2.Font.Color := clNavy;
+     Label5.Font.Color := clNavy;
+    Label7.Font.Color := clNavy;
+    Label9.Font.Color := clNavy;
+    Label15.Font.Color := clNavy;
+ end;
   {$ELSE}
   Color := clWhite;
   {$ENDIF}

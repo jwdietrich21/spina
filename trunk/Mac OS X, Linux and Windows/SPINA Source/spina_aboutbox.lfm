@@ -1,7 +1,7 @@
 object AboutBox: TAboutBox
-  Left = 415
+  Left = 800
   Height = 390
-  Top = 147
+  Top = 333
   Width = 451
   AlphaBlend = True
   AlphaBlendValue = 0
@@ -327,16 +327,16 @@ object AboutBox: TAboutBox
     Height = 325
     Top = 8
     Width = 424
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Anchors = [akTop, akLeft, akBottom]
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 1
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
       ClientHeight = 286
       ClientWidth = 418
-      object Image1: TImage
+      object SPINALabel: TImage
         Cursor = crArrow
         Left = 21
         Height = 81
@@ -1835,7 +1835,7 @@ object AboutBox: TAboutBox
         ParentColor = False
         ParentFont = False
       end
-      object Image2: TImage
+      object Logo: TImage
         Left = 160
         Height = 224
         Top = 8
