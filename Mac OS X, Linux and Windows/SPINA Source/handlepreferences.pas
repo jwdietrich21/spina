@@ -55,7 +55,7 @@ function GetPreferencesFile: String;
 function GetPreferencesFolder: String;
 function RRFile: String;
 procedure ComposeRRStrings;
-procedure GetReferenceValues(theFileName: String; var returnCode: integer);
+procedure GetReferenceValues(theFileName: String; out returnCode: integer);
 procedure InitThyroidHormoneConversionFactors;
 procedure ReadPreferences;
 procedure SavePreferences;
@@ -235,8 +235,8 @@ procedure SavePreferences;
 var
   theFileName, PreferencesFolder: String;
   Doc: TXMLDocument;
-  StartComment: TDOMComment;
-  RootNode, ElementNode, ItemNode, TextNode: TDOMNode;
+  {StartComment: TDOMComment;}
+  RootNode, ElementNode: TDOMNode;
 begin
   theFileName := GetPreferencesFile;
   PreferencesFolder := GetPreferencesFolder;
@@ -346,7 +346,7 @@ procedure ReadPreferences;
 {reads preferences file}
 var
   Doc: TXMLDocument;
-  RootNode, theNode: TDOMNode;
+  RootNode: TDOMNode;
   theFileName, theString: String;
   theFileHandle: longint;
   XMLfound: boolean;
@@ -451,7 +451,7 @@ end;
 function UnitFactor(unitElements: TUnitElements; baseFactor: real): real;
 {calculates conversion factors from parsed unit strings}
 var
-  i, mpIndex, vpIndex, j4: integer;
+  i, mpIndex, vpIndex: integer;
   tempFactor: real;
 begin
   mpIndex := 0;    {Index for mass prefix}
@@ -589,13 +589,12 @@ begin
     gTTSIRR := FloatToStrF(gReferenceRanges.TTSI.ln, ffFixed, 5, 0) + ' - ' + FloatToStrF(gReferenceRanges.TTSI.hn, ffFixed, 5, 0) + ' ';
 end;
 
-procedure GetReferenceValues(theFileName: String; var returnCode: integer);
+procedure GetReferenceValues(theFileName: String; out returnCode: integer);
 {reads reference values from a CDISC LAB model-compliant XML file.}
 {This version of the routine ignores sex- and age-specific reference values}
 var
   Doc: TXMLDocument;
   RootNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode, NormalNode, UnitsNode, NormalDefinitionNode: TDOMNode;
-  theString: String;
   theStream: TStringStream;
   oldSeparator: Char;
   SI: boolean;

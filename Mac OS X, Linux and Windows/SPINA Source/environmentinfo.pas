@@ -341,6 +341,9 @@ var
 begin
   SystemStem := OSVersion;
   {$IFDEF Darwin}
+  Major := 0;
+  Minor := 0;
+  Bugfix := 0;
   theError := Gestalt(gestaltSystemVersionMajor, Major);
   if theError = 0 then
     MajVer := IntToStr(Major)
