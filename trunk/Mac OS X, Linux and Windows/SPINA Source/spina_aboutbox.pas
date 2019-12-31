@@ -108,6 +108,7 @@ uses
   SPINA_Userinterface, SPINA_SplashScreen;
 
 function OSVersion: Str255; {returns the major version of the operating system}
+{ Currently not in use. Eventually to be integrated in the EnvironmentInfo unit }
 begin
   {$IFDEF LCLcarbon}
   OSVersion := 'Mac OS X 10.';
@@ -140,8 +141,12 @@ begin
     OSVersion := 'Windows Vista '
   else if WindowsVersion = wv7 then
     OSVersion := 'Windows 7 '
-  //else if WindowsVersion = wv8 then   // for future LCL versions
-  //  OSVersion := 'Windows 8 '
+  else if WindowsVersion = wv8 then
+    OSVersion := 'Windows 8 '
+  else if WindowsVersion = wv8_1 then
+    OSVersion := 'Windows 8.1 '
+  else if WindowsVersion = wv10 then
+    OSVersion := 'Windows 10 '
   else
     OSVersion := 'Windows ';
   {$ENDIF}
@@ -164,7 +169,7 @@ begin
   else
     begin
       gExtendedInfo := false;
-      SystemStem := OSVersion;
+      SystemStem := OSVersion; // currently not in use
       AboutBox.FormStyle := fsStayOnTop;
       AboutBox.AlphaBlend := false;
       {The following lines provide additional information}
