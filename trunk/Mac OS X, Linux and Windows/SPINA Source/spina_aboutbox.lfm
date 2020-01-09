@@ -327,9 +327,9 @@ object AboutBox: TAboutBox
     Height = 325
     Top = 8
     Width = 424
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akBottom]
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     OnChange = TabsChange
     object TabSheet1: TTabSheet

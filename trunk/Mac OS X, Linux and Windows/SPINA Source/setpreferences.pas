@@ -8,7 +8,7 @@ unit SetPreferences;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.1.0 (Bonfire) }
+{ Version 4.1.1 (Bonfire) }
 
 { (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -799,7 +799,9 @@ end;
 procedure TPreferencesForm.FormPaint(Sender: TObject);
 begin
   {$IFDEF LCLCocoa}
-  if IsDarkTheme = false then
+  if IsDarkTheme then
+    Color := clDefault
+  else
     Color := clWhite;
   {$ELSE}
   Color := clWhite;
