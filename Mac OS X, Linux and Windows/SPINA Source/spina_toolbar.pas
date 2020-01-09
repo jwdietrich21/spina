@@ -8,7 +8,7 @@ unit spina_toolbar;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.1.0 (Bonfire) }
+{ Version 4.1.1 (Bonfire) }
 
 { (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }

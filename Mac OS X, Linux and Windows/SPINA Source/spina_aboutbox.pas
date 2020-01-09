@@ -8,7 +8,7 @@ unit SPINA_AboutBox;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.1.0 (Bonfire) }
+{ Version 4.1.1 (Bonfire) }
 
 { (c) J. W. Dietrich, 1994 - 2019 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -253,6 +253,7 @@ begin
   begin
     Color := clDefault;
     Memo1.Font.Color := clWhite;
+    Memo2.Font.Color := clWhite;
     SPINALabel.Picture := Hauptschirm.ImageContainerDark.Picture;
     Logo.Picture := SplashScreen.LogoDark.Picture;
     URL1.Font.Color := clSkyBlue;
@@ -266,6 +267,7 @@ begin
   begin
     Color := clWhite;
     Memo1.Font.Color := clBlack;
+    Memo2.Font.Color := clBlack;
     SPINALabel.Picture := Hauptschirm.ImageContainerDark.Picture;
     Logo.Picture := SplashScreen.LogoLight.Picture;
     URL1.Font.Color := clNavy;
