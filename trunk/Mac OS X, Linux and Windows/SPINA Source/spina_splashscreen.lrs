@@ -8,41 +8,41 @@ LazarusResources.Add('TSplashScreen','FORMDATA',[
   +'Visible'#8#10'AlphaBlend'#9#11'BorderIcons'#11#0#11'BorderStyle'#7#6'bsNone'
   +#7'Caption'#6#10'SPINA Thyr'#12'ClientHeight'#3'*'#1#11'ClientWidth'#3#187#1
   +#9'FormStyle'#7#8'fsSplash'#8'OnCreate'#7#10'FormCreate'#8'Position'#7#14'po'
-  +'ScreenCenter'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersion'#6#7'2.0.6.0'#0#6
+  +'ScreenCenter'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersion'#6#7'1.8.4.0'#0#6
   +'TLabel'#12'VersionLabel'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#136#0#5'Width'
-  +#2'E'#7'Caption'#6#13'Version x.y.z'#11'Font.Height'#2#245#10'Font.Pitch'#7
+  +#2'?'#7'Caption'#6#13'Version x.y.z'#11'Font.Height'#2#245#10'Font.Pitch'#7
   +#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'Copyrigh'
-  +'tLabel1'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#162#0#5'Width'#2'Q'#7'Caption'
-  +#6#16#194#169' 1997 '#226#128#147' 2019'#11'Font.Height'#2#245#10'Font.Pitch'
+  +'tLabel1'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#162#0#5'Width'#2'I'#7'Caption'
+  +#6#16#194#169' 1997 '#226#128#147' 2020'#11'Font.Height'#2#245#10'Font.Pitch'
   +#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'Copyri'
-  +'ghtLabel2'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#176#0#5'Width'#2'E'#7'Capti'
+  +'ghtLabel2'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#176#0#5'Width'#2'C'#7'Capti'
   +'on'#6#14'J. W. Dietrich'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariab'
   +'le'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLabel3'#4
-  +'Left'#2' '#6'Height'#2#13#3'Top'#3#200#0#5'Width'#2'm'#7'Caption'#6#20'In C'
+  +'Left'#2' '#6'Height'#2#13#3'Top'#3#200#0#5'Width'#2'k'#7'Caption'#6#20'In C'
   +'ooperation with:'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'#11
   +'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLabel4'#4'Left'#2
-  +' '#6'Height'#2#13#3'Top'#3#226#0#5'Width'#3#147#0#7'Caption'#6#25'Klinikum '
+  +' '#6'Height'#2#13#3'Top'#3#226#0#5'Width'#3#142#0#7'Caption'#6#25'Klinikum '
   +'der LMU M'#195#188'nchen'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVaria'
   +'ble'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLabel5'#4
-  +'Left'#2' '#6'Height'#2#13#3'Top'#3#240#0#5'Width'#3#134#0#7'Caption'#6#25'U'
-  +'niversit'#195#164'tsklinikum Ulm'#11'Font.Height'#2#245#10'Font.Pitch'#7#10
-  +'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLa'
-  +'bel6'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#254#0#5'Width'#3#135#0#7'Caption'
+  +'Left'#2' '#6'Height'#2#13#3'Top'#3#240#0#5'Width'#2#127#7'Caption'#6#25'Uni'
+  +'versit'#195#164'tsklinikum Ulm'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'f'
+  +'pVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'CopyrightLab'
+  +'el6'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#254#0#5'Width'#3#129#0#7'Caption'
   +#6#24'Ruhr-Universit'#195#164't Bochum'#11'Font.Height'#2#245#10'Font.Pitch'
   +#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'Copyri'
-  +'ghtLabel7'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#12#1#5'Width'#3#191#0#7'Cap'
+  +'ghtLabel7'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#12#1#5'Width'#3#184#0#7'Cap'
   +'tion'#6'#Universit'#195#164'tsklinikum Bergmannsheil'#11'Font.Height'#2#245
   +#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TL'
   +'abel'#4'URL1'#6'Cursor'#7#11'crHandPoint'#4'Left'#2' '#6'Height'#2#13#3'Top'
-  +#3'('#1#5'Width'#3#157#0#7'Caption'#6#28'spina.medical-cybernetics.de'#10'Fo'
+  +#3'('#1#5'Width'#3#147#0#7'Caption'#6#28'spina.medical-cybernetics.de'#10'Fo'
   +'nt.Color'#7#6'clNavy'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'
   +#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#7'Divider'#22'AnchorSideLe'
-  +'ft.Control'#7#4'URL1'#19'AnchorSideLeft.Side'#7#9'asrBottom'#4'Left'#3#192#0
-  +#6'Height'#2#13#3'Top'#3'('#1#5'Width'#2#4#18'BorderSpacing.Left'#2#3#7'Capt'
+  +'ft.Control'#7#4'URL1'#19'AnchorSideLeft.Side'#7#9'asrBottom'#4'Left'#3#182#0
+  +#6'Height'#2#13#3'Top'#3'('#1#5'Width'#2#3#18'BorderSpacing.Left'#2#3#7'Capt'
   +'ion'#6#1'|'#10'Font.Color'#4#255#128#0#0#11'Font.Height'#2#245#11'ParentCol'
   +'or'#8#10'ParentFont'#8#0#0#6'TLabel'#4'URL2'#22'AnchorSideLeft.Control'#7#7
   +'Divider'#19'AnchorSideLeft.Side'#7#9'asrBottom'#6'Cursor'#7#11'crHandPoint'
-  +#4'Left'#3#199#0#6'Height'#2#13#3'Top'#3'('#1#5'Width'#2't'#18'BorderSpacing'
+  +#4'Left'#3#188#0#6'Height'#2#13#3'Top'#3'('#1#5'Width'#2'q'#18'BorderSpacing'
   +'.Left'#2#3#7'Caption'#6#21'spina.sourceforge.net'#10'Font.Color'#7#6'clNavy'
   +#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10
   +'ParentFont'#8#0#0#6'TImage'#10'SPINALabel'#6'Cursor'#7#7'crArrow'#4'Left'#2

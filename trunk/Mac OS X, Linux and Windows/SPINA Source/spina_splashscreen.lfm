@@ -20,12 +20,12 @@ object SplashScreen: TSplashScreen
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stNever
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '1.8.4.0'
   object VersionLabel: TLabel
     Left = 32
     Height = 13
     Top = 136
-    Width = 69
+    Width = 63
     Caption = 'Version x.y.z'
     Font.Height = -11
     Font.Pitch = fpVariable
@@ -36,8 +36,8 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 162
-    Width = 81
-    Caption = '© 1997 – 2019'
+    Width = 73
+    Caption = '© 1997 – 2020'
     Font.Height = -11
     Font.Pitch = fpVariable
     ParentColor = False
@@ -47,7 +47,7 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 176
-    Width = 69
+    Width = 67
     Caption = 'J. W. Dietrich'
     Font.Height = -11
     Font.Pitch = fpVariable
@@ -58,7 +58,7 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 200
-    Width = 109
+    Width = 107
     Caption = 'In Cooperation with:'
     Font.Height = -11
     Font.Pitch = fpVariable
@@ -69,7 +69,7 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 226
-    Width = 147
+    Width = 142
     Caption = 'Klinikum der LMU München'
     Font.Height = -11
     Font.Pitch = fpVariable
@@ -80,7 +80,7 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 240
-    Width = 134
+    Width = 127
     Caption = 'Universitätsklinikum Ulm'
     Font.Height = -11
     Font.Pitch = fpVariable
@@ -91,7 +91,7 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 254
-    Width = 135
+    Width = 129
     Caption = 'Ruhr-Universität Bochum'
     Font.Height = -11
     Font.Pitch = fpVariable
@@ -102,7 +102,7 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 268
-    Width = 191
+    Width = 184
     Caption = 'Universitätsklinikum Bergmannsheil'
     Font.Height = -11
     Font.Pitch = fpVariable
@@ -114,7 +114,7 @@ object SplashScreen: TSplashScreen
     Left = 32
     Height = 13
     Top = 296
-    Width = 157
+    Width = 147
     Caption = 'spina.medical-cybernetics.de'
     Font.Color = clNavy
     Font.Height = -11
@@ -125,10 +125,10 @@ object SplashScreen: TSplashScreen
   object Divider: TLabel
     AnchorSideLeft.Control = URL1
     AnchorSideLeft.Side = asrBottom
-    Left = 192
+    Left = 182
     Height = 13
     Top = 296
-    Width = 4
+    Width = 3
     BorderSpacing.Left = 3
     Caption = '|'
     Font.Color = 33023
@@ -140,10 +140,10 @@ object SplashScreen: TSplashScreen
     AnchorSideLeft.Control = Divider
     AnchorSideLeft.Side = asrBottom
     Cursor = crHandPoint
-    Left = 199
+    Left = 188
     Height = 13
     Top = 296
-    Width = 116
+    Width = 113
     BorderSpacing.Left = 3
     Caption = 'spina.sourceforge.net'
     Font.Color = clNavy

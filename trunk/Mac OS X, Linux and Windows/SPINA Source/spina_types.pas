@@ -10,10 +10,10 @@ unit SPINA_Types;
 
 { Version 4.1.1 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2019 }
+{ (c) J. W. Dietrich, 1994 - 2020 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2019 }
+{ (c) Ruhr University of Bochum 2005 - 2020 }
 
 { Common globals and types that are used by multiple units }
 
