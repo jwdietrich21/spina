@@ -560,7 +560,7 @@ begin
   {$IFDEF Windows}
   MessageBeep(0);
   {$ELSE}
-  {$IFDEF Darwin}
+  {$IFDEF LCLCarbon}
   SysBeep(30);
   {$ELSE}
   s := fpSystem('echo -ne ''\007''');
