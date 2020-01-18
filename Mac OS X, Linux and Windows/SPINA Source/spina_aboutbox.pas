@@ -248,8 +248,7 @@ end;
 
 procedure TAboutBox.FormPaint(Sender: TObject);
 begin
-  {$IFDEF LCLCocoa}
-  if IsDarkTheme = true then
+  if DarkTheme = true then
   begin
     Color := clDefault;
     Memo1.Font.Color := clWhite;
@@ -277,9 +276,6 @@ begin
     Label9.Font.Color := clNavy;
     Label15.Font.Color := clNavy;
  end;
-  {$ELSE}
-  Color := clWhite;
-  {$ENDIF}
 end;
 
 procedure TAboutBox.FormShow(Sender: TObject);

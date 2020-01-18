@@ -1101,8 +1101,7 @@ end;
 
 procedure THauptschirm.FormPaint(Sender: TObject);
 begin
-  {$IFDEF LCLCocoa}
-  if IsDarkTheme then
+  if DarkTheme then
   begin
     Color := clDefault;
     MainPanel.Color := clDefault;
@@ -1124,13 +1123,6 @@ begin
     ResultField.Font.Color := clDefault;
     SPINALabel.Picture := ImageContainerLight.Picture;
   end
-  {$ELSE}
-  Color := clWhite;
-  MainPanel.Color := clWhite;
-  ValuesGroupBox.Color := clWhite;
-  HintGroupBox.Color := clWhite;
-  ResultGroupBox.Color := clWhite;
-  {$ENDIF}
 end;
 
 procedure THauptschirm.OpenFileList(Sender: TObject; const FileNames: array of string);

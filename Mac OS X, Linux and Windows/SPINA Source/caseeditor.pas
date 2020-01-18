@@ -96,12 +96,10 @@ end;
 
 procedure TCaseEditorForm.FormPaint(Sender: TObject);
 begin
-  {$IFDEF LCLCocoa}
-  if IsDarkTheme = false then
+  if DarkTheme then
+    Color := clDefault
+  else
     Color := clWhite;
-  {$ELSE}
-  Color := clWhite;
-  {$ENDIF}
 end;
 
 procedure TCaseEditorForm.SetCaseRecord(var theCase: TCaseRecord);

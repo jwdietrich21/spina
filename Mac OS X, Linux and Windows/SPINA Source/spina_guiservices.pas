@@ -39,9 +39,7 @@ uses
   ;
 
 function GetOSLanguage: string;
-{$IFDEF LCLCocoa}
-function IsDarkTheme: boolean;
-{$ENDIF}
+function DarkTheme: boolean;
 
 implementation
 
@@ -82,7 +80,6 @@ begin
 end;
 
 {$IFDEF LCLCocoa}
-
 {The following two functions were suggested by Hansaplast at https://forum.lazarus.freepascal.org/index.php/topic,43111.msg304366.html}
 
 // Retrieve key's string value from user preferences. Result is encoded using NSStrToStr's default encoding.
@@ -90,13 +87,17 @@ function GetPrefString(const KeyName : string) : string;
 begin
   Result := NSStringToString(NSUserDefaults.standardUserDefaults.stringForKey(NSStr(@KeyName[1])));
 end;
-
-// IsDarkTheme: Detects if the Dark Theme (true) has been enabled or not (false)
-function IsDarkTheme: boolean;
-begin
-  Result := pos('DARK',UpperCase(GetPrefString('AppleInterfaceStyle'))) > 0;
-end;
 {$ENDIF}
+
+// DarkTheme: Detects if the Dark Theme (true) has been enabled or not (false)
+function DarkTheme: boolean;
+begin
+  {$IFDEF LCLCocoa}
+  Result := pos('DARK',UpperCase(GetPrefString('AppleInterfaceStyle'))) > 0;
+  {$ELSE}
+  Result := false;
+  {$ENDIF}
+end;
 
 end.
 
