@@ -81,15 +81,18 @@ begin
   {$ELSE}
   FormStyle:=fsStayOnTop;
   {$ENDIF}
-  {$IFDEF LCLCocoa}
-  if IsDarkTheme = true then
+  if DarkTheme = true then
   begin
     Color := clDefault;
     SPINALabel.Picture := Hauptschirm.ImageContainerDark.Picture;
     Logo.Picture := LogoDark.Picture;
   end
-  {$ENDIF}
-
+  else
+  begin
+    Color := clWhite;
+    SPINALabel.Picture := Hauptschirm.ImageContainerLight.Picture;
+    Logo.Picture := LogoLight.Picture;
+  end;
 end;
 
 procedure TSplashScreen.IdleTimer1Timer(Sender: TObject);

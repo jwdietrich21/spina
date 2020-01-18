@@ -798,14 +798,10 @@ end;
 
 procedure TPreferencesForm.FormPaint(Sender: TObject);
 begin
-  {$IFDEF LCLCocoa}
-  if IsDarkTheme then
+  if DarkTheme then
     Color := clDefault
   else
     Color := clWhite;
-  {$ELSE}
-  Color := clWhite;
-  {$ENDIF}
 end;
 
 procedure TPreferencesForm.GDRRHEditChange(Sender: TObject);
