@@ -169,7 +169,6 @@ begin
   else
     begin
       gExtendedInfo := false;
-      SystemStem := OSVersion; // currently not in use
       AboutBox.FormStyle := fsStayOnTop;
       AboutBox.AlphaBlend := false;
       {The following lines provide additional information}
