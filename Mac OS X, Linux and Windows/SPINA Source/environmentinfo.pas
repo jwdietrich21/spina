@@ -6,7 +6,7 @@ unit EnvironmentInfo;
 { Partly based on code provided by Mike Thompson, published at}
 { http://www.lazarus.freepascal.org/index.php/topic,13957.0.html}
 
-{ (c) J. W. Dietrich, 2007 - 2019 }
+{ (c) J. W. Dietrich, 2007 - 2020 }
 
 {$mode objfpc}{$H+}
 
@@ -179,6 +179,7 @@ begin
   {$ELSE}
   {$IFDEF LCLCocoa}
   OSVersion := 'macOS 10';
+  {$ELSE}
   {$IFDEF Linux}
   OSVersion := 'Linux Kernel ';
   {$ELSE}
