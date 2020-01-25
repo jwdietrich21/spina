@@ -23,7 +23,6 @@
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="1"/>
       <BuildNr Value="847"/>
-      <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.1.1 Bonfire" LegalCopyright="1994-2020 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.1.1"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -54,6 +53,7 @@
       <Unit0>
         <Filename Value="spina_thyr.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="30"/>
         <CursorPos X="77" Y="10"/>
         <UsageCount Value="200"/>
@@ -944,7 +944,6 @@
         <Filename Value="environmentinfo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnvironmentInfo"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="20"/>
         <CursorPos Y="2"/>
         <UsageCount Value="39"/>
@@ -1062,14 +1061,14 @@
         <UsageCount Value="10"/>
       </Unit134>
       <Unit135>
-        <Filename Value="\\Developer\lazarus\lcl\interfaces\carbon\carbonbars.pp"/>
+        <Filename Value="Developer\lazarus\lcl\interfaces\carbon\carbonbars.pp"/>
         <UnitName Value="CarbonBars"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="26" Y="14"/>
         <UsageCount Value="10"/>
       </Unit135>
       <Unit136>
-        <Filename Value="\\Developer\lazarus\lcl\interfaces\carbon\carbonlistviews.pp"/>
+        <Filename Value="Developer\lazarus\lcl\interfaces\carbon\carbonlistviews.pp"/>
         <UnitName Value="CarbonListViews"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1627"/>
@@ -1223,10 +1222,16 @@ end;"/>
         <OverflowChecks Value="True"/>
         <StackChecks Value="True"/>
       </Checks>
+      <TargetCPU Value="x86_64"/>
+      <Optimizations>
+        <OptimizationLevel Value="3"/>
+      </Optimizations>
     </CodeGeneration>
     <Linking>
       <Debugging>
+        <GenerateDebugInfo Value="False"/>
         <DebugInfoType Value="dsDwarf2Set"/>
+        <StripSymbols Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>
       <Options>
