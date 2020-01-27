@@ -334,8 +334,8 @@ object AboutBox: TAboutBox
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
-      ClientHeight = 297
-      ClientWidth = 416
+      ClientHeight = 286
+      ClientWidth = 418
       object SPINALabel: TImage
         Cursor = crArrow
         Left = 21
@@ -1706,7 +1706,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 100
-        Width = 63
+        Width = 69
         Caption = 'Version x.y.z'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1717,7 +1717,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 126
-        Width = 73
+        Width = 81
         Caption = '© 1997 – 2020'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1728,7 +1728,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 140
-        Width = 67
+        Width = 69
         Caption = 'J. W. Dietrich'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1739,7 +1739,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 164
-        Width = 107
+        Width = 109
         Caption = 'In Cooperation with:'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1750,7 +1750,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 190
-        Width = 142
+        Width = 147
         Caption = 'Klinikum der LMU München'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1761,7 +1761,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 204
-        Width = 127
+        Width = 134
         Caption = 'Universitätsklinikum Ulm'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1772,7 +1772,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 218
-        Width = 129
+        Width = 135
         Caption = 'Ruhr-Universität Bochum'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1784,7 +1784,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 260
-        Width = 147
+        Width = 157
         Caption = 'spina.medical-cybernetics.de'
         Font.Color = clNavy
         Font.Height = -11
@@ -1797,10 +1797,10 @@ object AboutBox: TAboutBox
         AnchorSideLeft.Control = Divider
         AnchorSideLeft.Side = asrBottom
         Cursor = crHandPoint
-        Left = 177
+        Left = 188
         Height = 13
         Top = 260
-        Width = 113
+        Width = 116
         BorderSpacing.Left = 3
         Caption = 'spina.sourceforge.net'
         Font.Color = clNavy
@@ -1814,7 +1814,7 @@ object AboutBox: TAboutBox
         Left = 21
         Height = 13
         Top = 232
-        Width = 184
+        Width = 191
         Caption = 'Universitätsklinikum Bergmannsheil'
         Font.Height = -11
         Font.Pitch = fpVariable
@@ -1824,10 +1824,10 @@ object AboutBox: TAboutBox
       object Divider: TLabel
         AnchorSideLeft.Control = URL1
         AnchorSideLeft.Side = asrBottom
-        Left = 171
+        Left = 181
         Height = 13
         Top = 260
-        Width = 3
+        Width = 4
         BorderSpacing.Left = 3
         Caption = '|'
         Font.Color = 33023
