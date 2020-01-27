@@ -1,0 +1,12 @@
+citHeader("To cite SPINA in publications use:")
+
+bibentry(bibtype = "manual",
+         title = "SPINA: vectorised calculations for structure parameter inference approach in R",
+         author = personList(as.person("J. W. Dietrich")),
+         organization = "Ruhr University of Bochum",
+         address = "Bochum, NRW, Germany",
+         year         = "2018", 
+         url          = "http://spina.sf.net"         )
+
+citFooter("We have invested a lot of time and effort in creating SPINA,",
+          "please cite it when using it for data analysis.")
