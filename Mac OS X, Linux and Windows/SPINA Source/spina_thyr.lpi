@@ -22,7 +22,7 @@
       <MajorVersionNr Value="4"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="848"/>
+      <BuildNr Value="849"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.1.2 Bonfire" LegalCopyright="1994-2020 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.1.2"/>
     </VersionInfo>
@@ -56,7 +56,7 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="30"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="67" Y="28"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1076,7 +1076,7 @@
         <UsageCount Value="10"/>
       </Unit137>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="environmentinfo.pas"/>
         <Caret Line="234" Column="3" TopLine="218"/>
@@ -1170,33 +1170,17 @@
         <Caret Line="2" Column="8"/>
       </Position23>
       <Position24>
-        <Filename Value="spina_userinterface.pas"/>
-        <Caret Line="11" Column="28" TopLine="1007"/>
-      </Position24>
-      <Position25>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="11" Column="28" TopLine="60"/>
-      </Position25>
-      <Position26>
         <Filename Value="spina_help.pas"/>
         <Caret Line="11" Column="28"/>
-      </Position26>
-      <Position27>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="11" Column="28" TopLine="785"/>
-      </Position27>
-      <Position28>
-        <Filename Value="spina_resultdialog.pas"/>
-        <Caret Line="11" Column="28" TopLine="80"/>
-      </Position28>
-      <Position29>
+      </Position24>
+      <Position25>
         <Filename Value="spina_thyr.lpr"/>
         <Caret Line="11" Column="28"/>
-      </Position29>
-      <Position30>
+      </Position25>
+      <Position26>
         <Filename Value="spina_thyr.lpr"/>
         <Caret Line="111" Column="5" TopLine="79"/>
-      </Position30>
+      </Position26>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

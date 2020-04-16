@@ -8,12 +8,12 @@ unit engine_testcase;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.0.2 (Mercator) }
+{ Version 4.1.2 (Bonfire) }
 
-{ (c) J. W. Dietrich, 1994 - 2015 }
+{ (c) J. W. Dietrich, 1994 - 2020 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2014 }
+{ (c) Ruhr University of Bochum 2005 - 2020 }
 
 { Test case unit for PPCUnit, according to SPINA Technical Reference, Part R }
 
