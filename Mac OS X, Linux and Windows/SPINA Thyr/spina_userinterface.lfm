@@ -323,7 +323,7 @@ object Hauptschirm: THauptschirm
   OnWindowStateChange = FormWindowStateChange
   ParentBiDiMode = False
   Position = poScreenCenter
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '2.2.6.0'
   object FT4Items: TComboBox
     Left = 128
     Height = 20
@@ -419,7 +419,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 65
+      ClientHeight = 73
       ClientWidth = 214
       Items.Strings = (
         'rhTSH-Substitution'
@@ -446,14 +446,14 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 150
+      ClientHeight = 158
       ClientWidth = 206
       ParentColor = False
       ParentFont = False
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 134
+        Height = 142
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -478,14 +478,14 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 150
+      ClientHeight = 158
       ClientWidth = 206
       ParentColor = False
       ParentFont = False
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 134
+        Height = 142
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -517,7 +517,7 @@ object Hauptschirm: THauptschirm
       Width = 271
       Anchors = [akTop, akRight]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 253
+      ClientHeight = 261
       ClientWidth = 261
       ParentColor = False
       ParentFont = False
@@ -1233,14 +1233,14 @@ object Hauptschirm: THauptschirm
       Height = 98
       Top = 6
       Width = 217
-      ClientHeight = 71
+      ClientHeight = 79
       ClientWidth = 207
       TabOrder = 4
       object SPINALabel: TImage
         Cursor = crHandPoint
         Left = 5
         Height = 81
-        Top = 0
+        Top = 5
         Width = 204
         Align = alCustom
         Anchors = [akLeft, akBottom]

@@ -23,7 +23,7 @@
       <MajorVersionNr Value="4"/>
       <MinorVersionNr Value="2"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="871"/>
+      <BuildNr Value="872"/>
       <Attributes pvaDebug="True"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.2.0 Kontinuum" LegalCopyright="1994-2023 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.2.1"/>
     </VersionInfo>
@@ -159,13 +159,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_AboutBox"/>
-        <EditorIndex Value="23"/>
-        <TopLine Value="239"/>
-        <CursorPos X="6" Y="252"/>
+        <EditorIndex Value="4"/>
+        <CursorPos Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
-          <EditorIndex Value="4"/>
-          <CursorPos Y="2"/>
+          <EditorIndex Value="23"/>
+          <TopLine Value="239"/>
+          <CursorPos X="6" Y="252"/>
         </ExtraEditor1>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -245,7 +245,7 @@
         <Filename Value="spina_types.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Types"/>
-        <TopLine Value="121"/>
+        <TopLine Value="108"/>
         <CursorPos X="29" Y="141"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
@@ -950,7 +950,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="19"/>
         <TopLine Value="272"/>
-        <CursorPos X="33" Y="294"/>
+        <CursorPos X="18" Y="279"/>
         <UsageCount Value="47"/>
         <Loaded Value="True"/>
       </Unit118>
@@ -1262,7 +1262,6 @@ end;"/>
         <OverflowChecks Value="True"/>
         <StackChecks Value="True"/>
       </Checks>
-      <TargetCPU Value="aarch64"/>
       <Optimizations>
         <OptimizationLevel Value="3"/>
       </Optimizations>
