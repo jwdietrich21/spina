@@ -8,12 +8,12 @@ unit EngineTestCases;
 { Programm zur Berechnung von Strukturparametern }
 { des Insulin-Glukose-Regelkreises }
 
-{ Version 5.0.0 (Rubycon) }
+{ Version 5.1.0 (Cyclone) }
 
-{ (c) J. W. Dietrich, 1994 - 2022 }
+{ (c) J. W. Dietrich, 1994 - 2024 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2022 }
+{ (c) Ruhr University of Bochum 2005 - 2024 }
 
 { This unit contains test cases }
 
@@ -66,6 +66,8 @@ begin
   insulin := 1.2 * kInsulinConversionFactor;
   AssertTrue(WithinTolerance(0.29, SPINA_GBeta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(15.83, SPINA_GR(insulin, glucose), 0.1));
+  AssertEquals(SPINA_GBeta(insulin, glucose) * SPINA_GR(insulin, glucose),
+               SPINA_DI(insulin, glucose));
   AssertTrue(WithinTolerance(14.9, HOMA_Beta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(0.3, HOMA_IR(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(3.67, HOMA_IS(insulin, glucose), 0.2));
@@ -78,6 +80,8 @@ begin
   insulin := 0.5 * kInsulinConversionFactor;
   AssertTrue(WithinTolerance(0.13, SPINA_GBeta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(41.91, SPINA_GR(insulin, glucose), 0.1));
+  AssertEquals(SPINA_GBeta(insulin, glucose) * SPINA_GR(insulin, glucose),
+               SPINA_DI(insulin, glucose));
   AssertTrue(WithinTolerance(8.2, HOMA_Beta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(0.1, HOMA_IR(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(9.54, HOMA_IS(insulin, glucose), 0.2));
@@ -90,6 +94,8 @@ begin
   insulin := 10.7 * kInsulinConversionFactor;
   AssertTrue(WithinTolerance(2.64, SPINA_GBeta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(1.92, SPINA_GR(insulin, glucose), 0.1));
+  AssertEquals(SPINA_GBeta(insulin, glucose) * SPINA_GR(insulin, glucose),
+               SPINA_DI(insulin, glucose));
   AssertTrue(WithinTolerance(148.7, HOMA_Beta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(2.3, HOMA_IR(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(0.43, HOMA_IS(insulin, glucose), 0.2));
@@ -102,6 +108,8 @@ begin
   insulin := 29.6 * kInsulinConversionFactor;
   AssertTrue(WithinTolerance(6.54, SPINA_GBeta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(0.58, SPINA_GR(insulin, glucose), 0.1));
+  AssertEquals(SPINA_GBeta(insulin, glucose) * SPINA_GR(insulin, glucose),
+               SPINA_DI(insulin, glucose));
   AssertTrue(WithinTolerance(237.4, HOMA_Beta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(7.9, HOMA_IR(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(0.13, HOMA_IS(insulin, glucose), 0.2));
@@ -114,6 +122,8 @@ begin
   insulin := 122.8 * kInsulinConversionFactor;
   AssertTrue(WithinTolerance(25.36, SPINA_GBeta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(0.15, SPINA_GR(insulin, glucose), 0.1));
+  AssertEquals(SPINA_GBeta(insulin, glucose) * SPINA_GR(insulin, glucose),
+               SPINA_DI(insulin, glucose));
   AssertTrue(WithinTolerance(738.3, HOMA_Beta(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(37.3, HOMA_IR(insulin, glucose), 0.1));
   AssertTrue(WithinTolerance(0.03, HOMA_IS(insulin, glucose), 0.2));

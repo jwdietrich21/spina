@@ -1,17 +1,84 @@
 ##########################################
-# SPINA-Thyr functions
+# SPINA functions
 # Calculate structure parameters of
-# thyroid homeostasis in S
-# Version 4.1.0
-# Last Change 20160831 by J. W. D.
+# thyroid and insulin-glucose homeostasis 
+# in S, including the implementation in R
+# Version 5.1.0 (Cyclone)
+# Last Change 20240107 by J. W. D.
 ##########################################
 
 if (Sys.info()[["sysname"]] == "Darwin" | Sys.info()[["machine"]] == "Macintosh")
 {
-if (sys.parent() < 4) is.standalone <- TRUE else is.standalone <- FALSE; # running as stand-alone script?
+if (sys.parent() < 4) is.standalone <- TRUE else is.standalone <- FALSE; 
+# running as stand-alone script?
 } else if (sys.parent() == 0) is.standalone <- TRUE else is.standalone <- FALSE;
+# Test scenarios are only run in standalone situation
 
-estimated.GT <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
+Insulin.conversion.factor <- 6;  # A Voelund 1993, L. Heinemann 2010
+Glucose.conversion.factor <- 18; # derived from molar mass
+
+SPINA.GBeta <- function(Insulin, Glucose) 
+# Insulin expected in pmol/l, Glucose in mmol/l
+{
+  pico.factor <- 1e12;
+  mili.factor <- 1e3
+  betaI <- 3.4e-3;
+  alphaI <- 0.2;
+  dBeta <- 7e-3;
+  GBeta <- pico.factor * betaI * Insulin / pico.factor * (dBeta + Glucose /   
+    mili.factor) / (alphaI * Glucose / mili.factor);
+  return(GBeta);
+}
+
+SPINA.GR <- function(Insulin, Glucose) 
+# Insulin in pmol/l, Glucose in mmol/l
+{
+  pico.factor <- 1e12;
+  mili.factor <- 1e3;
+  alphaG <- 0.11;
+  betaG <- 7.1e-4; 
+  P0 <- 150e-6;
+  DR <- 1.6e-9;
+  GE <- 50;
+  GR <- alphaG * P0 * (DR + Insulin / pico.factor) / (betaG * GE * Insulin / 
+    pico.factor * Glucose / mili.factor) - DR / (GE * Insulin / pico.factor) 
+    - 1 / GE;
+  return(GR);
+}
+
+SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+{
+  DI <- SPINA.GBeta(Insulin, Glucose) * SPINA.GR(Insulin, Glucose);
+  return(DI);
+}
+
+HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+{
+  IR <- Glucose * Insulin / Insulin.conversion.factor / 22.5;
+  return(IR);
+}
+
+HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+{
+  Beta <- rep(NA, times = length(Insulin));
+  Beta[which(Glucose > 3.5)] <- 20 * Insulin[which(Glucose > 3.5)] / Insulin.conversion.factor / (Glucose[which(Glucose > 3.5)] - 3.5);
+  return(Beta);
+}
+
+HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+{
+  IS <- 1 / HOMA.IR(Insulin, Glucose);
+  return(IS);
+}
+
+QUICKI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+{
+  QUICKI <- 1 / (log10(Insulin / Insulin.conversion.factor) + log10(Glucose * Glucose.conversion.factor));
+  return(QUICKI);
+}
+
+estimated.GT <- function(TSH, FT4) 
+# TSH in mU/l, FT4 in pmol/l
 {
   pico.factor <- 1e12;
   alphaT <- 0.1;
@@ -28,7 +95,8 @@ estimated.GT <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
   return(GT);
 }
 
-estimated.GD <- function(FT4, FT3) # FT4 and FT3 in pmol/l
+estimated.GD <- function(FT4, FT3) 
+# FT4 and FT3 in pmol/l
 {
   pico.factor <- 1e12;
   nano.factor <- 1e9;
@@ -45,7 +113,8 @@ estimated.GD <- function(FT4, FT3) # FT4 and FT3 in pmol/l
   return(GD);
 }
 
-estimated.GTT <- function(TSH, T4) # TSH in mU/l, T4 in nmol/l
+estimated.GTT <- function(TSH, T4) 
+# TSH in mU/l, T4 in nmol/l
 {
   pico.factor <- 1e12;
   nano.factor <- 1e9;
@@ -58,7 +127,8 @@ estimated.GTT <- function(TSH, T4) # TSH in mU/l, T4 in nmol/l
   return(GT);
 }
 
-estimated.GDTT <- function(T4, T3) # T4 and T3 in nmol/l
+estimated.GDTT <- function(T4, T3) 
+# T4 and T3 in nmol/l
 {
   pico.factor <- 1e12;
   nano.factor <- 1e9;
@@ -78,7 +148,8 @@ estimated.GDTT <- function(T4, T3) # T4 and T3 in nmol/l
   return(GD);
 }
 
-estimated.TTSI <- function(TSH, FT4, lu) # TSH in mU/l, FT4 in arbitrary unit
+estimated.TTSI <- function(TSH, FT4, lu) 
+# TSH in mU/l, FT4 in arbitrary unit
 # lu: upper limit of FT4 reference range, same unit as FT4
 {
   TSH[which(TSH == 0)] = NA;
@@ -86,7 +157,8 @@ estimated.TTSI <- function(TSH, FT4, lu) # TSH in mU/l, FT4 in arbitrary unit
   return(ttsi);
 }
 
-estimated.TSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
+estimated.TSHI <- function(TSH, FT4) 
+# TSH in mU/l, FT4 in pmol/l
 {
   beta <- -0.1345;
   TSH[which(TSH == 0)] = NA;
@@ -94,13 +166,15 @@ estimated.TSHI <- function(TSH, FT4) # TSH in mU/l, FT4 in pmol/l
   return(tshi);
 }
 
-estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676) # TSH in mU/l, FT4 in pmol/l
+estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676) 
+# TSH in mU/l, FT4 in pmol/l
 {
   stshi <- (estimated.TSHI(TSH, FT4) - mean) / sd;
   return(stshi);
 }
 
-estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5) # T4 and T3 in nmol/l
+estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5) 
+# T4 and T3 in nmol/l
 {
   sgd <- (estimated.GD(FT4, FT3) - mean) / sd;
   return(sgd);
@@ -114,7 +188,8 @@ SPINA.GTT <- function(TSH, T4) estimated.GTT(TSH, T4);
 SPINA.GDTT <- function(T4, T3) estimated.GDTT(T4, T3);
 SPINA.sGD <- function(FT4, FT3, mean = 30, sd = 5) estimated.sGD(FT4, FT3, mean, sd);
 
-if (is.standalone) # print if executed as stand-alone script only
+if (is.standalone) 
+# print if executed as stand-alone script only
 {
   # Test scenarios:
   
@@ -162,14 +237,48 @@ if (is.standalone) # print if executed as stand-alone script only
   print(paste("TTSI:", estimated.TTSI(TSH, FT4, 20)));
   print(paste("Jostel's TSHI:", estimated.TSHI(TSH, FT4 * 1.287)));
   print(paste("sTSHI:", estimated.sTSHI(TSH, FT4 * 1.287)));
+  
+  cat("\n")
+  
+  cat("\nScenario 100: GBeta = 2.8 pmol/s. GR = 2.3 mol/s:\n");
+  Insulin <- 63.01;
+  Glucose <- 4.34;
+  print(paste("GBeta^:", SPINA.GBeta(Insulin, Glucose)));
+  print(paste("GR^:", SPINA.GR(Insulin, Glucose)));
+  print(paste("SPINA-DI:", SPINA.DI(Insulin, Glucose)));
+
+  cat("\nScenario 101: GBeta = 2.8 pmol/s. GR = 0.7 mol/s:\n");
+  Insulin <- 88.77;
+  Glucose <- 8.18;
+  print(paste("GBeta^:", SPINA.GBeta(Insulin, Glucose)));
+  print(paste("GR^:", SPINA.GR(Insulin, Glucose)));
+  print(paste("SPINA-DI:", SPINA.DI(Insulin, Glucose)));
+
+  cat("\nScenario 102: GBeta = 0.6 pmol/s. GR = 2.3 mol/s:\n");
+  Insulin <- 20.33;
+  Glucose <- 9.51;
+  print(paste("GBeta^:", SPINA.GBeta(Insulin, Glucose)));
+  print(paste("GR^:", SPINA.GR(Insulin, Glucose)));
+  print(paste("SPINA-DI:", SPINA.DI(Insulin, Glucose)));
+
+  cat("\nScenario 103: GBeta = 0.6 pmol/s. GR = 0.7 mol/s:\n");
+  Insulin <- 24.2;
+  Glucose <- 15.27;
+  print(paste("GBeta^:", SPINA.GBeta(Insulin, Glucose)));
+  print(paste("GR^:", SPINA.GR(Insulin, Glucose)));
+  print(paste("SPINA-DI:", SPINA.DI(Insulin, Glucose)));
+
+  cat("\nScenario 104: GBeta = 13.0 pmol/s. GR = 2.3 mol/s:\n");
+  Insulin <- 167.09;
+  Glucose <- 1.96;
+  print(paste("GBeta^:", SPINA.GBeta(Insulin, Glucose)));
+  print(paste("GR^:", SPINA.GR(Insulin, Glucose)));
+  print(paste("SPINA-DI:", SPINA.DI(Insulin, Glucose)));
 }
 
-# Example data
+# Example data for thyroid homeostasis
 
-# Source:
-# Pilo A, Iervasi G, Vitek F, Ferdeghini M, Cazzuola F, Bianchi R. Thyroidal and
-# peripheral production of 3,5,3'-triiodothyronine in humans by multicompartmental 
-# analysis. Am J Physiol. 1990 Apr;258(4 Pt 1):E715-26. PMID 2333963.
+# Source: Pilo et al. 1990
 
 # BSA: body surface area in m^2
 # IDV: initial distribution volume
@@ -218,8 +327,63 @@ QP = c(2.31, 1.47, 1.76, 1.62, 1.95, 1.58, 1.96, 2.08, 2.21, 1.71, 2, 2.55, 2.06
 QF = c(3.22, 2.85, 2.86, 3.55, 2.55, 3.04, 2.87, 3.66, 3.31, 2.9, 3.18, 3.94, 4.35, 2.82),
 QS = c(25.8, 18.3, 22.6, 19, 15.4, 14.2, 14.8, 19.4, 18, 18.7, 15.4, 30.1, 25.7, 17.8),
 QT = c(31.3, 22.6, 27.3, 24, 19.9, 18.8, 19.6, 25.2, 23.5, 23.3, 20.6, 36.6, 32.2, 22.2)
-)
+);
 
 t3.mc$GT <- SPINA.GT(t3.mc$TSH, t3.mc$FT4.SI);
 t3.mc$GD <- SPINA.GD(t3.mc$FT4.SI, t3.mc$FT3.SI);
 
+# Example data for insulin-glucose homeostasis
+
+# Source: Dietrich et al. 2022
+
+# Age: age in years
+# Height: height in cm
+# Body.Mass: body mass in kg
+# BMI: Body mass index in kg/m^2
+# Fasting.Glucose: fasting glucose concentration in mg/dL
+# Fasting.Insulin: fasting insulin concentration in mIU/L
+
+vellore <- data.frame(
+Age = c(19, 20, 19, 18, 20, 21, 18, 18, 21, 20, 19, 20, 19, 19, 19, 19, 22, 20, 19, 19, 19, 19, 19, 20, 20, 18, 20, 22, 22, 19, 19, 18, 19, 19, 21, 20, 20, 19, 21, 21, 20, 21, 21, 19, 20, 18, 19, 19, 19, 20, 21, 19, 19, 18, 19, 18, 19, 20, 19, 21, 20, 19, 20, 21, 20, 20, 19, 19, 20, 20, 19, 21, 19, 18, 18, 19, 20, 20, 22, 19, 19, 20, 21, 19, 21, 20, 20, 21, 21, 20, 21, 19, 19, 20, 20, 20, 19, 21, 21, 20, 21, 20, 19, 21, 19, 19, 20, 21, 20, 21, 20, 21, 22, 20, 21, 20, 19),
+Height = c(165, 169, 170, 165, 169, 170.5, 166, 170, 174, 165, 173, 173.5, 169, 184, 176, 171, 173, 164, 179.5, 171, 173, 169, 185, 173, 188, 167, 167, 187, 171, 173, 166.5, 183, 170, 181, 178, 168, 175, 169, 167, 166.5, 163, 168, 171, 165, 173, 177, 177, 176, 166, 173, 174, 168, 168, 176, 163, 170, 167, 170, 179.5, 167, 160, 160, 163, 177, 169.5, 166, 161, 167, 181.5, 162.5, 180.5, 160.5, 174, 172, 168, 172, 169, 171, 174, 161, 164, 161, 165, 164, 167, 155.5, 169, 174, 169, 164, 151, 167, 168.5, 175, 174, 163, 170, 169, 159, 165, 163.5, 189, 172, 157.5, 170, 166, 169, 166, 167, 163, 169.5, 162.5, 169, 169.5, 172, 158, 163),
+Body.Mass = c(43, 54.3, 52, 59.45, 60.02, 65.38, 50.96, 52.6, 62.26, 52, 75.34, 50, 62.8, 61.2, 59.7, 61.52, 68.2, 65, 56.2, 62, 61, 60.94, 90.4, 66.9, 57.04, 47.3, 51.5, 59.8, 68.1, 70.9, 47.24, 59.5, 53.1, 56.54, 60.68, 61, 51.2, 44, 45.96, 70.5, 54.4, 55.06, 47.02, 52.5, 58.68, 57.3, 57.3, 54.64, 49.2, 60, 48.5, 47.5, 67.7, 60, 53.76, 55, 57, 52, 58.4, 52.46, 49.1, 48.4, 54.4, 62, 55, 48.48, 49.9, 54.7, 53, 53.5, 55.68, 41.58, 68.36, 63.3, 53.4, 58, 46, 48.7, 53.56, 70, 47.4, 53.28, 48.7, 44.6, 43.4, 43, 56.72, 57.66, 50.76, 53.52, 40.9, 48.54, 83.48, 52.3, 54.5, 45, 41.5, 54.8, 43, 52, 44.6, 66.46, 54.8, 49, 53.26, 70, 48, 45.8, 73.78, 43.5, 58.7, 46.5, 62, 77.12, 58.24, 41.5, 48),
+BMI = c(15.8, 19, 18, 21.9, 21, 22.6, 18.5, 18.2, 20.5, 19.1, 25.2, 16.7, 22, 18.1, 19.3, 21, 22.8, 24.2, 17.5, 21.2, 20.4, 21.3, 26.4, 22.4, 16.1, 17, 18.5, 17.1, 23.3, 23.7, 17.1, 17.8, 18.4, 17.2, 19.1, 21.6, 16.7, 15.4, 16.5, 25.6, 20.5, 19.5, 16.1, 19.3, 19.6, 18.3, 18.3, 17.6, 17.9, 20, 16, 16.8, 24, 19.4, 20.2, 19, 20.4, 18, 18.2, 18.8, 19.2, 18.9, 20.5, 19.8, 19.1, 17.6, 19.3, 19.6, 16.1, 20.4, 17.2, 16.2, 22.6, 21.4, 18.9, 19.6, 16.1, 16.7, 17.7, 27, 17.6, 20.5, 17.9, 16.6, 15.6, 17.9, 19.9, 19, 17.8, 19.9, 17.9, 17.4, 29.5, 17.1, 18, 16.9, 14.4, 19.2, 17, 19.1, 16.8, 18.6, 18.5, 19.9, 18.4, 25.4, 16.8, 16.6, 26.4, 16.4, 20.6, 17.7, 21.7, 27, 19.7, 16.6, 18.1),
+Fasting.Glucose = c(92, 85, 91, 76, 86, 7.04, 89, 91, 94, 98, 109, 84, 87, 10.04, 88, 81, 85, 80, 89, 98, 85, 104, 97, 84, 87, 87, 94, 100, 90, 89, 90, 84, 100, 93, 100, 95, 91, 100, 108, 93, 93, 82, 86, 92, 8, 89, 94, 107, 77, 83, 77, 88, 97, 82, 91, 85, 85, 84, 90, 90, 80, 90, 104, 106, 97, 87, 81, 83, 105, 103, 87, 86, 85, 81, 87, 85, 101, 86, 80, 87, 91, 94, 97, 75, 83, 84, 87, 94, 97, 89, 101, 88, 85, 93, 101, 98, 103, 102, 92, 102, 95, 78, 89, 81, 89, 86, 94, 85, 99, 97, 87, 91, 88, 123, 107, 96, 87),
+Fasting.Insulin = c(1.2, 0.8, 1.2, 3.8, 5.9, 3.1, 5, 3.2, 4.7, 0.9, 8.5, 2.3, 1.5, 3.8, 3.7, 1.1, 3.3, 6.6, 2.8, 12.9, 0.5, 1, 3.5, 6.4, 4.1, 4.5, 2.6, 1.4, 2.8, 10.7, 6, 8.9, 2.2, 2.1, 1.4, 8.29, 4.3, 1.9, 29.6, 0.9, 1.9, 4.3, 0.9, 1, 5.1, 5.7, 7.5, 17.5, 3.5, 2.5, 3.3, 3.5, 18, 2.7, 9.4, 4.2, 1.8, 4.3, 6.9, 3.1, 4.5, 2.2, 10, 4.9, 4.5, 1, 2.5, 3.5, 6.67, 4.3, 3.8, 2.9, 5.3, 1.1, 2, 8.3, 6.5, 1.5, 3.6, 12.5, 22, 0.9, 3.1, 5, 0.5, 1.3, 1.1, 0.9, 2.1, 4.9, 2.3, 1, 7.2, 4.5, 5.4, 4.2, 11.18, 2.3, 11.1, 4.31, 6.8, 3.7, 31.4, 1, 11.9, 2.1, 5.8, 3.7, 22.9, 57.1, 2.6, 1, 4, 122.8, 3.2, 6.4, 5.5)
+);
+
+vellore$GR <- SPINA.GR(vellore$Fasting.Insulin * Insulin.conversion.factor, vellore$Fasting.Glucose/Glucose.conversion.factor);
+vellore$GBeta <- SPINA.GBeta(vellore$Fasting.Insulin * Insulin.conversion.factor, vellore$Fasting.Glucose/Glucose.conversion.factor);
+vellore$HOMA.Beta <- HOMA.Beta(vellore$Fasting.Insulin * Insulin.conversion.factor, vellore$Fasting.Glucose/Glucose.conversion.factor);
+vellore$HOMA.IR <- HOMA.IR(vellore$Fasting.Insulin * Insulin.conversion.factor, vellore$Fasting.Glucose/Glucose.conversion.factor);
+vellore$HOMA.IS <- HOMA.IS(vellore$Fasting.Insulin * Insulin.conversion.factor, vellore$Fasting.Glucose/Glucose.conversion.factor);
+vellore$QUICKI <- QUICKI(vellore$Fasting.Insulin * Insulin.conversion.factor, vellore$Fasting.Glucose/Glucose.conversion.factor);
+
+# References:
+
+# 1. Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE,
+#    Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for
+#    Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun
+#    9;7:57. doi 10.3389/fendo.2016.00057. PMID 27375554; PMCID PMC4899439.
+
+# 2. Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, 
+#    Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation
+#    of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. 
+#    doi 10.1038/s41598-022-22531-3. PMID 36271244; PMCID PMC9587026.
+
+# 3. Heinemann L. Insulin assay standardization: leading to measures of insulin 
+#    sensitivity and secretion for practical clinical care: response to Staten et al. 
+#    Diabetes Care. 2010 Jun;33(6):e83; author reply e84. doi: 10.2337/dc10-0034. PMID: 
+#    20508228.
+
+# 4. Pilo A, Iervasi G, Vitek F, Ferdeghini M, Cazzuola F, Bianchi R. Thyroidal and
+#    peripheral production of 3,5,3'-triiodothyronine in humans by multicompartmental 
+#    analysis. Am J Physiol. 1990 Apr;258(4 Pt 1):E715-26. PMID 2333963.
+
+# 5. Voelund A. Conversion of insulin units to SI units. Am J Clin Nutr. 1993 
+#    Nov;58(5):714-5. doi: 10.1093/ajcn/58.5.714. PMID: 8237884.
+
+# 6. Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, 
+#    Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and 
+#    glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 
+#    2024 Jan 2. doi: 10.1111/1753-0407.13525. PMID: 38169110.

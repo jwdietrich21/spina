@@ -8,12 +8,12 @@ unit SPINA_Engine;
 { Programm zur Berechnung von Strukturparametern }
 { des Insulin-Glukose-Regelkreises }
 
-{ Version 5.0.0 (Rubycon) }
+{ Version 5.1.0 (Cyclone) }
 
-{ (c) J. W. Dietrich, 1994 - 2022 }
+{ (c) J. W. Dietrich, 1994 - 2024 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2022 }
+{ (c) Ruhr University of Bochum 2005 - 2024 }
 
 { This unit implements the calculation engine }
 
@@ -42,11 +42,15 @@ const
   P0 = 150e-6;
   DR = 1.6e-9;
   GE = 50;
+  p1 = 22.5;
+  p2 = 20;
+  p3 = 3.5;
   kError101 = 'Runtime error: Negative parameters';
   kError102 = 'Runtime error: Parameter out of range';
 
 function SPINA_GBeta(const Insulin, Glucose: real): real;
 function SPINA_GR(const Insulin, Glucose: real): real;
+function SPINA_DI(const Insulin, Glucose: real): real;
 function HOMA_IR(const Insulin, Glucose: real): real;
 function HOMA_Beta(const Insulin, Glucose: real): real;
 function HOMA_IS(const Insulin, Glucose: real): real;
@@ -72,13 +76,22 @@ begin
     result := alphaG * P0 * (DR + Insulin / kPicoFactor) / (betaG * GE * Insulin / kPicoFactor * Glucose / kMilliFactor) - DR / (GE * Insulin / kPicoFactor) - 1 / GE;
 end;
 
+function SPINA_DI(const Insulin, Glucose: real): real;
+// Insulin in pmol/l, Glucose in mmol/l
+begin
+  assert((isNan(Insulin) or (Insulin >= 0)) and (isNan(Glucose) or (Glucose >= 0)), kError101);
+  result := NaN;
+  if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 0) then
+    result := SPINA_GBeta(Insulin, Glucose) * SPINA_GR(Insulin, Glucose);
+end;
+
 function HOMA_IR(const Insulin, Glucose: real): real;
 // Insulin in pmol/l, Glucose in mmol/l
 begin
   assert((isNan(Insulin) or (Insulin >= 0)) and (isNan(Glucose) or (Glucose >= 0)), kError101);
   result := NaN;
   if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 0) then 
-    result := Glucose * Insulin / kInsulinConversionFactor / 22.5;
+    result := Glucose * Insulin / kInsulinConversionFactor / p1;
 end;
 
 function HOMA_Beta(const Insulin, Glucose: real): real;
@@ -87,7 +100,7 @@ begin
   assert((isNan(Insulin) or (Insulin >= 0)) and (isNan(Glucose) or (Glucose >= 0)), kError101);
   result := NaN;
   if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 3.5) then 
-    result := 20 * Insulin / kInsulinConversionFactor / (Glucose - 3.5);
+    result := p2 * Insulin / kInsulinConversionFactor / (Glucose - p3);
 end;
 
 function HOMA_IS(const Insulin, Glucose: real): real;
