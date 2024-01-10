@@ -25,7 +25,7 @@ http://spina.medical-cybernetics.de
 
 BSD License
 
-Copyright (c) 1994-2022, PD Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
+Copyright (c) 1994-2024, PD Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
 
 All rights reserved.
 
@@ -73,6 +73,8 @@ Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, 
 For citing SPINA Carb please use:
 
 Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
+
+Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Jan 2. doi: 10.1111/1753-0407.13525. Epub ahead of print. PMID: 38169110.
 
 
 Additionally you might want to cite one of the following papers:
