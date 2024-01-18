@@ -95,13 +95,3 @@ def QUICKI(Insulin, Glucose):
   return result
 
 
-Glucose = 92 / GLUCOSECONVERSIONFACTOR
-Insulin = 1.2 * INSULINCONVERSIONFACTOR
-print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose))  
-print('SPINA-GR:', SPINA_GR(Insulin, Glucose))  
-print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
-print('HOMA-Beta:', HOMA_Beta(Insulin, Glucose))  
-print('HOMA-IR:', HOMA_IR(Insulin, Glucose))  
-print('HOMA-IS:', HOMA_IS(Insulin, Glucose))  
-print('QUICKI', QUICKI(Insulin, Glucose))  
-
