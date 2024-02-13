@@ -123,6 +123,36 @@ type
       ffFixed, precision, digits));
     writeln();
 
+    writeln('Scenario 103: GBeta = 0.6 pmol/s. GR = 2.3 mol/s:');
+    Insulin := 20.33;
+    Glucose := 9.51;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
+    writeln('Scenario 104: GBeta = 13.0 pmol/s. GR = 2.3 mol/s:');
+    Insulin := 167.09;
+    Glucose := 1.96;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
     Terminate;
   end;
 

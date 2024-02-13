@@ -18,7 +18,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="5"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="5"/>
+      <BuildNr Value="6"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="Cyclone" LegalCopyright="© 1994-2024 J. W. Dietrich" ProductName="SPINA Carb 5.1.0 Cyclone" ProductVersion="5.1.0 Cyclone"/>
     </VersionInfo>
