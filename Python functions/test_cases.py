@@ -34,14 +34,12 @@ print('HOMA-IR:', HOMA_IR(Insulin, Glucose))
 print('HOMA-IS:', HOMA_IS(Insulin, Glucose))  
 print('QUICKI', QUICKI(Insulin, Glucose))  
 
-print();
+print()
 
-print('Additional test cases derived from simulations:');      
+print('Scenario E1: Extreme values for insulin and glucose:')
 
-print('Scenario 100: GBeta = 2.8 pmol/s. GR = 2.3 mol/s:')
-
-Glucose = 4.34
-Insulin = 63.01
+Glucose = 700 / GLUCOSECONVERSIONFACTOR
+Insulin = 200 * INSULINCONVERSIONFACTOR
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -50,12 +48,12 @@ print('HOMA-IR:', HOMA_IR(Insulin, Glucose))
 print('HOMA-IS:', HOMA_IS(Insulin, Glucose))  
 print('QUICKI', QUICKI(Insulin, Glucose))  
 
-print();
+print()
 
-print('Scenario 101: GBeta = 2.8 pmol/s. GR = 0.7 mol/s:')
+print('Scenario E2: Extreme values for insulin and glucose:')
 
-Glucose = 8.18
-Insulin = 88.77
+Glucose = 800 / GLUCOSECONVERSIONFACTOR
+Insulin = 0.1 * INSULINCONVERSIONFACTOR
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -64,12 +62,12 @@ print('HOMA-IR:', HOMA_IR(Insulin, Glucose))
 print('HOMA-IS:', HOMA_IS(Insulin, Glucose))  
 print('QUICKI', QUICKI(Insulin, Glucose))  
 
-print();
+print()
 
-print('Scenario 102: GBeta = 0.6 pmol/s. GR = 2.3 mol/s:')
+print('Scenario E3 Extreme values for insulin and glucose:')
 
-Glucose = 9.51
-Insulin = 20.33
+Glucose = 800 / GLUCOSECONVERSIONFACTOR
+Insulin = 0 * INSULINCONVERSIONFACTOR
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -78,12 +76,12 @@ print('HOMA-IR:', HOMA_IR(Insulin, Glucose))
 print('HOMA-IS:', HOMA_IS(Insulin, Glucose))  
 print('QUICKI', QUICKI(Insulin, Glucose))  
 
-print();
+print()
 
-print('Scenario 103: GBeta = 0.6 pmol/s. GR = 2.3 mol/s:')
+print('Scenario E4: Extreme values for insulin and glucose:')
 
-Glucose = 9.51
-Insulin = 20.33
+Glucose = 30 / GLUCOSECONVERSIONFACTOR
+Insulin = 1 * INSULINCONVERSIONFACTOR
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -92,18 +90,4 @@ print('HOMA-IR:', HOMA_IR(Insulin, Glucose))
 print('HOMA-IS:', HOMA_IS(Insulin, Glucose))  
 print('QUICKI', QUICKI(Insulin, Glucose))  
 
-print();
-
-print('Scenario 104: GBeta = 13.0 pmol/s. GR = 2.3 mol/s:')
-
-Glucose = 1.96
-Insulin = 167.09
-print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
-print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
-print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
-print('HOMA-Beta:', HOMA_Beta(Insulin, Glucose), '%')  
-print('HOMA-IR:', HOMA_IR(Insulin, Glucose))  
-print('HOMA-IS:', HOMA_IS(Insulin, Glucose))  
-print('QUICKI', QUICKI(Insulin, Glucose))  
-
-print();
+print()

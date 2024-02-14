@@ -44,14 +44,17 @@ def SPINA_GBeta(Insulin, Glucose):
     result = float("NaN")
   else:
     result = PICOFACTOR * BETAI * Insulin / PICOFACTOR * (DBETA + Glucose / MILLIFACTOR) / (ALPHAI * Glucose / MILLIFACTOR)
+  if (Insulin == 0) and not (math.isnan(Glucose)):
+    result = 0
   return result
 
 def SPINA_GR(Insulin, Glucose):
   result = float("NaN")
-  if math.isnan(Insulin) or math.isnan(Glucose):
+  if math.isnan(Insulin) or math.isnan(Glucose) or (Insulin == 0) or (Glucose == 0):
     result = float("NaN")
   else:
     result = ALPHAG * P0 * (DR + Insulin / PICOFACTOR) / (BETAG * GE * Insulin / PICOFACTOR * Glucose / MILLIFACTOR) - DR / (GE * Insulin / PICOFACTOR) - 1 / GE
+  if result < 0: result = 0
   return result
 
 def SPINA_DI(Insulin, Glucose):
@@ -80,7 +83,7 @@ def HOMA_IR(Insulin, Glucose):
 
 def HOMA_IS(Insulin, Glucose):
   result = float("NaN")
-  if math.isnan(Insulin) or math.isnan(Glucose):
+  if math.isnan(Insulin) or math.isnan(Glucose) or (HOMA_IR(Insulin, Glucose) == 0):
     result = float("NaN")
   else:
     result = 1 / HOMA_IR(Insulin, Glucose)
@@ -88,7 +91,7 @@ def HOMA_IS(Insulin, Glucose):
 
 def QUICKI(Insulin, Glucose):
   result = float("NaN")
-  if math.isnan(Insulin) or math.isnan(Glucose):
+  if math.isnan(Insulin) or math.isnan(Glucose) or (Insulin == 0) or (Glucose == 0):
     result = float("NaN")
   else:
     result = 1 / (math.log10(Insulin / INSULINCONVERSIONFACTOR) + math.log10(Glucose * GLUCOSECONVERSIONFACTOR))
