@@ -86,9 +86,9 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' mol/s');
     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
@@ -101,9 +101,9 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' mol/s');
     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
@@ -116,9 +116,9 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' mol/s');
     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
@@ -131,9 +131,9 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' mol/s');
     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
@@ -146,10 +146,10 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
-    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits) + ' mol/s');
+     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
 
@@ -161,10 +161,18 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' mol/s');
     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-Beta: ' + FloatToStrF(HOMA_Beta(Insulin, Glucose),
+      ffFixed, precision, digits) + '%');
+    writeln('HOMA-IR: ' + FloatToStrF(HOMA_IR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-IS: ' + FloatToStrF(HOMA_IS(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('QUICKI: ' + FloatToStrF(QUICKI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
 
@@ -176,10 +184,18 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' mol/s');
     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-Beta: ' + FloatToStrF(HOMA_Beta(Insulin, Glucose),
+      ffFixed, precision, digits) + '%');
+    writeln('HOMA-IR: ' + FloatToStrF(HOMA_IR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-IS: ' + FloatToStrF(HOMA_IS(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('QUICKI: ' + FloatToStrF(QUICKI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
 
@@ -191,10 +207,18 @@ type
     Write('Glucose: ');
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
-      ffFixed, precision, digits));
+      ffFixed, precision, digits) + ' mol/s');
     writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-Beta: ' + FloatToStrF(HOMA_Beta(Insulin, Glucose),
+      ffFixed, precision, digits) + '%');
+    writeln('HOMA-IR: ' + FloatToStrF(HOMA_IR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-IS: ' + FloatToStrF(HOMA_IS(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('QUICKI: ' + FloatToStrF(QUICKI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
 
@@ -207,9 +231,17 @@ type
     writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
     writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
       ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits) + ' pmol/s');
     writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits) + ' mol/s');
+    writeln('HOMA-Beta: ' + FloatToStrF(HOMA_Beta(Insulin, Glucose),
+      ffFixed, precision, digits) + '%');
+    writeln('HOMA-IR: ' + FloatToStrF(HOMA_IR(Insulin, Glucose),
       ffFixed, precision, digits));
-    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+    writeln('HOMA-IS: ' + FloatToStrF(HOMA_IS(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('QUICKI: ' + FloatToStrF(QUICKI(Insulin, Glucose),
       ffFixed, precision, digits));
     writeln();
 

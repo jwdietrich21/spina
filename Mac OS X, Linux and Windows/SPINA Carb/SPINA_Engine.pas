@@ -101,7 +101,7 @@ function HOMA_Beta(const Insulin, Glucose: real): real;
 begin
   assert((isNan(Insulin) or (Insulin >= 0)) and (isNan(Glucose) or (Glucose >= 0)), kError101);
   result := NaN;
-  if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 3.5) then 
+  if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > p3) then
     result := p2 * Insulin / kInsulinConversionFactor / (Glucose - p3);
 end;
 
@@ -110,7 +110,7 @@ function HOMA_IS(const Insulin, Glucose: real): real;
 begin
   assert((isNan(Insulin) or (Insulin >= 0)) and (isNan(Glucose) or (Glucose >= 0)), kError101);
   result := NaN;
-  if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 0) then 
+  if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 0) and (HOMA_IR(Insulin, Glucose) <> 0) then
     result := 1 / HOMA_IR(Insulin, Glucose);
 end;
 

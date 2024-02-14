@@ -9,17 +9,16 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="190"/>
-        <CursorPos X="25" Y="201"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="227"/>
+        <CursorPos X="40" Y="239"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="50"/>
-        <CursorPos X="44" Y="68"/>
-        <UsageCount Value="22"/>
+        <CursorPos X="18" Y="98"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>

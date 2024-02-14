@@ -67,7 +67,7 @@ def SPINA_DI(Insulin, Glucose):
 
 def HOMA_Beta(Insulin, Glucose):
   result = float("NaN")
-  if math.isnan(Insulin) or math.isnan(Glucose):
+  if math.isnan(Insulin) or math.isnan(Glucose) or (Glucose <= P3):
     result = float("NaN")
   else:
     result = P2 * Insulin / INSULINCONVERSIONFACTOR / (Glucose - P3)
