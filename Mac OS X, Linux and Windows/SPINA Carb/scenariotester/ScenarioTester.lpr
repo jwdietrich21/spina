@@ -153,6 +153,66 @@ type
       ffFixed, precision, digits));
     writeln();
 
+    writeln('Scenario E1: Extreme values for insulin and glucose');
+    Insulin := 200 * kInsulinConversionFactor;
+    Glucose := 700 / kGlucoseConversionFactor;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
+    writeln('Scenario E2: Extreme values for insulin and glucose');
+    Insulin := 0.1 * kInsulinConversionFactor;
+    Glucose := 800 / kGlucoseConversionFactor;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
+    writeln('Scenario E3: Extreme values for insulin and glucose');
+    Insulin := 0 * kInsulinConversionFactor;
+    Glucose := 800 / kGlucoseConversionFactor;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
+    writeln('Scenario E4: Extreme values for insulin and glucose');
+    Insulin := 1 * kInsulinConversionFactor;
+    Glucose := 30 / kGlucoseConversionFactor;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
     Terminate;
   end;
 

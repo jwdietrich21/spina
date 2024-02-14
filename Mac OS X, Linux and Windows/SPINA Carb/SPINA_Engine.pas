@@ -65,6 +65,7 @@ begin
   result := NaN;
   if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 0) then 
     result := kPicoFactor * betaI * Insulin / kPicoFactor * (dBeta + Glucose / kMilliFactor) / (alphaI * Glucose / kMilliFactor);
+  if (Insulin = 0) and (not isNan(Glucose)) then result := 0;
 end;
 
 function SPINA_GR(const Insulin, Glucose: real): real;
@@ -74,6 +75,7 @@ begin
   result := NaN;
   if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 0) then 
     result := alphaG * P0 * (DR + Insulin / kPicoFactor) / (betaG * GE * Insulin / kPicoFactor * Glucose / kMilliFactor) - DR / (GE * Insulin / kPicoFactor) - 1 / GE;
+  if result < 0 then result := 0; // correction for extreme insulin resistance
 end;
 
 function SPINA_DI(const Insulin, Glucose: real): real;
