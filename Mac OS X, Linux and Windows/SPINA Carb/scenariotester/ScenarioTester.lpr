@@ -153,6 +153,75 @@ type
       ffFixed, precision, digits));
     writeln();
 
+    writeln('Scenario T1');
+    Insulin := 10 * kInsulinConversionFactor;
+    Glucose := 100 / kGlucoseConversionFactor;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits) + ' pmol/s');
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits) + ' mol/s');
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-Beta: ' + FloatToStrF(HOMA_Beta(Insulin, Glucose),
+      ffFixed, precision, digits) + '%');
+    writeln('HOMA-IR: ' + FloatToStrF(HOMA_IR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-IS: ' + FloatToStrF(HOMA_IS(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('QUICKI: ' + FloatToStrF(QUICKI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
+    writeln('Scenario T2');
+    Insulin := 6 * kInsulinConversionFactor;
+    Glucose := 2.8;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits) + ' pmol/s');
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits) + ' mol/s');
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-Beta: ' + FloatToStrF(HOMA_Beta(Insulin, Glucose),
+      ffFixed, precision, digits) + '%');
+    writeln('HOMA-IR: ' + FloatToStrF(HOMA_IR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-IS: ' + FloatToStrF(HOMA_IS(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('QUICKI: ' + FloatToStrF(QUICKI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
+    writeln('Scenario T3');
+    Insulin := 16 * kInsulinConversionFactor;
+    Glucose := 10.6;
+    Write('Insulin: ');
+    writeln(FloatToStrF(Insulin, ffFixed, precision, digits));
+    Write('Glucose: ');
+    writeln(FloatToStrF(Glucose, ffFixed, precision, digits));
+    writeln('SPINA-GBeta: ' + FloatToStrF(SPINA_GBeta(Insulin, Glucose),
+      ffFixed, precision, digits) + ' pmol/s');
+    writeln('SPINA-GR: ' + FloatToStrF(SPINA_GR(Insulin, Glucose),
+      ffFixed, precision, digits) + ' mol/s');
+    writeln('SPINA-DI: ' + FloatToStrF(SPINA_DI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-Beta: ' + FloatToStrF(HOMA_Beta(Insulin, Glucose),
+      ffFixed, precision, digits) + '%');
+    writeln('HOMA-IR: ' + FloatToStrF(HOMA_IR(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('HOMA-IS: ' + FloatToStrF(HOMA_IS(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln('QUICKI: ' + FloatToStrF(QUICKI(Insulin, Glucose),
+      ffFixed, precision, digits));
+    writeln();
+
     writeln('Scenario E1: Extreme values for insulin and glucose');
     Insulin := 200 * kInsulinConversionFactor;
     Glucose := 700 / kGlucoseConversionFactor;

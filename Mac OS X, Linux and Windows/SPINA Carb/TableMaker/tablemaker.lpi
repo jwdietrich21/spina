@@ -4,7 +4,7 @@
     <Version Value="12"/>
     <General>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="tablemaker"/>
+      <Title Value="TableMaker"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
@@ -18,11 +18,49 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="5"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="1"/>
+      <BuildNr Value="7"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" InternalName="Cyclone" LegalCopyright="© 1994-2024 J. W. Dietrich" ProductName="SPINA Carb 5.1.0 Cyclone" ProductVersion="5.1.0 Cyclone"/>
     </VersionInfo>
     <BuildModes>
       <Item Name="Default" Default="True"/>
+      <Item Name="Mac">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="TableMaker"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value=".."/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Conditionals Value="// example for adding linker options on Mac OS X
+//if TargetOS=&apos;darwin&apos; then
+//  LinkerOptions := &apos; -framework OpenGL&apos;;
+
+// example for adding a unit and include path on Windows
+//if SrcOS=&apos;win&apos; then begin
+//  UnitPath += &apos;;win&apos;;
+//  IncPath += &apos;;win&apos;;
+//end;
+
+if TargetOS=&apos;darwin&apos; then
+  LinkerOptions := &apos; -WM10.14&apos;;"/>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf3"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-WM10.14"/>
+          </Other>
+        </CompilerOptions>
+      </Item>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -40,6 +78,7 @@
       <Unit>
         <Filename Value="tablemaker.lpr"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="TableMaker"/>
       </Unit>
       <Unit>
         <Filename Value="gui.pas"/>
@@ -58,7 +97,7 @@
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="tablemaker"/>
+      <Filename Value="TableMaker"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
@@ -75,9 +114,6 @@
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CustomOptions Value="-WM10.14"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions>

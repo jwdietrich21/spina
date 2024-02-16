@@ -6,12 +6,13 @@ object MainForm: TMainForm
   Caption = 'Table Maker'
   ClientHeight = 631
   ClientWidth = 900
+  Menu = MainMenu1
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
   LCLVersion = '3.0.0.3'
   object MainTable: TStringGrid
-    Left = 1
+    Left = 0
     Height = 559
     Top = 40
     Width = 899
@@ -74,5 +75,112 @@ object MainForm: TMainForm
     TabOrder = 1
     Text = 'SPINA-GBeta'
     OnChange = StrucParComboChange
+  end
+  object MainMenu1: TMainMenu
+    Left = 684
+    Top = 260
+    object AppleMenu: TMenuItem
+      Caption = ''
+      object MacAboutItem: TMenuItem
+        Caption = 'About this app...'
+        OnClick = MacAboutItemClick
+      end
+    end
+    object FileMenu: TMenuItem
+      Caption = 'File'
+      object NewMenuItem: TMenuItem
+        Caption = 'New'
+        Enabled = False
+        ImageIndex = 0
+        ShortCut = 16462
+      end
+      object Divider11: TMenuItem
+        Caption = '-'
+      end
+      object OpenMenuItem: TMenuItem
+        Caption = 'Open'
+        ImageIndex = 1
+        ShortCut = 16463
+      end
+      object SaveMenuItem: TMenuItem
+        Caption = 'Save'
+        ImageIndex = 2
+        ShortCut = 16467
+      end
+      object CloseMenuItem: TMenuItem
+        Caption = 'Close'
+        ShortCut = 16471
+      end
+      object Divider12: TMenuItem
+        Caption = '-'
+      end
+      object QuitMenuItem: TMenuItem
+        Caption = 'Quit'
+        ShortCut = 16465
+        OnClick = QuitMenuItemClick
+      end
+    end
+    object EditMenu: TMenuItem
+      Caption = 'Edit'
+      object UndoMenuItem: TMenuItem
+        Caption = 'Undo'
+        Enabled = False
+        ShortCut = 16474
+      end
+      object RedoMenuItem: TMenuItem
+        Caption = 'Redo'
+        Enabled = False
+        ShortCut = 24666
+      end
+      object Divider21: TMenuItem
+        Caption = '-'
+      end
+      object CutMenuItem: TMenuItem
+        Caption = 'Cut'
+        Enabled = False
+        ShortCut = 16451
+      end
+      object CopyMenuItem: TMenuItem
+        Action = EditCopy1
+        Caption = 'Copy'
+      end
+      object PasteMenuItem: TMenuItem
+        Caption = 'Paste'
+        Enabled = False
+        ShortCut = 16470
+      end
+      object Divider22: TMenuItem
+        Caption = '-'
+      end
+      object SelectAllMenuItem: TMenuItem
+        Action = EditSelectAll1
+        Caption = 'Select all'
+      end
+    end
+    object HelpMenu: TMenuItem
+      Caption = 'Help'
+      object WinAboutItem: TMenuItem
+        Caption = 'About this app...'
+        OnClick = WinAboutItemClick
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 688
+    Top = 336
+    object EditCopy1: TEditCopy
+      Category = 'Edit'
+      Caption = '&Kopieren'
+      DisableIfNoHandler = False
+      Hint = 'Kopieren'
+      ShortCut = 16451
+    end
+    object EditSelectAll1: TEditSelectAll
+      Category = 'Edit'
+      Caption = '&Alles markieren'
+      Hint = 'Alles markieren'
+      OnExecute = EditSelectAll1Execute
+      ShortCut = 16449
+    end
   end
 end

@@ -5,17 +5,17 @@
   <key>CFBundleDevelopmentRegion</key>
   <string>English</string>
   <key>CFBundleExecutable</key>
-  <string>tablemaker</string>
+  <string>TableMaker</string>
   <key>CFBundleName</key>
-  <string>tablemaker</string>
+  <string>TableMaker</string>
   <key>CFBundleIdentifier</key>
-  <string>com.company.tablemaker</string>
+  <string>com.company.TableMaker</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleSignature</key>
-  <string>tabl</string>
+  <string>Tabl</string>
   <key>CFBundleShortVersionString</key>
   <string>0.1</string>
   <key>CFBundleVersion</key>

@@ -25,8 +25,8 @@ unit GUI;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls, Types,
-  Math, SPINA_Engine;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls, Menus,
+  Types, Math, LCLType, SPINA_Engine, ActnList, StdActns;
 
 const
   colLime = $32CD32;
@@ -38,8 +38,37 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
+    AppleMenu: TMenuItem;
+    CloseMenuItem: TMenuItem;
+    CopyMenuItem: TMenuItem;
+    CutMenuItem: TMenuItem;
+    Divider11: TMenuItem;
+    Divider12: TMenuItem;
+    Divider21: TMenuItem;
+    EditMenu: TMenuItem;
+    FileMenu: TMenuItem;
+    HelpMenu: TMenuItem;
+    MacAboutItem: TMenuItem;
+    MainMenu1: TMainMenu;
+    Divider22: TMenuItem;
+    SelectAllMenuItem: TMenuItem;
+    NewMenuItem: TMenuItem;
+    OpenMenuItem: TMenuItem;
+    PasteMenuItem: TMenuItem;
+    QuitMenuItem: TMenuItem;
+    RedoMenuItem: TMenuItem;
+    SaveMenuItem: TMenuItem;
     StrucParCombo: TComboBox;
     MainTable: TStringGrid;
+    UndoMenuItem: TMenuItem;
+    WinAboutItem: TMenuItem;
+    ActionList1: TActionList;
+    EditCopy1: TEditCopy;
+    EditSelectAll1: TEditSelectAll;
+    procedure EditSelectAll1Execute(Sender: TObject);
+    procedure MacAboutItemClick(Sender: TObject);
+    procedure WinAboutItemClick(Sender: TObject);
+    procedure QuitMenuItemClick(Sender: TObject);
     procedure StrucParComboChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
@@ -48,6 +77,7 @@ type
     procedure DrawResults(Sender: TObject);
     procedure MainTablePrepareCanvas(Sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
+    procedure AdaptMenus;
 
   private
 
@@ -69,8 +99,19 @@ begin
   Invalidate;
 end;
 
-procedure TMainForm.FormCreate(Sender: TObject);
+procedure TMainForm.QuitMenuItemClick(Sender: TObject);
 begin
+  application.Terminate;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+var
+  s: TTextStyle;
+begin
+  AdaptMenus;
+  s := MainTable.DefaultTextStyle;
+  s.Alignment := taCenter;
+  MainTable.DefaultTextStyle := s;
   DrawHeaders(Sender);
 end;
 
@@ -144,6 +185,61 @@ begin
         theCanvas.Brush.color := TColor(clRed);;
       //theCanvas.FillRect(aRect);
     end;
+end;
+
+procedure TMainForm.AdaptMenus;
+{ Adapts Menus and Shortcuts to the interface style guidelines
+  of the respective operating system }
+var
+  modifierKey: TShiftState;
+begin
+  {$IFDEF LCLcarbon}
+  modifierKey := [ssMeta];
+  WinAboutItem.Visible := False;
+  AppleMenu.Visible := True;
+  {$ELSE}
+  {$IFDEF LCLCocoa}
+  modifierKey := [ssMeta];
+  WinAboutItem.Visible := False;
+  AppleMenu.Visible := True;
+  {$ELSE}
+  modifierKey := [ssCtrl];
+  WinAboutItem.Visible := True;
+  AppleMenu.Visible := False;
+  {$ENDIF}
+  {$ENDIF}
+  NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
+  OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
+  CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
+  SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
+  QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
+  UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
+  RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey + [ssShift]);
+  CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
+  CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
+  PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
+  SelectAllMenuItem.ShortCut := ShortCut(VK_A, modifierKey);
+end;
+
+procedure TMainForm.MacAboutItemClick(Sender: TObject);
+begin
+  ShowMessage('TableMaker, a test application for SPINA Carb – Version 5.1.0 Beta 1');
+end;
+
+procedure TMainForm.EditSelectAll1Execute(Sender: TObject);
+var
+  GridRect: TGridRect;
+begin
+  GridRect.Top := 3;
+  GridRect.Left := 2;
+  GridRect.Right := MainTable.ColCount - 1;
+  GridRect.Bottom := MainTable.RowCount - 1;
+  MainTable.Selection := GridRect;
+end;
+
+procedure TMainForm.WinAboutItemClick(Sender: TObject);
+begin
+  MacAboutItemClick(Sender);
 end;
 
 end.
