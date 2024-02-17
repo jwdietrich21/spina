@@ -7,6 +7,7 @@
       <Unit>
         <Filename Value="SPINA_Carb.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos Y="2"/>
         <UsageCount Value="21"/>
@@ -19,10 +20,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="15"/>
-        <CursorPos X="42" Y="46"/>
-        <FoldState Value=" TL HJ01q"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -35,7 +33,7 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="8">
+    <JumpHistory HistoryIndex="21">
       <Position>
         <Filename Value="gui.pas"/>
       </Position>
@@ -70,6 +68,58 @@
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="34" Column="108" TopLine="15"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="46" Column="42" TopLine="15"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="53" Column="46" TopLine="30"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="54" Column="36" TopLine="39"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="72" Column="37" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="74" Column="54" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="69" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="78" Column="53" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="69" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="70" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="96" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="29" Column="39"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="82" Column="26" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="150" Column="9" TopLine="121"/>
       </Position>
     </JumpHistory>
     <RunParams>
