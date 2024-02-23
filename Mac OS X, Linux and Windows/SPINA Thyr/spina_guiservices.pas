@@ -39,7 +39,7 @@ uses
   , CocoaAll, CocoaUtils
   {$ENDIF}
   {$IFDEF UNIX}
-  , Unix
+  , Unix, clocale
   {$ENDIF}
   , EnvironmentInfo;
 
@@ -52,28 +52,9 @@ function GetOSLanguage: string;
   {platform-independent method to read the language of the user interface}
 var
   l, fbl: string;
-  {$IFDEF Darwin}
-  theLocaleRef: CFLocaleRef;
-  locale: CFStringRef;
-  buffer: StringPtr;
-  bufferSize: CFIndex;
-  encoding: CFStringEncoding;
-  success: boolean;
-  {$ENDIF}
 begin
   {$IFDEF Darwin}
-  theLocaleRef := CFLocaleCopyCurrent;
-  locale := CFLocaleGetIdentifier(theLocaleRef);
-  encoding := 0;
-  bufferSize := 256;
-  buffer := new(StringPtr);
-  success := CFStringGetPascalString(locale, buffer, bufferSize, encoding);
-  if success then
-    l := string(buffer^)
-  else
-    l := '';
-  fbl := Copy(l, 1, 2);
-  dispose(buffer);
+  fbl := NSLocale.currentLocale.localeIdentifier.UTF8String;
   {$ELSE}
   {$IFDEF UNIX}
   fbl := Copy(GetEnvironmentVariable('LC_CTYPE'), 1, 2);
