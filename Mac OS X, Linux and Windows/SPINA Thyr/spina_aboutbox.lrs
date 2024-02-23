@@ -344,34 +344,34 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'x'#252#7#240'x'#254#7#240#249#255#7#248#249#255#135#252#253#255#255#255#255
   +#255#255#255#255#255#255#255#255#255#255#255#255#255#255#8'OnCreate'#7#10'Fo'
   +'rmCreate'#9'OnKeyDown'#7#11'FormKeyDown'#7'OnPaint'#7#9'FormPaint'#6'OnShow'
-  +#7#8'FormShow'#8'Position'#7#14'poScreenCenter'#10'LCLVersion'#6#7'2.2.4.0'#0
+  +#7#8'FormShow'#8'Position'#7#14'poScreenCenter'#10'LCLVersion'#6#7'3.0.0.3'#0
   +#7'TButton'#8'OKButton'#4'Left'#3#192#0#6'Height'#2#24#3'Top'#3']'#1#5'Width'
-  +#2'K'#7'Anchors'#11#6'akLeft'#8'akBottom'#0#7'Caption'#6#2'OK'#7'Default'#9#7
-  +'OnClick'#7#13'CloseAboutBox'#8'TabOrder'#2#0#0#0#12'TPageControl'#4'Tabs'#4
+  +#2'K'#7'Anchors'#11#6'akLeft'#8'akBottom'#0#7'Caption'#6#2'OK'#7'Default'#9#8
+  +'TabOrder'#2#0#7'OnClick'#7#13'CloseAboutBox'#0#0#12'TPageControl'#4'Tabs'#4
   +'Left'#2#8#6'Height'#3'E'#1#3'Top'#2#8#5'Width'#3#168#1#10'ActivePage'#7#9'T'
   +'abSheet1'#7'Anchors'#11#5'akTop'#6'akLeft'#8'akBottom'#0#8'TabIndex'#2#0#8
   +'TabOrder'#2#1#8'OnChange'#7#10'TabsChange'#0#9'TTabSheet'#9'TabSheet1'#7'Ca'
-  +'ption'#6#7'Version'#12'ClientHeight'#3''''#1#11'ClientWidth'#3#162#1#0#6'TI'
-  +'mage'#10'SPINALabel'#6'Cursor'#7#7'crArrow'#4'Left'#2#21#6'Height'#2'Q'#3'T'
-  +'op'#2#12#5'Width'#3#204#0#7'OnClick'#7#8'ClickURL'#12'Picture.Data'#10'2'
-  +#169#0#0#23'TPortableNetworkGraphic'#22#169#0#0#137'PNG'#13#10#26#10#0#0#0#13
-  +'IHDR'#0#0#4#172#0#0#2#152#8#6#0#0#0'^'#156'`'#200#0#0#9#127'iCCPICCProfile'
-  +#0#0'x'#156#237#153'gP'#20#217#26#134'OwO'#14#12#204#12'C'#134'!'#14'A'#162
-  +#132#1'$'#231'$A'#178#168#192#12#25'F'#24#146#2'&dq'#5'V'#16#17'I'#138' '#162
-  +#128#11#174'.AVQ'#17#197#128'((`@w'#144'E@Y'#23'W'#17#21#149#29#244#199#222
-  +#170'{'#235#222#186'?o'#221#249'~'#156'~'#234#237'S'#245#245#233'>U'#253'T'
-  +#29#0'd'#199#19'9I'#169#176#1#0'I'#188'4'#190#159#139'=38$'#148#137#29#1#24
-  +#128#2#226#192#24#152'FpR'#147#237'||<'#129#176'V'#230#130#127#170'w'#163#0
-  +'Z'#185#222#211#253#215#247#255'm'#17#185'I<.'#0#16'N'#200#241#220#168'T'#142
-  +#144#211#132#28#203'M'#226#174#228#227'+'#156#153#150','#204'`G!'#211#249#194
-  +#7#20'r'#240#10'G~'#227#196#21#142#249#198';'#191#206#241#247's'#16'r'#25#0
-  +'8R'#204'W&'#28']'#225#200#175'L='#181#194#156'X~'#18#0#178']'#194#249'j'#223
-  +#250'~-q'#205#149'E0'#227'xiQ|^D'#162#214#127#185#156#255'\'#255#208'K,u'#229
-  +#133'G'#166#199'%'#166#233#198#241#254'G'#251#172#236#151'o'#244#198#234#235
-  +'>'#128#24#21#127'g'#155#133#223#128#253#10#0#164#228#239'L'#237'0'#0#148#221
-  +#0't'#244#252#157'E'#30#7#160#179#4#0#233#167#156't~'#198#183#12#181'2'#160#1
-  +#1'P'#0#29#200#0'E'#160#10'4'#129'.0'#2'f'#192#18#216#2''''#224#14#188#129'?'
-  +#8#1#27#1#7#196#130'$'#192#7#153' '#7#236#2#249#160#16#148#128#131#160#10#212
+  +'ption'#6#7'Version'#12'ClientHeight'#3'!'#1#11'ClientWidth'#3#162#1#0#6'TIm'
+  +'age'#10'SPINALabel'#6'Cursor'#7#7'crArrow'#4'Left'#2#21#6'Height'#2'Q'#3'To'
+  +'p'#2#12#5'Width'#3#204#0#7'OnClick'#7#8'ClickURL'#12'Picture.Data'#10'2'#169
+  +#0#0#23'TPortableNetworkGraphic'#22#169#0#0#137'PNG'#13#10#26#10#0#0#0#13'IH'
+  +'DR'#0#0#4#172#0#0#2#152#8#6#0#0#0'^'#156'`'#200#0#0#9#127'iCCPICCProfile'#0
+  +#0'x'#156#237#153'gP'#20#217#26#134'OwO'#14#12#204#12'C'#134'!'#14'A'#162#132
+  +#1'$'#231'$A'#178#168#192#12#25'F'#24#146#2'&dq'#5'V'#16#17'I'#138' '#162#128
+  +#11#174'.AVQ'#17#197#128'((`@w'#144'E@Y'#23'W'#17#21#149#29#244#199#222#170
+  +'{'#235#222#186'?o'#221#249'~'#156'~'#234#237'S'#245#245#233'>U'#253'T'#29#0
+  +'d'#199#19'9I'#169#176#1#0'I'#188'4'#190#159#139'=38$'#148#137#29#1#24#128#2
+  +#226#192#24#152'FpR'#147#237'||<'#129#176'V'#230#130#127#170'w'#163#0'Z'#185
+  +#222#211#253#215#247#255'm'#17#185'I<.'#0#16'N'#200#241#220#168'T'#142#144
+  +#211#132#28#203'M'#226#174#228#227'+'#156#153#150','#204'`G!'#211#249#194#7
+  +#20'r'#240#10'G~'#227#196#21#142#249#198';'#191#206#241#247's'#16'r'#25#0'8R'
+  +#204'W&'#28']'#225#200#175'L='#181#194#156'X~'#18#0#178']'#194#249'j'#223#250
+  +'~-q'#205#149'E0'#227'xiQ|^D'#162#214#127#185#156#255'\'#255#208'K,u'#229#133
+  +'G'#166#199'%'#166#233#198#241#254'G'#251#172#236#151'o'#244#198#234#235'>'
+  +#128#24#21#127'g'#155#133#223#128#253#10#0#164#228#239'L'#237'0'#0#148#221#0
+  +'t'#244#252#157'E'#30#7#160#179#4#0#233#167#156't~'#198#183#12#181'2'#160#1#1
+  +'P'#0#29#200#0'E'#160#10'4'#129'.0'#2'f'#192#18#216#2''''#224#14#188#129'?'#8
+  +#1#27#1#7#196#130'$'#192#7#153' '#7#236#2#249#160#16#148#128#131#160#10#212
   +#130#6#208#4'Z'#193#25#208#9#206#131#203#224#26#184#5#238#130#17#240#24#8#192
   +#20'x'#9#230#193';'#176#4'A'#16#22'"C4H'#6'R'#130#212'!'#29#200#8'bC'#214#144
   +#19#228#9#249'A!P8'#20#3#241#160't('#7#218#13#21'B'#165'P'#21'T'#7'5A?A'#231
@@ -2160,7 +2160,7 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'t'#2#13#3'Top'#2'd'#5'Width'#2'A'#7'Caption'#6#13'Version x.y.z'#11'Font.He'
   +'ight'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'
   +#8#0#0#6'TLabel'#15'CopyrightLabel1'#4'Left'#2#21#6'Height'#2#13#3'Top'#2'~'
-  +#5'Width'#2'O'#7'Caption'#6#16#194#169' 1997 '#226#128#147' 2023'#11'Font.He'
+  +#5'Width'#2'O'#7'Caption'#6#16#194#169' 1997 '#226#128#147' 2024'#11'Font.He'
   +'ight'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'
   +#8#0#0#6'TLabel'#15'CopyrightLabel2'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#140
   +#0#5'Width'#2'E'#7'Caption'#6#14'J. W. Dietrich'#11'Font.Height'#2#245#10'Fo'
@@ -11903,23 +11903,23 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +#3#247#0#5'Width'#3#160#0#7'Caption'#6#28'Katholisches Klinikum Bochum'#11'F'
   +'ont.Height'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'Pare'
   +'ntFont'#8#0#0#0#9'TTabSheet'#9'TabSheet2'#7'Caption'#6#4'Info'#12'ClientHei'
-  +'ght'#3''''#1#11'ClientWidth'#3#162#1#0#5'TMemo'#5'Memo1'#4'Left'#2#5#6'Heig'
-  +'ht'#3#23#1#3'Top'#2#4#5'Width'#3#152#1#7'Anchors'#11#5'akTop'#6'akLeft'#8'a'
-  ,'kBottom'#0#13'Lines.Strings'#1#6#5'Memo1'#6#0#6#0#6#0#6#0#0#9'OnKeyDown'#7
-  +#11'FormKeyDown'#8'ReadOnly'#9#10'ScrollBars'#7#14'ssAutoVertical'#8'TabOrde'
-  +'r'#2#0#0#0#0#9'TTabSheet'#9'TabSheet3'#7'Caption'#6#14'Acknowledgment'#12'C'
-  +'lientHeight'#3''''#1#11'ClientWidth'#3#162#1#0#6'TLabel'#6'Label3'#4'Left'#2
-  +#21#6'Height'#2#16#3'Top'#2#13#5'Width'#3'S'#1#7'Caption'#6'4SPINA Thyr uses'
-  +' the following third party resources:'#10'Font.Pitch'#7#10'fpVariable'#10'F'
-  +'ont.Style'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#8'WordWrap'#9#0
-  +#0#6'TLabel'#6'Label4'#4'Left'#2#21#6'Height'#2#16#3'Top'#2'!'#5'Width'#3#189
-  +#0#7'Caption'#6#31'Silk icon set 1.3 by Mark James'#11'ParentColor'#8#0#0#6
-  +'TLabel'#6'Label5'#6'Cursor'#7#11'crHandPoint'#4'Left'#2#21#6'Height'#2#16#3
-  +'Top'#2'0'#5'Width'#3#253#0#7'Caption'#6'(http://www.famfamfam.com/lab/icons'
-  +'/silk/'#10'Font.Color'#7#6'clNavy'#10'Font.Pitch'#7#10'fpVariable'#11'Paren'
-  +'tColor'#8#10'ParentFont'#8#7'OnClick'#7#11'Label5Click'#0#0#6'TLabel'#6'Lab'
-  +'el6'#4'Left'#2#21#6'Height'#2#16#3'Top'#2'G'#5'Width'#2'p'#7'Caption'#6#18
-  +'Tango Icon Library'#11'ParentColor'#8#0#0#6'TLabel'#6'Label7'#6'Cursor'#7#11
+  +'ght'#3'!'#1#11'ClientWidth'#3#162#1#0#5'TMemo'#5'Memo1'#4'Left'#2#5#6'Heigh'
+  +'t'#3#17#1#3'Top'#2#4#5'Width'#3#152#1#7'Anchors'#11#5'akTop'#6'akLeft'#8'ak'
+  ,'Bottom'#0#13'Lines.Strings'#1#6#5'Memo1'#6#0#6#0#6#0#6#0#0#8'ReadOnly'#9#10
+  +'ScrollBars'#7#14'ssAutoVertical'#8'TabOrder'#2#0#9'OnKeyDown'#7#11'FormKeyD'
+  +'own'#0#0#0#9'TTabSheet'#9'TabSheet3'#7'Caption'#6#14'Acknowledgment'#12'Cli'
+  +'entHeight'#3'!'#1#11'ClientWidth'#3#162#1#0#6'TLabel'#6'Label3'#4'Left'#2#21
+  +#6'Height'#2#16#3'Top'#2#13#5'Width'#3'S'#1#7'Caption'#6'4SPINA Thyr uses th'
+  +'e following third party resources:'#10'Font.Pitch'#7#10'fpVariable'#10'Font'
+  +'.Style'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#8'WordWrap'#9#0#0
+  +#6'TLabel'#6'Label4'#4'Left'#2#21#6'Height'#2#16#3'Top'#2'!'#5'Width'#3#189#0
+  +#7'Caption'#6#31'Silk icon set 1.3 by Mark James'#11'ParentColor'#8#0#0#6'TL'
+  +'abel'#6'Label5'#6'Cursor'#7#11'crHandPoint'#4'Left'#2#21#6'Height'#2#16#3'T'
+  +'op'#2'0'#5'Width'#3#253#0#7'Caption'#6'(http://www.famfamfam.com/lab/icons/'
+  +'silk/'#10'Font.Color'#7#6'clNavy'#10'Font.Pitch'#7#10'fpVariable'#11'Parent'
+  +'Color'#8#10'ParentFont'#8#7'OnClick'#7#11'Label5Click'#0#0#6'TLabel'#6'Labe'
+  +'l6'#4'Left'#2#21#6'Height'#2#16#3'Top'#2'G'#5'Width'#2'p'#7'Caption'#6#18'T'
+  +'ango Icon Library'#11'ParentColor'#8#0#0#6'TLabel'#6'Label7'#6'Cursor'#7#11
   +'crHandPoint'#4'Left'#2#21#6'Height'#2#16#3'Top'#2'W'#5'Width'#3'&'#1#7'Capt'
   +'ion'#6'/http://tango.freedesktop.org/Tango_Icon_Library'#10'Font.Color'#7#6
   +'clNavy'#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#7
@@ -11946,19 +11946,19 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'ion'#6#29'http://puma-repository.sf.net'#10'Font.Color'#7#6'clNavy'#10'Font'
   +'.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#7'OnClick'#7#12
   +'Label15Click'#0#0#0#9'TTabSheet'#9'TabSheet4'#7'Caption'#6#9'Impressum'#12
-  +'ClientHeight'#3''''#1#11'ClientWidth'#3#162#1#0#5'TMemo'#5'Memo2'#4'Left'#2
-  +#5#6'Height'#3#14#1#3'Top'#2#4#5'Width'#3#152#1#13'Lines.Strings'#1#6#9'Impr'
-  +'essum'#6'1Angaben gem'#195#164#195#159' '#194#167' 5 des Telemediengesetzes'
-  +' (TMG)'#6#0#6' PD Dr. med. Johannes W. Dietrich'#6#0#6'"Katholisches Klinik'
-  +'um Bochum gGmbH'#6#16'Gudrunstra'#195#159'e 56'#6#12'44791 Bochum'#6#0#6#17
-  +'Vertreten durch: '#6'''Prof. Dr. Christoph Hanefeld (Sprecher)'#6#20'Dr. Ch'
-  +'ristian Raible'#6#0#6'-Registergericht: Amtsgericht Bochum, HRB 5128'#6'%In'
-  +'stitutionskennzeichen: IK 260590071'#6#28'Umsatzsteuer-ID: DE170006577'#6#0
-  +#6#19'Aufsichtsbeh'#195#182'rden:'#6#0#6#21'Gesundheitsamt Bochum'#6#14'West'
-  +'ring 28/30'#6#12'44777 Bochum'#6#0#6#28#195#132'rztekammer Westfalen-Lippe'
-  +#6#21'Gartenstra'#195#159'e 210-214'#6#26'48147 M'#195#188'nster / Westfalen'
-  +#6#0#6#25'Bezirksregierung Arnsberg'#6#17'Seibertzstra'#195#159'e 1'#6#14'59'
-  +'821 Arnsberg'#6#0#6',Kassen'#195#164'rztliche Vereinigung Westfalen-Lippe'#6
+  +'ClientHeight'#3'!'#1#11'ClientWidth'#3#162#1#0#5'TMemo'#5'Memo2'#4'Left'#2#5
+  +#6'Height'#3#14#1#3'Top'#2#4#5'Width'#3#152#1#13'Lines.Strings'#1#6#9'Impres'
+  +'sum'#6'1Angaben gem'#195#164#195#159' '#194#167' 5 des Telemediengesetzes ('
+  +'TMG)'#6#0#6' PD Dr. med. Johannes W. Dietrich'#6#0#6'"Katholisches Klinikum'
+  +' Bochum gGmbH'#6#16'Gudrunstra'#195#159'e 56'#6#12'44791 Bochum'#6#0#6#17'V'
+  +'ertreten durch: '#6'''Prof. Dr. Christoph Hanefeld (Sprecher)'#6#20'Dr. Chr'
+  +'istian Raible'#6#0#6'-Registergericht: Amtsgericht Bochum, HRB 5128'#6'%Ins'
+  +'titutionskennzeichen: IK 260590071'#6#28'Umsatzsteuer-ID: DE170006577'#6#0#6
+  +#19'Aufsichtsbeh'#195#182'rden:'#6#0#6#21'Gesundheitsamt Bochum'#6#14'Westri'
+  +'ng 28/30'#6#12'44777 Bochum'#6#0#6#28#195#132'rztekammer Westfalen-Lippe'#6
+  +#21'Gartenstra'#195#159'e 210-214'#6#26'48147 M'#195#188'nster / Westfalen'#6
+  +#0#6#25'Bezirksregierung Arnsberg'#6#17'Seibertzstra'#195#159'e 1'#6#14'5982'
+  +'1 Arnsberg'#6#0#6',Kassen'#195#164'rztliche Vereinigung Westfalen-Lippe'#6
   +#28'Robert-Schimrigk-Stra'#195#159'e 4-6'#6#14'44141 Dortmund'#6#0#6'0Minist'
   +'erium f'#195#188'r Arbeit, Gesundheit und Soziales'#6#15'F'#195#188'rstenwa'
   +'ll 25'#6#17'40219 D'#195#188'sseldorf'#6#0#6#18'Berufsbezeichnung:'#6#6#195
@@ -11966,7 +11966,7 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'pe'#6'+Verliehen durch: Bundesrepublik Deutschland'#6'/Es gelten die berufs'
   +'rechtlichen Regelungen der '#6'5Bundes'#195#164'rzteordnung und weitere Ges'
   +'etze, Verordnungen'#6#26'und Richtlinien, die unter'#6'%http://www.bundesae'
-  +'rztekammer.de und '#6'#http://www.aekwl.de einsehbar sind.'#6#0#0#8'OnChang'
-  +'e'#7#11'Memo2Change'#8'ReadOnly'#9#10'ScrollBars'#7#10'ssAutoBoth'#8'TabOrd'
-  +'er'#2#0#0#0#0#0#0
+  +'rztekammer.de und '#6'#http://www.aekwl.de einsehbar sind.'#6#0#0#8'ReadOnl'
+  +'y'#9#10'ScrollBars'#7#10'ssAutoBoth'#8'TabOrder'#2#0#8'OnChange'#7#11'Memo2'
+  +'Change'#0#0#0#0#0
 ]);

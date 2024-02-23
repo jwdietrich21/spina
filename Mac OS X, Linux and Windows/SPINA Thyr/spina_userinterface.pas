@@ -10,10 +10,10 @@ unit SPINA_UserInterface;
 
 { Version 4.2.1 (Kontinuum) }
 
-{ (c) J. W. Dietrich, 1994 - 2023 }
+{ (c) J. W. Dietrich, 1994 - 2024 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2023 }
+{ (c) Ruhr University of Bochum 2005 - 2024 }
 
 { This unit implements the GUI }
 
@@ -777,15 +777,15 @@ begin
       Insert_sGD(Hauptschirm.caseRecord, gReferenceRanges);
       FormatCase(Hauptschirm.caseRecord, gReferenceRanges);
       if gUseReferenceRanges then
-        strucPars := concat('   GT: ', Hauptschirm.caseRecord.flaggedGTs,
-          kCR, kLF, '   GD: ', Hauptschirm.caseRecord.flaggedGDs,
-          kCR, kLF, '   sGD: ', Hauptschirm.caseRecord.flaggedsGDs,
+        strucPars := concat('   SPINA-GT: ', Hauptschirm.caseRecord.flaggedGTs,
+          kCR, kLF, '   SPINA-GD: ', Hauptschirm.caseRecord.flaggedGDs,
+          kCR, kLF, '   SPINA-sGD: ', Hauptschirm.caseRecord.flaggedsGDs,
           kCR, kLF, '   TSHI: ', Hauptschirm.caseRecord.flaggedTSHIs,
           kCR, kLF, '   sTSHI: ', Hauptschirm.caseRecord.flaggedsTSHIs,
           kCR, kLF, '   TTSI: ', Hauptschirm.caseRecord.flaggedTTSIs)
       else
-        strucPars := concat('   GT: ', Hauptschirm.caseRecord.GTs,
-          kCR, kLF, '   GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF,
+        strucPars := concat('   SPINA-GT: ', Hauptschirm.caseRecord.GTs,
+          kCR, kLF, '   SPINA-GD: ', Hauptschirm.caseRecord.GDs, kCR, kLF,
           '   TSHI: ', Hauptschirm.caseRecord.TSHIs, kCR, kLF,
           '   TTSI: ', Hauptschirm.caseRecord.TTSIs);
       ShowResult(TSH_String, T4_String, T3_String, strucPars);

@@ -10,10 +10,10 @@ unit HandleImpEx;
 
 { Version 4.2.1 (Kontinuum) }
 
-{ (c) J. W. Dietrich, 1994 - 2023 }
+{ (c) J. W. Dietrich, 1994 - 2024 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2023 }
+{ (c) Ruhr University of Bochum 2005 - 2024 }
 
 { This unit handles import and export of laboratory results and calculations }
 

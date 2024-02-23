@@ -323,7 +323,7 @@ object Hauptschirm: THauptschirm
   OnWindowStateChange = FormWindowStateChange
   ParentBiDiMode = False
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.3'
   object FT4Items: TComboBox
     Left = 128
     Height = 20
@@ -336,10 +336,10 @@ object Hauptschirm: THauptschirm
       'ng/l'
       'pmol/l'
     )
-    OnChange = FT4ItemsChange
     TabOrder = 1
     Text = 'FT4Items'
     Visible = False
+    OnChange = FT4ItemsChange
   end
   object T4Items: TComboBox
     Left = 184
@@ -385,10 +385,10 @@ object Hauptschirm: THauptschirm
       'ng/dl'
       'nmol/l'
     )
-    OnChange = T3ItemsChange
     TabOrder = 4
     Text = 'T3Items'
     Visible = False
+    OnChange = T3ItemsChange
   end
   object MainPanel: TPanel
     Left = 13
@@ -419,7 +419,7 @@ object Hauptschirm: THauptschirm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 73
+      ClientHeight = 65
       ClientWidth = 214
       Items.Strings = (
         'rhTSH-Substitution'
@@ -446,14 +446,14 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Ergebnis:'
-      ClientHeight = 158
+      ClientHeight = 150
       ClientWidth = 206
       ParentColor = False
       ParentFont = False
       TabOrder = 1
       object ResultField: TMemo
         Left = 8
-        Height = 142
+        Height = 134
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -478,14 +478,14 @@ object Hauptschirm: THauptschirm
       BorderSpacing.CellAlignHorizontal = ccaLeftTop
       BorderSpacing.CellAlignVertical = ccaLeftTop
       Caption = 'Hinweis:'
-      ClientHeight = 158
+      ClientHeight = 150
       ClientWidth = 206
       ParentColor = False
       ParentFont = False
       TabOrder = 2
       object HintField: TMemo
         Left = 4
-        Height = 142
+        Height = 134
         Hint = 'Das Ergebnis Ihrer Berechnung'
         Top = 5
         Width = 200
@@ -517,7 +517,7 @@ object Hauptschirm: THauptschirm
       Width = 271
       Anchors = [akTop, akRight]
       Caption = 'Verhaltensparameter:'
-      ClientHeight = 261
+      ClientHeight = 253
       ClientWidth = 261
       ParentColor = False
       ParentFont = False
@@ -1124,10 +1124,10 @@ object Hauptschirm: THauptschirm
           'µIU/ml'
           ''
         )
-        OnChange = TSHUnitComboBoxChange
         ParentFont = False
         TabOrder = 3
         Text = 'mIU/l'
+        OnChange = TSHUnitComboBoxChange
       end
       object T4UnitComboBox: TComboBox
         Left = 156
@@ -1144,10 +1144,10 @@ object Hauptschirm: THauptschirm
           'ng/l'
           'pmol/l'
         )
-        OnChange = T4UnitComboBoxChange
         ParentFont = False
         TabOrder = 4
         Text = 'ng/dl'
+        OnChange = T4UnitComboBoxChange
       end
       object T3UnitComboBox: TComboBox
         Left = 190
@@ -1164,10 +1164,10 @@ object Hauptschirm: THauptschirm
           'ng/l'
           'pmol/l'
         )
-        OnChange = T3UnitComboBoxChange
         ParentFont = False
         TabOrder = 5
         Text = 'pg/ml'
+        OnChange = T3UnitComboBoxChange
       end
       object T3MethodComboBox: TComboBox
         Left = 190
@@ -1183,10 +1183,10 @@ object Hauptschirm: THauptschirm
           'FT3'
           'T3'
         )
-        OnChange = T3MethodComboBoxChange
         ParentFont = False
         TabOrder = 6
         Text = 'FT3'
+        OnChange = T3MethodComboBoxChange
       end
       object T4MethodComboBox: TComboBox
         Left = 32
@@ -1202,10 +1202,10 @@ object Hauptschirm: THauptschirm
           'FT4'
           'T4'
         )
-        OnChange = T4MethodComboBoxChange
         ParentFont = False
         TabOrder = 7
         Text = 'FT4'
+        OnChange = T4MethodComboBoxChange
       end
       object TSH_Text: TEdit
         Left = -2
@@ -1233,14 +1233,14 @@ object Hauptschirm: THauptschirm
       Height = 98
       Top = 6
       Width = 217
-      ClientHeight = 79
+      ClientHeight = 71
       ClientWidth = 207
       TabOrder = 4
       object SPINALabel: TImage
         Cursor = crHandPoint
         Left = 5
         Height = 81
-        Top = 5
+        Top = -3
         Width = 204
         Align = alCustom
         Anchors = [akLeft, akBottom]
@@ -2628,8 +2628,8 @@ object Hauptschirm: THauptschirm
     Anchors = [akRight, akBottom]
     Caption = 'Berechnen'
     Default = True
-    OnClick = Calculate_ButtonClick
     TabOrder = 0
+    OnClick = Calculate_ButtonClick
   end
   object ImageContainerLight: TImage
     Left = 368

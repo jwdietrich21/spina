@@ -14,7 +14,7 @@ object CaseEditorForm: TCaseEditorForm
   OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
+  LCLVersion = '3.0.0.3'
   object Bevel2: TBevel
     Left = 24
     Height = 77
@@ -42,8 +42,8 @@ object CaseEditorForm: TCaseEditorForm
     BorderSpacing.Bottom = 16
     Caption = 'OK'
     Default = True
-    OnClick = OKButtonClick
     TabOrder = 0
+    OnClick = OKButtonClick
   end
   object CancelButton: TButton
     AnchorSideRight.Control = OKButton
@@ -58,8 +58,8 @@ object CaseEditorForm: TCaseEditorForm
     BorderSpacing.Bottom = 16
     Cancel = True
     Caption = 'Abbrechen'
-    OnClick = CancelButtonClick
     TabOrder = 1
+    OnClick = CancelButtonClick
   end
   object CaseIDEdit: TEdit
     AnchorSideLeft.Control = CaseIDLabel

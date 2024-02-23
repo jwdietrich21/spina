@@ -310,7 +310,7 @@ object AboutBox: TAboutBox
   OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
+  LCLVersion = '3.0.0.3'
   object OKButton: TButton
     Left = 192
     Height = 24
@@ -319,8 +319,8 @@ object AboutBox: TAboutBox
     Anchors = [akLeft, akBottom]
     Caption = 'OK'
     Default = True
-    OnClick = CloseAboutBox
     TabOrder = 0
+    OnClick = CloseAboutBox
   end
   object Tabs: TPageControl
     Left = 8
@@ -334,7 +334,7 @@ object AboutBox: TAboutBox
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
-      ClientHeight = 295
+      ClientHeight = 289
       ClientWidth = 418
       object SPINALabel: TImage
         Cursor = crArrow
@@ -1718,7 +1718,7 @@ object AboutBox: TAboutBox
         Height = 13
         Top = 126
         Width = 79
-        Caption = '© 1997 – 2023'
+        Caption = '© 1997 – 2024'
         Font.Height = -11
         Font.Pitch = fpVariable
         ParentColor = False
@@ -9126,11 +9126,11 @@ object AboutBox: TAboutBox
     end
     object TabSheet2: TTabSheet
       Caption = 'Info'
-      ClientHeight = 295
+      ClientHeight = 289
       ClientWidth = 418
       object Memo1: TMemo
         Left = 5
-        Height = 279
+        Height = 273
         Top = 4
         Width = 408
         Anchors = [akTop, akLeft, akBottom]
@@ -9141,15 +9141,15 @@ object AboutBox: TAboutBox
           ''
           ''
         )
-        OnKeyDown = FormKeyDown
         ReadOnly = True
         ScrollBars = ssAutoVertical
         TabOrder = 0
+        OnKeyDown = FormKeyDown
       end
     end
     object TabSheet3: TTabSheet
       Caption = 'Acknowledgment'
-      ClientHeight = 295
+      ClientHeight = 289
       ClientWidth = 418
       object Label3: TLabel
         Left = 21
@@ -9288,7 +9288,7 @@ object AboutBox: TAboutBox
     end
     object TabSheet4: TTabSheet
       Caption = 'Impressum'
-      ClientHeight = 295
+      ClientHeight = 289
       ClientWidth = 418
       object Memo2: TMemo
         Left = 5
@@ -9346,10 +9346,10 @@ object AboutBox: TAboutBox
           'http://www.aekwl.de einsehbar sind.'
           ''
         )
-        OnChange = Memo2Change
         ReadOnly = True
         ScrollBars = ssAutoBoth
         TabOrder = 0
+        OnChange = Memo2Change
       end
     end
   end

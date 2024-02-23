@@ -18,7 +18,7 @@ object ResultForm: TResultForm
   OnCreate = FormCreate
   OnPaint = FormPaint
   Position = poMainFormCenter
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.0.0.3'
   object Image1: TImage
     Left = 24
     Height = 80
@@ -367,7 +367,7 @@ object ResultForm: TResultForm
     Anchors = [akRight, akBottom]
     Caption = 'OK'
     Default = True
-    OnClick = OKButtonClick
     TabOrder = 0
+    OnClick = OKButtonClick
   end
 end
