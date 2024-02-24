@@ -23,10 +23,10 @@
       <MajorVersionNr Value="4"/>
       <MinorVersionNr Value="2"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="875"/>
+      <BuildNr Value="877"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.2.0 Kontinuum" LegalCopyright="1994-2024 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.2.1"/>
     </VersionInfo>
-    <BuildModes Count="2" Active="macOS">
+    <BuildModes Count="2">
       <Item1 Name="default" Default="True"/>
       <Item2 Name="macOS">
         <CompilerOptions>
@@ -495,7 +495,7 @@ end;"/>
         <UnitName Value="UnitConverter"/>
         <EditorIndex Value="5"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="199"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit51>
       <Unit52>
@@ -515,7 +515,7 @@ end;"/>
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor2>
-        <UsageCount Value="197"/>
+        <UsageCount Value="198"/>
         <Loaded Value="True"/>
       </Unit52>
       <Unit53>
@@ -564,7 +564,7 @@ end;"/>
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="192"/>
+        <UsageCount Value="193"/>
         <Loaded Value="True"/>
       </Unit59>
       <Unit60>
@@ -580,7 +580,7 @@ end;"/>
           <TopLine Value="43"/>
           <CursorPos X="33" Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="186"/>
+        <UsageCount Value="187"/>
         <Loaded Value="True"/>
       </Unit60>
       <Unit61>
@@ -589,7 +589,7 @@ end;"/>
         <UnitName Value="MSA"/>
         <EditorIndex Value="7"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="186"/>
+        <UsageCount Value="187"/>
         <Loaded Value="True"/>
       </Unit61>
       <Unit62>
@@ -605,7 +605,7 @@ end;"/>
           <TopLine Value="275"/>
           <CursorPos X="3" Y="285"/>
         </ExtraEditor1>
-        <UsageCount Value="186"/>
+        <UsageCount Value="187"/>
         <Loaded Value="True"/>
       </Unit62>
       <Unit63>
@@ -621,7 +621,7 @@ end;"/>
           <TopLine Value="37"/>
           <CursorPos X="13" Y="14"/>
         </ExtraEditor1>
-        <UsageCount Value="186"/>
+        <UsageCount Value="187"/>
         <Loaded Value="True"/>
       </Unit63>
       <Unit64>
@@ -662,7 +662,7 @@ end;"/>
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="174"/>
+        <UsageCount Value="175"/>
         <Loaded Value="True"/>
       </Unit69>
       <Unit70>
@@ -700,7 +700,7 @@ end;"/>
           <TopLine Value="93"/>
           <CursorPos X="53" Y="105"/>
         </ExtraEditor1>
-        <UsageCount Value="165"/>
+        <UsageCount Value="166"/>
         <Loaded Value="True"/>
       </Unit74>
       <Unit75>
@@ -716,9 +716,10 @@ end;"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CaseEditor"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="18"/>
-        <CursorPos Y="7"/>
-        <UsageCount Value="143"/>
+        <CursorPos X="36" Y="13"/>
+        <UsageCount Value="144"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit76>
@@ -734,7 +735,7 @@ end;"/>
         <UnitName Value="PID"/>
         <EditorIndex Value="10"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="136"/>
+        <UsageCount Value="137"/>
         <Loaded Value="True"/>
       </Unit78>
       <Unit79>
@@ -743,7 +744,7 @@ end;"/>
         <UnitName Value="PV1"/>
         <EditorIndex Value="11"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="136"/>
+        <UsageCount Value="137"/>
         <Loaded Value="True"/>
       </Unit79>
       <Unit80>
@@ -752,7 +753,7 @@ end;"/>
         <UnitName Value="SPM"/>
         <EditorIndex Value="14"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="133"/>
         <Loaded Value="True"/>
       </Unit80>
       <Unit81>
@@ -826,7 +827,7 @@ end;"/>
         <UnitName Value="NTE"/>
         <EditorIndex Value="9"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="103"/>
         <Loaded Value="True"/>
       </Unit92>
       <Unit93>
@@ -876,7 +877,7 @@ end;"/>
         <UnitName Value="MLLP"/>
         <EditorIndex Value="15"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="92"/>
         <Loaded Value="True"/>
       </Unit100>
       <Unit101>
@@ -992,9 +993,8 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnvironmentInfo"/>
         <EditorIndex Value="19"/>
-        <TopLine Value="272"/>
-        <CursorPos X="18" Y="293"/>
-        <UsageCount Value="52"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit118>
       <Unit119>
@@ -1061,10 +1061,9 @@ end;"/>
         <Filename Value="spina_guiservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_GUIServices"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="25"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
       </Unit128>
       <Unit129>
@@ -1159,155 +1158,132 @@ end;"/>
         <UsageCount Value="10"/>
       </Unit141>
       <Unit142>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\univint\src\CFBase.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="387"/>
-        <CursorPos X="40" Y="401"/>
-        <UsageCount Value="10"/>
-      </Unit142>
-      <Unit143>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\univint\src\CFArray.pas"/>
+        <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\CFArray.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="554"/>
         <CursorPos X="32" Y="568"/>
         <UsageCount Value="10"/>
-      </Unit143>
-      <Unit144>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\cocoaint\src\foundation\NSLocale.inc"/>
+      </Unit142>
+      <Unit143>
+        <Filename Value="C:\usr\local\share\fpcsrc\packages\cocoaint\src\foundation\NSLocale.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="8"/>
         <CursorPos X="3" Y="29"/>
         <UsageCount Value="10"/>
-      </Unit144>
-      <Unit145>
-        <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\packages\univint\src\CFLocale.pas"/>
+      </Unit143>
+      <Unit144>
+        <Filename Value="C:\usr\local\share\fpcsrc\packages\univint\src\CFLocale.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="198"/>
         <CursorPos X="9" Y="213"/>
         <UsageCount Value="10"/>
+      </Unit144>
+      <Unit145>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\win\sysutils.pp"/>
+        <UnitName Value="SysUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="54"/>
+        <CursorPos X="20" Y="64"/>
+        <UsageCount Value="10"/>
       </Unit145>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="24" HistoryIndex="23">
       <Position1>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="84" Column="19" TopLine="69"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="219" Column="22" TopLine="203"/>
       </Position1>
       <Position2>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="57" Column="23" TopLine="45"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="220" Column="14" TopLine="204"/>
       </Position2>
       <Position3>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="83" Column="56" TopLine="65"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="221" Column="22" TopLine="205"/>
       </Position3>
       <Position4>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="82" TopLine="65"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="222" Column="14" TopLine="206"/>
       </Position4>
       <Position5>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="56" Column="28" TopLine="53"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="223" Column="22" TopLine="207"/>
       </Position5>
       <Position6>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="70" Column="5" TopLine="62"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="224" Column="14" TopLine="208"/>
       </Position6>
       <Position7>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="72" TopLine="62"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="225" Column="22" TopLine="209"/>
       </Position7>
       <Position8>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="70" Column="9" TopLine="55"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="228" Column="22" TopLine="212"/>
       </Position8>
       <Position9>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="69" TopLine="55"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="238" Column="17" TopLine="222"/>
       </Position9>
       <Position10>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="70" TopLine="55"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="248" Column="17" TopLine="232"/>
       </Position10>
       <Position11>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="77" TopLine="57"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="277" Column="17" TopLine="261"/>
       </Position11>
       <Position12>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="81" Column="17" TopLine="59"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="286" Column="17" TopLine="270"/>
       </Position12>
       <Position13>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="83" Column="19" TopLine="59"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="295" Column="17" TopLine="279"/>
       </Position13>
       <Position14>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="79" TopLine="59"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="301" Column="64" TopLine="285"/>
       </Position14>
       <Position15>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="36" Column="22" TopLine="20"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="304" Column="14" TopLine="288"/>
       </Position15>
       <Position16>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="78" Column="21" TopLine="61"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="305" Column="39" TopLine="289"/>
       </Position16>
       <Position17>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="77" Column="43" TopLine="61"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="311" Column="67" TopLine="295"/>
       </Position17>
       <Position18>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="76" TopLine="61"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="314" Column="14" TopLine="298"/>
       </Position18>
       <Position19>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="77" TopLine="61"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="315" Column="9" TopLine="299"/>
       </Position19>
       <Position20>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="36" Column="22" TopLine="14"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="320" Column="13" TopLine="304"/>
       </Position20>
       <Position21>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="77" TopLine="63"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="321" Column="63" TopLine="305"/>
       </Position21>
       <Position22>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="42" Column="19" TopLine="19"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="324" Column="14" TopLine="308"/>
       </Position22>
       <Position23>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="77" TopLine="62"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="325" Column="65" TopLine="309"/>
       </Position23>
       <Position24>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="65" TopLine="59"/>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="406" Column="39" TopLine="398"/>
       </Position24>
-      <Position25>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="66" Column="46" TopLine="48"/>
-      </Position25>
-      <Position26>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="65" Column="61" TopLine="51"/>
-      </Position26>
-      <Position27>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="66" Column="37" TopLine="51"/>
-      </Position27>
-      <Position28>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="65" Column="18" TopLine="51"/>
-      </Position28>
-      <Position29>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="55" TopLine="51"/>
-      </Position29>
-      <Position30>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="58" Column="72" TopLine="51"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
