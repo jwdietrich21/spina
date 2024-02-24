@@ -25,7 +25,7 @@ http://spina.medical-cybernetics.de
 
 BSD License
 
-Copyright (c) 1994-2021, PD Dr. med. Johannes W. Dietrich M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, and Universitaetsklinikum Bergmannsheil, Ruhr-Universitaet Bochum.
+Copyright (c) 1994-2023, PD Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
 
 All rights reserved.
 
@@ -65,7 +65,7 @@ We have invested a lot of time and effort in creating SPINA Thyr, please cite it
 
 In order to cite SPINA Thyr in publications use:
 
-J. W. Dietrich (1994-2021). SPINA Thyr, software for structure parameter inference approach of thyroid function. RRID:SCR_014352. doi: 10.5281/zenodo.3596049. http://spina.medical-cybernetics.de
+J. W. Dietrich (1994-2024). SPINA Thyr, software for structure parameter inference approach of thyroid function. RRID:SCR_014352. doi: 10.5281/zenodo.3596049. http://spina.medical-cybernetics.de
 
 Additionally you might want to read or cite one or several of the following papers:
 
