@@ -8,7 +8,7 @@ unit CaseEditor;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.2.1 (Kontinuum) }
+{ Version 4.2.2 (Kontinuum) }
 
 { (c) J. W. Dietrich, 1994 - 2024 }
 
@@ -28,7 +28,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, EditBtn, ExtCtrls, Math, SPINA_Types, SPINA_Resources,
-  SPINA_GUIServices, SPINA_AboutBox, SPINA_Engine, HandleImpEx;
+  SPINA_GUIServices, EnvironmentInfo, SPINA_Engine, HandleImpEx;
 
 type
 

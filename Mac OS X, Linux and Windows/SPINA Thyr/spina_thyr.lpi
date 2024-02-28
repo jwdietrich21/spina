@@ -22,11 +22,12 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
       <MinorVersionNr Value="2"/>
-      <RevisionNr Value="1"/>
-      <BuildNr Value="877"/>
-      <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.2.0 Kontinuum" LegalCopyright="1994-2024 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.2.1"/>
+      <RevisionNr Value="2"/>
+      <BuildNr Value="879"/>
+      <Attributes pvaDebug="True"/>
+      <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.2.0 Kontinuum" LegalCopyright="1994-2024 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.2.2"/>
     </VersionInfo>
-    <BuildModes Count="2">
+    <BuildModes Count="2" Active="macOS">
       <Item1 Name="default" Default="True"/>
       <Item2 Name="macOS">
         <CompilerOptions>
@@ -58,10 +59,7 @@ end;"/>
           </CodeGeneration>
           <Linking>
             <Debugging>
-              <GenerateDebugInfo Value="False"/>
-              <RunWithoutDebug Value="True"/>
               <DebugInfoType Value="dsDwarf2Set"/>
-              <StripSymbols Value="True"/>
             </Debugging>
             <LinkSmart Value="True"/>
             <Options>
@@ -106,7 +104,7 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="29"/>
         <TopLine Value="30"/>
-        <CursorPos X="12" Y="30"/>
+        <CursorPos X="28" Y="11"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -119,8 +117,8 @@ end;"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_UserInterface"/>
         <EditorIndex Value="24"/>
-        <TopLine Value="1641"/>
-        <CursorPos Y="1652"/>
+        <TopLine Value="1230"/>
+        <CursorPos X="5" Y="1258"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -181,8 +179,8 @@ end;"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_SplashScreen"/>
-        <EditorIndex Value="22"/>
-        <CursorPos X="46" Y="16"/>
+        <EditorIndex Value="21"/>
+        <CursorPos X="28" Y="11"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -207,13 +205,14 @@ end;"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_AboutBox"/>
-        <EditorIndex Value="4"/>
-        <CursorPos X="46" Y="16"/>
+        <EditorIndex Value="23"/>
+        <TopLine Value="105"/>
+        <CursorPos X="98" Y="140"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
-          <EditorIndex Value="23"/>
-          <TopLine Value="13"/>
-          <CursorPos X="46" Y="16"/>
+          <EditorIndex Value="4"/>
+          <TopLine Value="78"/>
+          <CursorPos Y="13"/>
         </ExtraEditor1>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -227,7 +226,7 @@ end;"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_ResultDialog"/>
         <EditorIndex Value="28"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="18" Y="30"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -260,7 +259,7 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Engine"/>
         <EditorIndex Value="17"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="28" Y="11"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit18>
@@ -292,7 +291,7 @@ end;"/>
         <Filename Value="spina_types.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Types"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="28" Y="11"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -321,7 +320,7 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
         <EditorIndex Value="16"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="28" Y="11"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit26>
@@ -342,8 +341,9 @@ end;"/>
         <ComponentName Value="SPINAToolbar"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="20"/>
-        <CursorPos X="46" Y="16"/>
+        <EditorIndex Value="19"/>
+        <TopLine Value="440"/>
+        <CursorPos X="3" Y="455"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -391,7 +391,7 @@ end;"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SetPreferences"/>
         <EditorIndex Value="27"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="37" Y="30"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -404,7 +404,7 @@ end;"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="26"/>
         <TopLine Value="30"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="28" Y="11"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -503,7 +503,7 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
         <EditorIndex Value="3"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="28" Y="11"/>
         <ExtraEditorCount Value="2"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -515,7 +515,7 @@ end;"/>
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor2>
-        <UsageCount Value="198"/>
+        <UsageCount Value="199"/>
         <Loaded Value="True"/>
       </Unit52>
       <Unit53>
@@ -564,7 +564,7 @@ end;"/>
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="193"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit59>
       <Unit60>
@@ -580,7 +580,7 @@ end;"/>
           <TopLine Value="43"/>
           <CursorPos X="33" Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="187"/>
+        <UsageCount Value="188"/>
         <Loaded Value="True"/>
       </Unit60>
       <Unit61>
@@ -589,7 +589,7 @@ end;"/>
         <UnitName Value="MSA"/>
         <EditorIndex Value="7"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="187"/>
+        <UsageCount Value="188"/>
         <Loaded Value="True"/>
       </Unit61>
       <Unit62>
@@ -605,7 +605,7 @@ end;"/>
           <TopLine Value="275"/>
           <CursorPos X="3" Y="285"/>
         </ExtraEditor1>
-        <UsageCount Value="187"/>
+        <UsageCount Value="188"/>
         <Loaded Value="True"/>
       </Unit62>
       <Unit63>
@@ -621,7 +621,7 @@ end;"/>
           <TopLine Value="37"/>
           <CursorPos X="13" Y="14"/>
         </ExtraEditor1>
-        <UsageCount Value="187"/>
+        <UsageCount Value="188"/>
         <Loaded Value="True"/>
       </Unit63>
       <Unit64>
@@ -656,13 +656,13 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CDISC"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="28" Y="11"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
           <CursorPos Y="2"/>
         </ExtraEditor1>
-        <UsageCount Value="175"/>
+        <UsageCount Value="176"/>
         <Loaded Value="True"/>
       </Unit69>
       <Unit70>
@@ -692,7 +692,7 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Resources"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="46" Y="16"/>
+        <CursorPos X="28" Y="11"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -700,7 +700,7 @@ end;"/>
           <TopLine Value="93"/>
           <CursorPos X="53" Y="105"/>
         </ExtraEditor1>
-        <UsageCount Value="166"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit74>
       <Unit75>
@@ -716,10 +716,10 @@ end;"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="CaseEditor"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="18"/>
-        <CursorPos X="36" Y="13"/>
-        <UsageCount Value="144"/>
+        <TopLine Value="2"/>
+        <CursorPos X="37" Y="31"/>
+        <UsageCount Value="145"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit76>
@@ -735,7 +735,7 @@ end;"/>
         <UnitName Value="PID"/>
         <EditorIndex Value="10"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="137"/>
+        <UsageCount Value="138"/>
         <Loaded Value="True"/>
       </Unit78>
       <Unit79>
@@ -744,7 +744,7 @@ end;"/>
         <UnitName Value="PV1"/>
         <EditorIndex Value="11"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="137"/>
+        <UsageCount Value="138"/>
         <Loaded Value="True"/>
       </Unit79>
       <Unit80>
@@ -753,7 +753,7 @@ end;"/>
         <UnitName Value="SPM"/>
         <EditorIndex Value="14"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="134"/>
         <Loaded Value="True"/>
       </Unit80>
       <Unit81>
@@ -774,9 +774,9 @@ end;"/>
       </Unit83>
       <Unit84>
         <Filename Value="Barcode.pas"/>
-        <EditorIndex Value="21"/>
+        <EditorIndex Value="20"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
       </Unit84>
       <Unit85>
@@ -827,7 +827,7 @@ end;"/>
         <UnitName Value="NTE"/>
         <EditorIndex Value="9"/>
         <CursorPos X="47" Y="13"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
       </Unit92>
       <Unit93>
@@ -877,7 +877,7 @@ end;"/>
         <UnitName Value="MLLP"/>
         <EditorIndex Value="15"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
       </Unit100>
       <Unit101>
@@ -992,9 +992,10 @@ end;"/>
         <Filename Value="environmentinfo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnvironmentInfo"/>
-        <EditorIndex Value="19"/>
-        <CursorPos Y="2"/>
-        <UsageCount Value="53"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="22"/>
+        <CursorPos X="12" Y="2"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
       </Unit118>
       <Unit119>
@@ -1062,8 +1063,8 @@ end;"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_GUIServices"/>
         <EditorIndex Value="25"/>
-        <CursorPos Y="2"/>
-        <UsageCount Value="46"/>
+        <CursorPos X="28" Y="11"/>
+        <UsageCount Value="47"/>
         <Loaded Value="True"/>
       </Unit128>
       <Unit129>
@@ -1187,103 +1188,123 @@ end;"/>
         <UsageCount Value="10"/>
       </Unit145>
     </Units>
-    <JumpHistory Count="24" HistoryIndex="23">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="219" Column="22" TopLine="203"/>
+        <Caret Line="320" Column="13" TopLine="304"/>
       </Position1>
       <Position2>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="220" Column="14" TopLine="204"/>
+        <Caret Line="321" Column="63" TopLine="305"/>
       </Position2>
       <Position3>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="221" Column="22" TopLine="205"/>
+        <Caret Line="324" Column="14" TopLine="308"/>
       </Position3>
       <Position4>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="222" Column="14" TopLine="206"/>
+        <Caret Line="325" Column="65" TopLine="309"/>
       </Position4>
       <Position5>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="223" Column="22" TopLine="207"/>
+        <Caret Line="406" Column="39" TopLine="398"/>
       </Position5>
       <Position6>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="224" Column="14" TopLine="208"/>
+        <Filename Value="spina_types.pas"/>
+        <Caret Line="16" Column="46"/>
       </Position6>
       <Position7>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="225" Column="22" TopLine="209"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="104" Column="24" TopLine="93"/>
       </Position7>
       <Position8>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="228" Column="22" TopLine="212"/>
+        <Caret Column="21"/>
       </Position8>
       <Position9>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="238" Column="17" TopLine="222"/>
+        <Filename Value="caseeditor.pas"/>
+        <Caret Line="31" Column="37" TopLine="2"/>
       </Position9>
       <Position10>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="248" Column="17" TopLine="232"/>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="30" Column="37"/>
       </Position10>
       <Position11>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="277" Column="17" TopLine="261"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="142" Column="67" TopLine="121"/>
       </Position11>
       <Position12>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="286" Column="17" TopLine="270"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="107" Column="27"/>
       </Position12>
       <Position13>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="295" Column="17" TopLine="279"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="111" Column="23" TopLine="86"/>
       </Position13>
       <Position14>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="301" Column="64" TopLine="285"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="104" Column="23" TopLine="86"/>
       </Position14>
       <Position15>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="304" Column="14" TopLine="288"/>
+        <Filename Value="spina_userinterface.pas"/>
+        <Caret Line="1039" Column="3" TopLine="1024"/>
       </Position15>
       <Position16>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="305" Column="39" TopLine="289"/>
+        <Filename Value="spina_toolbar.pas"/>
+        <Caret Line="455" Column="3" TopLine="440"/>
       </Position16>
       <Position17>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="311" Column="67" TopLine="295"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="142" TopLine="119"/>
       </Position17>
       <Position18>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="314" Column="14" TopLine="298"/>
+        <Caret Line="150" TopLine="135"/>
       </Position18>
       <Position19>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="315" Column="9" TopLine="299"/>
+        <Caret Line="151" TopLine="135"/>
       </Position19>
       <Position20>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="320" Column="13" TopLine="304"/>
+        <Caret Line="152" TopLine="135"/>
       </Position20>
       <Position21>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="321" Column="63" TopLine="305"/>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="142" TopLine="119"/>
       </Position21>
       <Position22>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="324" Column="14" TopLine="308"/>
+        <Caret Line="370" TopLine="355"/>
       </Position22>
       <Position23>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="325" Column="65" TopLine="309"/>
+        <Caret Line="188" TopLine="173"/>
       </Position23>
       <Position24>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="406" Column="39" TopLine="398"/>
+        <Caret Line="234" TopLine="220"/>
       </Position24>
+      <Position25>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="397" TopLine="382"/>
+      </Position25>
+      <Position26>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="398" TopLine="382"/>
+      </Position26>
+      <Position27>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="399" TopLine="382"/>
+      </Position27>
+      <Position28>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="400" TopLine="382"/>
+      </Position28>
+      <Position29>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="401" TopLine="382"/>
+      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

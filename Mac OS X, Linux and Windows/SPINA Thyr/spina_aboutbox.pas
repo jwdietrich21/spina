@@ -8,7 +8,7 @@ unit SPINA_AboutBox;
 { Programm zur Berechnung von Strukturparametern }
 { des thyreotropen Regelkreises }
 
-{ Version 4.2.1 (Kontinuum) }
+{ Version 4.2.2 (Kontinuum) }
 
 { (c) J. W. Dietrich, 1994 - 2024 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -102,69 +102,13 @@ var
   gExtendedInfo: boolean;
 
 procedure ShowAboutBox;
-function YosemiteORNewer: Boolean;
 
 implementation
 
 uses
   SPINA_Userinterface, SPINA_SplashScreen;
 
-function OSVersion: Str255; {returns the major version of the operating system}
-{ Currently not in use. Eventually to be integrated in the EnvironmentInfo unit }
-begin
-  {$IFDEF LCLcarbon}
-  OSVersion := 'Mac OS X 10.';
-  {$ELSE}
-  {$IFDEF LCLCocoa}
-  OSVersion := 'macOS 10.';
-  {$ELSE}
-  {$IFDEF Linux}
-  OSVersion := 'Linux Kernel ';
-  {$ELSE}
-  {$IFDEF UNIX}
-  OSVersion := 'Unix ';
-  {$ELSE}
-  {$IFDEF WINDOWS}
-  if WindowsVersion = wv95 then
-    OSVersion := 'Windows 95 '
-  else if WindowsVersion = wvNT4 then
-    OSVersion := 'Windows NT v.4 '
-  else if WindowsVersion = wv98 then
-    OSVersion := 'Windows 98 '
-  else if WindowsVersion = wvMe then
-    OSVersion := 'Windows ME '
-  else if WindowsVersion = wv2000 then
-    OSVersion := 'Windows 2000 '
-  else if WindowsVersion = wvXP then
-    OSVersion := 'Windows XP '
-  else if WindowsVersion = wvServer2003 then
-    OSVersion := 'Windows Server 2003 '
-  else if WindowsVersion = wvVista then
-    OSVersion := 'Windows Vista '
-  else if WindowsVersion = wv7 then
-    OSVersion := 'Windows 7 '
-  else if WindowsVersion = wv8 then
-    OSVersion := 'Windows 8 '
-  else if WindowsVersion = wv8_1 then
-    OSVersion := 'Windows 8.1 '
-  else if WindowsVersion = wv10 then
-    OSVersion := 'Windows 10 '
-  else
-    OSVersion := 'Windows ';
-  {$ENDIF}
-  {$ENDIF}
-  {$ENDIF}
-  {$ENDIF}
-  {$ENDIF}
-end;
-
 procedure ShowAboutBox;
-var
-  SystemStem, MajVer, MinVer, BugfixVer, VersionString: Str255;
-  {$IFDEF Darwin}
-  Major, Minor, Bugfix: SInt32;
-  theError: SInt16;
-  {$ENDIF}
 begin
   if gStartup then
     AboutBox.Hide
@@ -193,29 +137,6 @@ begin
       AboutBox.AlphaBlendValue := 255;
       AboutBox.ShowModal;
     end;
-end;
-
-function YosemiteORNewer: Boolean;
-{ returns true, if this app runs on Mac OS X 10.10 Yosemite or newer }
-  {$IFDEF LCLcarbon}
-var
-  Major, Minor, Bugfix: SInt32;
-  theError: SInt16;
-  {$ENDIF}
-begin
-  {$IFDEF LCLCocoa}
-  result := true;
-  {$ELSE}
-  result := false;
-  {$IFDEF LCLcarbon}
-  theError := Gestalt(gestaltSystemVersionMinor, Minor);
-  if TheError = 0 then
-    if Minor >= 10 then
-      result := true;
-  {$ELSE}
-  result := false;
-  {$ENDIF}
-  {$ENDIF}
 end;
 
 { TAboutBox }
