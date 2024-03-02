@@ -394,13 +394,14 @@ begin
   result := SystemStem + MinVer + '.' + BugfixVer;
   {$ELSE}
   {$IFDEF LCLCocoa}
-  Major := NSProcessInfo.ProcessInfo.OperatingSystemVersion.majorVersion;
-  Minor := NSProcessInfo.ProcessInfo.OperatingSystemVersion.minorVersion;
-  Bugfix := NSProcessInfo.ProcessInfo.OperatingSystemVersion.patchVersion;
-  MajVer := IntToStr(Major);
-  MinVer := IntToStr(Minor);
-  BugfixVer := IntToStr(Bugfix);
-  result := SystemStem + MajVer + '.' + MinVer + '.' + BugfixVer;
+  //Major := NSProcessInfo.ProcessInfo.OperatingSystemVersion.majorVersion;
+  //Minor := NSProcessInfo.ProcessInfo.OperatingSystemVersion.minorVersion;
+  //Bugfix := NSProcessInfo.ProcessInfo.OperatingSystemVersion.patchVersion;
+  //MajVer := IntToStr(Major);
+  //MinVer := IntToStr(Minor);
+  //BugfixVer := IntToStr(Bugfix);
+  //result := SystemStem + MajVer + '.' + MinVer + '.' + BugfixVer;
+  result := NSProcessInfo.ProcessInfo.operatingSystemVersionString.UTF8String;
   {$ELSE}
   {$IFDEF WINDOWS}
   MajVer := IntToStr(Win32MajorVersion);
