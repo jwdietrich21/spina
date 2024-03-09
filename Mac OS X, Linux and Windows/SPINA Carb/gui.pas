@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin, Menus, ActnList, StdActns, Math, LCLType;
+  Spin, Menus, ActnList, StdActns, Math, LCLType, InputFilter;
 
 type
 
@@ -108,11 +108,14 @@ begin
 end;
 
 procedure THauptschirm.RegisterEntry(Sender: TObject);
+var
+  CheckedIns, CheckedGlc: extended;
 begin
   InsulinRaw := StrToFloatDef(InsulinEdit.Text, Math.Nan);
   GlucoseRaw := StrToFloatDef(GlucoseEdit.Text, Math.Nan);
   InsulinUoM := InsulinUnitsCombo.Text;
   GlucoseUoM := GlucoseUnitsCombo.Text;
+  CheckedIns := InsulinSI(InsulinRaw, InsulinUoM);
 end;
 
 procedure THauptschirm.AdaptMenus;

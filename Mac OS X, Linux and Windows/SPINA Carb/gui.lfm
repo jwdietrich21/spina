@@ -8,7 +8,7 @@ object Hauptschirm: THauptschirm
   ClientWidth = 729
   Menu = MainMenu1
   OnCreate = FormCreate
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '3.2.0.0'
   object EntryBox: TGroupBox
     Left = 224
     Height = 303
@@ -5927,11 +5927,11 @@ object Hauptschirm: THauptschirm
       ItemHeight = 19
       ItemIndex = 0
       Items.Strings = (
-        'mg/dL'
-        'mmol/L'
+        'mg/dl'
+        'mmol/l'
       )
       TabOrder = 2
-      Text = 'mg/dL'
+      Text = 'mg/dl'
     end
     object InsulinUnitsCombo: TComboBox
       Left = 144
@@ -5941,11 +5941,11 @@ object Hauptschirm: THauptschirm
       ItemHeight = 19
       ItemIndex = 0
       Items.Strings = (
-        'mIU/L'
-        'pmol/L'
+        'mIU/l'
+        'pmol/l'
       )
       TabOrder = 3
-      Text = 'mIU/L'
+      Text = 'mIU/l'
     end
   end
   object Panel1: TPanel

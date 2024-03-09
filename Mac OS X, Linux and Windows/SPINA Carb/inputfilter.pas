@@ -1,4 +1,4 @@
-program SPINA_Carb;
+unit InputFilter;
 
 { SPINA Carb }
 
@@ -15,32 +15,32 @@ program SPINA_Carb;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2024 }
 
-{ Main program unit }
+{ This unit filters and prepares inputs for the calculation engine }
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
 
-{$mode objfpc}{$H+}
+{$mode ObjFPC}{$H+}
+
+interface
 
 uses
-  {$IFDEF UNIX}
-  cthreads,
-  {$ENDIF}
-  {$IFDEF HASAMIGA}
-  athreads,
-  {$ENDIF}
-  Interfaces, // this includes the LCL widgetset
-  Forms, GUI, SPINA_Engine, UnitConverter, InputFilter
-  { you can add units after this };
+  Classes, SysUtils, UnitConverter, SPINA_Engine;
 
-{$R *.res}
+function InsulinSI(RawIns: extended; InsUom: String): extended;
+function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
 
+implementation
+
+function InsulinSI(RawIns: extended; InsUom: String): extended;
 begin
-  RequireDerivedFormResource:=True;
-  Application.Title:='SPINA Carb';
-  Application.Scaled:=True;
-  Application.Initialize;
-  Application.CreateForm(THauptschirm, Hauptschirm);
-  Application.Run;
+  result := ConvertedValue(RawIns, kInsulinConversionFactor, InsUom, 'pmol/l');
+end;
+
+function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
+begin
+
+end;
+
 end.
 
