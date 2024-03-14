@@ -7,7 +7,6 @@
       <Unit>
         <Filename Value="ScenarioTester.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos X="20" Y="204"/>
         <UsageCount Value="23"/>
@@ -18,6 +17,13 @@
         <IsPartOfProject Value="True"/>
         <CursorPos X="18" Y="98"/>
         <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../EngineUnitTests.lpr"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
