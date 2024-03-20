@@ -30,7 +30,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, GUI, SPINA_Engine, UnitConverter, InputFilter
+  Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker
   { you can add units after this };
 
 {$R *.res}

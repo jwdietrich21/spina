@@ -31,6 +31,7 @@ uses
 
 const
   kInsulinConversionFactor = 6;  // A Voelund 1993, L. Heinemann 2010
+  kGlucoseMolarMass = 180;       // g/mol
   kGlucoseConversionFactor = 18; // derived from molar mass
   kPicoFactor = 1e12;
   kMilliFactor = 1e3;

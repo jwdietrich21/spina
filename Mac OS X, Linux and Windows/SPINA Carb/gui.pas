@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin, Menus, ActnList, StdActns, Math, LCLType, InputFilter;
+  Spin, Menus, ActnList, StdActns, Math, LCLType, CaseBroker;
 
 type
 
@@ -116,6 +116,7 @@ begin
   InsulinUoM := InsulinUnitsCombo.Text;
   GlucoseUoM := GlucoseUnitsCombo.Text;
   CheckedIns := InsulinSI(InsulinRaw, InsulinUoM);
+  CheckedGlc := GlucoseSI(GlucoseRaw, GlucoseUoM);
 end;
 
 procedure THauptschirm.AdaptMenus;

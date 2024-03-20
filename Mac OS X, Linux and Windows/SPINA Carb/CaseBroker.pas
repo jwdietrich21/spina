@@ -1,4 +1,4 @@
-unit InputFilter;
+unit CaseBroker;
 
 { SPINA Carb }
 
@@ -27,6 +27,13 @@ interface
 uses
   Classes, SysUtils, UnitConverter, SPINA_Engine;
 
+type
+  tLabRecord = record
+    iInsulin, iGlucose: extended;
+    rSPINA_GBeta, rSPINA_GR, rSPINA_DI, rHOMA_Beta, rHOMA_IR, rHOMA_IS,
+      rQUICKI: extended;
+  end;
+
 function InsulinSI(RawIns: extended; InsUom: String): extended;
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
 
@@ -39,7 +46,7 @@ end;
 
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
 begin
-
+  result := ConvertedValue(RawGlc, kGlucoseMolarMass, GlcUom, 'mmol/l');
 end;
 
 end.
