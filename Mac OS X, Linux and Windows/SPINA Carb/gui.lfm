@@ -2,10 +2,10 @@ object Hauptschirm: THauptschirm
   Left = 360
   Height = 387
   Top = 266
-  Width = 753
+  Width = 758
   Caption = 'SPINA Carb'
   ClientHeight = 387
-  ClientWidth = 753
+  ClientWidth = 758
   Menu = MainMenu1
   OnCreate = FormCreate
   LCLVersion = '3.2.0.0'
@@ -5970,9 +5970,11 @@ object Hauptschirm: THauptschirm
       Top = 8
       Width = 180
       Anchors = [akTop, akLeft, akRight, akBottom]
+      Font.Height = 12
       Lines.Strings = (
         'Please enter fasting concentrations of insulin and glucose and hit "Calculate".'
       )
+      ParentFont = False
       TabOrder = 0
     end
   end
@@ -5980,26 +5982,28 @@ object Hauptschirm: THauptschirm
     Left = 512
     Height = 321
     Top = 8
-    Width = 225
+    Width = 230
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Results:'
     ClientHeight = 294
-    ClientWidth = 215
+    ClientWidth = 220
     TabOrder = 3
     object ResultsMemo: TMemo
       Left = 8
       Height = 279
       Top = 8
-      Width = 195
+      Width = 200
       Anchors = [akTop, akLeft, akRight, akBottom]
+      Font.Height = 12
       Lines.Strings = (
         'The results of the calculation will appear here.'
       )
+      ParentFont = False
       TabOrder = 0
     end
   end
   object CalculateButton: TButton
-    Left = 622
+    Left = 627
     Height = 25
     Top = 346
     Width = 115

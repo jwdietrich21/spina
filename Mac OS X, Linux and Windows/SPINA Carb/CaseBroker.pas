@@ -39,7 +39,7 @@ type
 
 function InsulinSI(RawIns: extended; InsUom: String): extended;
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
-procedure Calculate(LabRecord: tLabRecord);
+procedure Calculate(var LabRecord: tLabRecord);
 
 implementation
 
@@ -53,7 +53,7 @@ begin
   result := ConvertedValue(RawGlc, kGlucoseMolarMass, GlcUom, 'mmol/l');
 end;
 
-procedure Calculate(LabRecord: tLabRecord);
+procedure Calculate(var LabRecord: tLabRecord);
 begin
   LabRecord.SPINA_GBeta := SPINA_GBeta(LabRecord.Insulin, LabRecord.Glucose);
   LabRecord.SPINA_GR := SPINA_GR(LabRecord.Insulin, LabRecord.Glucose);

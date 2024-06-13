@@ -31,6 +31,17 @@ uses
 const
   kBPars = 'Behavioural parameters:';
   kSPars = 'Structural parameters:';
+  kGluc = 'Glucose';
+  kIns = 'Insulin';
+  kSPINA_GBeta = 'SPINA-GBeta';
+  kSPINA_GR = 'SPINA-GR';
+  kSPINA_DI = 'SPINA-DI';
+  kHOMA_Beta = 'HOMA-Beta';
+  kHOMA_IR = 'HOMA-IR';
+  kHOMA_IS = 'HOMA-IS';
+  kQUICKI = 'QUICKI';
+  GBetaUoM = 'pmol/s';
+  GRUoM = 'mol/s';
 
 type
 
@@ -105,7 +116,7 @@ begin
   RegisterEntry(Sender);
   Calculate(CaseRecord.LabRecord);
   CreateOutput(Sender);
-
+  ResultsMemo.Text := OutputC;
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
@@ -134,9 +145,40 @@ end;
 
 procedure THauptschirm.CreateOutput(Sender: TObject);
 begin
-  OutputB := kBPars;
-  OutputS := kSPars;
-  OutputC := kBPars + LineEnding + kSPars;
+  OutputB := kBPars +
+             LineEnding +
+             '   ' + kGluc + ': ' +
+             GlucoseEdit.Text + ' ' + GlucoseUoM +
+             LineEnding +
+             '   ' + kIns + ': ' +
+             InsulinEdit.Text + ' ' + InsulinUoM;
+             OutputS := kSPars +
+             LineEnding +
+             '   ' + kSPINA_GBeta + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffGeneral, 3, 2) +
+             ' ' + GBetaUoM +
+             LineEnding +
+             '   ' + kSPINA_GR + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffGeneral, 3, 2) +
+             ' ' + GRUoM +
+             LineEnding +
+             '   ' + kSPINA_DI + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffGeneral, 3, 2) +
+             LineEnding +
+             '   ' + kHOMA_Beta + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffGeneral, 3, 2) +
+             LineEnding +
+             '   ' + kHOMA_IR + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffGeneral, 3, 2) +
+             LineEnding +
+             '   ' + kHOMA_IS + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffGeneral, 3, 2) +
+             LineEnding +
+             '   ' + kQUICKI + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.QUICKI, ffGeneral, 3, 2);;
+  OutputC := OutputB +
+             LineEnding + LineEnding +
+             OutputS;
 end;
 
 procedure THauptschirm.AdaptMenus;
