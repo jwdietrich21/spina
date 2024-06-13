@@ -8,8 +8,9 @@
         <Filename Value="SPINA_Carb.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <CursorPos X="55" Y="33"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="3"/>
+        <CursorPos X="54" Y="33"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,36 +20,39 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="95"/>
-        <CursorPos Y="119"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="97"/>
+        <CursorPos X="3" Y="108"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="21" Y="2"/>
-        <UsageCount Value="21"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="53"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unitconverter.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitConverter"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="42" Y="647"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="618"/>
+        <CursorPos X="36" Y="647"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="28" Y="2"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="15"/>
+        <CursorPos X="68" Y="64"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -60,90 +64,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="620" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="622" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="623" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="624" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="625" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="626" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="627" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="620" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="622" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="623" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="624" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="625" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="626" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="627" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="620" TopLine="603"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="640" TopLine="625"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="642" TopLine="625"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="644" TopLine="625"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="639" Column="36" TopLine="624"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="118" TopLine="96"/>
-      </Position>
-      <Position>
-        <Filename Value="CaseBroker.pas"/>
-        <Caret Line="37" TopLine="16"/>
-      </Position>
       <Position>
         <Filename Value="unitconverter.pas"/>
         <Caret Line="647" Column="42" TopLine="622"/>
@@ -179,6 +99,90 @@
       <Position>
         <Filename Value="CaseBroker.pas"/>
         <Caret Line="31" Column="4" TopLine="23"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="112" Column="13"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="6" Column="13"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="9" Column="14"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="55" Column="12" TopLine="30"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="56" Column="12" TopLine="31"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="58" Column="12" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="80" Column="12" TopLine="56"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="81" Column="12" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="114" Column="10" TopLine="89"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="81" Column="5" TopLine="67"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="114" Column="38" TopLine="89"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="116" Column="24" TopLine="91"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="118" Column="46" TopLine="93"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="42" Column="44" TopLine="26"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="58" TopLine="32"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="59" TopLine="32"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="60" Column="71" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="64" Column="67" TopLine="35"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="63" Column="70" TopLine="39"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="84" Column="45" TopLine="65"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="107" Column="3" TopLine="96"/>
       </Position>
     </JumpHistory>
     <RunParams>

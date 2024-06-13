@@ -29,13 +29,17 @@ uses
 
 type
   tLabRecord = record
-    iInsulin, iGlucose: extended;
-    rSPINA_GBeta, rSPINA_GR, rSPINA_DI, rHOMA_Beta, rHOMA_IR, rHOMA_IS,
-      rQUICKI: extended;
+    Insulin, Glucose: extended;
+    SPINA_GBeta, SPINA_GR, SPINA_DI, HOMA_Beta, HOMA_IR, HOMA_IS,
+      QUICKI: extended;
+  end;
+  tCaseRecord = record
+    LabRecord:tLabRecord;
   end;
 
 function InsulinSI(RawIns: extended; InsUom: String): extended;
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
+procedure Calculate(LabRecord: tLabRecord);
 
 implementation
 
@@ -47,6 +51,17 @@ end;
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
 begin
   result := ConvertedValue(RawGlc, kGlucoseMolarMass, GlcUom, 'mmol/l');
+end;
+
+procedure Calculate(LabRecord: tLabRecord);
+begin
+  LabRecord.SPINA_GBeta := SPINA_GBeta(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.SPINA_GR := SPINA_GR(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.SPINA_DI := SPINA_DI(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.HOMA_Beta := HOMA_Beta(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.HOMA_IR := HOMA_IR(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.HOMA_IS := HOMA_IS(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.QUICKI := QUICKI(LabRecord.Insulin, LabRecord.Glucose);
 end;
 
 end.

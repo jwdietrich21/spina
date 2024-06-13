@@ -28,6 +28,10 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   Spin, Menus, ActnList, StdActns, Math, LCLType, CaseBroker;
 
+const
+  kBPars = 'Behavioural parameters:';
+  kSPars = 'Structural parameters:';
+
 type
 
   { THauptschirm }
@@ -58,6 +62,7 @@ type
     InsulinLabel: TLabel;
     MacAboutItem: TMenuItem;
     MainMenu1: TMainMenu;
+    ResultsMemo: TMemo;
     NewMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
     PasteMenuItem: TMenuItem;
@@ -65,7 +70,7 @@ type
     RedoMenuItem: TMenuItem;
     ResultsBox: TGroupBox;
     HintBox: TGroupBox;
-    Memo1: TMemo;
+    HintsMemo: TMemo;
     Panel1: TPanel;
     SaveMenuItem: TMenuItem;
     SelectAllMenuItem: TMenuItem;
@@ -77,9 +82,12 @@ type
   private
 
   public
+    CaseRecord: tCaseRecord;
     InsulinRaw, GlucoseRaw: extended;
     InsulinUoM, GlucoseUoM: String;
+    OutputB, OutputS, OutputC: string;
     procedure RegisterEntry(Sender: TObject);
+    procedure CreateOutput(Sender: TObject);
     procedure AdaptMenus;
   end;
 
@@ -95,6 +103,9 @@ implementation
 procedure THauptschirm.CalculateButtonClick(Sender: TObject);
 begin
   RegisterEntry(Sender);
+  Calculate(CaseRecord.LabRecord);
+  CreateOutput(Sender);
+
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
@@ -117,6 +128,15 @@ begin
   GlucoseUoM := GlucoseUnitsCombo.Text;
   CheckedIns := InsulinSI(InsulinRaw, InsulinUoM);
   CheckedGlc := GlucoseSI(GlucoseRaw, GlucoseUoM);
+  CaseRecord.LabRecord.Insulin := CheckedIns;
+  CaseRecord.LabRecord.Glucose := CheckedGlc;
+end;
+
+procedure THauptschirm.CreateOutput(Sender: TObject);
+begin
+  OutputB := kBPars;
+  OutputS := kSPars;
+  OutputC := kBPars + LineEnding + kSPars;
 end;
 
 procedure THauptschirm.AdaptMenus;

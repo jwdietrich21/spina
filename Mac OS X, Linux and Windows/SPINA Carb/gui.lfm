@@ -1,31 +1,30 @@
 object Hauptschirm: THauptschirm
   Left = 360
-  Height = 369
+  Height = 387
   Top = 266
-  Width = 729
+  Width = 753
   Caption = 'SPINA Carb'
-  ClientHeight = 369
-  ClientWidth = 729
+  ClientHeight = 387
+  ClientWidth = 753
   Menu = MainMenu1
   OnCreate = FormCreate
   LCLVersion = '3.2.0.0'
   object EntryBox: TGroupBox
     Left = 224
-    Height = 303
+    Height = 321
     Top = 8
     Width = 270
-    Anchors = [akTop, akLeft, akRight, akBottom]
+    Anchors = [akTop, akLeft, akBottom]
     Caption = 'Enter behavioural parameters:'
-    ClientHeight = 276
+    ClientHeight = 294
     ClientWidth = 260
     Constraints.MinWidth = 270
     TabOrder = 0
     object FeedbackImage: TImage
       Left = 0
-      Height = 257
+      Height = 258
       Top = 8
       Width = 261
-      Anchors = [akTop, akLeft, akRight, akBottom]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963D6DB020089504E47
         0D0A1A0A0000000D4948445200000632000006EE0806000000F0A6AB9C0002DB
@@ -5957,17 +5956,17 @@ object Hauptschirm: THauptschirm
   end
   object HintBox: TGroupBox
     Left = 16
-    Height = 191
+    Height = 209
     Top = 120
     Width = 192
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Hints:'
-    ClientHeight = 164
+    ClientHeight = 182
     ClientWidth = 182
     TabOrder = 2
-    object Memo1: TMemo
+    object HintsMemo: TMemo
       Left = 0
-      Height = 153
+      Height = 171
       Top = 8
       Width = 180
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -5979,16 +5978,30 @@ object Hauptschirm: THauptschirm
   end
   object ResultsBox: TGroupBox
     Left = 512
-    Height = 304
+    Height = 321
     Top = 8
-    Width = 201
+    Width = 225
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Results:'
+    ClientHeight = 294
+    ClientWidth = 215
     TabOrder = 3
+    object ResultsMemo: TMemo
+      Left = 8
+      Height = 279
+      Top = 8
+      Width = 195
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      Lines.Strings = (
+        'The results of the calculation will appear here.'
+      )
+      TabOrder = 0
+    end
   end
   object CalculateButton: TButton
-    Left = 598
+    Left = 622
     Height = 25
-    Top = 328
+    Top = 346
     Width = 115
     Anchors = [akRight, akBottom]
     Caption = 'Calculate'
