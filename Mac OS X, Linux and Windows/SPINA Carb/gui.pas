@@ -67,6 +67,8 @@ type
     EntryBox: TGroupBox;
     FeedbackImage: TImage;
     HelpMenu: TMenuItem;
+    ImageList1: TImageList;
+    LogoImage: TImage;
     InsulinUnitsCombo: TComboBox;
     InsulinEdit: TEdit;
     GlucoseLabel: TLabel;
@@ -82,13 +84,14 @@ type
     ResultsBox: TGroupBox;
     HintBox: TGroupBox;
     HintsMemo: TMemo;
-    Panel1: TPanel;
+    LogoPanel: TPanel;
     SaveMenuItem: TMenuItem;
     SelectAllMenuItem: TMenuItem;
     UndoMenuItem: TMenuItem;
     WinAboutItem: TMenuItem;
     procedure CalculateButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure LogoImageClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
   private
 
@@ -122,6 +125,11 @@ end;
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptMenus;
+end;
+
+procedure THauptschirm.LogoImageClick(Sender: TObject);
+begin
+
 end;
 
 procedure THauptschirm.QuitMenuItemClick(Sender: TObject);
