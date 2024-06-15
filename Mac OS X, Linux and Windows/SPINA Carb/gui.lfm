@@ -3,6 +3,7 @@ object Hauptschirm: THauptschirm
   Height = 387
   Top = 266
   Width = 758
+  ActiveControl = GlucoseEdit
   Caption = 'SPINA Carb'
   ClientHeight = 387
   ClientWidth = 758
@@ -24,7 +25,7 @@ object Hauptschirm: THauptschirm
       Left = 0
       Height = 258
       Top = 8
-      Width = 261
+      Width = 248
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963D6DB020089504E47
         0D0A1A0A0000000D4948445200000632000006EE0806000000F0A6AB9C0002DB
@@ -6881,6 +6882,8 @@ object Hauptschirm: THauptschirm
       Font.Height = 12
       Lines.Strings = (
         'Please enter fasting concentrations of insulin and glucose and hit "Calculate".'
+        ''
+        'You should make sure that you chose the correct units of measurement.'
       )
       ParentFont = False
       TabOrder = 0

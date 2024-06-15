@@ -7,8 +7,10 @@
       <Unit>
         <Filename Value="SPINA_Carb.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
-        <UsageCount Value="26"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="17"/>
+        <CursorPos X="80" Y="33"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,20 +21,19 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="130"/>
-        <CursorPos X="3" Y="132"/>
-        <UsageCount Value="26"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="149"/>
+        <CursorPos X="33" Y="167"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="53"/>
+        <EditorIndex Value="2"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -41,16 +42,31 @@
         <UnitName Value="UnitConverter"/>
         <TopLine Value="618"/>
         <CursorPos X="36" Y="647"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <CursorPos X="71" Y="43"/>
-        <UsageCount Value="25"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="21"/>
+        <CursorPos Y="43"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="resultwindow.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ResultForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ResultWindow"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="25"/>
+        <CursorPos Y="55"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/Applications/Lazarus/lcl/include/control.inc"/>
@@ -59,56 +75,17 @@
         <CursorPos Y="4009"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="spinatypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SPINATypes"/>
+        <EditorIndex Value="1"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="108" Column="31" TopLine="78"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="150" Column="39" TopLine="124"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="154" Column="31" TopLine="135"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="162" Column="34" TopLine="139"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="113" TopLine="106"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="114" TopLine="106"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="163" TopLine="94"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="113" TopLine="94"/>
-      </Position>
-      <Position>
-        <Filename Value="CaseBroker.pas"/>
-        <Caret Line="58" TopLine="38"/>
-      </Position>
-      <Position>
-        <Filename Value="CaseBroker.pas"/>
-        <Caret Line="59" TopLine="38"/>
-      </Position>
-      <Position>
-        <Filename Value="CaseBroker.pas"/>
-        <Caret Line="60" TopLine="38"/>
-      </Position>
-      <Position>
-        <Filename Value="CaseBroker.pas"/>
-        <Caret Line="61" TopLine="38"/>
-      </Position>
       <Position>
         <Filename Value="CaseBroker.pas"/>
         <Caret Line="62" TopLine="38"/>
@@ -180,6 +157,54 @@
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="131" Column="3" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="resultwindow.pas"/>
+        <Caret Line="26" Column="36"/>
+      </Position>
+      <Position>
+        <Filename Value="resultwindow.pas"/>
+        <Caret Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="resultwindow.pas"/>
+        <Caret Line="22" Column="74"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="21" Column="83" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="resultwindow.pas"/>
+        <Caret Line="43" Column="67" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="resultwindow.pas"/>
+        <Caret Line="55" Column="9" TopLine="29"/>
+      </Position>
+      <Position>
+        <Filename Value="resultwindow.pas"/>
+        <Caret Line="28" Column="76" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="spinatypes.pas"/>
+        <Caret Column="16"/>
+      </Position>
+      <Position>
+        <Filename Value="resultwindow.pas"/>
+        <Caret Line="42" Column="60" TopLine="28"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="112" Column="39" TopLine="101"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="147" Column="61" TopLine="137"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="150" Column="48" TopLine="134"/>
       </Position>
     </JumpHistory>
     <RunParams>

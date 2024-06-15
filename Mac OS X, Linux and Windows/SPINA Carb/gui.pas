@@ -26,22 +26,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin, Menus, ActnList, StdActns, Math, LCLType, CaseBroker;
-
-const
-  kBPars = 'Behavioural parameters:';
-  kSPars = 'Structural parameters:';
-  kGluc = 'Glucose';
-  kIns = 'Insulin';
-  kSPINA_GBeta = 'SPINA-GBeta';
-  kSPINA_GR = 'SPINA-GR';
-  kSPINA_DI = 'SPINA-DI';
-  kHOMA_Beta = 'HOMA-Beta';
-  kHOMA_IR = 'HOMA-IR';
-  kHOMA_IS = 'HOMA-IS';
-  kQUICKI = 'QUICKI';
-  GBetaUoM = 'pmol/s';
-  GRUoM = 'mol/s';
+  Spin, Menus, ActnList, StdActns, Math, LCLType,
+  SPINATypes, CaseBroker, ResultWindow;
 
 type
 
@@ -120,6 +106,9 @@ begin
   Calculate(CaseRecord.LabRecord);
   CreateOutput(Sender);
   ResultsMemo.Text := OutputC;
+  ResultForm.ShowResults(OutputB, OutputS);
+  ResultForm.Visible := true;
+  ResultForm.ShowOnTop;
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
@@ -155,34 +144,35 @@ procedure THauptschirm.CreateOutput(Sender: TObject);
 begin
   OutputB := kBPars +
              LineEnding +
-             '   ' + kGluc + ': ' +
+             '   ' + kGluc + ': ' + kTab + kTab +
              GlucoseEdit.Text + ' ' + GlucoseUoM +
              LineEnding +
-             '   ' + kIns + ': ' +
+             '   ' + kIns + ':   ' + kTab + kTab +
              InsulinEdit.Text + ' ' + InsulinUoM;
-             OutputS := kSPars +
+  OutputS := kSPars +
              LineEnding +
-             '   ' + kSPINA_GBeta + ': ' +
+             '   ' + kSPINA_GBeta + ': ' + kTab +
              FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffGeneral, 3, 2) +
              ' ' + GBetaUoM +
              LineEnding +
-             '   ' + kSPINA_GR + ': ' +
+             '   ' + kSPINA_GR + ': ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffGeneral, 3, 2) +
              ' ' + GRUoM +
              LineEnding +
-             '   ' + kSPINA_DI + ': ' +
+             '   ' + kSPINA_DI + ': ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kHOMA_Beta + ': ' +
+             '   ' + kHOMA_Beta + ': ' + kTab +
              FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffGeneral, 3, 2) +
+             ' ' + HOMABetaUoM +
              LineEnding +
-             '   ' + kHOMA_IR + ': ' +
+             '   ' + kHOMA_IR + ': ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kHOMA_IS + ': ' +
+             '   ' + kHOMA_IS + ': ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kQUICKI + ': ' +
+             '   ' + kQUICKI + ': ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.QUICKI, ffGeneral, 3, 2);;
   OutputC := OutputB +
              LineEnding + LineEnding +

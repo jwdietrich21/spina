@@ -30,7 +30,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker
+  Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes
   { you can add units after this };
 
 {$R *.res}
@@ -41,6 +41,7 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
+  Application.CreateForm(TResultForm, ResultForm);
   Application.Run;
 end.
 
