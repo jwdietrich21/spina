@@ -10,7 +10,7 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '3.2.0.0'
   object MainTable: TStringGrid
     Left = 0
     Height = 559
@@ -61,7 +61,7 @@ object MainForm: TMainForm
     )
   end
   object StrucParCombo: TComboBox
-    Left = 64
+    Left = 88
     Height = 20
     Top = 8
     Width = 160
@@ -75,6 +75,15 @@ object MainForm: TMainForm
     TabOrder = 1
     Text = 'SPINA-GBeta'
     OnChange = StrucParComboChange
+  end
+  object DisplayLabel: TLabel
+    Left = 24
+    Height = 16
+    Top = 12
+    Width = 52
+    Caption = 'Display:'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object MainMenu1: TMainMenu
     Left = 684
@@ -173,6 +182,7 @@ object MainForm: TMainForm
       Caption = '&Kopieren'
       DisableIfNoHandler = False
       Hint = 'Kopieren'
+      OnExecute = EditCopy1Execute
       ShortCut = 16451
     end
     object EditSelectAll1: TEditSelectAll

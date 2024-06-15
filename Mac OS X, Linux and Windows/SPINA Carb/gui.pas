@@ -76,9 +76,13 @@ type
     UndoMenuItem: TMenuItem;
     WinAboutItem: TMenuItem;
     procedure CalculateButtonClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure LogoImageClick(Sender: TObject);
+    procedure MacAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
+    procedure WinAboutItemClick(Sender: TObject);
   private
 
   public
@@ -111,9 +115,20 @@ begin
   ResultForm.ShowOnTop;
 end;
 
+procedure THauptschirm.FormActivate(Sender: TObject);
+begin
+  ActiveControl := GlucoseEdit;
+end;
+
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptMenus;
+  ActiveControl := GlucoseEdit;
+end;
+
+procedure THauptschirm.FormShow(Sender: TObject);
+begin
+  ActiveControl := GlucoseEdit;
 end;
 
 procedure THauptschirm.LogoImageClick(Sender: TObject);
@@ -121,9 +136,19 @@ begin
 
 end;
 
+procedure THauptschirm.MacAboutItemClick(Sender: TObject);
+begin
+  ShowMessage('SPINA Carb – Version 5.1.0 Beta 1');
+end;
+
 procedure THauptschirm.QuitMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure THauptschirm.WinAboutItemClick(Sender: TObject);
+begin
+  MacAboutItemClick(Sender);
 end;
 
 procedure THauptschirm.RegisterEntry(Sender: TObject);

@@ -8,7 +8,9 @@ object Hauptschirm: THauptschirm
   ClientHeight = 387
   ClientWidth = 758
   Menu = MainMenu1
+  OnActivate = FormActivate
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '3.2.0.0'
   object EntryBox: TGroupBox
     Left = 224
@@ -6931,6 +6933,7 @@ object Hauptschirm: THauptschirm
       Caption = ''
       object MacAboutItem: TMenuItem
         Caption = 'About this app...'
+        OnClick = MacAboutItemClick
       end
     end
     object FileMenu: TMenuItem
@@ -7008,6 +7011,7 @@ object Hauptschirm: THauptschirm
       Caption = 'Help'
       object WinAboutItem: TMenuItem
         Caption = 'About this app...'
+        OnClick = WinAboutItemClick
       end
     end
   end

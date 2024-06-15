@@ -42,6 +42,7 @@ type
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     CutMenuItem: TMenuItem;
+    DisplayLabel: TLabel;
     Divider11: TMenuItem;
     Divider12: TMenuItem;
     Divider21: TMenuItem;
@@ -65,6 +66,7 @@ type
     ActionList1: TActionList;
     EditCopy1: TEditCopy;
     EditSelectAll1: TEditSelectAll;
+    procedure EditCopy1Execute(Sender: TObject);
     procedure EditSelectAll1Execute(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
@@ -223,7 +225,7 @@ end;
 
 procedure TMainForm.MacAboutItemClick(Sender: TObject);
 begin
-  ShowMessage('TableMaker, a test application for SPINA Carb – Version 5.1.0 Beta 1');
+  ShowMessage('TableMaker, a test application for SPINA Carb – Version 5.1.0 Beta 2');
 end;
 
 procedure TMainForm.EditSelectAll1Execute(Sender: TObject);
@@ -235,6 +237,11 @@ begin
   GridRect.Right := MainTable.ColCount - 1;
   GridRect.Bottom := MainTable.RowCount - 1;
   MainTable.Selection := GridRect;
+end;
+
+procedure TMainForm.EditCopy1Execute(Sender: TObject);
+begin
+  MainTable.copyToClipboard(true);
 end;
 
 procedure TMainForm.WinAboutItemClick(Sender: TObject);

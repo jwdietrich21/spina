@@ -38,6 +38,8 @@ type
     OKButton: TButton;
     ResultLabel: TLabel;
     SParMemo: TMemo;
+    procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure ShowResults(BParString, SParString: string);
   private
@@ -60,10 +62,21 @@ begin
   Close;
 end;
 
+procedure TResultForm.FormActivate(Sender: TObject);
+begin
+  ActiveControl := OKButton;
+end;
+
+procedure TResultForm.FormShow(Sender: TObject);
+begin
+  ActiveControl := OKButton;
+end;
+
 procedure TResultForm.ShowResults(BParString, SParString: string);
 begin
   BParMemo.Text := BParString;
   SParMemo.Text := SParString;
+  ActiveControl := OKButton;
 end;
 
 end.

@@ -11,6 +11,8 @@ object ResultForm: TResultForm
   ClientHeight = 212
   ClientWidth = 691
   FormStyle = fsStayOnTop
+  OnActivate = FormActivate
+  OnShow = FormShow
   Position = poMainFormCenter
   LCLVersion = '3.2.0.0'
   object LogoImage: TImage

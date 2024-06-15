@@ -7,27 +7,36 @@
       <Unit>
         <Filename Value="ScenarioTester.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="20" Y="204"/>
-        <UsageCount Value="23"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="24"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="18" Y="98"/>
-        <UsageCount Value="23"/>
+        <CursorPos X="19"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="casedemonstrator.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CaseDemonstrator"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="23"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../EngineUnitTests.lpr"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="60" Y="4"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="4">
+    <JumpHistory HistoryIndex="10">
       <Position>
         <Filename Value="ScenarioTester.lpr"/>
         <Caret Line="62" Column="30" TopLine="48"/>
@@ -47,6 +56,30 @@
       <Position>
         <Filename Value="../SPINA_Engine.pas"/>
         <Caret Line="77" Column="78" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="ScenarioTester.lpr"/>
+        <Caret Line="96" Column="19" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="casedemonstrator.pas"/>
+        <Caret Line="49" Column="43" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="casedemonstrator.pas"/>
+        <Caret Line="57" Column="58" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="casedemonstrator.pas"/>
+        <Caret Line="61" Column="61" TopLine="49"/>
+      </Position>
+      <Position>
+        <Filename Value="casedemonstrator.pas"/>
+        <Caret Line="56" Column="26" TopLine="45"/>
+      </Position>
+      <Position>
+        <Filename Value="ScenarioTester.lpr"/>
+        <Caret Line="11" Column="51" TopLine="6"/>
       </Position>
     </JumpHistory>
     <RunParams>

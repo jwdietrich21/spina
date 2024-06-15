@@ -15,7 +15,7 @@ program ScenarioTester;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2024 }
 
-{ This unit implements a scenario tester }
+{ This unit implements a simple CLI-based scenario tester }
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
@@ -29,7 +29,7 @@ uses
   Classes,
   SysUtils,
   CustApp,
-  SPINA_Engine;
+  SPINA_Engine, CaseDemonstrator;
 
 type
 
@@ -73,10 +73,15 @@ type
 
     writeln();
     writeln('SPINA ScenarioTester');
+    writeln('--------------------');
+    writeln();
     writeln('Vellore Dataset:');
     writeln();
 
+    ShowVelloreExamples(5, precision, digits);
+
     writeln('Additional test cases derived from simulations:');
+    writeln();
 
     writeln('Scenario 100: GBeta = 2.8 pmol/s. GR = 2.3 mol/s:');
     Insulin := 63.01;
@@ -332,6 +337,8 @@ type
   begin
     { add your help code here }
     writeln('Usage: ', ExeName, ' -h');
+    writeln('This command is part of the test suite of SPINA Carb.');
+    writeln('It shows several scenarios and the corresponding structure parameters.');
   end;
 
 var
