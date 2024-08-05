@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   Spin, Menus, ActnList, StdActns, Math, LCLType,
-  SPINATypes, CaseBroker, ResultWindow;
+  SPINATypes, CaseBroker, SPINA_GUIServices, ResultWindow;
 
 type
 
@@ -128,6 +128,10 @@ end;
 
 procedure THauptschirm.FormShow(Sender: TObject);
 begin
+  if DarkTheme then
+    Color := clDefault
+  else
+    Color := clWhite;
   ActiveControl := GlucoseEdit;
 end;
 
@@ -172,11 +176,11 @@ begin
              '   ' + kGluc + ': ' + kTab + kTab +
              GlucoseEdit.Text + ' ' + GlucoseUoM +
              LineEnding +
-             '   ' + kIns + ':   ' + kTab + kTab +
+             '   ' + kIns + ':     ' + kTab + kTab +
              InsulinEdit.Text + ' ' + InsulinUoM;
   OutputS := kSPars +
              LineEnding +
-             '   ' + kSPINA_GBeta + ': ' + kTab +
+             '   ' + kSPINA_GBeta + ':            ' + kTab +
              FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffGeneral, 3, 2) +
              ' ' + GBetaUoM +
              LineEnding +
@@ -187,7 +191,7 @@ begin
              '   ' + kSPINA_DI + ': ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kHOMA_Beta + ': ' + kTab +
+             '   ' + kHOMA_Beta + ':            ' + kTab +
              FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffGeneral, 3, 2) +
              ' ' + HOMABetaUoM +
              LineEnding +
@@ -197,7 +201,7 @@ begin
              '   ' + kHOMA_IS + ': ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kQUICKI + ': ' + kTab + kTab +
+             '   ' + kQUICKI + ':    ' + kTab + kTab +
              FloatToStrF(CaseRecord.LabRecord.QUICKI, ffGeneral, 3, 2);;
   OutputC := OutputB +
              LineEnding + LineEnding +

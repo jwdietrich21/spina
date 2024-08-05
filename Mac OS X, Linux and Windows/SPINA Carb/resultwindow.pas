@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  SPINATypes;
+  SPINATypes, SPINA_GUIServices;
 
 type
 
@@ -69,6 +69,10 @@ end;
 
 procedure TResultForm.FormShow(Sender: TObject);
 begin
+  if DarkTheme then
+    Color := clDefault
+  else
+    Color := clWhite;
   ActiveControl := OKButton;
 end;
 

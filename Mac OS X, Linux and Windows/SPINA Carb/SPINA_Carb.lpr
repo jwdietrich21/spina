@@ -30,8 +30,8 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes
-  { you can add units after this };
+  Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
+  SPINA_GUIServices;
 
 {$R *.res}
 
