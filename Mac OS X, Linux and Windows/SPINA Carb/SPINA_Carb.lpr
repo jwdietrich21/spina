@@ -31,14 +31,14 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
-  SPINA_GUIServices;
+  SPINA_GUIServices, EnvironmentInfo;
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource:=True;
-  Application.Title:='SPINA Carb';
-  Application.Scaled:=True;
+  Application.Title := 'SPINA Carb';
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TResultForm, ResultForm);

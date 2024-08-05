@@ -5,22 +5,22 @@ object Hauptschirm: THauptschirm
   Width = 758
   ActiveControl = GlucoseEdit
   Caption = 'SPINA Carb (Version for Research Use)'
-  ClientHeight = 367
+  ClientHeight = 387
   ClientWidth = 758
   Menu = MainMenu1
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.4.0.0'
   object EntryBox: TGroupBox
     Left = 224
-    Height = 301
+    Height = 321
     Top = 8
     Width = 270
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Enter behavioural parameters:'
-    ClientHeight = 281
-    ClientWidth = 266
+    ClientHeight = 294
+    ClientWidth = 260
     Constraints.MinWidth = 270
     TabOrder = 0
     object FeedbackImage: TImage
@@ -4357,7 +4357,7 @@ object Hauptschirm: THauptschirm
     end
     object GlucoseEdit: TEdit
       Left = 80
-      Height = 23
+      Height = 22
       Top = 8
       Width = 56
       TabOrder = 0
@@ -4365,7 +4365,7 @@ object Hauptschirm: THauptschirm
     end
     object InsulinEdit: TEdit
       Left = 80
-      Height = 23
+      Height = 22
       Top = 244
       Width = 56
       TabOrder = 1
@@ -4373,28 +4373,28 @@ object Hauptschirm: THauptschirm
     end
     object GlucoseLabel: TLabel
       Left = 24
-      Height = 15
+      Height = 16
       Top = 8
-      Width = 42
+      Width = 49
       Alignment = taRightJustify
       Caption = 'Glucose'
       ParentColor = False
     end
     object InsulinLabel: TLabel
       Left = 32
-      Height = 15
+      Height = 16
       Top = 248
-      Width = 35
+      Width = 39
       Alignment = taRightJustify
       Caption = 'Insulin'
       ParentColor = False
     end
     object GlucoseUnitsCombo: TComboBox
       Left = 144
-      Height = 23
+      Height = 20
       Top = 8
       Width = 88
-      ItemHeight = 15
+      ItemHeight = 19
       ItemIndex = 0
       Items.Strings = (
         'mg/dl'
@@ -4405,10 +4405,10 @@ object Hauptschirm: THauptschirm
     end
     object InsulinUnitsCombo: TComboBox
       Left = 144
-      Height = 23
+      Height = 20
       Top = 244
       Width = 88
-      ItemHeight = 15
+      ItemHeight = 19
       ItemIndex = 0
       Items.Strings = (
         'mIU/l'
@@ -5335,19 +5335,19 @@ object Hauptschirm: THauptschirm
   end
   object HintBox: TGroupBox
     Left = 16
-    Height = 189
+    Height = 209
     Top = 120
     Width = 192
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Hints:'
-    ClientHeight = 169
-    ClientWidth = 188
+    ClientHeight = 182
+    ClientWidth = 182
     TabOrder = 2
     object HintsMemo: TMemo
       Left = 0
-      Height = 158
+      Height = 171
       Top = 8
-      Width = 186
+      Width = 180
       Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = 12
       Lines.Strings = (
@@ -5361,19 +5361,19 @@ object Hauptschirm: THauptschirm
   end
   object ResultsBox: TGroupBox
     Left = 512
-    Height = 301
+    Height = 321
     Top = 8
     Width = 230
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Results:'
-    ClientHeight = 281
-    ClientWidth = 226
+    ClientHeight = 294
+    ClientWidth = 220
     TabOrder = 3
     object ResultsMemo: TMemo
       Left = 8
-      Height = 266
+      Height = 279
       Top = 8
-      Width = 206
+      Width = 200
       Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = 12
       Lines.Strings = (
@@ -5386,13 +5386,13 @@ object Hauptschirm: THauptschirm
   object CalculateButton: TButton
     Left = 627
     Height = 25
-    Top = 326
+    Top = 346
     Width = 115
     Anchors = [akRight, akBottom]
     Caption = 'Calculate'
     Default = True
-    OnClick = CalculateButtonClick
     TabOrder = 4
+    OnClick = CalculateButtonClick
   end
   object MainMenu1: TMainMenu
     Left = 656

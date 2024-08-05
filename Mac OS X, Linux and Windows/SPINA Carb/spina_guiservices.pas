@@ -21,11 +21,14 @@ unit SPINA_GUIServices;
 { See http://spina.medical-cybernetics.de for details }
 
 {$mode ObjFPC}{$H+}
+{$IFDEF LCLCocoa}
+  {$modeswitch objectivec1}
+{$ENDIF}
 
 interface
 
 uses
-  Classes, SysUtils
+  Classes, SysUtils, gettext
   {$IFDEF WINDOWS}
   , Windows, Win32Proc, registry
   {$ENDIF}
@@ -37,11 +40,22 @@ uses
   {$ENDIF}
   {$IFDEF UNIX}
   , Unix, clocale
-  {$ENDIF};
+  {$ENDIF}
+  , EnvironmentInfo;
 
 function DarkTheme: boolean;
 
 implementation
+
+{$IFDEF LCLCocoa}
+{The following two functions were suggested by Hansaplast at https://forum.lazarus.freepascal.org/index.php/topic,43111.msg304366.html}
+
+// Retrieve key's string value from user preferences. Result is encoded using NSStrToStr's default encoding.
+function GetPrefString(const KeyName : string) : string;
+begin
+  Result := NSStringToString(NSUserDefaults.standardUserDefaults.stringForKey(NSStr(@KeyName[1])));
+end;
+{$ENDIF}
 
 // DarkTheme: Detects if the Dark Theme (true) has been enabled or not (false)
 function DarkTheme: boolean;
@@ -56,7 +70,7 @@ function DarkTheme: boolean;
   {$ENDIF}
 begin
   Result := False;
-    {$IFDEF Windows}
+  {$IFDEF Windows}
     if WindowsDarkModeSupported then
     begin
       Registry := TRegistry.Create;
@@ -78,16 +92,16 @@ begin
     end
     else
     Result := false;
-    {$ELSE}
-    {$IFDEF LCLCocoa}
+  {$ELSE}
+  {$IFDEF LCLCocoa}
     if MojaveOrNewer then
       Result := pos('DARK',UpperCase(GetPrefString('AppleInterfaceStyle'))) > 0
     else
       Result := false;
-    {$ELSE}
+  {$ELSE}
   Result := False;
-    {$ENDIF}
-    {$ENDIF}
+  {$ENDIF}
+  {$ENDIF}
 end;
 
 end.

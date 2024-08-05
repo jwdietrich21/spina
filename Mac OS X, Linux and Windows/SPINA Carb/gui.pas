@@ -117,6 +117,10 @@ end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
+  if DarkTheme then
+    Color := clDefault
+  else
+    Color := clWhite;
   ActiveControl := GlucoseEdit;
 end;
 
@@ -173,35 +177,35 @@ procedure THauptschirm.CreateOutput(Sender: TObject);
 begin
   OutputB := kBPars +
              LineEnding +
-             '   ' + kGluc + ': ' + kTab + kTab +
+             '   ' + kGluc + ': ' +
              GlucoseEdit.Text + ' ' + GlucoseUoM +
              LineEnding +
-             '   ' + kIns + ':     ' + kTab + kTab +
+             '   ' + kIns + ': ' +
              InsulinEdit.Text + ' ' + InsulinUoM;
   OutputS := kSPars +
              LineEnding +
-             '   ' + kSPINA_GBeta + ':            ' + kTab +
+             '   ' + kSPINA_GBeta + ': ' +
              FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffGeneral, 3, 2) +
              ' ' + GBetaUoM +
              LineEnding +
-             '   ' + kSPINA_GR + ': ' + kTab + kTab +
+             '   ' + kSPINA_GR + ': ' +
              FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffGeneral, 3, 2) +
              ' ' + GRUoM +
              LineEnding +
-             '   ' + kSPINA_DI + ': ' + kTab + kTab +
+             '   ' + kSPINA_DI + ': ' +
              FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kHOMA_Beta + ':            ' + kTab +
+             '   ' + kHOMA_Beta + ': ' +
              FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffGeneral, 3, 2) +
              ' ' + HOMABetaUoM +
              LineEnding +
-             '   ' + kHOMA_IR + ': ' + kTab + kTab +
+             '   ' + kHOMA_IR + ': ' +
              FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kHOMA_IS + ': ' + kTab + kTab +
+             '   ' + kHOMA_IS + ': ' +
              FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffGeneral, 3, 2) +
              LineEnding +
-             '   ' + kQUICKI + ':    ' + kTab + kTab +
+             '   ' + kQUICKI + ': ' +
              FloatToStrF(CaseRecord.LabRecord.QUICKI, ffGeneral, 3, 2);;
   OutputC := OutputB +
              LineEnding + LineEnding +
