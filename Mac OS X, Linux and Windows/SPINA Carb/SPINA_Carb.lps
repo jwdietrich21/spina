@@ -22,8 +22,8 @@
         <UnitName Value="GUI"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="113"/>
-        <CursorPos Y="124"/>
+        <TopLine Value="97"/>
+        <CursorPos X="114" Y="140"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -84,20 +84,20 @@
         <Loaded Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="environmentinfo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnvironmentInfo"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="55" Y="2"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="/Applications/Lazarus/lcl/include/control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="3994"/>
         <CursorPos Y="4009"/>
         <UsageCount Value="10"/>
-      </Unit>
-      <Unit>
-        <Filename Value="environmentinfo.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="EnvironmentInfo"/>
-        <EditorIndex Value="4"/>
-        <CursorPos X="10" Y="2"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="28">
@@ -183,10 +183,6 @@
       </Position>
       <Position>
         <Filename Value="spina_guiservices.pas"/>
-        <Caret TopLine="14"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_guiservices.pas"/>
         <Caret Line="85" Column="38" TopLine="64"/>
       </Position>
       <Position>
@@ -216,6 +212,10 @@
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="201" Column="40" TopLine="187"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="129" Column="49" TopLine="113"/>
       </Position>
     </JumpHistory>
     <RunParams>

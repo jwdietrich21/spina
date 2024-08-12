@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin, Menus, ActnList, StdActns, Math, LCLType,
+  Spin, Menus, ActnList, StdActns, Math, LCLType, EnvironmentInfo,
   SPINATypes, CaseBroker, SPINA_GUIServices, ResultWindow;
 
 type
@@ -54,6 +54,7 @@ type
     FeedbackImage: TImage;
     HelpMenu: TMenuItem;
     ImageList1: TImageList;
+    SPINACarbLabel: TLabel;
     LogoImage: TImage;
     InsulinUnitsCombo: TComboBox;
     InsulinEdit: TEdit;
@@ -127,6 +128,7 @@ end;
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptMenus;
+  SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
   ActiveControl := GlucoseEdit;
 end;
 
