@@ -187,28 +187,28 @@ begin
   OutputS := kSPars +
              LineEnding +
              '   ' + kSPINA_GBeta + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffGeneral, 3, 2) +
+             FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffFixed, 4, 2) +
              ' ' + GBetaUoM +
              LineEnding +
              '   ' + kSPINA_GR + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffGeneral, 3, 2) +
+             FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffFixed, 4, 2) +
              ' ' + GRUoM +
              LineEnding +
              '   ' + kSPINA_DI + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffGeneral, 3, 2) +
+             FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffFixed, 4, 2) +
              LineEnding +
              '   ' + kHOMA_Beta + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffGeneral, 3, 2) +
+             FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffFixed, 4, 1) +
              ' ' + HOMABetaUoM +
              LineEnding +
              '   ' + kHOMA_IR + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffGeneral, 3, 2) +
+             FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffFixed, 4, 1) +
              LineEnding +
              '   ' + kHOMA_IS + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffGeneral, 3, 2) +
+             FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
              LineEnding +
              '   ' + kQUICKI + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.QUICKI, ffGeneral, 3, 2);;
+             FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1);;
   OutputC := OutputB +
              LineEnding + LineEnding +
              OutputS;
