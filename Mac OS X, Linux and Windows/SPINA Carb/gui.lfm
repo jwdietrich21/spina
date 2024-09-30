@@ -1,11 +1,11 @@
 object Hauptschirm: THauptschirm
-  Left = 360
-  Height = 387
-  Top = 266
+  Left = 259
+  Height = 356
+  Top = 328
   Width = 758
   ActiveControl = GlucoseEdit
   Caption = 'SPINA Carb (Version for Research Use)'
-  ClientHeight = 387
+  ClientHeight = 356
   ClientWidth = 758
   Menu = MainMenu1
   OnActivate = FormActivate
@@ -13,20 +13,20 @@ object Hauptschirm: THauptschirm
   OnShow = FormShow
   LCLVersion = '3.4.0.0'
   object EntryBox: TGroupBox
-    Left = 224
-    Height = 321
+    Left = 217
+    Height = 290
     Top = 8
-    Width = 270
+    Width = 285
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Enter behavioural parameters:'
-    ClientHeight = 301
-    ClientWidth = 266
+    ClientHeight = 263
+    ClientWidth = 275
     Constraints.MinWidth = 270
     TabOrder = 0
     object FeedbackImage: TImage
-      Left = 0
+      Left = -1
       Height = 258
-      Top = -2
+      Top = 2
       Width = 248
       Center = True
       Picture.Data = {
@@ -6210,45 +6210,45 @@ object Hauptschirm: THauptschirm
       Stretch = True
     end
     object GlucoseEdit: TEdit
-      Left = 49
-      Height = 23
-      Top = 14
+      Left = 82
+      Height = 22
+      Top = 16
       Width = 56
       TabOrder = 0
       Text = '0'
     end
     object InsulinEdit: TEdit
-      Left = 41
-      Height = 23
-      Top = 217
+      Left = 0
+      Height = 22
+      Top = 216
       Width = 56
       TabOrder = 1
       Text = '0'
     end
     object GlucoseLabel: TLabel
-      Left = 0
-      Height = 15
-      Top = 14
-      Width = 42
+      Left = 29
+      Height = 16
+      Top = 16
+      Width = 49
       Alignment = taRightJustify
       Caption = 'Glucose'
       ParentColor = False
     end
     object InsulinLabel: TLabel
       Left = 0
-      Height = 15
-      Top = 221
-      Width = 35
+      Height = 16
+      Top = 200
+      Width = 39
       Alignment = taRightJustify
       Caption = 'Insulin'
       ParentColor = False
     end
     object GlucoseUnitsCombo: TComboBox
-      Left = 113
-      Height = 23
-      Top = 14
-      Width = 77
-      ItemHeight = 15
+      Left = 144
+      Height = 20
+      Top = 16
+      Width = 70
+      ItemHeight = 19
       ItemIndex = 0
       Items.Strings = (
         'mg/dl'
@@ -6258,11 +6258,11 @@ object Hauptschirm: THauptschirm
       Text = 'mg/dl'
     end
     object InsulinUnitsCombo: TComboBox
-      Left = 105
-      Height = 23
-      Top = 217
-      Width = 77
-      ItemHeight = 15
+      Left = 0
+      Height = 20
+      Top = 240
+      Width = 70
+      ItemHeight = 19
       ItemIndex = 0
       Items.Strings = (
         'mIU/l'
@@ -6272,28 +6272,34 @@ object Hauptschirm: THauptschirm
       Text = 'mIU/l'
     end
     object CPeptideLabel: TLabel
-      Left = 64
-      Height = 15
-      Top = 268
-      Width = 53
+      Left = 214
+      Height = 16
+      Top = 200
+      Width = 62
       Alignment = taRightJustify
       Caption = 'C-Peptide'
       ParentColor = False
     end
     object CPeptideEdit: TEdit
-      Left = 125
-      Height = 23
-      Top = 264
+      AnchorSideRight.Control = CPeptideLabel
+      AnchorSideRight.Side = asrBottom
+      Left = 220
+      Height = 22
+      Top = 216
       Width = 56
+      Anchors = [akTop, akRight]
       TabOrder = 2
       Text = '0'
     end
     object CPeptideUnitsCombo: TComboBox
-      Left = 189
-      Height = 23
-      Top = 264
-      Width = 77
-      ItemHeight = 15
+      AnchorSideRight.Control = CPeptideLabel
+      AnchorSideRight.Side = asrBottom
+      Left = 206
+      Height = 20
+      Top = 240
+      Width = 70
+      Anchors = [akTop, akRight]
+      ItemHeight = 19
       ItemIndex = 0
       Items.Strings = (
         'ng/ml'
@@ -7220,58 +7226,60 @@ object Hauptschirm: THauptschirm
   end
   object HintBox: TGroupBox
     Left = 16
-    Height = 209
+    Height = 178
     Top = 120
     Width = 192
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Hints:'
-    ClientHeight = 189
-    ClientWidth = 188
+    ClientHeight = 151
+    ClientWidth = 182
     TabOrder = 2
     object HintsMemo: TMemo
       Left = 0
-      Height = 178
+      Height = 140
       Top = 8
-      Width = 186
+      Width = 180
       Anchors = [akTop, akLeft, akRight, akBottom]
-      Font.Height = 12
+      Font.Height = 13
       Lines.Strings = (
-        'Please enter fasting concentrations of insulin and glucose and hit "Calculate".'
+        'Please enter fasting concentrations of insulin and glucose (and, optionally, c-peptide) and hit "Calculate".'
         ''
         'You should make sure that you chose the correct units of measurement.'
       )
       ParentFont = False
+      ReadOnly = True
       TabOrder = 0
     end
   end
   object ResultsBox: TGroupBox
     Left = 512
-    Height = 321
+    Height = 290
     Top = 8
     Width = 230
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Results:'
-    ClientHeight = 301
-    ClientWidth = 226
+    ClientHeight = 263
+    ClientWidth = 220
     TabOrder = 3
     object ResultsMemo: TMemo
       Left = 8
-      Height = 286
+      Height = 248
       Top = 8
-      Width = 206
+      Width = 200
       Anchors = [akTop, akLeft, akRight, akBottom]
-      Font.Height = 12
+      Font.Height = 13
       Lines.Strings = (
         'The results of the calculation will appear here.'
       )
       ParentFont = False
+      ReadOnly = True
       TabOrder = 0
     end
   end
   object CalculateButton: TButton
     Left = 627
     Height = 25
-    Top = 346
+    Top = 315
     Width = 115
     Anchors = [akRight, akBottom]
     Caption = 'Calculate'
@@ -7281,11 +7289,12 @@ object Hauptschirm: THauptschirm
   end
   object SPINACarbLabel: TLabel
     Left = 16
-    Height = 15
-    Top = 352
+    Height = 13
+    Top = 325
     Width = 86
+    Anchors = [akLeft, akBottom]
     Caption = 'SPINACarbLabel'
-    Font.Height = -12
+    Font.Height = -11
     ParentFont = False
   end
   object MainMenu1: TMainMenu

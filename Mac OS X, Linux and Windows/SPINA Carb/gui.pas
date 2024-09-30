@@ -96,7 +96,7 @@ type
     OutputB, OutputS, OutputC: string;
     procedure RegisterEntry(Sender: TObject);
     procedure CreateOutput(Sender: TObject);
-    procedure AdaptMenus;
+    procedure AdaptForPlatform;
   end;
 
 var
@@ -113,7 +113,7 @@ begin
   RegisterEntry(Sender);
   Calculate(CaseRecord.LabRecord);
   CreateOutput(Sender);
-  ResultsMemo.Text := OutputC;
+  ResultsMemo.Text := LineEnding + OutputC;
   ResultForm.ShowResults(OutputB, OutputS);
   ResultForm.Visible := true;
   ResultForm.ShowOnTop;
@@ -130,7 +130,7 @@ end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
-  AdaptMenus;
+  AdaptForPlatform;
   SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
   ActiveControl := GlucoseEdit;
 end;
@@ -146,7 +146,7 @@ end;
 
 procedure THauptschirm.LogoImageClick(Sender: TObject);
 begin
-
+  MacAboutItemClick(Sender);
 end;
 
 procedure THauptschirm.MacAboutItemClick(Sender: TObject);
@@ -221,9 +221,9 @@ begin
              OutputS;
 end;
 
-procedure THauptschirm.AdaptMenus;
-{ Adapts Menus and Shortcuts to the interface style guidelines
-  of the respective operating system }
+procedure THauptschirm.AdaptForPlatform;
+{ Adapts Menus, Shortcuts and other GUI elements to the interface style
+  guidelines of the respective operating system }
 var
   modifierKey: TShiftState;
 begin
@@ -231,11 +231,15 @@ begin
   modifierKey := [ssMeta];
   WinAboutItem.Visible := False;
   AppleMenu.Visible := True;
+  HintsMemo.Font.Height := HintsMemo.Font.Height - 1;
+  ResultsMemo.Font.Height := ResultsMemo.Font.Height - 1;
   {$ELSE}
   {$IFDEF LCLCocoa}
   modifierKey := [ssMeta];
   WinAboutItem.Visible := False;
   AppleMenu.Visible := True;
+  HintsMemo.Font.Height := HintsMemo.Font.Height - 1;
+  ResultsMemo.Font.Height := ResultsMemo.Font.Height - 1;
   {$ELSE}
   modifierKey := [ssCtrl];
   WinAboutItem.Visible := True;
