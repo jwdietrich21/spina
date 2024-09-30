@@ -54,6 +54,9 @@ type
     FeedbackImage: TImage;
     HelpMenu: TMenuItem;
     ImageList1: TImageList;
+    CPeptideLabel: TLabel;
+    CPeptideEdit: TEdit;
+    CPeptideUnitsCombo: TComboBox;
     SPINACarbLabel: TLabel;
     LogoImage: TImage;
     InsulinUnitsCombo: TComboBox;
@@ -88,8 +91,8 @@ type
 
   public
     CaseRecord: tCaseRecord;
-    InsulinRaw, GlucoseRaw: extended;
-    InsulinUoM, GlucoseUoM: String;
+    InsulinRaw, GlucoseRaw, CPeptideRaw: extended;
+    InsulinUoM, GlucoseUoM, CPeptideUoM: String;
     OutputB, OutputS, OutputC: string;
     procedure RegisterEntry(Sender: TObject);
     procedure CreateOutput(Sender: TObject);
@@ -163,16 +166,20 @@ end;
 
 procedure THauptschirm.RegisterEntry(Sender: TObject);
 var
-  CheckedIns, CheckedGlc: extended;
+  CheckedIns, CheckedGlc, CheckedCPt: extended;
 begin
   InsulinRaw := StrToFloatDef(InsulinEdit.Text, Math.Nan);
   GlucoseRaw := StrToFloatDef(GlucoseEdit.Text, Math.Nan);
+  CPeptideRaw := StrToFloatDef(CPeptideEdit.Text, Math.Nan);
   InsulinUoM := InsulinUnitsCombo.Text;
   GlucoseUoM := GlucoseUnitsCombo.Text;
+  CPeptideUoM := CPeptideUnitsCombo.Text;
   CheckedIns := InsulinSI(InsulinRaw, InsulinUoM);
   CheckedGlc := GlucoseSI(GlucoseRaw, GlucoseUoM);
+  CheckedCPt := CPeptideSI(CPeptideRaw, CPeptideUoM);
   CaseRecord.LabRecord.Insulin := CheckedIns;
   CaseRecord.LabRecord.Glucose := CheckedGlc;
+  CaseRecord.LabRecord.CPeptide := CheckedCPt;
 end;
 
 procedure THauptschirm.CreateOutput(Sender: TObject);

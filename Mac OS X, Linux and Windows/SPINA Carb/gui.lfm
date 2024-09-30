@@ -19,14 +19,14 @@ object Hauptschirm: THauptschirm
     Width = 270
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Enter behavioural parameters:'
-    ClientHeight = 294
-    ClientWidth = 260
+    ClientHeight = 301
+    ClientWidth = 266
     Constraints.MinWidth = 270
     TabOrder = 0
     object FeedbackImage: TImage
       Left = 0
       Height = 258
-      Top = 8
+      Top = -2
       Width = 248
       Center = True
       Picture.Data = {
@@ -6210,66 +6210,97 @@ object Hauptschirm: THauptschirm
       Stretch = True
     end
     object GlucoseEdit: TEdit
-      Left = 80
-      Height = 22
-      Top = 8
+      Left = 49
+      Height = 23
+      Top = 14
       Width = 56
       TabOrder = 0
       Text = '0'
     end
     object InsulinEdit: TEdit
-      Left = 80
-      Height = 22
-      Top = 244
+      Left = 41
+      Height = 23
+      Top = 217
       Width = 56
       TabOrder = 1
       Text = '0'
     end
     object GlucoseLabel: TLabel
-      Left = 24
-      Height = 16
-      Top = 8
-      Width = 49
+      Left = 0
+      Height = 15
+      Top = 14
+      Width = 42
       Alignment = taRightJustify
       Caption = 'Glucose'
       ParentColor = False
     end
     object InsulinLabel: TLabel
-      Left = 32
-      Height = 16
-      Top = 248
-      Width = 39
+      Left = 0
+      Height = 15
+      Top = 221
+      Width = 35
       Alignment = taRightJustify
       Caption = 'Insulin'
       ParentColor = False
     end
     object GlucoseUnitsCombo: TComboBox
-      Left = 144
-      Height = 20
-      Top = 8
-      Width = 88
-      ItemHeight = 19
+      Left = 113
+      Height = 23
+      Top = 14
+      Width = 77
+      ItemHeight = 15
       ItemIndex = 0
       Items.Strings = (
         'mg/dl'
         'mmol/l'
       )
-      TabOrder = 2
+      TabOrder = 3
       Text = 'mg/dl'
     end
     object InsulinUnitsCombo: TComboBox
-      Left = 144
-      Height = 20
-      Top = 244
-      Width = 88
-      ItemHeight = 19
+      Left = 105
+      Height = 23
+      Top = 217
+      Width = 77
+      ItemHeight = 15
       ItemIndex = 0
       Items.Strings = (
         'mIU/l'
         'pmol/l'
       )
-      TabOrder = 3
+      TabOrder = 4
       Text = 'mIU/l'
+    end
+    object CPeptideLabel: TLabel
+      Left = 64
+      Height = 15
+      Top = 268
+      Width = 53
+      Alignment = taRightJustify
+      Caption = 'C-Peptide'
+      ParentColor = False
+    end
+    object CPeptideEdit: TEdit
+      Left = 125
+      Height = 23
+      Top = 264
+      Width = 56
+      TabOrder = 2
+      Text = '0'
+    end
+    object CPeptideUnitsCombo: TComboBox
+      Left = 189
+      Height = 23
+      Top = 264
+      Width = 77
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'ng/ml'
+        'nmol/l'
+      )
+      TabOrder = 5
+      Text = 'ng/ml'
     end
   end
   object LogoPanel: TPanel
@@ -7194,14 +7225,14 @@ object Hauptschirm: THauptschirm
     Width = 192
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Hints:'
-    ClientHeight = 182
-    ClientWidth = 182
+    ClientHeight = 189
+    ClientWidth = 188
     TabOrder = 2
     object HintsMemo: TMemo
       Left = 0
-      Height = 171
+      Height = 178
       Top = 8
-      Width = 180
+      Width = 186
       Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = 12
       Lines.Strings = (
@@ -7220,14 +7251,14 @@ object Hauptschirm: THauptschirm
     Width = 230
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Results:'
-    ClientHeight = 294
-    ClientWidth = 220
+    ClientHeight = 301
+    ClientWidth = 226
     TabOrder = 3
     object ResultsMemo: TMemo
       Left = 8
-      Height = 279
+      Height = 286
       Top = 8
-      Width = 200
+      Width = 206
       Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = 12
       Lines.Strings = (
@@ -7252,7 +7283,7 @@ object Hauptschirm: THauptschirm
     Left = 16
     Height = 15
     Top = 352
-    Width = 93
+    Width = 86
     Caption = 'SPINACarbLabel'
     Font.Height = -12
     ParentFont = False

@@ -29,7 +29,7 @@ uses
 
 type
   tLabRecord = record
-    Insulin, Glucose: extended;
+    Insulin, Glucose, CPeptide: extended;
     SPINA_GBeta, SPINA_GR, SPINA_DI, HOMA_Beta, HOMA_IR, HOMA_IS,
       QUICKI: extended;
   end;
@@ -39,6 +39,7 @@ type
 
 function InsulinSI(RawIns: extended; InsUom: String): extended;
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
+function CPeptideSI(RawCPt: extended; CPtUom: String): extended;
 procedure Calculate(var LabRecord: tLabRecord);
 
 implementation
@@ -51,6 +52,11 @@ end;
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
 begin
   result := ConvertedValue(RawGlc, kGlucoseMolarMass, GlcUom, 'mmol/l');
+end;
+
+function CPeptideSI(RawCPt: extended; CPtUom: String): extended;
+begin
+  result := ConvertedValue(RawCPt, kCPeptideMolarMass, CPtUom, 'nmol/l');
 end;
 
 procedure Calculate(var LabRecord: tLabRecord);
