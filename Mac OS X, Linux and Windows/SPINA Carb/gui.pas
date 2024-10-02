@@ -52,6 +52,7 @@ type
     GlucoseEdit: TEdit;
     EntryBox: TGroupBox;
     FeedbackImage: TImage;
+    LogoBox: TGroupBox;
     HelpMenu: TMenuItem;
     ImageList1: TImageList;
     CPeptideLabel: TLabel;
@@ -74,7 +75,6 @@ type
     ResultsBox: TGroupBox;
     HintBox: TGroupBox;
     HintsMemo: TMemo;
-    LogoPanel: TPanel;
     SaveMenuItem: TMenuItem;
     SelectAllMenuItem: TMenuItem;
     UndoMenuItem: TMenuItem;
