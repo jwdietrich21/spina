@@ -1,25 +1,32 @@
 object Hauptschirm: THauptschirm
   Left = 259
-  Height = 356
+  Height = 362
   Top = 328
-  Width = 758
+  Width = 756
+  HorzScrollBar.Visible = False
+  VertScrollBar.Visible = False
   ActiveControl = GlucoseEdit
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'SPINA Carb (Version for Research Use)'
-  ClientHeight = 356
-  ClientWidth = 758
+  ClientHeight = 362
+  ClientWidth = 756
+  Constraints.MinHeight = 350
+  Constraints.MinWidth = 520
   Menu = MainMenu1
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '3.7.0.0'
   object EntryBox: TGroupBox
     Left = 215
-    Height = 290
+    Height = 296
     Top = 8
     Width = 290
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Enter behavioural parameters:'
-    ClientHeight = 263
+    ClientHeight = 269
     ClientWidth = 280
     Constraints.MinWidth = 270
     TabOrder = 0
@@ -6311,17 +6318,17 @@ object Hauptschirm: THauptschirm
   end
   object HintBox: TGroupBox
     Left = 16
-    Height = 178
+    Height = 184
     Top = 120
     Width = 192
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Hints:'
-    ClientHeight = 151
+    ClientHeight = 157
     ClientWidth = 182
     TabOrder = 1
     object HintsMemo: TMemo
       Left = 8
-      Height = 140
+      Height = 146
       Top = 8
       Width = 161
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -6340,19 +6347,19 @@ object Hauptschirm: THauptschirm
   end
   object ResultsBox: TGroupBox
     Left = 512
-    Height = 290
+    Height = 296
     Top = 8
-    Width = 230
+    Width = 228
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Results:'
-    ClientHeight = 263
-    ClientWidth = 220
+    ClientHeight = 269
+    ClientWidth = 218
     TabOrder = 2
     object ResultsMemo: TMemo
       Left = 8
-      Height = 248
+      Height = 254
       Top = 8
-      Width = 200
+      Width = 198
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderStyle = bsNone
       Font.Height = 13
@@ -6366,9 +6373,9 @@ object Hauptschirm: THauptschirm
     end
   end
   object CalculateButton: TButton
-    Left = 627
+    Left = 625
     Height = 25
-    Top = 315
+    Top = 321
     Width = 115
     Anchors = [akRight, akBottom]
     Caption = 'Calculate'
@@ -6379,7 +6386,7 @@ object Hauptschirm: THauptschirm
   object SPINACarbLabel: TLabel
     Left = 16
     Height = 13
-    Top = 325
+    Top = 331
     Width = 86
     Anchors = [akLeft, akBottom]
     Caption = 'SPINACarbLabel'
@@ -6388,16 +6395,16 @@ object Hauptschirm: THauptschirm
   end
   object LogoBox: TGroupBox
     Left = 16
-    Height = 120
+    Height = 112
     Top = 8
     Width = 192
-    ClientHeight = 93
+    ClientHeight = 85
     ClientWidth = 182
     TabOrder = 4
     object LogoImage: TImage
       Left = 4
       Height = 75
-      Top = 8
+      Top = 3
       Width = 165
       OnClick = LogoImageClick
       ParentShowHint = False

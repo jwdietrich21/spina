@@ -42,6 +42,7 @@ begin
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TResultForm, ResultForm);
+  Application.BringToFront;
   Application.Run;
 end.
 
