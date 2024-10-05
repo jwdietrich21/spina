@@ -57,6 +57,7 @@ function HOMA_IR(const Insulin, Glucose: real): real;
 function HOMA_Beta(const Insulin, Glucose: real): real;
 function HOMA_IS(const Insulin, Glucose: real): real;
 function QUICKI(const Insulin, Glucose: real): real;
+function CGR(const CPeptide, Glucose: real): real;
 
 implementation
 
@@ -123,6 +124,14 @@ begin
   result := NaN;
   if not isNan(Insulin) and (Insulin > 0) and not isNan(Glucose) and (Glucose > 0) then 
     result := 1 / (log10(Insulin / kInsulinConversionFactor) + log10(Glucose * kGlucoseConversionFactor));
+end;
+
+function CGR(const CPeptide, Glucose: real): real;
+begin
+  assert((isNan(CPeptide) or (CPeptide >= 0)) and (isNan(Glucose) or (Glucose >= 0)), kError101);
+  result := NaN;
+  if not isNan(CPeptide) and not isNan(Glucose) and (Glucose > 0) then
+    result := CPeptide / (Glucose * kGlucoseConversionFactor);
 end;
 
 end.

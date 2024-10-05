@@ -31,7 +31,7 @@ type
   tLabRecord = record
     Insulin, Glucose, CPeptide: extended;
     SPINA_GBeta, SPINA_GR, SPINA_DI, HOMA_Beta, HOMA_IR, HOMA_IS,
-      QUICKI: extended;
+      QUICKI, CGR: extended;
   end;
   tCaseRecord = record
     LabRecord:tLabRecord;
@@ -56,7 +56,7 @@ end;
 
 function CPeptideSI(RawCPt: extended; CPtUom: String): extended;
 begin
-  result := ConvertedValue(RawCPt, kCPeptideMolarMass, CPtUom, 'nmol/l');
+  result := ConvertedValue(RawCPt, kCPeptideMolarMass, CPtUom, 'pmol/l');
 end;
 
 procedure Calculate(var LabRecord: tLabRecord);
@@ -68,6 +68,7 @@ begin
   LabRecord.HOMA_IR := HOMA_IR(LabRecord.Insulin, LabRecord.Glucose);
   LabRecord.HOMA_IS := HOMA_IS(LabRecord.Insulin, LabRecord.Glucose);
   LabRecord.QUICKI := QUICKI(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.CGR := CGR(LabRecord.CPeptide, LabRecord.Glucose);
 end;
 
 end.

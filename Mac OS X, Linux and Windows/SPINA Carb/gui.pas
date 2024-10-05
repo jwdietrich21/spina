@@ -190,7 +190,10 @@ begin
              GlucoseEdit.Text + ' ' + GlucoseUoM +
              LineEnding +
              '   ' + kIns + ': ' +
-             InsulinEdit.Text + ' ' + InsulinUoM;
+             InsulinEdit.Text + ' ' + InsulinUoM +
+             LineEnding +
+             '   ' + kCpt + ': ' +
+             CPeptideEdit.Text + ' ' + CPeptideUoM;
   OutputS := kSPars +
              LineEnding +
              '   ' + kSPINA_GBeta + ': ' +
@@ -215,7 +218,10 @@ begin
              FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
              LineEnding +
              '   ' + kQUICKI + ': ' +
-             FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1);;
+             FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1) +
+             LineEnding +
+             '   ' + kCGR + ': ' +
+             FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
   OutputC := OutputB +
              LineEnding + LineEnding +
              OutputS;

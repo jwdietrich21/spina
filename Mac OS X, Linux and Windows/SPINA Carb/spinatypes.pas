@@ -45,6 +45,7 @@ const
   kSPars = 'Structural parameters:';
   kGluc = 'Glucose';
   kIns = 'Insulin';
+  kCpt = 'C-Peptide';
   kSPINA_GBeta = 'SPINA-GBeta';
   kSPINA_GR = 'SPINA-GR';
   kSPINA_DI = 'SPINA-DI';
@@ -52,6 +53,7 @@ const
   kHOMA_IR = 'HOMA-IR';
   kHOMA_IS = 'HOMA-IS';
   kQUICKI = 'QUICKI';
+  kCGR = 'CGR';
   GBetaUoM = 'pmol/s';
   GRUoM = 'mol/s';
   HOMABetaUoM = '%';

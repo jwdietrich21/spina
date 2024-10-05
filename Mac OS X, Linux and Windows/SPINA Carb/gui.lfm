@@ -6310,6 +6310,7 @@ object Hauptschirm: THauptschirm
       ItemIndex = 0
       Items.Strings = (
         'ng/ml'
+        'pmol/l'
         'nmol/l'
       )
       TabOrder = 5

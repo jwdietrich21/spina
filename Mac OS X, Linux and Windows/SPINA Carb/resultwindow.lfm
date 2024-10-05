@@ -1,20 +1,20 @@
 object ResultForm: TResultForm
-  Left = 464
-  Height = 212
-  Top = 350
+  Left = 723
+  Height = 234
+  Top = 353
   Width = 691
   ActiveControl = OKButton
   AlphaBlend = True
   AlphaBlendValue = 230
   BorderStyle = bsToolWindow
   Caption = 'ResultForm'
-  ClientHeight = 212
+  ClientHeight = 234
   ClientWidth = 691
   FormStyle = fsSystemStayOnTop
   OnActivate = FormActivate
   OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.6.0.0'
   object LogoImage: TImage
     Left = 24
     Height = 90
@@ -354,18 +354,20 @@ object ResultForm: TResultForm
   object OKButton: TButton
     Left = 600
     Height = 25
-    Top = 168
+    Top = 192
     Width = 75
+    Anchors = [akRight, akBottom]
     Caption = 'OK'
     Default = True
-    OnClick = OKButtonClick
     TabOrder = 0
+    OnClick = OKButtonClick
   end
   object BParMemo: TMemo
     Left = 128
-    Height = 133
+    Height = 149
     Top = 27
     Width = 248
+    Anchors = [akTop, akLeft, akBottom]
     Lines.Strings = (
       'Behavioural parameters:'
     )
@@ -374,13 +376,15 @@ object ResultForm: TResultForm
   end
   object SParMemo: TMemo
     Left = 392
-    Height = 133
+    Height = 149
     Top = 27
     Width = 280
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Lines.Strings = (
       'Structural parameters:'
     )
     ReadOnly = True
+    ScrollBars = ssAutoVertical
     TabOrder = 2
   end
   object ResultLabel: TLabel
