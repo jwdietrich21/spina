@@ -26,8 +26,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin, Menus, ActnList, StdActns, Math, LCLType, EnvironmentInfo,
-  SPINATypes, CaseBroker, SPINA_GUIServices, ResultWindow;
+  Spin, Menus, ActnList, StdActns, Math, LCLType, ComCtrls, EditBtn,
+  EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices, ResultWindow;
 
 type
 
@@ -36,7 +36,20 @@ type
   THauptschirm = class(TForm)
     ActionList1: TActionList;
     AppleMenu: TMenuItem;
+    Bevel1: TBevel;
+    Bevel2: TBevel;
+    NextButton: TButton;
     CalculateButton: TButton;
+    PlacerLabel: TLabel;
+    ObDateEdit: TDateEdit;
+    PlacerEdit: TEdit;
+    GivenNameLabel: TLabel;
+    DOBLabel: TLabel;
+    PIDLabel: TLabel;
+    DoBEdit: TDateEdit;
+    GivenNameEdit: TEdit;
+    CaseIDLabel: TLabel;
+    PIDEdit: TEdit;
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     CutMenuItem: TMenuItem;
@@ -44,6 +57,7 @@ type
     Divider12: TMenuItem;
     Divider21: TMenuItem;
     Divider22: TMenuItem;
+    CaseIDEdit: TEdit;
     EditCopy1: TEditCopy;
     EditMenu: TMenuItem;
     EditSelectAll1: TEditSelectAll;
@@ -58,6 +72,10 @@ type
     CPeptideLabel: TLabel;
     CPeptideEdit: TEdit;
     CPeptideUnitsCombo: TComboBox;
+    MainPageControl: TPageControl;
+    NameEdit: TEdit;
+    NameLabel: TLabel;
+    ObDateLabel: TLabel;
     SPINACarbLabel: TLabel;
     LogoImage: TImage;
     InsulinUnitsCombo: TComboBox;
@@ -77,6 +95,9 @@ type
     HintsMemo: TMemo;
     SaveMenuItem: TMenuItem;
     SelectAllMenuItem: TMenuItem;
+    CaseEditorSheet: TTabSheet;
+    EntrySheet: TTabSheet;
+    ObTimeEdit: TTimeEdit;
     UndoMenuItem: TMenuItem;
     WinAboutItem: TMenuItem;
     procedure CalculateButtonClick(Sender: TObject);
@@ -85,8 +106,11 @@ type
     procedure FormShow(Sender: TObject);
     procedure LogoImageClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
+    procedure NextButtonClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
+    procedure AdapttoTheme(Sender: TObject);
+    procedure FocusEdit(Sender: TObject);
   private
 
   public
@@ -120,27 +144,21 @@ end;
 
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
-  if DarkTheme then
-    Color := clDefault
-  else
-    Color := clWhite;
-  ActiveControl := GlucoseEdit;
+  AdaptToTheme(Sender);
+  FocusEdit(Sender);
 end;
 
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptForPlatform;
   SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
-  ActiveControl := GlucoseEdit;
+  FocusEdit(Sender);
 end;
 
 procedure THauptschirm.FormShow(Sender: TObject);
 begin
-  if DarkTheme then
-    Color := clDefault
-  else
-    Color := clWhite;
-  ActiveControl := GlucoseEdit;
+  AdaptToTheme(Sender);
+  FocusEdit(Sender);
 end;
 
 procedure THauptschirm.LogoImageClick(Sender: TObject);
@@ -153,6 +171,11 @@ begin
   ShowMessage('SPINA Carb – Version 5.1.0 Beta 1');
 end;
 
+procedure THauptschirm.NextButtonClick(Sender: TObject);
+begin
+  MainPageControl.ActivePage := EntrySheet;
+end;
+
 procedure THauptschirm.QuitMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
@@ -161,6 +184,32 @@ end;
 procedure THauptschirm.WinAboutItemClick(Sender: TObject);
 begin
   MacAboutItemClick(Sender);
+end;
+
+procedure THauptschirm.AdapttoTheme(Sender: TObject);
+begin
+  if DarkTheme then
+    begin
+      Color := clDefault;
+      EntryBox.Color := clDefault;
+      ResultsBox.Color := clDefault;
+      HintBox.Color := clDefault;
+      LogoBox.Color := clDefault;
+    end
+  else
+    begin
+      Color := clWhite;
+      EntryBox.Color := clWhite;
+      ResultsBox.Color := clWhite;
+      HintBox.Color := clWhite;
+      LogoBox.Color := clWhite;
+    end;
+end;
+
+procedure THauptschirm.FocusEdit(Sender: TObject);
+begin
+  if MainPageControl.ActivePage = EntrySheet then
+    ActiveControl := GlucoseEdit;
 end;
 
 procedure THauptschirm.RegisterEntry(Sender: TObject);
