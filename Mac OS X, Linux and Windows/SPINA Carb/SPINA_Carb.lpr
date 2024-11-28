@@ -31,7 +31,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
-  SPINA_GUIServices, EnvironmentInfo;
+  SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus;
 
 {$R *.res}
 

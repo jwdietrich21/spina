@@ -31,6 +31,7 @@ object Hauptschirm: THauptschirm
       Caption = 'Case Editor'
       ClientHeight = 334
       ClientWidth = 750
+      OnShow = CaseEditorSheetShow
       object CaseIDEdit: TEdit
         Left = 200
         Height = 22
@@ -185,6 +186,7 @@ object Hauptschirm: THauptschirm
       Caption = 'Data Entry'
       ClientHeight = 334
       ClientWidth = 750
+      OnShow = EntrySheetShow
       object EntryBox: TGroupBox
         Left = 215
         Height = 288
@@ -6538,6 +6540,7 @@ object Hauptschirm: THauptschirm
           ReadOnly = True
           ScrollBars = ssAutoBoth
           TabOrder = 0
+          OnChange = ResultsMemoChange
         end
       end
       object CalculateButton: TButton
@@ -7504,7 +7507,7 @@ object Hauptschirm: THauptschirm
         ShortCut = 16463
       end
       object SaveMenuItem: TMenuItem
-        Caption = 'Save'
+        Caption = 'Save as...'
         ImageIndex = 2
         ShortCut = 16467
       end
@@ -7513,6 +7516,26 @@ object Hauptschirm: THauptschirm
         ShortCut = 16471
       end
       object Divider12: TMenuItem
+        Caption = '-'
+      end
+      object CaseDataMenuItem: TMenuItem
+        Caption = 'Case Data...'
+        ShortCut = 24643
+        OnClick = CaseDataMenuItemClick
+      end
+      object Seaparator2: TMenuItem
+        Caption = '-'
+      end
+      object PageSetupMenuItem: TMenuItem
+        Caption = 'Page Setup...'
+        OnClick = PageSetupMenuItemClick
+      end
+      object PrintMenuItem: TMenuItem
+        Caption = 'Print'
+        ShortCut = 16464
+        OnClick = PrintMenuItemClick
+      end
+      object Divider14: TMenuItem
         Caption = '-'
       end
       object QuitMenuItem: TMenuItem
@@ -7586,5 +7609,20 @@ object Hauptschirm: THauptschirm
   object ImageList1: TImageList
     Left = 656
     Top = 131
+  end
+  object PrintDialog1: TPrintDialog
+    FromPage = 1
+    ToPage = 1
+    Left = 560
+    Top = 237
+  end
+  object PageSetupDialog1: TPageSetupDialog
+    Left = 560
+    Top = 184
+  end
+  object PrinterSetupDialog1: TPrinterSetupDialog
+    Title = 'Print Results'
+    Left = 560
+    Top = 132
   end
 end

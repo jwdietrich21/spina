@@ -25,7 +25,7 @@ unit SPINATypes;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, Graphics;
 
 const
   kNUL = char(0);           {Special ASCII characters}
@@ -57,6 +57,24 @@ const
   GBetaUoM = 'pmol/s';
   GRUoM = 'mol/s';
   HOMABetaUoM = '%';
+
+  kPID2 = 'PID: ';
+  kName2 = 'Patient name: ';
+  kPlacer2 = 'Placer: ';
+  kExamDate2 = 'Examination Date: ';
+  kDOB2 = 'Date of Birth: ';
+  kCaseNum2 = 'Case / Admission Number: ';
+
+type
+  tPreferences = record
+       new, rememberUsedUnits, colouriseMandatoryFields, exportLOINC: boolean;
+       MandatoryColor: TColor;
+       MSH_ID, Placer_ID: String;
+       PrintFont: String;
+  end;
+
+var
+  gPreferences: tPreferences;
 
 implementation
 
