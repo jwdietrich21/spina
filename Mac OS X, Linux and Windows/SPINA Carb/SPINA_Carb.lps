@@ -21,8 +21,8 @@
         <UnitName Value="GUI"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="160"/>
-        <CursorPos X="38" Y="170"/>
+        <TopLine Value="153"/>
+        <CursorPos Y="179"/>
         <UsageCount Value="37"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -47,8 +47,8 @@
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="26"/>
-        <CursorPos X="39" Y="39"/>
+        <TopLine Value="16"/>
+        <CursorPos X="28" Y="39"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit>
@@ -102,26 +102,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="196" Column="6" TopLine="180"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="2" Column="33"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="93" Column="45" TopLine="68"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="171" Column="46" TopLine="151"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="172" Column="46" TopLine="152"/>
-      </Position>
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="171" Column="46" TopLine="151"/>
@@ -221,6 +201,26 @@
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="176" Column="42" TopLine="162"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="180" Column="39" TopLine="171"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="114" Column="46" TopLine="100"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="123" Column="28" TopLine="99"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="177" Column="28" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Column="68"/>
       </Position>
     </JumpHistory>
     <RunParams>

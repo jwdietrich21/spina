@@ -36,7 +36,7 @@ type
   tCaseRecord = record
     LabRecord:tLabRecord;
     CaseID, PID, Name, GivenNames, Placer: string;
-    DoBDate, OBDate: TDateTime;
+    DoBDate, OBDate, OBTime: TDateTime;
     InsulinTherapy: boolean;
     Comment, BParMessage, SParMessage, CombMessage: string;
   end;

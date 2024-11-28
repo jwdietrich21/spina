@@ -109,8 +109,6 @@ type
     procedure NextButtonClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
-    procedure AdapttoTheme(Sender: TObject);
-    procedure FocusEdit(Sender: TObject);
   private
 
   public
@@ -120,6 +118,9 @@ type
     procedure RegisterEntry(Sender: TObject);
     procedure CreateOutput(Sender: TObject);
     procedure AdaptForPlatform;
+    procedure AdapttoTheme(Sender: TObject);
+    procedure FocusEdit(Sender: TObject);
+    procedure RegisterCaseData(Sender: TObject);
   end;
 
 var
@@ -173,6 +174,7 @@ end;
 
 procedure THauptschirm.NextButtonClick(Sender: TObject);
 begin
+  RegisterCaseData(Sender);
   MainPageControl.ActivePage := EntrySheet;
 end;
 
@@ -210,6 +212,18 @@ procedure THauptschirm.FocusEdit(Sender: TObject);
 begin
   if MainPageControl.ActivePage = EntrySheet then
     ActiveControl := GlucoseEdit;
+end;
+
+procedure THauptschirm.RegisterCaseData(Sender: TObject);
+begin
+  CaseRecord.CaseID := CaseIDEdit.Text;
+  CaseRecord.PID := PIDEdit.Text;
+  CaseRecord.Name := NameEdit.Text;
+  CaseRecord.GivenNames := GivenNameEdit.Text;
+  CaseRecord.DoBDate := DOBEdit.DATE;
+  CaseRecord.Placer := PlacerEdit.Text;
+  CaseRecord.OBDate := ObDateEdit.DATE;
+  CaseRecord.OBTime := ObTimeEdit.TIME;
 end;
 
 procedure THauptschirm.RegisterEntry(Sender: TObject);
