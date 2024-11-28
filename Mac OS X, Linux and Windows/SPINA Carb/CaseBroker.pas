@@ -35,6 +35,10 @@ type
   end;
   tCaseRecord = record
     LabRecord:tLabRecord;
+    CaseID, PID, Name, GivenNames, Placer: string;
+    DoBDate, OBDate: TDateTime;
+    InsulinTherapy: boolean;
+    Comment, BParMessage, SParMessage, CombMessage: string;
   end;
 
 function InsulinSI(RawIns: extended; InsUom: String): extended;

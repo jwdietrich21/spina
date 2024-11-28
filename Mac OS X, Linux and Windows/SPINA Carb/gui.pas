@@ -93,7 +93,6 @@ type
     CaseRecord: tCaseRecord;
     InsulinRaw, GlucoseRaw, CPeptideRaw: extended;
     InsulinUoM, GlucoseUoM, CPeptideUoM: String;
-    OutputB, OutputS, OutputC: string;
     procedure RegisterEntry(Sender: TObject);
     procedure CreateOutput(Sender: TObject);
     procedure AdaptForPlatform;
@@ -113,8 +112,8 @@ begin
   RegisterEntry(Sender);
   Calculate(CaseRecord.LabRecord);
   CreateOutput(Sender);
-  ResultsMemo.Text := LineEnding + OutputC;
-  ResultForm.ShowResults(OutputB, OutputS);
+  ResultsMemo.Text := LineEnding + CaseRecord.CombMessage;
+  ResultForm.ShowResults(caseRecord.BParMessage, caseRecord.SParMessage);
   ResultForm.Visible := true;
   ResultForm.ShowOnTop;
 end;
@@ -184,7 +183,7 @@ end;
 
 procedure THauptschirm.CreateOutput(Sender: TObject);
 begin
-  OutputB := kBPars +
+  CaseRecord.BParMessage := kBPars +
              LineEnding +
              '   ' + kGluc + ': ' +
              GlucoseEdit.Text + ' ' + GlucoseUoM +
@@ -194,7 +193,7 @@ begin
              LineEnding +
              '   ' + kCpt + ': ' +
              CPeptideEdit.Text + ' ' + CPeptideUoM;
-  OutputS := kSPars +
+  CaseRecord.SParMessage := kSPars +
              LineEnding +
              '   ' + kSPINA_GBeta + ': ' +
              FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffFixed, 4, 2) +
@@ -222,9 +221,9 @@ begin
              LineEnding +
              '   ' + kCGR + ': ' +
              FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
-  OutputC := OutputB +
+  CaseRecord.CombMessage := CaseRecord.BParMessage +
              LineEnding + LineEnding +
-             OutputS;
+             CaseRecord.SParMessage;
 end;
 
 procedure THauptschirm.AdaptForPlatform;
