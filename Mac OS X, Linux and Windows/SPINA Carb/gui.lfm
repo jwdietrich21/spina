@@ -17,7 +17,7 @@ object Hauptschirm: THauptschirm
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '3.7.0.0'
+  LCLVersion = '3.6.0.0'
   object MainPageControl: TPageControl
     Left = 0
     Height = 370
@@ -29,44 +29,44 @@ object Hauptschirm: THauptschirm
     TabOrder = 0
     object CaseEditorSheet: TTabSheet
       Caption = 'Case Editor'
-      ClientHeight = 334
-      ClientWidth = 750
+      ClientHeight = 342
+      ClientWidth = 748
       OnShow = CaseEditorSheetShow
       object CaseIDEdit: TEdit
         Left = 200
-        Height = 22
+        Height = 23
         Top = 20
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 0
       end
       object PIDEdit: TEdit
         Left = 200
-        Height = 22
+        Height = 23
         Top = 47
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 1
       end
       object NameEdit: TEdit
         Left = 200
-        Height = 22
+        Height = 23
         Top = 74
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 2
       end
       object GivenNameEdit: TEdit
         Left = 200
-        Height = 22
+        Height = 23
         Top = 101
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 3
       end
       object DoBEdit: TDateEdit
         Left = 200
-        Height = 22
+        Height = 23
         Top = 129
         Width = 500
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -78,64 +78,64 @@ object Hauptschirm: THauptschirm
       end
       object CaseIDLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 23
-        Width = 132
+        Width = 115
         Caption = 'Admission or Case ID:'
       end
       object PIDLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 50
-        Width = 25
+        Width = 21
         Caption = 'PID:'
       end
       object NameLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 76
-        Width = 81
+        Width = 73
         Caption = 'Family Name:'
       end
       object GivenNameLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 103
-        Width = 91
+        Width = 79
         Caption = 'Given name(s):'
       end
       object DOBLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 131
-        Width = 80
+        Width = 69
         Caption = 'Date of Birth:'
       end
       object Bevel1: TBevel
         Left = 24
         Height = 160
         Top = 4
-        Width = 704
+        Width = 702
         Anchors = [akTop, akLeft, akRight]
       end
       object Bevel2: TBevel
         Left = 24
         Height = 84
         Top = 172
-        Width = 704
+        Width = 702
         Anchors = [akTop, akLeft, akRight]
       end
       object PlacerEdit: TEdit
         Left = 200
-        Height = 22
+        Height = 23
         Top = 188
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 5
       end
       object ObDateEdit: TDateEdit
         Left = 200
-        Height = 22
+        Height = 23
         Top = 216
         Width = 256
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -148,21 +148,21 @@ object Hauptschirm: THauptschirm
       end
       object PlacerLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 191
-        Width = 42
+        Width = 35
         Caption = 'Placer:'
       end
       object ObDateLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 216
-        Width = 128
+        Width = 112
         Caption = 'Date of investigation:'
       end
       object ObTimeEdit: TTimeEdit
         Left = 480
-        Height = 22
+        Height = 23
         Top = 216
         Width = 216
         DefaultNow = True
@@ -172,9 +172,9 @@ object Hauptschirm: THauptschirm
         TabOrder = 7
       end
       object NextButton: TButton
-        Left = 625
+        Left = 623
         Height = 25
-        Top = 304
+        Top = 312
         Width = 115
         Anchors = [akRight, akBottom]
         Caption = 'Next'
@@ -184,18 +184,18 @@ object Hauptschirm: THauptschirm
     end
     object EntrySheet: TTabSheet
       Caption = 'Data Entry'
-      ClientHeight = 334
-      ClientWidth = 750
+      ClientHeight = 342
+      ClientWidth = 748
       OnShow = EntrySheetShow
       object EntryBox: TGroupBox
         Left = 215
-        Height = 288
+        Height = 296
         Top = 8
         Width = 290
         Anchors = [akTop, akLeft, akBottom]
         Caption = 'Enter behavioural parameters:'
-        ClientHeight = 261
-        ClientWidth = 280
+        ClientHeight = 276
+        ClientWidth = 286
         Constraints.MinWidth = 270
         ParentBackground = False
         TabOrder = 0
@@ -6387,7 +6387,7 @@ object Hauptschirm: THauptschirm
         end
         object GlucoseEdit: TEdit
           Left = 88
-          Height = 22
+          Height = 23
           Top = 16
           Width = 56
           TabOrder = 0
@@ -6395,7 +6395,7 @@ object Hauptschirm: THauptschirm
         end
         object InsulinEdit: TEdit
           Left = 9
-          Height = 22
+          Height = 23
           Top = 216
           Width = 56
           TabOrder = 1
@@ -6403,28 +6403,28 @@ object Hauptschirm: THauptschirm
         end
         object GlucoseLabel: TLabel
           Left = 35
-          Height = 16
+          Height = 15
           Top = 16
-          Width = 49
+          Width = 42
           Alignment = taRightJustify
           Caption = 'Glucose'
           ParentColor = False
         end
         object InsulinLabel: TLabel
           Left = 9
-          Height = 16
+          Height = 15
           Top = 200
-          Width = 39
+          Width = 35
           Alignment = taRightJustify
           Caption = 'Insulin'
           ParentColor = False
         end
         object GlucoseUnitsCombo: TComboBox
           Left = 150
-          Height = 20
+          Height = 23
           Top = 16
           Width = 70
-          ItemHeight = 19
+          ItemHeight = 15
           ItemIndex = 0
           Items.Strings = (
             'mg/dl'
@@ -6435,10 +6435,10 @@ object Hauptschirm: THauptschirm
         end
         object InsulinUnitsCombo: TComboBox
           Left = 9
-          Height = 20
+          Height = 23
           Top = 240
           Width = 70
-          ItemHeight = 19
+          ItemHeight = 15
           ItemIndex = 0
           Items.Strings = (
             'mIU/l'
@@ -6449,9 +6449,9 @@ object Hauptschirm: THauptschirm
         end
         object CPeptideLabel: TLabel
           Left = 220
-          Height = 16
+          Height = 15
           Top = 200
-          Width = 62
+          Width = 53
           Alignment = taRightJustify
           Caption = 'C-Peptide'
           ParentColor = False
@@ -6459,8 +6459,8 @@ object Hauptschirm: THauptschirm
         object CPeptideEdit: TEdit
           AnchorSideRight.Control = CPeptideLabel
           AnchorSideRight.Side = asrBottom
-          Left = 226
-          Height = 22
+          Left = 217
+          Height = 23
           Top = 216
           Width = 56
           Anchors = [akTop, akRight]
@@ -6470,12 +6470,12 @@ object Hauptschirm: THauptschirm
         object CPeptideUnitsCombo: TComboBox
           AnchorSideRight.Control = CPeptideLabel
           AnchorSideRight.Side = asrBottom
-          Left = 212
-          Height = 20
+          Left = 203
+          Height = 23
           Top = 240
           Width = 70
           Anchors = [akTop, akRight]
-          ItemHeight = 19
+          ItemHeight = 15
           ItemIndex = 0
           Items.Strings = (
             'ng/ml'
@@ -6488,19 +6488,19 @@ object Hauptschirm: THauptschirm
       end
       object HintBox: TGroupBox
         Left = 16
-        Height = 176
+        Height = 184
         Top = 120
         Width = 192
         Anchors = [akTop, akLeft, akBottom]
         Caption = 'Hints:'
-        ClientHeight = 149
-        ClientWidth = 182
+        ClientHeight = 164
+        ClientWidth = 188
         TabOrder = 1
         object HintsMemo: TMemo
           Left = 8
-          Height = 138
+          Height = 153
           Top = 8
-          Width = 161
+          Width = 167
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderStyle = bsNone
           Font.Height = 13
@@ -6517,19 +6517,19 @@ object Hauptschirm: THauptschirm
       end
       object ResultsBox: TGroupBox
         Left = 512
-        Height = 288
+        Height = 296
         Top = 8
-        Width = 228
+        Width = 226
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Results:'
-        ClientHeight = 261
-        ClientWidth = 218
+        ClientHeight = 276
+        ClientWidth = 222
         TabOrder = 2
         object ResultsMemo: TMemo
           Left = 8
-          Height = 246
+          Height = 261
           Top = 8
-          Width = 198
+          Width = 202
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderStyle = bsNone
           Font.Height = 13
@@ -6544,9 +6544,9 @@ object Hauptschirm: THauptschirm
         end
       end
       object CalculateButton: TButton
-        Left = 625
+        Left = 623
         Height = 25
-        Top = 304
+        Top = 312
         Width = 115
         Anchors = [akRight, akBottom]
         Caption = 'Calculate'
@@ -6557,8 +6557,8 @@ object Hauptschirm: THauptschirm
       object SPINACarbLabel: TLabel
         Left = 16
         Height = 13
-        Top = 314
-        Width = 86
+        Top = 322
+        Width = 81
         Anchors = [akLeft, akBottom]
         Caption = 'SPINACarbLabel'
         Font.Height = -11
@@ -6569,8 +6569,8 @@ object Hauptschirm: THauptschirm
         Height = 112
         Top = 8
         Width = 192
-        ClientHeight = 85
-        ClientWidth = 182
+        ClientHeight = 92
+        ClientWidth = 188
         TabOrder = 4
         object LogoImage: TImage
           Left = 4

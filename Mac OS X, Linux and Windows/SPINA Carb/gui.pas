@@ -366,6 +366,7 @@ begin
   ResultsMemo.Font.Height := ResultsMemo.Font.Height - 1;
   {$ELSE}
   modifierKey := [ssCtrl];
+  modifierKey2 := [ssCtrl, ssShift];
   WinAboutItem.Visible := True;
   AppleMenu.Visible := False;
   {$ENDIF}
@@ -377,7 +378,7 @@ begin
   PrintMenuItem.ShortCut := ShortCut(VK_P, modifierKey);
   QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
   UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
-  RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey + [ssShift]);
+  RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey2);
   CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
   CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
   PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);

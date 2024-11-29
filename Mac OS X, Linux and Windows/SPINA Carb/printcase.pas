@@ -1,6 +1,5 @@
 unit PrintCase;
 
-
 { SPINA Carb }
 
 { Application for calculating structure parameters }
@@ -26,7 +25,7 @@ unit PrintCase;
 interface
 
 uses
-  Classes, SysUtils, LCLType, Graphics, Fonts, Interfaces, Printers, Math,
+  Classes, SysUtils, LCLType, Graphics, Interfaces, Printers, Math,
   LCLProc, LazUTF8, SPINATypes, CaseBroker, EnvironmentInfo;
 
 const
