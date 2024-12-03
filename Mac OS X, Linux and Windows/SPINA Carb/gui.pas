@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   Menus, ActnList, StdActns, Math, LCLType, ComCtrls,
   EditBtn, EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices,
-  ResultWindow, Printers, PrintersDlgs, PrintCase;
+  ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase;
 
 type
 
@@ -200,7 +200,7 @@ end;
 
 procedure THauptschirm.MacAboutItemClick(Sender: TObject);
 begin
-  ShowMessage('SPINA Carb ' + FileVersion);
+  AboutBox.ShowOnTop;
 end;
 
 procedure THauptschirm.NextButtonClick(Sender: TObject);

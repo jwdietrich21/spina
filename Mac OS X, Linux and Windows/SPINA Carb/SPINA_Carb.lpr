@@ -31,7 +31,8 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
-  SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus;
+  SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus,
+spina_aboutbox;
 
 {$R *.res}
 
@@ -43,6 +44,7 @@ begin
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TResultForm, ResultForm);
   Application.BringToFront;
+  Application.CreateForm(TAboutBox, AboutBox);
   Application.Run;
 end.
 

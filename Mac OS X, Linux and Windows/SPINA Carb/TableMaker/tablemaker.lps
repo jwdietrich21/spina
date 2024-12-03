@@ -22,7 +22,6 @@
         <UnitName Value="GUI"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="14"/>
         <CursorPos Y="41"/>
         <UsageCount Value="26"/>
         <Loaded Value="True"/>
@@ -31,7 +30,7 @@
       <Unit>
         <Filename Value="../SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="23" Y="29"/>
+        <CursorPos X="5" Y="29"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
