@@ -187,6 +187,7 @@ begin
     currentX := marginX;
     Printer.BeginDoc;
     try
+      //Printer.Canvas.Font.Name := gPreferences.PrintFont;
       Printer.Canvas.Font.Size := 9;
       Printer.Canvas.Font.Style := [];
       Printer.Canvas.Pen.Color := clBlack;
