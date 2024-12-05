@@ -40,6 +40,9 @@ type
     Bevel1: TBevel;
     Bevel2: TBevel;
     CaseDataMenuItem: TMenuItem;
+    Divider01: TMenuItem;
+    MacPreferencesMenuItem: TMenuItem;
+    WinPreferencesMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
     PrintDialog1: TPrintDialog;
     PrinterSetupDialog1: TPrinterSetupDialog;
@@ -85,6 +88,7 @@ type
     ObDateLabel: TLabel;
     Divider12: TMenuItem;
     Divider14: TMenuItem;
+    Divider23: TMenuItem;
     SPINACarbLabel: TLabel;
     LogoImage: TImage;
     InsulinUnitsCombo: TComboBox;
@@ -118,12 +122,14 @@ type
     procedure FormShow(Sender: TObject);
     procedure LogoImageClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
+    procedure MacPreferencesMenuItemClick(Sender: TObject);
     procedure NextButtonClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure ResultsMemoChange(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
+    procedure WinPreferencesMenuItemClick(Sender: TObject);
   private
     function DoPageSetup: boolean;
     function DoPrintSetup: boolean;
@@ -203,6 +209,11 @@ begin
   AboutBox.ShowOnTop;
 end;
 
+procedure THauptschirm.MacPreferencesMenuItemClick(Sender: TObject);
+begin
+
+end;
+
 procedure THauptschirm.NextButtonClick(Sender: TObject);
 begin
   RegisterCaseData(Sender);
@@ -235,6 +246,11 @@ end;
 procedure THauptschirm.WinAboutItemClick(Sender: TObject);
 begin
   MacAboutItemClick(Sender);
+end;
+
+procedure THauptschirm.WinPreferencesMenuItemClick(Sender: TObject);
+begin
+  MacPreferencesMenuItemClick(Sender);
 end;
 
 function THauptschirm.DoPageSetup: boolean;

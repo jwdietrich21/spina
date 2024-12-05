@@ -9068,8 +9068,15 @@ object Hauptschirm: THauptschirm
     object AppleMenu: TMenuItem
       Caption = ''
       object MacAboutItem: TMenuItem
-        Caption = 'About this app...'
+        Caption = 'About SPINA Carb...'
         OnClick = MacAboutItemClick
+      end
+      object Divider01: TMenuItem
+        Caption = '-'
+      end
+      object MacPreferencesMenuItem: TMenuItem
+        Caption = 'Preferences...'
+        OnClick = MacPreferencesMenuItemClick
       end
     end
     object FileMenu: TMenuItem
@@ -9162,11 +9169,18 @@ object Hauptschirm: THauptschirm
         Action = EditSelectAll1
         Caption = 'Select all'
       end
+      object Divider23: TMenuItem
+        Caption = '-'
+      end
+      object WinPreferencesMenuItem: TMenuItem
+        Caption = 'Preferences...'
+        OnClick = WinPreferencesMenuItemClick
+      end
     end
     object HelpMenu: TMenuItem
       Caption = 'Help'
       object WinAboutItem: TMenuItem
-        Caption = 'About this app...'
+        Caption = 'About SPINA Carb...'
         OnClick = WinAboutItemClick
       end
     end
