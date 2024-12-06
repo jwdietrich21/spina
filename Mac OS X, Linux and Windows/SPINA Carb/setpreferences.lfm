@@ -1,0 +1,194 @@
+object PreferencesForm: TPreferencesForm
+  Left = 287
+  Height = 421
+  Top = 251
+  Width = 673
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Application Preferences'
+  ClientHeight = 421
+  ClientWidth = 673
+  Constraints.MinHeight = 400
+  Constraints.MinWidth = 600
+  OnActivate = FormActivate
+  OnPaint = FormPaint
+  Position = poScreenCenter
+  LCLVersion = '3.7.0.0'
+  object OKButton: TButton
+    Left = 566
+    Height = 25
+    Top = 378
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'OK'
+    Default = True
+    TabOrder = 0
+    OnClick = OKButtonClick
+  end
+  object CancelButton: TButton
+    Left = 446
+    Height = 25
+    Top = 378
+    Width = 107
+    Cancel = True
+    Caption = 'Cancel'
+    TabOrder = 1
+    OnClick = CancelButtonClick
+  end
+  object PageControl1: TPageControl
+    Left = 24
+    Height = 352
+    Top = 8
+    Width = 617
+    ActivePage = TabSheet1
+    Anchors = [akTop, akLeft, akRight]
+    TabIndex = 0
+    TabOrder = 2
+    OnChange = PageControl1Change
+    object TabSheet1: TTabSheet
+      Caption = 'HL7 messages'
+      ClientHeight = 316
+      ClientWidth = 611
+      object IDGroupBox: TGroupBox
+        Left = 24
+        Height = 104
+        Top = 8
+        Width = 575
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Physician, Hospital or Unit ID:'
+        ClientHeight = 77
+        ClientWidth = 565
+        TabOrder = 0
+        object SendingFacLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 16
+          Width = 85
+          Caption = 'Facility Name:'
+          ParentColor = False
+        end
+        object SendingFacEdit: TEdit
+          Left = 137
+          Height = 22
+          Hint = 'HL7 Sending and Receiving Facility'
+          Top = 16
+          Width = 412
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+        end
+        object PlacerLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 48
+          Width = 42
+          Caption = 'Placer:'
+          ParentColor = False
+        end
+        object PlacerEdit: TEdit
+          Left = 137
+          Height = 22
+          Hint = 'HL7 Sending and Receiving Facility'
+          Top = 48
+          Width = 412
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Div'
+      ClientHeight = 316
+      ClientWidth = 611
+      object GUIGroupBox: TGroupBox
+        Left = 24
+        Height = 240
+        Top = 8
+        Width = 575
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'GUI'
+        ClientHeight = 213
+        ClientWidth = 565
+        TabOrder = 0
+        object MarkMandatoryCheck: TCheckBox
+          Left = 16
+          Height = 18
+          Top = 10
+          Width = 153
+          Caption = 'Mark mandatory fields'
+          TabOrder = 0
+        end
+        object MandatoryFieldsGrid: TStringGrid
+          Left = 16
+          Height = 160
+          Top = 40
+          Width = 524
+          Anchors = [akTop, akLeft, akRight]
+          AutoFillColumns = True
+          Color = clSilver
+          Columns = <          
+            item
+              Title.Caption = 'SPINA-GBeta'
+              Width = 115
+            end          
+            item
+              Title.Caption = 'SPINA-GR'
+              Width = 115
+            end          
+            item
+              Title.Caption = 'SPINA-DI'
+              Width = 115
+            end          
+            item
+              Title.Caption = 'CGR'
+              Width = 114
+            end>
+          Flat = True
+          Font.Style = [fsBold]
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goDblClickAutoSize, goSmoothScroll, goFixedColSizing, goTruncCellHints]
+          ParentFont = False
+          RowCount = 7
+          ScrollBars = ssNone
+          TabOrder = 1
+          ColWidths = (
+            64
+            115
+            115
+            115
+            114
+          )
+        end
+      end
+      object PrintingGroupbox: TGroupBox
+        Left = 24
+        Height = 57
+        Top = 248
+        Width = 575
+        Anchors = [akLeft, akRight, akBottom]
+        Caption = 'Printing'
+        ClientHeight = 30
+        ClientWidth = 565
+        TabOrder = 1
+        object FontsCombobox: TComboBox
+          Left = 16
+          Height = 20
+          Top = -2
+          Width = 525
+          Anchors = [akLeft, akRight, akBottom]
+          ItemHeight = 19
+          ItemIndex = 0
+          Items.Strings = (
+            'Font...'
+          )
+          TabOrder = 0
+          Text = 'Font...'
+        end
+      end
+    end
+  end
+end

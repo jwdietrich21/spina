@@ -28,7 +28,8 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   Menus, ActnList, StdActns, Math, LCLType, ComCtrls,
   EditBtn, EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices,
-  ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase;
+  ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
+  SetPreferences;
 
 type
 
@@ -183,6 +184,7 @@ end;
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
   AdaptToTheme(Sender);
+  PlacerEdit.Text := gPreferences.Placer_ID;
   FocusEdit(Sender);
 end;
 
@@ -211,7 +213,7 @@ end;
 
 procedure THauptschirm.MacPreferencesMenuItemClick(Sender: TObject);
 begin
-
+  PreferencesForm.ShowModal;
 end;
 
 procedure THauptschirm.NextButtonClick(Sender: TObject);

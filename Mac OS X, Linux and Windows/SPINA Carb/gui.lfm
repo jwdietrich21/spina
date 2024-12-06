@@ -9076,6 +9076,7 @@ object Hauptschirm: THauptschirm
       end
       object MacPreferencesMenuItem: TMenuItem
         Caption = 'Preferences...'
+        ShortCut = 4284
         OnClick = MacPreferencesMenuItemClick
       end
     end

@@ -32,7 +32,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
   SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus,
-  spina_aboutbox, HandlePreferences;
+  spina_aboutbox, HandlePreferences, setpreferences;
 
 {$R *.res}
 
@@ -45,6 +45,8 @@ begin
   Application.CreateForm(TResultForm, ResultForm);
   Application.BringToFront;
   Application.CreateForm(TAboutBox, AboutBox);
+  Application.CreateForm(TPreferencesForm, PreferencesForm);
+  ReadPreferences;
   Application.Run;
 end.
 
