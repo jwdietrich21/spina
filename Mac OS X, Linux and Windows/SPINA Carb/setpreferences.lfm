@@ -1,7 +1,7 @@
 object PreferencesForm: TPreferencesForm
   Left = 287
   Height = 421
-  Top = 251
+  Top = 244
   Width = 673
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -46,6 +46,157 @@ object PreferencesForm: TPreferencesForm
     TabOrder = 2
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
+      Caption = 'Ranges and units'
+      ClientHeight = 316
+      ClientWidth = 611
+      object CDISCGroupBox: TGroupBox
+        Left = 24
+        Height = 288
+        Top = 8
+        Width = 575
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Reference ranges:'
+        ClientHeight = 261
+        ClientWidth = 565
+        TabOrder = 0
+        object GlucoseLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 3
+          Width = 99
+          Caption = 'Fasting glucose:'
+        end
+        object GluoseRRLEdit: TEdit
+          Left = 191
+          Height = 22
+          Top = 0
+          Width = 80
+          TabOrder = 0
+          Text = '70'
+        end
+        object DashLabel1: TLabel
+          Left = 280
+          Height = 16
+          Top = 3
+          Width = 6
+          Caption = '-'
+        end
+        object GluoseRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Top = 0
+          Width = 80
+          TabOrder = 1
+          Text = '100'
+        end
+        object GlucoseUnitsCombo: TComboBox
+          Left = 390
+          Height = 20
+          Top = 0
+          Width = 70
+          ItemHeight = 19
+          ItemIndex = 0
+          Items.Strings = (
+            'mg/dl'
+            'mmol/l'
+          )
+          TabOrder = 2
+          Text = 'mg/dl'
+        end
+        object InsulinLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 27
+          Width = 90
+          Caption = 'Fasting insulin:'
+        end
+        object InsulinRRLEdit: TEdit
+          Left = 191
+          Height = 22
+          Top = 24
+          Width = 80
+          TabOrder = 3
+          Text = 'NaN'
+        end
+        object DashLabel2: TLabel
+          Left = 280
+          Height = 16
+          Top = 27
+          Width = 6
+          Caption = '-'
+        end
+        object InsulinRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Top = 24
+          Width = 80
+          TabOrder = 4
+          Text = 'NaN'
+        end
+        object CPeptideLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 51
+          Width = 113
+          Caption = 'Fasting C-peptide:'
+        end
+        object CPeptideRRLEdit: TEdit
+          Left = 191
+          Height = 22
+          Top = 48
+          Width = 80
+          TabOrder = 5
+          Text = 'NaN'
+        end
+        object DashLabel3: TLabel
+          Left = 280
+          Height = 16
+          Top = 51
+          Width = 6
+          Caption = '-'
+        end
+        object CPeptideRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Top = 48
+          Width = 80
+          TabOrder = 6
+          Text = 'NaN'
+        end
+        object InsulinUnitsCombo: TComboBox
+          Left = 390
+          Height = 20
+          Top = 24
+          Width = 70
+          ItemHeight = 19
+          ItemIndex = 0
+          Items.Strings = (
+            'mIU/l'
+            'pmol/l'
+          )
+          TabOrder = 7
+          Text = 'mIU/l'
+        end
+        object CPeptideUnitsCombo: TComboBox
+          AnchorSideRight.Control = CPeptideLabel
+          AnchorSideRight.Side = asrBottom
+          Left = 390
+          Height = 20
+          Top = 48
+          Width = 70
+          ItemHeight = 19
+          ItemIndex = 0
+          Items.Strings = (
+            'ng/ml'
+            'pmol/l'
+            'nmol/l'
+          )
+          TabOrder = 8
+          Text = 'ng/ml'
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
       Caption = 'HL7 messages'
       ClientHeight = 316
       ClientWidth = 611
@@ -101,8 +252,8 @@ object PreferencesForm: TPreferencesForm
         end
       end
     end
-    object TabSheet2: TTabSheet
-      Caption = 'Div'
+    object TabSheet3: TTabSheet
+      Caption = 'Other'
       ClientHeight = 316
       ClientWidth = 611
       object GUIGroupBox: TGroupBox

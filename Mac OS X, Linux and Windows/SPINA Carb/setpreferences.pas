@@ -34,8 +34,24 @@ type
 
   TPreferencesForm = class(TForm)
     CancelButton: TButton;
+    CDISCGroupBox: TGroupBox;
+    CPeptideUnitsCombo: TComboBox;
+    DashLabel2: TLabel;
+    DashLabel3: TLabel;
     FontsCombobox: TComboBox;
+    GlucoseLabel: TLabel;
+    GlucoseUnitsCombo: TComboBox;
+    GluoseRRLEdit: TEdit;
+    GluoseRRHEdit: TEdit;
     GUIGroupBox: TGroupBox;
+    DashLabel1: TLabel;
+    InsulinLabel: TLabel;
+    CPeptideLabel: TLabel;
+    InsulinRRHEdit: TEdit;
+    CPeptideRRHEdit: TEdit;
+    InsulinRRLEdit: TEdit;
+    CPeptideRRLEdit: TEdit;
+    InsulinUnitsCombo: TComboBox;
     MandatoryFieldsGrid: TStringGrid;
     MarkMandatoryCheck: TCheckBox;
     PrintingGroupbox: TGroupBox;
@@ -46,8 +62,9 @@ type
     OKButton: TButton;
     PageControl1: TPageControl;
     PlacerLabel: TLabel;
-    TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet1: TTabSheet;
     procedure CancelButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormPaint(Sender: TObject);

@@ -116,6 +116,18 @@ begin
   {$ENDIF}
 end;
 
+function RRFile: String;
+{delivers path to CDISC-compliant XML file with reference values}
+var
+  prefsFolder: String;
+begin
+   prefsFolder := GetPreferencesFolder;
+   if prefsFolder = '' then
+     RRFile := ''
+   else
+     RRFile := IncludeTrailingPathDelimiter(GetPreferencesFolder) + SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
+end;
+
 function ComputerName: String;
 {inspired by Zoran's post at http://forum.lazarus.freepascal.org/index.php?topic=23622.0 }
 {$IFDEF mswindows}
