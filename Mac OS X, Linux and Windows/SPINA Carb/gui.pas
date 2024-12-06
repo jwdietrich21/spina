@@ -129,6 +129,7 @@ type
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure ResultsMemoChange(Sender: TObject);
+    procedure SPINACarbLabelClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
     procedure WinPreferencesMenuItemClick(Sender: TObject);
   private
@@ -243,6 +244,11 @@ end;
 procedure THauptschirm.ResultsMemoChange(Sender: TObject);
 begin
 
+end;
+
+procedure THauptschirm.SPINACarbLabelClick(Sender: TObject);
+begin
+  MacAboutItemClick(Sender);
 end;
 
 procedure THauptschirm.WinAboutItemClick(Sender: TObject);

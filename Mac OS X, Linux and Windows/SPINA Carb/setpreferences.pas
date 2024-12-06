@@ -35,9 +35,13 @@ type
   TPreferencesForm = class(TForm)
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
+    SPINAGBetaLabel: TLabel;
+    GBetaRRHEdit: TEdit;
+    GBetaRRLEdit: TEdit;
     CPeptideUnitsCombo: TComboBox;
     DashLabel2: TLabel;
     DashLabel3: TLabel;
+    DashLabel4: TLabel;
     FontsCombobox: TComboBox;
     GlucoseLabel: TLabel;
     GlucoseUnitsCombo: TComboBox;
@@ -62,6 +66,7 @@ type
     OKButton: TButton;
     PageControl1: TPageControl;
     PlacerLabel: TLabel;
+    GBetaUnitLabel: TLabel;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
     TabSheet1: TTabSheet;

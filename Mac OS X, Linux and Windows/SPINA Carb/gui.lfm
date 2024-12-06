@@ -8137,6 +8137,7 @@ object Hauptschirm: THauptschirm
         OnClick = CalculateButtonClick
       end
       object SPINACarbLabel: TLabel
+        Cursor = crHandPoint
         Left = 16
         Height = 13
         Top = 314
@@ -8145,6 +8146,7 @@ object Hauptschirm: THauptschirm
         Caption = 'SPINACarbLabel'
         Font.Height = -11
         ParentFont = False
+        OnClick = SPINACarbLabelClick
       end
       object LogoBox: TGroupBox
         Left = 16
@@ -8155,6 +8157,7 @@ object Hauptschirm: THauptschirm
         ClientWidth = 182
         TabOrder = 4
         object LogoImage: TImage
+          Cursor = crHandPoint
           Left = 4
           Height = 75
           Top = 3
