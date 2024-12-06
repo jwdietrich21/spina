@@ -32,7 +32,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
   SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus,
-spina_aboutbox;
+  spina_aboutbox, HandlePreferences;
 
 {$R *.res}
 
