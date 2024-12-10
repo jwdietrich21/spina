@@ -102,19 +102,22 @@ end;
 
 procedure TPreferencesForm.FormActivate(Sender: TObject);
 var
-  sansSerifPos: integer;
+  preferredFontPos, sansSerifPos: integer;
 begin
   SendingFacEdit.Text := gPreferences.MSH_ID;
   PlacerEdit.Text := gPreferences.Placer_ID;
   FontsCombobox.Items.Assign(Screen.Fonts);
+  if gPreferences.PrintFont <> '' then
+    preferredFontPos := FontsCombobox.Items.IndexOf(gPreferences.PrintFont);
   sansSerifPos := FontsCombobox.Items.IndexOf('Helvetica');
   if sansSerifPos = -1 then
     sansSerifPos := FontsCombobox.Items.IndexOf('Arial');
-  if sansSerifPos >= 0 then
-    begin
-      FontsCombobox.ItemIndex := sansSerifPos;
-    end;
-  gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
+  if preferredFontPos >= 0 then
+    FontsCombobox.ItemIndex := preferredFontPos
+  else if sansSerifPos >= 0 then
+    FontsCombobox.ItemIndex := sansSerifPos;
+  if FontsCombobox.ItemIndex >= 0 then
+    gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
 end;
 
 procedure TPreferencesForm.FormPaint(Sender: TObject);
@@ -136,4 +139,3 @@ begin
 end;
 
 end.
-

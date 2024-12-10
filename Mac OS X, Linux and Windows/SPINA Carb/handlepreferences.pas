@@ -275,6 +275,10 @@ begin
       ElementNode.AppendChild(SimpleNode(Doc, 'export', 'false'));
     RootNode.AppendChild(ElementNode);
 
+    ElementNode := Doc.CreateElement('fonts');
+    ElementNode.AppendChild(SimpleNode(Doc, 'printFont', gPreferences.PrintFont));
+    RootNode.AppendChild(ElementNode);
+
     if not DirectoryExists(PreferencesFolder) then
       if not CreateDir(PreferencesFolder) then
         ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
@@ -380,6 +384,10 @@ begin
          {$ELSE}
          gPreferences.Placer_ID := RootNode.Attributes[0].NodeValue;
          {$ENDIF}
+
+      RootNode := Doc.DocumentElement.FindNode('fonts');
+      theString := NodeContent(RootNode, 'printFont');
+      gPreferences.PrintFont := theString;
 
       gPreferences.new := false;
     finally
