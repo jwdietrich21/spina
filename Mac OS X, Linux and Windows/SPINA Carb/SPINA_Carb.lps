@@ -2,7 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="12"/>
-    <BuildModes Active="Default"/>
+    <BuildModes Active="macOS"/>
     <Units>
       <Unit>
         <Filename Value="SPINA_Carb.lpr"/>
@@ -79,6 +79,7 @@
         <Filename Value="spina_guiservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_GUIServices"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <CursorPos X="34" Y="2"/>
         <UsageCount Value="58"/>
@@ -88,9 +89,8 @@
         <Filename Value="environmentinfo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnvironmentInfo"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <CursorPos X="15" Y="4"/>
+        <CursorPos X="37"/>
         <UsageCount Value="57"/>
         <Loaded Value="True"/>
       </Unit>
@@ -262,10 +262,6 @@
       </Position>
       <Position>
         <Filename Value="environmentinfo.pas"/>
-        <Caret Line="2" TopLine="19"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
         <Caret Line="3" Column="14"/>
       </Position>
       <Position>
@@ -291,6 +287,10 @@
       <Position>
         <Filename Value="printcase.pas"/>
         <Caret Line="163" Column="67" TopLine="142"/>
+      </Position>
+      <Position>
+        <Filename Value="environmentinfo.pas"/>
+        <Caret Line="4" Column="15"/>
       </Position>
     </JumpHistory>
     <RunParams>

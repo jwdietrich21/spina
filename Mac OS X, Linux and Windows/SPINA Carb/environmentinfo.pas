@@ -29,7 +29,7 @@ uses
   {$IFDEF UNIX}
   , Unix
   {$ENDIF}
-  , InterfaceBase, versiontypes, versionresource;
+  , lazutf8, InterfaceBase, versiontypes, versionresource;
 
 type
 
