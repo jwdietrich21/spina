@@ -53,6 +53,7 @@ function Win8OrNewer: boolean;
 function ProductVersion: String;
 function FileVersion: String;
 function SystemVersion: String;
+function UserName: string;
 
 implementation
 
@@ -413,6 +414,20 @@ begin
   result := SystemStem + MajVer + '.' + MinVer;
   {$ENDIF}
   {$ENDIF}
+  {$ENDIF}
+end;
+
+function UserName: string;
+begin
+  {$IFDEF WINDOWS}
+  result := sysutils.GetEnvironmentVariable('USERNAME');
+  {$ENDIF WINDOWS}
+  {$IFDEF UNIX}
+    {$IF (DEFINED(LINUX)) OR (DEFINED(FREEBSD))}
+    result := SysToUtf8(GetUserName(fpgetuid));
+    {$ENDIF}
+    if result = '' then
+      result := GetEnvironmentVariableUTF8('USER');
   {$ENDIF}
 end;
 

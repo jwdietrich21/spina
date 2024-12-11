@@ -64,6 +64,8 @@ const
   kExamDate2 = 'Examination Date: ';
   kDOB2 = 'Date of Birth: ';
   kCaseNum2 = 'Case / Admission Number: ';
+  kPrintingDate = 'Printing Date: ';
+  kUserName = 'User name: ';
 
   BASE_URL = 'http://spina.medical-cybernetics.de';
   SPINA_GLOBAL_ID = 'net.sf.spina';

@@ -160,8 +160,8 @@ begin
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   Printer.Canvas.Font.Color := clGray;
-  {PrinterWriteln(H, currentX, currentY, concat(gBenutzername, gUserName,
-    '  |  ', gDruckdatum, DateToStr(date), theTime), False);}
+  PrinterWriteln(H, currentX, currentY, concat(kUserName, UserName,
+    '  |  ', kPrintingDate, DateToStr(date), theTime), False);
   PrinterWriteln(H, currentX, currentY, 'SPINA Carb ' + FileVersion, False);
   PrinterWriteln(H, currentX, currentY, '', False);
   Printer.Canvas.Font.Color := clBlack;

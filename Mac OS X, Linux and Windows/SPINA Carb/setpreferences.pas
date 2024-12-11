@@ -106,6 +106,8 @@ var
 begin
   SendingFacEdit.Text := gPreferences.MSH_ID;
   PlacerEdit.Text := gPreferences.Placer_ID;
+  preferredFontPos := -1;
+  sansSerifPos := -1;
   FontsCombobox.Items.Assign(Screen.Fonts);
   if gPreferences.PrintFont <> '' then
     preferredFontPos := FontsCombobox.Items.IndexOf(gPreferences.PrintFont);
