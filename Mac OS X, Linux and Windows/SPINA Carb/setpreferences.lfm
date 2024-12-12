@@ -13,7 +13,7 @@ object PreferencesForm: TPreferencesForm
   OnActivate = FormActivate
   OnPaint = FormPaint
   Position = poScreenCenter
-  LCLVersion = '3.6.0.0'
+  LCLVersion = '3.7.0.0'
   object OKButton: TButton
     Left = 566
     Height = 25
@@ -47,28 +47,28 @@ object PreferencesForm: TPreferencesForm
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Ranges and units'
-      ClientHeight = 324
-      ClientWidth = 609
+      ClientHeight = 316
+      ClientWidth = 611
       object CDISCGroupBox: TGroupBox
         Left = 24
         Height = 288
         Top = 8
-        Width = 573
+        Width = 575
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Reference ranges:'
-        ClientHeight = 268
-        ClientWidth = 569
+        ClientHeight = 261
+        ClientWidth = 565
         TabOrder = 0
         object GlucoseLabel: TLabel
           Left = 12
-          Height = 15
+          Height = 16
           Top = 3
-          Width = 85
+          Width = 99
           Caption = 'Fasting glucose:'
         end
         object GluoseRRLEdit: TEdit
           Left = 191
-          Height = 23
+          Height = 22
           Hint = 'Lower boundary of reference range'
           Top = 0
           Width = 80
@@ -79,14 +79,14 @@ object PreferencesForm: TPreferencesForm
         end
         object DashLabel1: TLabel
           Left = 280
-          Height = 15
+          Height = 16
           Top = 3
-          Width = 5
+          Width = 6
           Caption = '-'
         end
         object GluoseRRHEdit: TEdit
           Left = 294
-          Height = 23
+          Height = 22
           Hint = 'Higher boundary of reference range'
           Top = 0
           Width = 80
@@ -97,11 +97,11 @@ object PreferencesForm: TPreferencesForm
         end
         object GlucoseUnitsCombo: TComboBox
           Left = 390
-          Height = 23
+          Height = 20
           Hint = 'Unit of measurement'
           Top = 0
           Width = 70
-          ItemHeight = 15
+          ItemHeight = 19
           ItemIndex = 0
           Items.Strings = (
             'mg/dl'
@@ -114,14 +114,14 @@ object PreferencesForm: TPreferencesForm
         end
         object InsulinLabel: TLabel
           Left = 12
-          Height = 15
+          Height = 16
           Top = 27
-          Width = 79
+          Width = 90
           Caption = 'Fasting insulin:'
         end
         object InsulinRRLEdit: TEdit
           Left = 191
-          Height = 23
+          Height = 22
           Hint = 'Lower boundary of reference range'
           Top = 24
           Width = 80
@@ -132,14 +132,14 @@ object PreferencesForm: TPreferencesForm
         end
         object DashLabel2: TLabel
           Left = 280
-          Height = 15
+          Height = 16
           Top = 27
-          Width = 5
+          Width = 6
           Caption = '-'
         end
         object InsulinRRHEdit: TEdit
           Left = 294
-          Height = 23
+          Height = 22
           Hint = 'Higher boundary of reference range'
           Top = 24
           Width = 80
@@ -150,14 +150,14 @@ object PreferencesForm: TPreferencesForm
         end
         object CPeptideLabel: TLabel
           Left = 12
-          Height = 15
+          Height = 16
           Top = 51
-          Width = 97
+          Width = 113
           Caption = 'Fasting C-peptide:'
         end
         object CPeptideRRLEdit: TEdit
           Left = 191
-          Height = 23
+          Height = 22
           Hint = 'Lower boundary of reference range'
           Top = 48
           Width = 80
@@ -167,14 +167,14 @@ object PreferencesForm: TPreferencesForm
         end
         object DashLabel3: TLabel
           Left = 280
-          Height = 15
+          Height = 16
           Top = 51
-          Width = 5
+          Width = 6
           Caption = '-'
         end
         object CPeptideRRHEdit: TEdit
           Left = 294
-          Height = 23
+          Height = 22
           Hint = 'Higher boundary of reference range'
           Top = 48
           Width = 80
@@ -184,11 +184,11 @@ object PreferencesForm: TPreferencesForm
         end
         object InsulinUnitsCombo: TComboBox
           Left = 390
-          Height = 23
+          Height = 20
           Hint = 'Unit of measurement'
           Top = 24
           Width = 70
-          ItemHeight = 15
+          ItemHeight = 19
           ItemIndex = 0
           Items.Strings = (
             'mIU/l'
@@ -202,11 +202,11 @@ object PreferencesForm: TPreferencesForm
           AnchorSideRight.Control = CPeptideLabel
           AnchorSideRight.Side = asrBottom
           Left = 390
-          Height = 23
+          Height = 20
           Hint = 'Unit of measurement'
           Top = 48
           Width = 70
-          ItemHeight = 15
+          ItemHeight = 19
           ItemIndex = 0
           Items.Strings = (
             'ng/ml'
@@ -219,14 +219,14 @@ object PreferencesForm: TPreferencesForm
         end
         object SPINAGBetaLabel: TLabel
           Left = 12
-          Height = 15
+          Height = 16
           Top = 83
-          Width = 69
+          Width = 81
           Caption = 'SPINA-GBeta'
         end
         object GBetaRRLEdit: TEdit
           Left = 191
-          Height = 23
+          Height = 22
           Hint = 'Lower boundary of reference range'
           Top = 80
           Width = 80
@@ -236,14 +236,14 @@ object PreferencesForm: TPreferencesForm
         end
         object DashLabel4: TLabel
           Left = 280
-          Height = 15
+          Height = 16
           Top = 83
-          Width = 5
+          Width = 6
           Caption = '-'
         end
         object GBetaRRHEdit: TEdit
           Left = 294
-          Height = 23
+          Height = 22
           Hint = 'Higher boundary of reference range'
           Top = 80
           Width = 80
@@ -253,32 +253,209 @@ object PreferencesForm: TPreferencesForm
         end
         object GBetaUnitLabel: TLabel
           Left = 401
-          Height = 15
+          Height = 16
           Top = 83
-          Width = 38
+          Width = 41
           Caption = 'pmol/s'
+        end
+        object SPINAGRLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 107
+          Width = 62
+          Caption = 'SPINA-GR'
+        end
+        object GRRRLEdit: TEdit
+          Left = 191
+          Height = 22
+          Hint = 'Lower boundary of reference range'
+          Top = 104
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 11
+          Text = 'NaN'
+        end
+        object DashLabel5: TLabel
+          Left = 280
+          Height = 16
+          Top = 107
+          Width = 6
+          Caption = '-'
+        end
+        object GRRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Hint = 'Higher boundary of reference range'
+          Top = 104
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 12
+          Text = 'NaN'
+        end
+        object DIRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Hint = 'Higher boundary of reference range'
+          Top = 128
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 13
+          Text = 'NaN'
+        end
+        object SPINADILabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 131
+          Width = 57
+          Caption = 'SPINA-DI'
+        end
+        object DIRRLEdit: TEdit
+          Left = 191
+          Height = 22
+          Hint = 'Lower boundary of reference range'
+          Top = 128
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 14
+          Text = 'NaN'
+        end
+        object DashLabel6: TLabel
+          Left = 280
+          Height = 16
+          Top = 131
+          Width = 6
+          Caption = '-'
+        end
+        object HOMABetaLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 155
+          Width = 73
+          Caption = 'HOMA-Beta'
+        end
+        object HOMABetaRRLEdit1: TEdit
+          Left = 191
+          Height = 22
+          Hint = 'Lower boundary of reference range'
+          Top = 152
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 15
+          Text = 'NaN'
+        end
+        object DashLabel7: TLabel
+          Left = 280
+          Height = 16
+          Top = 155
+          Width = 6
+          Caption = '-'
+        end
+        object HOMABetaRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Hint = 'Higher boundary of reference range'
+          Top = 152
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 16
+          Text = 'NaN'
+        end
+        object HOMABetaUnitLabel: TLabel
+          Left = 401
+          Height = 16
+          Top = 155
+          Width = 12
+          Caption = '%'
+        end
+        object HOMAIRLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 179
+          Width = 57
+          Caption = 'HOMA-IR'
+        end
+        object HOMAIRRRLEdit: TEdit
+          Left = 191
+          Height = 22
+          Hint = 'Lower boundary of reference range'
+          Top = 176
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 17
+          Text = 'NaN'
+        end
+        object DashLabel8: TLabel
+          Left = 280
+          Height = 16
+          Top = 179
+          Width = 6
+          Caption = '-'
+        end
+        object HOMAIRRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Hint = 'Higher boundary of reference range'
+          Top = 176
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 18
+          Text = 'NaN'
+        end
+        object HOMAISLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 203
+          Width = 57
+          Caption = 'HOMA-IS'
+        end
+        object HOMAISRRLEdit: TEdit
+          Left = 191
+          Height = 22
+          Hint = 'Lower boundary of reference range'
+          Top = 200
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 19
+          Text = 'NaN'
+        end
+        object DashLabel9: TLabel
+          Left = 280
+          Height = 16
+          Top = 203
+          Width = 6
+          Caption = '-'
+        end
+        object HOMAISRRHEdit: TEdit
+          Left = 294
+          Height = 22
+          Hint = 'Higher boundary of reference range'
+          Top = 200
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 20
+          Text = 'NaN'
         end
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'HL7 messages'
-      ClientHeight = 324
-      ClientWidth = 609
+      ClientHeight = 316
+      ClientWidth = 611
       object IDGroupBox: TGroupBox
         Left = 24
         Height = 104
         Top = 8
-        Width = 573
+        Width = 575
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Physician, Hospital or Unit ID:'
-        ClientHeight = 84
-        ClientWidth = 569
+        ClientHeight = 77
+        ClientWidth = 565
         TabOrder = 0
         object SendingFacLabel: TLabel
           Left = 12
-          Height = 15
+          Height = 16
           Top = 16
-          Width = 75
+          Width = 85
           Caption = 'Facility Name:'
           ParentColor = False
         end
@@ -287,7 +464,7 @@ object PreferencesForm: TPreferencesForm
           Height = 22
           Hint = 'HL7 Sending and Receiving Facility'
           Top = 16
-          Width = 416
+          Width = 412
           Anchors = [akTop, akLeft, akRight]
           AutoSize = False
           ParentShowHint = False
@@ -296,9 +473,9 @@ object PreferencesForm: TPreferencesForm
         end
         object PlacerLabel: TLabel
           Left = 12
-          Height = 15
+          Height = 16
           Top = 48
-          Width = 35
+          Width = 42
           Caption = 'Placer:'
           ParentColor = False
         end
@@ -307,7 +484,7 @@ object PreferencesForm: TPreferencesForm
           Height = 22
           Hint = 'HL7 Sending and Receiving Facility'
           Top = 48
-          Width = 416
+          Width = 412
           Anchors = [akTop, akLeft, akRight]
           AutoSize = False
           ParentShowHint = False
@@ -318,23 +495,23 @@ object PreferencesForm: TPreferencesForm
     end
     object TabSheet3: TTabSheet
       Caption = 'Other'
-      ClientHeight = 324
-      ClientWidth = 609
+      ClientHeight = 316
+      ClientWidth = 611
       object GUIGroupBox: TGroupBox
         Left = 24
         Height = 240
         Top = 8
-        Width = 573
+        Width = 575
         Anchors = [akTop, akLeft, akRight]
         Caption = 'GUI'
-        ClientHeight = 220
-        ClientWidth = 569
+        ClientHeight = 213
+        ClientWidth = 565
         TabOrder = 0
         object MarkMandatoryCheck: TCheckBox
           Left = 16
-          Height = 19
+          Height = 18
           Top = 10
-          Width = 137
+          Width = 153
           Caption = 'Mark mandatory fields'
           TabOrder = 0
         end
@@ -342,26 +519,26 @@ object PreferencesForm: TPreferencesForm
           Left = 16
           Height = 160
           Top = 40
-          Width = 528
+          Width = 524
           Anchors = [akTop, akLeft, akRight]
           AutoFillColumns = True
           Color = clSilver
           Columns = <          
             item
               Title.Caption = 'SPINA-GBeta'
-              Width = 116
+              Width = 115
             end          
             item
               Title.Caption = 'SPINA-GR'
-              Width = 116
+              Width = 115
             end          
             item
               Title.Caption = 'SPINA-DI'
-              Width = 116
+              Width = 115
             end          
             item
               Title.Caption = 'CGR'
-              Width = 115
+              Width = 114
             end>
           Flat = True
           Font.Style = [fsBold]
@@ -372,30 +549,30 @@ object PreferencesForm: TPreferencesForm
           TabOrder = 1
           ColWidths = (
             64
-            116
-            116
-            116
             115
+            115
+            115
+            114
           )
         end
       end
       object PrintingGroupbox: TGroupBox
         Left = 24
         Height = 57
-        Top = 256
-        Width = 573
+        Top = 248
+        Width = 575
         Anchors = [akLeft, akRight, akBottom]
         Caption = 'Printing'
-        ClientHeight = 37
-        ClientWidth = 569
+        ClientHeight = 30
+        ClientWidth = 565
         TabOrder = 1
         object FontsCombobox: TComboBox
           Left = 16
-          Height = 23
-          Top = 2
-          Width = 529
+          Height = 20
+          Top = -2
+          Width = 525
           Anchors = [akLeft, akRight, akBottom]
-          ItemHeight = 15
+          ItemHeight = 19
           ItemIndex = 0
           Items.Strings = (
             'Font...'

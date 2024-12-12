@@ -35,6 +35,24 @@ type
   TPreferencesForm = class(TForm)
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
+    DashLabel5: TLabel;
+    DashLabel6: TLabel;
+    DashLabel7: TLabel;
+    DashLabel8: TLabel;
+    DashLabel9: TLabel;
+    HOMAIRLabel: TLabel;
+    HOMABetaRRHEdit: TEdit;
+    HOMAISLabel: TLabel;
+    HOMAIRRRHEdit: TEdit;
+    HOMABetaRRLEdit1: TEdit;
+    HOMAISRRHEdit: TEdit;
+    HOMAIRRRLEdit: TEdit;
+    HOMABetaUnitLabel: TLabel;
+    GRRRHEdit: TEdit;
+    DIRRHEdit: TEdit;
+    GRRRLEdit: TEdit;
+    DIRRLEdit: TEdit;
+    HOMAISRRLEdit: TEdit;
     SPINAGBetaLabel: TLabel;
     GBetaRRHEdit: TEdit;
     GBetaRRLEdit: TEdit;
@@ -67,6 +85,9 @@ type
     PageControl1: TPageControl;
     PlacerLabel: TLabel;
     GBetaUnitLabel: TLabel;
+    HOMABetaLabel: TLabel;
+    SPINAGRLabel: TLabel;
+    SPINADILabel: TLabel;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
     TabSheet1: TTabSheet;
