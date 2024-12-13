@@ -38,8 +38,8 @@ uses
 
 begin
   RequireDerivedFormResource:=True;
-  Application.Title := 'SPINA Carb';
-  Application.Scaled := True;
+  Application.Title:='SPINA Carb';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TResultForm, ResultForm);
