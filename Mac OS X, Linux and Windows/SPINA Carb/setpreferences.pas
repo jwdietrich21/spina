@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  SPINATypes, HandlePreferences, SPINA_GUIServices, Grids;
+  Math, SPINATypes, HandlePreferences, SPINA_GUIServices, Grids;
 
 type
 
@@ -44,6 +44,7 @@ type
     DashLabel7: TLabel;
     DashLabel8: TLabel;
     DashLabel9: TLabel;
+    GRUnitLabel: TLabel;
     HOMAIRLabel: TLabel;
     HOMABetaRRHEdit: TEdit;
     HOMAISLabel: TLabel;
@@ -70,8 +71,8 @@ type
     FontsCombobox: TComboBox;
     GlucoseLabel: TLabel;
     GlucoseUnitsCombo: TComboBox;
-    GluoseRRLEdit: TEdit;
-    GluoseRRHEdit: TEdit;
+    GlucoseRRLEdit: TEdit;
+    GlucoseRRHEdit: TEdit;
     GUIGroupBox: TGroupBox;
     DashLabel1: TLabel;
     InsulinLabel: TLabel;
@@ -162,6 +163,34 @@ procedure TPreferencesForm.OKButtonClick(Sender: TObject);
 begin
   gPreferences.MSH_ID := SendingFacEdit.Text;
   gPreferences.Placer_ID := PlacerEdit.Text;
+  gPreferences.ReferenceValues.Glucose.ln := StrToFloatDef(GlucoseRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Glucose.hn := StrToFloatDef(GlucoseRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Glucose.UoM := GlucoseUnitsCombo.Text;
+  gPreferences.ReferenceValues.Insulin.ln := StrToFloatDef(InsulinRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Insulin.hn := StrToFloatDef(InsulinRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Insulin.uom := InsulinUnitsCombo.Text;
+  gPreferences.ReferenceValues.CPeptide.ln := StrToFloatDef(CPeptideRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CPeptide.hn := StrToFloatDef(CPeptideRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CPeptide.uom := CPeptideUnitsCombo.Text;
+  gPreferences.ReferenceValues.SPINA_GBeta.ln := StrToFloatDef(GBetaRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GBeta.hn := StrToFloatDef(GBetaRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GBeta.UoM := GBetaUnitLabel.Caption;
+  gPreferences.ReferenceValues.SPINA_GR.ln := StrToFloatDef(GRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GR.hn := StrToFloatDef(GRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GR.UoM := GRUnitLabel.Caption;
+  gPreferences.ReferenceValues.SPINA_DI.ln := StrToFloatDef(DIRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_DI.hn := StrToFloatDef(DIRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_Beta.ln := StrToFloatDef(HOMABetaRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_Beta.hn := StrToFloatDef(HOMABetaRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_Beta.UoM := HOMABetaUnitLabel.Caption;
+  gPreferences.ReferenceValues.HOMA_IR.ln := StrToFloatDef(HOMAIRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_IR.hn := StrToFloatDef(HOMAIRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_IS.ln := StrToFloatDef(HOMAISRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_IS.hn := StrToFloatDef(HOMAISRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.QUICKI.ln := StrToFloatDef(QUICKIRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.QUICKI.hn := StrToFloatDef(QUICKIRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CGR.ln := StrToFloatDef(CGRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CGR.hn := StrToFloatDef(CGRRRHEdit.Text, Math.Nan);
   if FontsCombobox.ItemIndex > 0 then
     gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
   SavePreferences;

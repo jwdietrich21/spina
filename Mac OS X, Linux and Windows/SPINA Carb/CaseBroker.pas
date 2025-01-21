@@ -34,7 +34,7 @@ type
       QUICKI, CGR: extended;
   end;
   tCaseRecord = record
-    LabRecord:tLabRecord;
+    LabRecord: tLabRecord;
     CaseID, PID, Name, GivenNames, Placer: string;
     DoBDate, OBDate, OBTime: TDateTime;
     InsulinTherapy: boolean;

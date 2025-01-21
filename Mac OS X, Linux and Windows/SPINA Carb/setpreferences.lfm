@@ -67,7 +67,7 @@ object PreferencesForm: TPreferencesForm
           Width = 99
           Caption = 'Fasting glucose:'
         end
-        object GluoseRRLEdit: TEdit
+        object GlucoseRRLEdit: TEdit
           Left = 191
           Height = 22
           Hint = 'Lower boundary of reference range'
@@ -85,7 +85,7 @@ object PreferencesForm: TPreferencesForm
           Width = 6
           Caption = '-'
         end
-        object GluoseRRHEdit: TEdit
+        object GlucoseRRHEdit: TEdit
           Left = 294
           Height = 22
           Hint = 'Higher boundary of reference range'
@@ -502,6 +502,13 @@ object PreferencesForm: TPreferencesForm
           ParentShowHint = False
           TabOrder = 24
           Text = 'NaN'
+        end
+        object GRUnitLabel: TLabel
+          Left = 401
+          Height = 16
+          Top = 107
+          Width = 33
+          Caption = 'mol/s'
         end
       end
     end

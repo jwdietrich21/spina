@@ -73,19 +73,25 @@ const
   HELP_URL = 'http://spina.sourceforge.net/manual.html';
   PORTAL_URL = 'http://www.ruhr-uni-bochum.de/spina-portal';
 
-  IMPLEMENTATION_MESSAGE = 'This function is not implemented in this version of SPINA Thyr.';
+  IMPLEMENTATION_MESSAGE =
+    'This function is not implemented in this version of SPINA Thyr.';
   FORMAT_MESSAGE = 'Please check your input.';
   FILE_FORMAT_MESSAGE = 'File format error.';
   SAVE_ERROR_MESSAGE = 'Error saving the file.';
   FILE_EMPTY_MESSAGE = 'No lab results available.';
   RR_FORMAT_ERROR_MESSAGE = 'The CDISC Lab model XML file is malformatted.';
-  RR_SPINA_ERROR_MESSAGE = 'Definitions for structure parameters in CDISC Lab model XML file are missing.';
-  PREFERENCES_READ_ERROR_MESSAGE = 'Preferences could not be read. Please check access rights of your user or home folder';
-  PREFERENCES_SAVE_ERROR_MESSAGE = 'The preferences could not be saved permanently, however, they are valid for this session.';
-  FOLDER_NOT_SUPPORTED_MESSAGE = 'Folders are not supported in this version of SPINA Carb.';
+  RR_SPINA_ERROR_MESSAGE =
+    'Definitions for structure parameters in CDISC Lab model XML file are missing.';
+  PREFERENCES_READ_ERROR_MESSAGE =
+    'Preferences could not be read. Please check access rights of your user or home folder';
+  PREFERENCES_SAVE_ERROR_MESSAGE =
+    'The preferences could not be saved permanently, however, they are valid for this session.';
+  FOLDER_NOT_SUPPORTED_MESSAGE =
+    'Folders are not supported in this version of SPINA Carb.';
   URLS_NOT_SUPPORTED_MESSAGE = 'URLs are not supported in this version of SPINA Carb.';
 
-  ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss'; {Date/time format in XML representation}
+  ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss';
+  {Date/time format in XML representation}
   STANDARD_NUM_FORMAT = '###,##0.0000';
   SHORT_NUM_FORMAT = '###,###.00';
   STANDARD_TIME_FORMAT = '"d"D hh:nn:ss';
@@ -94,16 +100,28 @@ const
   clLtOrange = TColor($89E9FF);
 
 type
+  tReferenceLimits = record
+    ln, hn, lt, ht, lp, hp: extended;
+    UoM: string;
+  end;
+
+  tReferenceValues = record
+    Insulin, Glucose, CPeptide: tReferenceLimits;
+    SPINA_GBeta, SPINA_GR, SPINA_DI: tReferenceLimits;
+    HOMA_Beta, HOMA_IR, HOMA_IS, QUICKI, CGR: tReferenceLimits;
+  end;
+
   tPreferences = record
-       new, rememberUsedUnits, colouriseMandatoryFields, exportLOINC: boolean;
-       MandatoryColor: TColor;
-       MSH_ID, Placer_ID: String;
-       PrintFont: String;
+    new, rememberUsedUnits, colouriseMandatoryFields, exportLOINC: boolean;
+    MandatoryColor: TColor;
+    MSH_ID, Placer_ID: string;
+    PrintFont: string;
+    ReferenceValues: tReferenceValues;
   end;
 
 var
   gPreferences: tPreferences;
-  gNumberFormat, gDateTimeFormat: String;
+  gNumberFormat, gDateTimeFormat: string;
   gStandardMandatoryColor: TColor;
 
 implementation
@@ -113,4 +131,3 @@ initialization
   gDateTimeFormat := STANDARD_TIME_FORMAT;
 
 end.
-

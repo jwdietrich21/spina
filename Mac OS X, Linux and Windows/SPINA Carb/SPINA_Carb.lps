@@ -10,7 +10,7 @@
         <EditorIndex Value="12"/>
         <TopLine Value="11"/>
         <CursorPos Y="39"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -21,9 +21,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
         <EditorIndex Value="11"/>
-        <TopLine Value="233"/>
-        <CursorPos X="29" Y="251"/>
-        <UsageCount Value="68"/>
+        <TopLine Value="303"/>
+        <CursorPos X="24" Y="316"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -31,9 +31,8 @@
         <Filename Value="SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="21"/>
         <CursorPos X="62" Y="134"/>
-        <UsageCount Value="67"/>
+        <UsageCount Value="69"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -41,15 +40,15 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitConverter"/>
         <CursorPos X="20"/>
-        <UsageCount Value="67"/>
+        <UsageCount Value="69"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
-        <CursorPos Y="2"/>
-        <UsageCount Value="67"/>
+        <CursorPos X="21" Y="3"/>
+        <UsageCount Value="69"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -61,7 +60,7 @@
         <UnitName Value="ResultWindow"/>
         <EditorIndex Value="9"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -70,9 +69,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINATypes"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="49"/>
-        <CursorPos X="29" Y="68"/>
-        <UsageCount Value="62"/>
+        <TopLine Value="101"/>
+        <CursorPos X="30" Y="112"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -81,7 +80,7 @@
         <UnitName Value="SPINA_GUIServices"/>
         <EditorIndex Value="7"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -90,7 +89,7 @@
         <UnitName Value="EnvironmentInfo"/>
         <EditorIndex Value="6"/>
         <CursorPos X="22"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -100,7 +99,7 @@
         <EditorIndex Value="10"/>
         <TopLine Value="143"/>
         <CursorPos X="52" Y="159"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -112,7 +111,7 @@
         <UnitName Value="SPINA_Aboutbox"/>
         <EditorIndex Value="8"/>
         <CursorPos Y="4"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -121,9 +120,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="91"/>
-        <CursorPos Y="112"/>
-        <UsageCount Value="46"/>
+        <TopLine Value="12"/>
+        <CursorPos X="29" Y="398"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -135,8 +134,8 @@
         <UnitName Value="Setpreferences"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <CursorPos X="96" Y="4"/>
-        <UsageCount Value="29"/>
+        <CursorPos X="8" Y="2"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -173,90 +172,6 @@
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="setpreferences.pas"/>
-        <Caret Line="115" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="116" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="117" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="119" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="120" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="121" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="122" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="163" Column="57" TopLine="148"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="3" Column="14"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="4" Column="60"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="56" Column="27" TopLine="22"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="422" Column="21" TopLine="401"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="427" Column="19" TopLine="401"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="68" Column="37" TopLine="50"/>
-      </Position>
-      <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="163" Column="67" TopLine="142"/>
-      </Position>
-      <Position>
-        <Filename Value="environmentinfo.pas"/>
-        <Caret Line="4" Column="15"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="117" Column="13" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="121" Column="13" TopLine="101"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="124" Column="92" TopLine="105"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="129" Column="92" TopLine="110"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="133" Column="92" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
         <Caret Line="2" Column="11"/>
       </Position>
       <Position>
@@ -291,6 +206,90 @@
         <Filename Value="setpreferences.pas"/>
         <Caret Line="25" Column="24"/>
       </Position>
+      <Position>
+        <Filename Value="spinatypes.pas"/>
+        <Caret Column="16"/>
+      </Position>
+      <Position>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="307" Column="7" TopLine="291"/>
+      </Position>
+      <Position>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="369" TopLine="369"/>
+      </Position>
+      <Position>
+        <Filename Value="spinatypes.pas"/>
+        <Caret Line="105" Column="52" TopLine="84"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="165" Column="48" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="29" Column="9"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="165" Column="90" TopLine="140"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="164" Column="10" TopLine="140"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="189" TopLine="159"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="162" Column="17" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="164" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="165" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="166" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="167" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="168" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="169" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="170" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="171" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="173" Column="72" TopLine="161"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="185" Column="84" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="setpreferences.pas"/>
+        <Caret Line="164" TopLine="157"/>
+      </Position>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
@@ -301,6 +300,9 @@
     <Watches>
       <Item>
         <Expression Value="CaseRecord"/>
+      </Item>
+      <Item>
+        <Expression Value="gPreferences"/>
       </Item>
     </Watches>
   </Debugging>
