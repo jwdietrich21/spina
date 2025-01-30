@@ -10,10 +10,10 @@ program SPINA_Carb;
 
 { Version 5.1.0 (Cyclone) }
 
-{ (c) J. W. Dietrich, 1994 - 2024 }
+{ (c) J. W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2024 }
+{ (c) Ruhr University of Bochum 2005 - 2025 }
 
 { Main program unit }
 
@@ -38,8 +38,8 @@ uses
 
 begin
   RequireDerivedFormResource:=True;
-  Application.Title:='SPINA Carb';
-  Application.Scaled:=True;
+  Application.Title := 'SPINA Carb';
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);
   Application.CreateForm(TResultForm, ResultForm);

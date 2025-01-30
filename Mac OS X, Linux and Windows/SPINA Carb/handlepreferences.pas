@@ -10,10 +10,10 @@ unit HandlePreferences;
 
 { Version 5.1.0 (Cyclone) }
 
-{ (c) J. W. Dietrich, 1994 - 2024 }
+{ (c) J. W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2024 }
+{ (c) Ruhr University of Bochum 2005 - 2025 }
 
 { This unit handles global application preferences }
 
@@ -31,28 +31,29 @@ uses
   {$IFDEF Windows}
   , Windows
   {$ELSE}
-    {$IFDEF LCLCarbon}
+  {$IFDEF LCLCarbon}
       , MacOSAll
-    {$ELSE}
-      {$IFDEF LCLCocoa}
+  {$ELSE}
+  {$IFDEF LCLCocoa}
         , CocoaAll, MacOSAll
-      {$ENDIF}
-    {$ENDIF}
+  {$ENDIF}
+  {$ENDIF}
   , Unix
   {$ENDIF}
   ;
 
-function ComputerName: String;
-function GetPreferencesFile: String;
-function GetPreferencesFolder: String;
+function ComputerName: string;
+function GetPreferencesFile: string;
+function GetPreferencesFolder: string;
+function RefRangeFile: string;
 procedure ReadPreferences;
 procedure SavePreferences;
 
 
 implementation
 
-function GetPreferencesFolder: String;
-{platform-independend method to search for the location of preferences folder}
+function GetPreferencesFolder: string;
+  {platform-independend method to search for the location of preferences folder}
 const
   kMaxPath = 1024;
   FallBackPath = '~';
@@ -63,7 +64,8 @@ const
     pathBuffer: PChar;
   {$ENDIF}
 begin
-  {$IFDEF Darwin} {standard method for macOS Carbon and Cocoa}
+  {$IFDEF Darwin}
+ {standard method for macOS Carbon and Cocoa}
     try
       pathBuffer := Allocmem(kMaxPath);
     except on exception do
@@ -91,15 +93,15 @@ begin
   {$IFDEF WINDOWS}
     GetPreferencesFolder := IncludeTrailingPathDelimiter(sysutils.GetEnvironmentVariable('appdata')) + ApplicationName;
   {$ELSE}
-    GetPreferencesFolder := GetAppConfigDir(false); {standard method for Linux and Unix}
+  GetPreferencesFolder := GetAppConfigDir(False); {standard method for Linux and Unix}
   {$ENDIF}
   {$ENDIF}
 end;
 
-function GetPreferencesFile: String;
-{delivers path to preferences file}
+function GetPreferencesFile: string;
+  {delivers path to preferences file}
 var
-  prefsFolder: String;
+  prefsFolder: string;
 begin
   {$IFDEF DARWIN}
     prefsFolder := GetPreferencesFolder;
@@ -111,42 +113,43 @@ begin
   {$IFDEF WINDOWS}
     GetPreferencesFile := IncludeTrailingPathDelimiter(GetPreferencesFolder) + 'SPINA Carb.cfg';
   {$ELSE}
-    GetPreferencesFile := GetAppConfigFile(false);
+  GetPreferencesFile := GetAppConfigFile(False);
   {$ENDIF}
   {$ENDIF}
 end;
 
-function RRFile: String;
-{delivers path to CDISC-compliant XML file with reference values}
+function RRFile: string;
+  {delivers path to CDISC-compliant XML file with reference values}
 var
-  prefsFolder: String;
+  prefsFolder: string;
 begin
-   prefsFolder := GetPreferencesFolder;
-   if prefsFolder = '' then
-     RRFile := ''
-   else
-     RRFile := IncludeTrailingPathDelimiter(GetPreferencesFolder) + SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
+  prefsFolder := GetPreferencesFolder;
+  if prefsFolder = '' then
+    RRFile := ''
+  else
+    RRFile := IncludeTrailingPathDelimiter(GetPreferencesFolder) +
+      SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
-function ComputerName: String;
-{inspired by Zoran's post at http://forum.lazarus.freepascal.org/index.php?topic=23622.0 }
-{$IFDEF mswindows}
+function ComputerName: string;
+  {inspired by Zoran's post at http://forum.lazarus.freepascal.org/index.php?topic=23622.0 }
+  {$IFDEF mswindows}
 const
   INFO_BUFFER_SIZE = 32767;
 var
-  Buffer: array[0..INFO_BUFFER_SIZE] of WideChar;
+  Buffer: array[0..INFO_BUFFER_SIZE] of widechar;
   Ret: DWORD;
 begin
-  Ret:= INFO_BUFFER_SIZE;
-  If (GetComputerNameW(@Buffer[0],Ret)) then
+  Ret := INFO_BUFFER_SIZE;
+  if (GetComputerNameW(@Buffer[0], Ret)) then
   begin
-    result := UTF8Encode(WideString(Buffer));
+    Result := UTF8Encode(WideString(Buffer));
   end
   else
   begin
-    result := 'ERROR_NO_COMPUTERNAME_RETURNED';
-  End;
-End;
+    Result := 'ERROR_NO_COMPUTERNAME_RETURNED';
+  end;
+end;
 {$ENDIF}
 {$IFDEF UNIX}
 begin
@@ -204,26 +207,26 @@ begin
   Result := ItemNode;
 end;
 
-function AttributeValue(theNode: TDOMNode; theName: String): String;
-{this functions finds an attribute of an XML tag and delivers its value}
+function AttributeValue(theNode: TDOMNode; theName: string): string;
+  {this functions finds an attribute of an XML tag and delivers its value}
 var
   i: integer;
-  foundValue: String;
+  foundValue: string;
 begin
   foundValue := '';
   if assigned(theNode) then
     for i := 0 to theNode.Attributes.Length - 1 do
-      begin
-        if theNode.Attributes[i].NodeName = theName then
-          foundValue := theNode.Attributes[i].NodeValue;
-      end;
-  result := foundValue;
+    begin
+      if theNode.Attributes[i].NodeName = theName then
+        foundValue := theNode.Attributes[i].NodeValue;
+    end;
+  Result := foundValue;
 end;
 
 procedure SavePreferences;
 {save preferences file}
 var
-  theFileName, PreferencesFolder: String;
+  theFileName, PreferencesFolder: string;
   Doc: TXMLDocument;
   {StartComment: TDOMComment;}
   RootNode, ElementNode: TDOMNode;
@@ -249,7 +252,8 @@ begin
       ElementNode.AppendChild(SimpleNode(Doc, 'colourise', 'true'))
     else
       ElementNode.AppendChild(SimpleNode(Doc, 'colourise', 'false'));
-    ElementNode.AppendChild(SimpleNode(Doc, 'colour', Dec2Numb(gPreferences.MandatoryColor, 6, 16)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'colour',
+      Dec2Numb(gPreferences.MandatoryColor, 6, 16)));
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('mshinfo');
@@ -283,11 +287,11 @@ begin
       if not CreateDir(PreferencesFolder) then
         ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
     if DirectoryExists(PreferencesFolder) then
-        begin
-          if FileExists(theFileName) then
-            SysUtils.DeleteFile(theFileName);
-          WriteXMLFile(Doc,theFileName);
-        end;
+    begin
+      if FileExists(theFileName) then
+        SysUtils.DeleteFile(theFileName);
+      WriteXMLFile(Doc, theFileName);
+    end;
   finally
     Doc.Free;
   end;
@@ -298,15 +302,28 @@ procedure CreateNewPreferences;
 begin
   gStandardMandatoryColor := clLtYellow;
   with gPreferences do
-    begin
-      rememberUsedUnits := true;
-      colouriseMandatoryFields := true;
-      exportLOINC := true;
-      MandatoryColor := gStandardMandatoryColor;
-      MSH_ID := '';
-      gPreferences.new := true;
-    end;
+  begin
+    rememberUsedUnits := True;
+    colouriseMandatoryFields := True;
+    exportLOINC := True;
+    MandatoryColor := gStandardMandatoryColor;
+    MSH_ID := '';
+    gPreferences.new := True;
+  end;
   SavePreferences;
+end;
+
+function RefRangeFile: string;
+  {delivers path to CDISC-compliant XML file with reference values}
+var
+  prefsFolder: string;
+begin
+  prefsFolder := GetPreferencesFolder;
+  if prefsFolder = '' then
+    Result := ''
+  else
+    Result := IncludeTrailingPathDelimiter(GetPreferencesFolder) +
+      SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
 procedure ReadPreferences;
@@ -314,12 +331,12 @@ procedure ReadPreferences;
 var
   Doc: TXMLDocument;
   RootNode: TDOMNode;
-  theFileName, theString: String;
+  theFileName, theString: string;
   theFileHandle: longint;
   XMLfound: boolean;
 begin
   gStandardMandatoryColor := clLtYellow;
-  XMLfound := false;
+  XMLfound := False;
   theFileName := GetPreferencesFile;
   if FileExists(theFileName) then {simple check for XML file}
   begin
@@ -327,72 +344,72 @@ begin
     try
       FileRead(theFileHandle, theString, SizeOf(theString));
       if pos('xml', LowerCase(theString)) > 0 then
-        XMLfound := true;
+        XMLfound := True;
     finally
       FileClose(theFileHandle);
     end;
   end;
   if XMLfound then {file present and marked as XML file}
+  try
+    ReadXMLFile(Doc, theFileName);
+
+    theString := NodeContent(Doc.DocumentElement, 'remember');
+    if theString = 'true' then
+      gPreferences.rememberUsedUnits := True
+    else
+      gPreferences.rememberUsedUnits := False;
+
+    RootNode := Doc.DocumentElement.FindNode('mandatoryfields');
+    theString := NodeContent(RootNode, 'colourise');
+    if theString = 'true' then
+      gPreferences.colouriseMandatoryFields := True
+    else
+      gPreferences.colouriseMandatoryFields := False;
+    theString := NodeContent(RootNode, 'colour');
+    if (theString = '') or (theString = 'NA') then
+      gPreferences.MandatoryColor := gStandardMandatoryColor  {Standard colour}
+    else
     try
-      ReadXMLFile(Doc, theFileName);
+      gPreferences.MandatoryColor := TColor(Hex2Dec(theString));
+    except
+      gPreferences.MandatoryColor := clDefault;
+    end;
 
-      theString := NodeContent(Doc.DocumentElement, 'remember');
-      if theString = 'true' then
-        gPreferences.rememberUsedUnits := true
-      else
-        gPreferences.rememberUsedUnits := false;
+    RootNode := Doc.DocumentElement.FindNode('LOINC');
+    theString := NodeContent(RootNode, 'export');
+    if theString = 'true' then
+      gPreferences.exportLOINC := True
+    else
+      gPreferences.exportLOINC := False;
 
-      RootNode := Doc.DocumentElement.FindNode('mandatoryfields');
-      theString := NodeContent(RootNode, 'colourise');
-      if theString = 'true' then
-        gPreferences.colouriseMandatoryFields := true
-      else
-        gPreferences.colouriseMandatoryFields := false;
-      theString := NodeContent(RootNode, 'colour');
-      if (theString = '') or (theString = 'NA') then
-        gPreferences.MandatoryColor := gStandardMandatoryColor  {Standard colour}
-      else
-        try
-          gPreferences.MandatoryColor := TColor(Hex2Dec(theString));
-        except
-          gPreferences.MandatoryColor := clDefault;
-        end;
+    RootNode := Doc.DocumentElement.FindNode('mshinfo');
 
-      RootNode := Doc.DocumentElement.FindNode('LOINC');
-      theString := NodeContent(RootNode, 'export');
-      if theString = 'true' then
-        gPreferences.exportLOINC := true
-      else
-        gPreferences.exportLOINC := false;
-
-      RootNode := Doc.DocumentElement.FindNode('mshinfo');
-
-      if RootNode <> nil then
-        if RootNode.HasAttributes and (RootNode.Attributes.Length > 0) then
-         {$IFDEF LCLCarbon}
+    if RootNode <> nil then
+      if RootNode.HasAttributes and (RootNode.Attributes.Length > 0) then
+        {$IFDEF LCLCarbon}
          gPreferences.MSH_ID := UTF8Encode(RootNode.Attributes[0].NodeValue);
-         {$ELSE}
-         gPreferences.MSH_ID := RootNode.Attributes[0].NodeValue;
-         {$ENDIF}
+        {$ELSE}
+        gPreferences.MSH_ID := RootNode.Attributes[0].NodeValue;
+    {$ENDIF}
 
-       RootNode := Doc.DocumentElement.FindNode('placer');
+    RootNode := Doc.DocumentElement.FindNode('placer');
 
-      if RootNode <> nil then
-        if RootNode.HasAttributes and (RootNode.Attributes.Length > 0) then
-         {$IFDEF LCLCarbon}
+    if RootNode <> nil then
+      if RootNode.HasAttributes and (RootNode.Attributes.Length > 0) then
+        {$IFDEF LCLCarbon}
          gPreferences.Placer_ID := UTF8Encode(RootNode.Attributes[0].NodeValue);
-         {$ELSE}
-         gPreferences.Placer_ID := RootNode.Attributes[0].NodeValue;
-         {$ENDIF}
+        {$ELSE}
+        gPreferences.Placer_ID := RootNode.Attributes[0].NodeValue;
+    {$ENDIF}
 
-      RootNode := Doc.DocumentElement.FindNode('fonts');
-      theString := NodeContent(RootNode, 'printFont');
-      gPreferences.PrintFont := theString;
+    RootNode := Doc.DocumentElement.FindNode('fonts');
+    theString := NodeContent(RootNode, 'printFont');
+    gPreferences.PrintFont := theString;
 
-      gPreferences.new := false;
-    finally
-      Doc.Free;
-    end
+    gPreferences.new := False;
+  finally
+    Doc.Free;
+  end
   else  {Standards from dialog, if preference file does not exist}
     CreateNewPreferences;  {fall-back solution, if file does not exist}
 end;

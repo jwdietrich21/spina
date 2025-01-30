@@ -14,7 +14,7 @@ object ResultForm: TResultForm
   OnActivate = FormActivate
   OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '3.6.0.0'
+  LCLVersion = '3.7.0.0'
   object LogoImage: TImage
     Left = 24
     Height = 90
@@ -389,9 +389,9 @@ object ResultForm: TResultForm
   end
   object ResultLabel: TLabel
     Left = 128
-    Height = 15
+    Height = 16
     Top = 7
-    Width = 43
+    Width = 53
     Caption = 'Results:'
     Font.Style = [fsBold]
     ParentColor = False

@@ -6,7 +6,7 @@ unit EnvironmentInfo;
 { Partly based on code provided by Mike Thompson, published at}
 { http://www.lazarus.freepascal.org/index.php/topic,13957.0.html}
 
-{ (c) J. W. Dietrich, 2007 - 2024 }
+{ (c) J. W. Dietrich, 2007 - 2025 }
 
 {$mode objfpc}{$H+}
 {$IFDEF LCLCocoa}
