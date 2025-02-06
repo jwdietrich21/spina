@@ -40,6 +40,8 @@ const
   kCOLON = ':';
   kOMIT = '•';
   kCRLF = #13#10;
+  DEC_POINT = '.';
+  DEC_COMMA = ',';
 
   kBPars = 'Behavioural parameters:';
   kSPars = 'Structural parameters:';
@@ -103,6 +105,22 @@ type
   tReferenceLimits = record
     ln, hn, lt, ht, lp, hp: extended;
     UoM: string;
+  end;
+
+  tReferenceExDefinitions = record
+    Sex: char;
+    AgeL, AgeH: integer;
+    UOMS, UOMC: string;
+    LXS, HXS, LXC, HXC: real;
+    startDateTime: string
+  end;
+
+  tReferenceNormDefinitions = record
+    Sex: char;
+    AgeL, AgeH: integer;
+    UOMS, UOMC: string;
+    LS, HS, LTS, HTS, LPS, HPS, LC, HC, LTC, HTC, LPC, HPC: real;
+    startDateTime: string
   end;
 
   tReferenceValues = record

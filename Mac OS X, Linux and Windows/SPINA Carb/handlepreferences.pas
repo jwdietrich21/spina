@@ -27,7 +27,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, SPINATypes, DOM, XMLRead, XMLWrite, StrUtils, Math
+  StdCtrls, DOM, XMLRead, XMLWrite, StrUtils, Math
   {$IFDEF Windows}
   , Windows
   {$ELSE}
@@ -40,7 +40,7 @@ uses
   {$ENDIF}
   , Unix
   {$ENDIF}
-  ;
+  , SPINATypes, HandleCDISC;
 
 function ComputerName: string;
 function GetPreferencesFile: string;
