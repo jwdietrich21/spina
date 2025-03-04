@@ -15,7 +15,7 @@ unit PrintCase;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
 
-{ GUI }
+{ Handler for printing a case on a printer or exporting as PDF }
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
@@ -207,12 +207,12 @@ begin
           resultLine := copy(remainder, 1, returnPos - 1)
         else
           resultLine := remainder;
-        remainder := copy(remainder, returnPos + 2, length(remainder));
+        remainder := copy(remainder, returnPos + 1, length(remainder));
         PrinterWriteln(H, currentX, currentY, resultLine, False);
       until returnPos = 0;
       currentY := lastY;
-      PrinterWriteln(H, currentX, currentY, '', False);
-      PrinterWriteln(H, currentX, currentY, '', False);
+      PrinterWriteln(H, tabX2, currentY, kRR, False);
+      PrinterWriteln(H, tabX2, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, caseRecord.Comment, False);
       Printer.Canvas.Font.Color := clGray;
       PrinterWriteln(H, currentX, currentY, '', False);

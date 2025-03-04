@@ -371,7 +371,7 @@ begin
              '   ' + kCGR + ': ' +
              FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
   CaseRecord.CombMessage := CaseRecord.BParMessage +
-             LineEnding + LineEnding +
+             LineEnding + '       ' + LineEnding +
              CaseRecord.SParMessage;
 end;
 

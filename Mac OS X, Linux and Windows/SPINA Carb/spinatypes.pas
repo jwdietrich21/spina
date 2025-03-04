@@ -45,6 +45,7 @@ const
 
   kBPars = 'Behavioural parameters:';
   kSPars = 'Structural parameters:';
+  kRR = 'Reference ranges:';
   kGluc = 'Glucose';
   kIns = 'Insulin';
   kCpt = 'C-Peptide';
