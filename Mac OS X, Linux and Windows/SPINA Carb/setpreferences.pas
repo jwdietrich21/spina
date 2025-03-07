@@ -101,6 +101,7 @@ type
     TabSheet1: TTabSheet;
     procedure CancelButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
@@ -149,6 +150,13 @@ begin
     FontsCombobox.ItemIndex := sansSerifPos;
   if FontsCombobox.ItemIndex >= 0 then
     gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
+end;
+
+procedure TPreferencesForm.FormCreate(Sender: TObject);
+begin
+  GlucoseRRLEdit.Text := FloatToStr(sReferenceValues.Glucose.ln);
+  GlucoseRRHEdit.Text := FloatToStr(sReferenceValues.Glucose.hn);
+  GlucoseUnitsCombo.Text := sReferenceValues.Glucose.UoM;
 end;
 
 procedure TPreferencesForm.FormPaint(Sender: TObject);

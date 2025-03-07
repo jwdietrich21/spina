@@ -25,7 +25,7 @@ unit SPINATypes;
 interface
 
 uses
-  Classes, SysUtils, Graphics;
+  Classes, SysUtils, Graphics, Math;
 
 const
   kNUL = char(0);           {Special ASCII characters}
@@ -137,6 +137,15 @@ type
     PrintFont: string;
     ReferenceValues: tReferenceValues;
   end;
+
+const
+  sReferenceValues: tReferenceValues =
+                    (Insulin: (ln: 2; hn: 25; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: 'mIU/l');
+                    Glucose: (ln: 70; hn: 100; lt: 70; ht: 180; lp: 54;
+                             hp: 180; UoM: 'mg/dl');
+                    CPeptide: (ln: 0.8; hn: 3.1; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: 'ng/ml'));
 
 var
   gPreferences: tPreferences;

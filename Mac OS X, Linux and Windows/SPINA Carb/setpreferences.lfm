@@ -11,9 +11,10 @@ object PreferencesForm: TPreferencesForm
   Constraints.MinHeight = 400
   Constraints.MinWidth = 600
   OnActivate = FormActivate
+  OnCreate = FormCreate
   OnPaint = FormPaint
   Position = poScreenCenter
-  LCLVersion = '3.7.0.0'
+  LCLVersion = '3.8.0.0'
   object OKButton: TButton
     Left = 566
     Height = 25
@@ -69,14 +70,14 @@ object PreferencesForm: TPreferencesForm
         end
         object GlucoseRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 0
           Width = 80
           ParentShowHint = False
           ShowHint = True
           TabOrder = 0
-          Text = '70'
+          Text = 'NaN'
         end
         object DashLabel1: TLabel
           Left = 280
@@ -87,14 +88,14 @@ object PreferencesForm: TPreferencesForm
         end
         object GlucoseRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 0
           Width = 80
           ParentShowHint = False
           ShowHint = True
           TabOrder = 1
-          Text = '100'
+          Text = 'NaN'
         end
         object GlucoseUnitsCombo: TComboBox
           Left = 390
@@ -102,7 +103,7 @@ object PreferencesForm: TPreferencesForm
           Hint = 'Unit of measurement'
           Top = 0
           Width = 70
-          ItemHeight = 19
+          ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
             'mg/dl'
@@ -122,14 +123,14 @@ object PreferencesForm: TPreferencesForm
         end
         object InsulinRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 24
           Width = 80
           ParentShowHint = False
           ShowHint = True
           TabOrder = 3
-          Text = '2'
+          Text = 'NaN'
         end
         object DashLabel2: TLabel
           Left = 280
@@ -140,14 +141,14 @@ object PreferencesForm: TPreferencesForm
         end
         object InsulinRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 24
           Width = 80
           ParentShowHint = False
           ShowHint = True
           TabOrder = 4
-          Text = '25'
+          Text = 'NaN'
         end
         object CPeptideLabel: TLabel
           Left = 12
@@ -158,13 +159,13 @@ object PreferencesForm: TPreferencesForm
         end
         object CPeptideRRLEdit: TEdit
           Left = 192
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 48
           Width = 80
           ParentShowHint = False
           TabOrder = 6
-          Text = '0.8'
+          Text = 'NaN'
         end
         object DashLabel3: TLabel
           Left = 280
@@ -175,13 +176,13 @@ object PreferencesForm: TPreferencesForm
         end
         object CPeptideRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 48
           Width = 80
           ParentShowHint = False
           TabOrder = 7
-          Text = '3.1'
+          Text = 'NaN'
         end
         object InsulinUnitsCombo: TComboBox
           Left = 390
@@ -189,7 +190,7 @@ object PreferencesForm: TPreferencesForm
           Hint = 'Unit of measurement'
           Top = 24
           Width = 70
-          ItemHeight = 19
+          ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
             'mIU/l'
@@ -206,7 +207,7 @@ object PreferencesForm: TPreferencesForm
           Hint = 'Unit of measurement'
           Top = 48
           Width = 70
-          ItemHeight = 19
+          ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
             'ng/ml'
@@ -226,7 +227,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GBetaRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 80
           Width = 80
@@ -243,7 +244,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GBetaRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 80
           Width = 80
@@ -267,7 +268,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GRRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 104
           Width = 80
@@ -284,7 +285,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GRRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 104
           Width = 80
@@ -294,7 +295,7 @@ object PreferencesForm: TPreferencesForm
         end
         object DIRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 128
           Width = 80
@@ -311,7 +312,7 @@ object PreferencesForm: TPreferencesForm
         end
         object DIRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 128
           Width = 80
@@ -335,7 +336,7 @@ object PreferencesForm: TPreferencesForm
         end
         object HOMABetaRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 152
           Width = 80
@@ -352,7 +353,7 @@ object PreferencesForm: TPreferencesForm
         end
         object HOMABetaRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 152
           Width = 80
@@ -376,7 +377,7 @@ object PreferencesForm: TPreferencesForm
         end
         object HOMAIRRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 176
           Width = 80
@@ -393,7 +394,7 @@ object PreferencesForm: TPreferencesForm
         end
         object HOMAIRRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 176
           Width = 80
@@ -410,7 +411,7 @@ object PreferencesForm: TPreferencesForm
         end
         object HOMAISRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 200
           Width = 80
@@ -427,7 +428,7 @@ object PreferencesForm: TPreferencesForm
         end
         object HOMAISRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 200
           Width = 80
@@ -444,7 +445,7 @@ object PreferencesForm: TPreferencesForm
         end
         object QUICKIRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 224
           Width = 80
@@ -461,7 +462,7 @@ object PreferencesForm: TPreferencesForm
         end
         object QUICKIRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 224
           Width = 80
@@ -478,7 +479,7 @@ object PreferencesForm: TPreferencesForm
         end
         object CGRRRLEdit: TEdit
           Left = 191
-          Height = 22
+          Height = 21
           Hint = 'Lower boundary of reference range'
           Top = 248
           Width = 80
@@ -495,7 +496,7 @@ object PreferencesForm: TPreferencesForm
         end
         object CGRRRHEdit: TEdit
           Left = 294
-          Height = 22
+          Height = 21
           Hint = 'Higher boundary of reference range'
           Top = 248
           Width = 80
@@ -647,7 +648,7 @@ object PreferencesForm: TPreferencesForm
           Top = -2
           Width = 525
           Anchors = [akLeft, akRight, akBottom]
-          ItemHeight = 19
+          ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
             'Font...'
