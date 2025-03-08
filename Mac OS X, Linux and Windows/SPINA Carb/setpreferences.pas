@@ -169,6 +169,16 @@ begin
   GRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn);
   DIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln);
   DIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn);
+  HOMABetaRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln);
+  HOMABetaRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn);
+  HOMAIRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln);
+  HOMAIRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn);
+  HOMAISRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln);
+  HOMAISRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn);
+  QUICKIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.ln);
+  QUICKIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.hn);
+  CGRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.ln);
+  CGRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.hn);
 end;
 
 procedure TPreferencesForm.FormPaint(Sender: TObject);

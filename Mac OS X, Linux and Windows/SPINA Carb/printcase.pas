@@ -200,7 +200,7 @@ begin
       PrintCaption(CaseRecord, H, currentX, currentY, marginXr);
       lastPos := 1;
       lastY := currentY;
-      remainder := CaseRecord.CombMessage;
+      remainder := CaseRecord.CombMessage; // measured and calculated parameters
       repeat
         returnPos := pos(LineEnding, remainder);
         if returnPos > 0 then
@@ -211,7 +211,16 @@ begin
         PrinterWriteln(H, currentX, currentY, resultLine, False);
       until returnPos = 0;
       currentY := lastY;
-      PrinterWriteln(H, tabX2, currentY, kRR, False);
+      remainder := CaseRecord.RCompMessage; // reference ranges
+      repeat
+        returnPos := pos(LineEnding, remainder);
+        if returnPos > 0 then
+          resultLine := copy(remainder, 1, returnPos - 1)
+        else
+          resultLine := remainder;
+        remainder := copy(remainder, returnPos + 1, length(remainder));
+        PrinterWriteln(H, tabX2, currentY, resultLine, False);
+      until returnPos = 0;
       PrinterWriteln(H, tabX2, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, caseRecord.Comment, False);
       Printer.Canvas.Font.Color := clGray;

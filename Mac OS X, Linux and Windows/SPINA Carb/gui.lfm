@@ -8110,6 +8110,7 @@ object Hauptschirm: THauptschirm
         object ResultsMemo: TMemo
           Left = 8
           Height = 246
+          Hint = 'The results of the calcultation will be displayed here.'
           Top = 8
           Width = 198
           Anchors = [akTop, akLeft, akRight, akBottom]
@@ -8119,8 +8120,10 @@ object Hauptschirm: THauptschirm
             'The results of the calculation will appear here.'
           )
           ParentFont = False
+          ParentShowHint = False
           ReadOnly = True
           ScrollBars = ssAutoBoth
+          ShowHint = True
           TabOrder = 0
           OnChange = ResultsMemoChange
         end

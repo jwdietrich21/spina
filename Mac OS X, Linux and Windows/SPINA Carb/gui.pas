@@ -162,7 +162,9 @@ begin
   Calculate(CaseRecord.LabRecord);
   CreateOutput(Sender);
   ResultsMemo.Text := LineEnding + CaseRecord.CombMessage;
-  ResultForm.ShowResults(caseRecord.BParMessage, caseRecord.SParMessage);
+  ResultsMemo.Hint := CaseRecord.RCompMessage;
+  ResultForm.ShowResults(caseRecord.BParMessage, caseRecord.SParMessage,
+                         caseRecord.BRefMessage, caseRecord.SRefMessage);
   ResultForm.Visible := true;
   ResultForm.ShowOnTop;
 end;
@@ -373,6 +375,51 @@ begin
   CaseRecord.CombMessage := CaseRecord.BParMessage +
              LineEnding + '       ' + LineEnding +
              CaseRecord.SParMessage;
+  CaseRecord.BRefMessage := kRR +
+             LineEnding + FloatToStr(gPreferences.ReferenceValues.Glucose.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.Glucose.hn)
+                  + ' ' + gPreferences.ReferenceValues.Glucose.UoM +
+             LineEnding + FloatToStr(gPreferences.ReferenceValues.Insulin.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.Insulin.hn)
+                  + ' ' + gPreferences.ReferenceValues.Insulin.UoM +
+             LineEnding + FloatToStr(gPreferences.ReferenceValues.CPeptide.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.CPeptide.hn)
+                  + ' ' + gPreferences.ReferenceValues.CPeptide.UoM;
+  CaseRecord.SRefMessage :=
+             FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.hn)
+                  + ' ' + gPreferences.ReferenceValues.SPINA_GBeta.UoM
+                  + LineEnding +
+             FloatToStr(gPreferences.ReferenceValues.SPINA_GR.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn)
+                  + ' ' + gPreferences.ReferenceValues.SPINA_GR.UoM
+                  + LineEnding +
+             FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn)
+                  + ' ' + gPreferences.ReferenceValues.SPINA_DI.UoM
+                  + LineEnding +
+             FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn)
+                  + ' ' + gPreferences.ReferenceValues.HOMA_Beta.UoM
+                  + LineEnding +
+             FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn)
+                  + ' ' + gPreferences.ReferenceValues.HOMA_IR.UoM
+                  + LineEnding +
+             FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn)
+                  + ' ' + gPreferences.ReferenceValues.HOMA_IS.UoM
+                  + LineEnding +
+             FloatToStr(gPreferences.ReferenceValues.QUICKI.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.QUICKI.hn)
+                  + ' ' + gPreferences.ReferenceValues.QUICKI.UoM
+                  + LineEnding +
+             FloatToStr(gPreferences.ReferenceValues.CGR.ln)
+                  + '–' + FloatToStr(gPreferences.ReferenceValues.CGR.hn)
+                  + ' ' + gPreferences.ReferenceValues.CGR.UoM;
+  CaseRecord.RCompMessage := CaseRecord.BRefMessage +
+             LineEnding + '       ' + LineEnding + '       ' + LineEnding +
+             CaseRecord.SRefMessage;
 end;
 
 procedure THauptschirm.AdaptForPlatform;

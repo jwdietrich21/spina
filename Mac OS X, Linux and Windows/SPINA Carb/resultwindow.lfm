@@ -14,7 +14,7 @@ object ResultForm: TResultForm
   OnActivate = FormActivate
   OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '3.7.0.0'
+  LCLVersion = '3.8.0.0'
   object LogoImage: TImage
     Left = 24
     Height = 90
@@ -365,26 +365,32 @@ object ResultForm: TResultForm
   object BParMemo: TMemo
     Left = 128
     Height = 149
+    Hint = 'Entered parameters'
     Top = 27
     Width = 248
     Anchors = [akTop, akLeft, akBottom]
     Lines.Strings = (
       'Behavioural parameters:'
     )
+    ParentShowHint = False
     ReadOnly = True
+    ShowHint = True
     TabOrder = 1
   end
   object SParMemo: TMemo
     Left = 392
     Height = 149
+    Hint = 'The results of the calcultation will be displayed here.'
     Top = 27
     Width = 280
     Anchors = [akTop, akLeft, akRight, akBottom]
     Lines.Strings = (
       'Structural parameters:'
     )
+    ParentShowHint = False
     ReadOnly = True
     ScrollBars = ssAutoVertical
+    ShowHint = True
     TabOrder = 2
   end
   object ResultLabel: TLabel

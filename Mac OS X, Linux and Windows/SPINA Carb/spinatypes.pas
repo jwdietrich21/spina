@@ -139,6 +139,7 @@ type
   end;
 
 const
+  {Standard reference ranges according to Khalili et al. and Dietrich et al.}
   sReferenceValues: tReferenceValues =
                     (Insulin: (ln: 2; hn: 25; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: 'mIU/l');
@@ -152,17 +153,29 @@ const
                               hp: NaN; UoM: 'mol/s');
                     SPINA_DI: (ln: 4.01; hn: 7.65; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
-                    HOMA_Beta: (ln: NaN; hn: NaN; lt: NaN; ht: NaN; lp: NaN;
+                    HOMA_Beta: (ln: 45.4; hn: 179.4; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '%');
                     HOMA_IR: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
-                    HOMA_IS: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
+                    HOMA_IS: (ln: 0.4; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
-                    QUICKI: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
+                    QUICKI: (ln: 0.4; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
-                    CGR: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
+                    CGR: (ln: 5.0; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: ''));
 
+{
+1. Khalili D, Khayamzadeh M, Kohansal K, Ahanchi NS, Hasheminia M, Hadaegh F,
+   Tohidi M, Azizi F, Habibi-Moeini AS. Are HOMA-IR and HOMA-B good predictors
+   for diabetes and pre-diabetes subtypes? BMC Endocr Disord. 2023 Feb 14;
+   23(1):39. doi: 10.1186/s12902-023-01291-9. PMID: 36788521; PMCID: PMC9926772.
+
+2. Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R,
+   Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting
+   insulin and glucose concentration as a robust measure of carbohydrate
+   homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525.
+   Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
+}
 var
   gPreferences: tPreferences;
   gNumberFormat, gDateTimeFormat: string;

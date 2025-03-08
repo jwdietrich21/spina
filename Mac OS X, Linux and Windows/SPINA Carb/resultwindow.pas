@@ -41,7 +41,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
-    procedure ShowResults(BParString, SParString: string);
+    procedure ShowResults(BParString, SParString, ParHint, RefHint: string);
   private
 
   public
@@ -76,10 +76,12 @@ begin
   ActiveControl := OKButton;
 end;
 
-procedure TResultForm.ShowResults(BParString, SParString: string);
+procedure TResultForm.ShowResults(BParString, SParString, ParHint, RefHint: string);
 begin
   BParMemo.Text := BParString;
   SParMemo.Text := SParString;
+  BParMemo.Hint := ParHint;
+  SParMemo.Hint := RefHint;
   ActiveControl := OKButton;
 end;
 
