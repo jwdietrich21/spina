@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, LCLType, Graphics, Interfaces, Printers, Math,
-  LCLProc, LazUTF8, SPINATypes, CaseBroker, EnvironmentInfo;
+  LCLProc, LazUTF8, Barcode, SPINATypes, CaseBroker, EnvironmentInfo;
 
 const
   AnInch = 2.54;
@@ -81,7 +81,9 @@ var
   theSize, IDWidth: integer;
   IDPos: TPoint;
   slash: string[3];
+  theBarcode: TBarcode;
 begin
+  theBarcode := TBarcode.Create(nil);
   { Print main header: }
   theSize := Printer.Canvas.Font.Size;
   Printer.Canvas.Font.Size := trunc(theSize * 1.7);
@@ -107,14 +109,14 @@ begin
   { Print bar code: }
   if caseRecord.CaseID <> '' then
   begin
-    {caseIDBarCode.Top := currentY;
-    caseIDBarCode.Left := tabX2;
-    caseIDBarCode.Typ := bcCode128B;
-    caseIDBarCode.Modul := GetPoints(0.02, Printer.YDPI);
-    caseIDBarCode.Ratio := 2.0;
-    caseIDBarCode.Height := GetPoints(0.3, Printer.YDPI);
-    caseIDBarCode.Text := caseRecord.CaseID;
-    caseIDBarCode.DrawBarcode(Printer.Canvas);  }
+    theBarcode.Top := currentY;
+    theBarcode.Left := tabX2;
+    theBarcode.Typ := bcCode128B;
+    theBarcode.Modul := GetPoints(0.02, Printer.YDPI);
+    theBarcode.Ratio := 2.0;
+    theBarcode.Height := GetPoints(0.3, Printer.YDPI);
+    theBarcode.Text := caseRecord.CaseID;
+    theBarcode.DrawBarcode(Printer.Canvas);
   end;
   { Print case-specific entries: }
   if (caseRecord.PID <> '') and (caseRecord.CaseID <> '') then
@@ -147,6 +149,7 @@ begin
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   PrinterWriteln(H, currentX, currentY, '', False);
+  theBarcode.Destroy;
 end;
 
 procedure PrintFooter(H: integer; var currentX, currentY, rightMargin: integer);
