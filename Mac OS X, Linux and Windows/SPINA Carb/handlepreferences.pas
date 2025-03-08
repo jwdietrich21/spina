@@ -43,8 +43,8 @@ uses
   , SPINATypes, HandleCDISC;
 
 function ComputerName: string;
-function GetPreferencesFile: string;
-function GetPreferencesFolder: string;
+function PreferencesFile: string;
+function PreferencesFolder: string;
 function RefRangeFile: string;
 procedure ReadPreferences;
 procedure SavePreferences;
@@ -52,7 +52,7 @@ procedure SavePreferences;
 
 implementation
 
-function GetPreferencesFolder: string;
+function PreferencesFolder: string;
   {platform-independend method to search for the location of preferences folder}
 const
   kMaxPath = 1024;
@@ -82,7 +82,7 @@ begin
       begin
         theError := FSRefMakePath(theRef, pathBuffer, kMaxPath);
         if theError = noErr then
-          GetPreferencesFolder := UTF8ToAnsi(StrPas(pathBuffer)) + '/'
+          PreferencesFolder := UTF8ToAnsi(StrPas(pathBuffer)) + '/'
         else
           ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
       end;
@@ -91,29 +91,29 @@ begin
     end
   {$ELSE}
   {$IFDEF WINDOWS}
-    GetPreferencesFolder := IncludeTrailingPathDelimiter(sysutils.GetEnvironmentVariable('appdata')) + ApplicationName;
+    PreferencesFolder := IncludeTrailingPathDelimiter(sysutils.GetEnvironmentVariable('appdata')) + ApplicationName;
   {$ELSE}
-  GetPreferencesFolder := GetAppConfigDir(False); {standard method for Linux and Unix}
+  PreferencesFolder := GetAppConfigDir(False); {standard method for Linux and Unix}
   {$ENDIF}
   {$ENDIF}
 end;
 
-function GetPreferencesFile: string;
+function PreferencesFile: string;
   {delivers path to preferences file}
 var
   prefsFolder: string;
 begin
   {$IFDEF DARWIN}
-    prefsFolder := GetPreferencesFolder;
+    prefsFolder := PreferencesFolder;
     if prefsFolder = '' then
-      GetPreferencesFile := ''
+      PreferencesFile := ''
     else
-      GetPreferencesFile := GetPreferencesFolder + SPINA_CARB_GLOBAL_ID + '.xml';
+      PreferencesFile := PreferencesFolder + SPINA_CARB_GLOBAL_ID + '.xml';
   {$ELSE}
   {$IFDEF WINDOWS}
-    GetPreferencesFile := IncludeTrailingPathDelimiter(GetPreferencesFolder) + 'SPINA Carb.cfg';
+    PreferencesFile := IncludeTrailingPathDelimiter(PreferencesFolder) + 'SPINA Carb.cfg';
   {$ELSE}
-  GetPreferencesFile := GetAppConfigFile(False);
+  PreferencesFile := GetAppConfigFile(False);
   {$ENDIF}
   {$ENDIF}
 end;
@@ -123,11 +123,11 @@ function RRFile: string;
 var
   prefsFolder: string;
 begin
-  prefsFolder := GetPreferencesFolder;
+  prefsFolder := PreferencesFolder;
   if prefsFolder = '' then
     RRFile := ''
   else
-    RRFile := IncludeTrailingPathDelimiter(GetPreferencesFolder) +
+    RRFile := IncludeTrailingPathDelimiter(PreferencesFolder) +
       SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
@@ -231,8 +231,8 @@ var
   {StartComment: TDOMComment;}
   RootNode, ElementNode: TDOMNode;
 begin
-  theFileName := GetPreferencesFile;
-  PreferencesFolder := GetPreferencesFolder;
+  theFileName := PreferencesFile;
+  PreferencesFolder := PreferencesFolder;
   Doc := TXMLDocument.Create;
   try
     {StartComment := Doc.CreateComment('SPINA Preferences');
@@ -318,11 +318,11 @@ function RefRangeFile: string;
 var
   prefsFolder: string;
 begin
-  prefsFolder := GetPreferencesFolder;
+  prefsFolder := PreferencesFolder;
   if prefsFolder = '' then
     Result := ''
   else
-    Result := IncludeTrailingPathDelimiter(GetPreferencesFolder) +
+    Result := IncludeTrailingPathDelimiter(PreferencesFolder) +
       SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
@@ -337,7 +337,7 @@ var
 begin
   gStandardMandatoryColor := clLtYellow;
   XMLfound := False;
-  theFileName := GetPreferencesFile;
+  theFileName := PreferencesFile;
   if FileExists(theFileName) then {simple check for XML file}
   begin
     theFileHandle := FileOpen(theFileName, fmOpenRead);
@@ -412,6 +412,12 @@ begin
   end
   else  {Standards from dialog, if preference file does not exist}
     CreateNewPreferences;  {fall-back solution, if file does not exist}
+end;
+
+initialization
+
+begin
+  gPreferences.ReferenceValues := sReferenceValues;
 end;
 
 end.

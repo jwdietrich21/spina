@@ -145,7 +145,23 @@ const
                     Glucose: (ln: 70; hn: 100; lt: 70; ht: 180; lp: 54;
                              hp: 180; UoM: 'mg/dl');
                     CPeptide: (ln: 0.8; hn: 3.1; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: 'ng/ml'));
+                              hp: NaN; UoM: 'ng/ml');
+                    SPINA_GBeta: (ln: 0.64; hn: 3.73; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: 'pmol/s');
+                    SPINA_GR: (ln: 1.41; hn: 9.00; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: 'mol/s');
+                    SPINA_DI: (ln: 4.01; hn: 7.65; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: '');
+                    HOMA_Beta: (ln: NaN; hn: NaN; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: '%');
+                    HOMA_IR: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: '');
+                    HOMA_IS: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: '');
+                    QUICKI: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: '');
+                    CGR: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: ''));
 
 var
   gPreferences: tPreferences;
