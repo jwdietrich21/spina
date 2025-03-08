@@ -47,6 +47,7 @@ begin
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TPreferencesForm, PreferencesForm);
   ReadPreferences;
+  ReadRefRanges;
   Application.Run;
 end.
 

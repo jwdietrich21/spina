@@ -48,6 +48,8 @@ function PreferencesFolder: string;
 function RefRangeFile: string;
 procedure ReadPreferences;
 procedure SavePreferences;
+procedure ReadRefRanges;
+procedure SaveRefRanges;
 
 
 implementation
@@ -226,13 +228,13 @@ end;
 procedure SavePreferences;
 {save preferences file}
 var
-  theFileName, PreferencesFolder: string;
+  theFileName, prefsFolder: string;
   Doc: TXMLDocument;
   {StartComment: TDOMComment;}
   RootNode, ElementNode: TDOMNode;
 begin
   theFileName := PreferencesFile;
-  PreferencesFolder := PreferencesFolder;
+  prefsFolder := PreferencesFolder;
   Doc := TXMLDocument.Create;
   try
     {StartComment := Doc.CreateComment('SPINA Preferences');
@@ -283,10 +285,10 @@ begin
     ElementNode.AppendChild(SimpleNode(Doc, 'printFont', gPreferences.PrintFont));
     RootNode.AppendChild(ElementNode);
 
-    if not DirectoryExists(PreferencesFolder) then
-      if not CreateDir(PreferencesFolder) then
+    if not DirectoryExists(prefsFolder) then
+      if not CreateDir(prefsFolder) then
         ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
-    if DirectoryExists(PreferencesFolder) then
+    if DirectoryExists(prefsFolder) then
     begin
       if FileExists(theFileName) then
         SysUtils.DeleteFile(theFileName);
@@ -294,6 +296,29 @@ begin
     end;
   finally
     Doc.Free;
+  end;
+end;
+
+procedure ReadRefRanges;
+begin
+
+end;
+
+procedure SaveRefRanges;
+var
+  theFileName, prefsFolder: string;
+  code: integer;
+begin
+  theFileName := RefRangeFile;
+  prefsFolder := PreferencesFolder;
+  if not DirectoryExists(prefsFolder) then
+    if not CreateDir(prefsFolder) then
+      ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
+  if DirectoryExists(prefsFolder) then
+  begin
+    if FileExists(theFileName) then
+      SysUtils.DeleteFile(theFileName);
+    SaveCDISC_RRFile(theFileName, gPreferences.ReferenceValues, code);
   end;
 end;
 

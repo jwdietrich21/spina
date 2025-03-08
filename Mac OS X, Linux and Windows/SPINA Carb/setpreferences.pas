@@ -224,6 +224,7 @@ begin
   if FontsCombobox.ItemIndex > 0 then
     gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
   SavePreferences;
+  SaveRefRanges;
   Close;
 end;
 
