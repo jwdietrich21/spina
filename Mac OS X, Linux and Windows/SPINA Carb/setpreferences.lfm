@@ -57,7 +57,7 @@ object PreferencesForm: TPreferencesForm
         Top = 8
         Width = 575
         Anchors = [akTop, akLeft, akRight, akBottom]
-        Caption = 'Reference ranges:'
+        Caption = 'Reference Ranges:'
         ClientHeight = 279
         ClientWidth = 565
         TabOrder = 0
@@ -638,7 +638,7 @@ object PreferencesForm: TPreferencesForm
         Top = 267
         Width = 575
         Anchors = [akLeft, akRight, akBottom]
-        Caption = 'Printing'
+        Caption = 'Printing Font'
         ClientHeight = 30
         ClientWidth = 565
         TabOrder = 1

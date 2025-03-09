@@ -1661,7 +1661,6 @@ object Hauptschirm: THauptschirm
         Top = 141
         Width = 500
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-        ReadOnly = True
         DateOrder = doNone
         ButtonWidth = 23
         Anchors = [akTop, akLeft, akRight]

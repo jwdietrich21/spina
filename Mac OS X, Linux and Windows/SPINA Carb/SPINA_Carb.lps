@@ -99,7 +99,7 @@
         <UnitName Value="PrintCase"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
-        <CursorPos X="42"/>
+        <CursorPos X="104" Y="9"/>
         <UsageCount Value="88"/>
         <Loaded Value="True"/>
       </Unit>
@@ -149,6 +149,14 @@
         <Loaded Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="Barcode.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="8"/>
+        <CursorPos X="29" Y="2"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="/Applications/Lazarus/lcl/include/control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="3994"/>
@@ -176,14 +184,6 @@
         <TopLine Value="54"/>
         <CursorPos X="10" Y="75"/>
         <UsageCount Value="7"/>
-      </Unit>
-      <Unit>
-        <Filename Value="Barcode.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="8"/>
-        <CursorPos X="29" Y="2"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
