@@ -31,9 +31,10 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, DOM, XMLRead, XMLWrite, StrUtils, DateUtils,
-  Math, SPINATypes, UnitConverter;
+  Math, SPINATypes, SPINA_Engine, UnitConverter;
 
-procedure SaveCDISC_RRFile(theFileName: string; const ReferenceRanges: tReferenceValues; var returnCode: integer);
+procedure SaveCDISC_RRFile(theFileName: string; const ReferenceRanges: tReferenceValues;
+  var returnCode: integer);
 procedure SaveStandardCDISC_RRFile(theFileName: string; var returnCode: integer);
 
 implementation
@@ -81,7 +82,7 @@ begin
     TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
     TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HXS, ffGeneral, 5, 2));
     ExclusionsNode.Appendchild(theNode);
-    theNode  := Doc.CreateElement('TransactionType');
+    theNode := Doc.CreateElement('TransactionType');
     TextNode := Doc.CreateTextNode('I');
     theNode.AppendChild(TextNode);
     ExclusionsNode.Appendchild(theNode);
@@ -105,7 +106,7 @@ begin
     TDOMElement(theNode).SetAttribute('ExclusionLevel', 'HX');
     TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HXC, ffGeneral, 5, 2));
     ExclusionsNode.Appendchild(theNode);
-    theNode  := Doc.CreateElement('TransactionType');
+    theNode := Doc.CreateElement('TransactionType');
     TextNode := Doc.CreateTextNode('I');
     theNode.AppendChild(TextNode);
     ExclusionsNode.Appendchild(theNode);
@@ -159,7 +160,7 @@ begin
     TDOMElement(theNode).SetAttribute('NormalLevel', 'H');
     TDOMElement(theNode).SetAttribute('Value', FloatToStrF(HS, ffGeneral, 5, 2));
     NormalNode.Appendchild(theNode);
-    theNode  := Doc.CreateElement('TransactionType');
+    theNode := Doc.CreateElement('TransactionType');
     TextNode := Doc.CreateTextNode('I');
     theNode.AppendChild(TextNode);
     NormalNode.Appendchild(theNode);
@@ -178,31 +179,35 @@ begin
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'LT');
-      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LTS, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '<' +
+        FloatToStrF(LTS, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
     if not IsNan(HTS) then
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'HT');
-      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HTS, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '>' +
+        FloatToStrF(HTS, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
     if not IsNan(LPS) then
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'LP');
-      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LPS, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '<' +
+        FloatToStrF(LPS, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
     if not IsNan(HPS) then
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'HP');
-      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HPS, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '>' +
+        FloatToStrF(HPS, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
-    theNode  := Doc.CreateElement('TransactionType');
+    theNode := Doc.CreateElement('TransactionType');
     TextNode := Doc.CreateTextNode('I');
     theNode.AppendChild(TextNode);
     AlertNode.Appendchild(theNode);
@@ -224,7 +229,7 @@ begin
     TDOMElement(theNode).SetAttribute('NormalLevel', 'H');
     TDOMElement(theNode).SetAttribute('Value', FloatToStrF(HC, ffGeneral, 5, 2));
     NormalNode.Appendchild(theNode);
-    theNode  := Doc.CreateElement('TransactionType');
+    theNode := Doc.CreateElement('TransactionType');
     TextNode := Doc.CreateTextNode('I');
     theNode.AppendChild(TextNode);
     NormalNode.Appendchild(theNode);
@@ -243,31 +248,35 @@ begin
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'LT');
-      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LTC, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '<' +
+        FloatToStrF(LTC, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
     if not IsNan(HTC) then
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'HT');
-      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HTC, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '>' +
+        FloatToStrF(HTC, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
     if not IsNan(LPC) then
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'LP');
-      TDOMElement(theNode).SetAttribute('Value', '<' + FloatToStrF(LPC, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '<' +
+        FloatToStrF(LPC, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
     if not IsNan(HPC) then
     begin
       theNode := Doc.CreateElement('AlertDefinition');
       TDOMElement(theNode).SetAttribute('AlertLevel', 'HP');
-      TDOMElement(theNode).SetAttribute('Value', '>' + FloatToStrF(HPC, ffGeneral, 5, 2));
+      TDOMElement(theNode).SetAttribute('Value', '>' +
+        FloatToStrF(HPC, ffGeneral, 5, 2));
       AlertNode.Appendchild(theNode);
     end;
-    theNode  := Doc.CreateElement('TransactionType');
+    theNode := Doc.CreateElement('TransactionType');
     TextNode := Doc.CreateTextNode('I');
     theNode.AppendChild(TextNode);
     AlertNode.Appendchild(theNode);
@@ -277,17 +286,18 @@ begin
   DefaultFormatSettings.DecimalSeparator := oldSeparator;
 end;
 
-function ISO8601Date(const AValue: TDateTime): String;
+function ISO8601Date(const AValue: TDateTime): string;
 begin
-  result := FormatDateTime('YYYY-MM-DD"T"hh:nn:ss', AValue);
+  Result := FormatDateTime('YYYY-MM-DD"T"hh:nn:ss', AValue);
 end;
 
-function ISO8601ToDateTime(const ADate: String): TDateTime;
+function ISO8601ToDateTime(const ADate: string): TDateTime;
 begin
-  result := ScanDateTime('YYYY-MM-DD"T"hh:nn:ss', ADate, 1);
+  Result := ScanDateTime('YYYY-MM-DD"T"hh:nn:ss', ADate, 1);
 end;
 
-procedure SaveCDISC_RRFile(theFileName: string; const ReferenceRanges: tReferenceValues; var returnCode: integer);
+procedure SaveCDISC_RRFile(theFileName: string; const ReferenceRanges: tReferenceValues;
+  var returnCode: integer);
 {Saves edited reference ranges as CDISC file}
 var
   Doc: TXMLDocument;
@@ -296,11 +306,11 @@ var
   SubjectCharsNode, AgeNode, ExclusionsNode, TextNode: TDOMNode;
   ExclusionDefinitions: tReferenceExDefinitions;
   NormDefinitions: tReferenceNormDefinitions;
-  TestString: String;
+  TestString: string;
 begin
   returnCode := 6;
   try
-    Doc     := TXMLDocument.Create;
+    Doc := TXMLDocument.Create;
     theNode := Doc.CreateComment('SPINA Reference Values');
     Doc.AppendChild(theNode);
     theNode := Doc.CreateComment('adapted to CDISC LAB MODEL 1.0.1');
@@ -309,7 +319,7 @@ begin
     TDOMElement(RootNode).SetAttribute('CreationDateTime', ISO8601Date(now));
     TDOMElement(RootNode).SetAttribute('ModelVersion', '01-0-01');
     Doc.Appendchild(RootNode);
-    RootNode   := Doc.DocumentElement;
+    RootNode := Doc.DocumentElement;
     parentNode := Doc.CreateElement('TransmissionSource');
     TDOMElement(parentNode).SetAttribute('ID', gPreferences.MSH_ID);
     TDOMElement(parentNode).SetAttribute('Name', gPreferences.MSH_ID);
@@ -339,68 +349,128 @@ begin
     TDOMElement(LabTestNode).SetAttribute('Name', 'Glucose');
     BaseTestNode.Appendchild(LabTestNode);
 
-    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.Sex := 'F';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'mmol/L';
     ExclusionDefinitions.UOMC := 'mg/dL';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'F';
+    NormDefinitions.Sex := 'F';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := 'mIU/L';
-    NormDefinitions.UOMC := 'mIU/L';
-    NormDefinitions.LS  := ReferenceRanges.Glucose.ln;
-    NormDefinitions.HS  := ReferenceRanges.Glucose.hn;
-    NormDefinitions.LTS := ReferenceRanges.Glucose.lt;
-    NormDefinitions.HTS := ReferenceRanges.Glucose.ht;
-    NormDefinitions.LPS := ReferenceRanges.Glucose.lp;
-    NormDefinitions.HPS := ReferenceRanges.Glucose.hp;
-    NormDefinitions.LC  := ReferenceRanges.Glucose.ln;
-    NormDefinitions.HC  := ReferenceRanges.Glucose.hn;
-    NormDefinitions.LTC := ReferenceRanges.Glucose.lt;
-    NormDefinitions.HTC := ReferenceRanges.Glucose.ht;
-    NormDefinitions.LPC := ReferenceRanges.Glucose.lp;
-    NormDefinitions.HPC := ReferenceRanges.Glucose.hp;
+    NormDefinitions.UOMS := 'mmol/L';
+    NormDefinitions.UOMC := 'mg/dL';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.Glucose.UoM)) > 0 then
+    begin
+      NormDefinitions.LS := ReferenceRanges.Glucose.ln;
+      NormDefinitions.HS := ReferenceRanges.Glucose.hn;
+      NormDefinitions.LTS := ReferenceRanges.Glucose.lt;
+      NormDefinitions.HTS := ReferenceRanges.Glucose.ht;
+      NormDefinitions.LPS := ReferenceRanges.Glucose.lp;
+      NormDefinitions.HPS := ReferenceRanges.Glucose.hp;
+      NormDefinitions.LC := ConvertedValue(ReferenceRanges.Glucose.ln,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.HC := ConvertedValue(ReferenceRanges.Glucose.hn,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.Glucose.lt,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.Glucose.ht,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.Glucose.lp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.Glucose.hp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+    end
+    else
+    begin
+      NormDefinitions.LS := ConvertedValue(ReferenceRanges.Glucose.ln,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.HS := ConvertedValue(ReferenceRanges.Glucose.hn,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.Glucose.lt,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.Glucose.ht,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.Glucose.lp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.Glucose.hp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.LC := ReferenceRanges.Glucose.ln;
+      NormDefinitions.HC := ReferenceRanges.Glucose.hn;
+      NormDefinitions.LTC := ReferenceRanges.Glucose.lt;
+      NormDefinitions.HTC := ReferenceRanges.Glucose.ht;
+      NormDefinitions.LPC := ReferenceRanges.Glucose.lp;
+      NormDefinitions.HPC := ReferenceRanges.Glucose.hp;
+    end;
     NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.Sex := 'M';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'mmol/L';
     ExclusionDefinitions.UOMC := 'mg/dL';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'M';
+    NormDefinitions.Sex := 'M';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'mmol/L';
     NormDefinitions.UOMC := 'mg/dL';
-    NormDefinitions.LS  := ReferenceRanges.Glucose.ln;
-    NormDefinitions.HS  := ReferenceRanges.Glucose.hn;
-    NormDefinitions.LTS := ReferenceRanges.Glucose.lt;
-    NormDefinitions.HTS := ReferenceRanges.Glucose.ht;
-    NormDefinitions.LPS := ReferenceRanges.Glucose.lp;
-    NormDefinitions.HPS := ReferenceRanges.Glucose.hp;
-    NormDefinitions.LC  := ReferenceRanges.Glucose.ln;
-    NormDefinitions.HC  := ReferenceRanges.Glucose.hn;
-    NormDefinitions.LTC := ReferenceRanges.Glucose.lt;
-    NormDefinitions.HTC := ReferenceRanges.Glucose.ht;
-    NormDefinitions.LPC := ReferenceRanges.Glucose.lp;
-    NormDefinitions.HPC := ReferenceRanges.Glucose.hp;
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.Glucose.UoM)) > 0 then
+    begin
+      NormDefinitions.LS := ReferenceRanges.Glucose.ln;
+      NormDefinitions.HS := ReferenceRanges.Glucose.hn;
+      NormDefinitions.LTS := ReferenceRanges.Glucose.lt;
+      NormDefinitions.HTS := ReferenceRanges.Glucose.ht;
+      NormDefinitions.LPS := ReferenceRanges.Glucose.lp;
+      NormDefinitions.HPS := ReferenceRanges.Glucose.hp;
+      NormDefinitions.LC := ConvertedValue(ReferenceRanges.Glucose.ln,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.HC := ConvertedValue(ReferenceRanges.Glucose.hn,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.Glucose.lt,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.Glucose.ht,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.Glucose.lp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.Glucose.hp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mg/dL');
+    end
+    else
+    begin
+      NormDefinitions.LS := ConvertedValue(ReferenceRanges.Glucose.ln,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.HS := ConvertedValue(ReferenceRanges.Glucose.hn,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.Glucose.lt,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.Glucose.ht,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.Glucose.lp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.Glucose.hp,
+        kGlucoseMolarMass, ReferenceRanges.Glucose.UoM, 'mmol/L');
+      NormDefinitions.LC := ReferenceRanges.Glucose.ln;
+      NormDefinitions.HC := ReferenceRanges.Glucose.hn;
+      NormDefinitions.LTC := ReferenceRanges.Glucose.lt;
+      NormDefinitions.HTC := ReferenceRanges.Glucose.ht;
+      NormDefinitions.LPC := ReferenceRanges.Glucose.lp;
+      NormDefinitions.HPC := ReferenceRanges.Glucose.hp;
+    end;
     NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
@@ -427,30 +497,30 @@ begin
     TDOMElement(LabTestNode).SetAttribute('Name', 'Beta cells'' Secretory Capacity');
     BaseTestNode.Appendchild(LabTestNode);
 
-    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.Sex := 'F';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'pmol/s';
     ExclusionDefinitions.UOMC := 'pmol/s';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'F';
+    NormDefinitions.Sex := 'F';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'pmol/s';
     NormDefinitions.UOMC := 'pmol/s';
-    NormDefinitions.LS  := ReferenceRanges.SPINA_GBeta.ln;
-    NormDefinitions.HS  := ReferenceRanges.SPINA_GBeta.hn;
+    NormDefinitions.LS := ReferenceRanges.SPINA_GBeta.ln;
+    NormDefinitions.HS := ReferenceRanges.SPINA_GBeta.hn;
     NormDefinitions.LTS := ReferenceRanges.SPINA_GBeta.lt;
     NormDefinitions.HTS := ReferenceRanges.SPINA_GBeta.ht;
     NormDefinitions.LPS := ReferenceRanges.SPINA_GBeta.lp;
     NormDefinitions.HPS := ReferenceRanges.SPINA_GBeta.hp;
-    NormDefinitions.LC  := ReferenceRanges.SPINA_GBeta.ln;
-    NormDefinitions.HC  := ReferenceRanges.SPINA_GBeta.hn;
+    NormDefinitions.LC := ReferenceRanges.SPINA_GBeta.ln;
+    NormDefinitions.HC := ReferenceRanges.SPINA_GBeta.hn;
     NormDefinitions.LTC := ReferenceRanges.SPINA_GBeta.lt;
     NormDefinitions.HTC := ReferenceRanges.SPINA_GBeta.ht;
     NormDefinitions.LPC := ReferenceRanges.SPINA_GBeta.lp;
@@ -461,30 +531,30 @@ begin
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.Sex := 'M';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'pmol/s';
     ExclusionDefinitions.UOMC := 'pmol/s';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'M';
+    NormDefinitions.Sex := 'M';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'pmol/s';
     NormDefinitions.UOMC := 'pmol/s';
-    NormDefinitions.LS  := ReferenceRanges.SPINA_GBeta.ln;
-    NormDefinitions.HS  := ReferenceRanges.SPINA_GBeta.hn;
+    NormDefinitions.LS := ReferenceRanges.SPINA_GBeta.ln;
+    NormDefinitions.HS := ReferenceRanges.SPINA_GBeta.hn;
     NormDefinitions.LTS := ReferenceRanges.SPINA_GBeta.lt;
     NormDefinitions.HTS := ReferenceRanges.SPINA_GBeta.ht;
     NormDefinitions.LPS := ReferenceRanges.SPINA_GBeta.lp;
     NormDefinitions.HPS := ReferenceRanges.SPINA_GBeta.hp;
-    NormDefinitions.LC  := ReferenceRanges.SPINA_GBeta.ln;
-    NormDefinitions.HC  := ReferenceRanges.SPINA_GBeta.hn;
+    NormDefinitions.LC := ReferenceRanges.SPINA_GBeta.ln;
+    NormDefinitions.HC := ReferenceRanges.SPINA_GBeta.hn;
     NormDefinitions.LTC := ReferenceRanges.SPINA_GBeta.lt;
     NormDefinitions.HTC := ReferenceRanges.SPINA_GBeta.ht;
     NormDefinitions.LPC := ReferenceRanges.SPINA_GBeta.lp;
@@ -513,11 +583,11 @@ var
   SubjectCharsNode, AgeNode, ExclusionsNode, TextNode: TDOMNode;
   ExclusionDefinitions: tReferenceExDefinitions;
   NormDefinitions: tReferenceNormDefinitions;
-  TestString: String;
+  TestString: string;
 begin
   returnCode := 6;
   try
-    Doc     := TXMLDocument.Create;
+    Doc := TXMLDocument.Create;
     theNode := Doc.CreateComment('Example for SPINA Reference Values');
     Doc.AppendChild(theNode);
     theNode := Doc.CreateComment('adapted to CDISC LAB MODEL 1.0.1');
@@ -537,7 +607,7 @@ begin
     TDOMElement(RootNode).SetAttribute('CreationDateTime', '2025-02-07T00:13:00+01:00');
     TDOMElement(RootNode).SetAttribute('ModelVersion', '01-0-01');
     Doc.Appendchild(RootNode);
-    RootNode   := Doc.DocumentElement;
+    RootNode := Doc.DocumentElement;
     parentNode := Doc.CreateElement('TransmissionSource');
     TDOMElement(parentNode).SetAttribute('ID', 'www.medizin.ruhr-uni-bochum.de');
     TDOMElement(parentNode).SetAttribute('Name', 'UK RUB');
@@ -567,30 +637,30 @@ begin
     TDOMElement(LabTestNode).SetAttribute('Name', 'Glucose');
     BaseTestNode.Appendchild(LabTestNode);
 
-    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.Sex := 'F';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'mmol/L';
     ExclusionDefinitions.UOMC := 'mg/dL';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'F';
+    NormDefinitions.Sex := 'F';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'mmol/L';
     NormDefinitions.UOMC := 'mg/L';
-    NormDefinitions.LS  := 3.89;
-    NormDefinitions.HS  := 5.56;
+    NormDefinitions.LS := 3.89;
+    NormDefinitions.HS := 5.56;
     NormDefinitions.LTS := 3;
     NormDefinitions.HTS := 10;
     NormDefinitions.LPS := 2.22;
     NormDefinitions.HPS := 13.89;
-    NormDefinitions.LC  := 70;
-    NormDefinitions.HC  := 100;
+    NormDefinitions.LC := 70;
+    NormDefinitions.HC := 100;
     NormDefinitions.LTC := 54;
     NormDefinitions.HTC := 180;
     NormDefinitions.LPC := 40;
@@ -601,35 +671,35 @@ begin
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.Sex := 'M';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'mmol/L';
     ExclusionDefinitions.UOMC := 'mg/dL';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'M';
+    NormDefinitions.Sex := 'M';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'mmol/L';
     NormDefinitions.UOMC := 'mg/dL';
-    NormDefinitions.LS  := 3.89;
-     NormDefinitions.HS  := 5.56;
-     NormDefinitions.LTS := 3;
-     NormDefinitions.HTS := 10;
-     NormDefinitions.LPS := 2.22;
-     NormDefinitions.HPS := 13.89;
-     NormDefinitions.LC  := 70;
-     NormDefinitions.HC  := 100;
-     NormDefinitions.LTC := 54;
-     NormDefinitions.HTC := 180;
-     NormDefinitions.LPC := 40;
-     NormDefinitions.HPC := 250;
-      NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
+    NormDefinitions.LS := 3.89;
+    NormDefinitions.HS := 5.56;
+    NormDefinitions.LTS := 3;
+    NormDefinitions.HTS := 10;
+    NormDefinitions.LPS := 2.22;
+    NormDefinitions.HPS := 13.89;
+    NormDefinitions.LC := 70;
+    NormDefinitions.HC := 100;
+    NormDefinitions.LTC := 54;
+    NormDefinitions.HTC := 180;
+    NormDefinitions.LPC := 40;
+    NormDefinitions.HPC := 250;
+    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {Insulin:}
@@ -655,30 +725,30 @@ begin
     TDOMElement(LabTestNode).SetAttribute('Name', 'Beta cells'' Secretory Capacity');
     BaseTestNode.Appendchild(LabTestNode);
 
-    ExclusionDefinitions.Sex  := 'F';
+    ExclusionDefinitions.Sex := 'F';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'pmol/s';
     ExclusionDefinitions.UOMC := 'pmol/s';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'F';
+    NormDefinitions.Sex := 'F';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'pmol/s';
     NormDefinitions.UOMC := 'pmol/s';
-    NormDefinitions.LS  := 0.64;
-    NormDefinitions.HS  := 3.73;
+    NormDefinitions.LS := 0.64;
+    NormDefinitions.HS := 3.73;
     NormDefinitions.LTS := 0.3;
     NormDefinitions.HTS := 6;
     NormDefinitions.LPS := 0.1;
     NormDefinitions.HPS := 10;
-    NormDefinitions.LC  := 0.64;
-    NormDefinitions.HC  := 3.73;
+    NormDefinitions.LC := 0.64;
+    NormDefinitions.HC := 3.73;
     NormDefinitions.LTC := 0.3;
     NormDefinitions.HTC := 6;
     NormDefinitions.LPC := 0.1;
@@ -689,30 +759,30 @@ begin
     theNode := Doc.CreateComment('Add additional age classes here');
     BaseTestNode.AppendChild(theNode);
 
-    ExclusionDefinitions.Sex  := 'M';
+    ExclusionDefinitions.Sex := 'M';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
     ExclusionDefinitions.UOMS := 'pmol/s';
     ExclusionDefinitions.UOMC := 'pmol/s';
-    ExclusionDefinitions.LXS  := 0;
-    ExclusionDefinitions.HXS  := 10000;
-    ExclusionDefinitions.LXC  := 0;
-    ExclusionDefinitions.HXC  := 10000;
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
     ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
     AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex  := 'M';
+    NormDefinitions.Sex := 'M';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
     NormDefinitions.UOMS := 'pmol/s';
     NormDefinitions.UOMC := 'pmol/s';
-    NormDefinitions.LS  := 0.64;
-    NormDefinitions.HS  := 3.73;
+    NormDefinitions.LS := 0.64;
+    NormDefinitions.HS := 3.73;
     NormDefinitions.LTS := 0.3;
     NormDefinitions.HTS := 6;
     NormDefinitions.LPS := 0.1;
     NormDefinitions.HPS := 10;
-    NormDefinitions.LC  := 0.64;
-    NormDefinitions.HC  := 3.73;
+    NormDefinitions.LC := 0.64;
+    NormDefinitions.HC := 3.73;
     NormDefinitions.LTC := 0.3;
     NormDefinitions.HTC := 6;
     NormDefinitions.LPC := 0.1;

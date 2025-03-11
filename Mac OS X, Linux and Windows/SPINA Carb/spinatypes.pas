@@ -144,7 +144,7 @@ const
                     (Insulin: (ln: 2; hn: 25; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: 'mIU/l');
                     Glucose: (ln: 70; hn: 100; lt: 70; ht: 180; lp: 54;
-                             hp: 180; UoM: 'mg/dl');
+                             hp: 250; UoM: 'mg/dl');
                     CPeptide: (ln: 0.8; hn: 3.1; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: 'ng/ml');
                     SPINA_GBeta: (ln: 0.64; hn: 3.73; lt: NaN; ht: NaN; lp: NaN;
