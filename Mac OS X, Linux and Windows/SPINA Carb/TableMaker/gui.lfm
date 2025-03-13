@@ -10,7 +10,7 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.8.0.0'
   object MainTable: TStringGrid
     Left = 0
     Height = 559
@@ -32,17 +32,17 @@ object MainForm: TMainForm
     ColWidths = (
       74
       87
-      66
-      66
-      66
-      66
-      66
-      66
-      65
-      65
-      65
-      65
-      65
+      67
+      67
+      67
+      67
+      67
+      67
+      67
+      67
+      67
+      67
+      67
     )
     Cells = (
       4
@@ -65,7 +65,7 @@ object MainForm: TMainForm
     Height = 20
     Top = 8
     Width = 160
-    ItemHeight = 19
+    ItemHeight = 18
     ItemIndex = 0
     Items.Strings = (
       'SPINA-GBeta'

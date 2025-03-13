@@ -7,16 +7,15 @@
       <Unit>
         <Filename Value="ScenarioTester.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="24"/>
+        <CursorPos X="15" Y="3"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="19"/>
+        <CursorPos X="14" Y="3"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
@@ -24,8 +23,9 @@
         <Filename Value="casedemonstrator.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CaseDemonstrator"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="23"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>

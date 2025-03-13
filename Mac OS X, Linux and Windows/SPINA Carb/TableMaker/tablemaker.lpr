@@ -10,10 +10,10 @@ program TableMaker;
 
 { Version 5.1.0 (Cyclone) }
 
-{ (c) J. W. Dietrich, 1994 - 2024 }
+{ (c) J. W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2024 }
+{ (c) Ruhr University of Bochum 2005 - 2025 }
 
 { This unit implements the main program }
 
@@ -37,8 +37,8 @@ uses
 
 begin
   RequireDerivedFormResource:=True;
-  Application.Title := 'TableMaker';
-  Application.Scaled := True;
+  Application.Title:='TableMaker';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

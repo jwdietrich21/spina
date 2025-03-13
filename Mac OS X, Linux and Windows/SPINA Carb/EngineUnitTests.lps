@@ -8,7 +8,6 @@
         <Filename Value="EngineUnitTests.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="5"/>
         <CursorPos Y="2"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
@@ -17,7 +16,6 @@
         <Filename Value="enginetestcases.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EngineTestCases"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos Y="2"/>
         <UsageCount Value="27"/>
@@ -26,8 +24,8 @@
       <Unit>
         <Filename Value="SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="96"/>
-        <CursorPos Y="115"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
