@@ -476,7 +476,277 @@ begin
 
     {Insulin:}
 
-    { #todo -oJWD : Insert handlers for insulin and c-peptide here }
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for Insulin:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'Insulin');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Insulin');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/L';
+    ExclusionDefinitions.UOMC := 'mIU/L';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/L';
+    NormDefinitions.UOMC := 'mIU/L';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.Insulin.UoM)) > 0 then
+    begin
+      NormDefinitions.LS := ReferenceRanges.Insulin.ln;
+      NormDefinitions.HS := ReferenceRanges.Insulin.hn;
+      NormDefinitions.LTS := ReferenceRanges.Insulin.lt;
+      NormDefinitions.HTS := ReferenceRanges.Insulin.ht;
+      NormDefinitions.LPS := ReferenceRanges.Insulin.lp;
+      NormDefinitions.HPS := ReferenceRanges.Insulin.hp;
+      NormDefinitions.LC := ReferenceRanges.Insulin.ln /
+        kInsulinConversionFactor;
+      NormDefinitions.HC := ReferenceRanges.Insulin.hn /
+        kInsulinConversionFactor;
+      NormDefinitions.LTC := ReferenceRanges.Insulin.lt /
+        kInsulinConversionFactor;
+      NormDefinitions.HTC := ReferenceRanges.Insulin.ht /
+        kInsulinConversionFactor;
+      NormDefinitions.LPC := ReferenceRanges.Insulin.lp /
+        kInsulinConversionFactor;
+      NormDefinitions.HPC := ReferenceRanges.Insulin.hp /
+        kInsulinConversionFactor;
+    end
+    else
+    begin
+      NormDefinitions.LS := ReferenceRanges.Insulin.ln *
+        kInsulinConversionFactor;
+      NormDefinitions.HS := ReferenceRanges.Insulin.hn *
+        kInsulinConversionFactor;
+      NormDefinitions.LTS := ReferenceRanges.Insulin.lt *
+        kInsulinConversionFactor;
+      NormDefinitions.HTS := ReferenceRanges.Insulin.ht *
+        kInsulinConversionFactor;
+      NormDefinitions.LPS := ReferenceRanges.Insulin.lp *
+        kInsulinConversionFactor;
+      NormDefinitions.HPS := ReferenceRanges.Insulin.hp *
+        kInsulinConversionFactor;
+      NormDefinitions.LC := ReferenceRanges.Insulin.ln;
+      NormDefinitions.HC := ReferenceRanges.Insulin.hn;
+      NormDefinitions.LTC := ReferenceRanges.Insulin.lt;
+      NormDefinitions.HTC := ReferenceRanges.Insulin.ht;
+      NormDefinitions.LPC := ReferenceRanges.Insulin.lp;
+      NormDefinitions.HPC := ReferenceRanges.Insulin.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'pmol/L';
+    ExclusionDefinitions.UOMC := 'mIU/L';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'pmol/L';
+    NormDefinitions.UOMC := 'mIU/L';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.Insulin.UoM)) > 0 then
+    begin
+      NormDefinitions.LS := ReferenceRanges.Insulin.ln;
+      NormDefinitions.HS := ReferenceRanges.Insulin.hn;
+      NormDefinitions.LTS := ReferenceRanges.Insulin.lt;
+      NormDefinitions.HTS := ReferenceRanges.Insulin.ht;
+      NormDefinitions.LPS := ReferenceRanges.Insulin.lp;
+      NormDefinitions.HPS := ReferenceRanges.Insulin.hp;
+      NormDefinitions.LC := ReferenceRanges.Insulin.ln /
+        kInsulinConversionFactor;
+      NormDefinitions.HC := ReferenceRanges.Insulin.hn /
+        kInsulinConversionFactor;
+      NormDefinitions.LTC := ReferenceRanges.Insulin.lt /
+        kInsulinConversionFactor;
+      NormDefinitions.HTC := ReferenceRanges.Insulin.ht /
+        kInsulinConversionFactor;
+      NormDefinitions.LPC := ReferenceRanges.Insulin.lp /
+        kInsulinConversionFactor;
+      NormDefinitions.HPC := ReferenceRanges.Insulin.hp /
+        kInsulinConversionFactor;
+    end
+    else
+    begin
+      NormDefinitions.LS := ReferenceRanges.Insulin.ln *
+        kInsulinConversionFactor;
+      NormDefinitions.HS := ReferenceRanges.Insulin.hn *
+        kInsulinConversionFactor;
+      NormDefinitions.LTS := ReferenceRanges.Insulin.lt *
+        kInsulinConversionFactor;
+      NormDefinitions.HTS := ReferenceRanges.Insulin.ht *
+        kInsulinConversionFactor;
+      NormDefinitions.LPS := ReferenceRanges.Insulin.lp *
+        kInsulinConversionFactor;
+      NormDefinitions.HPS := ReferenceRanges.Insulin.hp *
+        kInsulinConversionFactor;
+      NormDefinitions.LC := ReferenceRanges.Insulin.ln;
+      NormDefinitions.HC := ReferenceRanges.Insulin.hn;
+      NormDefinitions.LTC := ReferenceRanges.Insulin.lt;
+      NormDefinitions.HTC := ReferenceRanges.Insulin.ht;
+      NormDefinitions.LPC := ReferenceRanges.Insulin.lp;
+      NormDefinitions.HPC := ReferenceRanges.Insulin.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    {C-Peptide:}
+
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for C-Peptide:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'C-Peptide');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'C-Peptide');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/L';
+    ExclusionDefinitions.UOMC := 'ng/mL';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/L';
+    NormDefinitions.UOMC := 'ng/mL';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.CPeptide.UoM)) > 0 then
+    begin
+      NormDefinitions.LS := ReferenceRanges.CPeptide.ln;
+      NormDefinitions.HS := ReferenceRanges.CPeptide.hn;
+      NormDefinitions.LTS := ReferenceRanges.CPeptide.lt;
+      NormDefinitions.HTS := ReferenceRanges.CPeptide.ht;
+      NormDefinitions.LPS := ReferenceRanges.CPeptide.lp;
+      NormDefinitions.HPS := ReferenceRanges.CPeptide.hp;
+      NormDefinitions.LC := ConvertedValue(ReferenceRanges.CPeptide.ln,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.HC := ConvertedValue(ReferenceRanges.CPeptide.hn,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.CPeptide.lt,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.CPeptide.ht,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.CPeptide.lp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.CPeptide.hp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+    end
+    else
+    begin
+      NormDefinitions.LS := ConvertedValue(ReferenceRanges.CPeptide.ln,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.HS := ConvertedValue(ReferenceRanges.CPeptide.hn,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.CPeptide.lt,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.CPeptide.ht,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.CPeptide.lp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.CPeptide.hp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.LC := ReferenceRanges.CPeptide.ln;
+      NormDefinitions.HC := ReferenceRanges.CPeptide.hn;
+      NormDefinitions.LTC := ReferenceRanges.CPeptide.lt;
+      NormDefinitions.HTC := ReferenceRanges.CPeptide.ht;
+      NormDefinitions.LPC := ReferenceRanges.CPeptide.lp;
+      NormDefinitions.HPC := ReferenceRanges.CPeptide.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'nmol/L';
+    ExclusionDefinitions.UOMC := 'ng/mL';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'nmol/L';
+    NormDefinitions.UOMC := 'ng/mL';
+    if pos(UpCase('mol'), UpCase(ReferenceRanges.CPeptide.UoM)) > 0 then
+    begin
+      NormDefinitions.LS := ReferenceRanges.CPeptide.ln;
+      NormDefinitions.HS := ReferenceRanges.CPeptide.hn;
+      NormDefinitions.LTS := ReferenceRanges.CPeptide.lt;
+      NormDefinitions.HTS := ReferenceRanges.CPeptide.ht;
+      NormDefinitions.LPS := ReferenceRanges.CPeptide.lp;
+      NormDefinitions.HPS := ReferenceRanges.CPeptide.hp;
+      NormDefinitions.LC := ConvertedValue(ReferenceRanges.CPeptide.ln,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.HC := ConvertedValue(ReferenceRanges.CPeptide.hn,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.LTC := ConvertedValue(ReferenceRanges.CPeptide.lt,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.HTC := ConvertedValue(ReferenceRanges.CPeptide.ht,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.LPC := ConvertedValue(ReferenceRanges.CPeptide.lp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+      NormDefinitions.HPC := ConvertedValue(ReferenceRanges.CPeptide.hp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'ng/mL');
+    end
+    else
+    begin
+      NormDefinitions.LS := ConvertedValue(ReferenceRanges.CPeptide.ln,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.HS := ConvertedValue(ReferenceRanges.CPeptide.hn,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.LTS := ConvertedValue(ReferenceRanges.CPeptide.lt,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.HTS := ConvertedValue(ReferenceRanges.CPeptide.ht,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.LPS := ConvertedValue(ReferenceRanges.CPeptide.lp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.HPS := ConvertedValue(ReferenceRanges.CPeptide.hp,
+        kCPeptideMolarMass, ReferenceRanges.CPeptide.UoM, 'nmol/L');
+      NormDefinitions.LC := ReferenceRanges.CPeptide.ln;
+      NormDefinitions.HC := ReferenceRanges.CPeptide.hn;
+      NormDefinitions.LTC := ReferenceRanges.CPeptide.lt;
+      NormDefinitions.HTC := ReferenceRanges.CPeptide.ht;
+      NormDefinitions.LPC := ReferenceRanges.CPeptide.lp;
+      NormDefinitions.HPC := ReferenceRanges.CPeptide.hp;
+    end;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {SPINA:}
 
