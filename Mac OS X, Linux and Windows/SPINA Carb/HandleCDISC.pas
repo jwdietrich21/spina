@@ -911,7 +911,157 @@ begin
 
     {SPINA-DI:}
 
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for SPINA-DI:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'DI');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Static Disposition Index (SPINA-DI)');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '';
+    ExclusionDefinitions.UOMC := '';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '';
+    NormDefinitions.UOMC := '';
+    NormDefinitions.LS := ReferenceRanges.SPINA_DI.ln;
+    NormDefinitions.HS := ReferenceRanges.SPINA_DI.hn;
+    NormDefinitions.LTS := ReferenceRanges.SPINA_DI.lt;
+    NormDefinitions.HTS := ReferenceRanges.SPINA_DI.ht;
+    NormDefinitions.LPS := ReferenceRanges.SPINA_DI.lp;
+    NormDefinitions.HPS := ReferenceRanges.SPINA_DI.hp;
+    NormDefinitions.LC := ReferenceRanges.SPINA_DI.ln;
+    NormDefinitions.HC := ReferenceRanges.SPINA_DI.hn;
+    NormDefinitions.LTC := ReferenceRanges.SPINA_DI.lt;
+    NormDefinitions.HTC := ReferenceRanges.SPINA_DI.ht;
+    NormDefinitions.LPC := ReferenceRanges.SPINA_DI.lp;
+    NormDefinitions.HPC := ReferenceRanges.SPINA_DI.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '';
+    ExclusionDefinitions.UOMC := '';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '';
+    NormDefinitions.UOMC := '';
+    NormDefinitions.LS := ReferenceRanges.SPINA_DI.ln;
+    NormDefinitions.HS := ReferenceRanges.SPINA_DI.hn;
+    NormDefinitions.LTS := ReferenceRanges.SPINA_DI.lt;
+    NormDefinitions.HTS := ReferenceRanges.SPINA_DI.ht;
+    NormDefinitions.LPS := ReferenceRanges.SPINA_DI.lp;
+    NormDefinitions.HPS := ReferenceRanges.SPINA_DI.hp;
+    NormDefinitions.LC := ReferenceRanges.SPINA_DI.ln;
+    NormDefinitions.HC := ReferenceRanges.SPINA_DI.hn;
+    NormDefinitions.LTC := ReferenceRanges.SPINA_DI.lt;
+    NormDefinitions.HTC := ReferenceRanges.SPINA_DI.ht;
+    NormDefinitions.LPC := ReferenceRanges.SPINA_DI.lp;
+    NormDefinitions.HPC := ReferenceRanges.SPINA_DI.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
     {HOMA-Beta:}
+
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for HOMA-Beta:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'HOMA-Beta');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for Beta cell function');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.HOMA_Beta.ln;
+    NormDefinitions.HS := ReferenceRanges.HOMA_Beta.hn;
+    NormDefinitions.LTS := ReferenceRanges.HOMA_Beta.lt;
+    NormDefinitions.HTS := ReferenceRanges.HOMA_Beta.ht;
+    NormDefinitions.LPS := ReferenceRanges.HOMA_Beta.lp;
+    NormDefinitions.HPS := ReferenceRanges.HOMA_Beta.hp;
+    NormDefinitions.LC := ReferenceRanges.HOMA_Beta.ln;
+    NormDefinitions.HC := ReferenceRanges.HOMA_Beta.hn;
+    NormDefinitions.LTC := ReferenceRanges.HOMA_Beta.lt;
+    NormDefinitions.HTC := ReferenceRanges.HOMA_Beta.ht;
+    NormDefinitions.LPC := ReferenceRanges.HOMA_Beta.lp;
+    NormDefinitions.HPC := ReferenceRanges.HOMA_Beta.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.HOMA_Beta.ln;
+    NormDefinitions.HS := ReferenceRanges.HOMA_Beta.hn;
+    NormDefinitions.LTS := ReferenceRanges.HOMA_Beta.lt;
+    NormDefinitions.HTS := ReferenceRanges.HOMA_Beta.ht;
+    NormDefinitions.LPS := ReferenceRanges.HOMA_Beta.lp;
+    NormDefinitions.HPS := ReferenceRanges.HOMA_Beta.hp;
+    NormDefinitions.LC := ReferenceRanges.HOMA_Beta.ln;
+    NormDefinitions.HC := ReferenceRanges.HOMA_Beta.hn;
+    NormDefinitions.LTC := ReferenceRanges.HOMA_Beta.lt;
+    NormDefinitions.HTC := ReferenceRanges.HOMA_Beta.ht;
+    NormDefinitions.LPC := ReferenceRanges.HOMA_Beta.lp;
+    NormDefinitions.HPC := ReferenceRanges.HOMA_Beta.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {HOMA-IR:}
 
