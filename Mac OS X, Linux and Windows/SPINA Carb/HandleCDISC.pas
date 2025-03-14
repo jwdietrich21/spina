@@ -764,7 +764,7 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'GBeta');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Beta cells'' Secretory Capacity');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Beta cells'' Secretory Capacity (SPINA-GBeta)');
     BaseTestNode.Appendchild(LabTestNode);
 
     ExclusionDefinitions.Sex := 'F';
@@ -833,6 +833,93 @@ begin
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {SPINA-GR:}
+
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for SPINA-GR:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'GR');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Insulin Receptor Gain (SPINA-GR)');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'mol/s';
+    ExclusionDefinitions.UOMC := 'mol/s';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'mol/s';
+    NormDefinitions.UOMC := 'mol/s';
+    NormDefinitions.LS := ReferenceRanges.SPINA_GR.ln;
+    NormDefinitions.HS := ReferenceRanges.SPINA_GR.hn;
+    NormDefinitions.LTS := ReferenceRanges.SPINA_GR.lt;
+    NormDefinitions.HTS := ReferenceRanges.SPINA_GR.ht;
+    NormDefinitions.LPS := ReferenceRanges.SPINA_GR.lp;
+    NormDefinitions.HPS := ReferenceRanges.SPINA_GR.hp;
+    NormDefinitions.LC := ReferenceRanges.SPINA_GR.ln;
+    NormDefinitions.HC := ReferenceRanges.SPINA_GR.hn;
+    NormDefinitions.LTC := ReferenceRanges.SPINA_GR.lt;
+    NormDefinitions.HTC := ReferenceRanges.SPINA_GR.ht;
+    NormDefinitions.LPC := ReferenceRanges.SPINA_GR.lp;
+    NormDefinitions.HPC := ReferenceRanges.SPINA_GR.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := 'mol/s';
+    ExclusionDefinitions.UOMC := 'mol/s';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := 'mol/s';
+    NormDefinitions.UOMC := 'mol/s';
+    NormDefinitions.LS := ReferenceRanges.SPINA_GR.ln;
+    NormDefinitions.HS := ReferenceRanges.SPINA_GR.hn;
+    NormDefinitions.LTS := ReferenceRanges.SPINA_GR.lt;
+    NormDefinitions.HTS := ReferenceRanges.SPINA_GR.ht;
+    NormDefinitions.LPS := ReferenceRanges.SPINA_GR.lp;
+    NormDefinitions.HPS := ReferenceRanges.SPINA_GR.hp;
+    NormDefinitions.LC := ReferenceRanges.SPINA_GR.ln;
+    NormDefinitions.HC := ReferenceRanges.SPINA_GR.hn;
+    NormDefinitions.LTC := ReferenceRanges.SPINA_GR.lt;
+    NormDefinitions.HTC := ReferenceRanges.SPINA_GR.ht;
+    NormDefinitions.LPC := ReferenceRanges.SPINA_GR.lp;
+    NormDefinitions.HPC := ReferenceRanges.SPINA_GR.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    {SPINA-DI:}
+
+    {HOMA-Beta:}
+
+    {HOMA-IR:}
+
+    {HOMA-IS:}
+
+    {QUICKI:}
+
+    {CGR:}
 
     { #todo -oJWD : Insert handlers for structure parameters here }
 
