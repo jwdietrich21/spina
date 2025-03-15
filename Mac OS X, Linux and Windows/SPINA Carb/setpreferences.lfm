@@ -13,6 +13,7 @@ object PreferencesForm: TPreferencesForm
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnPaint = FormPaint
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '3.8.0.0'
   object OKButton: TButton

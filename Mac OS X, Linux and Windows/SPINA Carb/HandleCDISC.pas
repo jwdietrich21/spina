@@ -22,9 +22,11 @@ unit HandleCDISC;
 
 {$mode objfpc}
 
-{Return codes of procedure SaveCDISC_RRFile:
-0: No Error.
-6: Error saving file.
+{Return codes of procedures ReadCDISC_RRFile and SaveCDISC_RRFile:
+0:  No Error.
+2:  Root node with ID "SPIc" not found
+6:  Error reading or saving file.
+10: New file created.
 }
 
 interface
@@ -33,10 +35,28 @@ uses
   Classes, SysUtils, FileUtil, DOM, XMLRead, XMLWrite, StrUtils, DateUtils,
   Math, SPINATypes, SPINA_Engine, UnitConverter;
 
+procedure ReadCDISC_RRFile(theFileName: string; var ReferenceRanges: tReferenceValues;
+  out returnCode: integer);
 procedure SaveCDISC_RRFile(theFileName: string; const ReferenceRanges: tReferenceValues;
   var returnCode: integer);
 
 implementation
+
+function AttributeValue(theNode: TDOMNode; theName: string): string;
+  {this functions finds an attribute of an XML tag and delivers its value}
+var
+  i: integer;
+  foundValue: string;
+begin
+  foundValue := '';
+  if assigned(theNode) then
+    for i := 0 to theNode.Attributes.Length - 1 do
+    begin
+      if theNode.Attributes[i].NodeName = theName then
+        foundValue := theNode.Attributes[i].NodeValue;
+    end;
+  Result := foundValue;
+end;
 
 procedure AddSubExNodes(Doc: TXMLDocument; theRoot: TDOMNode;
   ExclusionDefinitions: tReferenceExDefinitions);
@@ -295,6 +315,602 @@ begin
   Result := ScanDateTime('YYYY-MM-DD"T"hh:nn:ss', ADate, 1);
 end;
 
+procedure ReadCDISC_RRFile(theFileName: string; var ReferenceRanges: tReferenceValues;
+  out returnCode: integer);
+{reads reference values from a CDISC LAB model-compliant XML file.}
+{This version of the procedure ignores sex- and age-specific reference values}
+const
+  MaxTries = 1000;
+var
+  Doc: TXMLDocument;
+  RootNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode, NormalNode,
+  UnitsNode, NormalDefinitionNode: TDOMNode;
+  theStream: TStringStream;
+  oldSeparator: char;
+  SI: boolean;
+  breakCounter: integer;
+begin
+  returnCode := 6;
+  breakCounter := 0;          // fall-back upper bound for loops
+  oldSeparator := DefaultFormatSettings.DecimalSeparator;
+  DefaultFormatSettings.DecimalSeparator := DEC_POINT;
+  if not FileExists(theFileName) then
+  begin
+    SaveCDISC_RRFile(theFileName, sReferenceValues, returnCode);
+    {saves a minimal standard file}
+    if returnCode = 0 then    {no error,}
+      returnCode := 10;       {therefore new file created}
+  end;
+  if FileExists(theFileName) then
+    {could this file be created (or did it already exist)?}
+  try
+    ReadXMLFile(Doc, theFileName);
+    assert(assigned(Doc));
+    RootNode := Doc.DocumentElement.FindNode('Study');
+    if assigned(RootNode) then
+      if AttributeValue(RootNode, 'ID') = 'SPIc' then
+      begin
+        if returnCode < 10 then
+          returnCode := 0;
+        BatteryNode := RootNode.FindNode('BaseBattery');
+        while (assigned(BatteryNode)) and (breakCounter < MaxTries) do
+        begin
+          Inc(breakCounter);
+
+          {Standard hormone and metabolite concentrations:}
+
+          if AttributeValue(BatteryNode, 'ID') = 'Hormones_metabolites' then
+          begin
+            BaseTestNode := BatteryNode.FindNode('BaseTest');
+            while assigned(BaseTestNode) do
+            begin
+              theNode := BaseTestNode.FindNode('LabTest');
+              if assigned(theNode) then
+
+                {Glucose:}
+
+                if AttributeValue(theNode, 'ID') = 'Glucose' then
+                begin
+                  theNode := theNode.NextSibling;
+                  while assigned(theNode) do
+                  begin
+                    if theNode.NodeName = 'SubjectCharacteristics' then
+                    begin
+                      FlagUOMNode := theNode.FindNode('FlagUOM');
+                      if assigned(FlagUOMNode) then
+                      begin
+                        UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                        if assigned(UnitsNode) then
+                          ReferenceRanges.Glucose.UoM := AttributeValue(UnitsNode, 'Value');
+                        NormalNode := FlagUOMNode.FindNode('Normal');
+                        if assigned(NormalNode) then
+                        begin
+                          NormalDefinitionNode :=
+                            NormalNode.FindNode('NormalDefinition');
+                          while assigned(NormalDefinitionNode) do
+                          begin
+                            if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                              'L') or
+                              (AttributeValue(NormalDefinitionNode,
+                              'AlertLevel') = 'LN') then
+                              ReferenceRanges.Glucose.ln :=
+                                StrToFloatDef(
+                                AttributeValue(NormalDefinitionNode, 'Value'),
+                                Math.Nan);
+                            if (AttributeValue(
+                              NormalDefinitionNode, 'NormalLevel') = 'H') or
+                              (AttributeValue(NormalDefinitionNode,
+                              'AlertLevel') = 'HN') then
+                              ReferenceRanges.Glucose.hn :=
+                                StrToFloatDef(
+                                AttributeValue(NormalDefinitionNode, 'Value'),
+                                Math.Nan);
+                            NormalDefinitionNode :=
+                              NormalDefinitionNode.NextSibling;
+                          end;
+                        end;
+                      end;
+                    end;
+                    theNode := theNode.NextSibling;
+                  end;
+                end;
+
+              {Insulin:}
+
+              if AttributeValue(theNode, 'ID') = 'Insulin' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                        if assigned(UnitsNode) then
+                          ReferenceRanges.Insulin.UoM := AttributeValue(UnitsNode, 'Value');
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.Insulin.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.Insulin.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              {C-Peptide:}
+
+              if AttributeValue(theNode, 'ID') = 'C-Peptide' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                        if assigned(UnitsNode) then
+                          ReferenceRanges.CPeptide.UoM := AttributeValue(UnitsNode, 'Value');
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.CPeptide.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.CPeptide.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              BaseTestNode := BaseTestNode.NextSibling;
+            end;
+          end;
+          if BatteryNode.NextSibling <> nil then
+            BatteryNode := BatteryNode.NextSibling
+          else
+            BatteryNode := nil;
+
+          {Calculated biomarkers: SPINA Carb etc:}
+
+          if AttributeValue(BatteryNode, 'ID') = 'SPIc' then
+          begin
+            BaseTestNode := BatteryNode.FindNode('BaseTest');
+            while assigned(BaseTestNode) do
+            begin
+              theNode := BaseTestNode.FindNode('LabTest');
+              if assigned(theNode) then
+
+                {SPINA-GBeta:}
+
+                if AttributeValue(theNode, 'ID') = 'GBeta' then
+                begin
+                  theNode := theNode.NextSibling;
+                  while assigned(theNode) do
+                  begin
+                    if theNode.NodeName = 'SubjectCharacteristics' then
+                    begin
+                      FlagUOMNode := theNode.FindNode('FlagUOM');
+                      if assigned(FlagUOMNode) then
+                      begin
+                        NormalNode := FlagUOMNode.FindNode('Normal');
+                        if assigned(NormalNode) then {skips exclusion definition}
+                        begin
+                          NormalDefinitionNode :=
+                            NormalNode.FindNode('NormalDefinition');
+                          while assigned(NormalDefinitionNode) do
+                          begin
+                            if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                              'L') or
+                              (AttributeValue(NormalDefinitionNode,
+                              'AlertLevel') = 'LN') then
+                              ReferenceRanges.SPINA_GBeta.ln :=
+                                StrToFloatDef(
+                                AttributeValue(NormalDefinitionNode, 'Value'),
+                                Math.Nan);
+                            if (AttributeValue(
+                              NormalDefinitionNode, 'NormalLevel') = 'H') or
+                              (AttributeValue(NormalDefinitionNode,
+                              'AlertLevel') = 'HN') then
+                              ReferenceRanges.SPINA_GBeta.hn :=
+                                StrToFloatDef(
+                                AttributeValue(NormalDefinitionNode, 'Value'),
+                                Math.Nan);
+                            NormalDefinitionNode :=
+                              NormalDefinitionNode.NextSibling;
+                          end;
+                        end;
+                      end;
+                    end;
+                    theNode := theNode.NextSibling;
+                  end;
+                end;
+
+              {SPINA-GR:}
+
+              if AttributeValue(theNode, 'ID') = 'GR' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.SPINA_GR.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.SPINA_GR.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              {SPINA-DI:}
+
+              if AttributeValue(theNode, 'ID') = 'DI' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.SPINA_DI.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.SPINA_DI.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              {HOMA-Beta:}
+
+              if AttributeValue(theNode, 'ID') = 'HOMA-Beta' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.HOMA_Beta.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.HOMA_Beta.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              {HOMA-IR:}
+
+              if AttributeValue(theNode, 'ID') = 'HOMA-IR' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.HOMA_IR.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.HOMA_IR.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              {HOMA-IS:}
+
+              if AttributeValue(theNode, 'ID') = 'HOMA-IS' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.HOMA_IS.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.HOMA_IS.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              {QUICKI:}
+
+              if AttributeValue(theNode, 'ID') = 'QUICKI' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.QUICKI.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.QUICKI.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              {CGR:}
+
+              if AttributeValue(theNode, 'ID') = 'CGR' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.CGR.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.CGR.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
+              BaseTestNode := BaseTestNode.NextSibling;
+            end;
+          end;
+          if BatteryNode.NextSibling <> nil then
+            BatteryNode := BatteryNode.NextSibling
+          else
+            BatteryNode := nil;
+        end;
+      end
+      else
+        returnCode := 2;
+  finally
+    Doc.Free;
+  end
+  else
+  begin                         {fall-back solution, if file does not exist}
+    ReferenceRanges := sReferenceValues;
+    returnCode := 6;
+  end;
+  DefaultFormatSettings.DecimalSeparator := oldSeparator;
+end;
+
 procedure SaveCDISC_RRFile(theFileName: string; const ReferenceRanges: tReferenceValues;
   var returnCode: integer);
 {Saves edited reference ranges as CDISC file}
@@ -509,10 +1125,8 @@ begin
       NormDefinitions.HTS := ReferenceRanges.Insulin.ht;
       NormDefinitions.LPS := ReferenceRanges.Insulin.lp;
       NormDefinitions.HPS := ReferenceRanges.Insulin.hp;
-      NormDefinitions.LC := ReferenceRanges.Insulin.ln /
-        kInsulinConversionFactor;
-      NormDefinitions.HC := ReferenceRanges.Insulin.hn /
-        kInsulinConversionFactor;
+      NormDefinitions.LC := ReferenceRanges.Insulin.ln / kInsulinConversionFactor;
+      NormDefinitions.HC := ReferenceRanges.Insulin.hn / kInsulinConversionFactor;
       NormDefinitions.LTC := ReferenceRanges.Insulin.lt /
         kInsulinConversionFactor;
       NormDefinitions.HTC := ReferenceRanges.Insulin.ht /
@@ -524,10 +1138,8 @@ begin
     end
     else
     begin
-      NormDefinitions.LS := ReferenceRanges.Insulin.ln *
-        kInsulinConversionFactor;
-      NormDefinitions.HS := ReferenceRanges.Insulin.hn *
-        kInsulinConversionFactor;
+      NormDefinitions.LS := ReferenceRanges.Insulin.ln * kInsulinConversionFactor;
+      NormDefinitions.HS := ReferenceRanges.Insulin.hn * kInsulinConversionFactor;
       NormDefinitions.LTS := ReferenceRanges.Insulin.lt *
         kInsulinConversionFactor;
       NormDefinitions.HTS := ReferenceRanges.Insulin.ht *
@@ -573,10 +1185,8 @@ begin
       NormDefinitions.HTS := ReferenceRanges.Insulin.ht;
       NormDefinitions.LPS := ReferenceRanges.Insulin.lp;
       NormDefinitions.HPS := ReferenceRanges.Insulin.hp;
-      NormDefinitions.LC := ReferenceRanges.Insulin.ln /
-        kInsulinConversionFactor;
-      NormDefinitions.HC := ReferenceRanges.Insulin.hn /
-        kInsulinConversionFactor;
+      NormDefinitions.LC := ReferenceRanges.Insulin.ln / kInsulinConversionFactor;
+      NormDefinitions.HC := ReferenceRanges.Insulin.hn / kInsulinConversionFactor;
       NormDefinitions.LTC := ReferenceRanges.Insulin.lt /
         kInsulinConversionFactor;
       NormDefinitions.HTC := ReferenceRanges.Insulin.ht /
@@ -588,10 +1198,8 @@ begin
     end
     else
     begin
-      NormDefinitions.LS := ReferenceRanges.Insulin.ln *
-        kInsulinConversionFactor;
-      NormDefinitions.HS := ReferenceRanges.Insulin.hn *
-        kInsulinConversionFactor;
+      NormDefinitions.LS := ReferenceRanges.Insulin.ln * kInsulinConversionFactor;
+      NormDefinitions.HS := ReferenceRanges.Insulin.hn * kInsulinConversionFactor;
       NormDefinitions.LTS := ReferenceRanges.Insulin.lt *
         kInsulinConversionFactor;
       NormDefinitions.HTS := ReferenceRanges.Insulin.ht *
@@ -747,7 +1355,7 @@ begin
     NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
-    {SPINA:}
+    {SPINA Carb etc.:}
 
     BatteryNode := Doc.CreateElement('BaseBattery');
     TDOMElement(BatteryNode).SetAttribute('ID', 'SPIc');
@@ -763,7 +1371,8 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'GBeta');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Beta cells'' Secretory Capacity (SPINA-GBeta)');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Beta cells'' Secretory Capacity (SPINA-GBeta)');
     BaseTestNode.Appendchild(LabTestNode);
 
     ExclusionDefinitions.Sex := 'F';
@@ -994,7 +1603,8 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'HOMA-Beta');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for beta cell function');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Homeostasis Model Assessment for beta cell function');
     BaseTestNode.Appendchild(LabTestNode);
 
     ExclusionDefinitions.Sex := 'F';
@@ -1071,7 +1681,8 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'HOMA-IR');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for insulin resistance');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Homeostasis Model Assessment for insulin resistance');
     BaseTestNode.Appendchild(LabTestNode);
 
     ExclusionDefinitions.Sex := 'F';
@@ -1148,7 +1759,8 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'HOMA-IS');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for insulin sensitivity');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Homeostasis Model Assessment for insulin sensitivity');
     BaseTestNode.Appendchild(LabTestNode);
 
     ExclusionDefinitions.Sex := 'F';
@@ -1225,7 +1837,8 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'QUICKI');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Quantitative insulin sensitivity check index');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Quantitative insulin sensitivity check index');
     BaseTestNode.Appendchild(LabTestNode);
 
     ExclusionDefinitions.Sex := 'F';

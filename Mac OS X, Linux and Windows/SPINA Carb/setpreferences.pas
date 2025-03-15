@@ -26,7 +26,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  Math, SPINATypes, HandlePreferences, SPINA_GUIServices, Grids;
+  Math, UnitConverter, SPINATypes, SPINA_Engine, HandlePreferences,
+  SPINA_GUIServices, Grids;
 
 type
 
@@ -103,12 +104,13 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
   private
 
   public
-
+    procedure PopulateEdits(Sender: TObject);
   end;
 
 var
@@ -125,17 +127,61 @@ begin
 
 end;
 
-procedure TPreferencesForm.CancelButtonClick(Sender: TObject);
-begin
-  Close;
-end;
-
-procedure TPreferencesForm.FormActivate(Sender: TObject);
+procedure TPreferencesForm.PopulateEdits(Sender: TObject);
 var
   preferredFontPos, sansSerifPos: integer;
 begin
+  GlucoseRRLEdit.Text := FloatToStr(
+    ConvertedValue(gPreferences.ReferenceValues.Glucose.ln, kGlucoseMolarMass,
+    gPreferences.ReferenceValues.Glucose.UoM, gPreferences.PreferredUoMs.Glucose));
+  GlucoseRRHEdit.Text := FloatToStr(
+    ConvertedValue(gPreferences.ReferenceValues.Glucose.hn, kGlucoseMolarMass,
+    gPreferences.ReferenceValues.Glucose.UoM, gPreferences.PreferredUoMs.Glucose));
+  GlucoseUnitsCombo.Text := gPreferences.PreferredUoMs.Glucose;
+
+  InsulinRRLEdit.Text := FloatToStr(
+    ConvertedValue(gPreferences.ReferenceValues.Insulin.ln, kInsulinConversionFactor,
+    gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin));
+  InsulinRRHEdit.Text := FloatToStr(
+    ConvertedValue(gPreferences.ReferenceValues.Insulin.hn, kInsulinConversionFactor,
+    gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin));
+  InsulinUnitsCombo.Text := gPreferences.PreferredUoMs.Insulin;
+
+  CPeptideRRLEdit.Text := FloatToStr(
+    ConvertedValue(gPreferences.ReferenceValues.CPeptide.ln, kCPeptideMolarMass,
+    gPreferences.ReferenceValues.CPeptide.UoM, gPreferences.PreferredUoMs.CPeptide));
+  CPeptideRRHEdit.Text := FloatToStr(
+    ConvertedValue(gPreferences.ReferenceValues.CPeptide.hn, kCPeptideMolarMass,
+    gPreferences.ReferenceValues.CPeptide.UoM, gPreferences.PreferredUoMs.CPeptide));
+  CPeptideUnitsCombo.Text := gPreferences.PreferredUoMs.CPeptide;
+
+  GBetaRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.ln);
+  GBetaRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.hn);
+
+  GRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.ln);
+  GRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn);
+
+  DIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln);
+  DIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn);
+
+  HOMABetaRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln);
+  HOMABetaRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn);
+
+  HOMAIRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln);
+  HOMAIRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn);
+
+  HOMAISRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln);
+  HOMAISRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn);
+
+  QUICKIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.ln);
+  QUICKIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.hn);
+
+  CGRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.ln);
+  CGRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.hn);
+
   SendingFacEdit.Text := gPreferences.MSH_ID;
   PlacerEdit.Text := gPreferences.Placer_ID;
+
   preferredFontPos := -1;
   sansSerifPos := -1;
   FontsCombobox.Items.Assign(Screen.Fonts);
@@ -152,33 +198,19 @@ begin
     gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
 end;
 
+procedure TPreferencesForm.CancelButtonClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TPreferencesForm.FormActivate(Sender: TObject);
+begin
+  PopulateEdits(Sender);
+end;
+
 procedure TPreferencesForm.FormCreate(Sender: TObject);
 begin
-  GlucoseRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.Glucose.ln);
-  GlucoseRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.Glucose.hn);
-  GlucoseUnitsCombo.Text := gPreferences.ReferenceValues.Glucose.UoM;
-  InsulinRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.Insulin.ln);
-  InsulinRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.Insulin.hn);
-  InsulinUnitsCombo.Text := gPreferences.ReferenceValues.Insulin.UoM;
-  CPeptideRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.CPeptide.ln);
-  CPeptideRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.CPeptide.hn);
-  CPeptideUnitsCombo.Text := gPreferences.ReferenceValues.CPeptide.UoM;
-  GBetaRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.ln);
-  GBetaRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.hn);
-  GRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.ln);
-  GRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn);
-  DIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln);
-  DIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn);
-  HOMABetaRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln);
-  HOMABetaRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn);
-  HOMAIRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln);
-  HOMAIRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn);
-  HOMAISRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln);
-  HOMAISRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn);
-  QUICKIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.ln);
-  QUICKIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.hn);
-  CGRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.ln);
-  CGRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.hn);
+  PopulateEdits(Sender);
 end;
 
 procedure TPreferencesForm.FormPaint(Sender: TObject);
@@ -189,29 +221,44 @@ begin
     Color := clWhite;
 end;
 
+procedure TPreferencesForm.FormShow(Sender: TObject);
+begin
+  PopulateEdits(Sender);
+end;
+
 procedure TPreferencesForm.OKButtonClick(Sender: TObject);
 begin
   gPreferences.MSH_ID := SendingFacEdit.Text;
   gPreferences.Placer_ID := PlacerEdit.Text;
-  gPreferences.ReferenceValues.Glucose.ln := StrToFloatDef(GlucoseRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.Glucose.hn := StrToFloatDef(GlucoseRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Glucose.ln :=
+    StrToFloatDef(GlucoseRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Glucose.hn :=
+    StrToFloatDef(GlucoseRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.Glucose.UoM := GlucoseUnitsCombo.Text;
-  gPreferences.ReferenceValues.Insulin.ln := StrToFloatDef(InsulinRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.Insulin.hn := StrToFloatDef(InsulinRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Insulin.ln :=
+    StrToFloatDef(InsulinRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.Insulin.hn :=
+    StrToFloatDef(InsulinRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.Insulin.uom := InsulinUnitsCombo.Text;
-  gPreferences.ReferenceValues.CPeptide.ln := StrToFloatDef(CPeptideRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.CPeptide.hn := StrToFloatDef(CPeptideRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CPeptide.ln :=
+    StrToFloatDef(CPeptideRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CPeptide.hn :=
+    StrToFloatDef(CPeptideRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CPeptide.uom := CPeptideUnitsCombo.Text;
-  gPreferences.ReferenceValues.SPINA_GBeta.ln := StrToFloatDef(GBetaRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.SPINA_GBeta.hn := StrToFloatDef(GBetaRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GBeta.ln :=
+    StrToFloatDef(GBetaRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GBeta.hn :=
+    StrToFloatDef(GBetaRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.SPINA_GBeta.UoM := GBetaUnitLabel.Caption;
   gPreferences.ReferenceValues.SPINA_GR.ln := StrToFloatDef(GRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.SPINA_GR.hn := StrToFloatDef(GRRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.SPINA_GR.UoM := GRUnitLabel.Caption;
   gPreferences.ReferenceValues.SPINA_DI.ln := StrToFloatDef(DIRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.SPINA_DI.hn := StrToFloatDef(DIRRHEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.HOMA_Beta.ln := StrToFloatDef(HOMABetaRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.HOMA_Beta.hn := StrToFloatDef(HOMABetaRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_Beta.ln :=
+    StrToFloatDef(HOMABetaRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_Beta.hn :=
+    StrToFloatDef(HOMABetaRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.HOMA_Beta.UoM := HOMABetaUnitLabel.Caption;
   gPreferences.ReferenceValues.HOMA_IR.ln := StrToFloatDef(HOMAIRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.HOMA_IR.hn := StrToFloatDef(HOMAIRRRHEdit.Text, Math.Nan);
@@ -221,6 +268,9 @@ begin
   gPreferences.ReferenceValues.QUICKI.hn := StrToFloatDef(QUICKIRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CGR.ln := StrToFloatDef(CGRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CGR.hn := StrToFloatDef(CGRRRHEdit.Text, Math.Nan);
+  gPreferences.PreferredUoMs.Glucose := GlucoseUnitsCombo.Text;
+  gPreferences.PreferredUoMs.Insulin := InsulinUnitsCombo.Text;
+  gPreferences.PreferredUoMs.CPeptide := CPeptideUnitsCombo.Text;
   if FontsCombobox.ItemIndex > 0 then
     gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
   SavePreferences;

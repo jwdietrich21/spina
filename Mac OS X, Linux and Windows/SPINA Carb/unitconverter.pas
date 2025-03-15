@@ -8,10 +8,10 @@ unit UnitConverter;
 
 { Version 1.5.0 (Felis) }
 
-{ (c) J. W. Dietrich, 1994 - 2023 }
+{ (c) J. W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2023 }
+{ (c) Ruhr University of Bochum 2005 - 2025 }
 
 { Parser and converter for measurement units }
 
@@ -656,6 +656,7 @@ begin
       else if fromUnitElements.MassUnit = toUnitElements.MassUnit then         {identical units}
         conversionFactor := PrefixFactor[fromMpIndex] / PrefixFactor[fromVpIndex] * PrefixFactor[toVpIndex] / PrefixFactor[toMpIndex]
       else if (fromUnitElements.MassUnit = 'U') or (fromUnitElements.MassUnit = 'IU') then conversionFactor := molarMass
+      else if (toUnitElements.MassUnit = 'U') or (toUnitElements.MassUnit = 'IU') then conversionFactor := 1 / molarMass
       else conversionFactor := NaN;
       ConvertedValue := value * conversionFactor;
     end;

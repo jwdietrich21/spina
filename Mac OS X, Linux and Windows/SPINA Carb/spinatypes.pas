@@ -130,12 +130,17 @@ type
     HOMA_Beta, HOMA_IR, HOMA_IS, QUICKI, CGR: tReferenceLimits;
   end;
 
+  tPreferredUoMs = record
+    Insulin, Glucose, CPeptide: String;
+  end;
+
   tPreferences = record
     new, rememberUsedUnits, colouriseMandatoryFields, exportLOINC: boolean;
     MandatoryColor: TColor;
     MSH_ID, Placer_ID: string;
     PrintFont: string;
     ReferenceValues: tReferenceValues;
+    PreferredUoMs: tPreferredUoMs;
   end;
 
 const

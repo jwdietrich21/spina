@@ -244,10 +244,18 @@ begin
     Doc.Appendchild(RootNode);
     RootNode := Doc.DocumentElement;
 
+    ElementNode := Doc.CreateElement('UoM');
     if gPreferences.rememberUsedUnits then
-      RootNode.AppendChild(SimpleNode(Doc, 'remember', 'true'))
+      ElementNode.AppendChild(SimpleNode(Doc, 'remember', 'true'))
     else
-      RootNode.AppendChild(SimpleNode(Doc, 'remember', 'false'));
+      ElementNode.AppendChild(SimpleNode(Doc, 'remember', 'false'));
+    ElementNode.AppendChild(SimpleNode(Doc, 'Glucose',
+      gPreferences.PreferredUoMs.Glucose));
+    ElementNode.AppendChild(SimpleNode(Doc, 'Insulin',
+      gPreferences.PreferredUoMs.Insulin));
+    ElementNode.AppendChild(SimpleNode(Doc, 'C-peptide',
+      gPreferences.PreferredUoMs.CPeptide));
+    RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('mandatoryfields');
     if gPreferences.colouriseMandatoryFields then
@@ -300,8 +308,22 @@ begin
 end;
 
 procedure ReadRefRanges;
+var
+  theFileName, prefsFolder: string;
+  code: integer;
 begin
-
+  theFileName := RefRangeFile;
+  prefsFolder := PreferencesFolder;
+  if not DirectoryExists(prefsFolder) then
+    if not CreateDir(prefsFolder) then
+      ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
+  if DirectoryExists(prefsFolder) then
+  begin
+    if FileExists(theFileName) then
+      ReadCDISC_RRFile(theFileName, gPreferences.ReferenceValues, code);
+  end;
+  if (code <> 0) and (code <> 10) then
+    gPreferences.ReferenceValues := sReferenceValues; // use standard on error
 end;
 
 procedure SaveRefRanges;
@@ -378,11 +400,15 @@ begin
   try
     ReadXMLFile(Doc, theFileName);
 
-    theString := NodeContent(Doc.DocumentElement, 'remember');
+    RootNode := Doc.DocumentElement.FindNode('UoM');
+    theString := NodeContent(RootNode, 'remember');
     if theString = 'true' then
       gPreferences.rememberUsedUnits := True
     else
       gPreferences.rememberUsedUnits := False;
+    gPreferences.PreferredUoMs.Glucose := NodeContent(RootNode, 'Glucose');
+    gPreferences.PreferredUoMs.Insulin := NodeContent(RootNode, 'Insulin');
+    gPreferences.PreferredUoMs.CPeptide := NodeContent(RootNode, 'C-peptide');
 
     RootNode := Doc.DocumentElement.FindNode('mandatoryfields');
     theString := NodeContent(RootNode, 'colourise');
@@ -441,8 +467,8 @@ end;
 
 initialization
 
-begin
-  gPreferences.ReferenceValues := sReferenceValues;
-end;
+  begin
+    gPreferences.ReferenceValues := sReferenceValues;
+  end;
 
 end.
