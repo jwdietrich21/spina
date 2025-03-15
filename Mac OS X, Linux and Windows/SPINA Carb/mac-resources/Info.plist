@@ -11,10 +11,10 @@ des Insulin-Glukose-Regelkreises
 
 Version 5.1.0 (Cyclone)
 
-(c) J. W. Dietrich, 1994 - 2024
+(c) J. W. Dietrich, 1994 - 2025
 (c) Ludwig Maximilian University of Munich 1995 - 2002
 (c) University of Ulm Hospitals 2002-2004
-(c) Ruhr University of Bochum 2005 - 2024
+(c) Ruhr University of Bochum 2005 - 2025
 
 Source code released under the BSD License
 See http://spina.medical-cybernetics.de for details
@@ -24,7 +24,7 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleExecutable</key>
-	<string>SPINA Carb</string>
+	<string>SPINA_Carb</string>
 	<key>CFBundleVersion</key>
 	<string>5.1.0</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -42,9 +42,9 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleShortVersionString</key>
 	<string>5.1.0</string>
 	<key>CFBundleGetInfoString</key>
-	<string>5.1.0, ©1994-2024 J. W. Dietrich</string>
+	<string>5.1.0, ©1994-2025 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>5.1.0, ©1994-2024 J. W. Dietrich</string>
+	<string>5.1.0, ©1994-2025 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sf.spina.thyr</string>
 	<key>LSApplicationCategoryType</key>
@@ -52,8 +52,6 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleIconFile</key>
 	<string>iconfile.icns</string>
 	<key>CSResourcesFileMapped</key>
-	<true/>
-	<key>LSRequiresCarbon</key>
 	<true/>
 	<key>CFBundleDocumentTypes</key>
 	<array>
