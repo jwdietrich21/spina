@@ -22,7 +22,7 @@ unit HandleCDISC;
 
 {$mode objfpc}
 
-{Return codes of procedure SaveStandardCDISC_RRFile:
+{Return codes of procedure SaveCDISC_RRFile:
 0: No Error.
 6: Error saving file.
 }
@@ -35,7 +35,6 @@ uses
 
 procedure SaveCDISC_RRFile(theFileName: string; const ReferenceRanges: tReferenceValues;
   var returnCode: integer);
-procedure SaveStandardCDISC_RRFile(theFileName: string; var returnCode: integer);
 
 implementation
 
@@ -995,7 +994,7 @@ begin
     BatteryNode.Appendchild(BaseTestNode);
     LabTestNode := Doc.CreateElement('LabTest');
     TDOMElement(LabTestNode).SetAttribute('ID', 'HOMA-Beta');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for Beta cell function');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for beta cell function');
     BaseTestNode.Appendchild(LabTestNode);
 
     ExclusionDefinitions.Sex := 'F';
@@ -1065,243 +1064,313 @@ begin
 
     {HOMA-IR:}
 
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for HOMA-IR:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'HOMA-IR');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for insulin resistance');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.HOMA_IR.ln;
+    NormDefinitions.HS := ReferenceRanges.HOMA_IR.hn;
+    NormDefinitions.LTS := ReferenceRanges.HOMA_IR.lt;
+    NormDefinitions.HTS := ReferenceRanges.HOMA_IR.ht;
+    NormDefinitions.LPS := ReferenceRanges.HOMA_IR.lp;
+    NormDefinitions.HPS := ReferenceRanges.HOMA_IR.hp;
+    NormDefinitions.LC := ReferenceRanges.HOMA_IR.ln;
+    NormDefinitions.HC := ReferenceRanges.HOMA_IR.hn;
+    NormDefinitions.LTC := ReferenceRanges.HOMA_IR.lt;
+    NormDefinitions.HTC := ReferenceRanges.HOMA_IR.ht;
+    NormDefinitions.LPC := ReferenceRanges.HOMA_IR.lp;
+    NormDefinitions.HPC := ReferenceRanges.HOMA_IR.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.HOMA_IR.ln;
+    NormDefinitions.HS := ReferenceRanges.HOMA_IR.hn;
+    NormDefinitions.LTS := ReferenceRanges.HOMA_IR.lt;
+    NormDefinitions.HTS := ReferenceRanges.HOMA_IR.ht;
+    NormDefinitions.LPS := ReferenceRanges.HOMA_IR.lp;
+    NormDefinitions.HPS := ReferenceRanges.HOMA_IR.hp;
+    NormDefinitions.LC := ReferenceRanges.HOMA_IR.ln;
+    NormDefinitions.HC := ReferenceRanges.HOMA_IR.hn;
+    NormDefinitions.LTC := ReferenceRanges.HOMA_IR.lt;
+    NormDefinitions.HTC := ReferenceRanges.HOMA_IR.ht;
+    NormDefinitions.LPC := ReferenceRanges.HOMA_IR.lp;
+    NormDefinitions.HPC := ReferenceRanges.HOMA_IR.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
     {HOMA-IS:}
+
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for HOMA-IS:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'HOMA-IS');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Homeostasis Model Assessment for insulin sensitivity');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.HOMA_IS.ln;
+    NormDefinitions.HS := ReferenceRanges.HOMA_IS.hn;
+    NormDefinitions.LTS := ReferenceRanges.HOMA_IS.lt;
+    NormDefinitions.HTS := ReferenceRanges.HOMA_IS.ht;
+    NormDefinitions.LPS := ReferenceRanges.HOMA_IS.lp;
+    NormDefinitions.HPS := ReferenceRanges.HOMA_IS.hp;
+    NormDefinitions.LC := ReferenceRanges.HOMA_IS.ln;
+    NormDefinitions.HC := ReferenceRanges.HOMA_IS.hn;
+    NormDefinitions.LTC := ReferenceRanges.HOMA_IS.lt;
+    NormDefinitions.HTC := ReferenceRanges.HOMA_IS.ht;
+    NormDefinitions.LPC := ReferenceRanges.HOMA_IS.lp;
+    NormDefinitions.HPC := ReferenceRanges.HOMA_IS.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.HOMA_IS.ln;
+    NormDefinitions.HS := ReferenceRanges.HOMA_IS.hn;
+    NormDefinitions.LTS := ReferenceRanges.HOMA_IS.lt;
+    NormDefinitions.HTS := ReferenceRanges.HOMA_IS.ht;
+    NormDefinitions.LPS := ReferenceRanges.HOMA_IS.lp;
+    NormDefinitions.HPS := ReferenceRanges.HOMA_IS.hp;
+    NormDefinitions.LC := ReferenceRanges.HOMA_IS.ln;
+    NormDefinitions.HC := ReferenceRanges.HOMA_IS.hn;
+    NormDefinitions.LTC := ReferenceRanges.HOMA_IS.lt;
+    NormDefinitions.HTC := ReferenceRanges.HOMA_IS.ht;
+    NormDefinitions.LPC := ReferenceRanges.HOMA_IS.lp;
+    NormDefinitions.HPC := ReferenceRanges.HOMA_IS.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     {QUICKI:}
 
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for QUICKI:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'QUICKI');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'Quantitative insulin sensitivity check index');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.QUICKI.ln;
+    NormDefinitions.HS := ReferenceRanges.QUICKI.hn;
+    NormDefinitions.LTS := ReferenceRanges.QUICKI.lt;
+    NormDefinitions.HTS := ReferenceRanges.QUICKI.ht;
+    NormDefinitions.LPS := ReferenceRanges.QUICKI.lp;
+    NormDefinitions.HPS := ReferenceRanges.QUICKI.hp;
+    NormDefinitions.LC := ReferenceRanges.QUICKI.ln;
+    NormDefinitions.HC := ReferenceRanges.QUICKI.hn;
+    NormDefinitions.LTC := ReferenceRanges.QUICKI.lt;
+    NormDefinitions.HTC := ReferenceRanges.QUICKI.ht;
+    NormDefinitions.LPC := ReferenceRanges.QUICKI.lp;
+    NormDefinitions.HPC := ReferenceRanges.QUICKI.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.QUICKI.ln;
+    NormDefinitions.HS := ReferenceRanges.QUICKI.hn;
+    NormDefinitions.LTS := ReferenceRanges.QUICKI.lt;
+    NormDefinitions.HTS := ReferenceRanges.QUICKI.ht;
+    NormDefinitions.LPS := ReferenceRanges.QUICKI.lp;
+    NormDefinitions.HPS := ReferenceRanges.QUICKI.hp;
+    NormDefinitions.LC := ReferenceRanges.QUICKI.ln;
+    NormDefinitions.HC := ReferenceRanges.QUICKI.hn;
+    NormDefinitions.LTC := ReferenceRanges.QUICKI.lt;
+    NormDefinitions.HTC := ReferenceRanges.QUICKI.ht;
+    NormDefinitions.LPC := ReferenceRanges.QUICKI.lp;
+    NormDefinitions.HPC := ReferenceRanges.QUICKI.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
     {CGR:}
 
-    { #todo -oJWD : Insert handlers for structure parameters here }
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for CGR:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'CGR');
+    TDOMElement(LabTestNode).SetAttribute('Name', 'C-peptide/glucose ratio');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.CGR.ln;
+    NormDefinitions.HS := ReferenceRanges.CGR.hn;
+    NormDefinitions.LTS := ReferenceRanges.CGR.lt;
+    NormDefinitions.HTS := ReferenceRanges.CGR.ht;
+    NormDefinitions.LPS := ReferenceRanges.CGR.lp;
+    NormDefinitions.HPS := ReferenceRanges.CGR.hp;
+    NormDefinitions.LC := ReferenceRanges.CGR.ln;
+    NormDefinitions.HC := ReferenceRanges.CGR.hn;
+    NormDefinitions.LTC := ReferenceRanges.CGR.lt;
+    NormDefinitions.HTC := ReferenceRanges.CGR.ht;
+    NormDefinitions.LPC := ReferenceRanges.CGR.lp;
+    NormDefinitions.HPC := ReferenceRanges.CGR.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.CGR.ln;
+    NormDefinitions.HS := ReferenceRanges.CGR.hn;
+    NormDefinitions.LTS := ReferenceRanges.CGR.lt;
+    NormDefinitions.HTS := ReferenceRanges.CGR.ht;
+    NormDefinitions.LPS := ReferenceRanges.CGR.lp;
+    NormDefinitions.HPS := ReferenceRanges.CGR.hp;
+    NormDefinitions.LC := ReferenceRanges.CGR.ln;
+    NormDefinitions.HC := ReferenceRanges.CGR.hn;
+    NormDefinitions.LTC := ReferenceRanges.CGR.lt;
+    NormDefinitions.HTC := ReferenceRanges.CGR.ht;
+    NormDefinitions.LPC := ReferenceRanges.CGR.lp;
+    NormDefinitions.HPC := ReferenceRanges.CGR.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
     writeXMLFile(Doc, theFileName);  // was writeXMLFile(Doc, UTF8ToSys(theFileName));
-
-    returnCode := 0;
-  finally
-    Doc.Free;
-  end;
-end;
-
-procedure SaveStandardCDISC_RRFile(theFileName: string; var returnCode: integer);
-{saves a file with standard reference ranges}
-var
-  Doc: TXMLDocument;
-  RootNode, parentNode, theNode, BatteryNode, BaseTestNode, FlagUOMNode: TDOMNode;
-  LabTestNode, NormalNode, AlertNode, UnitsNode, NormalDefinitionNode: TDOMNode;
-  SubjectCharsNode, AgeNode, ExclusionsNode, TextNode: TDOMNode;
-  ExclusionDefinitions: tReferenceExDefinitions;
-  NormDefinitions: tReferenceNormDefinitions;
-  TestString: string;
-begin
-  returnCode := 6;
-  try
-    Doc := TXMLDocument.Create;
-    theNode := Doc.CreateComment('Example for SPINA Reference Values');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('adapted to CDISC LAB MODEL 1.0.1');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) J. W. Dietrich, 1994 - 2025');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment(
-      '(c) Ludwig Maximilian University of Munich 1995 - 2002');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) University of Ulm Hospitals 2002-2004');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(c) Ruhr University of Bochum 2005 - 2025');
-    Doc.AppendChild(theNode);
-    theNode := Doc.CreateComment('(released under the BSD License');
-    Doc.AppendChild(theNode);
-    RootNode := Doc.CreateElement('GTP');
-    TDOMElement(RootNode).SetAttribute('CreationDateTime', '2025-02-07T00:13:00+01:00');
-    TDOMElement(RootNode).SetAttribute('ModelVersion', '01-0-01');
-    Doc.Appendchild(RootNode);
-    RootNode := Doc.DocumentElement;
-    parentNode := Doc.CreateElement('TransmissionSource');
-    TDOMElement(parentNode).SetAttribute('ID', 'www.medizin.ruhr-uni-bochum.de');
-    TDOMElement(parentNode).SetAttribute('Name', 'UK RUB');
-    RootNode.Appendchild(parentNode);
-    parentNode := Doc.CreateElement('Study');
-    TDOMElement(parentNode).SetAttribute('ID', 'SPIc');
-    TDOMElement(parentNode).SetAttribute('Name', 'Reference Ranges for SPINA Carb');
-    TDOMElement(parentNode).SetAttribute('TransmissionType', 'C');
-    RootNode.Appendchild(parentNode);
-
-    {Standard hormone and metabolite concentrations:}
-
-    BatteryNode := Doc.CreateElement('BaseBattery');
-    TDOMElement(BatteryNode).SetAttribute('ID', 'Hormones_metabolites');
-    TDOMElement(BatteryNode).SetAttribute('Name', 'SPINA Carb');
-    parentNode.Appendchild(BatteryNode);
-
-    {Glucose:}
-
-    BaseTestNode := Doc.CreateElement('BaseTest');
-    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
-    theNode := Doc.CreateComment('Definitions for Glucose:');
-    BaseTestNode.AppendChild(theNode);
-    BatteryNode.Appendchild(BaseTestNode);
-    LabTestNode := Doc.CreateElement('LabTest');
-    TDOMElement(LabTestNode).SetAttribute('ID', 'Glucose');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Glucose');
-    BaseTestNode.Appendchild(LabTestNode);
-
-    ExclusionDefinitions.Sex := 'F';
-    ExclusionDefinitions.AgeL := 0;
-    ExclusionDefinitions.AgeH := 999;
-    ExclusionDefinitions.UOMS := 'mmol/L';
-    ExclusionDefinitions.UOMC := 'mg/dL';
-    ExclusionDefinitions.LXS := 0;
-    ExclusionDefinitions.HXS := 10000;
-    ExclusionDefinitions.LXC := 0;
-    ExclusionDefinitions.HXC := 10000;
-    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
-    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex := 'F';
-    NormDefinitions.AgeL := 0;
-    NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := 'mmol/L';
-    NormDefinitions.UOMC := 'mg/L';
-    NormDefinitions.LS := 3.89;
-    NormDefinitions.HS := 5.56;
-    NormDefinitions.LTS := 3;
-    NormDefinitions.HTS := 10;
-    NormDefinitions.LPS := 2.22;
-    NormDefinitions.HPS := 13.89;
-    NormDefinitions.LC := 70;
-    NormDefinitions.HC := 100;
-    NormDefinitions.LTC := 54;
-    NormDefinitions.HTC := 180;
-    NormDefinitions.LPC := 40;
-    NormDefinitions.HPC := 250;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
-    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
-
-    theNode := Doc.CreateComment('Add additional age classes here');
-    BaseTestNode.AppendChild(theNode);
-
-    ExclusionDefinitions.Sex := 'M';
-    ExclusionDefinitions.AgeL := 0;
-    ExclusionDefinitions.AgeH := 999;
-    ExclusionDefinitions.UOMS := 'mmol/L';
-    ExclusionDefinitions.UOMC := 'mg/dL';
-    ExclusionDefinitions.LXS := 0;
-    ExclusionDefinitions.HXS := 10000;
-    ExclusionDefinitions.LXC := 0;
-    ExclusionDefinitions.HXC := 10000;
-    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
-    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex := 'M';
-    NormDefinitions.AgeL := 0;
-    NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := 'mmol/L';
-    NormDefinitions.UOMC := 'mg/dL';
-    NormDefinitions.LS := 3.89;
-    NormDefinitions.HS := 5.56;
-    NormDefinitions.LTS := 3;
-    NormDefinitions.HTS := 10;
-    NormDefinitions.LPS := 2.22;
-    NormDefinitions.HPS := 13.89;
-    NormDefinitions.LC := 70;
-    NormDefinitions.HC := 100;
-    NormDefinitions.LTC := 54;
-    NormDefinitions.HTC := 180;
-    NormDefinitions.LPC := 40;
-    NormDefinitions.HPC := 250;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
-    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
-
-    {Insulin:}
-
-    { #todo -oJWD : Insert handlers for insulin and c-peptide here }
-
-    {SPINA:}
-
-    BatteryNode := Doc.CreateElement('BaseBattery');
-    TDOMElement(BatteryNode).SetAttribute('ID', 'SPIc');
-    TDOMElement(BatteryNode).SetAttribute('Name', 'SPINA Carb');
-    parentNode.Appendchild(BatteryNode);
-
-    {SPINA-GBeta:}
-
-    BaseTestNode := Doc.CreateElement('BaseTest');
-    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
-    theNode := Doc.CreateComment('Definitions for SPINA-GBeta:');
-    BaseTestNode.AppendChild(theNode);
-    BatteryNode.Appendchild(BaseTestNode);
-    LabTestNode := Doc.CreateElement('LabTest');
-    TDOMElement(LabTestNode).SetAttribute('ID', 'GBeta');
-    TDOMElement(LabTestNode).SetAttribute('Name', 'Beta cells'' Secretory Capacity');
-    BaseTestNode.Appendchild(LabTestNode);
-
-    ExclusionDefinitions.Sex := 'F';
-    ExclusionDefinitions.AgeL := 0;
-    ExclusionDefinitions.AgeH := 999;
-    ExclusionDefinitions.UOMS := 'pmol/s';
-    ExclusionDefinitions.UOMC := 'pmol/s';
-    ExclusionDefinitions.LXS := 0;
-    ExclusionDefinitions.HXS := 10000;
-    ExclusionDefinitions.LXC := 0;
-    ExclusionDefinitions.HXC := 10000;
-    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
-    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex := 'F';
-    NormDefinitions.AgeL := 0;
-    NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := 'pmol/s';
-    NormDefinitions.UOMC := 'pmol/s';
-    NormDefinitions.LS := 0.64;
-    NormDefinitions.HS := 3.73;
-    NormDefinitions.LTS := 0.3;
-    NormDefinitions.HTS := 6;
-    NormDefinitions.LPS := 0.1;
-    NormDefinitions.HPS := 10;
-    NormDefinitions.LC := 0.64;
-    NormDefinitions.HC := 3.73;
-    NormDefinitions.LTC := 0.3;
-    NormDefinitions.HTC := 6;
-    NormDefinitions.LPC := 0.1;
-    NormDefinitions.HPC := 10;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
-    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
-
-    theNode := Doc.CreateComment('Add additional age classes here');
-    BaseTestNode.AppendChild(theNode);
-
-    ExclusionDefinitions.Sex := 'M';
-    ExclusionDefinitions.AgeL := 0;
-    ExclusionDefinitions.AgeH := 999;
-    ExclusionDefinitions.UOMS := 'pmol/s';
-    ExclusionDefinitions.UOMC := 'pmol/s';
-    ExclusionDefinitions.LXS := 0;
-    ExclusionDefinitions.HXS := 10000;
-    ExclusionDefinitions.LXC := 0;
-    ExclusionDefinitions.HXC := 10000;
-    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
-    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
-    NormDefinitions.Sex := 'M';
-    NormDefinitions.AgeL := 0;
-    NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := 'pmol/s';
-    NormDefinitions.UOMC := 'pmol/s';
-    NormDefinitions.LS := 0.64;
-    NormDefinitions.HS := 3.73;
-    NormDefinitions.LTS := 0.3;
-    NormDefinitions.HTS := 6;
-    NormDefinitions.LPS := 0.1;
-    NormDefinitions.HPS := 10;
-    NormDefinitions.LC := 0.64;
-    NormDefinitions.HC := 3.73;
-    NormDefinitions.LTC := 0.3;
-    NormDefinitions.HTC := 6;
-    NormDefinitions.LPC := 0.1;
-    NormDefinitions.HPC := 10;
-    NormDefinitions.startDateTime := '2012-08-01T12:00:00+01:00';
-    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
-
-    {SPINA-GR:}
-
-    { #todo -oJWD : Insert Handlers for structure parameters here }
-
-    writeXMLFile(Doc, theFileName);
 
     returnCode := 0;
   finally

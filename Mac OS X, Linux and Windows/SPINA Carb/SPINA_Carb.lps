@@ -72,7 +72,7 @@
         <UnitName Value="SPINATypes"/>
         <EditorIndex Value="2"/>
         <TopLine Value="141"/>
-        <CursorPos X="22" Y="156"/>
+        <CursorPos X="16" Y="152"/>
         <UsageCount Value="106"/>
         <Loaded Value="True"/>
       </Unit>
@@ -120,9 +120,10 @@
         <Filename Value="handlepreferences.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="419"/>
-        <CursorPos X="21" Y="321"/>
+        <TopLine Value="287"/>
+        <CursorPos X="13" Y="304"/>
         <UsageCount Value="90"/>
         <Loaded Value="True"/>
       </Unit>
@@ -142,10 +143,8 @@
       <Unit>
         <Filename Value="HandleCDISC.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="992"/>
-        <CursorPos X="49" Y="924"/>
+        <CursorPos X="25" Y="1063"/>
         <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit>
@@ -188,70 +187,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="resultwindow.pas"/>
-        <Caret Line="79" Column="62" TopLine="59"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="420" Column="52" TopLine="394"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="52" Column="25" TopLine="33"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="341" Column="26" TopLine="336"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="228" Column="33" TopLine="203"/>
-      </Position>
-      <Position>
-        <Filename Value="spinatypes.pas"/>
-        <Caret Line="90" Column="33" TopLine="76"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="89" Column="53" TopLine="72"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="287" Column="10" TopLine="283"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="289" TopLine="283"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="236" TopLine="227"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="237" TopLine="227"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="288" TopLine="270"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="291" TopLine="270"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="321" Column="7" TopLine="294"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="227" TopLine="203"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="312" TopLine="305"/>
-      </Position>
       <Position>
         <Filename Value="handlepreferences.pas"/>
         <Caret Line="313" TopLine="305"/>
@@ -306,6 +241,70 @@
       <Position>
         <Filename Value="HandleCDISC.pas"/>
         <Caret Line="766" Column="47" TopLine="744"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="1372" Column="57" TopLine="1054"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret TopLine="483"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="477" Column="6" TopLine="459"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="614" Column="6" TopLine="590"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="751" Column="6" TopLine="727"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="758" Column="6" TopLine="734"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="835" Column="6" TopLine="811"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="912" Column="6" TopLine="888"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="989" Column="6" TopLine="965"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="1066" Column="6" TopLine="1042"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="1143" Column="6" TopLine="1119"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="1220" Column="6" TopLine="1196"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="1382" Column="35" TopLine="1367"/>
+      </Position>
+      <Position>
+        <Filename Value="HandleCDISC.pas"/>
+        <Caret Line="37" Column="28" TopLine="15"/>
+      </Position>
+      <Position>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="321" Column="21" TopLine="418"/>
+      </Position>
+      <Position>
+        <Filename Value="handlepreferences.pas"/>
+        <Caret Line="51" Column="24" TopLine="36"/>
       </Position>
     </JumpHistory>
     <RunParams>
