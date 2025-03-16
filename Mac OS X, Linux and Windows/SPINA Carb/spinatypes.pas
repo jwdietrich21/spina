@@ -102,6 +102,12 @@ const
   clLtYellow = TColor($66FFFF);
   clLtOrange = TColor($89E9FF);
 
+  BParLabels = 'Glucose: ' + LineEnding + 'Insulin: ' + LineEnding +
+    'C-peptide: ';
+  SParLables = 'SPINA-GBeta: ' + LineEnding + 'SPINA-GR: ' + LineEnding +
+    'SPINA-DI: ' + LineEnding + 'HOMA-Beta: ' + LineEnding + 'HOMA-IR: ' +
+    LineEnding + 'HOMA-IS: ' + LineEnding + 'QUICKI: ' + LineEnding + 'CGR : ';
+
 type
   tReferenceLimits = record
     ln, hn, lt, ht, lp, hp: extended;

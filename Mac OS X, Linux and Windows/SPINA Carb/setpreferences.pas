@@ -131,53 +131,53 @@ procedure TPreferencesForm.PopulateEdits(Sender: TObject);
 var
   preferredFontPos, sansSerifPos: integer;
 begin
-  GlucoseRRLEdit.Text := FloatToStr(
+  GlucoseRRLEdit.Text := FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Glucose.ln, kGlucoseMolarMass,
-    gPreferences.ReferenceValues.Glucose.UoM, gPreferences.PreferredUoMs.Glucose));
-  GlucoseRRHEdit.Text := FloatToStr(
+    gPreferences.ReferenceValues.Glucose.UoM, gPreferences.PreferredUoMs.Glucose), ffFixed, 4, 1);
+  GlucoseRRHEdit.Text := FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Glucose.hn, kGlucoseMolarMass,
-    gPreferences.ReferenceValues.Glucose.UoM, gPreferences.PreferredUoMs.Glucose));
+    gPreferences.ReferenceValues.Glucose.UoM, gPreferences.PreferredUoMs.Glucose), ffFixed, 4, 1);
   GlucoseUnitsCombo.Text := gPreferences.PreferredUoMs.Glucose;
 
-  InsulinRRLEdit.Text := FloatToStr(
+  InsulinRRLEdit.Text := FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Insulin.ln, kInsulinConversionFactor,
-    gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin));
-  InsulinRRHEdit.Text := FloatToStr(
+    gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin), ffFixed, 4, 1);
+  InsulinRRHEdit.Text := FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Insulin.hn, kInsulinConversionFactor,
-    gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin));
+    gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin), ffFixed, 4, 1);
   InsulinUnitsCombo.Text := gPreferences.PreferredUoMs.Insulin;
 
-  CPeptideRRLEdit.Text := FloatToStr(
+  CPeptideRRLEdit.Text := FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.CPeptide.ln, kCPeptideMolarMass,
-    gPreferences.ReferenceValues.CPeptide.UoM, gPreferences.PreferredUoMs.CPeptide));
-  CPeptideRRHEdit.Text := FloatToStr(
+    gPreferences.ReferenceValues.CPeptide.UoM, gPreferences.PreferredUoMs.CPeptide), ffFixed, 4, 1);
+  CPeptideRRHEdit.Text := FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.CPeptide.hn, kCPeptideMolarMass,
-    gPreferences.ReferenceValues.CPeptide.UoM, gPreferences.PreferredUoMs.CPeptide));
+    gPreferences.ReferenceValues.CPeptide.UoM, gPreferences.PreferredUoMs.CPeptide), ffFixed, 4, 1);
   CPeptideUnitsCombo.Text := gPreferences.PreferredUoMs.CPeptide;
 
-  GBetaRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.ln);
-  GBetaRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.hn);
+  GBetaRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln, ffFixed, 4, 2);
+  GBetaRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed, 4, 2);
 
-  GRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.ln);
-  GRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn);
+  GRRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.ln, ffFixed, 4, 2);
+  GRRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.hn, ffFixed, 4, 2);
 
-  DIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln);
-  DIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn);
+  DIRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.ln, ffFixed, 4, 2);
+  DIRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.hn, ffFixed, 4, 2);
 
-  HOMABetaRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln);
-  HOMABetaRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn);
+  HOMABetaRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.ln, ffFixed, 4, 1);
+  HOMABetaRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.hn, ffFixed, 4, 1);
 
-  HOMAIRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln);
-  HOMAIRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn);
+  HOMAIRRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.ln, ffFixed, 4, 1);
+  HOMAIRRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.hn, ffFixed, 4, 1);
 
-  HOMAISRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln);
-  HOMAISRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn);
+  HOMAISRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.ln, ffFixed, 4, 1);
+  HOMAISRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.hn, ffFixed, 4, 1);
 
-  QUICKIRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.ln);
-  QUICKIRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.QUICKI.hn);
+  QUICKIRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.QUICKI.ln, ffFixed, 4, 1);
+  QUICKIRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed, 4, 1);
 
-  CGRRRLEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.ln);
-  CGRRRHEdit.Text := FloatToStr(gPreferences.ReferenceValues.CGR.hn);
+  CGRRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1);
+  CGRRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed, 4, 1);
 
   SendingFacEdit.Text := gPreferences.MSH_ID;
   PlacerEdit.Text := gPreferences.Placer_ID;
