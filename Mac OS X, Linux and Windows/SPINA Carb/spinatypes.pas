@@ -191,6 +191,8 @@ var
   gPreferences: tPreferences;
   gNumberFormat, gDateTimeFormat: string;
   gStandardMandatoryColor: TColor;
+  gCEcertified: boolean;
+  gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
 
 implementation
 

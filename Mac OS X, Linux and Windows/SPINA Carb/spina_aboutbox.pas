@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  ExtCtrls, EnvironmentInfo, SPINA_GUIServices;
+  ExtCtrls, LCLIntf, EnvironmentInfo, SPINA_GUIServices;
 
 type
 
@@ -52,6 +52,9 @@ type
     TabSheet1: TTabSheet;
     procedure CloseAboutBox(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure URL1Click(Sender: TObject);
+    procedure URL2Click(Sender: TObject);
   private
 
   public
@@ -76,6 +79,30 @@ end;
 procedure TAboutBox.FormCreate(Sender: TObject);
 begin
   VersionLabel.Caption := 'Version ' + FileVersion;
+end;
+
+procedure TAboutBox.FormPaint(Sender: TObject);
+begin
+  if DarkTheme = true then
+  begin
+    URL1.Font.Color := clSkyBlue;
+    URL2.Font.Color := clSkyBlue;
+  end
+  else
+  begin
+    URL1.Font.Color := clNavy;
+    URL2.Font.Color := clNavy;
+  end;
+end;
+
+procedure TAboutBox.URL1Click(Sender: TObject);
+begin
+  OpenURL('http://spina.medical-cybernetics.de');
+end;
+
+procedure TAboutBox.URL2Click(Sender: TObject);
+begin
+  OpenURL('http://spina.sourceforge.net');
 end;
 
 end.

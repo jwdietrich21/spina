@@ -32,11 +32,18 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
   SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus,
-  spina_aboutbox, HandlePreferences, setpreferences, HandleCDISC, Barcode;
+  spina_aboutbox, HandlePreferences, setpreferences, HandleCDISC, Barcode,
+  SPINA_Resources;
 
 {$R *.res}
 
 begin
+  {$IFDEF debug}
+  if FileExists('heaptrace.trc') then
+    DeleteFile('heaptrace.trc');
+  SetHeapTraceOutput('heaptrace.trc');
+  {$ENDIF}
+  gCEcertified := false;
   RequireDerivedFormResource:=True;
   Application.Title:='SPINA Carb';
   Application.Scaled:=True;

@@ -26,7 +26,8 @@ interface
 
 uses
   Classes, SysUtils, LCLType, Graphics, Interfaces, Printers, Math,
-  LCLProc, LazUTF8, Barcode, SPINATypes, CaseBroker, EnvironmentInfo;
+  LCLProc, LazUTF8, Barcode, SPINATypes, CaseBroker, EnvironmentInfo,
+  SPINA_Resources;
 
 const
   AnInch = 2.54;
@@ -230,6 +231,12 @@ begin
       PrinterWriteln(H, currentX, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, '', False);
+      { #todo : Implement language-specific handler }
+      {if not gCEcertified then
+      begin
+        PrinterWriteln(H, currentX, currentY, gUncertified2, False);
+        PrinterWriteln(H, currentX, currentY, gUncertified4, False);
+      end; }
       Printer.Canvas.Font.Color := clBlack;
       currentX := marginX;
       currentY := Printer.PageHeight - 5 * H;
