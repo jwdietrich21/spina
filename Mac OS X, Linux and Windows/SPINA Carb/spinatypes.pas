@@ -104,7 +104,7 @@ const
 
   BParLabels = 'Glucose: ' + LineEnding + 'Insulin: ' + LineEnding +
     'C-peptide: ';
-  SParLables = 'SPINA-GBeta: ' + LineEnding + 'SPINA-GR: ' + LineEnding +
+  SParLabels = 'SPINA-GBeta: ' + LineEnding + 'SPINA-GR: ' + LineEnding +
     'SPINA-DI: ' + LineEnding + 'HOMA-Beta: ' + LineEnding + 'HOMA-IR: ' +
     LineEnding + 'HOMA-IS: ' + LineEnding + 'QUICKI: ' + LineEnding + 'CGR : ';
 

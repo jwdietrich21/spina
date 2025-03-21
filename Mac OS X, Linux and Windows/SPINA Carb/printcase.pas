@@ -215,7 +215,7 @@ begin
         PrinterWriteln(H, currentX, currentY, resultLine, False);
       until returnPos = 0;
       currentY := lastY;
-      remainder := CaseRecord.RCompMessage; // reference ranges
+      remainder := CaseRecord.RCombMessage1; // reference ranges
       repeat
         returnPos := pos(LineEnding, remainder);
         if returnPos > 0 then

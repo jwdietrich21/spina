@@ -39,7 +39,8 @@ type
     DoBDate, OBDate, OBTime: TDateTime;
     InsulinTherapy: boolean;
     Comment, BParMessage, SParMessage, CombMessage: string;
-    BRefMessage, SRefMessage, RCompMessage: string;
+    BRefMessage1, BRefMessage2, SRefMessage1, SRefMessage2: string;
+    RCombMessage1, RCombMessage2: string;
   end;
 
 function InsulinSI(RawIns: extended; InsUom: String): extended;

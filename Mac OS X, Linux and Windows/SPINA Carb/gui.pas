@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Menus, ActnList, StdActns, Math, LCLType, ComCtrls,
+  Menus, ActnList, StdActns, Math, LCLType, ComCtrls, StrUtils, Types,
   EditBtn, EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices,
   ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
   SetPreferences, UnitConverter, SPINA_Engine;
@@ -163,9 +163,9 @@ begin
   Calculate(CaseRecord.LabRecord);
   CreateOutput(Sender);
   ResultsMemo.Text := LineEnding + CaseRecord.CombMessage;
-  ResultsMemo.Hint := CaseRecord.RCompMessage;
+  ResultsMemo.Hint := CaseRecord.RCombMessage2;
   ResultForm.ShowResults(caseRecord.BParMessage, caseRecord.SParMessage,
-    caseRecord.BRefMessage, caseRecord.SRefMessage);
+    caseRecord.BRefMessage1, caseRecord.SRefMessage1);
   ResultForm.Visible := True;
   ResultForm.ShowOnTop;
 end;
@@ -334,7 +334,11 @@ begin
 end;
 
 procedure THauptschirm.CreateOutput(Sender: TObject);
+var
+  BParArray, SParArray: TStringDynArray;
 begin
+  BParArray := SplitString(BParLabels, LineEnding);
+  SParArray := SplitString(SParLabels, LineEnding);
   CaseRecord.BParMessage := kBPars + LineEnding +
     '   ' + kGluc + ': ' + GlucoseEdit.Text +
     ' ' + GlucoseUoM + LineEnding + '   ' +
@@ -360,7 +364,7 @@ begin
     FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
   CaseRecord.CombMessage := CaseRecord.BParMessage + LineEnding +
     '       ' + LineEnding + CaseRecord.SParMessage;
-  CaseRecord.BRefMessage := kRR + LineEnding +
+  CaseRecord.BRefMessage1 := kRR + LineEnding +
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Glucose.ln,
     kGlucoseMolarMass, gPreferences.ReferenceValues.Glucose.UoM, GlucoseUnitsCombo.Text),
     ffFixed, 4, 1) + '–' +
@@ -382,7 +386,7 @@ begin
     kCPeptideMolarMass, gPreferences.ReferenceValues.CPeptide.UoM,
     CPeptideUnitsCombo.Text), ffFixed, 4, 1) + ' ' +
     CPeptideUnitsCombo.Text;
-  CaseRecord.SRefMessage :=
+  CaseRecord.SRefMessage1 :=
     FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln,
     ffFixed, 4, 2) + '–' +
     FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed,
@@ -415,8 +419,9 @@ begin
     gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1) +
     '–' + FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed,
     4, 1) + ' ' + gPreferences.ReferenceValues.CGR.UoM;
-  CaseRecord.RCompMessage := CaseRecord.BRefMessage + LineEnding +
-    '       ' + LineEnding + '       ' + LineEnding + CaseRecord.SRefMessage;
+  CaseRecord.RCombMessage1 := CaseRecord.BRefMessage1 + LineEnding +
+    '       ' + LineEnding + '       ' + LineEnding + CaseRecord.SRefMessage1;
+  CaseRecord.RCombMessage2 := CaseRecord.RCombMessage1;
 end;
 
 procedure THauptschirm.AdaptForPlatform;
