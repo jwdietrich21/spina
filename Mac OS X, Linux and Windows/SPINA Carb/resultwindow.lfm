@@ -1,6 +1,6 @@
 object ResultForm: TResultForm
   Left = 723
-  Height = 234
+  Height = 252
   Top = 353
   Width = 691
   ActiveControl = OKButton
@@ -8,7 +8,7 @@ object ResultForm: TResultForm
   AlphaBlendValue = 230
   BorderStyle = bsToolWindow
   Caption = 'ResultForm'
-  ClientHeight = 234
+  ClientHeight = 252
   ClientWidth = 691
   FormStyle = fsSystemStayOnTop
   OnActivate = FormActivate
@@ -354,7 +354,7 @@ object ResultForm: TResultForm
   object OKButton: TButton
     Left = 600
     Height = 25
-    Top = 192
+    Top = 210
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'OK'
@@ -364,7 +364,7 @@ object ResultForm: TResultForm
   end
   object BParMemo: TMemo
     Left = 128
-    Height = 149
+    Height = 167
     Hint = 'Entered parameters'
     Top = 27
     Width = 248
@@ -379,7 +379,7 @@ object ResultForm: TResultForm
   end
   object SParMemo: TMemo
     Left = 392
-    Height = 149
+    Height = 167
     Hint = 'The results of the calcultation will be displayed here.'
     Top = 27
     Width = 280

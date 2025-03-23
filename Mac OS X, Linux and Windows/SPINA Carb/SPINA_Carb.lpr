@@ -33,7 +33,7 @@ uses
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
   SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus,
   spina_aboutbox, HandlePreferences, setpreferences, HandleCDISC, Barcode,
-  SPINA_Resources;
+  SPINA_Resources, HandleImpEx;
 
 {$R *.res}
 

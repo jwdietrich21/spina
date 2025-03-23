@@ -31,7 +31,7 @@ type
   tLabRecord = record
     Insulin, Glucose, CPeptide: extended;
     SPINA_GBeta, SPINA_GR, SPINA_DI, HOMA_Beta, HOMA_IR, HOMA_IS,
-      QUICKI, CGR: extended;
+      QUICKI, AIGR, CGR: extended;
   end;
   tCaseRecord = record
     LabRecord: tLabRecord;
@@ -74,6 +74,7 @@ begin
   LabRecord.HOMA_IR := HOMA_IR(LabRecord.Insulin, LabRecord.Glucose);
   LabRecord.HOMA_IS := HOMA_IS(LabRecord.Insulin, LabRecord.Glucose);
   LabRecord.QUICKI := QUICKI(LabRecord.Insulin, LabRecord.Glucose);
+  LabRecord.AIGR := AIGR(LabRecord.Insulin, LabRecord.Glucose);
   LabRecord.CGR := CGR(LabRecord.CPeptide, LabRecord.Glucose);
 end;
 

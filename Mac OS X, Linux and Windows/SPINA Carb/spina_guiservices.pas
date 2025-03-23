@@ -28,7 +28,7 @@ unit SPINA_GUIServices;
 interface
 
 uses
-  Classes, SysUtils, gettext
+  Classes, SysUtils, gettext, Types, StrUtils
   {$IFDEF WINDOWS}
   , Windows, Win32Proc, registry
   {$ENDIF}
@@ -41,9 +41,11 @@ uses
   {$IFDEF UNIX}
   , Unix, clocale
   {$ENDIF}
-  , EnvironmentInfo;
+  , SPINATypes, EnvironmentInfo;
 
 function DarkTheme: boolean;
+function CombString(theArray: TStringDynArray; theDelim: String): String;
+function WithReferenceRanges(RefMessage: String): String;
 
 implementation
 
@@ -102,6 +104,51 @@ begin
   Result := False;
   {$ENDIF}
   {$ENDIF}
+end;
+
+function CombString(theArray: TStringDynArray; theDelim: String): String;
+var
+  i, l: integer;
+begin
+  l := length(theArray);
+  result := '';
+  for i := 0 to l - 1 do
+  begin
+    result := result + theArray[i] + theDelim;
+  end;
+
+end;
+
+function WithReferenceRanges(RefMessage: String): String;
+var
+  BParArray, SParArray, RefArray, ResArray: TStringDynArray;
+  i, j, k, l: integer;
+begin
+  BParArray := SplitString(BParLabels, LineEnding);
+  SParArray := SplitString(SParLabels, LineEnding);
+  RefArray := SplitString(RefMessage, LineEnding);
+  result := '';
+  l := length(RefArray);
+  j := length(BParArray);
+  k := 0;
+  SetLength(ResArray, l);
+  ResArray[0] := RefArray[0];
+  for i := 1 to l - 1 do
+  begin
+    if RefArray[i] <> ' ' then
+    begin
+      if i <= j then
+        ResArray[i] := BParArray[i - 1] + RefArray[i]
+      else
+        begin
+        ResArray[i] := SParArray[k] + RefArray[i];
+        inc(k);
+        end;
+    end
+    else
+      ResArray[i] := RefArray[i];
+  end;
+  result := CombString(ResArray, LineEnding);
 end;
 
 end.

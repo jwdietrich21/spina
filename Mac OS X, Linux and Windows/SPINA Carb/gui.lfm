@@ -9138,6 +9138,7 @@ object Hauptschirm: THauptschirm
         Caption = 'Save as...'
         ImageIndex = 2
         ShortCut = 16467
+        OnClick = SaveMenuItemClick
       end
       object CloseMenuItem: TMenuItem
         Caption = 'Close'
@@ -9211,6 +9212,14 @@ object Hauptschirm: THauptschirm
       object Divider23: TMenuItem
         Caption = '-'
       end
+      object CopyResultMenuItem: TMenuItem
+        Caption = 'Copy Result'
+        ShortCut = 16466
+        OnClick = CopyResultMenuItemClick
+      end
+      object Divider24: TMenuItem
+        Caption = '-'
+      end
       object WinPreferencesMenuItem: TMenuItem
         Caption = 'Preferences...'
         OnClick = WinPreferencesMenuItemClick
@@ -9259,5 +9268,13 @@ object Hauptschirm: THauptschirm
     Title = 'Print Results'
     Left = 560
     Top = 132
+  end
+  object SaveResultsDialog: TSaveDialog
+    Title = 'Export'
+    DefaultExt = '.hl7'
+    Filter = 'HL7 Version 2.x (*.hl7)|*.hl7|Text (*.txt)|*.txt'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
+    Left = 656
+    Top = 72
   end
 end

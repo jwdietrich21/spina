@@ -37,15 +37,21 @@ type
     CancelButton: TButton;
     CDISCGroupBox: TGroupBox;
     CGRLabel: TLabel;
+    AIGRLabel: TLabel;
     CGRRRHEdit: TEdit;
+    AIGRRRHEdit: TEdit;
     CGRRRLEdit: TEdit;
+    AIGRRRLEdit: TEdit;
     DashLabel10: TLabel;
+    DashLabel11: TLabel;
+    DashLabel12: TLabel;
     DashLabel5: TLabel;
     DashLabel6: TLabel;
     DashLabel7: TLabel;
     DashLabel8: TLabel;
     DashLabel9: TLabel;
     GRUnitLabel: TLabel;
+    AIGRUnitLabel: TLabel;
     HOMAIRLabel: TLabel;
     HOMABetaRRHEdit: TEdit;
     HOMAISLabel: TLabel;
@@ -176,6 +182,9 @@ begin
   QUICKIRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.QUICKI.ln, ffFixed, 4, 1);
   QUICKIRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed, 4, 1);
 
+  AIGRRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1);
+  AIGRRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed, 4, 1);
+
   CGRRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1);
   CGRRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed, 4, 1);
 
@@ -266,6 +275,8 @@ begin
   gPreferences.ReferenceValues.HOMA_IS.hn := StrToFloatDef(HOMAISRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.QUICKI.ln := StrToFloatDef(QUICKIRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.QUICKI.hn := StrToFloatDef(QUICKIRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.AIGR.ln := StrToFloatDef(AIGRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.AIGR.hn := StrToFloatDef(AIGRRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CGR.ln := StrToFloatDef(CGRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CGR.hn := StrToFloatDef(CGRRRHEdit.Text, Math.Nan);
   gPreferences.PreferredUoMs.Glucose := GlucoseUnitsCombo.Text;

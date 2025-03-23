@@ -27,9 +27,10 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   Menus, ActnList, StdActns, Math, LCLType, ComCtrls, StrUtils, Types,
-  EditBtn, EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices,
+  EditBtn, Clipbrd,
+  EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices,
   ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
-  SetPreferences, UnitConverter, SPINA_Engine;
+  SetPreferences, UnitConverter, SPINA_Engine, HandleImpEx;
   { #todo : Move Formatting of reference ranges to CaseBroker and remove dependendy on SPINA Engine here }
 
 type
@@ -44,6 +45,9 @@ type
     CaseDataMenuItem: TMenuItem;
     Divider01: TMenuItem;
     MacPreferencesMenuItem: TMenuItem;
+    Divider23: TMenuItem;
+    CopyResultMenuItem: TMenuItem;
+    SaveResultsDialog: TSaveDialog;
     WinPreferencesMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
     PrintDialog1: TPrintDialog;
@@ -90,7 +94,7 @@ type
     ObDateLabel: TLabel;
     Divider12: TMenuItem;
     Divider14: TMenuItem;
-    Divider23: TMenuItem;
+    Divider24: TMenuItem;
     SPINACarbLabel: TLabel;
     LogoImage: TImage;
     InsulinUnitsCombo: TComboBox;
@@ -118,6 +122,7 @@ type
     procedure CalculateButtonClick(Sender: TObject);
     procedure CaseDataMenuItemClick(Sender: TObject);
     procedure CaseEditorSheetShow(Sender: TObject);
+    procedure CopyResultMenuItemClick(Sender: TObject);
     procedure EntrySheetShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -130,6 +135,7 @@ type
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure ResultsMemoChange(Sender: TObject);
+    procedure SaveMenuItemClick(Sender: TObject);
     procedure SPINACarbLabelClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
     procedure WinPreferencesMenuItemClick(Sender: TObject);
@@ -146,6 +152,7 @@ type
     procedure AdapttoTheme(Sender: TObject);
     procedure FocusEdit(Sender: TObject);
     procedure RegisterCaseData(Sender: TObject);
+    procedure SaveResults(Sender: TObject);
   end;
 
 var
@@ -165,7 +172,7 @@ begin
   ResultsMemo.Text := LineEnding + CaseRecord.CombMessage;
   ResultsMemo.Hint := CaseRecord.RCombMessage2;
   ResultForm.ShowResults(caseRecord.BParMessage, caseRecord.SParMessage,
-    caseRecord.BRefMessage1, caseRecord.SRefMessage1);
+    caseRecord.BRefMessage2, caseRecord.SRefMessage2);
   ResultForm.Visible := True;
   ResultForm.ShowOnTop;
 end;
@@ -178,6 +185,14 @@ end;
 procedure THauptschirm.CaseEditorSheetShow(Sender: TObject);
 begin
   NextButton.Default := True;
+end;
+
+procedure THauptschirm.CopyResultMenuItemClick(Sender: TObject);
+var
+  Clipboard: TClipboard;
+begin
+  Clipboard := TClipboard.Create();
+  Clipboard.AsText := CaseRecord.CombMessage;
 end;
 
 procedure THauptschirm.EntrySheetShow(Sender: TObject);
@@ -249,6 +264,11 @@ begin
 
 end;
 
+procedure THauptschirm.SaveMenuItemClick(Sender: TObject);
+begin
+  SaveResults(Sender);
+end;
+
 procedure THauptschirm.SPINACarbLabelClick(Sender: TObject);
 begin
   MacAboutItemClick(Sender);
@@ -315,6 +335,23 @@ begin
   CaseRecord.OBTime := ObTimeEdit.TIME;
 end;
 
+procedure THauptschirm.SaveResults(Sender: TObject);
+var
+  filePath: string;
+  theFilterIndex: integer;
+begin
+  SaveResultsDialog.FilterIndex := 1;
+  if SaveResultsDialog.Execute then
+  begin
+    theFilterIndex := SaveResultsDialog.FilterIndex;
+    filePath := SaveResultsDialog.FileName;
+    case theFilterIndex of
+    1: SaveCaseRecord(CaseRecord, filePath, HL7Message);
+    2: SaveCaseRecord(CaseRecord, filePath, plainTextFile);
+    end;
+  end;
+end;
+
 procedure THauptschirm.RegisterEntry(Sender: TObject);
 var
   CheckedIns, CheckedGlc, CheckedCPt: extended;
@@ -334,11 +371,9 @@ begin
 end;
 
 procedure THauptschirm.CreateOutput(Sender: TObject);
-var
-  BParArray, SParArray: TStringDynArray;
+const
+  GapString = ' ' + LineEnding + ' ' + LineEnding;
 begin
-  BParArray := SplitString(BParLabels, LineEnding);
-  SParArray := SplitString(SParLabels, LineEnding);
   CaseRecord.BParMessage := kBPars + LineEnding +
     '   ' + kGluc + ': ' + GlucoseEdit.Text +
     ' ' + GlucoseUoM + LineEnding + '   ' +
@@ -360,6 +395,8 @@ begin
     FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
     LineEnding + '   ' + kQUICKI + ': ' +
     FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1) +
+    LineEnding + '   ' + kAIGR + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.AIGR, ffFixed, 4, 1) + ' ' + AIGRUoM +
     LineEnding + '   ' + kCGR + ': ' +
     FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
   CaseRecord.CombMessage := CaseRecord.BParMessage + LineEnding +
@@ -416,12 +453,18 @@ begin
     '–' + FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed,
     4, 1) + ' ' + gPreferences.ReferenceValues.QUICKI.UoM
     + LineEnding + FloatToStrF(
+    gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed,
+    4, 1) + ' ' + gPreferences.ReferenceValues.AIGR.UoM
+    + LineEnding + FloatToStrF(
     gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1) +
     '–' + FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed,
     4, 1) + ' ' + gPreferences.ReferenceValues.CGR.UoM;
   CaseRecord.RCombMessage1 := CaseRecord.BRefMessage1 + LineEnding +
-    '       ' + LineEnding + '       ' + LineEnding + CaseRecord.SRefMessage1;
-  CaseRecord.RCombMessage2 := CaseRecord.RCombMessage1;
+    GapString + CaseRecord.SRefMessage1;
+  CaseRecord.RCombMessage2 := WithReferenceRanges(CaseRecord.RCombMessage1);
+  CaseRecord.BRefMessage2 := SplitString(CaseRecord.RCombMessage2, GapString)[0];
+  CaseRecord.SRefMessage2 := kRR + LineEnding + SplitString(CaseRecord.RCombMessage2, GapString)[1];
 end;
 
 procedure THauptschirm.AdaptForPlatform;
@@ -437,6 +480,8 @@ begin
   AppleMenu.Visible := True;
   HintsMemo.Font.Height := HintsMemo.Font.Height - 1;
   ResultsMemo.Font.Height := ResultsMemo.Font.Height - 1;
+  WinPreferencesMenuItem.Visible := false;
+  Divider24.Visible := false;
   {$ELSE}
   modifierKey := [ssCtrl];
   modifierKey2 := [ssCtrl, ssShift];
@@ -455,6 +500,7 @@ begin
   RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey2);
   CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
   CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
+  CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
   PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   SelectAllMenuItem.ShortCut := ShortCut(VK_A, modifierKey);
 end;

@@ -56,10 +56,12 @@ const
   kHOMA_IR = 'HOMA-IR';
   kHOMA_IS = 'HOMA-IS';
   kQUICKI = 'QUICKI';
+  kAIGR = 'AIGR';
   kCGR = 'CGR';
   GBetaUoM = 'pmol/s';
   GRUoM = 'mol/s';
   HOMABetaUoM = '%';
+  AIGRUoM = 'pmol/mmol';
 
   kPID2 = 'PID: ';
   kName2 = 'Patient name: ';
@@ -106,7 +108,8 @@ const
     'C-peptide: ';
   SParLabels = 'SPINA-GBeta: ' + LineEnding + 'SPINA-GR: ' + LineEnding +
     'SPINA-DI: ' + LineEnding + 'HOMA-Beta: ' + LineEnding + 'HOMA-IR: ' +
-    LineEnding + 'HOMA-IS: ' + LineEnding + 'QUICKI: ' + LineEnding + 'CGR : ';
+    LineEnding + 'HOMA-IS: ' + LineEnding + 'QUICKI: ' + LineEnding +
+    'AIGR: ' + LineEnding + 'CGR : ';
 
 type
   tReferenceLimits = record
@@ -133,7 +136,7 @@ type
   tReferenceValues = record
     Insulin, Glucose, CPeptide: tReferenceLimits;
     SPINA_GBeta, SPINA_GR, SPINA_DI: tReferenceLimits;
-    HOMA_Beta, HOMA_IR, HOMA_IS, QUICKI, CGR: tReferenceLimits;
+    HOMA_Beta, HOMA_IR, HOMA_IS, QUICKI, AIGR, CGR: tReferenceLimits;
   end;
 
   tPreferredUoMs = record
@@ -172,6 +175,8 @@ const
                               hp: NaN; UoM: '');
                     QUICKI: (ln: 0.4; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
+                    AIGR: (ln: 0; hn: 53.6; lt: NaN; ht: NaN; lp: NaN;
+                              hp: NaN; UoM: 'pmol/mmol');
                     CGR: (ln: 5.0; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: ''));
 

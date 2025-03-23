@@ -844,6 +844,51 @@ begin
                 end;
               end;
 
+              {AIGR:}
+
+              if AttributeValue(theNode, 'ID') = 'AIGR' then
+              begin
+                theNode := theNode.NextSibling;
+                while assigned(theNode) do
+                begin
+                  if theNode.NodeName = 'SubjectCharacteristics' then
+                  begin
+                    FlagUOMNode := theNode.FindNode('FlagUOM');
+                    if assigned(FlagUOMNode) then
+                    begin
+                      NormalNode := FlagUOMNode.FindNode('Normal');
+                      if assigned(NormalNode) then {skips exclusion definition}
+                      begin
+                        NormalDefinitionNode :=
+                          NormalNode.FindNode('NormalDefinition');
+                        while assigned(NormalDefinitionNode) do
+                        begin
+                          if (AttributeValue(NormalDefinitionNode, 'NormalLevel') =
+                            'L') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'LN') then
+                            ReferenceRanges.AIGR.ln :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          if (AttributeValue(
+                            NormalDefinitionNode, 'NormalLevel') = 'H') or
+                            (AttributeValue(NormalDefinitionNode,
+                            'AlertLevel') = 'HN') then
+                            ReferenceRanges.AIGR.hn :=
+                              StrToFloatDef(
+                              AttributeValue(NormalDefinitionNode, 'Value'),
+                              Math.Nan);
+                          NormalDefinitionNode :=
+                            NormalDefinitionNode.NextSibling;
+                        end;
+                      end;
+                    end;
+                  end;
+                  theNode := theNode.NextSibling;
+                end;
+              end;
+
               {CGR:}
 
               if AttributeValue(theNode, 'ID') = 'CGR' then
@@ -1903,6 +1948,84 @@ begin
     NormDefinitions.HTC := ReferenceRanges.QUICKI.ht;
     NormDefinitions.LPC := ReferenceRanges.QUICKI.lp;
     NormDefinitions.HPC := ReferenceRanges.QUICKI.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    {AIGR:}
+
+    BaseTestNode := Doc.CreateElement('BaseTest');
+    TDOMElement(BaseTestNode).SetAttribute('DefiningEntity', 'C');
+    theNode := Doc.CreateComment('Definitions for AIGR:');
+    BaseTestNode.AppendChild(theNode);
+    BatteryNode.Appendchild(BaseTestNode);
+    LabTestNode := Doc.CreateElement('LabTest');
+    TDOMElement(LabTestNode).SetAttribute('ID', 'AIGR');
+    TDOMElement(LabTestNode).SetAttribute('Name',
+      'Amended Insulin Glucose Ratio');
+    BaseTestNode.Appendchild(LabTestNode);
+
+    ExclusionDefinitions.Sex := 'F';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'F';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.AIGR.ln;
+    NormDefinitions.HS := ReferenceRanges.AIGR.hn;
+    NormDefinitions.LTS := ReferenceRanges.AIGR.lt;
+    NormDefinitions.HTS := ReferenceRanges.AIGR.ht;
+    NormDefinitions.LPS := ReferenceRanges.AIGR.lp;
+    NormDefinitions.HPS := ReferenceRanges.AIGR.hp;
+    NormDefinitions.LC := ReferenceRanges.AIGR.ln;
+    NormDefinitions.HC := ReferenceRanges.AIGR.hn;
+    NormDefinitions.LTC := ReferenceRanges.AIGR.lt;
+    NormDefinitions.HTC := ReferenceRanges.AIGR.ht;
+    NormDefinitions.LPC := ReferenceRanges.AIGR.lp;
+    NormDefinitions.HPC := ReferenceRanges.AIGR.hp;
+    NormDefinitions.startDateTime := ISO8601Date(now);
+    AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
+
+    theNode := Doc.CreateComment('Add additional age classes here');
+    BaseTestNode.AppendChild(theNode);
+
+    ExclusionDefinitions.Sex := 'M';
+    ExclusionDefinitions.AgeL := 0;
+    ExclusionDefinitions.AgeH := 999;
+    ExclusionDefinitions.UOMS := '%';
+    ExclusionDefinitions.UOMC := '%';
+    ExclusionDefinitions.LXS := 0;
+    ExclusionDefinitions.HXS := 10000;
+    ExclusionDefinitions.LXC := 0;
+    ExclusionDefinitions.HXC := 10000;
+    ExclusionDefinitions.startDateTime := '2000-01-01T12:00:00+01:00';
+    AddSubExNodes(Doc, BaseTestNode, ExclusionDefinitions);
+    NormDefinitions.Sex := 'M';
+    NormDefinitions.AgeL := 0;
+    NormDefinitions.AgeH := 130;
+    NormDefinitions.UOMS := '%';
+    NormDefinitions.UOMC := '%';
+    NormDefinitions.LS := ReferenceRanges.AIGR.ln;
+    NormDefinitions.HS := ReferenceRanges.AIGR.hn;
+    NormDefinitions.LTS := ReferenceRanges.AIGR.lt;
+    NormDefinitions.HTS := ReferenceRanges.AIGR.ht;
+    NormDefinitions.LPS := ReferenceRanges.AIGR.lp;
+    NormDefinitions.HPS := ReferenceRanges.AIGR.hp;
+    NormDefinitions.LC := ReferenceRanges.AIGR.ln;
+    NormDefinitions.HC := ReferenceRanges.AIGR.hn;
+    NormDefinitions.LTC := ReferenceRanges.AIGR.lt;
+    NormDefinitions.HTC := ReferenceRanges.AIGR.ht;
+    NormDefinitions.LPC := ReferenceRanges.AIGR.lp;
+    NormDefinitions.HPC := ReferenceRanges.AIGR.hp;
     NormDefinitions.startDateTime := ISO8601Date(now);
     AddSubNormNodes(Doc, BaseTestNode, NormDefinitions);
 
