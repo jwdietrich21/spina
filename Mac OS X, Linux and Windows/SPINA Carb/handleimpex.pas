@@ -25,10 +25,30 @@ unit HandleImpEx;
 interface
 
 uses
-  Classes, SysUtils, Math, SPINATypes, CaseBroker;
+  Classes, SysUtils, Dialogs, Math,
+  HL7, MSH, MSA, NTE, PID, PV1, OBR, OBX, SPM,
+  SPINATypes, CaseBroker;
 
 type
   TFileType = (plainTextFile, HL7Message);
+  TLOINCRecord = record
+    code, short, long: string;
+  end;
+
+const
+  ORU_R01_variant1 = 'ORU^R01'; // Unsolicited transmission of an observation
+  ORU_R01_variant2 = 'ORU^R01^ORU_R01';
+  ORU_R04    = 'ORU^R04'; //Response to query
+  ACK_R01    = 'ACK^R01^ACK';
+  MDM_T01    = 'MDM^T01';
+  OUL_R21    = 'OUL^R21'; // Unsolicited laboratory observation
+  OUL_R22    = 'OUL^R22'; // specimen oriented observation
+  OUL_R23    = 'OUL^R23'; // specimen container oriented observation
+  OUL_R24    = 'OUL^R24'; // (order oriented observation
+  NND_ORU_V2_0_profile = 'NND_ORU_v2.0^PHINProfileID^2.16.840.1.114222.4.10.3^ISO~'
+      + 'Gen_Case_Map_v1.0^PHINMsgMapID^2.16.840.1.114222.4.10.4^ISO';
+  NA_DTM     = '00000000000000';
+  LOINC_LABEL = 'LN';
 
 procedure SaveCaseRecord(caseRecord: tCaseRecord; filePath: String; fileType: TFileType);
 
@@ -51,8 +71,25 @@ begin
 end;
 
 procedure SaveAsHL7Message(aCaseRecord: tCaseRecord; filePath: String);
+var
+  oldSeparator, t4substFlag, t3substFlag, tshsubstFlag: char;
+  HL7Message: THL7Message;
+  theMSH:   tMSH;
+  theOBR:   tOBR;
+  theOBX:   tOBX;
+  thePID:   tPID;
+  thePV1:   tPV1;
+  theSPM:   tSPM;
+  theNTE:   tNTE;
+  setIDcounter: integer;
 begin
+  HL7Message := THL7Message.Create('2.5');
+  if HL7Message = nil then
+    ShowMessage('HL7 Error')
+  else
+  begin
 
+  end;
 end;
 
 procedure SaveAsTextFile(aCaseRecord: tCaseRecord; filePath: String);

@@ -20,7 +20,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="5"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="132"/>
+      <BuildNr Value="133"/>
       <Language Value="0809"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Carb" InternalName="SPINA Carb 5.1.0 Cyclone" LegalCopyright="© 1994-2025 J. W. Dietrich" OriginalFilename="SPINA Carb" ProductName="SPINA Carb" ProductVersion="5.1.0 Cyclone"/>
@@ -163,6 +163,76 @@
         <Filename Value="handleimpex.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
+      </Unit>
+      <Unit>
+        <Filename Value="err.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ERR"/>
+      </Unit>
+      <Unit>
+        <Filename Value="evn.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EVN"/>
+      </Unit>
+      <Unit>
+        <Filename Value="hl7.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="HL7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="mllp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MLLP"/>
+      </Unit>
+      <Unit>
+        <Filename Value="msa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MSA"/>
+      </Unit>
+      <Unit>
+        <Filename Value="msh.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MSH"/>
+      </Unit>
+      <Unit>
+        <Filename Value="nk1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NK1"/>
+      </Unit>
+      <Unit>
+        <Filename Value="nte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NTE"/>
+      </Unit>
+      <Unit>
+        <Filename Value="obr.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="OBR"/>
+      </Unit>
+      <Unit>
+        <Filename Value="obx.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="OBX"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pid.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PID"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pv1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PV1"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pv2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PV2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="spm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SPM"/>
       </Unit>
     </Units>
   </ProjectOptions>
