@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, Dialogs, Math,
   HL7, MSH, MSA, NTE, PID, PV1, OBR, OBX, SPM,
-  SPINATypes, CaseBroker;
+  SPINATypes, CaseBroker, EnvironmentInfo;
 
 type
   TFileType = (plainTextFile, HL7Message);
@@ -48,6 +48,20 @@ const
   NND_ORU_V2_0_profile = 'NND_ORU_v2.0^PHINProfileID^2.16.840.1.114222.4.10.3^ISO~'
       + 'Gen_Case_Map_v1.0^PHINMsgMapID^2.16.840.1.114222.4.10.4^ISO';
   NA_DTM     = '00000000000000';
+  LOINC_GLUC_1: TLoincRecord = (code: '100746-7'; short: 'Glucose BldMV-sCnc';
+    long: 'Glucose [Moles/volume] in Mixed venous blood');
+  LOINC_GLUC_2: TLoincRecord = (code: '101476-0'; short: 'Glucose p fast BldV-sCnc';
+    long: 'Fasting glucose [Moles/volume] in Venous blood');
+  LOINC_GLUC_3: TLoincRecord = (code: '101476-0'; short: 'Glucose p 10h fast SerPl-mCnc';
+    long: 'Glucose [Mass/volume] in Serum or Plasma --10 hours fasting');
+  LOINC_GLUC_4: TLoincRecord = (code: '101476-0'; short: 'Glucose p 10h fast SerPl-mCnc';
+    long: 'Glucose [Mass/volume] in Serum or Plasma --10 hours fasting');
+  LOINC_GLUC_5: TLoincRecord = (code: '104597-0'; short: 'Glucose BldV Glucomtr-mCnc';
+    long: 'Glucose [Mass/volume] in Venous blood by Glucometer');
+  LOINC_GLUC_6: TLoincRecord = (code: '104598-8'; short: 'Glucose BldA Glucomtr-mCnc';
+    long: 'Glucose [Mass/volume] in Arterial blood by Glucometer');
+  LOINC_GLUC_7: TLoincRecord = (code: '104655-6'; short: 'Glucose BldMV-mCnc';
+    long: 'Glucose [Mass/volume] in Mixed venous blood');
   LOINC_LABEL = 'LN';
 
 procedure SaveCaseRecord(caseRecord: tCaseRecord; filePath: String; fileType: TFileType);
@@ -88,8 +102,99 @@ begin
     ShowMessage('HL7 Error')
   else
   begin
+    oldSeparator := DefaultFormatSettings.DecimalSeparator;
+    DefaultFormatSettings.DecimalSeparator := DEC_POINT;
 
+    clearMSH(theMSH);
+    theMSH.delimiters   := STANDARD_DELIMITERS;
+    theMSH.sendingApp   := 'SPINA Carb';
+    theMSH.sendingFac   := gPreferences.MSH_ID;
+    theMSH.receivingApp := '';
+    theMSH.receivingFac := '';
+    theMSH.dateTime     := EncodedDateTime(Now);
+    theMSH.messageType  := ORU_R01_variant1;
+    theMSH.security     := '';
+    theMSH.controlID    := EncodedDateTime(Now) + IntToStr(random(13000));
+    theMSH.processingID := 'P^A';
+    theMSH.versionID    := ''; // ignored; will be filled-in automatically by PUMA
+    theMSH.sequenceNumber := '';
+    theMSH.continuationPointer := '';
+    theMSH.AccAckType   := '';
+    theMSH.AppAckType   := '';
+    theMSH.countryCode  := '';
+    theMSH.charSet      := '';
+    theMSH.messageLanguage := '';
+    theMSH.altCharHandlScheme := '';
+    theMSH.profileID    := ORU_R01_variant2;
+    SetMSH(HL7Message, theMSH, true);
+
+    ClearPID(thePID);
+    thePID.SetID := '1';
+    if isNaN(aCaseRecord.DoBDate) then
+      thePID.BirthDateTime := ''
+    else
+      thePID.BirthDateTime := EncodedDateTime(aCaseRecord.DoBDate);
+    thePID.PatientIDList := aCaseRecord.PID +
+      HL7Message.Delimiters.ComponentSeparator + aCaseRecord.CaseID;
+    thePID.PatientName := aCaseRecord.Name +
+      HL7Message.Delimiters.ComponentSeparator + aCaseRecord.GivenNames;
+    SetPID(HL7Message, thePID);
+
+    ClearPV1(thePV1);
+    thePV1.SetID := '1';
+    thePV1.AssignedPatientLocation := aCaseRecord.Placer;
+    SetPV1(Hl7Message, thePV1);
+
+    ClearOBR(theOBR);
+    theOBR.SetID    := '1';
+    theOBR.PlacOrdNumb := '';
+    theOBR.FillOrdNumb := EncodedDateTime(Now) + IntToStr(random(13000));
+    theOBR.USI      := 'SPINA Carb';
+    theOBR.Priority := '';
+    theOBR.ReqDateTime := EncodedDateTime(Now);
+    theOBR.ObsDateTime := NA_DTM;
+    theOBR.ObsEndDateTime := '';
+    SetOBR(HL7Message, theOBR);
+
+    ClearNTE(theNTE);
+    theNTE.SetID   := '1';
+    theNTE.CommentSource := 'O';
+    theNTE.comment := 'Data source: SPINA Carb ' + FileVersion;
+    SetNTE(HL7Message, theNTE);
+
+    ClearNTE(theNTE);
+    theNTE.SetID   := '2';
+    theNTE.CommentSource := 'O';
+    SetNTE(HL7Message, theNTE);
+
+    ClearNTE(theNTE);
+    theNTE.SetID   := '3';
+    theNTE.CommentSource := 'O';
+    theNTE.comment := aCaseRecord.Comment;
+    SetNTE(HL7Message, theNTE);
+
+    setIDcounter := 1;
+
+    ClearOBX(theOBX);
+    theOBX.SetID     := IntToStr(setIDcounter);
+    theOBX.ValueType := 'NM';
+
+    //
+
+    ClearSPM(theSPM);
+    theSPM.SetID := '1';
+    if isNaN(aCaseRecord.OBDate) then
+      theSPM.SpecimenCollectionDateTime := ''
+    else
+      theSPM.SpecimenCollectionDateTime := EncodedDateTime(aCaseRecord.OBDate);
+    SetSPM(Hl7Message, theSPM);
+
+    WriteHL7File(HL7Message, filePath);
+
+    DefaultFormatSettings.DecimalSeparator := oldSeparator;
   end;
+  if assigned(HL7Message) then
+    HL7Message.Destroy;
 end;
 
 procedure SaveAsTextFile(aCaseRecord: tCaseRecord; filePath: String);
