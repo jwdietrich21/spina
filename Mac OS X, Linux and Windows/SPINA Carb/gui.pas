@@ -180,11 +180,14 @@ end;
 procedure THauptschirm.CaseDataMenuItemClick(Sender: TObject);
 begin
   MainPageControl.ActivePage := CaseEditorSheet;
+  application.ProcessMessages;
+  ActiveControl := CaseIDEdit;
 end;
 
 procedure THauptschirm.CaseEditorSheetShow(Sender: TObject);
 begin
   NextButton.Default := True;
+  ActiveControl := CaseIDEdit;
 end;
 
 procedure THauptschirm.CopyResultMenuItemClick(Sender: TObject);

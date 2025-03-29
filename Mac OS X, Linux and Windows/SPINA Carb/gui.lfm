@@ -1607,6 +1607,7 @@ object Hauptschirm: THauptschirm
       Caption = 'Case Editor'
       ClientHeight = 334
       ClientWidth = 750
+      OnEnter = CaseEditorSheetShow
       OnShow = CaseEditorSheetShow
       object CaseIDEdit: TEdit
         Left = 200
@@ -1798,6 +1799,7 @@ object Hauptschirm: THauptschirm
       object EntryBox: TGroupBox
         Left = 215
         Height = 288
+        Hint = 'Please enter fasting concentrations of insulin, glucose and, optionally, c-peptide here. Preferably, the parameters should have been obtained simultaneously. Recommended is fasting for 8 hours or more.'
         Top = 8
         Width = 290
         Anchors = [akTop, akLeft, akBottom]
@@ -1810,7 +1812,7 @@ object Hauptschirm: THauptschirm
         object FeedbackImage: TImage
           Left = 9
           Height = 258
-          Hint = 'Please enter fasting concentration for glucose, insulin and (optionally) c-peptide that have been obtained simultaneously.'
+          Hint = 'Please enter fasting concentrations of insulin, glucose and, optionally, c-peptide here. Preferably, the parameters should have been obtained simultaneously. Recommended is fasting for 8 hours or more.'
           Top = 2
           Width = 248
           Center = True
