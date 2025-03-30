@@ -9135,6 +9135,7 @@ object Hauptschirm: THauptschirm
         Caption = 'Open'
         ImageIndex = 1
         ShortCut = 16463
+        OnClick = OpenMenuItemClick
       end
       object SaveMenuItem: TMenuItem
         Caption = 'Save as...'
@@ -9277,6 +9278,14 @@ object Hauptschirm: THauptschirm
     Filter = 'HL7 Version 2.x (*.hl7)|*.hl7|Text (*.txt)|*.txt'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
     Left = 656
+    Top = 72
+  end
+  object OpenCaseDialog: TOpenDialog
+    Title = 'Import'
+    DefaultExt = '.hl7'
+    Filter = 'HL7 Version 2.x (*.hl7)|*.hl7'
+    Options = [ofReadOnly, ofFileMustExist, ofEnableSizing, ofViewDetail, ofAutoPreview]
+    Left = 560
     Top = 72
   end
 end

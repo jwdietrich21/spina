@@ -47,6 +47,7 @@ type
     MacPreferencesMenuItem: TMenuItem;
     Divider23: TMenuItem;
     CopyResultMenuItem: TMenuItem;
+    OpenCaseDialog: TOpenDialog;
     SaveResultsDialog: TSaveDialog;
     WinPreferencesMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
@@ -131,6 +132,7 @@ type
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesMenuItemClick(Sender: TObject);
     procedure NextButtonClick(Sender: TObject);
+    procedure OpenMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
@@ -142,6 +144,8 @@ type
   private
     function DoPageSetup: boolean;
     function DoPrintSetup: boolean;
+    procedure InsertValues(Sender: TObject);
+    procedure FillFromCaseRecord;
   public
     CaseRecord: tCaseRecord;
     InsulinRaw, GlucoseRaw, CPeptideRaw: extended;
@@ -153,6 +157,7 @@ type
     procedure FocusEdit(Sender: TObject);
     procedure RegisterCaseData(Sender: TObject);
     procedure SaveResults(Sender: TObject);
+    procedure ReadCaseRecord(Sender: TObject; const theCaseRecord: tCaseRecord);
   end;
 
 var
@@ -244,6 +249,22 @@ begin
   MainPageControl.ActivePage := EntrySheet;
 end;
 
+procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
+{ Open case from file }
+var
+  theFilterIndex: integer;
+  theCaseRecord: tCaseRecord;
+begin
+  if OpenCaseDialog.Execute then
+  begin
+    theFilterIndex := OpenCaseDialog.FilterIndex;
+    case theFilterIndex of
+      1: OpenCaseRecord(theCaseRecord, OpenCaseDialog.FileName, HL7Message);
+    end;
+    ReadCaseRecord(Sender, theCaseRecord);
+  end;
+end;
+
 procedure THauptschirm.PageSetupMenuItemClick(Sender: TObject);
 begin
   if not DoPageSetup then
@@ -300,6 +321,30 @@ begin
   Result := PrintDialog1.Execute;}
 end;
 
+procedure THauptschirm.InsertValues(Sender: TObject);
+{ Inserts values of case record into appropriate fields of form }
+begin
+  if not isNaN(caseRecord.LabRecord.Glucose) then
+  begin
+    GlucoseEdit.Text := FloatToStr(ConvertedValue(caseRecord.LabRecord.Glucose,
+      kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Caption));
+  end;
+end;
+
+procedure THauptschirm.FillFromCaseRecord;
+begin
+  CaseIDEdit.Text := caseRecord.CaseID;
+  PIDEdit.Text := caseRecord.PID;
+  NameEdit.Text := caseRecord.Name;
+  GivenNameEdit.Text := caseRecord.GivenNames;
+  if not isNaN(caseRecord.DoBDate) then
+    DoBEdit.Date := caseRecord.DoBDate;
+  PlacerEdit.Text := caseRecord.Placer;
+  if not isNaN(caseRecord.OBDate) then
+    OBDateEdit.Date := caseRecord.OBDate;
+  //CommentEdit.Text := caseRecord.Comment;
+end;
+
 procedure THauptschirm.AdapttoTheme(Sender: TObject);
 begin
   if DarkTheme then
@@ -349,9 +394,32 @@ begin
     theFilterIndex := SaveResultsDialog.FilterIndex;
     filePath := SaveResultsDialog.FileName;
     case theFilterIndex of
-    1: SaveCaseRecord(CaseRecord, filePath, HL7Message);
-    2: SaveCaseRecord(CaseRecord, filePath, plainTextFile);
+      1: SaveCaseRecord(CaseRecord, filePath, HL7Message);
+      2: SaveCaseRecord(CaseRecord, filePath, plainTextFile);
     end;
+  end;
+end;
+
+procedure THauptschirm.ReadCaseRecord(Sender: TObject;
+  const theCaseRecord: tCaseRecord);
+{ reads a CaseRecord, validates the results and fills edits of main form }
+var
+  status: integer;
+  DoBDateStr, OBDateStr: string;
+begin
+  { Is this a valid case record? }
+  if isNaN(theCaseRecord.LabRecord.Glucose) and
+    isNan(theCaseRecord.LabRecord.SPINA_GR) and (theCaseRecord.GivenNames = '') then
+    ShowMessage(FILE_FORMAT_MESSAGE)
+  else
+  begin
+    if isNaN(theCaseRecord.LabRecord.Glucose) and
+      isNaN(theCaseRecord.LabRecord.Insulin) and
+      isNaN(theCaseRecord.LabRecord.CPeptide) then
+      ShowMessage(FILE_EMPTY_MESSAGE);
+    caseRecord := theCaseRecord;
+    InsertValues(Sender);
+    FillFromCaseRecord;
   end;
 end;
 
@@ -377,97 +445,81 @@ procedure THauptschirm.CreateOutput(Sender: TObject);
 const
   GapString = ' ' + LineEnding + ' ' + LineEnding;
 begin
-  CaseRecord.BParMessage := kBPars + LineEnding +
-    '   ' + kGluc + ': ' + GlucoseEdit.Text +
-    ' ' + GlucoseUoM + LineEnding + '   ' +
-    kIns + ': ' + InsulinEdit.Text + ' ' + InsulinUoM +
-    LineEnding + '   ' + kCpt + ': ' +
-    CPeptideEdit.Text + ' ' + CPeptideUoM;
-  CaseRecord.SParMessage := kSPars + LineEnding +
-    '   ' + kSPINA_GBeta + ': ' + FloatToStrF(
-    CaseRecord.LabRecord.SPINA_GBeta, ffFixed, 4, 2) + ' ' +
-    GBetaUoM + LineEnding + '   ' + kSPINA_GR +
-    ': ' + FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffFixed, 4, 2) +
-    ' ' + GRUoM + LineEnding + '   ' +
-    kSPINA_DI + ': ' + FloatToStrF(CaseRecord.LabRecord.SPINA_DI,
-    ffFixed, 4, 2) + LineEnding + '   ' + kHOMA_Beta +
-    ': ' + FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffFixed, 4, 1) +
-    ' ' + HOMABetaUoM + LineEnding + '   ' +
-    kHOMA_IR + ': ' + FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffFixed, 4, 1) +
-    LineEnding + '   ' + kHOMA_IS + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
+  CaseRecord.BParMessage := kBPars + LineEnding + '   ' + kGluc +
+    ': ' + GlucoseEdit.Text + ' ' + GlucoseUoM + LineEnding + '   ' +
+    kIns + ': ' + InsulinEdit.Text + ' ' + InsulinUoM + LineEnding +
+    '   ' + kCpt + ': ' + CPeptideEdit.Text + ' ' + CPeptideUoM;
+  CaseRecord.SParMessage := kSPars + LineEnding + '   ' + kSPINA_GBeta +
+    ': ' + FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffFixed, 4, 2) +
+    ' ' + GBetaUoM + LineEnding + '   ' + kSPINA_GR + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffFixed, 4, 2) + ' ' +
+    GRUoM + LineEnding + '   ' + kSPINA_DI + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffFixed, 4, 2) +
+    LineEnding + '   ' + kHOMA_Beta + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffFixed, 4, 1) + ' ' +
+    HOMABetaUoM + LineEnding + '   ' + kHOMA_IR + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffFixed, 4, 1) + LineEnding +
+    '   ' + kHOMA_IS + ': ' + FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
     LineEnding + '   ' + kQUICKI + ': ' +
     FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1) +
-    LineEnding + '   ' + kAIGR + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.AIGR, ffFixed, 4, 1) + ' ' + AIGRUoM +
-    LineEnding + '   ' + kCGR + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
+    LineEnding + '   ' + kAIGR + ': ' + FloatToStrF(CaseRecord.LabRecord.AIGR,
+    ffFixed, 4, 1) + ' ' + AIGRUoM + LineEnding + '   ' + kCGR +
+    ': ' + FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
   CaseRecord.CombMessage := CaseRecord.BParMessage + LineEnding +
     '       ' + LineEnding + CaseRecord.SParMessage;
   CaseRecord.BRefMessage1 := kRR + LineEnding +
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Glucose.ln,
     kGlucoseMolarMass, gPreferences.ReferenceValues.Glucose.UoM, GlucoseUnitsCombo.Text),
-    ffFixed, 4, 1) + '–' +
-    FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Glucose.hn,
-    kGlucoseMolarMass, gPreferences.ReferenceValues.Glucose.UoM, GlucoseUnitsCombo.Text),
-    ffFixed, 4, 1) + ' ' + GlucoseUnitsCombo.Text +
-    LineEnding + FloatToStrF(
-    ConvertedValue(gPreferences.ReferenceValues.Insulin.ln, kInsulinConversionFactor,
-    gPreferences.ReferenceValues.Insulin.UoM, InsulinUnitsCombo.Text),
-    ffFixed, 4, 1) + '–' +
+    ffFixed, 4, 1) + '–' + FloatToStrF(
+    ConvertedValue(gPreferences.ReferenceValues.Glucose.hn, kGlucoseMolarMass,
+    gPreferences.ReferenceValues.Glucose.UoM, GlucoseUnitsCombo.Text), ffFixed, 4, 1) +
+    ' ' + GlucoseUnitsCombo.Text + LineEnding + FloatToStrF(
+    ConvertedValue(gPreferences.ReferenceValues.Insulin.ln,
+    kInsulinConversionFactor, gPreferences.ReferenceValues.Insulin.UoM,
+    InsulinUnitsCombo.Text), ffFixed, 4, 1) + '–' +
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Insulin.hn,
     kInsulinConversionFactor, gPreferences.ReferenceValues.Insulin.UoM,
-    InsulinUnitsCombo.Text), ffFixed, 4, 1) + ' ' +
-    InsulinUnitsCombo.Text + LineEnding +
-    FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.CPeptide.ln,
+    InsulinUnitsCombo.Text), ffFixed, 4, 1) + ' ' + InsulinUnitsCombo.Text +
+    LineEnding + FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.CPeptide.ln,
     kCPeptideMolarMass, gPreferences.ReferenceValues.CPeptide.UoM,
     CPeptideUnitsCombo.Text), ffFixed, 4, 1) + '–' +
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.CPeptide.hn,
     kCPeptideMolarMass, gPreferences.ReferenceValues.CPeptide.UoM,
-    CPeptideUnitsCombo.Text), ffFixed, 4, 1) + ' ' +
-    CPeptideUnitsCombo.Text;
+    CPeptideUnitsCombo.Text), ffFixed, 4, 1) + ' ' + CPeptideUnitsCombo.Text;
   CaseRecord.SRefMessage1 :=
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln,
-    ffFixed, 4, 2) + '–' +
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed,
-    4, 2) + ' ' + gPreferences.ReferenceValues.SPINA_GBeta.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.SPINA_GR.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.hn, ffFixed,
-    4, 2) + ' ' + gPreferences.ReferenceValues.SPINA_GR.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.SPINA_DI.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.hn, ffFixed,
-    4, 2) + ' ' + gPreferences.ReferenceValues.SPINA_DI.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.HOMA_Beta.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.hn, ffFixed, 4,
-    1) + ' ' + gPreferences.ReferenceValues.HOMA_Beta.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.HOMA_IR.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.hn, ffFixed,
-    4, 1) + ' ' + gPreferences.ReferenceValues.HOMA_IR.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.HOMA_IS.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.hn, ffFixed,
-    4, 1) + ' ' + gPreferences.ReferenceValues.HOMA_IS.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.QUICKI.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed,
-    4, 1) + ' ' + gPreferences.ReferenceValues.QUICKI.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed,
-    4, 1) + ' ' + gPreferences.ReferenceValues.AIGR.UoM
-    + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed,
-    4, 1) + ' ' + gPreferences.ReferenceValues.CGR.UoM;
+    FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln, ffFixed, 4, 2) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed, 4, 2) +
+    ' ' + gPreferences.ReferenceValues.SPINA_GBeta.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.ln, ffFixed, 4, 2) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.hn, ffFixed, 4, 2) +
+    ' ' + gPreferences.ReferenceValues.SPINA_GR.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.ln, ffFixed, 4, 2) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.hn, ffFixed, 4, 2) +
+    ' ' + gPreferences.ReferenceValues.SPINA_DI.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.HOMA_Beta.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.HOMA_IR.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.HOMA_IS.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.QUICKI.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.QUICKI.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.AIGR.UoM + LineEnding + FloatToStrF(
+    gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1) + '–' +
+    FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.CGR.UoM;
   CaseRecord.RCombMessage1 := CaseRecord.BRefMessage1 + LineEnding +
     GapString + CaseRecord.SRefMessage1;
   CaseRecord.RCombMessage2 := WithReferenceRanges(CaseRecord.RCombMessage1);
   CaseRecord.BRefMessage2 := SplitString(CaseRecord.RCombMessage2, GapString)[0];
-  CaseRecord.SRefMessage2 := kRR + LineEnding + SplitString(CaseRecord.RCombMessage2, GapString)[1];
+  CaseRecord.SRefMessage2 := kRR + LineEnding +
+    SplitString(CaseRecord.RCombMessage2, GapString)[1];
 end;
 
 procedure THauptschirm.AdaptForPlatform;

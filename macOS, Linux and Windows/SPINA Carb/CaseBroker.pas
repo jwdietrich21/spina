@@ -25,7 +25,7 @@ unit CaseBroker;
 interface
 
 uses
-  Classes, SysUtils, UnitConverter, SPINA_Engine;
+  Classes, SysUtils, Math, UnitConverter, SPINA_Engine;
 
 type
   tLabRecord = record
@@ -43,6 +43,7 @@ type
     RCombMessage1, RCombMessage2: string;
   end;
 
+procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
 function InsulinSI(RawIns: extended; InsUom: String): extended;
 function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
 function CPeptideSI(RawCPt: extended; CPtUom: String): extended;
@@ -50,6 +51,23 @@ procedure Calculate(var LabRecord: tLabRecord);
 
 implementation
 
+procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
+{Delivers an empty case record}
+begin
+  FillChar(aCaseRecord, SizeOf(tCaseRecord), 0); // empties record
+  aCaseRecord.LabRecord.Glucose := NaN;
+  aCaseRecord.LabRecord.Insulin := NaN;
+  aCaseRecord.LabRecord.CPeptide := NaN;
+  aCaseRecord.LabRecord.SPINA_GBeta := NaN;
+  aCaseRecord.LabRecord.SPINA_GR := NaN;
+  aCaseRecord.LabRecord.SPINA_DI := NaN;
+  aCaseRecord.LabRecord.HOMA_Beta := NaN;
+  aCaseRecord.LabRecord.HOMA_IR := NaN;
+  aCaseRecord.LabRecord.HOMA_IS := NaN;
+  aCaseRecord.LabRecord.QUICKI := NaN;
+  aCaseRecord.LabRecord.AIGR := NaN;
+  aCaseRecord.LabRecord.CGR := NaN;
+end;
 function InsulinSI(RawIns: extended; InsUom: String): extended;
 begin
   result := ConvertedValue(RawIns, kInsulinConversionFactor, InsUom, 'pmol/l');

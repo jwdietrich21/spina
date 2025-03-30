@@ -46,8 +46,8 @@ const
   OUL_R22 = 'OUL^R22'; // specimen oriented observation
   OUL_R23 = 'OUL^R23'; // specimen container oriented observation
   OUL_R24 = 'OUL^R24'; // (order oriented observation
-  NND_ORU_V2_0_profile = 'NND_ORU_v2.0^PHINProfileID^2.16.840.1.114222.4.10.3^ISO~'
-    + 'Gen_Case_Map_v1.0^PHINMsgMapID^2.16.840.1.114222.4.10.4^ISO';
+  NND_ORU_V2_0_profile = 'NND_ORU_v2.0^PHINProfileID^2.16.840.1.114222.4.10.3^ISO~' +
+    'Gen_Case_Map_v1.0^PHINMsgMapID^2.16.840.1.114222.4.10.4^ISO';
   NA_DTM = '00000000000000';
 
   LOINC_GLUC_1: TLoincRecord = (code: '101476-0'; short: 'Glucose p fast BldV-sCnc';
@@ -95,6 +95,8 @@ const
 
   LOINC_LABEL = 'LN';
 
+procedure OpenCaseRecord(var caseRecord: tCaseRecord; filePath: string;
+  fileType: TFileType);
 procedure SaveCaseRecord(caseRecord: tCaseRecord; filePath: string; fileType: TFileType);
 
 implementation
@@ -223,24 +225,25 @@ begin
       theOBX.ObsID := 'Glucose';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.Glucose,
-      kGlucoseMolarMass, 'mmol/l', gPreferences.ReferenceValues.Glucose.UoM), ffNumber, 5, 2);
-    theOBX.Units    := gPreferences.ReferenceValues.Glucose.UoM;
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.Glucose.ln) + ' - ' +
-       FloatToStr(gPreferences.ReferenceValues.Glucose.hn);
+      kGlucoseMolarMass, 'mmol/l', gPreferences.ReferenceValues.Glucose.UoM),
+      ffNumber, 5, 2);
+    theOBX.Units := gPreferences.ReferenceValues.Glucose.UoM;
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.Glucose.ln) +
+      ' - ' + FloatToStr(gPreferences.ReferenceValues.Glucose.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -263,24 +266,25 @@ begin
       theOBX.ObsID := 'Insulin';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.Insulin,
-      kInsulinConversionFactor, 'pmol/l', gPreferences.ReferenceValues.Insulin.UoM), ffNumber, 5, 2);
-    theOBX.Units    := gPreferences.ReferenceValues.Insulin.UoM;
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.Insulin.ln) + ' - ' +
-       FloatToStr(gPreferences.ReferenceValues.Insulin.hn);
+      kInsulinConversionFactor, 'pmol/l', gPreferences.ReferenceValues.Insulin.UoM),
+      ffNumber, 5, 2);
+    theOBX.Units := gPreferences.ReferenceValues.Insulin.UoM;
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.Insulin.ln) +
+      ' - ' + FloatToStr(gPreferences.ReferenceValues.Insulin.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -303,24 +307,25 @@ begin
       theOBX.ObsID := 'C-Peptide';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.CPeptide,
-      kCPeptideMolarMass, 'pmol/l', gPreferences.ReferenceValues.CPeptide.UoM), ffNumber, 5, 2);
-    theOBX.Units    := gPreferences.ReferenceValues.CPeptide.UoM;
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.CPeptide.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.CPeptide.hn);
+      kCPeptideMolarMass, 'pmol/l', gPreferences.ReferenceValues.CPeptide.UoM),
+      ffNumber, 5, 2);
+    theOBX.Units := gPreferences.ReferenceValues.CPeptide.UoM;
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.CPeptide.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.CPeptide.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -331,23 +336,23 @@ begin
     theOBX.ObsID := 'SPINA-GBeta';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.SPINA_GBeta, ffNumber, 5, 2);
-    theOBX.Units     := 'pmol/s';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.hn);
+    theOBX.Units := 'pmol/s';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -358,23 +363,23 @@ begin
     theOBX.ObsID := 'SPINA-GR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.SPINA_GR, ffNumber, 5, 2);
-    theOBX.Units     := 'mol/s';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn);
+    theOBX.Units := 'mol/s';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -385,23 +390,23 @@ begin
     theOBX.ObsID := 'SPINA-DI';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.SPINA_DI, ffNumber, 5, 2);
-    theOBX.Units     := 'mol/s';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn);
+    theOBX.Units := 'mol/s';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -412,23 +417,23 @@ begin
     theOBX.ObsID := 'HOMA-Beta';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.HOMA_Beta, ffNumber, 5, 2);
-    theOBX.Units     := '%';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn);
+    theOBX.Units := '%';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -439,23 +444,23 @@ begin
     theOBX.ObsID := 'HOMA-IR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.HOMA_IR, ffNumber, 5, 2);
-    theOBX.Units     := '';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn);
+    theOBX.Units := '';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -466,23 +471,23 @@ begin
     theOBX.ObsID := 'HOMA-IS';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.HOMA_IS, ffNumber, 5, 2);
-    theOBX.Units     := '';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn);
+    theOBX.Units := '';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -493,23 +498,23 @@ begin
     theOBX.ObsID := 'QUICKI';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.QUICKI, ffNumber, 5, 2);
-    theOBX.Units     := '';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.QUICKI.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.QUICKI.hn);
+    theOBX.Units := '';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.QUICKI.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.QUICKI.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -520,23 +525,23 @@ begin
     theOBX.ObsID := 'AIGR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.AIGR, ffNumber, 5, 2);
-    theOBX.Units     := 'pmol/mmol';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.AIGR.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.AIGR.hn);
+    theOBX.Units := 'pmol/mmol';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.AIGR.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.AIGR.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -547,23 +552,23 @@ begin
     theOBX.ObsID := 'CGR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.CGR, ffNumber, 5, 2);
-    theOBX.Units     := '';
-    theOBX.RefRange  := FloatToStr(gPreferences.ReferenceValues.CGR.ln) + ' – ' +
-       FloatToStr(gPreferences.ReferenceValues.CGR.hn);
+    theOBX.Units := '';
+    theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.CGR.ln) +
+      ' – ' + FloatToStr(gPreferences.ReferenceValues.CGR.hn);
     theOBX.AbnormFlags := '';
     theOBX.probability := '';
-    theOBX.Nature    := '';
-    theOBX.status    := 'F';
-    theOBX.RRDate    := '';
-    theOBX.UDAC      := '';
+    theOBX.Nature := '';
+    theOBX.status := 'F';
+    theOBX.RRDate := '';
+    theOBX.UDAC := '';
     if isNaN(aCaseRecord.OBDate) then
       theOBX.ObsDateTime := ''
     else
       theOBX.ObsDateTime := EncodedDateTime(aCaseRecord.OBDate);
     theOBX.prodID := '';
-    theOBX.respObs      := '';
+    theOBX.respObs := '';
     theOBX.observMethod := '';
-    theOBX.EquipInstID  := '';
+    theOBX.EquipInstID := '';
     theOBX.AnalysisDateTime := '';
     SetOBX(HL7Message, theOBX);
 
@@ -605,6 +610,100 @@ begin
       aCaseRecord.Placer + ')' + LineEnding + LineEnding;
   theString := theHeader + aCaseRecord.CombMessage;
   SaveStringToPath(theString, filePath);
+end;
+
+procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
+var
+  oldSeparator: char;
+  theHL7Message: THL7Message;
+  theSegment: THL7Segment;
+  theMSHRecord: tMSH;
+  thePIDRecord: tPID;
+  thePV1Record: tPV1;
+  theOBXRecord: tOBX;
+  theNTERecord: tNTE;
+  theField: THL7Field;
+  theComponent: THL7Component;
+  theSubComponent, nextSubComponent: THL7SubComponent;
+begin
+  assert(theFile <> '');
+  oldSeparator := DefaultFormatSettings.DecimalSeparator;
+  DefaultFormatSettings.DecimalSeparator := DEC_POINT;
+  NewCaseRecord(aCaseRecord);
+  ReadHL7File(theHL7Message, theFile);
+  assert(assigned(theHL7Message));
+  theSegment := theHL7Message.FirstSegment;
+  while theSegment <> nil do
+  begin
+    if theSegment.segmentType = 'MSH' then
+    begin
+      GetMSH(theHL7Message, theMSHRecord);
+      theHL7Message.HL7Version := theMSHRecord.versionID;
+    end;
+    if theSegment.segmentType = 'PID' then
+    begin
+      GetPID(theHL7Message, thePIDRecord);
+      aCaseRecord.DoBDate := DecodeDateTime(thePIDRecord.BirthDateTime);
+      theField := THL7Field.Create(nil, thePIDRecord.PatientIDList);
+      theComponent := theField.FirstComponent;
+      if theComponent <> nil then
+      begin
+        aCaseRecord.PID := theComponent.contentString;
+        theComponent := theComponent.nextSibling;
+        if theComponent <> nil then
+          aCaseRecord.CaseID := theComponent.contentString;
+      end;
+      theField.Destroy;
+      theField := THL7Field.Create(nil, thePIDRecord.PatientName);
+      theComponent := theField.FirstComponent;
+      if theComponent <> nil then
+      begin
+        aCaseRecord.Name := theComponent.contentString;
+        theComponent := theComponent.nextSibling;
+        if theComponent <> nil then
+          aCaseRecord.GivenNames := theComponent.contentString;
+      end;
+    end;
+    if theSegment.segmentType = 'PV1' then
+    begin
+      GetPV1(theHL7Message, thePV1Record);
+      aCaseRecord.Placer := thePV1Record.AssignedPatientLocation;
+    end;
+    if theSegment.segmentType = 'NTE' then
+    begin
+      theField := nil;
+      theComponent := nil;
+      theSubComponent := nil;
+      nextSubComponent := nil;
+      GetNTE(theSegment, theNTERecord);
+      if theNTERecord.SetID = '3' then
+      begin
+        aCaseRecord.Comment := theNTERecord.comment;
+      end;
+    end;
+    if theSegment.segmentType = 'OBX' then
+    begin
+      GetOBX(theSegment, theOBXRecord);
+      if pos('Glucose', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.Glucose := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+    end;
+    theSegment := theSegment.nextSibling;
+  end;
+
+  DefaultFormatSettings.DecimalSeparator := oldSeparator;
+end;
+
+procedure OpenCaseRecord(var caseRecord: tCaseRecord; filePath: string;
+  fileType: TFileType);
+begin
+  case fileType of
+    HL7Message: ReadHL7Message(filePath, caseRecord);
+  end;
+
 end;
 
 procedure SaveCaseRecord(caseRecord: tCaseRecord; filePath: string; fileType: TFileType);
