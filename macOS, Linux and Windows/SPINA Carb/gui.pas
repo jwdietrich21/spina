@@ -326,8 +326,12 @@ procedure THauptschirm.InsertValues(Sender: TObject);
 begin
   if not isNaN(caseRecord.LabRecord.Glucose) then
   begin
-    GlucoseEdit.Text := FloatToStr(ConvertedValue(caseRecord.LabRecord.Glucose,
-      kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Caption));
+    GlucoseEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Glucose,
+      kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Caption), ffFixed, 4, 1);
+    InsulinEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Insulin,
+      kInsulinConversionFactor, 'pmol/l', InsulinUnitsCombo.Caption), ffFixed, 4, 1);;
+    CPeptideEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.CPeptide,
+      kCPeptideMolarMass, 'nmol/l', CPeptideUnitsCombo.Caption), ffFixed, 4, 1);;
   end;
 end;
 

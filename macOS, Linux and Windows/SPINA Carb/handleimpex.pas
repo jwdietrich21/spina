@@ -689,6 +689,16 @@ begin
       begin
         aCaseRecord.LabRecord.Glucose := StrToFloatDef(theOBXRecord.obsValue, NaN);
       end;
+      if pos('Insulin', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.Insulin := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+      if pos('C-Peptide', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.CPeptide := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
 
     end;
     theSegment := theSegment.nextSibling;
