@@ -323,14 +323,14 @@ object Hauptschirm: THauptschirm
   OnWindowStateChange = FormWindowStateChange
   ParentBiDiMode = False
   Position = poScreenCenter
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '3.8.0.0'
   object FT4Items: TComboBox
     Left = 128
     Height = 20
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 19
+    ItemHeight = 18
     Items.Strings = (
       'ng/dl'
       'ng/l'
@@ -347,7 +347,7 @@ object Hauptschirm: THauptschirm
     Top = 176
     Width = 41
     Enabled = False
-    ItemHeight = 19
+    ItemHeight = 18
     Items.Strings = (
       'µg/l'
       'µg/dl'
@@ -363,7 +363,7 @@ object Hauptschirm: THauptschirm
     Top = 200
     Width = 41
     Enabled = False
-    ItemHeight = 19
+    ItemHeight = 18
     Items.Strings = (
       'pg/ml'
       'ng/l'
@@ -379,7 +379,7 @@ object Hauptschirm: THauptschirm
     Top = 224
     Width = 41
     Enabled = False
-    ItemHeight = 19
+    ItemHeight = 18
     Items.Strings = (
       'µg/l'
       'ng/dl'
@@ -1089,7 +1089,7 @@ object Hauptschirm: THauptschirm
       end
       object FT4_Text: TEdit
         Left = 94
-        Height = 22
+        Height = 21
         Hint = '(F)T4'
         Top = 227
         Width = 56
@@ -1100,7 +1100,7 @@ object Hauptschirm: THauptschirm
       end
       object FT3_Text: TEdit
         Left = 190
-        Height = 22
+        Height = 21
         Hint = '(F)T3'
         Top = 32
         Width = 54
@@ -1209,7 +1209,7 @@ object Hauptschirm: THauptschirm
       end
       object TSH_Text: TEdit
         Left = -2
-        Height = 22
+        Height = 21
         Hint = 'TSH'
         Top = 32
         Width = 56

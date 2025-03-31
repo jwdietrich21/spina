@@ -14,7 +14,7 @@ object CaseEditorForm: TCaseEditorForm
   OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '3.8.0.0'
   object Bevel2: TBevel
     Left = 24
     Height = 77
@@ -67,7 +67,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 194
-    Height = 22
+    Height = 21
     Top = 30
     Width = 315
     Anchors = [akTop, akLeft, akRight]
@@ -80,7 +80,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 194
-    Height = 22
+    Height = 21
     Top = 62
     Width = 315
     Anchors = [akTop, akLeft, akRight]
@@ -92,7 +92,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 194
-    Height = 22
+    Height = 21
     Top = 94
     Width = 315
     Anchors = [akTop, akLeft, akRight]
@@ -104,7 +104,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 194
-    Height = 22
+    Height = 21
     Top = 126
     Width = 315
     Anchors = [akTop, akLeft, akRight]
@@ -116,7 +116,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = PIDEdit
     AnchorSideRight.Side = asrCenter
     Left = 194
-    Height = 22
+    Height = 21
     Top = 158
     Width = 314
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -167,7 +167,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = PlacerEdit
     AnchorSideRight.Side = asrCenter
     Left = 194
-    Height = 22
+    Height = 21
     Top = 246
     Width = 314
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -186,7 +186,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 194
-    Height = 22
+    Height = 21
     Top = 215
     Width = 315
     Anchors = [akTop, akLeft, akRight]
@@ -237,7 +237,7 @@ object CaseEditorForm: TCaseEditorForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 194
-    Height = 22
+    Height = 21
     Top = 298
     Width = 315
     Anchors = [akTop, akLeft, akRight]

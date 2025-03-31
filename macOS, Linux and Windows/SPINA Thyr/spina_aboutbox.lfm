@@ -310,7 +310,7 @@ object AboutBox: TAboutBox
   OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '3.8.0.0'
   object OKButton: TButton
     Left = 192
     Height = 24
@@ -1718,7 +1718,7 @@ object AboutBox: TAboutBox
         Height = 13
         Top = 126
         Width = 79
-        Caption = '© 1997 – 2024'
+        Caption = '© 1997 – 2025'
         Font.Height = -11
         Font.Pitch = fpVariable
         ParentColor = False

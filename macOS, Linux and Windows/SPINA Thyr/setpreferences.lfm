@@ -15,7 +15,7 @@ object PreferencesForm: TPreferencesForm
   OnCreate = FormCreate
   OnPaint = FormPaint
   Position = poScreenCenter
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '3.8.0.0'
   object OKButton: TButton
     Left = 566
     Height = 25
@@ -256,7 +256,7 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHRRLEdit: TEdit
           Left = 116
-          Height = 22
+          Height = 21
           Top = 7
           Width = 56
           TabOrder = 0
@@ -265,7 +265,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T4RRLEdit: TEdit
           Left = 116
-          Height = 22
+          Height = 21
           Top = 31
           Width = 56
           TabOrder = 2
@@ -274,7 +274,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T3RRLEDit: TEdit
           Left = 116
-          Height = 22
+          Height = 21
           Top = 55
           Width = 56
           TabOrder = 4
@@ -299,7 +299,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GTRRLEdit: TEdit
           Left = 116
-          Height = 22
+          Height = 21
           Top = 81
           Width = 56
           TabOrder = 6
@@ -308,7 +308,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GDRRLEdit: TEdit
           Left = 116
-          Height = 22
+          Height = 21
           Top = 105
           Width = 56
           TabOrder = 8
@@ -329,7 +329,7 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHRRHEdit: TEdit
           Left = 204
-          Height = 22
+          Height = 21
           Top = 7
           Width = 56
           TabOrder = 1
@@ -338,7 +338,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T4RRHEdit: TEdit
           Left = 204
-          Height = 22
+          Height = 21
           Top = 31
           Width = 56
           TabOrder = 3
@@ -347,7 +347,7 @@ object PreferencesForm: TPreferencesForm
         end
         object T3RRHEdit: TEdit
           Left = 204
-          Height = 22
+          Height = 21
           Top = 55
           Width = 56
           TabOrder = 5
@@ -356,7 +356,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GTRRHEdit: TEdit
           Left = 204
-          Height = 22
+          Height = 21
           Top = 81
           Width = 56
           TabOrder = 7
@@ -365,7 +365,7 @@ object PreferencesForm: TPreferencesForm
         end
         object GDRRHEdit: TEdit
           Left = 204
-          Height = 22
+          Height = 21
           Top = 105
           Width = 56
           TabOrder = 9
@@ -430,7 +430,7 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHIRRLEdit: TEdit
           Left = 414
-          Height = 22
+          Height = 21
           Top = 7
           Width = 56
           TabOrder = 10
@@ -447,7 +447,7 @@ object PreferencesForm: TPreferencesForm
         end
         object TSHIRRHEdit: TEdit
           Left = 500
-          Height = 22
+          Height = 21
           Top = 7
           Width = 56
           TabOrder = 11
@@ -456,7 +456,7 @@ object PreferencesForm: TPreferencesForm
         end
         object TTSIRRLEdit: TEdit
           Left = 414
-          Height = 22
+          Height = 21
           Top = 31
           Width = 56
           TabOrder = 12
@@ -473,7 +473,7 @@ object PreferencesForm: TPreferencesForm
         end
         object TTSIRRHEdit: TEdit
           Left = 500
-          Height = 22
+          Height = 21
           Top = 31
           Width = 56
           TabOrder = 13
@@ -690,7 +690,7 @@ object PreferencesForm: TPreferencesForm
           Top = -2
           Width = 525
           Anchors = [akLeft, akRight, akBottom]
-          ItemHeight = 19
+          ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
             'Font...'

@@ -10,10 +10,10 @@ unit HandlePreferences;
 
 { Version 4.2.2 (Kontinuum) }
 
-{ (c) J. W. Dietrich, 1994 - 2024 }
+{ (c) J. W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2024 }
+{ (c) Ruhr University of Bochum 2005 - 2025 }
 
 { This unit handles global application preferences }
 

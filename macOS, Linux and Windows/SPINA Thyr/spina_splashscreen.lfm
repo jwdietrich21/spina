@@ -20,7 +20,7 @@ object SplashScreen: TSplashScreen
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stNever
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '3.8.0.0'
   object VersionLabel: TLabel
     Left = 32
     Height = 13
@@ -37,7 +37,7 @@ object SplashScreen: TSplashScreen
     Height = 13
     Top = 162
     Width = 79
-    Caption = '© 1997 – 2024'
+    Caption = '© 1997 – 2025'
     Font.Height = -11
     Font.Pitch = fpVariable
     ParentColor = False

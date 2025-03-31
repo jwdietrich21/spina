@@ -344,7 +344,7 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'x'#252#7#240'x'#254#7#240#249#255#7#248#249#255#135#252#253#255#255#255#255
   +#255#255#255#255#255#255#255#255#255#255#255#255#255#255#8'OnCreate'#7#10'Fo'
   +'rmCreate'#9'OnKeyDown'#7#11'FormKeyDown'#7'OnPaint'#7#9'FormPaint'#6'OnShow'
-  +#7#8'FormShow'#8'Position'#7#14'poScreenCenter'#10'LCLVersion'#6#7'3.0.0.3'#0
+  +#7#8'FormShow'#8'Position'#7#14'poScreenCenter'#10'LCLVersion'#6#7'3.8.0.0'#0
   +#7'TButton'#8'OKButton'#4'Left'#3#192#0#6'Height'#2#24#3'Top'#3']'#1#5'Width'
   +#2'K'#7'Anchors'#11#6'akLeft'#8'akBottom'#0#7'Caption'#6#2'OK'#7'Default'#9#8
   +'TabOrder'#2#0#7'OnClick'#7#13'CloseAboutBox'#0#0#12'TPageControl'#4'Tabs'#4
@@ -2160,7 +2160,7 @@ LazarusResources.Add('TAboutBox','FORMDATA',[
   +'t'#2#13#3'Top'#2'd'#5'Width'#2'A'#7'Caption'#6#13'Version x.y.z'#11'Font.He'
   +'ight'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'
   +#8#0#0#6'TLabel'#15'CopyrightLabel1'#4'Left'#2#21#6'Height'#2#13#3'Top'#2'~'
-  +#5'Width'#2'O'#7'Caption'#6#16#194#169' 1997 '#226#128#147' 2024'#11'Font.He'
+  +#5'Width'#2'O'#7'Caption'#6#16#194#169' 1997 '#226#128#147' 2025'#11'Font.He'
   +'ight'#2#245#10'Font.Pitch'#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'
   +#8#0#0#6'TLabel'#15'CopyrightLabel2'#4'Left'#2#21#6'Height'#2#13#3'Top'#3#140
   +#0#5'Width'#2'E'#7'Caption'#6#14'J. W. Dietrich'#11'Font.Height'#2#245#10'Fo'

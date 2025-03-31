@@ -8,12 +8,12 @@ LazarusResources.Add('TSplashScreen','FORMDATA',[
   +'Visible'#8#10'AlphaBlend'#9#11'BorderIcons'#11#0#11'BorderStyle'#7#6'bsNone'
   +#7'Caption'#6#10'SPINA Thyr'#12'ClientHeight'#3'X'#1#11'ClientWidth'#3#187#1
   +#9'FormStyle'#7#8'fsSplash'#8'OnCreate'#7#10'FormCreate'#8'Position'#7#14'po'
-  +'ScreenCenter'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersion'#6#7'3.0.0.3'#0#6
+  +'ScreenCenter'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersion'#6#7'3.8.0.0'#0#6
   +'TLabel'#12'VersionLabel'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#136#0#5'Width'
   +#2'A'#7'Caption'#6#13'Version x.y.z'#11'Font.Height'#2#245#10'Font.Pitch'#7
   +#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'Copyrigh'
   +'tLabel1'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#162#0#5'Width'#2'O'#7'Caption'
-  +#6#16#194#169' 1997 '#226#128#147' 2024'#11'Font.Height'#2#245#10'Font.Pitch'
+  +#6#16#194#169' 1997 '#226#128#147' 2025'#11'Font.Height'#2#245#10'Font.Pitch'
   +#7#10'fpVariable'#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#15'Copyri'
   +'ghtLabel2'#4'Left'#2' '#6'Height'#2#13#3'Top'#3#176#0#5'Width'#2'E'#7'Capti'
   +'on'#6#14'J. W. Dietrich'#11'Font.Height'#2#245#10'Font.Pitch'#7#10'fpVariab'

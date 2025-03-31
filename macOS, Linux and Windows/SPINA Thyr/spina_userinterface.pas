@@ -10,10 +10,10 @@ unit SPINA_UserInterface;
 
 { Version 4.2.2 (Kontinuum) }
 
-{ (c) J. W. Dietrich, 1994 - 2024 }
+{ (c) J. W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2024 }
+{ (c) Ruhr University of Bochum 2005 - 2025 }
 
 { This unit implements the GUI }
 
@@ -1189,7 +1189,8 @@ begin
   { Is this a valid case record? }
   if isNan(theCaseRecord.TSH) and isNan(theCaseRecord.FT4)
   and isNan(theCaseRecord.FT3) and isNan(theCaseRecord.TT4)
-  and isNan(theCaseRecord.TT3) and (theCaseRecord.GT_UOM = '') then
+  and isNan(theCaseRecord.TT3) and (theCaseRecord.GT_UOM = '')
+  and (theCaseRecord.GivenNames = '') then
     ShowMessage(FILE_FORMAT_MESSAGE)
   else
   begin

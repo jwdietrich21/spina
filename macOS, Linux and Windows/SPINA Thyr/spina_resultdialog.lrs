@@ -8,7 +8,7 @@ LazarusResources.Add('TResultForm','FORMDATA',[
   +'t'#3#212#0#11'ClientWidth'#3#179#2#21'Constraints.MinHeight'#3#212#0#9'Form'
   +'Style'#7#11'fsStayOnTop'#10'OnActivate'#7#19'UpdateResultDisplay'#8'OnCreat'
   +'e'#7#10'FormCreate'#7'OnPaint'#7#9'FormPaint'#8'Position'#7#16'poMainFormCe'
-  +'nter'#10'LCLVersion'#6#7'3.0.0.3'#0#6'TImage'#6'Image1'#4'Left'#2#24#6'Heig'
+  +'nter'#10'LCLVersion'#6#7'3.8.0.0'#0#6'TImage'#6'Image1'#4'Left'#2#24#6'Heig'
   +'ht'#2'P'#3'Top'#2' '#5'Width'#2'R'#6'Center'#9#12'Picture.Data'#10#5'#'#0#0
   +#23'TPortableNetworkGraphic'#233'"'#0#0#137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0
   +#0#0#250#0#0#0#234#8#6#0#0#0#139':X'#166#0#0#9#127'iCCPICCProfile'#0#0'x'#156
