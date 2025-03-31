@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SPINA Thyr"
-#define MyAppVersion "4.2.1"
+#define MyAppVersion "4.2.2"
 #define MyAppPublisher "FORMATIO RETICULARIS"
 #define MyAppURL "http://spina.sf.net"
 #define MyAppExeName "SPINA Thyr.exe"
