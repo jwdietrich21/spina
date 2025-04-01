@@ -684,20 +684,77 @@ begin
     if theSegment.segmentType = 'OBX' then
     begin
       GetOBX(theSegment, theOBXRecord);
+
       if pos('Glucose', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
         aCaseRecord.LabRecord.Glucose := StrToFloatDef(theOBXRecord.obsValue, NaN);
       end;
+
       if pos('Insulin', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
         aCaseRecord.LabRecord.Insulin := StrToFloatDef(theOBXRecord.obsValue, NaN);
       end;
+
       if pos('C-Peptide', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
         aCaseRecord.LabRecord.CPeptide := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('SPINA-GBeta', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.SPINA_GBeta := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('SPINA-GR', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.SPINA_GR := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('SPINA-DI', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.SPINA_DI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('HOMA-Beta', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.HOMA_Beta := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('HOMA-IR', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.HOMA_IR := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('HOMA-IS', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.HOMA_IS := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('QUICKI', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.QUICKI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('AIGR', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.QUICKI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+      end;
+
+      if pos('CGR', theOBXRecord.ObsID) > 0 then
+        { #todo : Insert code for LOINC here }
+      begin
+        aCaseRecord.LabRecord.CGR := StrToFloatDef(theOBXRecord.obsValue, NaN);
       end;
 
     end;

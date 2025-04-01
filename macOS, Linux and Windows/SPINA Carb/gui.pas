@@ -152,6 +152,7 @@ type
     InsulinUoM, GlucoseUoM, CPeptideUoM: string;
     procedure RegisterEntry(Sender: TObject);
     procedure CreateOutput(Sender: TObject);
+    procedure DisplayResults(Sender: TObject);
     procedure AdaptForPlatform;
     procedure AdapttoTheme(Sender: TObject);
     procedure FocusEdit(Sender: TObject);
@@ -173,9 +174,7 @@ procedure THauptschirm.CalculateButtonClick(Sender: TObject);
 begin
   RegisterEntry(Sender);
   Calculate(CaseRecord.LabRecord);
-  CreateOutput(Sender);
-  ResultsMemo.Text := LineEnding + CaseRecord.CombMessage;
-  ResultsMemo.Hint := CaseRecord.RCombMessage2;
+  DisplayResults(Sender);
   ResultForm.ShowResults(caseRecord.BParMessage, caseRecord.SParMessage,
     caseRecord.BRefMessage2, caseRecord.SRefMessage2);
   ResultForm.Visible := True;
@@ -262,6 +261,7 @@ begin
       1: OpenCaseRecord(theCaseRecord, OpenCaseDialog.FileName, HL7Message);
     end;
     ReadCaseRecord(Sender, theCaseRecord);
+    DisplayResults(Sender);
   end;
 end;
 
@@ -524,6 +524,13 @@ begin
   CaseRecord.BRefMessage2 := SplitString(CaseRecord.RCombMessage2, GapString)[0];
   CaseRecord.SRefMessage2 := kRR + LineEnding +
     SplitString(CaseRecord.RCombMessage2, GapString)[1];
+end;
+
+procedure THauptschirm.DisplayResults(Sender: TObject);
+begin
+  CreateOutput(Sender);
+  ResultsMemo.Text := LineEnding + CaseRecord.CombMessage;
+  ResultsMemo.Hint := CaseRecord.RCombMessage2;
 end;
 
 procedure THauptschirm.AdaptForPlatform;
