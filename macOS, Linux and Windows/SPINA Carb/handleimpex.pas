@@ -748,7 +748,7 @@ begin
       if pos('AIGR', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
-        aCaseRecord.LabRecord.QUICKI := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        aCaseRecord.LabRecord.AIGR := StrToFloatDef(theOBXRecord.obsValue, NaN);
       end;
 
       if pos('CGR', theOBXRecord.ObsID) > 0 then
