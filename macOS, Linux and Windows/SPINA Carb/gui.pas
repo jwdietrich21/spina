@@ -234,7 +234,7 @@ end;
 
 procedure THauptschirm.MacAboutItemClick(Sender: TObject);
 begin
-  AboutBox.ShowOnTop;
+  AboutBox.ShowAbout;
 end;
 
 procedure THauptschirm.MacPreferencesMenuItemClick(Sender: TObject);
