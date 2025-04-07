@@ -120,16 +120,16 @@ begin
   {$ENDIF}
 end;
 
-function RRFile: string;
+function RefRangeFile: string;
   {delivers path to CDISC-compliant XML file with reference values}
 var
   prefsFolder: string;
 begin
   prefsFolder := PreferencesFolder;
   if prefsFolder = '' then
-    RRFile := ''
+    Result := ''
   else
-    RRFile := IncludeTrailingPathDelimiter(PreferencesFolder) +
+    Result := IncludeTrailingPathDelimiter(PreferencesFolder) +
       SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
@@ -312,16 +312,14 @@ var
   theFileName, prefsFolder: string;
   code: integer;
 begin
+  code := 6;  // Error reading or saving file as default value
   theFileName := RefRangeFile;
   prefsFolder := PreferencesFolder;
   if not DirectoryExists(prefsFolder) then
     if not CreateDir(prefsFolder) then
       ShowMessage(PREFERENCES_SAVE_ERROR_MESSAGE);
   if DirectoryExists(prefsFolder) then
-  begin
-    if FileExists(theFileName) then
-      ReadCDISC_RRFile(theFileName, gPreferences.ReferenceValues, code);
-  end;
+    ReadCDISC_RRFile(theFileName, gPreferences.ReferenceValues, code);
   if (code <> 0) and (code <> 10) then
     gPreferences.ReferenceValues := sReferenceValues; // use standard on error
 end;
@@ -355,22 +353,12 @@ begin
     exportLOINC := True;
     MandatoryColor := gStandardMandatoryColor;
     MSH_ID := '';
+    PreferredUoMs.Glucose := 'mg/dl';
+    PreferredUoMs.Insulin := 'mIU/l';
+    PreferredUoMs.CPeptide := 'ng/ml';
     gPreferences.new := True;
   end;
   SavePreferences;
-end;
-
-function RefRangeFile: string;
-  {delivers path to CDISC-compliant XML file with reference values}
-var
-  prefsFolder: string;
-begin
-  prefsFolder := PreferencesFolder;
-  if prefsFolder = '' then
-    Result := ''
-  else
-    Result := IncludeTrailingPathDelimiter(PreferencesFolder) +
-      SPINA_CARB_GLOBAL_ID + '.ref-ranges.xml';
 end;
 
 procedure ReadPreferences;
