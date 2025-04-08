@@ -47,7 +47,7 @@
         <Filename Value="unitconverter.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitConverter"/>
-        <CursorPos X="14" Y="2"/>
+        <CursorPos X="8" Y="2"/>
         <UsageCount Value="150"/>
         <Loaded Value="True"/>
       </Unit>
@@ -129,14 +129,13 @@
         <Filename Value="handlepreferences.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
+        <TopLine Value="322"/>
         <CursorPos X="36" Y="361"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
-          <IsVisibleTab Value="True"/>
           <EditorIndex Value="-1"/>
-          <WindowIndex Value="1"/>
+          <WindowIndex Value="-1"/>
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
@@ -196,9 +195,10 @@
         <Filename Value="handleimpex.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="17"/>
-        <TopLine Value="736"/>
-        <CursorPos X="34" Y="759"/>
+        <TopLine Value="675"/>
+        <CursorPos X="103" Y="707"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -352,78 +352,6 @@
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="96" Column="61" TopLine="84"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="95" Column="61" TopLine="83"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="94" Column="61" TopLine="82"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="93" Column="61" TopLine="81"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="106" Column="61" TopLine="94"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="105" Column="61" TopLine="93"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="104" Column="18" TopLine="92"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="105" Column="18" TopLine="93"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="359" Column="42"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="52" Column="24" TopLine="36"/>
-      </Position>
-      <Position>
-        <Filename Value="spinatypes.pas"/>
-        <Caret Line="162" Column="19" TopLine="153"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="372" TopLine="357"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="373" TopLine="357"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="374" TopLine="357"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="375" TopLine="357"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="386" TopLine="362"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="452" TopLine="433"/>
-      </Position>
-      <Position>
-        <Filename Value="handlepreferences.pas"/>
-        <Caret Line="453" TopLine="433"/>
-      </Position>
-      <Position>
         <Filename Value="SPINA_Carb.lpr"/>
         <Caret Line="58" Column="16" TopLine="32"/>
       </Position>
@@ -469,6 +397,78 @@
       <Position>
         <Filename Value="HandleCDISC.pas"/>
         <Caret Line="323" Column="16" TopLine="299"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="688" TopLine="673"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="693" Column="16" TopLine="658"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="689" TopLine="658"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="692" TopLine="659"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="693" TopLine="660"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="2" Column="14"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="203" Column="19" TopLine="169"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="207" Column="19" TopLine="173"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="208" Column="19" TopLine="174"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="608" Column="32" TopLine="578"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="9" Column="71"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="16" Column="104"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="677" Column="34" TopLine="662"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="699" Column="56" TopLine="671"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="227" Column="50" TopLine="207"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="269" Column="31" TopLine="235"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="309" Column="50" TopLine="276"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="692" Column="25" TopLine="659"/>
       </Position>
     </JumpHistory>
     <RunParams>

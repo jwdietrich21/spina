@@ -688,19 +688,26 @@ begin
       if pos('Glucose', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
-        aCaseRecord.LabRecord.Glucose := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        aCaseRecord.LabRecord.Glucose :=
+          ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
+          kGlucoseMolarMass, theOBXRecord.Units,
+          gPreferences.ReferenceValues.Glucose.UoM);
       end;
 
       if pos('Insulin', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
-        aCaseRecord.LabRecord.Insulin := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        aCaseRecord.LabRecord.Insulin :=
+          ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
+          kInsulinConversionFactor, theOBXRecord.Units, gPreferences.ReferenceValues.Insulin.UoM);
       end;
 
       if pos('C-Peptide', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
-        aCaseRecord.LabRecord.CPeptide := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        aCaseRecord.LabRecord.CPeptide :=
+          ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN), kCPeptideMolarMass,
+          theOBXRecord.Units, gPreferences.ReferenceValues.CPeptide.UoM);
       end;
 
       if pos('SPINA-GBeta', theOBXRecord.ObsID) > 0 then
