@@ -15,7 +15,8 @@ unit CaseBroker;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
 
-{ This unit filters and prepares inputs for the calculation engine }
+{ This unit filters and prepares inputs for the calculation engine, and it }
+{ provides several services for high-level units }
 
 { Source code released under the BSD License }
 { See http://spina.medical-cybernetics.de for details }
@@ -89,7 +90,7 @@ end;
 
 function CPeptideSI(RawCPt: extended; CPtUom: string): extended;
 begin
-  Result := ConvertedValue(RawCPt, kCPeptideMolarMass, CPtUom, 'pmol/l');
+  Result := ConvertedValue(RawCPt, kCPeptideMolarMass, CPtUom, 'nmol/l');
 end;
 
 procedure Calculate(var LabRecord: tLabRecord);
@@ -109,21 +110,23 @@ procedure CreateMessages(var CaseRecord: tCaseRecord);
 {Creates messages for calculated parameters}
 begin
   CaseRecord.SParMessage := kSPars + LineEnding + '   ' + kSPINA_GBeta +
-    ': ' + FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffFixed, 4, 2) +
-    ' ' + GBetaUoM + LineEnding + '   ' + kSPINA_GR + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffFixed, 4, 2) + ' ' +
-    GRUoM + LineEnding + '   ' + kSPINA_DI + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffFixed, 4, 2) +
-    LineEnding + '   ' + kHOMA_Beta + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffFixed, 4, 1) + ' ' +
-    HOMABetaUoM + LineEnding + '   ' + kHOMA_IR + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffFixed, 4, 1) + LineEnding +
-    '   ' + kHOMA_IS + ': ' + FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
-    LineEnding + '   ' + kQUICKI + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1) +
-    LineEnding + '   ' + kAIGR + ': ' + FloatToStrF(CaseRecord.LabRecord.AIGR,
-    ffFixed, 4, 1) + ' ' + AIGRUoM + LineEnding + '   ' + kCGR +
-    ': ' + FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
+    ': ' + Marked(CaseRecord.LabRecord.SPINA_GBeta,
+    gPreferences.ReferenceValues.SPINA_GBeta, 4, 2) + ' ' + GBetaUoM +
+    LineEnding + '   ' + kSPINA_GR + ': ' + Marked(CaseRecord.LabRecord.SPINA_GR,
+    gPreferences.ReferenceValues.SPINA_GR, 4, 2) + ' ' + GRUoM +
+    LineEnding + '   ' + kSPINA_DI + ': ' + Marked(CaseRecord.LabRecord.SPINA_DI,
+    gPreferences.ReferenceValues.SPINA_DI, 4, 2) + LineEnding + '   ' +
+    kHOMA_Beta + ': ' + Marked(CaseRecord.LabRecord.HOMA_Beta,
+    gPreferences.ReferenceValues.HOMA_Beta, 4, 1) + ' ' + HOMABetaUoM +
+    LineEnding + '   ' + kHOMA_IR + ': ' + Marked(CaseRecord.LabRecord.HOMA_IR,
+    gPreferences.ReferenceValues.HOMA_IR, 4, 1) + LineEnding + '   ' +
+    kHOMA_IS + ': ' + Marked(CaseRecord.LabRecord.HOMA_IS,
+    gPreferences.ReferenceValues.HOMA_IS, 4, 1) + LineEnding + '   ' +
+    kQUICKI + ': ' + Marked(CaseRecord.LabRecord.QUICKI,
+    gPreferences.ReferenceValues.QUICKI, 4, 1) + LineEnding + '   ' +
+    kAIGR + ': ' + Marked(CaseRecord.LabRecord.AIGR, gPreferences.ReferenceValues.AIGR,
+    4, 1) + ' ' + AIGRUoM + LineEnding + '   ' + kCGR + ': ' +
+    Marked(CaseRecord.LabRecord.CGR, gPreferences.ReferenceValues.CGR, 4, 1);
   CaseRecord.SRefMessage1 :=
     FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln, ffFixed, 4, 2) +
     '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed, 4, 2) +

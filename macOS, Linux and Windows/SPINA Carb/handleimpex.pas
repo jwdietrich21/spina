@@ -295,11 +295,11 @@ begin
     if gPreferences.exportLOINC then
     begin
       if pos('mol', gPreferences.ReferenceValues.CPeptide.UoM) > 0 then  // SI unit
-        theOBX.ObsID := LOINC_INSU_1.code +
+        theOBX.ObsID := LOINC_CPEP_1.code +
           HL7Message.Delimiters.ComponentSeparator + 'C-Peptide' +
           HL7Message.Delimiters.ComponentSeparator + LOINC_LABEL
       else
-        theOBX.ObsID := LOINC_INSU_2.code +
+        theOBX.ObsID := LOINC_CPEP_2.code +
           HL7Message.Delimiters.ComponentSeparator + 'C-Peptide' +
           HL7Message.Delimiters.ComponentSeparator + LOINC_LABEL;
     end

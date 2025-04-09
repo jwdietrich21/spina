@@ -474,9 +474,12 @@ begin
   CaseRecord.BParMessage := kBPars + LineEnding + '   ' + kGluc +
     ': ' + MarkedC(CaseRecord.LabRecord.Glucose, gPreferences.ReferenceValues.Glucose,
     kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Text, 4, 1) + ' ' +
-    GlucoseUoM + LineEnding + '   ' + kIns + ': ' + InsulinEdit.Text +
-    ' ' + InsulinUoM + LineEnding + '   ' + kCpt + ': ' + CPeptideEdit.Text +
-    ' ' + CPeptideUoM;
+    GlucoseUoM + LineEnding + '   ' + kIns + ': ' +
+    MarkedC(CaseRecord.LabRecord.Insulin, gPreferences.ReferenceValues.Insulin,
+    kInsulinConversionFactor, 'pmol/l', InsulinUnitsCombo.Text, 4, 1) +
+    ' ' + InsulinUoM + LineEnding + '   ' + kCpt + ': ' +
+    MarkedC(CaseRecord.LabRecord.CPeptide, gPreferences.ReferenceValues.CPeptide,
+    kCPeptideMolarMass, 'nmol/l', CPeptideUnitsCombo.Text, 4, 1) + ' ' + CPeptideUoM;
   CaseRecord.CombMessage := CaseRecord.BParMessage + LineEnding +
     '       ' + LineEnding + CaseRecord.SParMessage;
   CaseRecord.BRefMessage1 := kRR + LineEnding +

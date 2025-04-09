@@ -139,11 +139,12 @@ begin
 end;
 
 function CGR(const CPeptide, Glucose: real): real;
+// C-peptide in nmol/l, Glucose in mmol/l
 begin
   assert((isNan(CPeptide) or (CPeptide >= 0)) and (isNan(Glucose) or (Glucose >= 0)), kError101);
   result := NaN;
   if not isNan(CPeptide) and not isNan(Glucose) and (Glucose > 0) then
-    result := CPeptide / (Glucose * kGlucoseConversionFactor);
+    result := CPeptide * 1000 / (Glucose * kGlucoseConversionFactor);
 end;
 
 end.
