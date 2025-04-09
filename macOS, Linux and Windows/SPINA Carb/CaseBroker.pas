@@ -25,14 +25,15 @@ unit CaseBroker;
 interface
 
 uses
-  Classes, SysUtils, Math, UnitConverter, SPINA_Engine;
+  Classes, SysUtils, Math, UnitConverter, SPINATypes, SPINA_Engine;
 
 type
   tLabRecord = record
     Insulin, Glucose, CPeptide: extended;
     SPINA_GBeta, SPINA_GR, SPINA_DI, HOMA_Beta, HOMA_IR, HOMA_IS,
-      QUICKI, AIGR, CGR: extended;
+    QUICKI, AIGR, CGR: extended;
   end;
+
   tCaseRecord = record
     LabRecord: tLabRecord;
     CaseID, PID, Name, GivenNames, Placer: string;
@@ -44,10 +45,17 @@ type
   end;
 
 procedure NewCaseRecord(var aCaseRecord: tCaseRecord);
-function InsulinSI(RawIns: extended; InsUom: String): extended;
-function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
-function CPeptideSI(RawCPt: extended; CPtUom: String): extended;
+function InsulinSI(RawIns: extended; InsUom: string): extended;
+function GlucoseSI(RawGlc: extended; GlcUom: string): extended;
+function CPeptideSI(RawCPt: extended; CPtUom: string): extended;
 procedure Calculate(var LabRecord: tLabRecord);
+procedure CreateMessages(var CaseRecord: tCaseRecord);
+function RRFlag(theParameter: extended; theRanges: tReferenceLimits): string;
+function Marked(theParameter: extended; theRanges: tReferenceLimits;
+  Precision: integer; Digits: integer): string;
+function MarkedC(theParameter: extended; theRanges: tReferenceLimits;
+  ConversionFactor: real; UoM1, Uom2: string; Precision: integer;
+  Digits: integer): string;
 
 implementation
 
@@ -68,19 +76,20 @@ begin
   aCaseRecord.LabRecord.AIGR := NaN;
   aCaseRecord.LabRecord.CGR := NaN;
 end;
-function InsulinSI(RawIns: extended; InsUom: String): extended;
+
+function InsulinSI(RawIns: extended; InsUom: string): extended;
 begin
-  result := ConvertedValue(RawIns, kInsulinConversionFactor, InsUom, 'pmol/l');
+  Result := ConvertedValue(RawIns, kInsulinConversionFactor, InsUom, 'pmol/l');
 end;
 
-function GlucoseSI(RawGlc: extended; GlcUom: String): extended;
+function GlucoseSI(RawGlc: extended; GlcUom: string): extended;
 begin
-  result := ConvertedValue(RawGlc, kGlucoseMolarMass, GlcUom, 'mmol/l');
+  Result := ConvertedValue(RawGlc, kGlucoseMolarMass, GlcUom, 'mmol/l');
 end;
 
-function CPeptideSI(RawCPt: extended; CPtUom: String): extended;
+function CPeptideSI(RawCPt: extended; CPtUom: string): extended;
 begin
-  result := ConvertedValue(RawCPt, kCPeptideMolarMass, CPtUom, 'pmol/l');
+  Result := ConvertedValue(RawCPt, kCPeptideMolarMass, CPtUom, 'pmol/l');
 end;
 
 procedure Calculate(var LabRecord: tLabRecord);
@@ -96,5 +105,83 @@ begin
   LabRecord.CGR := CGR(LabRecord.CPeptide, LabRecord.Glucose);
 end;
 
-end.
+procedure CreateMessages(var CaseRecord: tCaseRecord);
+{Creates messages for calculated parameters}
+begin
+  CaseRecord.SParMessage := kSPars + LineEnding + '   ' + kSPINA_GBeta +
+    ': ' + FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffFixed, 4, 2) +
+    ' ' + GBetaUoM + LineEnding + '   ' + kSPINA_GR + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffFixed, 4, 2) + ' ' +
+    GRUoM + LineEnding + '   ' + kSPINA_DI + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffFixed, 4, 2) +
+    LineEnding + '   ' + kHOMA_Beta + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffFixed, 4, 1) + ' ' +
+    HOMABetaUoM + LineEnding + '   ' + kHOMA_IR + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffFixed, 4, 1) + LineEnding +
+    '   ' + kHOMA_IS + ': ' + FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
+    LineEnding + '   ' + kQUICKI + ': ' +
+    FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1) +
+    LineEnding + '   ' + kAIGR + ': ' + FloatToStrF(CaseRecord.LabRecord.AIGR,
+    ffFixed, 4, 1) + ' ' + AIGRUoM + LineEnding + '   ' + kCGR +
+    ': ' + FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
+  CaseRecord.SRefMessage1 :=
+    FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln, ffFixed, 4, 2) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed, 4, 2) +
+    ' ' + gPreferences.ReferenceValues.SPINA_GBeta.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.ln, ffFixed, 4, 2) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.hn, ffFixed, 4, 2) +
+    ' ' + gPreferences.ReferenceValues.SPINA_GR.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.ln, ffFixed, 4, 2) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.hn, ffFixed, 4, 2) +
+    ' ' + gPreferences.ReferenceValues.SPINA_DI.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.HOMA_Beta.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.HOMA_IR.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.HOMA_IS.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.QUICKI.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.QUICKI.UoM + LineEnding +
+    FloatToStrF(gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1) +
+    '–' + FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.AIGR.UoM + LineEnding + FloatToStrF(
+    gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1) + '–' +
+    FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed, 4, 1) +
+    ' ' + gPreferences.ReferenceValues.CGR.UoM;
+end;
 
+function RRFlag(theParameter: extended; theRanges: tReferenceLimits): string;
+begin
+  if (isNan(theRanges.ln) or isNan(theRanges.hn)) then
+    Result := ''
+  else if (theParameter < theRanges.ln) or (theParameter > theRanges.hn) then
+    Result := REF_RANGE_FLAG;
+end;
+
+function Marked(theParameter: extended; theRanges: tReferenceLimits;
+  Precision: integer; Digits: integer): string;
+begin
+  if IsNaN(theParameter) then
+    Result := NA_MARK
+  else
+    Result := FloatToStrF(theParameter, ffFixed, Precision, Digits) +
+      RRFlag(theParameter, theRanges);
+end;
+
+function MarkedC(theParameter: extended; theRanges: tReferenceLimits;
+  ConversionFactor: real; UoM1, Uom2: string; Precision: integer;
+  Digits: integer): string;
+var
+  LocalRange: tReferenceLimits;
+begin
+  LocalRange.ln := ConvertedValue(theRanges.ln, ConversionFactor, UoM1, Uom2);
+  LocalRange.hn := ConvertedValue(theRanges.hn, ConversionFactor, UoM1, Uom2);
+  Result := Marked(ConvertedValue(theParameter, ConversionFactor, UoM1, UoM2),
+    LocalRange, Precision, Digits);
+end;
+
+end.

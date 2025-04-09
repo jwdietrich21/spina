@@ -63,6 +63,9 @@ const
   HOMABetaUoM = '%';
   AIGRUoM = 'pmol/mmol';
 
+  NA_MARK = 'N/A';
+  REF_RANGE_FLAG = '*'; {flag sign for marking results outside the reference range}
+
   kPID2 = 'PID: ';
   kName2 = 'Patient name: ';
   kPlacer2 = 'Placer: ';

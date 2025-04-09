@@ -348,9 +348,11 @@ begin
     GlucoseEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Glucose,
       kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Caption), ffFixed, 4, 1);
     InsulinEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Insulin,
-      kInsulinConversionFactor, 'pmol/l', InsulinUnitsCombo.Caption), ffFixed, 4, 1);;
+      kInsulinConversionFactor, 'pmol/l', InsulinUnitsCombo.Caption), ffFixed, 4, 1);
+    ;
     CPeptideEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.CPeptide,
-      kCPeptideMolarMass, 'nmol/l', CPeptideUnitsCombo.Caption), ffFixed, 4, 1);;
+      kCPeptideMolarMass, 'nmol/l', CPeptideUnitsCombo.Caption), ffFixed, 4, 1);
+    ;
   end;
 end;
 
@@ -468,26 +470,13 @@ procedure THauptschirm.CreateOutput(Sender: TObject);
 const
   GapString = ' ' + LineEnding + ' ' + LineEnding;
 begin
+  CreateMessages(CaseRecord);
   CaseRecord.BParMessage := kBPars + LineEnding + '   ' + kGluc +
-    ': ' + GlucoseEdit.Text + ' ' + GlucoseUoM + LineEnding + '   ' +
-    kIns + ': ' + InsulinEdit.Text + ' ' + InsulinUoM + LineEnding +
-    '   ' + kCpt + ': ' + CPeptideEdit.Text + ' ' + CPeptideUoM;
-  CaseRecord.SParMessage := kSPars + LineEnding + '   ' + kSPINA_GBeta +
-    ': ' + FloatToStrF(CaseRecord.LabRecord.SPINA_GBeta, ffFixed, 4, 2) +
-    ' ' + GBetaUoM + LineEnding + '   ' + kSPINA_GR + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.SPINA_GR, ffFixed, 4, 2) + ' ' +
-    GRUoM + LineEnding + '   ' + kSPINA_DI + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.SPINA_DI, ffFixed, 4, 2) +
-    LineEnding + '   ' + kHOMA_Beta + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.HOMA_Beta, ffFixed, 4, 1) + ' ' +
-    HOMABetaUoM + LineEnding + '   ' + kHOMA_IR + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.HOMA_IR, ffFixed, 4, 1) + LineEnding +
-    '   ' + kHOMA_IS + ': ' + FloatToStrF(CaseRecord.LabRecord.HOMA_IS, ffFixed, 4, 1) +
-    LineEnding + '   ' + kQUICKI + ': ' +
-    FloatToStrF(CaseRecord.LabRecord.QUICKI, ffFixed, 4, 1) +
-    LineEnding + '   ' + kAIGR + ': ' + FloatToStrF(CaseRecord.LabRecord.AIGR,
-    ffFixed, 4, 1) + ' ' + AIGRUoM + LineEnding + '   ' + kCGR +
-    ': ' + FloatToStrF(CaseRecord.LabRecord.CGR, ffFixed, 4, 1);
+    ': ' + MarkedC(CaseRecord.LabRecord.Glucose, gPreferences.ReferenceValues.Glucose,
+    kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Text, 4, 1) + ' ' +
+    GlucoseUoM + LineEnding + '   ' + kIns + ': ' + InsulinEdit.Text +
+    ' ' + InsulinUoM + LineEnding + '   ' + kCpt + ': ' + CPeptideEdit.Text +
+    ' ' + CPeptideUoM;
   CaseRecord.CombMessage := CaseRecord.BParMessage + LineEnding +
     '       ' + LineEnding + CaseRecord.SParMessage;
   CaseRecord.BRefMessage1 := kRR + LineEnding +
@@ -509,34 +498,6 @@ begin
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.CPeptide.hn,
     kCPeptideMolarMass, gPreferences.ReferenceValues.CPeptide.UoM,
     CPeptideUnitsCombo.Text), ffFixed, 4, 1) + ' ' + CPeptideUnitsCombo.Text;
-  CaseRecord.SRefMessage1 :=
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed, 4, 2) +
-    ' ' + gPreferences.ReferenceValues.SPINA_GBeta.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.hn, ffFixed, 4, 2) +
-    ' ' + gPreferences.ReferenceValues.SPINA_GR.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.hn, ffFixed, 4, 2) +
-    ' ' + gPreferences.ReferenceValues.SPINA_DI.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.HOMA_Beta.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.HOMA_IR.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.HOMA_IS.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.QUICKI.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.QUICKI.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.AIGR.UoM + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1) + '–' +
-    FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.CGR.UoM;
   CaseRecord.RCombMessage1 := CaseRecord.BRefMessage1 + LineEnding +
     GapString + CaseRecord.SRefMessage1;
   CaseRecord.RCombMessage2 := WithReferenceRanges(CaseRecord.RCombMessage1);
