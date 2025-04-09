@@ -44,11 +44,15 @@ type
     Bevel2: TBevel;
     CaseDataMenuItem: TMenuItem;
     Divider01: TMenuItem;
+    CommentBox: TGroupBox;
     MacPreferencesMenuItem: TMenuItem;
     Divider23: TMenuItem;
     CopyResultMenuItem: TMenuItem;
+    CommentMemo: TMemo;
+    OKButton: TButton;
     OpenCaseDialog: TOpenDialog;
     SaveResultsDialog: TSaveDialog;
+    CommentSheet: TTabSheet;
     WinPreferencesMenuItem: TMenuItem;
     PageSetupMenuItem: TMenuItem;
     PrintDialog1: TPrintDialog;
@@ -123,6 +127,7 @@ type
     procedure CalculateButtonClick(Sender: TObject);
     procedure CaseDataMenuItemClick(Sender: TObject);
     procedure CaseEditorSheetShow(Sender: TObject);
+    procedure CommentSheetShow(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure EntrySheetShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -132,6 +137,7 @@ type
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesMenuItemClick(Sender: TObject);
     procedure NextButtonClick(Sender: TObject);
+    procedure OKButtonClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
     procedure PageSetupMenuItemClick(Sender: TObject);
     procedure PrintMenuItemClick(Sender: TObject);
@@ -194,6 +200,13 @@ begin
   ActiveControl := CaseIDEdit;
 end;
 
+procedure THauptschirm.CommentSheetShow(Sender: TObject);
+begin
+  CommentMemo.Lines.Text := CaseRecord.Comment;
+  OKButton.Default := True;
+  ActiveControl := CommentMemo;
+end;
+
 procedure THauptschirm.CopyResultMenuItemClick(Sender: TObject);
 var
   Clipboard: TClipboard;
@@ -248,6 +261,11 @@ begin
   MainPageControl.ActivePage := EntrySheet;
 end;
 
+procedure THauptschirm.OKButtonClick(Sender: TObject);
+begin
+  CaseRecord.Comment := CommentMemo.Lines.Text;
+end;
+
 procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
 { Open case from file }
 var
@@ -262,6 +280,7 @@ begin
     end;
     ReadCaseRecord(Sender, theCaseRecord);
     DisplayResults(Sender);
+    CommentMemo.Lines.Text := CaseRecord.Comment;
   end;
 end;
 

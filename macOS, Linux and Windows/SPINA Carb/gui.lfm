@@ -9101,6 +9101,44 @@ object Hauptschirm: THauptschirm
         end
       end
     end
+    object CommentSheet: TTabSheet
+      Caption = 'Comment'
+      ClientHeight = 334
+      ClientWidth = 750
+      OnShow = CommentSheetShow
+      object OKButton: TButton
+        Left = 625
+        Height = 25
+        Hint = 'Finish data entry'
+        Top = 304
+        Width = 115
+        Anchors = [akRight, akBottom]
+        Caption = 'OK'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        OnClick = OKButtonClick
+      end
+      object CommentBox: TGroupBox
+        Left = 0
+        Height = 289
+        Top = 8
+        Width = 753
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        Caption = 'Comment'
+        ClientHeight = 262
+        ClientWidth = 743
+        TabOrder = 1
+        object CommentMemo: TMemo
+          Left = 8
+          Height = 258
+          Top = 0
+          Width = 720
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          TabOrder = 0
+        end
+      end
+    end
   end
   object MainMenu1: TMainMenu
     Left = 656
