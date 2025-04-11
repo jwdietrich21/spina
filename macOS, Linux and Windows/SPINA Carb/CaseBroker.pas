@@ -106,21 +106,32 @@ begin
   LabRecord.CGR := CGR(LabRecord.CPeptide, LabRecord.Glucose);
 end;
 
+function RefMessage(ln, hn: extended; UoM: string; precision, digits: integer): string;
+begin
+  if (ln = 0) or IsInfinite(ln) then
+    Result := '< ' + FloatToStrF(hn, ffFixed, precision, digits) + ' ' + UoM
+  else if IsInfinite(hn) then
+    Result := '> ' + FloatToStrF(ln, ffFixed, precision, digits) + ' ' + UoM
+  else
+    Result := FloatToStrF(ln, ffFixed, precision, digits) + '–' +
+    FloatToStrF(hn, ffFixed, precision, digits) + ' ' + UoM;
+end;
+
 procedure CreateMessages(var CaseRecord: tCaseRecord);
 {Creates messages for calculated parameters}
 begin
   CaseRecord.SParMessage := kSPars + LineEnding + '   ' + kSPINA_GBeta +
     ': ' + Marked(CaseRecord.LabRecord.SPINA_GBeta,
     gPreferences.ReferenceValues.SPINA_GBeta, 4, 2) + ' ' + GBetaUoM +
-    LineEnding + '   ' + kSPINA_GR + ': ' + Marked(CaseRecord.LabRecord.SPINA_GR,
-    gPreferences.ReferenceValues.SPINA_GR, 4, 2) + ' ' + GRUoM +
-    LineEnding + '   ' + kSPINA_DI + ': ' + Marked(CaseRecord.LabRecord.SPINA_DI,
-    gPreferences.ReferenceValues.SPINA_DI, 4, 2) + LineEnding + '   ' +
-    kHOMA_Beta + ': ' + Marked(CaseRecord.LabRecord.HOMA_Beta,
-    gPreferences.ReferenceValues.HOMA_Beta, 4, 1) + ' ' + HOMABetaUoM +
-    LineEnding + '   ' + kHOMA_IR + ': ' + Marked(CaseRecord.LabRecord.HOMA_IR,
-    gPreferences.ReferenceValues.HOMA_IR, 4, 1) + LineEnding + '   ' +
-    kHOMA_IS + ': ' + Marked(CaseRecord.LabRecord.HOMA_IS,
+    LineEnding + '   ' + kSPINA_GR + ': ' +
+    Marked(CaseRecord.LabRecord.SPINA_GR, gPreferences.ReferenceValues.SPINA_GR, 4, 2) +
+    ' ' + GRUoM + LineEnding + '   ' + kSPINA_DI + ': ' +
+    Marked(CaseRecord.LabRecord.SPINA_DI, gPreferences.ReferenceValues.SPINA_DI, 4, 2) +
+    LineEnding + '   ' + kHOMA_Beta + ': ' +
+    Marked(CaseRecord.LabRecord.HOMA_Beta, gPreferences.ReferenceValues.HOMA_Beta,
+    4, 1) + ' ' + HOMABetaUoM + LineEnding + '   ' + kHOMA_IR + ': ' +
+    Marked(CaseRecord.LabRecord.HOMA_IR, gPreferences.ReferenceValues.HOMA_IR, 4, 1) +
+    LineEnding + '   ' + kHOMA_IS + ': ' + Marked(CaseRecord.LabRecord.HOMA_IS,
     gPreferences.ReferenceValues.HOMA_IS, 4, 1) + LineEnding + '   ' +
     kQUICKI + ': ' + Marked(CaseRecord.LabRecord.QUICKI,
     gPreferences.ReferenceValues.QUICKI, 4, 1) + LineEnding + '   ' +
@@ -128,33 +139,29 @@ begin
     4, 1) + ' ' + AIGRUoM + LineEnding + '   ' + kCGR + ': ' +
     Marked(CaseRecord.LabRecord.CGR, gPreferences.ReferenceValues.CGR, 4, 1);
   CaseRecord.SRefMessage1 :=
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GBeta.hn, ffFixed, 4, 2) +
-    ' ' + gPreferences.ReferenceValues.SPINA_GBeta.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_GR.hn, ffFixed, 4, 2) +
-    ' ' + gPreferences.ReferenceValues.SPINA_GR.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.ln, ffFixed, 4, 2) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.SPINA_DI.hn, ffFixed, 4, 2) +
-    ' ' + gPreferences.ReferenceValues.SPINA_DI.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_Beta.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.HOMA_Beta.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IR.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.HOMA_IR.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.HOMA_IS.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.HOMA_IS.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.QUICKI.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.QUICKI.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.QUICKI.UoM + LineEnding +
-    FloatToStrF(gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1) +
-    '–' + FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.AIGR.UoM + LineEnding + FloatToStrF(
-    gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1) + '–' +
-    FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed, 4, 1) +
-    ' ' + gPreferences.ReferenceValues.CGR.UoM;
+    RefMessage(gPreferences.ReferenceValues.SPINA_GBeta.ln,
+    gPreferences.ReferenceValues.SPINA_GBeta.hn,
+    gPreferences.ReferenceValues.SPINA_GBeta.UoM, 4, 2) + LineEnding +
+    RefMessage(gPreferences.ReferenceValues.SPINA_GR.ln,
+    gPreferences.ReferenceValues.SPINA_GR.hn,
+    gPreferences.ReferenceValues.SPINA_GR.UoM, 4, 2) + LineEnding +
+    RefMessage(gPreferences.ReferenceValues.SPINA_DI.ln,
+    gPreferences.ReferenceValues.SPINA_DI.hn,
+    gPreferences.ReferenceValues.SPINA_DI.UoM, 4, 2) + LineEnding +
+    RefMessage(gPreferences.ReferenceValues.HOMA_Beta.ln,
+    gPreferences.ReferenceValues.HOMA_Beta.hn,
+    gPreferences.ReferenceValues.HOMA_Beta.UoM, 4, 1) + LineEnding +
+    RefMessage(gPreferences.ReferenceValues.HOMA_IR.ln,
+    gPreferences.ReferenceValues.HOMA_IR.hn, gPreferences.ReferenceValues.HOMA_IR.UoM,
+    4, 1) + LineEnding + RefMessage(gPreferences.ReferenceValues.HOMA_IS.ln,
+    gPreferences.ReferenceValues.HOMA_IS.hn, gPreferences.ReferenceValues.HOMA_IS.UoM,
+    4, 1) + LineEnding + RefMessage(gPreferences.ReferenceValues.QUICKI.ln,
+    gPreferences.ReferenceValues.QUICKI.hn,
+    gPreferences.ReferenceValues.QUICKI.UoM, 4, 1) + LineEnding +
+    RefMessage(gPreferences.ReferenceValues.AIGR.ln,
+    gPreferences.ReferenceValues.AIGR.hn, gPreferences.ReferenceValues.AIGR.UoM,
+    4, 1) + LineEnding + RefMessage(gPreferences.ReferenceValues.CGR.ln,
+    gPreferences.ReferenceValues.CGR.hn, gPreferences.ReferenceValues.CGR.UoM, 4, 1);
 end;
 
 function RRFlag(theParameter: extended; theRanges: tReferenceLimits): string;
