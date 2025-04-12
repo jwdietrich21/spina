@@ -9254,9 +9254,14 @@ object Hauptschirm: THauptschirm
         Caption = '-'
       end
       object CopyResultMenuItem: TMenuItem
-        Caption = 'Copy Result'
+        Caption = 'Copy result'
         ShortCut = 16466
         OnClick = CopyResultMenuItemClick
+      end
+      object CopyFormattedMenuItem: TMenuItem
+        Caption = 'Copy formatted'
+        ShortCut = 16459
+        OnClick = CopyFormattedMenuItemClick
       end
       object Divider24: TMenuItem
         Caption = '-'

@@ -57,6 +57,7 @@ function Marked(theParameter: extended; theRanges: tReferenceLimits;
 function MarkedC(theParameter: extended; theRanges: tReferenceLimits;
   ConversionFactor: real; UoM1, Uom2: string; Precision: integer;
   Digits: integer): string;
+function FormattedResults(const LabRecord: tLabRecord): string;
 
 implementation
 
@@ -109,12 +110,14 @@ end;
 function RefMessage(ln, hn: extended; UoM: string; precision, digits: integer): string;
 begin
   if (ln = 0) or IsInfinite(ln) then
-    Result := '< ' + FloatToStrF(hn, ffFixed, precision, digits) + ' ' + UoM
+    Result := '< ' + FloatToStrF(hn, ffFixed, precision, digits)
   else if IsInfinite(hn) then
-    Result := '> ' + FloatToStrF(ln, ffFixed, precision, digits) + ' ' + UoM
+    Result := '> ' + FloatToStrF(ln, ffFixed, precision, digits)
   else
     Result := FloatToStrF(ln, ffFixed, precision, digits) + '–' +
-    FloatToStrF(hn, ffFixed, precision, digits) + ' ' + UoM;
+      FloatToStrF(hn, ffFixed, precision, digits);
+  if UoM <> '' then
+    Result := Result + ' ' + UoM;
 end;
 
 procedure CreateMessages(var CaseRecord: tCaseRecord);
@@ -156,9 +159,8 @@ begin
     4, 1) + LineEnding + RefMessage(gPreferences.ReferenceValues.HOMA_IS.ln,
     gPreferences.ReferenceValues.HOMA_IS.hn, gPreferences.ReferenceValues.HOMA_IS.UoM,
     4, 1) + LineEnding + RefMessage(gPreferences.ReferenceValues.QUICKI.ln,
-    gPreferences.ReferenceValues.QUICKI.hn,
-    gPreferences.ReferenceValues.QUICKI.UoM, 4, 1) + LineEnding +
-    RefMessage(gPreferences.ReferenceValues.AIGR.ln,
+    gPreferences.ReferenceValues.QUICKI.hn, gPreferences.ReferenceValues.QUICKI.UoM,
+    4, 1) + LineEnding + RefMessage(gPreferences.ReferenceValues.AIGR.ln,
     gPreferences.ReferenceValues.AIGR.hn, gPreferences.ReferenceValues.AIGR.UoM,
     4, 1) + LineEnding + RefMessage(gPreferences.ReferenceValues.CGR.ln,
     gPreferences.ReferenceValues.CGR.hn, gPreferences.ReferenceValues.CGR.UoM, 4, 1);
@@ -192,6 +194,51 @@ begin
   LocalRange.hn := ConvertedValue(theRanges.hn, ConversionFactor, UoM1, Uom2);
   Result := Marked(ConvertedValue(theParameter, ConversionFactor, UoM1, UoM2),
     LocalRange, Precision, Digits);
+end;
+
+function FormattedResults(const LabRecord: tLabRecord): string;
+begin
+  Result := kSPINA_GBeta + kTAB + kTAB + kTAB + FloatToStrF(LabRecord.SPINA_GBeta, ffFixed, 4, 2) +
+    kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.SPINA_GBeta.ln,
+    gPreferences.ReferenceValues.SPINA_GBeta.hn,
+    gPreferences.ReferenceValues.SPINA_GBeta.UoM, 4, 2) + kParClose +
+    LineEnding + kSPINA_GR + kS4TAB + kTAB + kTAB + FloatToStrF(LabRecord.SPINA_GR, ffFixed, 4, 2) +
+    kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.SPINA_GR.ln,
+    gPreferences.ReferenceValues.SPINA_GR.hn,
+    gPreferences.ReferenceValues.SPINA_GR.UoM, 4, 2) + kParClose +
+    LineEnding + kSPINA_DI + kS4TAB + kTAB + kTAB + FloatToStrF(LabRecord.SPINA_DI, ffFixed, 4, 2) +
+    kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.SPINA_DI.ln,
+    gPreferences.ReferenceValues.SPINA_DI.hn,
+    gPreferences.ReferenceValues.SPINA_DI.UoM, 4, 2) + kParClose + LineEnding +
+    kHOMA_Beta + kTAB + kTAB + kTAB + FloatToStrF(LabRecord.HOMA_Beta, ffFixed, 4, 1) +
+    kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.HOMA_Beta.ln,
+    gPreferences.ReferenceValues.HOMA_Beta.hn,
+    gPreferences.ReferenceValues.HOMA_Beta.UoM, 4, 1) + kParClose +
+    LineEnding +
+    kHOMA_IR + kS4TAB + kTAB + kTAB + FloatToStrF(LabRecord.HOMA_IR, ffFixed, 4, 1) +
+    kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.HOMA_IR.ln,
+    gPreferences.ReferenceValues.HOMA_IR.hn,
+    gPreferences.ReferenceValues.HOMA_IR.UoM, 4, 1) + kParClose +
+    LineEnding +
+    kHOMA_IS + kS4TAB + kTAB + kTAB + FloatToStrF(LabRecord.HOMA_IS, ffFixed, 4, 1) +
+    ' ' + kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.HOMA_IS.ln,
+    gPreferences.ReferenceValues.HOMA_IS.hn,
+    gPreferences.ReferenceValues.HOMA_IS.UoM, 4, 1) + kParClose +
+    LineEnding +
+    kQUICKI + kS10Tab + kTAB + kTAB + FloatToStrF(LabRecord.QUICKI, ffFixed, 4, 1) +
+    ' ' + kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.QUICKI.ln,
+    gPreferences.ReferenceValues.QUICKI.hn,
+    gPreferences.ReferenceValues.QUICKI.UoM, 4, 1) + kParClose +
+    LineEnding +
+    kAIGR + kS10Tab + kTAB + kTAB + FloatToStrF(LabRecord.AIGR, ffFixed, 4, 1) +
+    kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.AIGR.ln,
+    gPreferences.ReferenceValues.AIGR.hn,
+    gPreferences.ReferenceValues.AIGR.UoM, 4, 1) + kParClose +
+    LineEnding +
+    kCGR + ' ' + kS10Tab + kTAB + kTAB + FloatToStrF(LabRecord.CGR, ffFixed, 4, 1) +
+    ' ' + kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.CGR.ln,
+    gPreferences.ReferenceValues.CGR.hn,
+    gPreferences.ReferenceValues.CGR.UoM, 4, 1) + kParClose;
 end;
 
 end.

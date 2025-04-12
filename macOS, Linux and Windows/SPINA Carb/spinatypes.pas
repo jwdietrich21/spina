@@ -31,6 +31,8 @@ const
   kNUL = char(0);           {Special ASCII characters}
   kENTER = char(3);
   kTAB = char(9);
+  kS4Tab = '    ' + kTAB;
+  kS10Tab = '          ' + kTAB;
   kLF = char(10);
   kRETURN = char(13);
   kESCAPE = char(27);
@@ -39,6 +41,8 @@ const
   kSLASH = '/';
   kCOLON = ':';
   kOMIT = '•';
+  kParOpen = '(';
+  kParClose = ')';
   kCRLF = #13#10;
   DEC_POINT = '.';
   DEC_COMMA = ',';

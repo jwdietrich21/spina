@@ -49,6 +49,7 @@ type
     Divider23: TMenuItem;
     CopyResultMenuItem: TMenuItem;
     CommentMemo: TMemo;
+    CopyFormattedMenuItem: TMenuItem;
     OKButton: TButton;
     OpenCaseDialog: TOpenDialog;
     SaveResultsDialog: TSaveDialog;
@@ -128,6 +129,7 @@ type
     procedure CaseDataMenuItemClick(Sender: TObject);
     procedure CaseEditorSheetShow(Sender: TObject);
     procedure CommentSheetShow(Sender: TObject);
+    procedure CopyFormattedMenuItemClick(Sender: TObject);
     procedure CopyResultMenuItemClick(Sender: TObject);
     procedure EntrySheetShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -207,6 +209,14 @@ begin
   ActiveControl := CommentMemo;
 end;
 
+procedure THauptschirm.CopyFormattedMenuItemClick(Sender: TObject);
+var
+  Clipboard: TClipboard;
+begin
+  Clipboard := TClipboard.Create();
+  Clipboard.AsText := FormattedResults(CaseRecord.LabRecord);
+end;
+
 procedure THauptschirm.CopyResultMenuItemClick(Sender: TObject);
 var
   Clipboard: TClipboard;
@@ -238,8 +248,8 @@ end;
 procedure THauptschirm.FormShow(Sender: TObject);
 begin
   AdaptToTheme(Sender);
-  //if gPreferences.new then
-  ShowMessage(kBetaHint);
+  if gPreferences.new then
+    ShowMessage(kBetaHint);
   FocusEdit(Sender);
 end;
 
@@ -554,6 +564,7 @@ begin
   CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
   CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
   CopyResultMenuItem.ShortCut := ShortCut(VK_R, modifierKey);
+  CopyFormattedMenuItem.ShortCut := ShortCut(VK_K, modifierKey);
   PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   SelectAllMenuItem.ShortCut := ShortCut(VK_A, modifierKey);
 end;
