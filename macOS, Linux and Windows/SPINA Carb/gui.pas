@@ -30,7 +30,7 @@ uses
   EditBtn, Clipbrd,
   EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices,
   ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
-  SetPreferences, UnitConverter, SPINA_Engine, HandleImpEx;
+  SetPreferences, UnitConverter, SPINA_Engine, HandleImpEx, LocaleServices;
   { #todo : Move Formatting of reference ranges to CaseBroker and remove dependendy on SPINA Engine here }
 
 type
@@ -451,24 +451,10 @@ end;
 procedure THauptschirm.RegisterEntry(Sender: TObject);
 var
   CheckedIns, CheckedGlc, CheckedCPt: extended;
-  oldSeparator: char;
 begin
-  oldSeparator := DefaultFormatSettings.decimalSeparator;
-  if pos(DEC_COMMA, InsulinEdit.Text) > 0 then
-    DefaultFormatSettings.decimalSeparator := DEC_COMMA
-  else
-    DefaultFormatSettings.decimalSeparator := DEC_POINT;
-  InsulinRaw := StrToFloatDef(InsulinEdit.Text, Math.Nan);
-  if pos(DEC_COMMA, GlucoseEdit.Text) > 0 then
-    DefaultFormatSettings.decimalSeparator := DEC_COMMA
-  else
-    DefaultFormatSettings.decimalSeparator := DEC_POINT;
-  GlucoseRaw := StrToFloatDef(GlucoseEdit.Text, Math.Nan);
-  if pos(DEC_COMMA, CPeptideEdit.Text) > 0 then
-    DefaultFormatSettings.decimalSeparator := DEC_COMMA
-  else
-    DefaultFormatSettings.decimalSeparator := DEC_POINT;
-  CPeptideRaw := StrToFloatDef(CPeptideEdit.Text, Math.Nan);
+  InsulinRaw := StrToFloatDefL(InsulinEdit.Text, Math.Nan);
+  GlucoseRaw := StrToFloatDefL(GlucoseEdit.Text, Math.Nan);
+  CPeptideRaw := StrToFloatDefL(CPeptideEdit.Text, Math.Nan);
   InsulinUoM := InsulinUnitsCombo.Text;
   GlucoseUoM := GlucoseUnitsCombo.Text;
   CPeptideUoM := CPeptideUnitsCombo.Text;
@@ -478,7 +464,6 @@ begin
   CaseRecord.LabRecord.Insulin := CheckedIns;
   CaseRecord.LabRecord.Glucose := CheckedGlc;
   CaseRecord.LabRecord.CPeptide := CheckedCPt;
-  DefaultFormatSettings.decimalSeparator := oldSeparator;
 end;
 
 procedure THauptschirm.CreateOutput(Sender: TObject);

@@ -26,8 +26,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  Math, UnitConverter, SPINATypes, SPINA_Engine, HandlePreferences,
-  SPINA_GUIServices, Grids;
+  Math, Grids, UnitConverter, SPINATypes, SPINA_Engine, HandlePreferences,
+  SPINA_GUIServices, LocaleServices;
 
 type
 
@@ -240,45 +240,45 @@ begin
   gPreferences.MSH_ID := SendingFacEdit.Text;
   gPreferences.Placer_ID := PlacerEdit.Text;
   gPreferences.ReferenceValues.Glucose.ln :=
-    StrToFloatDef(GlucoseRRLEdit.Text, Math.Nan);
+    StrToFloatDefL(GlucoseRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.Glucose.hn :=
-    StrToFloatDef(GlucoseRRHEdit.Text, Math.Nan);
+    StrToFloatDefL(GlucoseRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.Glucose.UoM := GlucoseUnitsCombo.Text;
   gPreferences.ReferenceValues.Insulin.ln :=
-    StrToFloatDef(InsulinRRLEdit.Text, Math.Nan);
+    StrToFloatDefL(InsulinRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.Insulin.hn :=
-    StrToFloatDef(InsulinRRHEdit.Text, Math.Nan);
+    StrToFloatDefL(InsulinRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.Insulin.uom := InsulinUnitsCombo.Text;
   gPreferences.ReferenceValues.CPeptide.ln :=
-    StrToFloatDef(CPeptideRRLEdit.Text, Math.Nan);
+    StrToFloatDefL(CPeptideRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CPeptide.hn :=
-    StrToFloatDef(CPeptideRRHEdit.Text, Math.Nan);
+    StrToFloatDefL(CPeptideRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CPeptide.uom := CPeptideUnitsCombo.Text;
   gPreferences.ReferenceValues.SPINA_GBeta.ln :=
-    StrToFloatDef(GBetaRRLEdit.Text, Math.Nan);
+    StrToFloatDefL(GBetaRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.SPINA_GBeta.hn :=
-    StrToFloatDef(GBetaRRHEdit.Text, Math.Nan);
+    StrToFloatDefL(GBetaRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.SPINA_GBeta.UoM := GBetaUnitLabel.Caption;
-  gPreferences.ReferenceValues.SPINA_GR.ln := StrToFloatDef(GRRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.SPINA_GR.hn := StrToFloatDef(GRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GR.ln := StrToFloatDefL(GRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_GR.hn := StrToFloatDefL(GRRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.SPINA_GR.UoM := GRUnitLabel.Caption;
-  gPreferences.ReferenceValues.SPINA_DI.ln := StrToFloatDef(DIRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.SPINA_DI.hn := StrToFloatDef(DIRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_DI.ln := StrToFloatDefL(DIRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.SPINA_DI.hn := StrToFloatDefL(DIRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.HOMA_Beta.ln :=
-    StrToFloatDef(HOMABetaRRLEdit.Text, Math.Nan);
+    StrToFloatDefL(HOMABetaRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.HOMA_Beta.hn :=
-    StrToFloatDef(HOMABetaRRHEdit.Text, Math.Nan);
+    StrToFloatDefL(HOMABetaRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.HOMA_Beta.UoM := HOMABetaUnitLabel.Caption;
-  gPreferences.ReferenceValues.HOMA_IR.ln := StrToFloatDef(HOMAIRRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.HOMA_IR.hn := StrToFloatDef(HOMAIRRRHEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.HOMA_IS.ln := StrToFloatDef(HOMAISRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.HOMA_IS.hn := StrToFloatDef(HOMAISRRHEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.QUICKI.ln := StrToFloatDef(QUICKIRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.QUICKI.hn := StrToFloatDef(QUICKIRRHEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.AIGR.ln := StrToFloatDef(AIGRRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.AIGR.hn := StrToFloatDef(AIGRRRHEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.CGR.ln := StrToFloatDef(CGRRRLEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.CGR.hn := StrToFloatDef(CGRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_IR.ln := StrToFloatDefL(HOMAIRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_IR.hn := StrToFloatDefL(HOMAIRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_IS.ln := StrToFloatDefL(HOMAISRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.HOMA_IS.hn := StrToFloatDefL(HOMAISRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.QUICKI.ln := StrToFloatDefL(QUICKIRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.QUICKI.hn := StrToFloatDefL(QUICKIRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.AIGR.ln := StrToFloatDefL(AIGRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.AIGR.hn := StrToFloatDefL(AIGRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CGR.ln := StrToFloatDefL(CGRRRLEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CGR.hn := StrToFloatDefL(CGRRRHEdit.Text, Math.Nan);
   gPreferences.PreferredUoMs.Glucose := GlucoseUnitsCombo.Text;
   gPreferences.PreferredUoMs.Insulin := InsulinUnitsCombo.Text;
   gPreferences.PreferredUoMs.CPeptide := CPeptideUnitsCombo.Text;
