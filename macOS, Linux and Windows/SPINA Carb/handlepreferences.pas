@@ -356,7 +356,7 @@ begin
     PreferredUoMs.Glucose := 'mg/dl';
     PreferredUoMs.Insulin := 'mIU/l';
     PreferredUoMs.CPeptide := 'ng/ml';
-    gPreferences.new := True;
+    new := True;
   end;
   SavePreferences;
 end;

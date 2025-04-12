@@ -238,6 +238,8 @@ end;
 procedure THauptschirm.FormShow(Sender: TObject);
 begin
   AdaptToTheme(Sender);
+  //if gPreferences.new then
+  ShowMessage(kBetaHint);
   FocusEdit(Sender);
 end;
 
