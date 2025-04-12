@@ -20,9 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
-        <TopLine Value="437"/>
-        <CursorPos X="45" Y="460"/>
+        <CursorPos X="64" Y="6"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -56,7 +56,7 @@
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="104"/>
+        <TopLine Value="79"/>
         <CursorPos X="65" Y="118"/>
         <UsageCount Value="161"/>
         <Loaded Value="True"/>
@@ -151,9 +151,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Setpreferences"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
-        <CursorPos X="29" Y="22"/>
+        <CursorPos X="17" Y="26"/>
         <UsageCount Value="123"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -197,7 +196,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
         <EditorIndex Value="18"/>
-        <CursorPos X="43"/>
+        <CursorPos X="29" Y="310"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -320,6 +319,22 @@
         <Loaded Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="localeservices.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="LocaleServices"/>
+        <EditorIndex Value="7"/>
+        <CursorPos X="58" Y="10"/>
+        <ExtraEditorCount Value="1"/>
+        <ExtraEditor1>
+          <EditorIndex Value="-1"/>
+          <WindowIndex Value="-1"/>
+          <TopLine Value="56"/>
+          <CursorPos X="58" Y="85"/>
+        </ExtraEditor1>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="/Applications/Lazarus/lcl/include/control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="5130"/>
@@ -356,85 +371,8 @@
         <CursorPos Y="516"/>
         <UsageCount Value="10"/>
       </Unit>
-      <Unit>
-        <Filename Value="localeservices.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="LocaleServices"/>
-        <EditorIndex Value="7"/>
-        <CursorPos X="58" Y="10"/>
-        <ExtraEditorCount Value="1"/>
-        <ExtraEditor1>
-          <IsVisibleTab Value="True"/>
-          <EditorIndex Value="-1"/>
-          <WindowIndex Value="1"/>
-          <TopLine Value="56"/>
-          <CursorPos X="58" Y="85"/>
-        </ExtraEditor1>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="localeservices.pas"/>
-        <Caret Line="43" Column="77" TopLine="32"/>
-      </Position>
-      <Position>
-        <Filename Value="localeservices.pas"/>
-        <Caret Line="83" Column="37" TopLine="55"/>
-      </Position>
-      <Position>
-        <Filename Value="localeservices.pas"/>
-        <Caret Line="74" Column="77" TopLine="55"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="288" Column="22" TopLine="252"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="29" Column="15" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="243" Column="19" TopLine="230"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="245" Column="19" TopLine="230"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="248" Column="19" TopLine="230"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="250" Column="19" TopLine="230"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="253" Column="19" TopLine="230"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="255" Column="19" TopLine="231"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="258" Column="19" TopLine="234"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="260" Column="19" TopLine="236"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="262" Column="61" TopLine="238"/>
-      </Position>
-      <Position>
-        <Filename Value="setpreferences.pas"/>
-        <Caret Line="263" Column="61" TopLine="240"/>
-      </Position>
       <Position>
         <Filename Value="setpreferences.pas"/>
         <Caret Line="265" Column="61" TopLine="241"/>
@@ -494,6 +432,66 @@
       <Position>
         <Filename Value="setpreferences.pas"/>
         <Caret Line="243" Column="19" TopLine="228"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="100" Column="25" TopLine="91"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="786" Column="33" TopLine="760"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="98" Column="25" TopLine="78"/>
+      </Position>
+      <Position>
+        <Filename Value="handleimpex.pas"/>
+        <Caret Line="778" Column="31" TopLine="760"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="460" Column="45" TopLine="437"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="266" Column="37" TopLine="264"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="234" Column="43" TopLine="230"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="2" Column="39"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="235" Column="12" TopLine="230"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="2" Column="14"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="164" Column="24" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="227" Column="12" TopLine="201"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="235" Column="12" TopLine="209"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="241" Column="12" TopLine="215"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="377" Column="25" TopLine="369"/>
       </Position>
     </JumpHistory>
     <RunParams>

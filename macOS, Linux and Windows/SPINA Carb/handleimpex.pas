@@ -307,7 +307,7 @@ begin
       theOBX.ObsID := 'C-Peptide';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.CPeptide,
-      kCPeptideMolarMass, 'pmol/l', gPreferences.ReferenceValues.CPeptide.UoM),
+      kCPeptideMolarMass, 'nmol/l', gPreferences.ReferenceValues.CPeptide.UoM),
       ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.CPeptide.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.CPeptide.ln) +

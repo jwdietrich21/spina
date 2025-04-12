@@ -231,6 +231,7 @@ procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptForPlatform;
   SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
+  MainPageControl.ActivePage := EntrySheet;
   FocusEdit(Sender);
 end;
 
@@ -264,6 +265,7 @@ end;
 procedure THauptschirm.OKButtonClick(Sender: TObject);
 begin
   CaseRecord.Comment := CommentMemo.Lines.Text;
+  MainPageControl.ActivePage := EntrySheet;
 end;
 
 procedure THauptschirm.OpenMenuItemClick(Sender: TObject);
