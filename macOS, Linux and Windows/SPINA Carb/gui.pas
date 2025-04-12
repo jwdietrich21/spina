@@ -451,9 +451,23 @@ end;
 procedure THauptschirm.RegisterEntry(Sender: TObject);
 var
   CheckedIns, CheckedGlc, CheckedCPt: extended;
+  oldSeparator: char;
 begin
+  oldSeparator := DefaultFormatSettings.decimalSeparator;
+  if pos(DEC_COMMA, InsulinEdit.Text) > 0 then
+    DefaultFormatSettings.decimalSeparator := DEC_COMMA
+  else
+    DefaultFormatSettings.decimalSeparator := DEC_POINT;
   InsulinRaw := StrToFloatDef(InsulinEdit.Text, Math.Nan);
+  if pos(DEC_COMMA, GlucoseEdit.Text) > 0 then
+    DefaultFormatSettings.decimalSeparator := DEC_COMMA
+  else
+    DefaultFormatSettings.decimalSeparator := DEC_POINT;
   GlucoseRaw := StrToFloatDef(GlucoseEdit.Text, Math.Nan);
+  if pos(DEC_COMMA, CPeptideEdit.Text) > 0 then
+    DefaultFormatSettings.decimalSeparator := DEC_COMMA
+  else
+    DefaultFormatSettings.decimalSeparator := DEC_POINT;
   CPeptideRaw := StrToFloatDef(CPeptideEdit.Text, Math.Nan);
   InsulinUoM := InsulinUnitsCombo.Text;
   GlucoseUoM := GlucoseUnitsCombo.Text;
@@ -464,6 +478,7 @@ begin
   CaseRecord.LabRecord.Insulin := CheckedIns;
   CaseRecord.LabRecord.Glucose := CheckedGlc;
   CaseRecord.LabRecord.CPeptide := CheckedCPt;
+  DefaultFormatSettings.decimalSeparator := oldSeparator;
 end;
 
 procedure THauptschirm.CreateOutput(Sender: TObject);

@@ -32,10 +32,10 @@ uses
   , Windows
   {$ELSE}
   {$IFDEF LCLCarbon}
-      , MacOSAll
+      , MacOSAll, CarbonProc
   {$ELSE}
   {$IFDEF LCLCocoa}
-        , CocoaAll, MacOSAll
+        , CocoaAll, MacOSAll, CocoaUtils
   {$ENDIF}
   {$ENDIF}
   , Unix
@@ -43,6 +43,7 @@ uses
   , SPINATypes, HandleCDISC;
 
 function ComputerName: string;
+procedure GetMacDateFormats;
 function PreferencesFile: string;
 function PreferencesFolder: string;
 function RefRangeFile: string;
@@ -158,6 +159,33 @@ begin
   result := GetHostName;
 end;
 {$ENDIF}
+
+procedure GetMacDateFormats;
+var
+  theFormatString: string;
+  {$IFDEF Darwin}
+  theFormatter: CFDateFormatterRef;
+  {$ENDIF}
+begin
+  {$IFDEF Darwin}
+  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
+    CFLocaleCopyCurrent, kCFDateFormatterMediumStyle, kCFDateFormatterNoStyle);
+  theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
+  if pos('.', theFormatString) > 0 then
+    DefaultFormatSettings.DateSeparator := '.'
+  else if pos('/', theFormatString) > 0 then
+    DefaultFormatSettings.DateSeparator := '/'
+  else if pos('-', theFormatString) > 0 then
+    DefaultFormatSettings.DateSeparator := '-';
+  DefaultFormatSettings.ShortDateFormat := theFormatString;
+  CFRelease(theFormatter);
+  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
+    CFLocaleCopyCurrent, kCFDateFormatterLongStyle, kCFDateFormatterNoStyle);
+  theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
+  DefaultFormatSettings.LongDateFormat := theFormatString;
+  CFRelease(theFormatter);
+  {$ENDIF}
+end;
 
 procedure SubstitutePreferences;
 {get standard values for preferences if preferences file nonexistent or corrupt}

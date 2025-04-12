@@ -29,6 +29,9 @@ uses
   {$IFDEF HASAMIGA}
   athreads,
   {$ENDIF}
+  {$IFDEF Darwin}
+  MacOSAll,
+  {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
   SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus,
@@ -45,6 +48,7 @@ begin
   SetHeapTraceOutput('heaptrace.trc');
   {$ENDIF}
   gCEcertified := false;
+  GetMacDateFormats;
   RequireDerivedFormResource:=True;
   Application.Title:='SPINA Carb';
   Application.Scaled:=True;
