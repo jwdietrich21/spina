@@ -1,6 +1,5 @@
 unit SPINA_Resources;
 
-
 { SPINA Carb }
 
 { Application for calculating structure parameters }
@@ -39,6 +38,17 @@ const
   kUncertified32 = 'Research use only.';
   kUnCertified41 = 'Die Verwendung ist gemäß GCP, nach §12 MPG und Anhang X der Richtlinie 93/42/EWG zu dokumentieren.';
   kUnCertified42 = 'Usage has to be documented in accordance with GCP and annex X of the council directive 93/42/EEC.';
+
+  kBetaHint = 'This version of SPINA Carb is beta software that is provided for purposes of testing.' + LineEnding +
+              'Please report any errors via https://sourceforge.net/p/spina/_list/tickets.' + LineEnding + LineEnding +
+              'Diese Version von SPINA Carb ist Beta-Software, die für Testzwecke bereitgestellt wird.' + LineEnding +
+              'Bitte melden Sie Fehler über https://sourceforge.net/p/spina/_list/tickets.';
+
+  HL7_Error = 'HL7 Error';
+  pathError = 'Empty path';
+
+var
+  gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
 
 implementation
 

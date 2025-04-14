@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, Dialogs, Math,
   HL7, MSH, MSA, NTE, PID, PV1, OBR, OBX, SPM, UnitConverter,
-  SPINATypes, SPINA_Engine, CaseBroker, EnvironmentInfo;
+  SPINATypes, SPINA_Resources, SPINA_Engine, CaseBroker, EnvironmentInfo;
 
 type
   TFileType = (plainTextFile, HL7Message);
@@ -107,13 +107,16 @@ var
   textLength: integer;
 begin
   textLength := length(theString);
-  textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
-  try
-    { write string to stream while avoiding to write the initial length }
-    textFile.WriteBuffer(theString[1], textLength);
-  finally
-    if textFile <> nil then
-      textFile.Free;
+  if (length(theString) > 0) and (filePath <> '') then
+  begin
+    textFile := TFileStream.Create(filePath, fmOpenWrite or fmCreate);
+    try
+      { write string to stream while avoiding to write the initial length }
+      textFile.WriteBuffer(theString[1], textLength);
+    finally
+      if textFile <> nil then
+        textFile.Free;
+    end;
   end;
 end;
 
@@ -132,7 +135,9 @@ var
 begin
   HL7Message := THL7Message.Create('2.5');
   if HL7Message = nil then
-    ShowMessage('HL7 Error')
+    ShowMessage(HL7_Error)
+  else if filePath = '' then
+    ShowMessage(pathError)
   else
   begin
     oldSeparator := DefaultFormatSettings.DecimalSeparator;
@@ -266,8 +271,8 @@ begin
       theOBX.ObsID := 'Insulin';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.Insulin,
-      kInsulinConversionFactor, kEngineUoMs.Insulin, gPreferences.ReferenceValues.Insulin.UoM),
-      ffNumber, 5, 13);
+      kInsulinConversionFactor, kEngineUoMs.Insulin,
+      gPreferences.ReferenceValues.Insulin.UoM), ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.Insulin.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.Insulin.ln) +
       ' - ' + FloatToStr(gPreferences.ReferenceValues.Insulin.hn);
@@ -307,8 +312,8 @@ begin
       theOBX.ObsID := 'C-Peptide';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.CPeptide,
-      kCPeptideMolarMass, kEngineUoMs.CPeptide, gPreferences.ReferenceValues.CPeptide.UoM),
-      ffNumber, 5, 13);
+      kCPeptideMolarMass, kEngineUoMs.CPeptide,
+      gPreferences.ReferenceValues.CPeptide.UoM), ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.CPeptide.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.CPeptide.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.CPeptide.hn);
@@ -593,37 +598,39 @@ var
   theHeader, theString: ansistring;
   DOBDateString, OBDateString: string;
 begin
-  if isNaN(aCaseRecord.OBDate) then
-    OBDateString := ''
+  if filePath = '' then
+    ShowMessage(pathError)
   else
-    OBDateString := DateToStr(aCaseRecord.OBDate);
-  if isNaN(aCaseRecord.DoBDate) then
-    DOBDateString := ''
-  else
-    DOBDateString := DateToStr(aCaseRecord.DoBDate);
-  if aCaseRecord.Name = '' then
-    theHeader := ''
-  else
-    theHeader := aCaseRecord.PID + '/' + aCaseRecord.CaseID +
-      LineEnding + kLF + aCaseRecord.Name + ', ' + aCaseRecord.GivenNames +
-      ' *' + DOBDateString + LineEnding + OBDateString + ' (' +
-      aCaseRecord.Placer + ')' + LineEnding + LineEnding;
-  theString := theHeader + aCaseRecord.CombMessage;
-  SaveStringToPath(theString, filePath);
+  begin
+    if isNaN(aCaseRecord.OBDate) then
+      OBDateString := ''
+    else
+      OBDateString := DateToStr(aCaseRecord.OBDate);
+    if isNaN(aCaseRecord.DoBDate) then
+      DOBDateString := ''
+    else
+      DOBDateString := DateToStr(aCaseRecord.DoBDate);
+    if aCaseRecord.Name = '' then
+      theHeader := ''
+    else
+      theHeader := aCaseRecord.PID + '/' + aCaseRecord.CaseID +
+        LineEnding + kLF + aCaseRecord.Name + ', ' + aCaseRecord.GivenNames +
+        ' *' + DOBDateString + LineEnding + OBDateString + ' (' +
+        aCaseRecord.Placer + ')' + LineEnding + LineEnding;
+    theString := theHeader + aCaseRecord.CombMessage;
+    SaveStringToPath(theString, filePath);
+  end;
 end;
 
 function isLOINCTerm(ObsID: string; LOINCTerm: TLoincRecord): boolean;
 begin
-  if obsID = '' then result := false
-  else if (pos(LOINCTerm.code, ObsID) > 0) or
-  (pos(LOINCTerm.long, ObsID) > 0) or
-  (pos(LOINCTerm.short, ObsID) > 0) or
-  (pos(LOINCTerm.code, ObsID) > 0) or
-  (pos(LOINCTerm.long, ObsID) > 0) or
-  (pos(LOINCTerm.short, ObsID) > 0) then
-    result := true
+  if obsID = '' then Result := False
+  else if (pos(LOINCTerm.code, ObsID) > 0) or (pos(LOINCTerm.long, ObsID) > 0) or
+    (pos(LOINCTerm.short, ObsID) > 0) or (pos(LOINCTerm.code, ObsID) > 0) or
+    (pos(LOINCTerm.long, ObsID) > 0) or (pos(LOINCTerm.short, ObsID) > 0) then
+    Result := True
   else
-    result := false;
+    Result := False;
 end;
 
 procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
@@ -700,18 +707,17 @@ begin
       GetOBX(theSegment, theOBXRecord);
 
       if (pos('Glucose', theOBXRecord.ObsID) > 0) or
-          IsLOINCTerm(theOBXRecord.obsID, LOINC_GLUC_1) or
-          IsLOINCTerm(theOBXRecord.obsID, LOINC_GLUC_2) then
+        IsLOINCTerm(theOBXRecord.obsID, LOINC_GLUC_1) or
+        IsLOINCTerm(theOBXRecord.obsID, LOINC_GLUC_2) then
       begin
         aCaseRecord.LabRecord.Glucose :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
-          kGlucoseMolarMass, theOBXRecord.Units,
-          kEngineUoMs.Glucose);
+          kGlucoseMolarMass, theOBXRecord.Units, kEngineUoMs.Glucose);
       end;
 
       if (pos('Insulin', theOBXRecord.ObsID) > 0) or
-          IsLOINCTerm(theOBXRecord.obsID, LOINC_INSU_1) or
-          IsLOINCTerm(theOBXRecord.obsID, LOINC_INSU_2) then
+        IsLOINCTerm(theOBXRecord.obsID, LOINC_INSU_1) or
+        IsLOINCTerm(theOBXRecord.obsID, LOINC_INSU_2) then
       begin
         aCaseRecord.LabRecord.Insulin :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
@@ -719,12 +725,12 @@ begin
       end;
 
       if (pos('C-Peptide', theOBXRecord.ObsID) > 0) or
-          IsLOINCTerm(theOBXRecord.obsID, LOINC_CPEP_1) or
-          IsLOINCTerm(theOBXRecord.obsID, LOINC_CPEP_2) then
+        IsLOINCTerm(theOBXRecord.obsID, LOINC_CPEP_1) or
+        IsLOINCTerm(theOBXRecord.obsID, LOINC_CPEP_2) then
       begin
         aCaseRecord.LabRecord.CPeptide :=
-          ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN), kCPeptideMolarMass,
-          theOBXRecord.Units, kEngineUoMs.CPeptide);
+          ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
+          kCPeptideMolarMass, theOBXRecord.Units, kEngineUoMs.CPeptide);
       end;
 
       if pos('SPINA-GBeta', theOBXRecord.ObsID) > 0 then

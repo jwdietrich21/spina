@@ -102,16 +102,6 @@ const
     'Folders are not supported in this version of SPINA Carb.';
   URLS_NOT_SUPPORTED_MESSAGE = 'URLs are not supported in this version of SPINA Carb.';
 
-  kUncertified12 = ' (Research version)';
-  kUncertified22 = 'Research use according to article 1(2)h of the council directive 93/42/EEC.';
-  kUncertified32 = 'Research use only.';
-  kUnCertified42 = 'Usage has to be documented in accordance with GCP and annex X of the council directive 93/42/EEC.';
-
-  kBetaHint = 'This version of SPINA Carb is beta software that is provided for purposes of testing.' + LineEnding +
-              'Please report any errors via https://sourceforge.net/p/spina/_list/tickets.' + LineEnding + LineEnding +
-              'Diese Version von SPINA Carb ist Beta-Sofrtware, die für Testzwecke bereitgestellt wird.' + LineEnding +
-              'Bitte melden Sie Fehler über https://sourceforge.net/p/spina/_list/tickets.';
-
   ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss';
   {Date/time format in XML representation}
   STANDARD_NUM_FORMAT = '###,##0.0000';
@@ -219,7 +209,6 @@ var
   gNumberFormat, gDateTimeFormat: string;
   gStandardMandatoryColor: TColor;
   gCEcertified: boolean;
-  gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
 
 implementation
 

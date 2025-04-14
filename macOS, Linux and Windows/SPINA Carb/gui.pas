@@ -28,10 +28,9 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   Menus, ActnList, StdActns, Math, LCLType, ComCtrls, StrUtils, Types,
   EditBtn, Clipbrd,
-  EnvironmentInfo, SPINATypes, CaseBroker, SPINA_GUIServices,
+  EnvironmentInfo, SPINATypes, SPINA_Resources, CaseBroker, SPINA_GUIServices,
   ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
   SetPreferences, UnitConverter, SPINA_Engine, HandleImpEx, LocaleServices;
-  { #todo : Move Formatting of reference ranges to CaseBroker and remove dependendy on SPINA Engine here }
 
 type
 
