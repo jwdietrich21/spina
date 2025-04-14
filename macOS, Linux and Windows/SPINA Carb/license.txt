@@ -1,0 +1,78 @@
+﻿**SPINA Carb License**
+
+This version may still contain bugs and is provided for testing only under the conditions of the following BSD license.
+
+SPINA Carb is intended for usage in science and research. Use for diagnostical purposes or for decisions on the treatment of patients is on your own risk. We are not liable for possible clinical errors, or for bugs or damages to your device or software installation.
+
+Source code of this software, intended for compilation with Lazarus / Free Pascal, is available at spina.medical-cybernetics.de.
+
+In case of enquiries please apply to johannes.dietrich@rub.de
+
+
+
+Das ist eine Version, die noch Fehler enthalten kann und unter den Bedingungen der nachfolgenden BSD-Lizenz nur für Testzwecke bereitgestellt wird.
+
+SPINA Carb ist für den Einsatz in Wissenschaft und Forschung bestimmt. Wenn Sie diese Version für diagnostische Zwecke oder für Entscheidungen über eine Behandlung von Patientinnen oder Patienten verwenden wollen, geschieht dies ausschließlich auf Ihr eigenes Risiko. Für mögliche klinische Fehler oder für Schäden an Ihrem Gerät oder Ihrer Softwareinstallation wird keine Verantwortung übernommen.
+
+Der Quellcode dieser Software, der für die Übersetzung mit Lazarus / Free Pascal bestimmt ist, kann von spina.medical-cybernetics.de geladen werden.
+
+Bei allfälligen Fragen wenden Sie sich bitte an johannes.dietrich@rub.de
+
+
+http://spina.medical-cybernetics.de
+
+-------------------------------------------------------------------------------------
+
+BSD License
+
+Copyright (c) 1994-2025, PD Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-------------------------------------------------------------------------------------
+
+**Liability exclusion**
+
+Trotz sorgfältiger Überprüfung der Software und der zugehörigen Dokumentation können vereinzelte Rechenfehler oder Ungenauigkeiten nicht ganz ausgeschlossen werden. Dies kann durch die Programme auf dem Client oder Server, durch Einstellungen oder Besondereheiten des verwendeten Rechners oder durch Veränderungen von Informationen im Netzwerk bedingt sein. Den Benutzern sei daher nahegelegt, insbesondere die Ergebnisse der Berechnungen einer Plausibilitätsprüfung zu unterziehen.
+
+Zudem ist die Medizin - wie jede Wissenschaft - ständigen Entwicklungen unterworfen. Forschung und klinische Erfahrung erweitern unsere Erkenntnisse, insbesondere was Behandlung und medikamentöse Therapie anbelangt. Soweit in diesem Werk eine Dosierung oder eine Applikation erwähnt wird, darf der Leser zwar darauf vertrauen, daß Autoren und Herausgeber große Sorgfalt darauf verwandt haben, daß diese Angabe dem Wissensstand bei Fertigstellung entspricht. Für Angaben über Dosierungsanweisungen und Applikationsformen kann jedoch keine Gewähr übernommen werden. Jeder Benutzer ist angehalten, durch sorgfaltige Prüfung der Beipackzettel der verwendeten Präparate und gegebenenfalls nach Konsultation eines Spezialisten festzustellen, ob die dort gegebene Empfehlung für Dosierungen oder die Beachtung von Kontraindikationen gegenüber der Angabe in dieser Einrichtung abweicht. Eine solche Prüfung ist besonders wichtig bei selten verwendeten Präparaten oder solchen, die neu auf den Markt gebracht worden sind. Jede Dosierung oder Applikation erfolgt auf eigene Gefahr des Benutzers. Autoren und Herausgeber appellieren an jeden Benutzer, ihnen etwa auffallende Ungenauigkeiten mitzuteilen.
+
+Geschützte Warennamen (Warenzeichen) werden nicht besonders kenntlich gemacht. Aus dem Fehlen eines solchen Hinweises kann also nicht geschlossen werden, daß es sich um einen freien Warennamen handelt. Das Werk, einschließlich aller seiner Teile, ist nach den Maßgaben der BSD License urheberrechtlich geschützt.
+
+-------------------------------------------------------------------------------------
+
+Information zum Medizinproduktegesetz und zur Richtlinie 93/42/EWG (Medical Devices Directive)
+
+Diese Software ist für die Verwendung in Wissenschaft und Forschung bestimmt. Es sei daher darauf hingewiesen, dass sie nicht für diagnostische Zwecke, sondern gemäß § 3 Nr. 11 Buchstabe a des Medizinproduktegesetzes der Bundesrebublik Deutschland nur zu Forschungszwecken im Rahmen klinischer Studien eingesetzt werden darf.
+
+
+
+Information according to German law on medical devices (Medizinproduktegesetz) and council directive 93/42/EEC (Medical Devices Directive)
+
+This software is intended to be used in science and research. Please mind therefore that it may not be used for diagnostical purposes. According to article 3 No. 11 letter a of the German Medizinproduktegesetz it may only be used for research in the context of clinical trials.
+
+-------------------------------------------------------------------------------------
+
+We have invested a lot of time and effort in creating SPINA Carb, please cite it when using it for scientific projects and publications.
+
+In order to cite SPINA Carb in publications use:
+
+J. W. Dietrich (1994-2025). SPINA Carb, software for structure parameter inference approach of insulin glucose homeostasis. http://spina.medical-cybernetics.de
+
+Additionally, you might want to read or cite one or several of the following papers:
+
+Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
+
+Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
+
+Bansal V, Winkelmann BR, Dietrich JW, Boehm BO. Whole-exome sequencing in familial type 2 diabetes identifies an atypical missense variant in the RyR2 gene. Front Endocrinol (Lausanne). 2024 Feb 20;15:1258982. doi: 10.3389/fendo.2024.1258982. PMID: 38444585; PMCID: PMC10913019.
+
+Abu Rached N, Dietrich JW, Ocker L, Stockfleth E, Haven Y, Myszkowski D, Bechara FG. Endotyping Insulin-Glucose Homeostasis in Hidradenitis Suppurativa: The Impact of Diabetes Mellitus and Inflammation. J Clin Med. 2025 Mar 21;14(7):2145. doi: 10.3390/jcm14072145. PMID: 40217596.

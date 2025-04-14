@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SPINA Carb
+Comment=SPINA Carb
+Exec="/home/pi/SPINA Carb 5.1.0 for Linux/SPINA Source/SPINA Carb"
+Terminal=false
+Type=Application
+Icon=spina_carb.png
+Categories=Application;Education;Science
