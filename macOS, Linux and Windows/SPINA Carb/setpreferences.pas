@@ -281,7 +281,7 @@ var
   theContent: String;
   MyTxtStyle: TTextStyle;
 begin
-  if (aCol > 0) and (aRow > 0) then
+  if (aCol > 0) and (aRow > 3) then
   with MandatoryFieldsGrid do
   begin
     theContent := Cells[ACol, ARow];

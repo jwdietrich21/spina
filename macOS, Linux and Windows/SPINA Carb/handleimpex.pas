@@ -225,7 +225,7 @@ begin
       theOBX.ObsID := 'Glucose';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.Glucose,
-      kGlucoseMolarMass, 'mmol/l', gPreferences.ReferenceValues.Glucose.UoM),
+      kGlucoseMolarMass, kEngineUoMs.Glucose, gPreferences.ReferenceValues.Glucose.UoM),
       ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.Glucose.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.Glucose.ln) +
@@ -266,7 +266,7 @@ begin
       theOBX.ObsID := 'Insulin';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.Insulin,
-      kInsulinConversionFactor, 'pmol/l', gPreferences.ReferenceValues.Insulin.UoM),
+      kInsulinConversionFactor, kEngineUoMs.Insulin, gPreferences.ReferenceValues.Insulin.UoM),
       ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.Insulin.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.Insulin.ln) +
@@ -307,7 +307,7 @@ begin
       theOBX.ObsID := 'C-Peptide';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.CPeptide,
-      kCPeptideMolarMass, 'nmol/l', gPreferences.ReferenceValues.CPeptide.UoM),
+      kCPeptideMolarMass, kEngineUoMs.CPeptide, gPreferences.ReferenceValues.CPeptide.UoM),
       ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.CPeptide.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.CPeptide.ln) +
@@ -706,7 +706,7 @@ begin
         aCaseRecord.LabRecord.Glucose :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
           kGlucoseMolarMass, theOBXRecord.Units,
-          gPreferences.ReferenceValues.Glucose.UoM);
+          kEngineUoMs.Glucose);
       end;
 
       if (pos('Insulin', theOBXRecord.ObsID) > 0) or
@@ -715,7 +715,7 @@ begin
       begin
         aCaseRecord.LabRecord.Insulin :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
-          kInsulinConversionFactor, theOBXRecord.Units, gPreferences.ReferenceValues.Insulin.UoM);
+          kInsulinConversionFactor, theOBXRecord.Units, kEngineUoMs.Insulin);
       end;
 
       if (pos('C-Peptide', theOBXRecord.ObsID) > 0) or
@@ -724,7 +724,7 @@ begin
       begin
         aCaseRecord.LabRecord.CPeptide :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN), kCPeptideMolarMass,
-          theOBXRecord.Units, gPreferences.ReferenceValues.CPeptide.UoM);
+          theOBXRecord.Units, kEngineUoMs.CPeptide);
       end;
 
       if pos('SPINA-GBeta', theOBXRecord.ObsID) > 0 then

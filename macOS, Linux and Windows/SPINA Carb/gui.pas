@@ -369,12 +369,14 @@ begin
   if not isNaN(caseRecord.LabRecord.Glucose) then
   begin
     GlucoseEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Glucose,
-      kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Caption), ffFixed, 4, 1);
+      kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUnitsCombo.Caption), ffFixed, 4, 1);
     InsulinEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Insulin,
-      kInsulinConversionFactor, 'pmol/l', InsulinUnitsCombo.Caption), ffFixed, 4, 1);
+      kInsulinConversionFactor, kEngineUoMs.Insulin, InsulinUnitsCombo.Caption),
+      ffFixed, 4, 1);
     ;
     CPeptideEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.CPeptide,
-      kCPeptideMolarMass, 'nmol/l', CPeptideUnitsCombo.Caption), ffFixed, 4, 1);
+      kCPeptideMolarMass, kEngineUoMs.CPeptide, CPeptideUnitsCombo.Caption),
+      ffFixed, 4, 1);
     ;
   end;
 end;
@@ -519,13 +521,14 @@ begin
   CreateMessages(CaseRecord);
   CaseRecord.BParMessage := kBPars + LineEnding + '   ' + kGluc +
     ': ' + MarkedC(CaseRecord.LabRecord.Glucose, gPreferences.ReferenceValues.Glucose,
-    kGlucoseMolarMass, 'mmol/l', GlucoseUnitsCombo.Text, 4, 1) + ' ' +
-    GlucoseUoM + LineEnding + '   ' + kIns + ': ' +
+    kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUnitsCombo.Text, 4, 1) +
+    ' ' + GlucoseUoM + LineEnding + '   ' + kIns + ': ' +
     MarkedC(CaseRecord.LabRecord.Insulin, gPreferences.ReferenceValues.Insulin,
-    kInsulinConversionFactor, 'pmol/l', InsulinUnitsCombo.Text, 4, 1) +
+    kInsulinConversionFactor, kEngineUoMs.Insulin, InsulinUnitsCombo.Text, 4, 1) +
     ' ' + InsulinUoM + LineEnding + '   ' + kCpt + ': ' +
     MarkedC(CaseRecord.LabRecord.CPeptide, gPreferences.ReferenceValues.CPeptide,
-    kCPeptideMolarMass, 'nmol/l', CPeptideUnitsCombo.Text, 4, 1) + ' ' + CPeptideUoM;
+    kCPeptideMolarMass, kEngineUoMs.CPeptide, CPeptideUnitsCombo.Text, 4, 1) +
+    ' ' + CPeptideUoM;
   CaseRecord.CombMessage := CaseRecord.BParMessage + LineEnding +
     '       ' + LineEnding + CaseRecord.SParMessage;
   CaseRecord.BRefMessage1 := kRR + LineEnding +

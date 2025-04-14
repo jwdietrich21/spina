@@ -170,6 +170,11 @@ type
   end;
 
 const
+  kEngineUoMs: tPreferredUoMs =
+    (Insulin: 'pmol/l';
+    Glucose: 'mmol/l';
+    CPeptide: 'nmol/l');
+
   {Standard reference ranges according to Khalili et al. and Dietrich et al.}
   sReferenceValues: tReferenceValues =
                     (Insulin: (ln: 2; hn: 25; lt: NaN; ht: NaN; lp: NaN;
