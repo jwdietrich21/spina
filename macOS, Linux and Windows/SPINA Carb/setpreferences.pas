@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   Math, Grids, UnitConverter, SPINATypes, SPINA_Engine, HandlePreferences,
-  SPINA_GUIServices, LocaleServices;
+  SPINA_GUIServices, LocaleServices, Types;
 
 type
 
@@ -42,6 +42,7 @@ type
     AIGRRRHEdit: TEdit;
     CGRRRLEdit: TEdit;
     AIGRRRLEdit: TEdit;
+    LOINCCheck: TCheckBox;
     DashLabel10: TLabel;
     DashLabel11: TLabel;
     DashLabel12: TLabel;
@@ -50,6 +51,7 @@ type
     DashLabel7: TLabel;
     DashLabel8: TLabel;
     DashLabel9: TLabel;
+    VariableGroupBox: TGroupBox;
     GRUnitLabel: TLabel;
     AIGRUnitLabel: TLabel;
     HOMAIRLabel: TLabel;
@@ -111,10 +113,12 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure MandatoryFieldsGridDrawCell(Sender: TObject; aCol, aRow: Integer;
+      aRect: TRect; aState: TGridDrawState);
     procedure OKButtonClick(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
   private
-
+    procedure CheckMandatoryColourising(Sender: TObject);
   public
     procedure PopulateEdits(Sender: TObject);
   end;
@@ -131,6 +135,14 @@ implementation
 procedure TPreferencesForm.PageControl1Change(Sender: TObject);
 begin
 
+end;
+
+procedure TPreferencesForm.CheckMandatoryColourising(Sender: TObject);
+begin
+  if PreferencesForm.MarkMandatoryCheck.Checked then
+    gPreferences.colouriseMandatoryFields := true
+  else
+    gPreferences.colouriseMandatoryFields := false;
 end;
 
 procedure TPreferencesForm.PopulateEdits(Sender: TObject);
@@ -215,11 +227,39 @@ end;
 procedure TPreferencesForm.FormActivate(Sender: TObject);
 begin
   PopulateEdits(Sender);
+  if gPreferences.colouriseMandatoryFields then
+    MarkMandatoryCheck.Checked := true
+  else
+    MarkMandatoryCheck.Checked := false;
+  if gPreferences.exportLOINC then
+    LOINCCheck.Checked := true
+  else
+    LOINCCheck.Checked := false
 end;
 
 procedure TPreferencesForm.FormCreate(Sender: TObject);
 begin
   PopulateEdits(Sender);
+  MandatoryFieldsGrid.Rows[4].Text := 'Glucose';
+  MandatoryFieldsGrid.Rows[5].Text := 'Insulin';
+  MandatoryFieldsGrid.Rows[6].Text := 'C-Peptide';
+  MandatoryFieldsGrid.Cells[1, 1] := 'HOMA-Beta';
+  MandatoryFieldsGrid.Cells[1, 2] := 'AIGR';
+  MandatoryFieldsGrid.Cells[2, 1] := 'HOMA-IR';
+  MandatoryFieldsGrid.Cells[2, 2] := 'HOMA-IS';
+  MandatoryFieldsGrid.Cells[2, 3] := 'QUICKI';
+  MandatoryFieldsGrid.Cells[1, 4] := '+';
+  MandatoryFieldsGrid.Cells[1, 5] := '+';
+  MandatoryFieldsGrid.Cells[1, 6] := '——';
+  MandatoryFieldsGrid.Cells[2, 4] := '+';
+  MandatoryFieldsGrid.Cells[2, 5] := '+';
+  MandatoryFieldsGrid.Cells[2, 6] := '——';
+  MandatoryFieldsGrid.Cells[3, 4] := '+';
+  MandatoryFieldsGrid.Cells[3, 5] := '+';
+  MandatoryFieldsGrid.Cells[3, 6] := '——';
+  MandatoryFieldsGrid.Cells[4, 4] := '——';
+  MandatoryFieldsGrid.Cells[4, 5] := '——';
+  MandatoryFieldsGrid.Cells[4, 6] := '+';
 end;
 
 procedure TPreferencesForm.FormPaint(Sender: TObject);
@@ -233,6 +273,29 @@ end;
 procedure TPreferencesForm.FormShow(Sender: TObject);
 begin
   PopulateEdits(Sender);
+end;
+
+procedure TPreferencesForm.MandatoryFieldsGridDrawCell(Sender: TObject; aCol,
+  aRow: Integer; aRect: TRect; aState: TGridDrawState);
+var
+  theContent: String;
+  MyTxtStyle: TTextStyle;
+begin
+  if (aCol > 0) and (aRow > 0) then
+  with MandatoryFieldsGrid do
+  begin
+    theContent := Cells[ACol, ARow];
+    if (theContent = '-') or (theContent = '——') or (theContent = '—') then
+      Canvas.Brush.Color := clRed
+    else if theContent = '+' then
+      Canvas.Brush.Color := clGreen
+    else
+      Canvas.Brush.Color := clGray;
+    Canvas.FillRect(aRect);
+    MyTxtStyle.Alignment := taCenter;
+    MyTxtStyle.Layout := tlCenter;
+    Canvas.TextRect(aRect, aRect.Left, aRect.Top, thecontent, MyTxtStyle);
+  end;
 end;
 
 procedure TPreferencesForm.OKButtonClick(Sender: TObject);
@@ -284,6 +347,11 @@ begin
   gPreferences.PreferredUoMs.CPeptide := CPeptideUnitsCombo.Text;
   if FontsCombobox.ItemIndex > 0 then
     gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
+  CheckMandatoryColourising(Sender);
+  if LOINCCheck.Checked then
+    gPreferences.exportLOINC := true
+  else
+    gPreferences.exportLOINC := false;
   SavePreferences;
   SaveRefRanges;
   Close;

@@ -612,6 +612,20 @@ begin
   SaveStringToPath(theString, filePath);
 end;
 
+function isLOINCTerm(ObsID: string; LOINCTerm: TLoincRecord): boolean;
+begin
+  if obsID = '' then result := false
+  else if (pos(LOINCTerm.code, ObsID) > 0) or
+  (pos(LOINCTerm.long, ObsID) > 0) or
+  (pos(LOINCTerm.short, ObsID) > 0) or
+  (pos(LOINCTerm.code, ObsID) > 0) or
+  (pos(LOINCTerm.long, ObsID) > 0) or
+  (pos(LOINCTerm.short, ObsID) > 0) then
+    result := true
+  else
+    result := false;
+end;
+
 procedure ReadHL7Message(theFile: string; var aCaseRecord: tCaseRecord);
 var
   oldSeparator: char;
@@ -685,8 +699,9 @@ begin
     begin
       GetOBX(theSegment, theOBXRecord);
 
-      if pos('Glucose', theOBXRecord.ObsID) > 0 then
-        { #todo : Insert code for LOINC here }
+      if (pos('Glucose', theOBXRecord.ObsID) > 0) or
+          IsLOINCTerm(theOBXRecord.obsID, LOINC_GLUC_1) or
+          IsLOINCTerm(theOBXRecord.obsID, LOINC_GLUC_2) then
       begin
         aCaseRecord.LabRecord.Glucose :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
@@ -694,16 +709,18 @@ begin
           gPreferences.ReferenceValues.Glucose.UoM);
       end;
 
-      if pos('Insulin', theOBXRecord.ObsID) > 0 then
-        { #todo : Insert code for LOINC here }
+      if (pos('Insulin', theOBXRecord.ObsID) > 0) or
+          IsLOINCTerm(theOBXRecord.obsID, LOINC_INSU_1) or
+          IsLOINCTerm(theOBXRecord.obsID, LOINC_INSU_2) then
       begin
         aCaseRecord.LabRecord.Insulin :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
           kInsulinConversionFactor, theOBXRecord.Units, gPreferences.ReferenceValues.Insulin.UoM);
       end;
 
-      if pos('C-Peptide', theOBXRecord.ObsID) > 0 then
-        { #todo : Insert code for LOINC here }
+      if (pos('C-Peptide', theOBXRecord.ObsID) > 0) or
+          IsLOINCTerm(theOBXRecord.obsID, LOINC_CPEP_1) or
+          IsLOINCTerm(theOBXRecord.obsID, LOINC_CPEP_2) then
       begin
         aCaseRecord.LabRecord.CPeptide :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN), kCPeptideMolarMass,

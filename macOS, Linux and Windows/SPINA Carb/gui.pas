@@ -134,6 +134,7 @@ type
     procedure EntrySheetShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LogoImageClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
@@ -154,6 +155,7 @@ type
     function DoPrintSetup: boolean;
     procedure InsertValues(Sender: TObject);
     procedure FillFromCaseRecord;
+    procedure MarkMandatoryFields(Sender: TObject);
   public
     CaseRecord: tCaseRecord;
     InsulinRaw, GlucoseRaw, CPeptideRaw: extended;
@@ -233,6 +235,7 @@ end;
 procedure THauptschirm.FormActivate(Sender: TObject);
 begin
   AdaptToTheme(Sender);
+  MarkMandatoryFields(Sender);
   PlacerEdit.Text := gPreferences.Placer_ID;
   FocusEdit(Sender);
 end;
@@ -245,11 +248,17 @@ begin
   FocusEdit(Sender);
 end;
 
+procedure THauptschirm.FormPaint(Sender: TObject);
+begin
+  MarkMandatoryFields(Sender);
+end;
+
 procedure THauptschirm.FormShow(Sender: TObject);
 begin
   AdaptToTheme(Sender);
   if gPreferences.new then
     ShowMessage(kBetaHint);
+  MarkMandatoryFields(Sender);
   FocusEdit(Sender);
 end;
 
@@ -382,6 +391,29 @@ begin
   if not isNaN(caseRecord.OBDate) then
     OBDateEdit.Date := caseRecord.OBDate;
   //CommentEdit.Text := caseRecord.Comment;
+end;
+
+procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
+var
+  MandatoryColor: TColor;
+begin
+  {$IFDEF LCLCocoa}
+  MandatoryColor := clDefault;
+  {$ELSE}
+  MandatoryColor := gPreferences.MandatoryColor;
+  {$ENDIF}
+  if gPreferences.colouriseMandatoryFields then
+  begin {should mandatory fields be colourised?}
+    Hauptschirm.GlucoseEdit.Color := MandatoryColor;
+    Hauptschirm.InsulinEdit.Color := MandatoryColor;
+    Hauptschirm.CPeptideEdit.Color := MandatoryColor;
+  end
+  else
+  begin
+    Hauptschirm.GlucoseEdit.Color := clDefault;
+    Hauptschirm.InsulinEdit.Color := clDefault;
+    Hauptschirm.CPeptideEdit.Color := clDefault;
+  end;
 end;
 
 procedure THauptschirm.AdapttoTheme(Sender: TObject);
