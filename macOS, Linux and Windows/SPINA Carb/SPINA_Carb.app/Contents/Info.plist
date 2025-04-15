@@ -46,7 +46,7 @@ See http://spina.medical-cybernetics.de for details
 	<key>NSHumanReadableCopyright</key>
 	<string>5.1.0, ©1994-2025 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.sf.spina.thyr</string>
+	<string>net.sf.spina.carb</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.medical</string>
 	<key>CFBundleIconFile</key>
