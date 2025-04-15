@@ -47,6 +47,8 @@ const
   HL7_Error = 'HL7 Error';
   pathError = 'Empty path';
 
+  kMacUnavailable = 'Unavailable on macOS';
+
 var
   gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
 

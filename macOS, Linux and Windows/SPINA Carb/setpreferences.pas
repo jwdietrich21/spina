@@ -26,8 +26,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  Math, Grids, UnitConverter, SPINATypes, SPINA_Engine, HandlePreferences,
-  SPINA_GUIServices, LocaleServices, Types;
+  Math, Grids, UnitConverter, SPINATypes, SPINA_Resources, SPINA_Engine,
+  HandlePreferences, SPINA_GUIServices, LocaleServices, Types;
 
 type
 
@@ -139,7 +139,7 @@ end;
 
 procedure TPreferencesForm.CheckMandatoryColourising(Sender: TObject);
 begin
-  if PreferencesForm.MarkMandatoryCheck.Checked then
+  if MarkMandatoryCheck.Checked then
     gPreferences.colouriseMandatoryFields := true
   else
     gPreferences.colouriseMandatoryFields := false;
@@ -227,10 +227,14 @@ end;
 procedure TPreferencesForm.FormActivate(Sender: TObject);
 begin
   PopulateEdits(Sender);
+  {$IFDEF Darwin}
+  MarkMandatoryCheck.Checked := false;
+  {$ELSE}
   if gPreferences.colouriseMandatoryFields then
     MarkMandatoryCheck.Checked := true
   else
     MarkMandatoryCheck.Checked := false;
+  {$ENDIF}
   if gPreferences.exportLOINC then
     LOINCCheck.Checked := true
   else
@@ -260,6 +264,11 @@ begin
   MandatoryFieldsGrid.Cells[4, 4] := '——';
   MandatoryFieldsGrid.Cells[4, 5] := '——';
   MandatoryFieldsGrid.Cells[4, 6] := '+';
+  {$IFDEF Darwin}
+  MarkMandatoryCheck.Checked := false;
+  MarkMandatoryCheck.Enabled := false;
+  MarkMandatoryCheck.Hint := kMacUnavailable;
+  {$ENDIF}
 end;
 
 procedure TPreferencesForm.FormPaint(Sender: TObject);

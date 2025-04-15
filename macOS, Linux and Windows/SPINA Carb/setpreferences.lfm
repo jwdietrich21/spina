@@ -55,12 +55,15 @@ object PreferencesForm: TPreferencesForm
       object CDISCGroupBox: TGroupBox
         Left = 24
         Height = 325
+        Hint = 'Reference ranges for the specified parameters'
         Top = 8
         Width = 575
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Reference Ranges:'
         ClientHeight = 298
         ClientWidth = 565
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
         object GlucoseLabel: TLabel
           Left = 12
@@ -623,9 +626,12 @@ object PreferencesForm: TPreferencesForm
         object LOINCCheck: TCheckBox
           Left = 16
           Height = 18
+          Hint = 'Add unique LOINC terms to HL7 message'
           Top = 16
           Width = 168
           Caption = 'Export with LOINC codes'
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
         end
       end
@@ -647,9 +653,12 @@ object PreferencesForm: TPreferencesForm
         object MarkMandatoryCheck: TCheckBox
           Left = 16
           Height = 18
+          Hint = 'Mark mandatory input fields with a special colour'
           Top = 10
           Width = 153
           Caption = 'Mark mandatory fields'
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
         end
         object MandatoryFieldsGrid: TStringGrid
@@ -708,6 +717,7 @@ object PreferencesForm: TPreferencesForm
         object FontsCombobox: TComboBox
           Left = 16
           Height = 20
+          Hint = 'Font used for printing'
           Top = -2
           Width = 525
           Anchors = [akLeft, akRight, akBottom]
@@ -716,6 +726,8 @@ object PreferencesForm: TPreferencesForm
           Items.Strings = (
             'Font...'
           )
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
           Text = 'Font...'
         end

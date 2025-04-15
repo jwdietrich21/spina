@@ -1602,6 +1602,8 @@ object Hauptschirm: THauptschirm
     Width = 756
     ActivePage = EntrySheet
     Align = alClient
+    ParentShowHint = False
+    ShowHint = True
     TabIndex = 1
     TabOrder = 0
     object CaseEditorSheet: TTabSheet
@@ -8002,16 +8004,22 @@ object Hauptschirm: THauptschirm
         object GlucoseEdit: TEdit
           Left = 88
           Height = 21
+          Hint = 'Fasting glucose concentration'
           Top = 16
           Width = 56
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
           Text = '0'
         end
         object InsulinEdit: TEdit
           Left = 9
           Height = 21
+          Hint = 'Fasting insulin concentration'
           Top = 216
           Width = 56
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 1
           Text = '0'
         end
@@ -8075,9 +8083,12 @@ object Hauptschirm: THauptschirm
           AnchorSideRight.Side = asrBottom
           Left = 226
           Height = 21
+          Hint = 'Fasting C-peptide concentration'
           Top = 216
           Width = 56
           Anchors = [akTop, akRight]
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 2
           Text = '0'
         end
