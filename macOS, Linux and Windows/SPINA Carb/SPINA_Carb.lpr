@@ -60,6 +60,7 @@ begin
   Application.CreateForm(TPreferencesForm, PreferencesForm);
   ReadPreferences;
   ReadRefRanges;
+  Hauptschirm.UpdateUnits(application);
   Application.Run;
 end.
 

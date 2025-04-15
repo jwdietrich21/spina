@@ -168,6 +168,7 @@ type
     procedure RegisterCaseData(Sender: TObject);
     procedure SaveResults(Sender: TObject);
     procedure ReadCaseRecord(Sender: TObject; const theCaseRecord: tCaseRecord);
+    procedure UpdateUnits(Sender: TObject);
   end;
 
 var
@@ -242,7 +243,8 @@ end;
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptForPlatform;
-  SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
+  //SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
+  SPINACarbLabel.Caption := 'SPINA Carb Beta Version for Testing';
   MainPageControl.ActivePage := EntrySheet;
   FocusEdit(Sender);
 end;
@@ -274,6 +276,7 @@ end;
 procedure THauptschirm.MacPreferencesMenuItemClick(Sender: TObject);
 begin
   PreferencesForm.ShowModal;
+  UpdateUnits(Sender);
 end;
 
 procedure THauptschirm.NextButtonClick(Sender: TObject);
@@ -493,6 +496,13 @@ begin
     InsertValues(Sender);
     FillFromCaseRecord;
   end;
+end;
+
+procedure THauptschirm.UpdateUnits(Sender: TObject);
+begin
+  GlucoseUnitsCombo.Caption := gPreferences.PreferredUoMs.Glucose;
+  InsulinUnitsCombo.Caption := gPreferences.PreferredUoMs.Insulin;
+  CPeptideUnitsCombo.Caption := gPreferences.PreferredUoMs.CPeptide;
 end;
 
 procedure THauptschirm.RegisterEntry(Sender: TObject);

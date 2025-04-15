@@ -7,7 +7,7 @@ object Hauptschirm: THauptschirm
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'SPINA Carb (Version for Research Use)'
+  Caption = 'SPINA Carb (Beta Version)'
   ClientHeight = 370
   ClientWidth = 756
   Constraints.MinHeight = 350
