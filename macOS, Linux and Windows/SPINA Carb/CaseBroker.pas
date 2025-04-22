@@ -109,6 +109,7 @@ begin
 end;
 
 function RefMessage(ln, hn: extended; UoM: string; precision, digits: integer): string;
+{Converts message with reference ranges to a form that is better human-readable}
 begin
   if (ln = 0) or IsInfinite(ln) then
     Result := '< ' + FloatToStrF(hn, ffFixed, precision, digits)
@@ -168,6 +169,7 @@ begin
 end;
 
 function RRFlag(theParameter: extended; theRanges: tReferenceLimits): string;
+{Adds predefined flag for results outside their respective reference ranges}
 begin
   if (isNan(theRanges.ln) or isNan(theRanges.hn)) then
     Result := ''
@@ -177,6 +179,7 @@ end;
 
 function Marked(theParameter: extended; theRanges: tReferenceLimits;
   Precision: integer; Digits: integer): string;
+{Delivers formatted result}
 begin
   if IsNaN(theParameter) then
     Result := NA_MARK
@@ -188,6 +191,7 @@ end;
 function MarkedC(theParameter: extended; theRanges: tReferenceLimits;
   ConversionFactor: real; UoM1, Uom2: string; Precision: integer;
   Digits: integer): string;
+{Delivers formatted result}
 var
   LocalRange: tReferenceLimits;
 begin
@@ -198,6 +202,7 @@ begin
 end;
 
 function FormattedResults(const LabRecord: tLabRecord): string;
+{Delivers formatted result}
 begin
   Result := kSPINA_GBeta + kTAB + kTAB + kTAB +
     FloatToStrF(LabRecord.SPINA_GBeta, ffFixed, 4, 2) + kS4TAB +
