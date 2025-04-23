@@ -261,7 +261,7 @@ begin
   MandatoryFieldsGrid.Cells[3, 4] := '+';
   MandatoryFieldsGrid.Cells[3, 5] := '+';
   MandatoryFieldsGrid.Cells[3, 6] := '——';
-  MandatoryFieldsGrid.Cells[4, 4] := '——';
+  MandatoryFieldsGrid.Cells[4, 4] := '+';
   MandatoryFieldsGrid.Cells[4, 5] := '——';
   MandatoryFieldsGrid.Cells[4, 6] := '+';
   {$IFDEF Darwin}
