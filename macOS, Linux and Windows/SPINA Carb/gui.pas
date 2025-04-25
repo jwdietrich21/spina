@@ -32,6 +32,9 @@ uses
   ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
   SetPreferences, UnitConverter, SPINA_Engine, HandleImpEx, LocaleServices;
 
+const
+  MAIN_FORM_TITLE = 'SPINA Carb';
+
 type
 
   { THauptschirm }
@@ -133,6 +136,7 @@ type
     procedure EntrySheetShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
     procedure FormPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LogoImageClick(Sender: TObject);
@@ -149,6 +153,7 @@ type
     procedure SPINACarbLabelClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
     procedure WinPreferencesMenuItemClick(Sender: TObject);
+    procedure OpenFileList(Sender: TObject; const FileNames: array of string);
   private
     function DoPageSetup: boolean;
     function DoPrintSetup: boolean;
@@ -249,13 +254,28 @@ begin
   FocusEdit(Sender);
 end;
 
+procedure THauptschirm.FormDropFiles(Sender: TObject;
+  const FileNames: array of string);
+begin
+  OpenFileList(Sender, FileNames);
+end;
+
 procedure THauptschirm.FormPaint(Sender: TObject);
 begin
   MarkMandatoryFields(Sender);
 end;
 
 procedure THauptschirm.FormShow(Sender: TObject);
+var
+  i: integer;
+  FileNames: array of string;
 begin
+  { opens files that have been dropped onto the icon before starting: }
+  SetLength(FileNames, ParamCount);
+  For i:=1 to ParamCount do
+    FileNames[i - 1] := ParamStr(i);
+  if ParamCount > 0 then
+    OpenFileList(Sender, FileNames);
   AdaptToTheme(Sender);
   if gPreferences.new then
     ShowMessage(kBetaHint);
@@ -305,7 +325,6 @@ begin
     end;
     ReadCaseRecord(Sender, theCaseRecord);
     DisplayResults(Sender);
-    CommentMemo.Lines.Text := CaseRecord.Comment;
   end;
 end;
 
@@ -352,6 +371,29 @@ begin
   MacPreferencesMenuItemClick(Sender);
 end;
 
+procedure THauptschirm.OpenFileList(Sender: TObject;
+  const FileNames: array of string);
+{ Open case from file via drag and drop }
+var
+  theCaseRecord: tCaseRecord;
+  j: integer;
+  thePath: String;
+begin
+  NewCaseRecord(theCaseRecord);
+  thePath := FileNames[0];
+  j := pos('://', thePath);
+  if DirectoryExists(thePath) then
+    ShowMessage(FOLDER_NOT_SUPPORTED_MESSAGE)
+  else if ((j > 0) and (j < 6)) then
+    ShowMessage(URLS_NOT_SUPPORTED_MESSAGE)
+  else if FileExists(thePath) then
+  begin
+    OpenCaseRecord(theCaseRecord, thePath, HL7Message);
+    ReadCaseRecord(Sender, theCaseRecord);
+    DisplayResults(Sender);
+  end;
+end;
+
 function THauptschirm.DoPageSetup: boolean;
 begin
   Result := PageSetupDialog1.Execute;
@@ -366,7 +408,7 @@ begin
 end;
 
 procedure THauptschirm.InsertValues(Sender: TObject);
-{ Inserts values of case record into appropriate fields of form }
+{ Inserts values of case record into appropriate fields of the main tab }
 begin
   if not isNaN(caseRecord.LabRecord.Glucose) then
   begin
@@ -375,15 +417,14 @@ begin
     InsulinEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Insulin,
       kInsulinConversionFactor, kEngineUoMs.Insulin, InsulinUnitsCombo.Caption),
       ffFixed, 4, 1);
-    ;
     CPeptideEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.CPeptide,
       kCPeptideMolarMass, kEngineUoMs.CPeptide, CPeptideUnitsCombo.Caption),
       ffFixed, 4, 1);
-    ;
   end;
 end;
 
 procedure THauptschirm.FillFromCaseRecord;
+{ Fill auxiliary fields with data from case record }
 begin
   CaseIDEdit.Text := caseRecord.CaseID;
   PIDEdit.Text := caseRecord.PID;
@@ -394,7 +435,7 @@ begin
   PlacerEdit.Text := caseRecord.Placer;
   if not isNaN(caseRecord.OBDate) then
     OBDateEdit.Date := caseRecord.OBDate;
-  //CommentEdit.Text := caseRecord.Comment;
+  CommentMemo.Lines.Text := CaseRecord.Comment;
 end;
 
 procedure THauptschirm.MarkMandatoryFields(Sender: TObject);
@@ -495,6 +536,17 @@ begin
     caseRecord := theCaseRecord;
     InsertValues(Sender);
     FillFromCaseRecord;
+    if IsNaN(caseRecord.DoBDate) then
+      DOBDateStr := ''
+    else
+      DOBDateStr := DateToStr(caseRecord.DoBDate);
+    if IsNaN(caseRecord.OBDate) then
+      OBDateStr := ''
+    else
+      OBDateStr := DateToStr(caseRecord.OBDate);
+    caption := MAIN_FORM_TITLE + ': ' + caseRecord.Name + ', ' +
+      caseRecord.GivenNames + ', * ' + DOBDateStr +
+      ' | ' + OBDateStr;
   end;
 end;
 

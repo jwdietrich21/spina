@@ -5,6 +5,7 @@ object Hauptschirm: THauptschirm
   Width = 756
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
+  AllowDropFiles = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'SPINA Carb (Beta Version)'
@@ -1591,6 +1592,7 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu1
   OnActivate = FormActivate
   OnCreate = FormCreate
+  OnDropFiles = FormDropFiles
   OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
