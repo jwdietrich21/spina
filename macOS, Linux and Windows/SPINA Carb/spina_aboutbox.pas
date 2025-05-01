@@ -42,6 +42,8 @@ type
     CopyrightLabel7: TLabel;
     CopyrightLabel8: TLabel;
     Divider: TLabel;
+    ImageContainer1: TImageList;
+    ImageContainer2: TImageList;
     Label10: TLabel;
     Label11: TLabel;
     Label14: TLabel;
@@ -120,11 +122,15 @@ begin
   begin
     URL1.Font.Color := clSkyBlue;
     URL2.Font.Color := clSkyBlue;
+    ImageContainer1.GetBitmap(1, SPINALabel.Picture.Bitmap);
+    ImageContainer2.GetBitmap(1, Logo.Picture.Bitmap);
   end
   else
   begin
     URL1.Font.Color := clNavy;
     URL2.Font.Color := clNavy;
+    ImageContainer1.GetBitmap(0, SPINALabel.Picture.Bitmap);
+    ImageContainer2.GetBitmap(0, Logo.Picture.Bitmap);
   end;
 end;
 

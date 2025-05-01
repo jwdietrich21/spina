@@ -262,6 +262,7 @@ end;
 
 procedure THauptschirm.FormPaint(Sender: TObject);
 begin
+  AdapttoTheme(Sender);
   MarkMandatoryFields(Sender);
 end;
 
@@ -470,6 +471,7 @@ begin
     ResultsBox.Color := clDefault;
     HintBox.Color := clDefault;
     LogoBox.Color := clDefault;
+    AboutBox.ImageContainer1.GetBitmap(1, LogoImage.Picture.Bitmap);
   end
   else
   begin
@@ -478,6 +480,7 @@ begin
     ResultsBox.Color := clWhite;
     HintBox.Color := clWhite;
     LogoBox.Color := clWhite;
+    AboutBox.ImageContainer1.GetBitmap(0, LogoImage.Picture.Bitmap);
   end;
 end;
 

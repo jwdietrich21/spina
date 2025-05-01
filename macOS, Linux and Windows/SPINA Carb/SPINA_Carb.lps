@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="31"/>
         <CursorPos X="17" Y="62"/>
-        <UsageCount Value="172"/>
+        <UsageCount Value="173"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -21,7 +21,7 @@
         <UnitName Value="GUI"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
-        <CursorPos X="10" Y="25"/>
+        <CursorPos X="20" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -29,7 +29,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="172"/>
+        <UsageCount Value="173"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -38,7 +38,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos X="42" Y="142"/>
-        <UsageCount Value="171"/>
+        <UsageCount Value="172"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -47,7 +47,7 @@
         <UnitName Value="UnitConverter"/>
         <TopLine Value="199"/>
         <CursorPos X="3" Y="214"/>
-        <UsageCount Value="171"/>
+        <UsageCount Value="172"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -56,7 +56,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="157"/>
         <CursorPos Y="173"/>
-        <UsageCount Value="171"/>
+        <UsageCount Value="172"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -68,7 +68,7 @@
         <UnitName Value="ResultWindow"/>
         <EditorIndex Value="13"/>
         <CursorPos X="15" Y="3"/>
-        <UsageCount Value="166"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -79,7 +79,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="65"/>
         <CursorPos Y="65"/>
-        <UsageCount Value="166"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -89,7 +89,7 @@
         <EditorIndex Value="11"/>
         <TopLine Value="20"/>
         <CursorPos X="5" Y="36"/>
-        <UsageCount Value="164"/>
+        <UsageCount Value="165"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -99,7 +99,7 @@
         <EditorIndex Value="9"/>
         <TopLine Value="457"/>
         <CursorPos X="35" Y="473"/>
-        <UsageCount Value="163"/>
+        <UsageCount Value="164"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -108,7 +108,7 @@
         <UnitName Value="PrintCase"/>
         <EditorIndex Value="14"/>
         <CursorPos X="7" Y="219"/>
-        <UsageCount Value="155"/>
+        <UsageCount Value="156"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -119,9 +119,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_Aboutbox"/>
         <EditorIndex Value="12"/>
-        <TopLine Value="80"/>
-        <CursorPos X="22" Y="111"/>
-        <UsageCount Value="150"/>
+        <TopLine Value="95"/>
+        <CursorPos X="10" Y="121"/>
+        <UsageCount Value="151"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -139,7 +139,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="150"/>
+        <UsageCount Value="151"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -152,7 +152,7 @@
         <EditorIndex Value="8"/>
         <TopLine Value="242"/>
         <CursorPos X="40" Y="264"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="134"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -169,7 +169,7 @@
           <TopLine Value="992"/>
           <CursorPos X="37" Y="506"/>
         </ExtraEditor1>
-        <UsageCount Value="120"/>
+        <UsageCount Value="121"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -177,7 +177,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="10"/>
         <CursorPos Y="1628"/>
-        <UsageCount Value="87"/>
+        <UsageCount Value="88"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -187,7 +187,7 @@
         <EditorIndex Value="3"/>
         <TopLine Value="27"/>
         <CursorPos X="27" Y="47"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -203,7 +203,7 @@
           <TopLine Value="299"/>
           <CursorPos X="47" Y="310"/>
         </ExtraEditor1>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -211,7 +211,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ERR"/>
         <EditorIndex Value="16"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -219,7 +219,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EVN"/>
         <EditorIndex Value="17"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -229,7 +229,7 @@
         <EditorIndex Value="18"/>
         <TopLine Value="406"/>
         <CursorPos X="5" Y="422"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -237,7 +237,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MLLP"/>
         <EditorIndex Value="20"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -245,7 +245,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MSA"/>
         <EditorIndex Value="21"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -253,7 +253,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MSH"/>
         <EditorIndex Value="22"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -261,7 +261,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="NK1"/>
         <EditorIndex Value="23"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -269,7 +269,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="NTE"/>
         <EditorIndex Value="24"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -277,7 +277,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="OBR"/>
         <EditorIndex Value="25"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -285,7 +285,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="OBX"/>
         <EditorIndex Value="26"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -293,7 +293,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PID"/>
         <EditorIndex Value="27"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -301,7 +301,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PV1"/>
         <EditorIndex Value="28"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -309,7 +309,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PV2"/>
         <EditorIndex Value="29"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -317,7 +317,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPM"/>
         <EditorIndex Value="30"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -334,7 +334,7 @@
           <TopLine Value="56"/>
           <CursorPos X="58" Y="85"/>
         </ExtraEditor1>
-        <UsageCount Value="31"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -376,34 +376,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="116" Column="9" TopLine="91"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="146" Column="19" TopLine="121"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="155" Column="19" TopLine="130"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="266" Column="9" TopLine="240"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="271" Column="9" TopLine="245"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="317" Column="77" TopLine="306"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="367" Column="28" TopLine="362"/>
-      </Position>
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="369" Column="7" TopLine="362"/>
@@ -495,6 +467,34 @@
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="389" Column="25" TopLine="370"/>
+      </Position>
+      <Position>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="111" Column="22"/>
+      </Position>
+      <Position>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="98" Column="39" TopLine="81"/>
+      </Position>
+      <Position>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="124" Column="45" TopLine="108"/>
+      </Position>
+      <Position>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="132" Column="32" TopLine="108"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="29" Column="42" TopLine="18"/>
+      </Position>
+      <Position>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="118" Column="32"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="464" Column="36" TopLine="459"/>
       </Position>
     </JumpHistory>
     <RunParams>
