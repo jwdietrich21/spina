@@ -21,7 +21,8 @@
         <UnitName Value="GUI"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
-        <CursorPos X="20" Y="2"/>
+        <TopLine Value="460"/>
+        <CursorPos X="69" Y="474"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -119,8 +120,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_Aboutbox"/>
         <EditorIndex Value="12"/>
-        <TopLine Value="95"/>
-        <CursorPos X="10" Y="121"/>
+        <TopLine Value="111"/>
+        <CursorPos X="7" Y="134"/>
         <UsageCount Value="151"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -378,10 +379,6 @@
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="gui.pas"/>
-        <Caret Line="369" Column="7" TopLine="362"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
         <Caret Line="643" Column="7" TopLine="617"/>
       </Position>
       <Position>
@@ -495,6 +492,10 @@
       <Position>
         <Filename Value="gui.pas"/>
         <Caret Line="464" Column="36" TopLine="459"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="2" Column="20"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -482,6 +482,7 @@ begin
     LogoBox.Color := clWhite;
     AboutBox.ImageContainer1.GetBitmap(0, LogoImage.Picture.Bitmap);
   end;
+  application.ProcessMessages;
 end;
 
 procedure THauptschirm.FocusEdit(Sender: TObject);

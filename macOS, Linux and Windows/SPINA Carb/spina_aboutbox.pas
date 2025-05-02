@@ -132,6 +132,7 @@ begin
     ImageContainer1.GetBitmap(0, SPINALabel.Picture.Bitmap);
     ImageContainer2.GetBitmap(0, Logo.Picture.Bitmap);
   end;
+  application.ProcessMessages;
 end;
 
 procedure TAboutBox.URL1Click(Sender: TObject);
