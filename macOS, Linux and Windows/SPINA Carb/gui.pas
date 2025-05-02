@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Menus, ActnList, StdActns, Math, LCLType, ComCtrls, StrUtils, Types,
+  Menus, ActnList, StdActns, Math, LCLType, ComCtrls, StrUtils,
   EditBtn, Clipbrd,
   EnvironmentInfo, SPINATypes, SPINA_Resources, CaseBroker, SPINA_GUIServices,
   ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
@@ -318,6 +318,8 @@ var
   theFilterIndex: integer;
   theCaseRecord: tCaseRecord;
 begin
+  theCaseRecord.CaseID := '';
+  NewCaseRecord(theCaseRecord);
   if OpenCaseDialog.Execute then
   begin
     theFilterIndex := OpenCaseDialog.FilterIndex;
@@ -380,6 +382,7 @@ var
   j: integer;
   thePath: String;
 begin
+  theCaseRecord.CaseID := '';
   NewCaseRecord(theCaseRecord);
   thePath := FileNames[0];
   j := pos('://', thePath);
@@ -466,23 +469,28 @@ procedure THauptschirm.AdapttoTheme(Sender: TObject);
 begin
   if DarkTheme then
   begin
+    {$IFDEF DARWIN}
+    if AboutBox.finished then
+      AboutBox.ImageContainer1.GetBitmap(1, LogoImage.Picture.Bitmap);
+    {$ENDIF}
     Color := clDefault;
     EntryBox.Color := clDefault;
     ResultsBox.Color := clDefault;
     HintBox.Color := clDefault;
     LogoBox.Color := clDefault;
-    AboutBox.ImageContainer1.GetBitmap(1, LogoImage.Picture.Bitmap);
   end
   else
   begin
+    {$IFDEF DARWIN}
+    if AboutBox.finished then
+      AboutBox.ImageContainer1.GetBitmap(0, LogoImage.Picture.Bitmap);
+    {$ENDIF}
     Color := clWhite;
     EntryBox.Color := clWhite;
     ResultsBox.Color := clWhite;
     HintBox.Color := clWhite;
     LogoBox.Color := clWhite;
-    AboutBox.ImageContainer1.GetBitmap(0, LogoImage.Picture.Bitmap);
   end;
-  application.ProcessMessages;
 end;
 
 procedure THauptschirm.FocusEdit(Sender: TObject);
@@ -524,7 +532,6 @@ procedure THauptschirm.ReadCaseRecord(Sender: TObject;
   const theCaseRecord: tCaseRecord);
 { reads a CaseRecord, validates the results and fills edits of main form }
 var
-  status: integer;
   DoBDateStr, OBDateStr: string;
 begin
   { Is this a valid case record? }

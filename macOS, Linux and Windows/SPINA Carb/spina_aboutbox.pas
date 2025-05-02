@@ -78,8 +78,8 @@ type
 
   public
     ExtendedInfo: boolean;
+    finished: boolean;
     procedure ShowAbout;
-
   end;
 
 var
@@ -100,6 +100,7 @@ end;
 procedure TAboutBox.FormCreate(Sender: TObject);
 begin
   VersionLabel.Caption := 'Version ' + FileVersion;
+  finished := true;
 end;
 
 procedure TAboutBox.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
@@ -118,7 +119,7 @@ end;
 
 procedure TAboutBox.FormPaint(Sender: TObject);
 begin
-  if DarkTheme = True then
+  if DarkTheme then
   begin
     URL1.Font.Color := clSkyBlue;
     URL2.Font.Color := clSkyBlue;
