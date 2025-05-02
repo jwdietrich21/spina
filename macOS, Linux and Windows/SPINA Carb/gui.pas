@@ -277,11 +277,15 @@ begin
     FileNames[i - 1] := ParamStr(i);
   if ParamCount > 0 then
     OpenFileList(Sender, FileNames);
+
   AdaptToTheme(Sender);
   if gPreferences.new then
     ShowMessage(kBetaHint);
   MarkMandatoryFields(Sender);
   FocusEdit(Sender);
+
+  DoBEdit.DateFormat := DefaultFormatSettings.LongDateFormat;
+  ObDateEdit.DateFormat := DefaultFormatSettings.LongDateFormat;
 end;
 
 procedure THauptschirm.LogoImageClick(Sender: TObject);

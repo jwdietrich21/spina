@@ -44,36 +44,34 @@ type
     Divider: TLabel;
     ImageContainer1: TImageList;
     ImageContainer2: TImageList;
-    Label10: TLabel;
-    Label11: TLabel;
-    Label14: TLabel;
-    Label15: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
+    AdviseLabel: TLabel;
+    AdviseContent: TLabel;
+    PUMALabel: TLabel;
+    PUMAURL: TLabel;
+    ResLabel: TLabel;
+    VersionSuppLabel: TLabel;
+    VersionSuppURL: TLabel;
     Logo: TImage;
     Memo1: TMemo;
     Memo2: TMemo;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
+    MoreInfoTabSheet: TTabSheet;
+    AcknowledgementTabSheet: TTabSheet;
+    ImprintTabSheet: TTabSheet;
     URL1: TLabel;
     URL2: TLabel;
     VersionLabel: TLabel;
     OKButton: TButton;
     PageControl1: TPageControl;
     SPINALabel: TImage;
-    TabSheet1: TTabSheet;
+    VersionTabSheet: TTabSheet;
     procedure CloseAboutBox(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure FormPaint(Sender: TObject);
+    procedure PUMAURLClick(Sender: TObject);
     procedure URL1Click(Sender: TObject);
     procedure URL2Click(Sender: TObject);
+    procedure VersionSuppURLClick(Sender: TObject);
   private
 
   public
@@ -123,6 +121,8 @@ begin
   begin
     URL1.Font.Color := clSkyBlue;
     URL2.Font.Color := clSkyBlue;
+    VersionSuppURL.Font.Color := clSkyBlue;
+    PUMAURL.Font.Color := clSkyBlue;
     ImageContainer1.GetBitmap(1, SPINALabel.Picture.Bitmap);
     ImageContainer2.GetBitmap(1, Logo.Picture.Bitmap);
   end
@@ -130,20 +130,32 @@ begin
   begin
     URL1.Font.Color := clNavy;
     URL2.Font.Color := clNavy;
+    VersionSuppURL.Font.Color := clNavy;
+    PUMAURL.Font.Color := clNavy;
     ImageContainer1.GetBitmap(0, SPINALabel.Picture.Bitmap);
     ImageContainer2.GetBitmap(0, Logo.Picture.Bitmap);
   end;
   application.ProcessMessages;
 end;
 
+procedure TAboutBox.PUMAURLClick(Sender: TObject);
+begin
+  OpenURL(PUMAURL.Caption);
+end;
+
 procedure TAboutBox.URL1Click(Sender: TObject);
 begin
-  OpenURL('http://spina.medical-cybernetics.de');
+  OpenURL('http://' + URL1.Caption);
 end;
 
 procedure TAboutBox.URL2Click(Sender: TObject);
 begin
-  OpenURL('http://spina.sourceforge.net');
+  OpenURL('http://' + URL2.Caption);
+end;
+
+procedure TAboutBox.VersionSuppURLClick(Sender: TObject);
+begin
+  OpenURL(VersionSuppURL.Caption);
 end;
 
 procedure TAboutBox.ShowAbout;
@@ -171,6 +183,7 @@ begin
   AboutBox.Memo1.Lines.Add('Operating system: ' + PlatformInfo.OS +
     ' (' + SystemVersion + ')');
   AboutBox.AlphaBlendValue := 255;
+  PageControl1.ActivePage := VersionTabSheet;
   AboutBox.ShowModal;
 end;
 

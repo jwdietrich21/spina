@@ -29,11 +29,11 @@ object AboutBox: TAboutBox
     Height = 325
     Top = 8
     Width = 424
-    ActivePage = TabSheet1
+    ActivePage = VersionTabSheet
     Anchors = [akTop, akLeft, akBottom]
     TabIndex = 0
     TabOrder = 1
-    object TabSheet1: TTabSheet
+    object VersionTabSheet: TTabSheet
       Caption = 'Version'
       ClientHeight = 289
       ClientWidth = 418
@@ -2956,7 +2956,7 @@ object AboutBox: TAboutBox
         ParentFont = False
       end
     end
-    object TabSheet2: TTabSheet
+    object MoreInfoTabSheet: TTabSheet
       Caption = 'Info'
       ClientHeight = 289
       ClientWidth = 418
@@ -2975,11 +2975,11 @@ object AboutBox: TAboutBox
         OnKeyDown = FormKeyDown
       end
     end
-    object TabSheet3: TTabSheet
+    object AcknowledgementTabSheet: TTabSheet
       Caption = 'Acknowledgment'
       ClientHeight = 289
       ClientWidth = 418
-      object Label3: TLabel
+      object ResLabel: TLabel
         Left = 21
         Height = 16
         Top = 13
@@ -2991,90 +2991,52 @@ object AboutBox: TAboutBox
         ParentFont = False
         WordWrap = True
       end
-      object Label4: TLabel
+      object VersionSuppLabel: TLabel
         Left = 21
         Height = 16
-        Top = 33
-        Width = 189
-        Caption = 'Silk icon set 1.3 by Mark James'
-        ParentColor = False
-      end
-      object Label5: TLabel
-        Cursor = crHandPoint
-        Left = 21
-        Height = 16
-        Top = 48
-        Width = 253
-        Caption = 'http://www.famfamfam.com/lab/icons/silk/'
-        Font.Color = clNavy
-        Font.Pitch = fpVariable
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label6: TLabel
-        Left = 21
-        Height = 16
-        Top = 71
-        Width = 112
-        Caption = 'Tango Icon Library'
-        ParentColor = False
-      end
-      object Label7: TLabel
-        Cursor = crHandPoint
-        Left = 21
-        Height = 16
-        Top = 87
-        Width = 294
-        Caption = 'http://tango.freedesktop.org/Tango_Icon_Library'
-        Font.Color = clNavy
-        Font.Pitch = fpVariable
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label8: TLabel
-        Left = 21
-        Height = 16
-        Top = 109
+        Top = 47
         Width = 238
         Caption = 'VersionSupport unit by Mike Thompson'
         ParentColor = False
       end
-      object Label9: TLabel
+      object VersionSuppURL: TLabel
         Cursor = crHandPoint
         Left = 21
         Height = 16
-        Top = 124
-        Width = 341
-        Caption = 'http://www.lazarus.freepascal.org/index.php/topic,13957'
+        Top = 62
+        Width = 395
+        Caption = 'https://forum.lazarus.freepascal.org/index.php/topic,13957.0.html'
         Font.Color = clNavy
         Font.Pitch = fpVariable
         ParentColor = False
         ParentFont = False
+        OnClick = VersionSuppURLClick
       end
-      object Label14: TLabel
+      object PUMALabel: TLabel
         Left = 20
         Height = 16
-        Top = 147
+        Top = 94
         Width = 106
         Caption = 'PUMA Repository'
         ParentColor = False
       end
-      object Label15: TLabel
+      object PUMAURL: TLabel
         Cursor = crHandPoint
         Left = 20
         Height = 16
-        Top = 162
+        Top = 109
         Width = 174
         Caption = 'http://puma-repository.sf.net'
         Font.Color = clNavy
         Font.Pitch = fpVariable
         ParentColor = False
         ParentFont = False
+        OnClick = PUMAURLClick
       end
-      object Label10: TLabel
+      object AdviseLabel: TLabel
         Left = 21
         Height = 16
-        Top = 200
+        Top = 156
         Width = 201
         Caption = 'Scientific and technical advise:'
         Font.Pitch = fpVariable
@@ -3082,17 +3044,17 @@ object AboutBox: TAboutBox
         ParentColor = False
         ParentFont = False
       end
-      object Label11: TLabel
+      object AdviseContent: TLabel
         Left = 21
         Height = 16
-        Top = 221
+        Top = 172
         Width = 368
         AutoSize = False
         Caption = 'Bernhard O. Boehm, Nihal Thomas, Felix Tretter, Phil Hess'
         ParentColor = False
       end
     end
-    object TabSheet4: TTabSheet
+    object ImprintTabSheet: TTabSheet
       Caption = 'Impressum'
       ClientHeight = 289
       ClientWidth = 418

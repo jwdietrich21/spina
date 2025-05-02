@@ -8,8 +8,9 @@
         <Filename Value="SPINA_Carb.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="31"/>
-        <CursorPos X="17" Y="62"/>
-        <UsageCount Value="173"/>
+        <TopLine Value="35"/>
+        <CursorPos X="6" Y="44"/>
+        <UsageCount Value="174"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,9 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
-        <CursorPos X="22" Y="2"/>
+        <TopLine Value="273"/>
+        <CursorPos X="21" Y="285"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -29,7 +30,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="173"/>
+        <UsageCount Value="174"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -38,7 +39,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos X="42" Y="142"/>
-        <UsageCount Value="172"/>
+        <UsageCount Value="173"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -47,7 +48,7 @@
         <UnitName Value="UnitConverter"/>
         <TopLine Value="199"/>
         <CursorPos X="3" Y="214"/>
-        <UsageCount Value="172"/>
+        <UsageCount Value="173"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -56,7 +57,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="157"/>
         <CursorPos Y="173"/>
-        <UsageCount Value="172"/>
+        <UsageCount Value="173"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -68,7 +69,7 @@
         <UnitName Value="ResultWindow"/>
         <EditorIndex Value="13"/>
         <CursorPos X="15" Y="3"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="168"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -79,7 +80,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="65"/>
         <CursorPos Y="65"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="168"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -89,7 +90,7 @@
         <EditorIndex Value="11"/>
         <TopLine Value="20"/>
         <CursorPos X="5" Y="36"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="166"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -99,7 +100,7 @@
         <EditorIndex Value="9"/>
         <TopLine Value="457"/>
         <CursorPos X="35" Y="473"/>
-        <UsageCount Value="164"/>
+        <UsageCount Value="165"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -108,7 +109,7 @@
         <UnitName Value="PrintCase"/>
         <EditorIndex Value="14"/>
         <CursorPos X="7" Y="219"/>
-        <UsageCount Value="156"/>
+        <UsageCount Value="157"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -119,9 +120,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_Aboutbox"/>
         <EditorIndex Value="12"/>
-        <TopLine Value="111"/>
-        <CursorPos X="7" Y="134"/>
-        <UsageCount Value="151"/>
+        <TopLine Value="132"/>
+        <CursorPos X="27" Y="151"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -139,7 +140,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="151"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -152,7 +153,7 @@
         <EditorIndex Value="8"/>
         <TopLine Value="242"/>
         <CursorPos X="40" Y="264"/>
-        <UsageCount Value="134"/>
+        <UsageCount Value="135"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -169,7 +170,7 @@
           <TopLine Value="992"/>
           <CursorPos X="37" Y="506"/>
         </ExtraEditor1>
-        <UsageCount Value="121"/>
+        <UsageCount Value="122"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -177,7 +178,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="10"/>
         <CursorPos Y="1628"/>
-        <UsageCount Value="88"/>
+        <UsageCount Value="89"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -187,7 +188,7 @@
         <EditorIndex Value="3"/>
         <TopLine Value="27"/>
         <CursorPos X="27" Y="47"/>
-        <UsageCount Value="67"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -195,15 +196,15 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
         <EditorIndex Value="19"/>
-        <TopLine Value="781"/>
-        <CursorPos X="19" Y="800"/>
+        <TopLine Value="118"/>
+        <CursorPos X="9" Y="119"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
           <TopLine Value="299"/>
           <CursorPos X="47" Y="310"/>
         </ExtraEditor1>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -211,7 +212,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ERR"/>
         <EditorIndex Value="16"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -219,7 +220,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EVN"/>
         <EditorIndex Value="17"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -229,7 +230,7 @@
         <EditorIndex Value="18"/>
         <TopLine Value="406"/>
         <CursorPos X="5" Y="422"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -237,7 +238,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MLLP"/>
         <EditorIndex Value="20"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -245,7 +246,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MSA"/>
         <EditorIndex Value="21"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -253,7 +254,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MSH"/>
         <EditorIndex Value="22"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -261,7 +262,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="NK1"/>
         <EditorIndex Value="23"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -269,7 +270,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="NTE"/>
         <EditorIndex Value="24"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -277,7 +278,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="OBR"/>
         <EditorIndex Value="25"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -285,7 +286,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="OBX"/>
         <EditorIndex Value="26"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -293,7 +294,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PID"/>
         <EditorIndex Value="27"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -301,7 +302,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PV1"/>
         <EditorIndex Value="28"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -309,7 +310,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PV2"/>
         <EditorIndex Value="29"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -317,16 +318,17 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPM"/>
         <EditorIndex Value="30"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="localeservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LocaleServices"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="50"/>
-        <CursorPos X="30" Y="70"/>
+        <TopLine Value="47"/>
+        <CursorPos Y="56"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -334,7 +336,7 @@
           <TopLine Value="56"/>
           <CursorPos X="58" Y="85"/>
         </ExtraEditor1>
-        <UsageCount Value="32"/>
+        <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -377,124 +379,124 @@
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="643" Column="7" TopLine="617"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="65" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="56" Column="26" TopLine="40"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="66" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="116" Column="9" TopLine="91"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="68" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="146" Column="19" TopLine="121"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="67" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="155" Column="19" TopLine="130"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="69" TopLine="43"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="266" Column="9" TopLine="240"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="70" TopLine="44"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="271" Column="9" TopLine="245"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="71" TopLine="45"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="307" Column="28" TopLine="296"/>
+        <Filename Value="SPINA_Engine.pas"/>
+        <Caret Line="142" Column="42"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="308" Column="7" TopLine="296"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="56" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="313" Column="10" TopLine="296"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="58" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="315" Column="27" TopLine="296"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="59" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="317" Column="44" TopLine="296"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="61" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="384" Column="56" TopLine="370"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="62" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="643" Column="7" TopLine="617"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="65" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="56" Column="26" TopLine="40"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="66" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="116" Column="9" TopLine="91"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="68" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="146" Column="19" TopLine="121"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="67" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="155" Column="19" TopLine="130"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="69" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="266" Column="9" TopLine="240"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="70" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="271" Column="9" TopLine="251"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="71" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="320" Column="31" TopLine="304"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="56" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="389" Column="25" TopLine="370"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="58" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="111" Column="22"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="59" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="98" Column="39" TopLine="81"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="61" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="124" Column="45" TopLine="108"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="62" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="132" Column="32" TopLine="108"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="65" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="29" Column="42" TopLine="18"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="66" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="spina_aboutbox.pas"/>
-        <Caret Line="118" Column="32"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="68" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="464" Column="36" TopLine="459"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="67" TopLine="47"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="2" Column="20"/>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="69" TopLine="47"/>
       </Position>
     </JumpHistory>
     <RunParams>
