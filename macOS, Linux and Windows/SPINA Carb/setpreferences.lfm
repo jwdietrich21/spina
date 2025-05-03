@@ -556,6 +556,13 @@ object PreferencesForm: TPreferencesForm
           Width = 67
           Caption = 'pmol/mmol'
         end
+        object CGRUnitLabel: TLabel
+          Left = 401
+          Height = 16
+          Top = 273
+          Width = 71
+          Caption = 'pmol/10 mg'
+        end
       end
     end
     object TabSheet2: TTabSheet

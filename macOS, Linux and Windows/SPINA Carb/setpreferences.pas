@@ -42,6 +42,7 @@ type
     AIGRRRHEdit: TEdit;
     CGRRRLEdit: TEdit;
     AIGRRRLEdit: TEdit;
+    CGRUnitLabel: TLabel;
     LOINCCheck: TCheckBox;
     DashLabel10: TLabel;
     DashLabel11: TLabel;
@@ -349,8 +350,10 @@ begin
   gPreferences.ReferenceValues.QUICKI.hn := StrToFloatDefL(QUICKIRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.AIGR.ln := StrToFloatDefL(AIGRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.AIGR.hn := StrToFloatDefL(AIGRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.AIGR.UoM := AIGRUnitLabel.Caption;
   gPreferences.ReferenceValues.CGR.ln := StrToFloatDefL(CGRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CGR.hn := StrToFloatDefL(CGRRRHEdit.Text, Math.Nan);
+  gPreferences.ReferenceValues.CGR.UoM := CGRUnitLabel.Caption;
   gPreferences.PreferredUoMs.Glucose := GlucoseUnitsCombo.Text;
   gPreferences.PreferredUoMs.Insulin := InsulinUnitsCombo.Text;
   gPreferences.PreferredUoMs.CPeptide := CPeptideUnitsCombo.Text;

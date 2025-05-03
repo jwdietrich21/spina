@@ -109,7 +109,7 @@ begin
 end;
 
 function RefMessage(ln, hn: extended; UoM: string; precision, digits: integer): string;
-{Converts message with reference ranges to a form that is better human-readable}
+  {Converts message with reference ranges to a form that is better human-readable}
 begin
   if (ln = 0) or IsInfinite(ln) then
     Result := '< ' + FloatToStrF(hn, ffFixed, precision, digits)
@@ -142,7 +142,8 @@ begin
     gPreferences.ReferenceValues.QUICKI, 4, 1) + LineEnding + '   ' +
     kAIGR + ': ' + Marked(CaseRecord.LabRecord.AIGR, gPreferences.ReferenceValues.AIGR,
     4, 1) + ' ' + AIGRUoM + LineEnding + '   ' + kCGR + ': ' +
-    Marked(CaseRecord.LabRecord.CGR, gPreferences.ReferenceValues.CGR, 4, 1);
+    Marked(CaseRecord.LabRecord.CGR, gPreferences.ReferenceValues.CGR, 4, 1) +
+    ' ' + CGRUoM;
   CaseRecord.SRefMessage1 :=
     RefMessage(gPreferences.ReferenceValues.SPINA_GBeta.ln,
     gPreferences.ReferenceValues.SPINA_GBeta.hn,
@@ -169,7 +170,7 @@ begin
 end;
 
 function RRFlag(theParameter: extended; theRanges: tReferenceLimits): string;
-{Adds predefined flag for results outside their respective reference ranges}
+  {Adds predefined flag for results outside their respective reference ranges}
 begin
   if (isNan(theRanges.ln) or isNan(theRanges.hn)) then
     Result := ''
@@ -179,7 +180,7 @@ end;
 
 function Marked(theParameter: extended; theRanges: tReferenceLimits;
   Precision: integer; Digits: integer): string;
-{Delivers formatted result}
+  {Delivers formatted result}
 begin
   if IsNaN(theParameter) then
     Result := NA_MARK
@@ -191,7 +192,7 @@ end;
 function MarkedC(theParameter: extended; theRanges: tReferenceLimits;
   ConversionFactor: real; UoM1, Uom2: string; Precision: integer;
   Digits: integer): string;
-{Delivers formatted result}
+  {Delivers formatted result}
 var
   LocalRange: tReferenceLimits;
 begin
@@ -202,7 +203,7 @@ begin
 end;
 
 function FormattedResults(const LabRecord: tLabRecord): string;
-{Delivers formatted result}
+  {Delivers formatted result}
 begin
   Result := kSPINA_GBeta + kTAB + kTAB + kTAB +
     FloatToStrF(LabRecord.SPINA_GBeta, ffFixed, 4, 2) + kS4TAB +
@@ -228,17 +229,17 @@ begin
     FloatToStrF(LabRecord.HOMA_IR, ffFixed, 4, 1) + kS4TAB + kParOpen +
     RefMessage(gPreferences.ReferenceValues.HOMA_IR.ln,
     gPreferences.ReferenceValues.HOMA_IR.hn, gPreferences.ReferenceValues.HOMA_IR.UoM,
-    4, 1) + kParClose + LineEnding + kHOMA_IS + kS4TAB + kTAB +
-    kTAB + FloatToStrF(LabRecord.HOMA_IS, ffFixed, 4, 1) + ' ' +
-    kS4TAB + kParOpen + RefMessage(gPreferences.ReferenceValues.HOMA_IS.ln,
+    4, 1) + kParClose + LineEnding + kHOMA_IS + kS4TAB + kTAB + kTAB +
+    FloatToStrF(LabRecord.HOMA_IS, ffFixed, 4, 1) + ' ' + kS4TAB +
+    kParOpen + RefMessage(gPreferences.ReferenceValues.HOMA_IS.ln,
     gPreferences.ReferenceValues.HOMA_IS.hn, gPreferences.ReferenceValues.HOMA_IS.UoM,
-    4, 1) + kParClose + LineEnding + kQUICKI + kS10Tab + kTAB +
-    kTAB + FloatToStrF(LabRecord.QUICKI, ffFixed, 4, 1) + ' ' + kS4TAB +
+    4, 1) + kParClose + LineEnding + kQUICKI + kS10Tab + kTAB + kTAB +
+    FloatToStrF(LabRecord.QUICKI, ffFixed, 4, 1) + ' ' + kS4TAB +
     kParOpen + RefMessage(gPreferences.ReferenceValues.QUICKI.ln,
     gPreferences.ReferenceValues.QUICKI.hn, gPreferences.ReferenceValues.QUICKI.UoM,
-    4, 1) + kParClose + LineEnding + kAIGR + kS10Tab + kTAB +
-    kTAB + FloatToStrF(LabRecord.AIGR, ffFixed, 4, 1) + kS4TAB +
-    kParOpen + RefMessage(gPreferences.ReferenceValues.AIGR.ln,
+    4, 1) + kParClose + LineEnding + kAIGR + kS10Tab + kTAB + kTAB +
+    FloatToStrF(LabRecord.AIGR, ffFixed, 4, 1) + kS4TAB + kParOpen +
+    RefMessage(gPreferences.ReferenceValues.AIGR.ln,
     gPreferences.ReferenceValues.AIGR.hn, gPreferences.ReferenceValues.AIGR.UoM,
     4, 1) + kParClose + LineEnding + kCGR + ' ' + kS10Tab + kTAB +
     kTAB + FloatToStrF(LabRecord.CGR, ffFixed, 4, 1) + ' ' + kS4TAB +

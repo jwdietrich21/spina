@@ -62,10 +62,15 @@ const
   kQUICKI = 'QUICKI';
   kAIGR = 'AIGR';
   kCGR = 'CGR';
+
+  GlucSUom = 'mg/dl'; {Standard UoMs for GUI}
+  InsSUoM = 'mIU/l';  {see below for standard UoMs for Engine}
+  CPepCUom = 'ng/ml';
   GBetaUoM = 'pmol/s';
   GRUoM = 'mol/s';
   HOMABetaUoM = '%';
   AIGRUoM = 'pmol/mmol';
+  CGRUoM = 'pmol/10 mg';
 
   NA_MARK = 'N/A';
   REF_RANGE_FLAG = '*'; {flag sign for marking results outside the reference range}
@@ -160,7 +165,7 @@ type
   end;
 
 const
-  kEngineUoMs: tPreferredUoMs =
+  kEngineUoMs: tPreferredUoMs = { UoMs for Engine }
     (Insulin: 'pmol/l';
     Glucose: 'mmol/l';
     CPeptide: 'nmol/l');
@@ -174,13 +179,13 @@ const
                     CPeptide: (ln: 0.8; hn: 3.1; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: 'ng/ml');
                     SPINA_GBeta: (ln: 0.64; hn: 3.73; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: 'pmol/s');
+                              hp: NaN; UoM: GBetaUoM);
                     SPINA_GR: (ln: 1.41; hn: 9.00; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: 'mol/s');
+                              hp: NaN; UoM: GRUoM);
                     SPINA_DI: (ln: 4.01; hn: 7.65; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
                     HOMA_Beta: (ln: 45.4; hn: 179.4; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: '%');
+                              hp: NaN; UoM: HOMABetaUoM);
                     HOMA_IR: (ln: 0.0; hn: 2.5; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
                     HOMA_IS: (ln: 0.4; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
@@ -188,9 +193,9 @@ const
                     QUICKI: (ln: 0.4; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: '');
                     AIGR: (ln: 0; hn: 53.6; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: 'pmol/mmol');
+                              hp: NaN; UoM: AIGRUoM);
                     CGR: (ln: 5.0; hn: Infinity; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: ''));
+                              hp: NaN; UoM: CGRUoM));
 
 {
 1. Khalili D, Khayamzadeh M, Kohansal K, Ahanchi NS, Hasheminia M, Hadaegh F,

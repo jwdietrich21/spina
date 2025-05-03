@@ -341,7 +341,7 @@ begin
     theOBX.ObsID := 'SPINA-GBeta';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.SPINA_GBeta, ffNumber, 5, 13);
-    theOBX.Units := 'pmol/s';
+    theOBX.Units := gPreferences.ReferenceValues.SPINA_GBeta.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.SPINA_GBeta.hn);
     theOBX.AbnormFlags := '';
@@ -368,7 +368,7 @@ begin
     theOBX.ObsID := 'SPINA-GR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.SPINA_GR, ffNumber, 5, 13);
-    theOBX.Units := 'mol/s';
+    theOBX.Units := gPreferences.ReferenceValues.SPINA_GR.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.SPINA_GR.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.SPINA_GR.hn);
     theOBX.AbnormFlags := '';
@@ -395,7 +395,7 @@ begin
     theOBX.ObsID := 'SPINA-DI';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.SPINA_DI, ffNumber, 5, 13);
-    theOBX.Units := 'mol/s';
+    theOBX.Units := gPreferences.ReferenceValues.SPINA_DI.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.SPINA_DI.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.SPINA_DI.hn);
     theOBX.AbnormFlags := '';
@@ -422,7 +422,7 @@ begin
     theOBX.ObsID := 'HOMA-Beta';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.HOMA_Beta, ffNumber, 5, 13);
-    theOBX.Units := '%';
+    theOBX.Units := gPreferences.ReferenceValues.HOMA_Beta.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.HOMA_Beta.hn);
     theOBX.AbnormFlags := '';
@@ -449,7 +449,7 @@ begin
     theOBX.ObsID := 'HOMA-IR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.HOMA_IR, ffNumber, 5, 13);
-    theOBX.Units := '';
+    theOBX.Units := gPreferences.ReferenceValues.HOMA_IR.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.HOMA_IR.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.HOMA_IR.hn);
     theOBX.AbnormFlags := '';
@@ -476,7 +476,7 @@ begin
     theOBX.ObsID := 'HOMA-IS';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.HOMA_IS, ffNumber, 5, 13);
-    theOBX.Units := '';
+    theOBX.Units := gPreferences.ReferenceValues.HOMA_IS.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.HOMA_IS.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.HOMA_IS.hn);
     theOBX.AbnormFlags := '';
@@ -503,7 +503,7 @@ begin
     theOBX.ObsID := 'QUICKI';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.QUICKI, ffNumber, 5, 13);
-    theOBX.Units := '';
+    theOBX.Units := gPreferences.ReferenceValues.QUICKI.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.QUICKI.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.QUICKI.hn);
     theOBX.AbnormFlags := '';
@@ -530,7 +530,7 @@ begin
     theOBX.ObsID := 'AIGR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.AIGR, ffNumber, 5, 13);
-    theOBX.Units := 'pmol/mmol';
+    theOBX.Units := gPreferences.ReferenceValues.AIGR.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.AIGR.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.AIGR.hn);
     theOBX.AbnormFlags := '';
@@ -557,7 +557,7 @@ begin
     theOBX.ObsID := 'CGR';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.CGR, ffNumber, 5, 13);
-    theOBX.Units := '';
+    theOBX.Units := gPreferences.ReferenceValues.CGR.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.CGR.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.CGR.hn);
     theOBX.AbnormFlags := '';

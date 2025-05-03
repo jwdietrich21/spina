@@ -353,9 +353,9 @@ begin
     exportLOINC := True;
     MandatoryColor := gStandardMandatoryColor;
     MSH_ID := '';
-    PreferredUoMs.Glucose := 'mg/dl';
-    PreferredUoMs.Insulin := 'mIU/l';
-    PreferredUoMs.CPeptide := 'ng/ml';
+    PreferredUoMs.Glucose := GlucSUom;
+    PreferredUoMs.Insulin := InsSUoM;
+    PreferredUoMs.CPeptide := CPepCUom;
     new := True;
   end;
   SavePreferences;
