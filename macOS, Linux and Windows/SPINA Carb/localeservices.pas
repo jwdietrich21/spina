@@ -56,6 +56,10 @@ begin
   theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
     CFLocaleCopyCurrent, kCFDateFormatterMediumStyle, kCFDateFormatterNoStyle);
   theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
+  if pos('yyyy', theFormatString) = 0 then // year format shorter than 4 digits
+  begin
+    theFormatString := StringReplace(theFormatString, 'y', 'yyyy', [rfIgnoreCase]);
+  end;
   if pos('.', theFormatString) > 0 then
     DefaultFormatSettings.DateSeparator := '.'
   else if pos('/', theFormatString) > 0 then
@@ -67,6 +71,10 @@ begin
   theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
     CFLocaleCopyCurrent, kCFDateFormatterLongStyle, kCFDateFormatterNoStyle);
   theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
+  if pos('yyyy', theFormatString) = 0 then // year format shorter than 4 digits
+  begin
+    theFormatString := StringReplace(theFormatString, 'y', 'yyyy', [rfIgnoreCase]);
+  end;
   DefaultFormatSettings.LongDateFormat := theFormatString;
   CFRelease(theFormatter);
   {$ENDIF}

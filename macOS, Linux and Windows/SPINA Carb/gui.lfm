@@ -1611,16 +1611,16 @@ object Hauptschirm: THauptschirm
     TabOrder = 0
     object CaseEditorSheet: TTabSheet
       Caption = 'Case Editor'
-      ClientHeight = 334
-      ClientWidth = 750
+      ClientHeight = 342
+      ClientWidth = 748
       OnEnter = CaseEditorSheetShow
       OnShow = CaseEditorSheetShow
       object CaseIDEdit: TEdit
         Left = 200
-        Height = 21
+        Height = 23
         Hint = 'The admission or case ID of your hospital information system'
         Top = 32
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1628,10 +1628,10 @@ object Hauptschirm: THauptschirm
       end
       object PIDEdit: TEdit
         Left = 200
-        Height = 21
+        Height = 23
         Hint = 'Unique patient or person ID'
         Top = 59
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1639,10 +1639,10 @@ object Hauptschirm: THauptschirm
       end
       object NameEdit: TEdit
         Left = 200
-        Height = 21
+        Height = 23
         Hint = 'Family name of the patient or person investigated'
         Top = 86
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1650,10 +1650,10 @@ object Hauptschirm: THauptschirm
       end
       object GivenNameEdit: TEdit
         Left = 200
-        Height = 21
+        Height = 23
         Hint = 'Given name(s) of the patient or person investigated'
         Top = 113
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1663,10 +1663,10 @@ object Hauptschirm: THauptschirm
         AnchorSideRight.Control = GivenNameEdit
         AnchorSideRight.Side = asrBottom
         Left = 200
-        Height = 21
+        Height = 23
         Hint = 'Date of birth of the patient or person investigated'
         Top = 141
-        Width = 500
+        Width = 498
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         DateOrder = doNone
         ButtonWidth = 23
@@ -1677,44 +1677,44 @@ object Hauptschirm: THauptschirm
       end
       object CaseIDLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 35
-        Width = 132
+        Width = 115
         Caption = 'Admission or Case ID:'
       end
       object PIDLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 62
-        Width = 25
+        Width = 21
         Caption = 'PID:'
       end
       object NameLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 88
-        Width = 81
+        Width = 73
         Caption = 'Family Name:'
       end
       object GivenNameLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 115
-        Width = 91
+        Width = 79
         Caption = 'Given name(s):'
       end
       object DOBLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 143
-        Width = 80
+        Width = 69
         Caption = 'Date of Birth:'
       end
       object Bevel1: TBevel
         Left = 24
         Height = 160
         Top = 16
-        Width = 704
+        Width = 702
         Anchors = [akTop, akLeft, akRight]
         ParentShowHint = False
       end
@@ -1722,15 +1722,15 @@ object Hauptschirm: THauptschirm
         Left = 24
         Height = 84
         Top = 184
-        Width = 704
+        Width = 702
         Anchors = [akTop, akLeft, akRight]
       end
       object PlacerEdit: TEdit
         Left = 200
-        Height = 21
+        Height = 23
         Hint = 'Placer (i.e. the organisational unit that performed, initiated or ordered the investigation)'
         Top = 200
-        Width = 500
+        Width = 498
         Anchors = [akTop, akLeft, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1738,7 +1738,7 @@ object Hauptschirm: THauptschirm
       end
       object ObDateEdit: TDateEdit
         Left = 200
-        Height = 21
+        Height = 23
         Hint = 'The date when the investigation took place'
         Top = 228
         Width = 256
@@ -1754,26 +1754,26 @@ object Hauptschirm: THauptschirm
       end
       object PlacerLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 203
-        Width = 42
+        Width = 35
         Caption = 'Placer:'
       end
       object ObDateLabel: TLabel
         Left = 38
-        Height = 16
+        Height = 15
         Top = 228
-        Width = 128
+        Width = 112
         Caption = 'Date of investigation:'
       end
       object ObTimeEdit: TTimeEdit
         AnchorSideRight.Control = PlacerEdit
         AnchorSideRight.Side = asrBottom
         Left = 480
-        Height = 21
+        Height = 23
         Hint = 'The time of day when the investigation took place'
         Top = 228
-        Width = 220
+        Width = 218
         DefaultNow = True
         ButtonWidth = 23
         Anchors = [akTop, akLeft, akRight]
@@ -1784,10 +1784,10 @@ object Hauptschirm: THauptschirm
         TabOrder = 7
       end
       object NextButton: TButton
-        Left = 625
+        Left = 623
         Height = 25
         Hint = 'Finish data entry'
-        Top = 304
+        Top = 312
         Width = 115
         Anchors = [akRight, akBottom]
         Caption = 'Next'
@@ -1799,19 +1799,19 @@ object Hauptschirm: THauptschirm
     end
     object EntrySheet: TTabSheet
       Caption = 'Data Entry'
-      ClientHeight = 334
-      ClientWidth = 750
+      ClientHeight = 342
+      ClientWidth = 748
       OnShow = EntrySheetShow
       object EntryBox: TGroupBox
         Left = 215
-        Height = 288
+        Height = 296
         Hint = 'Please enter fasting concentrations of insulin, glucose and, optionally, c-peptide here. Preferably, the parameters should have been obtained simultaneously. Recommended is fasting for 8 hours or more.'
         Top = 8
         Width = 290
         Anchors = [akTop, akLeft, akBottom]
         Caption = 'Enter behavioural parameters:'
-        ClientHeight = 261
-        ClientWidth = 280
+        ClientHeight = 276
+        ClientWidth = 286
         Constraints.MinWidth = 270
         ParentBackground = False
         TabOrder = 0
@@ -8006,7 +8006,7 @@ object Hauptschirm: THauptschirm
         end
         object GlucoseEdit: TEdit
           Left = 88
-          Height = 21
+          Height = 23
           Hint = 'Fasting glucose concentration'
           Top = 16
           Width = 56
@@ -8017,7 +8017,7 @@ object Hauptschirm: THauptschirm
         end
         object InsulinEdit: TEdit
           Left = 9
-          Height = 21
+          Height = 23
           Hint = 'Fasting insulin concentration'
           Top = 216
           Width = 56
@@ -8028,28 +8028,28 @@ object Hauptschirm: THauptschirm
         end
         object GlucoseLabel: TLabel
           Left = 35
-          Height = 16
+          Height = 15
           Top = 16
-          Width = 49
+          Width = 42
           Alignment = taRightJustify
           Caption = 'Glucose'
           ParentColor = False
         end
         object InsulinLabel: TLabel
           Left = 9
-          Height = 16
+          Height = 15
           Top = 200
-          Width = 39
+          Width = 35
           Alignment = taRightJustify
           Caption = 'Insulin'
           ParentColor = False
         end
         object GlucoseUnitsCombo: TComboBox
           Left = 150
-          Height = 20
+          Height = 23
           Top = 16
           Width = 70
-          ItemHeight = 18
+          ItemHeight = 15
           ItemIndex = 0
           Items.Strings = (
             'mg/dl'
@@ -8060,10 +8060,10 @@ object Hauptschirm: THauptschirm
         end
         object InsulinUnitsCombo: TComboBox
           Left = 9
-          Height = 20
+          Height = 23
           Top = 240
           Width = 70
-          ItemHeight = 18
+          ItemHeight = 15
           ItemIndex = 0
           Items.Strings = (
             'mIU/l'
@@ -8074,9 +8074,9 @@ object Hauptschirm: THauptschirm
         end
         object CPeptideLabel: TLabel
           Left = 220
-          Height = 16
+          Height = 15
           Top = 200
-          Width = 62
+          Width = 53
           Alignment = taRightJustify
           Caption = 'C-Peptide'
           ParentColor = False
@@ -8084,8 +8084,8 @@ object Hauptschirm: THauptschirm
         object CPeptideEdit: TEdit
           AnchorSideRight.Control = CPeptideLabel
           AnchorSideRight.Side = asrBottom
-          Left = 226
-          Height = 21
+          Left = 217
+          Height = 23
           Hint = 'Fasting C-peptide concentration'
           Top = 216
           Width = 56
@@ -8098,12 +8098,12 @@ object Hauptschirm: THauptschirm
         object CPeptideUnitsCombo: TComboBox
           AnchorSideRight.Control = CPeptideLabel
           AnchorSideRight.Side = asrBottom
-          Left = 212
-          Height = 20
+          Left = 203
+          Height = 23
           Top = 240
           Width = 70
           Anchors = [akTop, akRight]
-          ItemHeight = 18
+          ItemHeight = 15
           ItemIndex = 0
           Items.Strings = (
             'ng/ml'
@@ -8116,20 +8116,20 @@ object Hauptschirm: THauptschirm
       end
       object HintBox: TGroupBox
         Left = 16
-        Height = 176
+        Height = 184
         Top = 120
         Width = 192
         Anchors = [akTop, akLeft, akBottom]
         Caption = 'Hints:'
-        ClientHeight = 149
-        ClientWidth = 182
+        ClientHeight = 164
+        ClientWidth = 188
         ParentBackground = False
         TabOrder = 1
         object HintsMemo: TMemo
           Left = 8
-          Height = 138
+          Height = 153
           Top = 8
-          Width = 161
+          Width = 167
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderStyle = bsNone
           Font.Height = 13
@@ -8146,21 +8146,21 @@ object Hauptschirm: THauptschirm
       end
       object ResultsBox: TGroupBox
         Left = 512
-        Height = 288
+        Height = 296
         Top = 8
-        Width = 228
+        Width = 226
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Results:'
-        ClientHeight = 261
-        ClientWidth = 218
+        ClientHeight = 276
+        ClientWidth = 222
         ParentBackground = False
         TabOrder = 2
         object ResultsMemo: TMemo
           Left = 8
-          Height = 246
+          Height = 261
           Hint = 'The results of the calcultation will be displayed here.'
           Top = 8
-          Width = 198
+          Width = 202
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderStyle = bsNone
           Font.Height = 13
@@ -8177,10 +8177,10 @@ object Hauptschirm: THauptschirm
         end
       end
       object CalculateButton: TButton
-        Left = 625
+        Left = 623
         Height = 25
         Hint = 'Perform the calculation based on the entered concentrations'
-        Top = 304
+        Top = 312
         Width = 115
         Anchors = [akRight, akBottom]
         Caption = 'Calculate'
@@ -8194,8 +8194,8 @@ object Hauptschirm: THauptschirm
         Cursor = crHandPoint
         Left = 16
         Height = 13
-        Top = 314
-        Width = 86
+        Top = 322
+        Width = 81
         Anchors = [akLeft, akBottom]
         Caption = 'SPINACarbLabel'
         Font.Height = -11
@@ -8207,8 +8207,8 @@ object Hauptschirm: THauptschirm
         Height = 112
         Top = 8
         Width = 192
-        ClientHeight = 85
-        ClientWidth = 182
+        ClientHeight = 92
+        ClientWidth = 188
         ParentBackground = False
         TabOrder = 4
         object LogoImage: TImage
@@ -9121,14 +9121,14 @@ object Hauptschirm: THauptschirm
     end
     object CommentSheet: TTabSheet
       Caption = 'Comment'
-      ClientHeight = 334
-      ClientWidth = 750
+      ClientHeight = 342
+      ClientWidth = 748
       OnShow = CommentSheetShow
       object OKButton: TButton
-        Left = 625
+        Left = 623
         Height = 25
         Hint = 'Finish data entry'
-        Top = 304
+        Top = 312
         Width = 115
         Anchors = [akRight, akBottom]
         Caption = 'OK'
@@ -9139,20 +9139,20 @@ object Hauptschirm: THauptschirm
       end
       object CommentBox: TGroupBox
         Left = 0
-        Height = 289
+        Height = 297
         Top = 8
-        Width = 753
+        Width = 751
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Comment'
-        ClientHeight = 262
-        ClientWidth = 743
+        ClientHeight = 277
+        ClientWidth = 747
         ParentBackground = False
         TabOrder = 1
         object CommentMemo: TMemo
           Left = 8
-          Height = 258
+          Height = 273
           Top = 0
-          Width = 720
+          Width = 724
           Anchors = [akTop, akLeft, akRight, akBottom]
           TabOrder = 0
         end

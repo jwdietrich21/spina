@@ -284,8 +284,8 @@ begin
   MarkMandatoryFields(Sender);
   FocusEdit(Sender);
 
-  DoBEdit.DateFormat := DefaultFormatSettings.LongDateFormat;
-  ObDateEdit.DateFormat := DefaultFormatSettings.LongDateFormat;
+  DoBEdit.DateFormat := DefaultFormatSettings.ShortDateFormat;
+  ObDateEdit.DateFormat := DefaultFormatSettings.ShortDateFormat;
 end;
 
 procedure THauptschirm.LogoImageClick(Sender: TObject);
