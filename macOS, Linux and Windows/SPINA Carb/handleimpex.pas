@@ -787,6 +787,8 @@ begin
         aCaseRecord.LabRecord.CGR := StrToFloatDef(theOBXRecord.obsValue, NaN);
       end;
 
+      aCaseRecord.OBDate := DecodeDateTime(theOBXRecord.ObsDateTime);
+
     end;
     theSegment := theSegment.nextSibling;
   end;
