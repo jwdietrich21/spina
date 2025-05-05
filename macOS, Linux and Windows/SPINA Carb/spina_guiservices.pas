@@ -43,11 +43,33 @@ uses
   {$ENDIF}
   , SPINATypes, EnvironmentInfo;
 
+var
+  gPreferredLanguage: string;
+
+function GetOSLanguage: string;
 function DarkTheme: boolean;
 function CombString(theArray: TStringDynArray; theDelim: String): String;
 function WithReferenceRanges(RefMessage: String): String;
 
 implementation
+
+function GetOSLanguage: string;
+  {platform-independent method to read the language of the user interface}
+var
+  l, fbl: string;
+begin
+  {$IFDEF Darwin}
+  fbl := Copy(NSStringToString(NSLocale.currentLocale.preferredLanguages.objectAtIndex(0).description),1, 2);
+
+  {$ELSE}
+  {$IFDEF UNIX}
+  fbl := Copy(GetEnvironmentVariable('LC_CTYPE'), 1, 2);
+  {$ELSE}
+  GetLanguageIDs(l, fbl);
+  {$ENDIF}
+  {$ENDIF}
+  Result := fbl;
+end;
 
 {$IFDEF LCLCocoa}
 {The following two functions were suggested by Hansaplast at https://forum.lazarus.freepascal.org/index.php/topic,43111.msg304366.html}
@@ -150,5 +172,8 @@ begin
   end;
   result := CombString(ResArray, LineEnding);
 end;
+
+initialization
+  gPreferredLanguage := GetOSLanguage;
 
 end.

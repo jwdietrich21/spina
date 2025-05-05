@@ -182,6 +182,8 @@ begin
   AboutBox.Memo1.Lines.Add('');
   AboutBox.Memo1.Lines.Add('Operating system: ' + PlatformInfo.OS +
     ' (' + SystemVersion + ')');
+  AboutBox.Memo1.Lines.Add('');
+  AboutBox.Memo1.Lines.Add('User language: ' + gPreferredLanguage);
   AboutBox.AlphaBlendValue := 255;
   PageControl1.ActivePage := VersionTabSheet;
   AboutBox.ShowModal;
