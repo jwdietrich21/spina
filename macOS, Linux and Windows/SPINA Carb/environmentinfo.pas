@@ -6,6 +6,7 @@ unit EnvironmentInfo;
 { Partly based on code provided by Mike Thompson, published at}
 { http://www.lazarus.freepascal.org/index.php/topic,13957.0.html}
 
+{ (c) M. Thompson, 2011 }
 { (c) J. W. Dietrich, 2007 - 2025 }
 
 {$mode objfpc}{$H+}
@@ -195,38 +196,26 @@ begin
   OSVersion := 'Unix ';
   {$ELSE}
   {$IFDEF WINDOWS}
-  if WindowsVersion = wv95 then
-    OSVersion := 'Windows 95 / '
-  else if WindowsVersion = wvNT4 then
-    OSVersion := 'Windows NT v.4 / '
-  else if WindowsVersion = wv98 then
-    OSVersion := 'Windows 98 / '
-  else if WindowsVersion = wvMe then
-    OSVersion := 'Windows ME / '
-  else if WindowsVersion = wv2000 then
-    OSVersion := 'Windows 2000 / '
-  else if WindowsVersion = wvXP then
-    OSVersion := 'Windows XP / '
-  else if WindowsVersion = wvServer2003 then
-    OSVersion := 'Windows Server 2003 / '
-  else if WindowsVersion = wvVista then
-    OSVersion := 'Windows Vista / '
-  else if WindowsVersion = wv7 then
-    OSVersion := 'Windows 7 / '
-  {$if FPC_FULlVERSION >= 30000}{Free Pascal 3.0 or newer}
-  else if WindowsVersion = wv8 then
-    OSVersion := 'Windows 8 / '
-  else if WindowsVersion = wv8_1 then
-    OSVersion := 'Windows 8.1 / '
-  else if WindowsVersion = wv10 then
-    OSVersion := 'Windows 10 / '
-  else if WindowsVersion = wv11 then
-    OSVersion := 'Windows 11 / '
-  else if WindowsVersion = wvLater then
-    OSVersion := 'Windows '
-  {$ENDIF}
-  else
-    OSVersion := 'Windows ';
+  case WindowsVersion of
+    wv95:         Result:= 'Windows 95 / ';
+    wvNT4:        Result:= 'Windows NT v.4 / ';
+    wv98:         Result:= 'Windows 98 / ';
+    wvMe:         Result:= 'Windows ME / ';
+    wv2000:       Result:= 'Windows 2000 / ';
+    wvXP:         Result:= 'Windows XP / ';
+    wvServer2003: Result:= 'Windows Server 2003 / ';
+    wvVista:      Result:= 'Windows Vista / ';
+    wv7:          Result:= 'Windows 7 / ';
+    {$if FPC_FULlVERSION >= 30000}{Free Pascal 3.0 or newer}
+    wv8:          Result:= 'Windows 8 / ';
+    wv8_1:        Result:= 'Windows 8.1 / ';
+    wv10:         Result:= 'Windows 10 / ';
+    wv11:         Result:= 'Windows 11 / ';
+    wvLater:      Result:= 'Windows / ';
+    {$ENDIF}
+    otherwise     Result:= 'Windows / ';
+    //See possible values in the unit "win32proc" in "lcl/interfaces/win32/win32proc.pp"
+  end;
   {$ENDIF}
   {$ENDIF}
   {$ENDIF}
@@ -395,14 +384,7 @@ begin
   result := SystemStem + MinVer + '.' + BugfixVer;
   {$ELSE}
   {$IFDEF LCLCocoa}
-  //Major := NSProcessInfo.ProcessInfo.OperatingSystemVersion.majorVersion;
-  //Minor := NSProcessInfo.ProcessInfo.OperatingSystemVersion.minorVersion;
-  //Bugfix := NSProcessInfo.ProcessInfo.OperatingSystemVersion.patchVersion;
-  //MajVer := IntToStr(Major);
-  //MinVer := IntToStr(Minor);
-  //BugfixVer := IntToStr(Bugfix);
-  //result := SystemStem + MajVer + '.' + MinVer + '.' + BugfixVer;
-  result := NSProcessInfo.ProcessInfo.operatingSystemVersionString.UTF8String;
+  result := 'macOS ' + NSProcessInfo.ProcessInfo.operatingSystemVersionString.UTF8String;
   {$ELSE}
   {$IFDEF WINDOWS}
   MajVer := IntToStr(Win32MajorVersion);

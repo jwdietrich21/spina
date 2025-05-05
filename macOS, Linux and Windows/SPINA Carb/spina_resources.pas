@@ -27,27 +27,55 @@ interface
 uses
   Classes, SysUtils;
 
+type
+  TGuiLabels = record
+    caseTab, EntryTab, CommentTab: string;
+    ctCaseID, ctPID, ctName, ctGivenName, ctDOB, ctPlacer, ctOBD, ctOBT,
+    ctNext: string;
+    enGlucose, enInsulin, enCPep, enHintbox, enHintText, enBParBox, enResults,
+    enCalculate: string;
+    enCommentBox: string;
+  end;
+
 const
   { Language 1: German (deutsch); language 2: English }
   kUncertified11 = ' (Version für Forschungszwecke)';
   kUncertified12 = ' (Research version)';
   kUncertified21 =
     'Einsatz für Forschungszwecke nach §3 und §6 MPG und Art. 1(2)h der Richtlinie 93/42/EWG des Rates.';
-  kUncertified22 = 'Research use according to article 1(2)h of the council directive 93/42/EEC.';
+  kUncertified22 =
+    'Research use according to article 1(2)h of the council directive 93/42/EEC.';
   kUncertified31 = 'Einsatz nur zu Forschungszwecken.';
   kUncertified32 = 'Research use only.';
-  kUnCertified41 = 'Die Verwendung ist gemäß GCP, nach §12 MPG und Anhang X der Richtlinie 93/42/EWG zu dokumentieren.';
-  kUnCertified42 = 'Usage has to be documented in accordance with GCP and annex X of the council directive 93/42/EEC.';
+  kUnCertified41 =
+    'Die Verwendung ist gemäß GCP, nach §12 MPG und Anhang X der Richtlinie 93/42/EWG zu dokumentieren.';
+  kUnCertified42 =
+    'Usage has to be documented in accordance with GCP and annex X of the council directive 93/42/EEC.';
 
-  kBetaHint = 'This version of SPINA Carb is beta software that is provided for purposes of testing.' + LineEnding +
-              'Please report any errors via https://sourceforge.net/p/spina/_list/tickets.' + LineEnding + LineEnding +
-              'Diese Version von SPINA Carb ist Beta-Software, die für Testzwecke bereitgestellt wird.' + LineEnding +
-              'Bitte melden Sie Fehler über https://sourceforge.net/p/spina/_list/tickets.';
+  kBetaHint =
+    'This version of SPINA Carb is beta software that is provided for purposes of testing.'
+    + LineEnding +
+    'Please report any errors via https://sourceforge.net/p/spina/_list/tickets.' +
+    LineEnding + LineEnding +
+    'Diese Version von SPINA Carb ist Beta-Software, die für Testzwecke bereitgestellt wird.'
+    + LineEnding +
+    'Bitte melden Sie Fehler über https://sourceforge.net/p/spina/_list/tickets.';
 
   HL7_Error = 'HL7 Error';
   pathError = 'Empty path';
 
   kMacUnavailable = 'Unavailable on macOS';
+
+  kGUILabels_en: TGuiLabels = (caseTab: 'Case Editor'; EntryTab: 'Data Entry';
+    CommentTab: 'Comment';
+    ctCaseID: 'Admission or Case ID'; ctPID: 'PID'; ctName: 'Family Name';
+    ctGivenName: 'Given name(s)'; ctDOB: 'Date of Birth';
+    ctPlacer: 'Placer'; ctOBD: 'Date of Investigation'; ctOBT: '';
+    ctNext: 'Next';
+    enGlucose: 'Glucose'; enInsulin: 'Insulin'; enCPep: 'C-Peptide';
+    enHintBox: 'Hints:'; enHintText: '';
+    enBParBox: 'Enter behavioural parameters:'; enResults: 'Results:';
+    enCalculate: 'Calculate'; enCommentBox: 'Comment');
 
 var
   gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
@@ -55,4 +83,3 @@ var
 implementation
 
 end.
-
