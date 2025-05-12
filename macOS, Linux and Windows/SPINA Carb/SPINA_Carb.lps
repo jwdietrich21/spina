@@ -118,10 +118,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_Aboutbox"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
-        <TopLine Value="121"/>
-        <CursorPos X="15" Y="179"/>
+        <TopLine Value="122"/>
+        <CursorPos X="73" Y="125"/>
         <UsageCount Value="160"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -185,8 +184,10 @@
         <Filename Value="spina_resources.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Resources"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <CursorPos Y="2"/>
+        <TopLine Value="73"/>
+        <CursorPos X="53" Y="95"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -390,7 +391,7 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
+    <JumpHistory HistoryIndex="28">
       <Position>
         <Filename Value="spina_guiservices.pas"/>
         <Caret Line="69" TopLine="52"/>
@@ -502,10 +503,6 @@
       <Position>
         <Filename Value="spina_guiservices.pas"/>
         <Caret Line="177" TopLine="148"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="62" Column="109" TopLine="148"/>
       </Position>
       <Position>
         <Filename Value="spina_guiservices.pas"/>

@@ -73,9 +73,28 @@ const
     ctPlacer: 'Placer'; ctOBD: 'Date of Investigation'; ctOBT: '';
     ctNext: 'Next';
     enGlucose: 'Glucose'; enInsulin: 'Insulin'; enCPep: 'C-Peptide';
-    enHintBox: 'Hints:'; enHintText: '';
+    enHintBox: 'Hints:'; enHintText:
+    'Please enter fasting concentrations of insulin and glucose (and, optionally, c-peptide) and hit "Calculate".'
+    +
+    LineEnding + LineEnding +
+    'You should make sure that you chose the correct units of measurement.';
     enBParBox: 'Enter behavioural parameters:'; enResults: 'Results:';
     enCalculate: 'Calculate'; enCommentBox: 'Comment');
+
+  kGUILabels_de: TGuiLabels = (caseTab: 'Falleditor'; EntryTab: 'Eingabe';
+    CommentTab: 'Kommentar';
+    ctCaseID: 'Aufnahme- oder Fallnummer'; ctPID: 'PID'; ctName: 'Familienname';
+    ctGivenName: 'Vorname(n)'; ctDOB: 'Geburtsdatum';
+    ctPlacer: 'Einsender'; ctOBD: 'Untersuchungsdatum'; ctOBT: '';
+    ctNext: 'Weiter';
+    enGlucose: 'Glukose'; enInsulin: 'Insulin'; enCPep: 'C-Peptid';
+    enHintBox: 'Hinweise:'; enHintText:
+    'Bitte geben Sie Nüchtern-Konzentrationen für Insulin and Glukose (und, optional, C-Peptid) ein und klicken Sie auf "Berechnen".'
+    +
+    LineEnding + LineEnding +
+    'Achten Sie bitte auf die korrekten Maßeinheiten.';
+    enBParBox: 'Verhaltensparameter:'; enResults: 'Ergebnisse:';
+    enCalculate: 'Berechnen'; enCommentBox: 'Kommentar');
 
 var
   gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
