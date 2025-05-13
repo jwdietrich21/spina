@@ -9,11 +9,11 @@ object AboutBox: TAboutBox
   Caption = 'About SPINA Carb'
   ClientHeight = 390
   ClientWidth = 451
+  Position = poScreenCenter
+  LCLVersion = '4.0.0.4'
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnPaint = FormPaint
-  Position = poScreenCenter
-  LCLVersion = '3.8.0.0'
   object OKButton: TButton
     Left = 192
     Height = 24

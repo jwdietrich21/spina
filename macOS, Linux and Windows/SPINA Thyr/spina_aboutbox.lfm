@@ -305,12 +305,12 @@ object AboutBox: TAboutBox
     601FE078700FE078F00FE078F00FE078F807F078F807F078FC07F078FE07F0F9
     FF07F8F9FF87FCFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
   }
+  Position = poScreenCenter
+  LCLVersion = '4.0.0.4'
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnPaint = FormPaint
   OnShow = FormShow
-  Position = poScreenCenter
-  LCLVersion = '3.8.0.0'
   object OKButton: TButton
     Left = 192
     Height = 24
@@ -342,7 +342,6 @@ object AboutBox: TAboutBox
         Height = 81
         Top = 12
         Width = 204
-        OnClick = ClickURL
         Picture.Data = {
           1754506F727461626C654E6574776F726B4772617068696316A9000089504E47
           0D0A1A0A0000000D49484452000004AC0000029808060000005E9C60C8000009
@@ -1701,6 +1700,7 @@ object AboutBox: TAboutBox
         }
         Proportional = True
         Transparent = True
+        OnClick = ClickURL
       end
       object VersionLabel: TLabel
         Left = 21

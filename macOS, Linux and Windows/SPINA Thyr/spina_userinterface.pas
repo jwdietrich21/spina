@@ -30,7 +30,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdActns, StdCtrls, LCLType, Menus, ActnList, EnvironmentInfo,
   gettext, SPINA_Types, SPINA_Resources, SPINA_GUIServices, UnitConverter,
-  SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog, spina_help,
+  SPINA_Engine, SPINA_AboutBox, SPINA_ResultDialog, spina_help, LocaleServices,
   HandlePreferences, SetPreferences, CaseEditor, HandleImpEx, Math,
   InterfaceBase, LCLIntf, Barcode
   {$IFDEF MSWINDOWS}
@@ -227,7 +227,7 @@ type
 var
   TSH, T4, T3: real;
   Hauptschirm: THauptschirm;
-  gSysLanguage, gUserName: string;
+  gUserName: string;
   UserNameSize: DWord;
   wUserName: WideString;
   gTSHUnitFactor, gT4UnitFactor, gT3UnitFactor: real;
@@ -248,7 +248,6 @@ procedure bell;
 procedure AdaptMenus;
 procedure AdjustUnitLabels;
 procedure ComposeRRHints;
-procedure GetMacDateFormats;
 procedure GetPreferences;
 
 implementation
@@ -327,28 +326,6 @@ begin
 end;
 
 { THauptschirm }
-
-procedure GetMacDateFormats;
-begin
-  {$IFDEF Darwin}
-  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
-    CFLocaleCopyCurrent, kCFDateFormatterMediumStyle, kCFDateFormatterNoStyle);
-  theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
-  if pos('.', theFormatString) > 0 then
-    DefaultFormatSettings.DateSeparator := '.'
-  else if pos('/', theFormatString) > 0 then
-    DefaultFormatSettings.DateSeparator := '/'
-  else if pos('-', theFormatString) > 0 then
-    DefaultFormatSettings.DateSeparator := '-';
-  DefaultFormatSettings.ShortDateFormat := theFormatString;
-  CFRelease(theFormatter);
-  theFormatter := CFDateFormatterCreate(kCFAllocatorDefault,
-    CFLocaleCopyCurrent, kCFDateFormatterLongStyle, kCFDateFormatterNoStyle);
-  theFormatString := CFStringToStr(CFDateFormatterGetFormat(theFormatter));
-  DefaultFormatSettings.LongDateFormat := theFormatString;
-  CFRelease(theFormatter);
-  {$ENDIF}
-end;
 
 procedure GetPreferences;
 {gets preferences and adjust controls in the main form accordingly}

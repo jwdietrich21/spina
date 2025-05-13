@@ -315,15 +315,15 @@ object Hauptschirm: THauptschirm
     FF07F8F9FF87FCFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
   }
   Menu = MainMenu
+  ParentBiDiMode = False
+  Position = poScreenCenter
+  LCLVersion = '4.0.0.4'
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnDropFiles = FormDropFiles
   OnPaint = FormPaint
   OnShow = FormShow
   OnWindowStateChange = FormWindowStateChange
-  ParentBiDiMode = False
-  Position = poScreenCenter
-  LCLVersion = '3.8.0.0'
   object FT4Items: TComboBox
     Left = 128
     Height = 20
@@ -426,13 +426,13 @@ object Hauptschirm: THauptschirm
         'T4-Substitution'
         'T3-Substitution'
       )
-      OnClick = TherapyCheckGroupClick
-      OnItemClick = TherapyCheckGroupItemClick
       ParentFont = False
       ParentColor = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
+      OnClick = TherapyCheckGroupClick
+      OnItemClick = TherapyCheckGroupItemClick
       Data = {
         03000000020202
       }
@@ -1244,7 +1244,6 @@ object Hauptschirm: THauptschirm
         Width = 204
         Align = alCustom
         Anchors = [akLeft, akBottom]
-        OnClick = SPINALabelClick
         Picture.Data = {
           1754506F727461626C654E6574776F726B4772617068696316A9000089504E47
           0D0A1A0A0000000D49484452000004AC0000029808060000005E9C60C8000009
@@ -2603,6 +2602,7 @@ object Hauptschirm: THauptschirm
         }
         Proportional = True
         Transparent = True
+        OnClick = SPINALabelClick
       end
     end
   end

@@ -1,14 +1,14 @@
 unit LocaleServices;
 
-{ SPINA Carb }
+{ SPINA-Thyr }
 
 { Application for calculating structure parameters }
-{ of insulin-glucose feedback control }
+{ of thyrotropic feedback control }
 
 { Programm zur Berechnung von Strukturparametern }
-{ des Insulin-Glukose-Regelkreises }
+{ des thyreotropen Regelkreises }
 
-{ Version 5.1.0 (Cyclone) }
+{ Version 4.2.2 (Kontinuum) }
 
 { (c) J. W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -40,13 +40,13 @@ uses
   {$ENDIF}
   {$ENDIF}
   {$ENDIF}
-  SPINATypes
+  SPINA_Types
 ;
 
 var
-  gPreferredLanguage: string;
+  gSysLanguage: string;
 
-function GetOSLanguage: string;
+  function GetOSLanguage: string;
 procedure GetMacDateFormats;
 function StrToFloatDefL(const S: string; const Default: Extended): Extended;
 
@@ -120,7 +120,7 @@ begin
 end;
 
 initialization
-  gPreferredLanguage := GetOSLanguage;
+  gSysLanguage := GetOSLanguage;
 
 end.
 

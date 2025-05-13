@@ -26,7 +26,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  ExtCtrls, LCLIntf, EnvironmentInfo, SPINA_GUIServices, HandlePreferences;
+  ExtCtrls, LCLIntf, EnvironmentInfo, SPINA_GUIServices, HandlePreferences,
+  LocaleServices;
 
 type
 

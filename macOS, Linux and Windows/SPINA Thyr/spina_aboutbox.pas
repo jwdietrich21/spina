@@ -27,7 +27,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdCtrls, LCLIntf, ComCtrls, DOS, SPINA_Types, EnvironmentInfo,
-  HandlePreferences, SPINA_GUIServices
+  HandlePreferences, SPINA_GUIServices, LocaleServices
   {$IFDEF Windows}
   , Windows, Win32Proc
   {$ELSE}
@@ -134,6 +134,8 @@ begin
       AboutBox.Memo1.Lines.Add('and using ' + EnvironmentInfo.LCLVersion + ' with ' + CurrentWidgetSet);
       AboutBox.Memo1.Lines.Add('');
       AboutBox.Memo1.Lines.Add('Operating system: ' + PlatformInfo.OS + ' (' + SystemVersion + ')');
+      AboutBox.Memo1.Lines.Add('');
+      AboutBox.Memo1.Lines.Add('User language: ' + gSysLanguage);
       AboutBox.AlphaBlendValue := 255;
       AboutBox.ShowModal;
     end;

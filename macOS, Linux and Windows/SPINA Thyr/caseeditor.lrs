@@ -1,5 +1,3 @@
-{ This is an automatically generated lazarus resource file }
-
 LazarusResources.Add('TCaseEditorForm','FORMDATA',[
   'TPF0'#15'TCaseEditorForm'#14'CaseEditorForm'#4'Left'#3't'#1#6'Height'#3#130#1
   +#3'Top'#3#128#0#5'Width'#3'<'#2#13'ActiveControl'#7#10'CaseIDEdit'#14'AllowD'
