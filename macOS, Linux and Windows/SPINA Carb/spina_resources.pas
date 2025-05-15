@@ -66,22 +66,7 @@ const
 
   kMacUnavailable = 'Unavailable on macOS';
 
-  kGUILabels_en: TGuiLabels = (caseTab: 'Case Editor'; EntryTab: 'Data Entry';
-    CommentTab: 'Comment';
-    ctCaseID: 'Admission or Case ID'; ctPID: 'PID'; ctName: 'Family Name';
-    ctGivenName: 'Given name(s)'; ctDOB: 'Date of Birth';
-    ctPlacer: 'Placer'; ctOBD: 'Date of Investigation'; ctOBT: '';
-    ctNext: 'Next';
-    enGlucose: 'Glucose'; enInsulin: 'Insulin'; enCPep: 'C-Peptide';
-    enHintBox: 'Hints:'; enHintText:
-    'Please enter fasting concentrations of insulin and glucose (and, optionally, c-peptide) and hit "Calculate".'
-    +
-    LineEnding + LineEnding +
-    'You should make sure that you chose the correct units of measurement.';
-    enBParBox: 'Enter behavioural parameters:'; enResults: 'Results:';
-    enCalculate: 'Calculate'; enCommentBox: 'Comment');
-
-  kGUILabels_de: TGuiLabels = (caseTab: 'Falleditor'; EntryTab: 'Eingabe';
+  kGUILabels_de: TGuiLabels = (caseTab: 'Falldaten'; EntryTab: 'Eingabe';
     CommentTab: 'Kommentar';
     ctCaseID: 'Aufnahme- oder Fallnummer'; ctPID: 'PID'; ctName: 'Familienname';
     ctGivenName: 'Vorname(n)'; ctDOB: 'Geburtsdatum';

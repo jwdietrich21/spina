@@ -21,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
         <EditorIndex Value="15"/>
-        <TopLine Value="17"/>
-        <CursorPos Y="17"/>
+        <TopLine Value="237"/>
+        <CursorPos X="57" Y="258"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -118,10 +118,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_Aboutbox"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
         <TopLine Value="15"/>
-        <CursorPos X="17" Y="30"/>
+        <CursorPos X="114" Y="36"/>
         <UsageCount Value="160"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -185,14 +184,17 @@
         <Filename Value="spina_resources.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Resources"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <CursorPos X="53" Y="95"/>
+        <TopLine Value="58"/>
+        <CursorPos X="5" Y="63"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
+          <IsVisibleTab Value="True"/>
           <EditorIndex Value="-1"/>
-          <WindowIndex Value="-1"/>
-          <TopLine Value="19"/>
-          <CursorPos X="69" Y="35"/>
+          <WindowIndex Value="1"/>
+          <TopLine Value="61"/>
+          <CursorPos X="16" Y="69"/>
         </ExtraEditor1>
         <UsageCount Value="76"/>
         <Loaded Value="True"/>
@@ -332,8 +334,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="LocaleServices"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="34"/>
-        <CursorPos Y="48"/>
+        <TopLine Value="95"/>
+        <CursorPos X="21" Y="123"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -391,18 +393,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="78" TopLine="52"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="64" TopLine="52"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_guiservices.pas"/>
-        <Caret Line="66" TopLine="52"/>
-      </Position>
       <Position>
         <Filename Value="spina_guiservices.pas"/>
         <Caret Line="67" TopLine="52"/>
@@ -510,6 +500,18 @@
       <Position>
         <Filename Value="localeservices.pas"/>
         <Caret Line="48" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="17" TopLine="459"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="253" TopLine="237"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="257" Column="56" TopLine="237"/>
       </Position>
     </JumpHistory>
     <RunParams>

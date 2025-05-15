@@ -250,6 +250,13 @@ begin
   AdaptForPlatform;
   //SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
   SPINACarbLabel.Caption := 'SPINA Carb Beta Version for Testing';
+  if gPreferredLanguage = 'de' then
+  begin
+    CaseEditorSheet.Caption := kGUILabels_de.caseTab;
+    EntrySheet.Caption := kGUILabels_de.EntryTab;
+    CommentSheet.Caption := kGUILabels_de.CommentTab;
+    CalculateButton.Caption := kGUILabels_de.enCalculate;
+  end;
   MainPageControl.ActivePage := EntrySheet;
   FocusEdit(Sender);
 end;
