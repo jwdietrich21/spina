@@ -106,9 +106,9 @@ type
     HOMABetaLabel: TLabel;
     SPINAGRLabel: TLabel;
     SPINADILabel: TLabel;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet1: TTabSheet;
+    HL7Tab: TTabSheet;
+    OtherTab: TTabSheet;
+    RangesTab: TTabSheet;
     procedure CancelButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -244,6 +244,24 @@ end;
 
 procedure TPreferencesForm.FormCreate(Sender: TObject);
 begin
+  if gPreferredLanguage = 'de' then
+    begin
+      CancelButton.Caption := kPrefLabels_de.Cancel;
+      RangesTab.Caption := kPrefLabels_de.RangesTab;
+      HL7Tab.Caption := kPrefLabels_de.HL7Tab;
+      OtherTab.Caption := kPrefLabels_de.OtherTab;
+      CDISCGroupBox.Caption := kPrefLabels_de.rtRanges;
+      GlucoseLabel.Caption := kPrefLabels_de.rtGlucose;
+      InsulinLabel.Caption := kPrefLabels_de.rtInsulin;
+      CPeptideLabel.Caption := kPrefLabels_de.rtCPep;
+      IDGroupBox.Caption := kPrefLabels_de.hlIDGroup;
+      SendingFacLabel.Caption := kPrefLabels_de.hlSender;
+      PlacerLabel.Caption := kPrefLabels_de.hlPlacer;
+      VariableGroupBox.Caption := kPrefLabels_de.hlVariableGroup;
+      LOINCCheck.Caption := kPrefLabels_de.hlExport;
+      MarkMandatoryCheck.Caption := kPrefLabels_de.otMandatory;
+      PrintingGroupBox.Caption := kPrefLabels_de.otFont;
+    end;
   PopulateEdits(Sender);
   MandatoryFieldsGrid.Rows[4].Text := 'Glucose';
   MandatoryFieldsGrid.Rows[5].Text := 'Insulin';

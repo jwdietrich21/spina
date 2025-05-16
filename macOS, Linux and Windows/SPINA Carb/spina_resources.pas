@@ -36,6 +36,17 @@ type
     enCalculate: string;
     coCommentBox: string;
   end;
+  TPrefLabels = record
+    FormTitle: String;
+    RangesTab, HL7Tab, OtherTab: string;
+    rtRanges, rtGlucose, rtInsulin, rtCPep: string;
+    hlIDGroup, hlVariableGroup: string;
+    hlSender, hlPlacer, hlExport: string;
+    otMandatory: string;
+    otGlucose, otInsulin, otCPep: string;
+    otFont: string;
+    Cancel: string;
+  end;
 
 const
   { Language 1: German (deutsch); language 2: English }
@@ -66,21 +77,52 @@ const
 
   kMacUnavailable = 'Unavailable on macOS';
 
-  kGUILabels_de: TGuiLabels = (caseTab: 'Falldaten'; EntryTab: 'Eingabe';
+  kGUILabels_de: TGuiLabels = (caseTab: 'Falldaten';
+    EntryTab: 'Eingabe';
     CommentTab: 'Kommentar';
-    ctCaseID: 'Aufnahme- oder Fall-Nr.:'; ctPID: 'PID:'; ctName: 'Familienname:';
-    ctGivenName: 'Vorname(n):'; ctDOB: 'Geburtsdatum:';
-    ctPlacer: 'Einsender:'; ctOBD: 'Untersuchungsdatum:'; ctOBT: '';
+    ctCaseID: 'Aufnahme- oder Fall-Nr.:';
+    ctPID: 'PID:'; ctName: 'Familienname:';
+    ctGivenName: 'Vorname(n):';
+    ctDOB: 'Geburtsdatum:';
+    ctPlacer: 'Einsender:';
+    ctOBD: 'Untersuchungsdatum:';
+    ctOBT: '';
     ctNext: 'Weiter';
-    enGlucose: 'Glukose'; enInsulin: 'Insulin'; enCPep: 'C-Peptid';
-    enHintBox: 'Hinweise:'; enHintText:
+    enGlucose: 'Glukose';
+    enInsulin: 'Insulin';
+    enCPep: 'C-Peptid';
+    enHintBox: 'Hinweise:';
+    enHintText:
     'Bitte geben Sie Nüchtern-Konzentrationen für Insulin and Glukose (und, optional, C-Peptid) ein und klicken Sie auf "Berechnen".'
     +
     LineEnding + LineEnding +
     'Achten Sie bitte auf die korrekten Maßeinheiten.';
-    enBParBox: 'Verhaltensparameter:'; enResults: 'Ergebnisse:';
-    enCalculate: 'Berechnen'; coCommentBox: 'Kommentar');
+    enBParBox: 'Verhaltensparameter:';
+    enResults: 'Ergebnisse:';
+    enCalculate: 'Berechnen';
+    coCommentBox: 'Kommentar');
 
+  kPrefLabels_de: TPrefLabels = (
+    FormTitle: 'Einstellungen';
+    RangesTab: 'Einheiten und Konzentrationen';
+    HL7Tab: 'HL7-Nachrichten';
+    OtherTab: 'Sonstiges';
+    rtRanges: 'Referenzbereiche:';
+    rtGlucose: 'Glukose:';
+    rtInsulin: 'Insulin:';
+    rtCPep: 'C-Peptid:';
+    hlIDGroup: 'Praxis- oder Klinik-ID:';
+    hlVariableGroup: 'Variablen:';
+    hlSender: 'Einrichtung:';
+    hlPlacer: 'Einsender:';
+    hlExport: 'Export mit LOINC-Code';
+    otMandatory: 'Pflichtfelder farbig hervorheben';
+    otGlucose: 'Glukose';
+    otInsulin: 'Insulin';
+    otCPep: 'C-Peptid';
+    otFont: 'Schriftart für Druck:';
+    Cancel: 'Abbrechen'
+    );
 var
   gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
 

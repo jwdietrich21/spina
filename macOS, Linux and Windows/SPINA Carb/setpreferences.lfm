@@ -1,7 +1,7 @@
 object PreferencesForm: TPreferencesForm
-  Left = 287
+  Left = 398
   Height = 458
-  Top = 225
+  Top = 80
   Width = 673
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -10,12 +10,12 @@ object PreferencesForm: TPreferencesForm
   ClientWidth = 673
   Constraints.MinHeight = 400
   Constraints.MinWidth = 600
+  Position = poScreenCenter
+  LCLVersion = '4.0.0.4'
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
-  Position = poScreenCenter
-  LCLVersion = '3.8.0.0'
   object OKButton: TButton
     Left = 566
     Height = 25
@@ -43,12 +43,12 @@ object PreferencesForm: TPreferencesForm
     Height = 390
     Top = 8
     Width = 617
-    ActivePage = TabSheet1
+    ActivePage = RangesTab
     Anchors = [akTop, akLeft, akRight, akBottom]
     TabIndex = 0
     TabOrder = 2
     OnChange = PageControl1Change
-    object TabSheet1: TTabSheet
+    object RangesTab: TTabSheet
       Caption = 'Ranges and units'
       ClientHeight = 354
       ClientWidth = 611
@@ -226,8 +226,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 83
-          Width = 81
-          Caption = 'SPINA-GBeta'
+          Width = 85
+          Caption = 'SPINA-GBeta:'
         end
         object GBetaRRLEdit: TEdit
           Left = 191
@@ -267,8 +267,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 107
-          Width = 62
-          Caption = 'SPINA-GR'
+          Width = 66
+          Caption = 'SPINA-GR:'
         end
         object GRRRLEdit: TEdit
           Left = 191
@@ -311,8 +311,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 131
-          Width = 57
-          Caption = 'SPINA-DI'
+          Width = 60
+          Caption = 'SPINA-DI:'
         end
         object DIRRLEdit: TEdit
           Left = 191
@@ -335,8 +335,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 155
-          Width = 73
-          Caption = 'HOMA-Beta'
+          Width = 77
+          Caption = 'HOMA-Beta:'
         end
         object HOMABetaRRLEdit: TEdit
           Left = 191
@@ -376,8 +376,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 179
-          Width = 57
-          Caption = 'HOMA-IR'
+          Width = 61
+          Caption = 'HOMA-IR:'
         end
         object HOMAIRRRLEdit: TEdit
           Left = 191
@@ -410,8 +410,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 203
-          Width = 57
-          Caption = 'HOMA-IS'
+          Width = 61
+          Caption = 'HOMA-IS:'
         end
         object HOMAISRRLEdit: TEdit
           Left = 191
@@ -444,8 +444,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 227
-          Width = 44
-          Caption = 'QUICKI'
+          Width = 48
+          Caption = 'QUICKI:'
         end
         object QUICKIRRLEdit: TEdit
           Left = 191
@@ -478,8 +478,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 275
-          Width = 27
-          Caption = 'CGR'
+          Width = 31
+          Caption = 'CGR:'
         end
         object CGRRRLEdit: TEdit
           Left = 191
@@ -519,8 +519,8 @@ object PreferencesForm: TPreferencesForm
           Left = 12
           Height = 16
           Top = 251
-          Width = 30
-          Caption = 'AIGR'
+          Width = 34
+          Caption = 'AIGR:'
         end
         object AIGRRRLEdit: TEdit
           Left = 191
@@ -565,7 +565,7 @@ object PreferencesForm: TPreferencesForm
         end
       end
     end
-    object TabSheet2: TTabSheet
+    object HL7Tab: TTabSheet
       Caption = 'HL7 messages'
       ClientHeight = 354
       ClientWidth = 611
@@ -643,7 +643,7 @@ object PreferencesForm: TPreferencesForm
         end
       end
     end
-    object TabSheet3: TTabSheet
+    object OtherTab: TTabSheet
       Caption = 'Other'
       ClientHeight = 354
       ClientWidth = 611
@@ -653,7 +653,7 @@ object PreferencesForm: TPreferencesForm
         Top = 8
         Width = 575
         Anchors = [akTop, akLeft, akRight]
-        Caption = 'GUI'
+        Caption = 'GUI:'
         ClientHeight = 213
         ClientWidth = 565
         TabOrder = 0
@@ -717,7 +717,7 @@ object PreferencesForm: TPreferencesForm
         Top = 286
         Width = 575
         Anchors = [akLeft, akRight, akBottom]
-        Caption = 'Font for Printing'
+        Caption = 'Font for Printing:'
         ClientHeight = 30
         ClientWidth = 565
         TabOrder = 1
