@@ -1603,11 +1603,11 @@ object Hauptschirm: THauptschirm
     Height = 370
     Top = 0
     Width = 756
-    ActivePage = CaseEditorSheet
+    ActivePage = EntrySheet
     Align = alClient
     ParentShowHint = False
     ShowHint = True
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     object CaseEditorSheet: TTabSheet
       Caption = 'Case Editor'

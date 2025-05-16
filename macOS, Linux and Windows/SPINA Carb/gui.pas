@@ -255,7 +255,27 @@ begin
     CaseEditorSheet.Caption := kGUILabels_de.caseTab;
     EntrySheet.Caption := kGUILabels_de.EntryTab;
     CommentSheet.Caption := kGUILabels_de.CommentTab;
+    CaseIDLabel.Caption := kGUILabels_de.ctCaseID;
+    PIDLabel.Caption := kGUILabels_de.ctPID;
+    NameLabel.Caption := kGUILabels_de.ctName;
+    GivenNameLabel.Caption := kGUILabels_de.ctGivenName;
+    DOBLabel.Caption := kGUILabels_de.ctDOB;
+    PlacerLabel.Caption := kGUILabels_de.ctPlacer;
+    OBDateLabel.Caption := kGUILabels_de.ctOBD;
+    NextButton.Caption := kGUILabels_de.ctNext;
+
+    HintBox.Caption := kGUILabels_de.enHintbox;
+    EntryBox.Caption := kGUILabels_de.enBParBox;
+    ResultsMemo.Caption := kGUILabels_de.enResults;
+    GlucoseLabel.Caption := kGUILabels_de.enGlucose;
+    InsulinLabel.Caption := kGUILabels_de.enInsulin;
+    CPeptideLabel.Caption := kGUILabels_de.enCPep;
     CalculateButton.Caption := kGUILabels_de.enCalculate;
+
+    HintsMemo.Lines.Clear;
+    HintsMemo.Lines.Add(kGUILabels_de.enHintText);
+
+    CommentBox.Caption := kGUILabels_de.coCommentBox;
   end;
   MainPageControl.ActivePage := EntrySheet;
   FocusEdit(Sender);

@@ -34,7 +34,7 @@ type
     ctNext: string;
     enGlucose, enInsulin, enCPep, enHintbox, enHintText, enBParBox, enResults,
     enCalculate: string;
-    enCommentBox: string;
+    coCommentBox: string;
   end;
 
 const
@@ -68,9 +68,9 @@ const
 
   kGUILabels_de: TGuiLabels = (caseTab: 'Falldaten'; EntryTab: 'Eingabe';
     CommentTab: 'Kommentar';
-    ctCaseID: 'Aufnahme- oder Fallnummer'; ctPID: 'PID'; ctName: 'Familienname';
-    ctGivenName: 'Vorname(n)'; ctDOB: 'Geburtsdatum';
-    ctPlacer: 'Einsender'; ctOBD: 'Untersuchungsdatum'; ctOBT: '';
+    ctCaseID: 'Aufnahme- oder Fall-Nr.:'; ctPID: 'PID:'; ctName: 'Familienname:';
+    ctGivenName: 'Vorname(n):'; ctDOB: 'Geburtsdatum:';
+    ctPlacer: 'Einsender:'; ctOBD: 'Untersuchungsdatum:'; ctOBT: '';
     ctNext: 'Weiter';
     enGlucose: 'Glukose'; enInsulin: 'Insulin'; enCPep: 'C-Peptid';
     enHintBox: 'Hinweise:'; enHintText:
@@ -79,7 +79,7 @@ const
     LineEnding + LineEnding +
     'Achten Sie bitte auf die korrekten Maßeinheiten.';
     enBParBox: 'Verhaltensparameter:'; enResults: 'Ergebnisse:';
-    enCalculate: 'Berechnen'; enCommentBox: 'Kommentar');
+    enCalculate: 'Berechnen'; coCommentBox: 'Kommentar');
 
 var
   gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
