@@ -2,7 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="12"/>
-    <BuildModes Active="Default"/>
+    <BuildModes Active="macOS Apple Silicon"/>
     <Units>
       <Unit>
         <Filename Value="SPINA_Carb.lpr"/>
@@ -333,7 +333,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <TopLine Value="6"/>
-        <CursorPos X="31" Y="31"/>
+        <CursorPos X="30" Y="31"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
