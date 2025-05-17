@@ -28,7 +28,7 @@ unit SPINA_GUIServices;
 interface
 
 uses
-  Classes, SysUtils, gettext, Types, StrUtils
+  Classes, SysUtils, Types, StrUtils
   {$IFDEF WINDOWS}
   , Windows, Win32Proc, registry
   {$ENDIF}
