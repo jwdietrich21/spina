@@ -47,6 +47,9 @@ type
     otFont: string;
     Cancel: string;
   end;
+  TResults = record
+    FormTitle, LabelTitle: string
+  end;
 
 const
   { Language 1: German (deutsch); language 2: English }
@@ -77,7 +80,9 @@ const
 
   kMacUnavailable = 'Unavailable on macOS';
 
-  kGUILabels_de: TGuiLabels = (caseTab: 'Falldaten';
+  kGUILabels_de: TGuiLabels =
+    (
+    caseTab: 'Falldaten';
     EntryTab: 'Eingabe';
     CommentTab: 'Kommentar';
     ctCaseID: 'Aufnahme- oder Fall-Nr.:';
@@ -100,9 +105,11 @@ const
     enBParBox: 'Verhaltensparameter:';
     enResults: 'Ergebnisse:';
     enCalculate: 'Berechnen';
-    coCommentBox: 'Kommentar');
+    coCommentBox: 'Kommentar'
+    );
 
-  kPrefLabels_de: TPrefLabels = (
+  kPrefLabels_de: TPrefLabels =
+    (
     FormTitle: 'Einstellungen';
     RangesTab: 'Einheiten und Konzentrationen';
     HL7Tab: 'HL7-Nachrichten';
@@ -123,6 +130,13 @@ const
     otFont: 'Schriftart für Druck:';
     Cancel: 'Abbrechen'
     );
+
+  kResLabels_de: TResults =
+    (
+    FormTitle: 'Ergebnisse';
+    LabelTitle: 'Ergebnisse:'
+    );
+
 var
   gUncertified1, gUncertified2, gUncertified3, gUncertified4: string;
 

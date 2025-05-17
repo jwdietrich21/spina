@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  SPINATypes, SPINA_GUIServices;
+  SPINATypes, SPINA_GUIServices, SPINA_Resources, LocaleServices;
 
 type
 
@@ -39,6 +39,7 @@ type
     ResultLabel: TLabel;
     SParMemo: TMemo;
     procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure ShowResults(BParString, SParString, ParHint, RefHint: string);
@@ -65,6 +66,15 @@ end;
 procedure TResultForm.FormActivate(Sender: TObject);
 begin
   ActiveControl := OKButton;
+end;
+
+procedure TResultForm.FormCreate(Sender: TObject);
+begin
+  if gPreferredLanguage = 'de' then
+    begin
+      Caption := kResLabels_de.FormTitle;
+      ResultLabel.Caption := kResLabels_de.LabelTitle;
+    end;
 end;
 
 procedure TResultForm.FormShow(Sender: TObject);

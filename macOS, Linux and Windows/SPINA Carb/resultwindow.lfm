@@ -7,14 +7,15 @@ object ResultForm: TResultForm
   AlphaBlend = True
   AlphaBlendValue = 230
   BorderStyle = bsToolWindow
-  Caption = 'ResultForm'
+  Caption = 'Results'
   ClientHeight = 252
   ClientWidth = 691
   FormStyle = fsSystemStayOnTop
-  OnActivate = FormActivate
-  OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.0.0.4'
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnShow = FormShow
   object LogoImage: TImage
     Left = 24
     Height = 90
