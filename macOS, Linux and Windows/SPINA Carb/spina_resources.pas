@@ -53,6 +53,16 @@ type
     FormTitle, LabelTitle: string
   end;
 
+  TMenuCaptions = record
+    FileMenu, EditMenu, HelpMenu: string;
+    AboutItem, SettingsItem: string;
+    NewItem, OpenItem, CloseItem, SaveItem, CaseDataItem: string;
+    PageSetupItem, PrintItem, QuitItem: string;
+    UndoItem, RedoItem, CutItem, CopyItem, PasteItem, CopyResultItem: string;
+    CopyFormattedItem, SelectAllItem: string;
+    HelpItem: string;
+  end;
+
 const
   { Language 1: German (deutsch); language 2: English }
   kUncertified1_de = ' (Version für Forschungszwecke)';
@@ -133,8 +143,7 @@ const
     enHintBox: 'Hinweise:';
     enHintText:
     'Bitte geben Sie Nüchtern-Konzentrationen für Insulin and Glukose (und, optional, C-Peptid) ein und klicken Sie auf "Berechnen".'
-    + LineEnding + LineEnding +
-    'Achten Sie bitte auf die korrekten Maßeinheiten.';
+    + LineEnding + LineEnding + 'Achten Sie bitte auf die korrekten Maßeinheiten.';
     enBParBox: kBPars_de;
     enResults: 'Ergebnisse:';
     enCalculate: 'Berechnen';
@@ -168,6 +177,32 @@ const
     (
     FormTitle: 'Ergebnisse';
     LabelTitle: 'Ergebnisse:'
+    );
+
+  kMenuCaptions_de: TMenuCaptions =
+    (
+    FileMenu: 'Ablage';
+    EditMenu: 'Bearbeiten';
+    HelpMenu: 'Hilfe';
+    AboutItem: 'Über SPINA Carb ...';
+    SettingsItem: 'Einstellungen ...';
+    NewItem: 'Neue Berechnung ...';
+    OpenItem: 'Öffnen';
+    CloseItem: 'Schließen';
+    SaveItem: 'Sichern als ...';
+    CaseDataItem: 'Falldaten ...';
+    PageSetupItem: 'Seite einrichten ...';
+    PrintItem: 'Drucken ...';
+    QuitItem: 'Beenden';
+    UndoItem: 'Widerrufen';
+    RedoItem: 'Wiederholen';
+    CutItem: 'Ausschneiden';
+    CopyItem: 'Kopieren';
+    PasteItem: 'Einfügen';
+    CopyResultItem: 'Ergebnis kopieren';
+    CopyFormattedItem: 'Formatiert kopieren';
+    SelectAllItem: 'Alles auswählen';
+    HelpItem: 'Hilfe';
     );
 
 var

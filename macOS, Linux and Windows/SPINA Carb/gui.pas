@@ -276,6 +276,34 @@ begin
     HintsMemo.Lines.Add(kGUILabels_de.enHintText);
 
     CommentBox.Caption := kGUILabels_de.coCommentBox;
+
+    FileMenu.Caption := kMenuCaptions_de.FileMenu;
+    EditMenu.Caption := kMenuCaptions_de.EditMenu;
+    HelpMenu.Caption := kMenuCaptions_de.HelpMenu;
+
+    MacAboutItem.Caption := kMenuCaptions_de.AboutItem;
+    MacPreferencesMenuItem.Caption := kMenuCaptions_de.SettingsItem;
+
+    NewMenuItem.Caption := kMenuCaptions_de.NewItem;
+    OpenMenuItem.Caption := kMenuCaptions_de.OpenItem;
+    SaveMenuItem.Caption := kMenuCaptions_de.SaveItem;
+    CloseMenuItem.Caption := kMenuCaptions_de.CloseItem;
+    CaseDataMenuItem.Caption := kMenuCaptions_de.CaseDataItem;
+    PageSetupMenuItem.Caption := kMenuCaptions_de.PageSetupItem;
+    PrintMenuItem.Caption := kMenuCaptions_de.PrintItem;
+    QuitMenuItem.Caption := kMenuCaptions_de.QuitItem;
+
+    UndoMenuItem.Caption := kMenuCaptions_de.UndoItem;
+    RedoMenuItem.Caption := kMenuCaptions_de.RedoItem;
+    CutMenuItem.Caption := kMenuCaptions_de.CutItem;
+    CopyMenuItem.Caption := kMenuCaptions_de.CopyItem;
+    PasteMenuItem.Caption := kMenuCaptions_de.PasteItem;
+    SelectAllMenuItem.Caption := kMenuCaptions_de.SelectAllItem;
+    CopyResultMenuItem.Caption := kMenuCaptions_de.CopyResultItem;
+    CopyFormattedMenuItem.Caption := kMenuCaptions_de.CopyFormattedItem;
+    WinPreferencesMenuItem.Caption := kMenuCaptions_de.SettingsItem;
+
+    WinAboutItem.Caption := kMenuCaptions_de.AboutItem;
   end;
   MainPageControl.ActivePage := EntrySheet;
   FocusEdit(Sender);
