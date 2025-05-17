@@ -36,8 +36,10 @@ var
   tabX1, tabX2, tabX3: integer;
   gTopMargin, gBottomMargin, gLeftMargin, gRightMargin: double;
   gLineSpacing: integer;
+  PID2, Name2, Placer2, DOB2, ExamDate2, caseNum2: string;
+  gUserName, PrintingDate: string;
 
-procedure PrintCaseRecord(CaseRecord: tCaseRecord);
+procedure PrintCaseRecord(const CaseRecord: tCaseRecord; const language: string);
 
 implementation
 
@@ -124,29 +126,28 @@ begin
     slash := ' / '
   else
     slash := '';
-    PrinterWrite(H, currentX, currentY, kPID2, False);
-    if (caseRecord.PID <> '') or (caseRecord.CaseID <> '') then
-      PrinterWrite(H, tabX1, currentY, caseRecord.PID +
-        slash + caseRecord.CaseID, False);
-    PrinterWriteln(H, currentX, currentY, '', False);
-    PrinterWrite(H, currentX, currentY, kName2, False);
-    if (caseRecord.Name <> '') and
-      (caseRecord.GivenNames <> '') then
-      PrinterWrite(H, tabX1, currentY, caseRecord.Name +
-        ', ' + caseRecord.GivenNames, False);
-    PrinterWrite(H, tabX2, currentY, kPlacer2, False);
-    PrinterWriteln(H, tabX3, currentY, caseRecord.Placer, False);
-    PrinterWrite(H, currentX, currentY, kDOB2, False);
-    if not isNaN(caseRecord.DoBDate) then
-      PrinterWrite(H, tabX1, currentY, DateToStr(caseRecord.DoBDate)
-        , False);
-    PrinterWrite(H, tabX2, currentY, kExamDate2, False);
-    if not isNaN(caseRecord.OBDate) then
-      PrinterWrite(H, tabX3, currentY, DateToStr(caseRecord.OBDate)
-        , False);
-    PrinterWriteln(H, currentX, currentY, '', False);
-    PrinterWriteln(H, currentX, currentY, '', False);
-    PrinterWriteln(H, currentX, currentY, '', False);
+  PrinterWrite(H, currentX, currentY, PID2, False);
+  if (caseRecord.PID <> '') or (caseRecord.CaseID <> '') then
+    PrinterWrite(H, tabX1, currentY, caseRecord.PID + slash +
+      caseRecord.CaseID, False);
+  PrinterWriteln(H, currentX, currentY, '', False);
+  PrinterWrite(H, currentX, currentY, Name2, False);
+  if (caseRecord.Name <> '') and (caseRecord.GivenNames <> '') then
+    PrinterWrite(H, tabX1, currentY, caseRecord.Name + ', ' +
+      caseRecord.GivenNames, False);
+  PrinterWrite(H, tabX2, currentY, Placer2, False);
+  PrinterWriteln(H, tabX3, currentY, caseRecord.Placer, False);
+  PrinterWrite(H, currentX, currentY, DOB2, False);
+  if not isNaN(caseRecord.DoBDate) then
+    PrinterWrite(H, tabX1, currentY, DateToStr(caseRecord.DoBDate)
+      , False);
+  PrinterWrite(H, tabX2, currentY, ExamDate2, False);
+  if not isNaN(caseRecord.OBDate) then
+    PrinterWrite(H, tabX3, currentY, DateToStr(caseRecord.OBDate)
+      , False);
+  PrinterWriteln(H, currentX, currentY, '', False);
+  PrinterWriteln(H, currentX, currentY, '', False);
+  PrinterWriteln(H, currentX, currentY, '', False);
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   PrinterWriteln(H, currentX, currentY, '', False);
@@ -164,18 +165,41 @@ begin
   Printer.Canvas.MoveTo(currentX, currentY - H div 2);
   Printer.Canvas.LineTo(Printer.PageWidth - rightMargin, currentY - H div 2);
   Printer.Canvas.Font.Color := clGray;
-  PrinterWriteln(H, currentX, currentY, concat(kUserName, UserName,
-    '  |  ', kPrintingDate, DateToStr(date), theTime), False);
+  PrinterWriteln(H, currentX, currentY, concat(gUserName, UserName,
+    '  |  ', PrintingDate, DateToStr(date), theTime), False);
   PrinterWriteln(H, currentX, currentY, 'SPINA Carb ' + FileVersion, False);
   PrinterWriteln(H, currentX, currentY, '', False);
   Printer.Canvas.Font.Color := clBlack;
 end;
 
-procedure PrintCaseRecord(CaseRecord: tCaseRecord);
+procedure PrintCaseRecord(const CaseRecord: tCaseRecord; const language: string);
 var
   H, ADPI, marginX, marginXr, currentX, currentY, lastY, returnPos, lastPos: integer;
   resultLine, remainder: string;
 begin
+  if language = 'de' then
+  begin
+    PID2 := kPID2_de;
+    Name2 := kName2_de;
+    Placer2 := kPlacer2_de;
+    DOB2 := kDOB2_de;
+    ExamDate2 := kExamDate2_de;
+    caseNum2 := kCaseNum2_de;
+    gUserName := kUserName_de;
+    PrintingDate := kPrintingDate_de;
+  end
+  else
+  begin
+    PID2 := kPID2_en;
+    Name2 := kName2_en;
+    Placer2 := kPlacer2_en;
+    DOB2 := kDOB2_en;
+    ExamDate2 := kExamDate2_en;
+    caseNum2 := kCaseNum2_en;
+    gUserName := kUserName_en;
+    PrintingDate := kPrintingDate_en;
+  end;
+
   assert(assigned(Printer));
   begin
     gTopMargin := 2;
@@ -197,10 +221,10 @@ begin
       Printer.Canvas.Pen.Color := clBlack;
       Printer.Canvas.Pen.Width := 2;
       H := (Printer.Canvas.TextHeight('X') + gLineSpacing);
-      tabX1 := marginX + Printer.Canvas.TextWidth(kDOB2) + GetPoints(1, ADPI);
+      tabX1 := marginX + Printer.Canvas.TextWidth(DOB2) + GetPoints(1, ADPI);
       tabX2 := Printer.PageWidth - marginXr -
-        trunc(2.5 * Printer.Canvas.TextWidth(kExamDate2));
-      tabX3 := tabX2 + Printer.Canvas.TextWidth(kCaseNum2) + GetPoints(0.5, ADPI);
+        trunc(2.5 * Printer.Canvas.TextWidth(ExamDate2));
+      tabX3 := tabX2 + Printer.Canvas.TextWidth(CaseNum2) + GetPoints(0.5, ADPI);
       PrintCaption(CaseRecord, H, currentX, currentY, marginXr);
       lastPos := 1;
       lastY := currentY;
@@ -234,8 +258,16 @@ begin
       { #todo : Implement language-specific handler }
       if not gCEcertified then
       begin
-        PrinterWriteln(H, currentX, currentY, kUncertified22, False);
-        PrinterWriteln(H, currentX, currentY, kUncertified42, False);
+        if language = 'de' then
+        begin
+          PrinterWriteln(H, currentX, currentY, kUncertified2_de, False);
+          PrinterWriteln(H, currentX, currentY, kUncertified4_de, False);
+        end
+        else
+        begin
+          PrinterWriteln(H, currentX, currentY, kUncertified2_en, False);
+          PrinterWriteln(H, currentX, currentY, kUncertified4_en, False);
+        end;
       end;
       Printer.Canvas.Font.Color := clBlack;
       currentX := marginX;
@@ -249,4 +281,3 @@ end;
 
 
 end.
-

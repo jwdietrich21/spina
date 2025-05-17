@@ -26,7 +26,8 @@ unit CaseBroker;
 interface
 
 uses
-  Classes, SysUtils, Math, UnitConverter, SPINATypes, SPINA_Engine;
+  Classes, SysUtils, Math, UnitConverter, SPINATypes, SPINA_Resources,
+  LocaleServices, SPINA_Engine;
 
 type
   tLabRecord = record
@@ -124,8 +125,14 @@ end;
 
 procedure CreateMessages(var CaseRecord: tCaseRecord);
 {Creates messages for calculated parameters}
+var
+  SPars: string;
 begin
-  CaseRecord.SParMessage := kSPars + LineEnding + '   ' + kSPINA_GBeta +
+  if gPreferredLanguage = 'de' then
+    SPars := KSPars_de
+  else
+    SPars := KSPars_en;
+  CaseRecord.SParMessage := SPars + LineEnding + '   ' + kSPINA_GBeta +
     ': ' + Marked(CaseRecord.LabRecord.SPINA_GBeta,
     gPreferences.ReferenceValues.SPINA_GBeta, 4, 2) + ' ' + GBetaUoM +
     LineEnding + '   ' + kSPINA_GR + ': ' +

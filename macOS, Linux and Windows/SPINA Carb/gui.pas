@@ -372,7 +372,7 @@ procedure THauptschirm.PrintMenuItemClick(Sender: TObject);
 begin
   assert(assigned(Printer));
   if DoPrintSetup then
-    PrintCaseRecord(CaseRecord);
+    PrintCaseRecord(CaseRecord, gPreferredLanguage);
 end;
 
 procedure THauptschirm.QuitMenuItemClick(Sender: TObject);
@@ -620,21 +620,39 @@ end;
 procedure THauptschirm.CreateOutput(Sender: TObject);
 const
   GapString = ' ' + LineEnding + ' ' + LineEnding;
+var
+  BPars, Gluc, Ins, CPt, RR: String;
 begin
+  if gPreferredLanguage = 'de' then
+  begin
+    BPars := KBPars_de;
+    Gluc := kGluc_de;
+    Ins := kIns_de;
+    Cpt := kCpt_de;
+    RR := kRR_de;
+  end
+  else
+  begin
+    BPars := KBPars_en;
+    Gluc := kGluc_en;
+    Ins := kIns_en;
+    Cpt := kCpt_en;
+    RR := kRR_en;
+  end;
   CreateMessages(CaseRecord);
-  CaseRecord.BParMessage := kBPars + LineEnding + '   ' + kGluc +
+  CaseRecord.BParMessage := BPars + LineEnding + '   ' + Gluc +
     ': ' + MarkedC(CaseRecord.LabRecord.Glucose, gPreferences.ReferenceValues.Glucose,
     kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUnitsCombo.Text, 4, 1) +
-    ' ' + GlucoseUoM + LineEnding + '   ' + kIns + ': ' +
+    ' ' + GlucoseUoM + LineEnding + '   ' + Ins + ': ' +
     MarkedC(CaseRecord.LabRecord.Insulin, gPreferences.ReferenceValues.Insulin,
     kInsulinConversionFactor, kEngineUoMs.Insulin, InsulinUnitsCombo.Text, 4, 1) +
-    ' ' + InsulinUoM + LineEnding + '   ' + kCpt + ': ' +
+    ' ' + InsulinUoM + LineEnding + '   ' + Cpt + ': ' +
     MarkedC(CaseRecord.LabRecord.CPeptide, gPreferences.ReferenceValues.CPeptide,
     kCPeptideMolarMass, kEngineUoMs.CPeptide, CPeptideUnitsCombo.Text, 4, 1) +
     ' ' + CPeptideUoM;
   CaseRecord.CombMessage := CaseRecord.BParMessage + LineEnding +
     '       ' + LineEnding + CaseRecord.SParMessage;
-  CaseRecord.BRefMessage1 := kRR + LineEnding +
+  CaseRecord.BRefMessage1 := RR + LineEnding +
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Glucose.ln,
     kGlucoseMolarMass, gPreferences.ReferenceValues.Glucose.UoM, GlucoseUnitsCombo.Text),
     ffFixed, 4, 1) + '–' + FloatToStrF(
@@ -657,7 +675,7 @@ begin
     GapString + CaseRecord.SRefMessage1;
   CaseRecord.RCombMessage2 := WithReferenceRanges(CaseRecord.RCombMessage1);
   CaseRecord.BRefMessage2 := SplitString(CaseRecord.RCombMessage2, GapString)[0];
-  CaseRecord.SRefMessage2 := kRR + LineEnding +
+  CaseRecord.SRefMessage2 := RR + LineEnding +
     SplitString(CaseRecord.RCombMessage2, GapString)[1];
 end;
 

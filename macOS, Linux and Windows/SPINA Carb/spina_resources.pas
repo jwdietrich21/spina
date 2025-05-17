@@ -36,8 +36,9 @@ type
     enCalculate: string;
     coCommentBox: string;
   end;
+
   TPrefLabels = record
-    FormTitle: String;
+    FormTitle: string;
     RangesTab, HL7Tab, OtherTab: string;
     rtRanges, rtGlucose, rtInsulin, rtCPep: string;
     hlIDGroup, hlVariableGroup: string;
@@ -47,23 +48,24 @@ type
     otFont: string;
     Cancel: string;
   end;
+
   TResults = record
     FormTitle, LabelTitle: string
   end;
 
 const
   { Language 1: German (deutsch); language 2: English }
-  kUncertified11 = ' (Version für Forschungszwecke)';
-  kUncertified12 = ' (Research version)';
-  kUncertified21 =
+  kUncertified1_de = ' (Version für Forschungszwecke)';
+  kUncertified1_en = ' (Research version)';
+  kUncertified2_de =
     'Einsatz für Forschungszwecke nach §3 und §6 MPG und Art. 1(2)h der Richtlinie 93/42/EWG des Rates.';
-  kUncertified22 =
+  kUncertified2_en =
     'Research use according to article 1(2)h of the council directive 93/42/EEC.';
-  kUncertified31 = 'Einsatz nur zu Forschungszwecken.';
-  kUncertified32 = 'Research use only.';
-  kUnCertified41 =
+  kUncertified3_de = 'Einsatz nur zu Forschungszwecken.';
+  kUncertified3_en = 'Research use only.';
+  kUnCertified4_de =
     'Die Verwendung ist gemäß GCP, nach §12 MPG und Anhang X der Richtlinie 93/42/EWG zu dokumentieren.';
-  kUnCertified42 =
+  kUnCertified4_en =
     'Usage has to be documented in accordance with GCP and annex X of the council directive 93/42/EEC.';
 
   kBetaHint =
@@ -80,6 +82,38 @@ const
 
   kMacUnavailable = 'Unavailable on macOS';
 
+  kBPars_en = 'Behavioural parameters:';
+  kSPars_en = 'Structural parameters:';
+  kRR_en = 'Reference ranges:';
+  kGluc_en = 'Glucose';
+  kIns_en = 'Insulin';
+  kCpt_en = 'C-Peptide';
+
+  kBPars_de = 'Verhaltensparameter:';
+  kSPars_de = 'Strukturparameter:';
+  kRR_de = 'Referenzbereiche:';
+  kGluc_de = 'Glukose';
+  kIns_de = 'Insulin';
+  kCpt_de = 'C-Peptid';
+
+  kPID2_en = 'PID: ';
+  kName2_en = 'Patient name: ';
+  kPlacer2_en = 'Placer: ';
+  kExamDate2_en = 'Examination Date: ';
+  kDOB2_en = 'Date of Birth: ';
+  kCaseNum2_en = 'Case / Admission Number: ';
+  kPrintingDate_en = 'Printing Date: ';
+  kUserName_en = 'User name: ';
+
+  kPID2_de = 'PID: ';
+  kName2_de = 'Name: ';
+  kPlacer2_de = 'Einsender: ';
+  kExamDate2_de = 'Untersuchungsdatum: ';
+  kDOB2_de = 'Geburtsdatum: ';
+  kCaseNum2_de = 'Fall- / Aufnahme-Nr.: ';
+  kPrintingDate_de = 'Druckdatum: ';
+  kUserName_de = 'Benutzerkennung: ';
+
   kGUILabels_de: TGuiLabels =
     (
     caseTab: 'Falldaten';
@@ -93,16 +127,15 @@ const
     ctOBD: 'Untersuchungsdatum:';
     ctOBT: '';
     ctNext: 'Weiter';
-    enGlucose: 'Glukose';
-    enInsulin: 'Insulin';
-    enCPep: 'C-Peptid';
+    enGlucose: kGluc_de;
+    enInsulin: kIns_de;
+    enCPep: kCpt_de;
     enHintBox: 'Hinweise:';
     enHintText:
     'Bitte geben Sie Nüchtern-Konzentrationen für Insulin and Glukose (und, optional, C-Peptid) ein und klicken Sie auf "Berechnen".'
-    +
-    LineEnding + LineEnding +
+    + LineEnding + LineEnding +
     'Achten Sie bitte auf die korrekten Maßeinheiten.';
-    enBParBox: 'Verhaltensparameter:';
+    enBParBox: kBPars_de;
     enResults: 'Ergebnisse:';
     enCalculate: 'Berechnen';
     coCommentBox: 'Kommentar'
