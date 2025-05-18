@@ -81,8 +81,12 @@ begin
 end;
 
 function InsulinSI(RawIns: extended; InsUom: string): extended;
+var
+  correctedConvFac: real;
 begin
-  Result := ConvertedValue(RawIns, kInsulinConversionFactor, InsUom,
+  correctedConvFac := 1e9 / kInsulinConversionFactor;
+     // correct for the empiric nature of the conversion factor
+  Result := ConvertedValue(RawIns, correctedConvFac, InsUom,
     kEngineUoMs.Insulin);
 end;
 

@@ -2,6 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="12"/>
+    <ManyBuildModesSelection Value="Default,&quot;macOS Apple Silicon&quot;,&quot;macOS Intel&quot;"/>
     <BuildModes Active="macOS Apple Silicon"/>
     <Units>
       <Unit>
@@ -21,7 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
         <EditorIndex Value="15"/>
-        <CursorPos Y="311"/>
+        <TopLine Value="624"/>
+        <CursorPos Y="641"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -45,8 +47,8 @@
         <Filename Value="unitconverter.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitConverter"/>
-        <TopLine Value="199"/>
-        <CursorPos X="3" Y="214"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="187"/>
         <Loaded Value="True"/>
       </Unit>
@@ -54,8 +56,7 @@
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="119"/>
-        <CursorPos X="29" Y="135"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="187"/>
         <Loaded Value="True"/>
       </Unit>
@@ -330,7 +331,6 @@
         <Filename Value="localeservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LocaleServices"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <TopLine Value="6"/>
         <CursorPos X="30" Y="31"/>
@@ -392,124 +392,124 @@
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="229" Column="31" TopLine="204"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="623" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="231" Column="50" TopLine="206"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="624" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="232" Column="33" TopLine="207"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="625" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="233" Column="45" TopLine="208"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="626" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="spina_resources.pas"/>
-        <Caret Line="68" Column="19" TopLine="62"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="627" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="271" Column="63" TopLine="253"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="620" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="272" Column="12" TopLine="258"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="622" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="187" Column="24" TopLine="183"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="623" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="39" Column="50" TopLine="17"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="624" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="160" TopLine="148"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="625" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="201" TopLine="186"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="626" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="158" Column="19" TopLine="142"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="627" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="40" Column="35" TopLine="17"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="620" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="165" Column="81" TopLine="152"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="622" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="180" Column="24" TopLine="154"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="623" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="261" Column="30" TopLine="236"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="624" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="175" Column="82" TopLine="164"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="625" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="30" Column="18" TopLine="17"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="626" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="180" Column="14" TopLine="164"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="627" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="261" Column="20" TopLine="253"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="620" TopLine="602"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="371" Column="42" TopLine="360"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="641" TopLine="626"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="378" Column="32" TopLine="360"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="643" TopLine="626"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="388" Column="32" TopLine="362"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="645" TopLine="626"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="403" Column="42" TopLine="377"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="647" TopLine="626"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="405" Column="21" TopLine="379"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="606" TopLine="590"/>
       </Position>
       <Position>
-        <Filename Value="spina_resources.pas"/>
-        <Caret Line="202" Column="13" TopLine="172"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="648" TopLine="633"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="713" Column="86" TopLine="698"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="661" TopLine="636"/>
       </Position>
       <Position>
-        <Filename Value="spina_resources.pas"/>
-        <Caret Line="185" Column="23" TopLine="178"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="641" Column="8" TopLine="638"/>
       </Position>
       <Position>
-        <Filename Value="printcase.pas"/>
-        <Caret Line="2"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="86" Column="36" TopLine="65"/>
       </Position>
       <Position>
-        <Filename Value="localeservices.pas"/>
-        <Caret Line="118" Column="39" TopLine="94"/>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="641" Column="8" TopLine="627"/>
       </Position>
     </JumpHistory>
     <RunParams>
