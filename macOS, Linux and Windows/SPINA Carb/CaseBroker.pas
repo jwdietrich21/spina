@@ -237,7 +237,7 @@ begin
     gPreferences.ReferenceValues.HOMA_Beta.hn,
     gPreferences.ReferenceValues.HOMA_Beta.UoM, 4, 1) + kParClose +
     LineEnding + kHOMA_IR + kS4TAB + kTAB + kTAB +
-    FloatToStrF(LabRecord.HOMA_IR, ffFixed, 4, 1) + kS4TAB + kParOpen +
+    FloatToStrF(LabRecord.HOMA_IR, ffFixed, 4, 1) + ' ' + kS4TAB + kParOpen +
     RefMessage(gPreferences.ReferenceValues.HOMA_IR.ln,
     gPreferences.ReferenceValues.HOMA_IR.hn, gPreferences.ReferenceValues.HOMA_IR.UoM,
     4, 1) + kParClose + LineEnding + kHOMA_IS + kS4TAB + kTAB + kTAB +
@@ -248,7 +248,7 @@ begin
     FloatToStrF(LabRecord.QUICKI, ffFixed, 4, 1) + ' ' + kS4TAB +
     kParOpen + RefMessage(gPreferences.ReferenceValues.QUICKI.ln,
     gPreferences.ReferenceValues.QUICKI.hn, gPreferences.ReferenceValues.QUICKI.UoM,
-    4, 1) + kParClose + LineEnding + kAIGR + kS10Tab + kTAB + kTAB +
+    4, 1) + kParClose + LineEnding + kAIGR + kS12Tab + kTAB + kTAB +
     FloatToStrF(LabRecord.AIGR, ffFixed, 4, 1) + kS4TAB + kParOpen +
     RefMessage(gPreferences.ReferenceValues.AIGR.ln,
     gPreferences.ReferenceValues.AIGR.hn, gPreferences.ReferenceValues.AIGR.UoM,

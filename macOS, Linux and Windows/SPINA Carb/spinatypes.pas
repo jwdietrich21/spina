@@ -33,6 +33,7 @@ const
   kTAB = char(9);
   kS4Tab = '    ' + kTAB;
   kS10Tab = '          ' + kTAB;
+  kS12Tab = '            ' + kTAB;
   kLF = char(10);
   kRETURN = char(13);
   kESCAPE = char(27);
