@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
         <EditorIndex Value="15"/>
-        <TopLine Value="624"/>
-        <CursorPos Y="641"/>
+        <TopLine Value="260"/>
+        <CursorPos X="89" Y="272"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -55,9 +55,8 @@
       <Unit>
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="222"/>
+        <TopLine Value="221"/>
         <CursorPos X="59" Y="240"/>
         <UsageCount Value="188"/>
         <Loaded Value="True"/>
@@ -186,9 +185,10 @@
         <Filename Value="spina_resources.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Resources"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="38"/>
-        <CursorPos X="8" Y="60"/>
+        <TopLine Value="169"/>
+        <CursorPos X="54" Y="185"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -395,10 +395,6 @@
     <JumpHistory HistoryIndex="26">
       <Position>
         <Filename Value="unitconverter.pas"/>
-        <Caret Line="625" TopLine="602"/>
-      </Position>
-      <Position>
-        <Filename Value="unitconverter.pas"/>
         <Caret Line="626" TopLine="602"/>
       </Position>
       <Position>
@@ -502,16 +498,8 @@
         <Caret Line="86" Column="36" TopLine="65"/>
       </Position>
       <Position>
-        <Filename Value="unitconverter.pas"/>
-        <Caret Line="641" Column="8" TopLine="627"/>
-      </Position>
-      <Position>
-        <Filename Value="spinatypes.pas"/>
-        <Caret Line="71" TopLine="56"/>
-      </Position>
-      <Position>
-        <Filename Value="spinatypes.pas"/>
-        <Caret Line="36" Column="19" TopLine="14"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="280" Column="41" TopLine="257"/>
       </Position>
     </JumpHistory>
     <RunParams>

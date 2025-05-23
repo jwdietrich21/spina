@@ -181,7 +181,11 @@ const
 
   kMenuCaptions_de: TMenuCaptions =
     (
+    {$IFDEF DARWIN}
     FileMenu: 'Ablage';
+    {$ELSE}
+    FileMenu: 'Datei';
+    {$ENDIF}
     EditMenu: 'Bearbeiten';
     HelpMenu: 'Hilfe';
     AboutItem: 'Über SPINA Carb ...';
