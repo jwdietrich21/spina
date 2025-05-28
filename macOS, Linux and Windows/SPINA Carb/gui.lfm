@@ -1603,12 +1603,13 @@ object Hauptschirm: THauptschirm
     Height = 370
     Top = 0
     Width = 756
-    ActivePage = EntrySheet
+    ActivePage = CommentSheet
     Align = alClient
     ParentShowHint = False
     ShowHint = True
-    TabIndex = 1
+    TabIndex = 2
     TabOrder = 0
+    OnChange = MainPageControlChange
     object CaseEditorSheet: TTabSheet
       Caption = 'Case Editor'
       ClientHeight = 334
@@ -9154,7 +9155,9 @@ object Hauptschirm: THauptschirm
           Top = 0
           Width = 720
           Anchors = [akTop, akLeft, akRight, akBottom]
+          ScrollBars = ssAutoVertical
           TabOrder = 0
+          WantTabs = True
         end
       end
     end

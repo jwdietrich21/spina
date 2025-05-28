@@ -30,7 +30,7 @@ uses
   EditBtn, Clipbrd,
   EnvironmentInfo, SPINATypes, SPINA_Resources, CaseBroker, SPINA_GUIServices,
   ResultWindow, SPINA_Aboutbox, Printers, PrintersDlgs, PrintCase,
-  SetPreferences, UnitConverter, SPINA_Engine, HandleImpEx, LocaleServices;
+  SetPreferences, UnitConverter, SPINA_Engine, HandleImpEx, LocaleServices, Types;
 
 const
   MAIN_FORM_TITLE = 'SPINA Carb';
@@ -142,6 +142,7 @@ type
     procedure LogoImageClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesMenuItemClick(Sender: TObject);
+    procedure MainPageControlChange(Sender: TObject);
     procedure NextButtonClick(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
@@ -164,6 +165,7 @@ type
     CaseRecord: tCaseRecord;
     InsulinRaw, GlucoseRaw, CPeptideRaw: extended;
     InsulinUoM, GlucoseUoM, CPeptideUoM: string;
+    procedure RegisterUoMs(Sender: TObject);
     procedure RegisterEntry(Sender: TObject);
     procedure CreateOutput(Sender: TObject);
     procedure DisplayResults(Sender: TObject);
@@ -359,6 +361,11 @@ begin
   UpdateUnits(Sender);
 end;
 
+procedure THauptschirm.MainPageControlChange(Sender: TObject);
+begin
+
+end;
+
 procedure THauptschirm.NextButtonClick(Sender: TObject);
 begin
   RegisterCaseData(Sender);
@@ -472,13 +479,16 @@ end;
 
 procedure THauptschirm.InsertValues(Sender: TObject);
 { Inserts values of case record into appropriate fields of the main tab }
+var
+  correctedConvFac: real;
 begin
   if not isNaN(caseRecord.LabRecord.Glucose) then
   begin
+    correctedConvFac := 1e9 / kInsulinConversionFactor;
     GlucoseEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Glucose,
       kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUnitsCombo.Caption), ffFixed, 4, 1);
     InsulinEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.Insulin,
-      kInsulinConversionFactor, kEngineUoMs.Insulin, InsulinUnitsCombo.Caption),
+      correctedConvFac, kEngineUoMs.Insulin, InsulinUnitsCombo.Caption),
       ffFixed, 4, 1);
     CPeptideEdit.Text := FloatToStrF(ConvertedValue(caseRecord.LabRecord.CPeptide,
       kCPeptideMolarMass, kEngineUoMs.CPeptide, CPeptideUnitsCombo.Caption),
@@ -627,6 +637,13 @@ begin
   CPeptideUnitsCombo.Caption := gPreferences.PreferredUoMs.CPeptide;
 end;
 
+procedure THauptschirm.RegisterUoMs(Sender: TObject);
+begin
+  InsulinUoM := InsulinUnitsCombo.Text;
+  GlucoseUoM := GlucoseUnitsCombo.Text;
+  CPeptideUoM := CPeptideUnitsCombo.Text;
+end;
+
 procedure THauptschirm.RegisterEntry(Sender: TObject);
 var
   CheckedIns, CheckedGlc, CheckedCPt: extended;
@@ -634,9 +651,7 @@ begin
   InsulinRaw := StrToFloatDefL(InsulinEdit.Text, Math.Nan);
   GlucoseRaw := StrToFloatDefL(GlucoseEdit.Text, Math.Nan);
   CPeptideRaw := StrToFloatDefL(CPeptideEdit.Text, Math.Nan);
-  InsulinUoM := InsulinUnitsCombo.Text;
-  GlucoseUoM := GlucoseUnitsCombo.Text;
-  CPeptideUoM := CPeptideUnitsCombo.Text;
+  RegisterUoMs(Sender);
   CheckedIns := InsulinSI(InsulinRaw, InsulinUoM);
   CheckedGlc := GlucoseSI(GlucoseRaw, GlucoseUoM);
   CheckedCPt := CPeptideSI(CPeptideRaw, CPeptideUoM);
@@ -650,7 +665,9 @@ const
   GapString = ' ' + LineEnding + ' ' + LineEnding;
 var
   BPars, Gluc, Ins, CPt, RR: String;
+  correctedConvFac: real;
 begin
+  correctedConvFac := 1e9 / kInsulinConversionFactor;
   if gPreferredLanguage = 'de' then
   begin
     BPars := KBPars_de;
@@ -667,13 +684,14 @@ begin
     Cpt := kCpt_en;
     RR := kRR_en;
   end;
+  RegisterUoMs(Sender);
   CreateMessages(CaseRecord);
   CaseRecord.BParMessage := BPars + LineEnding + '   ' + Gluc +
     ': ' + MarkedC(CaseRecord.LabRecord.Glucose, gPreferences.ReferenceValues.Glucose,
-    kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUnitsCombo.Text, 4, 1) +
+    kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUoM, 4, 1) +
     ' ' + GlucoseUoM + LineEnding + '   ' + Ins + ': ' +
     MarkedC(CaseRecord.LabRecord.Insulin, gPreferences.ReferenceValues.Insulin,
-    kInsulinConversionFactor, kEngineUoMs.Insulin, InsulinUnitsCombo.Text, 4, 1) +
+    correctedConvFac, kEngineUoMs.Insulin, InsulinUnitsCombo.Text, 4, 1) +
     ' ' + InsulinUoM + LineEnding + '   ' + Cpt + ': ' +
     MarkedC(CaseRecord.LabRecord.CPeptide, gPreferences.ReferenceValues.CPeptide,
     kCPeptideMolarMass, kEngineUoMs.CPeptide, CPeptideUnitsCombo.Text, 4, 1) +
@@ -682,11 +700,11 @@ begin
     '       ' + LineEnding + CaseRecord.SParMessage;
   CaseRecord.BRefMessage1 := RR + LineEnding +
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Glucose.ln,
-    kGlucoseMolarMass, gPreferences.ReferenceValues.Glucose.UoM, GlucoseUnitsCombo.Text),
+    kGlucoseMolarMass, gPreferences.ReferenceValues.Glucose.UoM, GlucoseUoM),
     ffFixed, 4, 1) + '–' + FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Glucose.hn, kGlucoseMolarMass,
-    gPreferences.ReferenceValues.Glucose.UoM, GlucoseUnitsCombo.Text), ffFixed, 4, 1) +
-    ' ' + GlucoseUnitsCombo.Text + LineEnding + FloatToStrF(
+    gPreferences.ReferenceValues.Glucose.UoM, GlucoseUoM), ffFixed, 4, 1) +
+    ' ' + GlucoseUoM + LineEnding + FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Insulin.ln,
     kInsulinConversionFactor, gPreferences.ReferenceValues.Insulin.UoM,
     InsulinUnitsCombo.Text), ffFixed, 4, 1) + '–' +
