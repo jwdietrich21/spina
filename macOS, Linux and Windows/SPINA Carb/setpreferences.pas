@@ -149,7 +149,11 @@ end;
 procedure TPreferencesForm.PopulateEdits(Sender: TObject);
 var
   preferredFontPos, sansSerifPos: integer;
+  correctedConvFac: real;
 begin
+  correctedConvFac := 1e9 / kInsulinConversionFactor;
+     // correct for the empiric nature of the conversion factor
+
   GlucoseRRLEdit.Text := FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Glucose.ln, kGlucoseMolarMass,
     gPreferences.ReferenceValues.Glucose.UoM, gPreferences.PreferredUoMs.Glucose), ffFixed, 4, 1);
@@ -159,10 +163,10 @@ begin
   GlucoseUnitsCombo.Text := gPreferences.PreferredUoMs.Glucose;
 
   InsulinRRLEdit.Text := FloatToStrF(
-    ConvertedValue(gPreferences.ReferenceValues.Insulin.ln, kInsulinConversionFactor,
+    ConvertedValue(gPreferences.ReferenceValues.Insulin.ln, correctedConvFac,
     gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin), ffFixed, 4, 1);
   InsulinRRHEdit.Text := FloatToStrF(
-    ConvertedValue(gPreferences.ReferenceValues.Insulin.hn, kInsulinConversionFactor,
+    ConvertedValue(gPreferences.ReferenceValues.Insulin.hn, correctedConvFac,
     gPreferences.ReferenceValues.Insulin.UoM, gPreferences.PreferredUoMs.Insulin), ffFixed, 4, 1);
   InsulinUnitsCombo.Text := gPreferences.PreferredUoMs.Insulin;
 

@@ -706,10 +706,10 @@ begin
     gPreferences.ReferenceValues.Glucose.UoM, GlucoseUoM), ffFixed, 4, 1) +
     ' ' + GlucoseUoM + LineEnding + FloatToStrF(
     ConvertedValue(gPreferences.ReferenceValues.Insulin.ln,
-    kInsulinConversionFactor, gPreferences.ReferenceValues.Insulin.UoM,
+    correctedConvFac, gPreferences.ReferenceValues.Insulin.UoM,
     InsulinUnitsCombo.Text), ffFixed, 4, 1) + '–' +
     FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Insulin.hn,
-    kInsulinConversionFactor, gPreferences.ReferenceValues.Insulin.UoM,
+    correctedConvFac, gPreferences.ReferenceValues.Insulin.UoM,
     InsulinUnitsCombo.Text), ffFixed, 4, 1) + ' ' + InsulinUnitsCombo.Text +
     LineEnding + FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.CPeptide.ln,
     kCPeptideMolarMass, gPreferences.ReferenceValues.CPeptide.UoM,
