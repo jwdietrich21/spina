@@ -132,6 +132,7 @@ var
   theSPM: tSPM;
   theNTE: tNTE;
   setIDcounter: integer;
+  correctedConvFac: real;
 begin
   HL7Message := THL7Message.Create('2.5');
   if HL7Message = nil then
@@ -140,6 +141,7 @@ begin
     ShowMessage(pathError)
   else
   begin
+    correctedConvFac := 1e9 / kInsulinConversionFactor;
     oldSeparator := DefaultFormatSettings.DecimalSeparator;
     DefaultFormatSettings.DecimalSeparator := DEC_POINT;
 
@@ -271,7 +273,7 @@ begin
       theOBX.ObsID := 'Insulin';
     theOBX.obsSubID := '1';
     theOBX.obsValue := FloatToStrF(ConvertedValue(aCaseRecord.LabRecord.Insulin,
-      kInsulinConversionFactor, kEngineUoMs.Insulin,
+      correctedConvFac, kEngineUoMs.Insulin,
       gPreferences.ReferenceValues.Insulin.UoM), ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.Insulin.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.Insulin.ln) +
@@ -646,7 +648,9 @@ var
   theField: THL7Field;
   theComponent: THL7Component;
   theSubComponent, nextSubComponent: THL7SubComponent;
+  correctedConvFac: real;
 begin
+  correctedConvFac := 1e9 / kInsulinConversionFactor;
   assert(theFile <> '');
   oldSeparator := DefaultFormatSettings.DecimalSeparator;
   DefaultFormatSettings.DecimalSeparator := DEC_POINT;
@@ -721,7 +725,7 @@ begin
       begin
         aCaseRecord.LabRecord.Insulin :=
           ConvertedValue(StrToFloatDef(theOBXRecord.obsValue, NaN),
-          kInsulinConversionFactor, theOBXRecord.Units, kEngineUoMs.Insulin);
+          correctedConvFac, theOBXRecord.Units, kEngineUoMs.Insulin);
       end;
 
       if (pos('C-Peptide', theOBXRecord.ObsID) > 0) or
