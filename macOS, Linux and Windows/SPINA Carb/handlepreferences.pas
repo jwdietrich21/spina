@@ -255,6 +255,8 @@ begin
       gPreferences.PreferredUoMs.Insulin));
     ElementNode.AppendChild(SimpleNode(Doc, 'C-peptide',
       gPreferences.PreferredUoMs.CPeptide));
+    ElementNode.AppendChild(SimpleNode(Doc, 'AIGR',
+      gPreferences.PreferredUoMs.AIGR));
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('mandatoryfields');
@@ -356,6 +358,7 @@ begin
     PreferredUoMs.Glucose := GlucSUom;
     PreferredUoMs.Insulin := InsSUoM;
     PreferredUoMs.CPeptide := CPepCUom;
+    PreferredUoMs.AIGR := AIGRUoM;
     new := True;
   end;
   SavePreferences;
@@ -397,6 +400,7 @@ begin
     gPreferences.PreferredUoMs.Glucose := NodeContent(RootNode, 'Glucose');
     gPreferences.PreferredUoMs.Insulin := NodeContent(RootNode, 'Insulin');
     gPreferences.PreferredUoMs.CPeptide := NodeContent(RootNode, 'C-peptide');
+    gPreferences.PreferredUoMs.AIGR := NodeContent(RootNode, 'AIGR');
 
     RootNode := Doc.DocumentElement.FindNode('mandatoryfields');
     theString := NodeContent(RootNode, 'colourise');

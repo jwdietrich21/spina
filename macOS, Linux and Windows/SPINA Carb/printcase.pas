@@ -255,7 +255,6 @@ begin
       PrinterWriteln(H, currentX, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, '', False);
       PrinterWriteln(H, currentX, currentY, '', False);
-      { #todo : Implement language-specific handler }
       if not gCEcertified then
       begin
         if language = 'de' then

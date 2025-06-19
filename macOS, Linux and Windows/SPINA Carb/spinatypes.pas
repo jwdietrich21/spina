@@ -139,6 +139,7 @@ type
 
   tPreferredUoMs = record
     Insulin, Glucose, CPeptide: String;
+    AIGR, CGR: String;
   end;
 
   tPreferences = record
@@ -154,16 +155,18 @@ const
   kEngineUoMs: tPreferredUoMs = { UoMs for Engine }
     (Insulin: 'pmol/l';
     Glucose: 'mmol/l';
-    CPeptide: 'nmol/l');
+    CPeptide: 'nmol/l';
+    AIGR: AIGRUoM;
+    CGR: CGRUoM);
 
-  {Standard reference ranges according to Khalili et al. and Dietrich et al.}
+  {Standard reference ranges according to to the references provided below}
   sReferenceValues: tReferenceValues =
                     (Insulin: (ln: 2; hn: 25; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: 'mIU/l');
+                              hp: NaN; UoM: InsSUoM);
                     Glucose: (ln: 70; hn: 100; lt: 70; ht: 180; lp: 54;
-                             hp: 250; UoM: 'mg/dl');
+                             hp: 250; UoM: GlucSUom);
                     CPeptide: (ln: 0.8; hn: 3.1; lt: NaN; ht: NaN; lp: NaN;
-                              hp: NaN; UoM: 'ng/ml');
+                              hp: NaN; UoM: CPepCUom);
                     SPINA_GBeta: (ln: 0.64; hn: 3.73; lt: NaN; ht: NaN; lp: NaN;
                               hp: NaN; UoM: GBetaUoM);
                     SPINA_GR: (ln: 1.41; hn: 9.00; lt: NaN; ht: NaN; lp: NaN;
@@ -194,6 +197,17 @@ const
    insulin and glucose concentration as a robust measure of carbohydrate
    homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525.
    Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
+
+3. Nauck MA, Meier JJ. Diagnostic accuracy of an "amended" insulin-glucose ratio
+   for the biochemical diagnosis of insulinomas. Ann Intern Med. 2012 Dec 4;157
+   (11):767-75. doi: 10.7326/0003-4819-157-11-201212040-00004. PMID: 23208166.
+
+4. Fritsche A, Heni M, Peter A, Gallwitz B, Kellerer M, Birkenfeld AL,
+   Häring HU, Wagner R. Considering Insulin Secretory Capacity as Measured by a
+   Fasting C-Peptide/Glucose Ratio in Selecting Glucose-Lowering Medications.
+   Exp Clin Endocrinol Diabetes. 2022 Mar;130(3):200-204.
+   doi: 10.1055/a-1242-9809. Epub 2020 Sep 18. PMID: 32947641;
+   PMCID: PMC8926455.
 }
 var
   gPreferences: tPreferences;

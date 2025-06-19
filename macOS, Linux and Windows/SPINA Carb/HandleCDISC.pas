@@ -856,6 +856,9 @@ begin
                     FlagUOMNode := theNode.FindNode('FlagUOM');
                     if assigned(FlagUOMNode) then
                     begin
+                      UnitsNode := FlagUOMNode.FindNode('ResultUnits');
+                      if assigned(UnitsNode) then
+                        ReferenceRanges.AIGR.UoM := AttributeValue(UnitsNode, 'Value');
                       NormalNode := FlagUOMNode.FindNode('Normal');
                       if assigned(NormalNode) then {skips exclusion definition}
                       begin
@@ -1967,8 +1970,8 @@ begin
     ExclusionDefinitions.Sex := 'F';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
-    ExclusionDefinitions.UOMS := AIGRUoM;
-    ExclusionDefinitions.UOMC := AIGRUoM;
+    ExclusionDefinitions.UOMS := ReferenceRanges.AIGR.UoM;
+    ExclusionDefinitions.UOMC := ReferenceRanges.AIGR.UoM;
     ExclusionDefinitions.LXS := 0;
     ExclusionDefinitions.HXS := 10000;
     ExclusionDefinitions.LXC := 0;
@@ -1978,8 +1981,8 @@ begin
     NormDefinitions.Sex := 'F';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := AIGRUoM;
-    NormDefinitions.UOMC := AIGRUoM;
+    NormDefinitions.UOMS := ReferenceRanges.AIGR.UoM;
+    NormDefinitions.UOMC := ReferenceRanges.AIGR.UoM;
     NormDefinitions.LS := ReferenceRanges.AIGR.ln;
     NormDefinitions.HS := ReferenceRanges.AIGR.hn;
     NormDefinitions.LTS := ReferenceRanges.AIGR.lt;
@@ -2001,8 +2004,8 @@ begin
     ExclusionDefinitions.Sex := 'M';
     ExclusionDefinitions.AgeL := 0;
     ExclusionDefinitions.AgeH := 999;
-    ExclusionDefinitions.UOMS := AIGRUoM;
-    ExclusionDefinitions.UOMC := AIGRUoM;
+    ExclusionDefinitions.UOMS := ReferenceRanges.AIGR.UoM;
+    ExclusionDefinitions.UOMC := ReferenceRanges.AIGR.UoM;
     ExclusionDefinitions.LXS := 0;
     ExclusionDefinitions.HXS := 10000;
     ExclusionDefinitions.LXC := 0;
@@ -2012,8 +2015,8 @@ begin
     NormDefinitions.Sex := 'M';
     NormDefinitions.AgeL := 0;
     NormDefinitions.AgeH := 130;
-    NormDefinitions.UOMS := AIGRUoM;
-    NormDefinitions.UOMC := AIGRUoM;
+    NormDefinitions.UOMS := ReferenceRanges.AIGR.UoM;
+    NormDefinitions.UOMC := ReferenceRanges.AIGR.UoM;
     NormDefinitions.LS := ReferenceRanges.AIGR.ln;
     NormDefinitions.HS := ReferenceRanges.AIGR.hn;
     NormDefinitions.LTS := ReferenceRanges.AIGR.lt;

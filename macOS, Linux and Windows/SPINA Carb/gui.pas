@@ -311,8 +311,7 @@ begin
   FocusEdit(Sender);
 end;
 
-procedure THauptschirm.FormDropFiles(Sender: TObject;
-  const FileNames: array of string);
+procedure THauptschirm.FormDropFiles(Sender: TObject; const FileNames: array of string);
 begin
   OpenFileList(Sender, FileNames);
 end;
@@ -330,7 +329,7 @@ var
 begin
   { opens files that have been dropped onto the icon before starting: }
   SetLength(FileNames, ParamCount);
-  For i:=1 to ParamCount do
+  for i := 1 to ParamCount do
     FileNames[i - 1] := ParamStr(i);
   if ParamCount > 0 then
     OpenFileList(Sender, FileNames);
@@ -440,13 +439,12 @@ begin
   MacPreferencesMenuItemClick(Sender);
 end;
 
-procedure THauptschirm.OpenFileList(Sender: TObject;
-  const FileNames: array of string);
+procedure THauptschirm.OpenFileList(Sender: TObject; const FileNames: array of string);
 { Open case from file via drag and drop }
 var
   theCaseRecord: tCaseRecord;
   j: integer;
-  thePath: String;
+  thePath: string;
 begin
   theCaseRecord.CaseID := '';
   NewCaseRecord(theCaseRecord);
@@ -624,9 +622,8 @@ begin
       OBDateStr := ''
     else
       OBDateStr := DateToStr(caseRecord.OBDate);
-    caption := MAIN_FORM_TITLE + ': ' + caseRecord.Name + ', ' +
-      caseRecord.GivenNames + ', * ' + DOBDateStr +
-      ' | ' + OBDateStr;
+    Caption := MAIN_FORM_TITLE + ': ' + caseRecord.Name + ', ' +
+      caseRecord.GivenNames + ', * ' + DOBDateStr + ' | ' + OBDateStr;
   end;
 end;
 
@@ -664,7 +661,7 @@ procedure THauptschirm.CreateOutput(Sender: TObject);
 const
   GapString = ' ' + LineEnding + ' ' + LineEnding;
 var
-  BPars, Gluc, Ins, CPt, RR: String;
+  BPars, Gluc, Ins, CPt, RR: string;
   correctedConvFac: real;
 begin
   correctedConvFac := 1e9 / kInsulinConversionFactor;
@@ -686,10 +683,10 @@ begin
   end;
   RegisterUoMs(Sender);
   CreateMessages(CaseRecord);
-  CaseRecord.BParMessage := BPars + LineEnding + '   ' + Gluc +
-    ': ' + MarkedC(CaseRecord.LabRecord.Glucose, gPreferences.ReferenceValues.Glucose,
-    kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUoM, 4, 1) +
-    ' ' + GlucoseUoM + LineEnding + '   ' + Ins + ': ' +
+  CaseRecord.BParMessage := BPars + LineEnding + '   ' + Gluc + ': ' +
+    MarkedC(CaseRecord.LabRecord.Glucose, gPreferences.ReferenceValues.Glucose,
+    kGlucoseMolarMass, kEngineUoMs.Glucose, GlucoseUoM, 4, 1) + ' ' +
+    GlucoseUoM + LineEnding + '   ' + Ins + ': ' +
     MarkedC(CaseRecord.LabRecord.Insulin, gPreferences.ReferenceValues.Insulin,
     correctedConvFac, kEngineUoMs.Insulin, InsulinUnitsCombo.Text, 4, 1) +
     ' ' + InsulinUoM + LineEnding + '   ' + Cpt + ': ' +
@@ -705,10 +702,9 @@ begin
     ConvertedValue(gPreferences.ReferenceValues.Glucose.hn, kGlucoseMolarMass,
     gPreferences.ReferenceValues.Glucose.UoM, GlucoseUoM), ffFixed, 4, 1) +
     ' ' + GlucoseUoM + LineEnding + FloatToStrF(
-    ConvertedValue(gPreferences.ReferenceValues.Insulin.ln,
-    correctedConvFac, gPreferences.ReferenceValues.Insulin.UoM,
-    InsulinUnitsCombo.Text), ffFixed, 4, 1) + '–' +
-    FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Insulin.hn,
+    ConvertedValue(gPreferences.ReferenceValues.Insulin.ln, correctedConvFac,
+    gPreferences.ReferenceValues.Insulin.UoM, InsulinUnitsCombo.Text), ffFixed, 4, 1) +
+    '–' + FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.Insulin.hn,
     correctedConvFac, gPreferences.ReferenceValues.Insulin.UoM,
     InsulinUnitsCombo.Text), ffFixed, 4, 1) + ' ' + InsulinUnitsCombo.Text +
     LineEnding + FloatToStrF(ConvertedValue(gPreferences.ReferenceValues.CPeptide.ln,

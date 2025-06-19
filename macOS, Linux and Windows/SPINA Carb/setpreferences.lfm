@@ -1,7 +1,7 @@
 object PreferencesForm: TPreferencesForm
-  Left = 398
+  Left = 387
   Height = 458
-  Top = 80
+  Top = 128
   Width = 673
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -106,7 +106,7 @@ object PreferencesForm: TPreferencesForm
           Height = 20
           Hint = 'Unit of measurement'
           Top = 0
-          Width = 70
+          Width = 100
           ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
@@ -193,7 +193,7 @@ object PreferencesForm: TPreferencesForm
           Height = 20
           Hint = 'Unit of measurement'
           Top = 24
-          Width = 70
+          Width = 100
           ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
@@ -210,7 +210,7 @@ object PreferencesForm: TPreferencesForm
           Height = 20
           Hint = 'Unit of measurement'
           Top = 48
-          Width = 70
+          Width = 100
           ItemHeight = 18
           ItemIndex = 0
           Items.Strings = (
@@ -549,19 +549,28 @@ object PreferencesForm: TPreferencesForm
           TabOrder = 24
           Text = 'NaN'
         end
-        object AIGRUnitLabel: TLabel
-          Left = 401
-          Height = 16
-          Top = 250
-          Width = 67
-          Caption = 'pmol/mmol'
-        end
         object CGRUnitLabel: TLabel
           Left = 401
           Height = 16
           Top = 273
           Width = 71
           Caption = 'pmol/10 mg'
+        end
+        object AIGRUnitsCombo: TComboBox
+          Left = 390
+          Height = 20
+          Top = 248
+          Width = 100
+          ItemHeight = 18
+          ItemIndex = 0
+          Items.Strings = (
+            'pmol/mmol'
+            'mIU/mmol'
+            'pmol/l/mg/dl'
+            'mIU/l/mg/dl'
+          )
+          TabOrder = 27
+          Text = 'pmol/mmol'
         end
       end
     end

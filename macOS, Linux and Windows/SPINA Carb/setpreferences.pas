@@ -43,6 +43,7 @@ type
     CGRRRLEdit: TEdit;
     AIGRRRLEdit: TEdit;
     CGRUnitLabel: TLabel;
+    AIGRUnitsCombo: TComboBox;
     LOINCCheck: TCheckBox;
     DashLabel10: TLabel;
     DashLabel11: TLabel;
@@ -54,7 +55,6 @@ type
     DashLabel9: TLabel;
     VariableGroupBox: TGroupBox;
     GRUnitLabel: TLabel;
-    AIGRUnitLabel: TLabel;
     HOMAIRLabel: TLabel;
     HOMABetaRRHEdit: TEdit;
     HOMAISLabel: TLabel;
@@ -201,6 +201,7 @@ begin
 
   AIGRRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.AIGR.ln, ffFixed, 4, 1);
   AIGRRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.AIGR.hn, ffFixed, 4, 1);
+  AIGRUnitsCombo.Text := gPreferences.PreferredUoMs.AIGR;
 
   CGRRRLEdit.Text := FloatToStrF(gPreferences.ReferenceValues.CGR.ln, ffFixed, 4, 1);
   CGRRRHEdit.Text := FloatToStrF(gPreferences.ReferenceValues.CGR.hn, ffFixed, 4, 1);
@@ -372,13 +373,14 @@ begin
   gPreferences.ReferenceValues.QUICKI.hn := StrToFloatDefL(QUICKIRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.AIGR.ln := StrToFloatDefL(AIGRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.AIGR.hn := StrToFloatDefL(AIGRRRHEdit.Text, Math.Nan);
-  gPreferences.ReferenceValues.AIGR.UoM := AIGRUnitLabel.Caption;
+  gPreferences.ReferenceValues.AIGR.UoM := AIGRUnitsCombo.Text;
   gPreferences.ReferenceValues.CGR.ln := StrToFloatDefL(CGRRRLEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CGR.hn := StrToFloatDefL(CGRRRHEdit.Text, Math.Nan);
   gPreferences.ReferenceValues.CGR.UoM := CGRUnitLabel.Caption;
   gPreferences.PreferredUoMs.Glucose := GlucoseUnitsCombo.Text;
   gPreferences.PreferredUoMs.Insulin := InsulinUnitsCombo.Text;
   gPreferences.PreferredUoMs.CPeptide := CPeptideUnitsCombo.Text;
+  gPreferences.PreferredUoMs.AIGR := AIGRUnitsCombo.Text;
   if FontsCombobox.ItemIndex > 0 then
     gPreferences.PrintFont := FontsCombobox.Items[FontsCombobox.ItemIndex];
   CheckMandatoryColourising(Sender);

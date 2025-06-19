@@ -531,7 +531,8 @@ begin
     theOBX.ValueType := 'NM';
     theOBX.ObsID := 'AIGR';
     theOBX.obsSubID := '1';
-    theOBX.obsValue := FloatToStrF(aCaseRecord.LabRecord.AIGR, ffNumber, 5, 13);
+    theOBX.obsValue := FloatToStrF(ConvertedAIGR(aCaseRecord.LabRecord.AIGR,
+      kEngineUoMs.AIGR, gPreferences.ReferenceValues.AIGR.UoM), ffNumber, 5, 13);
     theOBX.Units := gPreferences.ReferenceValues.AIGR.UoM;
     theOBX.RefRange := FloatToStr(gPreferences.ReferenceValues.AIGR.ln) +
       ' – ' + FloatToStr(gPreferences.ReferenceValues.AIGR.hn);
@@ -782,7 +783,9 @@ begin
       if pos('AIGR', theOBXRecord.ObsID) > 0 then
         { #todo : Insert code for LOINC here }
       begin
-        aCaseRecord.LabRecord.AIGR := StrToFloatDef(theOBXRecord.obsValue, NaN);
+        aCaseRecord.LabRecord.AIGR :=
+          ConvertedAIGR(StrToFloatDef(theOBXRecord.obsValue, NaN), theOBXRecord.Units,
+          kEngineUoMs.AIGR);
       end;
 
       if pos('CGR', theOBXRecord.ObsID) > 0 then
