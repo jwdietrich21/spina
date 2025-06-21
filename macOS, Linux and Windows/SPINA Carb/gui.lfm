@@ -8,7 +8,7 @@ object Hauptschirm: THauptschirm
   AllowDropFiles = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'SPINA Carb (Beta Version)'
+  Caption = 'SPINA Carb'
   ClientHeight = 370
   ClientWidth = 756
   Color = clWhite

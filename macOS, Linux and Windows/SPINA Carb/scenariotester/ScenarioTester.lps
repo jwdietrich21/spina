@@ -15,7 +15,8 @@
       <Unit>
         <Filename Value="../SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="14" Y="3"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="58" Y="11"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
@@ -23,9 +24,8 @@
         <Filename Value="casedemonstrator.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CaseDemonstrator"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="42" Y="83"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>

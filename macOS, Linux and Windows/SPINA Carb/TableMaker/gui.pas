@@ -77,7 +77,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure DrawHeaders(Sender: TObject);
     procedure DrawResults(Sender: TObject);
-    procedure MainTablePrepareCanvas(Sender: TObject; aCol, aRow: Integer;
+    procedure MainTablePrepareCanvas(Sender: TObject; aCol, aRow: integer;
       aState: TGridDrawState);
     procedure AdaptMenus;
 
@@ -130,19 +130,28 @@ begin
 end;
 
 procedure TMainForm.DrawHeaders(Sender: TObject);
+const
+  kInsulinMin = 1;
+  kGlucoseMin = 20;
+  kTitleRows = 3;
+  kTitleCols = 2;
+  kGlucoseSteps = 5; // in mg/dl
 var
   i, j: integer;
 begin
-  for i := 2 to MainTable.ColCount - 1 do
-    begin
-      MainTable.Cells[i, 0] := IntToStr(i + 4);
-      MainTable.Cells[i, 1] := IntToStr((i + 4) * kInsulinConversionFactor);
-    end;
-  for j := 3 to MainTable.RowCount - 1 do
-    begin
-      MainTable.Cells[0, j] := IntToStr(50 + (j - 3) * 5);
-      MainTable.Cells[1, j] := FloatToStrF((50 + (j - 3) * 5) / kGlucoseConversionFactor, ffFixed, 0, 1);
-    end;
+  for i := kTitleCols to MainTable.ColCount - 1 do
+  begin
+    MainTable.Cells[i, 0] := IntToStr(kInsulinMin + (i - kTitleCols));
+    MainTable.Cells[i, 1] := IntToStr((kInsulinMin + (i - kTitleCols)) *
+      kInsulinConversionFactor);
+  end;
+  for j := kTitleRows to MainTable.RowCount - 1 do
+  begin
+    MainTable.Cells[0, j] := IntToStr(kGlucoseMin + (j - kTitleRows) * kGlucoseSteps);
+    MainTable.Cells[1, j] :=
+      FloatToStrF((kGlucoseMin + (j - kTitleRows) * kGlucoseSteps) /
+      kGlucoseConversionFactor, ffFixed, 0, 1);
+  end;
 end;
 
 procedure TMainForm.DrawResults(Sender: TObject);
@@ -151,42 +160,44 @@ var
 begin
   for i := 2 to MainTable.ColCount - 1 do
     for j := 3 to MainTable.RowCount - 1 do
-      begin
-        case StrucParCombo.text of
+    begin
+      case StrucParCombo.Text of
         'SPINA-GBeta':
-        MainTable.Cells[i, j] :=
-          FloatToStrF(SPINA_GBeta(StrToFloatDef(MainTable.Cells[i, 1], Math.NaN),
+          MainTable.Cells[i, j] :=
+            FloatToStrF(SPINA_GBeta(StrToFloatDef(MainTable.Cells[i, 1], Math.NaN),
             StrToFloatDef(MainTable.Cells[1, j], Math.NaN)), ffFixed, 0, 2);
         'SPINA-GR':
-        MainTable.Cells[i, j] :=
-          FloatToStrF(SPINA_GR(StrToFloatDef(MainTable.Cells[i, 1], Math.NaN),
+          MainTable.Cells[i, j] :=
+            FloatToStrF(SPINA_GR(StrToFloatDef(MainTable.Cells[i, 1], Math.NaN),
             StrToFloatDef(MainTable.Cells[1, j], Math.NaN)), ffFixed, 0, 2);
         'SPINA-DI':
-        MainTable.Cells[i, j] :=
-          FloatToStrF(SPINA_DI(StrToFloatDef(MainTable.Cells[i, 1], Math.NaN),
+          MainTable.Cells[i, j] :=
+            FloatToStrF(SPINA_DI(StrToFloatDef(MainTable.Cells[i, 1], Math.NaN),
             StrToFloatDef(MainTable.Cells[1, j], Math.NaN)), ffFixed, 0, 2);
-          end;
       end;
+    end;
 end;
 
-procedure TMainForm.MainTablePrepareCanvas(Sender: TObject; aCol,
-  aRow: Integer; aState: TGridDrawState);
+procedure TMainForm.MainTablePrepareCanvas(Sender: TObject;
+  aCol, aRow: integer; aState: TGridDrawState);
 var
   theCanvas: TCanvas;
 begin
   if Sender is TStringGrid then
-    begin
-      theCanvas := TStringGrid(Sender).Canvas;
-      if (aCol > 1) and (aRow < 3) then
-        theCanvas.Brush.color := colLime;
-      if (aCol < 2) and (aRow > 2) then
-        theCanvas.Brush.color := colLime;
-      if (aCol < 2) and (aRow > 13) then
-        theCanvas.Brush.color := TColor(colOrange);;
-      if (aCol < 2) and (aRow > 17) then
-        theCanvas.Brush.color := TColor(clRed);;
-      //theCanvas.FillRect(aRect);
-    end;
+  begin
+    theCanvas := TStringGrid(Sender).Canvas;
+    if (aCol > 1) and (aRow < 3) then
+      theCanvas.Brush.color := colLime;
+    if (aCol < 2) and (aRow > 2) then
+      theCanvas.Brush.color := colLime;
+    if (aCol < 2) and (aRow > 13) then
+      theCanvas.Brush.color := TColor(colOrange);
+    ;
+    if (aCol < 2) and (aRow > 17) then
+      theCanvas.Brush.color := TColor(clRed);
+    ;
+    //theCanvas.FillRect(aRect);
+  end;
 end;
 
 procedure TMainForm.AdaptMenus;
@@ -225,7 +236,8 @@ end;
 
 procedure TMainForm.MacAboutItemClick(Sender: TObject);
 begin
-  ShowMessage('TableMaker, a test application for SPINA Carb – Version 5.1.0 Beta 2');
+  ShowMessage('TableMaker' + LineEnding + 'A test application for SPINA Carb' +
+    LineEnding + LineEnding + 'Version 5.1.0');
 end;
 
 procedure TMainForm.EditSelectAll1Execute(Sender: TObject);
@@ -241,7 +253,7 @@ end;
 
 procedure TMainForm.EditCopy1Execute(Sender: TObject);
 begin
-  MainTable.copyToClipboard(true);
+  MainTable.copyToClipboard(True);
 end;
 
 procedure TMainForm.WinAboutItemClick(Sender: TObject);
@@ -250,4 +262,3 @@ begin
 end;
 
 end.
-

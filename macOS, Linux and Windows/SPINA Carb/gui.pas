@@ -22,7 +22,7 @@ unit GUI;
 
 {$mode objfpc}{$H+}
 
-{$DEFINE BetaVersion}
+{$UNDEF BetaVersion}
 
 interface
 
@@ -254,8 +254,10 @@ procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptForPlatform;
   {$IFDEF BetaVersion}
+  Caption := MAIN_FORM_TITLE + ' (Beta Version)';
   SPINACarbLabel.Caption := 'SPINA Carb Beta Version for Testing';
   {$ELSE}
+  Caption := MAIN_FORM_TITLE;
   SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
   {$ENDIF}
   if gPreferredLanguage = 'de' then
