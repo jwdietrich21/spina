@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="12"/>
     <ManyBuildModesSelection Value="Default,&quot;macOS Apple Silicon&quot;,&quot;macOS Intel&quot;"/>
-    <BuildModes Active="Default"/>
+    <BuildModes Active="macOS Apple Silicon"/>
     <Units>
       <Unit>
         <Filename Value="SPINA_Carb.lpr"/>
@@ -22,7 +22,7 @@
         <UnitName Value="GUI"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
-        <CursorPos X="11" Y="8"/>
+        <CursorPos X="13" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -386,18 +386,6 @@
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="7" Column="54"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="254" Column="45" TopLine="228"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="339" Column="26" TopLine="313"/>
-      </Position>
-      <Position>
         <Filename Value="spina_resources.pas"/>
         <Caret Line="2" Column="29"/>
       </Position>
@@ -471,10 +459,6 @@
       </Position>
       <Position>
         <Filename Value="gui.pas"/>
-        <Caret Line="170" Column="14" TopLine="199"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
         <Caret Line="256" Column="14" TopLine="230"/>
       </Position>
       <Position>
@@ -499,11 +483,27 @@
       </Position>
       <Position>
         <Filename Value="gui.pas"/>
-        <Caret Line="318" Column="51" TopLine="497"/>
+        <Caret Line="350" Column="29" TopLine="332"/>
       </Position>
       <Position>
         <Filename Value="gui.pas"/>
-        <Caret Line="350" Column="29" TopLine="332"/>
+        <Caret Line="8" Column="11"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="25" Column="21"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="255" Column="27" TopLine="230"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Column="20"/>
+      </Position>
+      <Position>
+        <Filename Value="gui.pas"/>
+        <Caret Line="252" Column="18" TopLine="242"/>
       </Position>
     </JumpHistory>
     <RunParams>

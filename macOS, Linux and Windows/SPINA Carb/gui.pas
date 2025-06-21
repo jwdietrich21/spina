@@ -253,11 +253,11 @@ end;
 procedure THauptschirm.FormCreate(Sender: TObject);
 begin
   AdaptForPlatform;
-  {IFDEF BetaVersion}
+  {$IFDEF BetaVersion}
   SPINACarbLabel.Caption := 'SPINA Carb Beta Version for Testing';
-  {ELSE}
+  {$ELSE}
   SPINACarbLabel.Caption := 'SPINA Carb ' + FileVersion;
-  {ENDIF}
+  {$ENDIF}
   if gPreferredLanguage = 'de' then
   begin
     gPreferencesHint := kPreferencesHint_de;
