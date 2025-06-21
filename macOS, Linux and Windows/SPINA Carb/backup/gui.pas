@@ -348,7 +348,7 @@ begin
   {$IFDEF BetaVersion}
     ShowMessage(kBetaHint);
   {$ELSE}
-    ShowMessage(gPreferencesHint);
+    ShowMessage(gPreferencesHint)
   {$ENDIF}
   MarkMandatoryFields(Sender);
   FocusEdit(Sender);

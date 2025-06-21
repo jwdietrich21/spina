@@ -1,0 +1,753 @@
+object PreferencesForm: TPreferencesForm
+  Left = 387
+  Height = 458
+  Top = 128
+  Width = 673
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Application Preferences'
+  ClientHeight = 458
+  ClientWidth = 673
+  Constraints.MinHeight = 400
+  Constraints.MinWidth = 600
+  Position = poScreenCenter
+  LCLVersion = '4.0.0.4'
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  OnShow = FormShow
+  object OKButton: TButton
+    Left = 566
+    Height = 25
+    Top = 415
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'OK'
+    Default = True
+    TabOrder = 0
+    OnClick = OKButtonClick
+  end
+  object CancelButton: TButton
+    Left = 446
+    Height = 26
+    Top = 415
+    Width = 107
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = 'Cancel'
+    TabOrder = 1
+    OnClick = CancelButtonClick
+  end
+  object PageControl1: TPageControl
+    Left = 24
+    Height = 390
+    Top = 8
+    Width = 617
+    ActivePage = RangesTab
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 2
+    OnChange = PageControl1Change
+    object RangesTab: TTabSheet
+      Caption = 'Ranges and units'
+      ClientHeight = 354
+      ClientWidth = 611
+      object CDISCGroupBox: TGroupBox
+        Left = 24
+        Height = 325
+        Hint = 'Reference ranges for the specified parameters'
+        Top = 8
+        Width = 575
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        Caption = 'Reference Ranges:'
+        ClientHeight = 298
+        ClientWidth = 565
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        object GlucoseLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 3
+          Width = 99
+          Caption = 'Fasting glucose:'
+        end
+        object GlucoseRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 0
+          Width = 80
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Text = 'NaN'
+        end
+        object DashLabel1: TLabel
+          Left = 280
+          Height = 16
+          Top = 3
+          Width = 6
+          Caption = '-'
+        end
+        object GlucoseRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 0
+          Width = 80
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          Text = 'NaN'
+        end
+        object GlucoseUnitsCombo: TComboBox
+          Left = 390
+          Height = 20
+          Hint = 'Unit of measurement'
+          Top = 0
+          Width = 100
+          ItemHeight = 18
+          ItemIndex = 0
+          Items.Strings = (
+            'mg/dl'
+            'mmol/l'
+          )
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          Text = 'mg/dl'
+        end
+        object InsulinLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 27
+          Width = 90
+          Caption = 'Fasting insulin:'
+        end
+        object InsulinRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 24
+          Width = 80
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          Text = 'NaN'
+        end
+        object DashLabel2: TLabel
+          Left = 280
+          Height = 16
+          Top = 27
+          Width = 6
+          Caption = '-'
+        end
+        object InsulinRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 24
+          Width = 80
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 4
+          Text = 'NaN'
+        end
+        object CPeptideLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 51
+          Width = 113
+          Caption = 'Fasting C-peptide:'
+        end
+        object CPeptideRRLEdit: TEdit
+          Left = 192
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 48
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 6
+          Text = 'NaN'
+        end
+        object DashLabel3: TLabel
+          Left = 280
+          Height = 16
+          Top = 51
+          Width = 6
+          Caption = '-'
+        end
+        object CPeptideRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 48
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 7
+          Text = 'NaN'
+        end
+        object InsulinUnitsCombo: TComboBox
+          Left = 390
+          Height = 20
+          Hint = 'Unit of measurement'
+          Top = 24
+          Width = 100
+          ItemHeight = 18
+          ItemIndex = 0
+          Items.Strings = (
+            'mIU/l'
+            'pmol/l'
+          )
+          ParentShowHint = False
+          TabOrder = 5
+          Text = 'mIU/l'
+        end
+        object CPeptideUnitsCombo: TComboBox
+          AnchorSideRight.Side = asrBottom
+          Left = 390
+          Height = 20
+          Hint = 'Unit of measurement'
+          Top = 48
+          Width = 100
+          ItemHeight = 18
+          ItemIndex = 0
+          Items.Strings = (
+            'ng/ml'
+            'pmol/l'
+            'nmol/l'
+          )
+          ParentShowHint = False
+          TabOrder = 8
+          Text = 'ng/ml'
+        end
+        object SPINAGBetaLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 83
+          Width = 85
+          Caption = 'SPINA-GBeta:'
+        end
+        object GBetaRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 80
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 9
+          Text = 'NaN'
+        end
+        object DashLabel4: TLabel
+          Left = 280
+          Height = 16
+          Top = 83
+          Width = 6
+          Caption = '-'
+        end
+        object GBetaRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 80
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 10
+          Text = 'NaN'
+        end
+        object GBetaUnitLabel: TLabel
+          Left = 401
+          Height = 16
+          Top = 83
+          Width = 41
+          Caption = 'pmol/s'
+        end
+        object SPINAGRLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 107
+          Width = 66
+          Caption = 'SPINA-GR:'
+        end
+        object GRRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 104
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 11
+          Text = 'NaN'
+        end
+        object DashLabel5: TLabel
+          Left = 280
+          Height = 16
+          Top = 107
+          Width = 6
+          Caption = '-'
+        end
+        object GRRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 104
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 12
+          Text = 'NaN'
+        end
+        object DIRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 128
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 14
+          Text = 'NaN'
+        end
+        object SPINADILabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 131
+          Width = 60
+          Caption = 'SPINA-DI:'
+        end
+        object DIRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 128
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 13
+          Text = 'NaN'
+        end
+        object DashLabel6: TLabel
+          Left = 280
+          Height = 16
+          Top = 131
+          Width = 6
+          Caption = '-'
+        end
+        object HOMABetaLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 155
+          Width = 77
+          Caption = 'HOMA-Beta:'
+        end
+        object HOMABetaRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 152
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 15
+          Text = 'NaN'
+        end
+        object DashLabel7: TLabel
+          Left = 280
+          Height = 16
+          Top = 155
+          Width = 6
+          Caption = '-'
+        end
+        object HOMABetaRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 152
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 16
+          Text = 'NaN'
+        end
+        object HOMABetaUnitLabel: TLabel
+          Left = 401
+          Height = 16
+          Top = 155
+          Width = 12
+          Caption = '%'
+        end
+        object HOMAIRLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 179
+          Width = 61
+          Caption = 'HOMA-IR:'
+        end
+        object HOMAIRRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 176
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 17
+          Text = 'NaN'
+        end
+        object DashLabel8: TLabel
+          Left = 280
+          Height = 16
+          Top = 179
+          Width = 6
+          Caption = '-'
+        end
+        object HOMAIRRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 176
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 18
+          Text = 'NaN'
+        end
+        object HOMAISLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 203
+          Width = 61
+          Caption = 'HOMA-IS:'
+        end
+        object HOMAISRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 200
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 19
+          Text = 'NaN'
+        end
+        object DashLabel9: TLabel
+          Left = 280
+          Height = 16
+          Top = 203
+          Width = 6
+          Caption = '-'
+        end
+        object HOMAISRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 200
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 20
+          Text = 'NaN'
+        end
+        object QUICKILabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 227
+          Width = 48
+          Caption = 'QUICKI:'
+        end
+        object QUICKIRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 224
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 21
+          Text = 'NaN'
+        end
+        object DashLabel10: TLabel
+          Left = 280
+          Height = 16
+          Top = 227
+          Width = 6
+          Caption = '-'
+        end
+        object QUICKIRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 224
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 22
+          Text = 'NaN'
+        end
+        object CGRLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 275
+          Width = 31
+          Caption = 'CGR:'
+        end
+        object CGRRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 272
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 25
+          Text = 'NaN'
+        end
+        object DashLabel11: TLabel
+          Left = 280
+          Height = 16
+          Top = 275
+          Width = 6
+          Caption = '-'
+        end
+        object CGRRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 272
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 26
+          Text = 'NaN'
+        end
+        object GRUnitLabel: TLabel
+          Left = 401
+          Height = 16
+          Top = 107
+          Width = 33
+          Caption = 'mol/s'
+        end
+        object AIGRLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 251
+          Width = 34
+          Caption = 'AIGR:'
+        end
+        object AIGRRRLEdit: TEdit
+          Left = 191
+          Height = 21
+          Hint = 'Lower boundary of reference range'
+          Top = 248
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 23
+          Text = 'NaN'
+        end
+        object DashLabel12: TLabel
+          Left = 280
+          Height = 16
+          Top = 251
+          Width = 6
+          Caption = '-'
+        end
+        object AIGRRRHEdit: TEdit
+          Left = 294
+          Height = 21
+          Hint = 'Higher boundary of reference range'
+          Top = 248
+          Width = 80
+          ParentShowHint = False
+          TabOrder = 24
+          Text = 'NaN'
+        end
+        object CGRUnitLabel: TLabel
+          Left = 401
+          Height = 16
+          Top = 273
+          Width = 71
+          Caption = 'pmol/10 mg'
+        end
+        object AIGRUnitsCombo: TComboBox
+          Left = 390
+          Height = 20
+          Top = 248
+          Width = 100
+          ItemHeight = 18
+          ItemIndex = 0
+          Items.Strings = (
+            'pmol/mmol'
+            'mIU/mmol'
+            'pmol/l/mg/dl'
+            'mIU/l/mg/dl'
+          )
+          TabOrder = 27
+          Text = 'pmol/mmol'
+        end
+      end
+    end
+    object HL7Tab: TTabSheet
+      Caption = 'HL7 messages'
+      ClientHeight = 354
+      ClientWidth = 611
+      object IDGroupBox: TGroupBox
+        Left = 24
+        Height = 104
+        Top = 8
+        Width = 575
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Physician, Hospital or Unit ID:'
+        ClientHeight = 77
+        ClientWidth = 565
+        TabOrder = 0
+        object SendingFacLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 16
+          Width = 85
+          Caption = 'Facility Name:'
+          ParentColor = False
+        end
+        object SendingFacEdit: TEdit
+          Left = 137
+          Height = 22
+          Hint = 'HL7 Sending and Receiving Facility'
+          Top = 16
+          Width = 412
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+        end
+        object PlacerLabel: TLabel
+          Left = 12
+          Height = 16
+          Top = 48
+          Width = 42
+          Caption = 'Placer:'
+          ParentColor = False
+        end
+        object PlacerEdit: TEdit
+          Left = 137
+          Height = 22
+          Hint = 'HL7 Sending and Receiving Facility'
+          Top = 48
+          Width = 412
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+        end
+      end
+      object VariableGroupBox: TGroupBox
+        Left = 24
+        Height = 73
+        Top = 128
+        Width = 575
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Variable Handling:'
+        ClientHeight = 46
+        ClientWidth = 565
+        TabOrder = 1
+        object LOINCCheck: TCheckBox
+          Left = 16
+          Height = 18
+          Hint = 'Add unique LOINC terms to HL7 message'
+          Top = 16
+          Width = 168
+          Caption = 'Export with LOINC codes'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+        end
+      end
+    end
+    object OtherTab: TTabSheet
+      Caption = 'Other'
+      ClientHeight = 354
+      ClientWidth = 611
+      object GUIGroupBox: TGroupBox
+        Left = 24
+        Height = 240
+        Top = 8
+        Width = 575
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'GUI:'
+        ClientHeight = 213
+        ClientWidth = 565
+        TabOrder = 0
+        object MarkMandatoryCheck: TCheckBox
+          Left = 16
+          Height = 18
+          Hint = 'Mark mandatory input fields with a special colour'
+          Top = 10
+          Width = 153
+          Caption = 'Mark mandatory fields'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+        end
+        object MandatoryFieldsGrid: TStringGrid
+          Left = 16
+          Height = 160
+          Top = 40
+          Width = 524
+          Anchors = [akTop, akLeft, akRight]
+          AutoFillColumns = True
+          Color = clSilver
+          Columns = <          
+            item
+              Title.Caption = 'SPINA-GBeta'
+              Width = 115
+            end          
+            item
+              Title.Caption = 'SPINA-GR'
+              Width = 115
+            end          
+            item
+              Title.Caption = 'SPINA-DI'
+              Width = 115
+            end          
+            item
+              Title.Caption = 'CGR'
+              Width = 114
+            end>
+          FixedRows = 4
+          Flat = True
+          Font.Style = [fsBold]
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goDblClickAutoSize, goSmoothScroll, goFixedColSizing, goTruncCellHints]
+          ParentFont = False
+          RowCount = 7
+          ScrollBars = ssNone
+          TabOrder = 1
+          OnDrawCell = MandatoryFieldsGridDrawCell
+          ColWidths = (
+            64
+            115
+            115
+            115
+            114
+          )
+        end
+      end
+      object PrintingGroupbox: TGroupBox
+        Left = 24
+        Height = 57
+        Top = 286
+        Width = 575
+        Anchors = [akLeft, akRight, akBottom]
+        Caption = 'Font for Printing:'
+        ClientHeight = 30
+        ClientWidth = 565
+        TabOrder = 1
+        object FontsCombobox: TComboBox
+          Left = 16
+          Height = 20
+          Hint = 'Font used for printing'
+          Top = -2
+          Width = 525
+          Anchors = [akLeft, akRight, akBottom]
+          ItemHeight = 18
+          ItemIndex = 0
+          Items.Strings = (
+            'Font...'
+          )
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Text = 'Font...'
+        end
+      end
+    end
+  end
+end

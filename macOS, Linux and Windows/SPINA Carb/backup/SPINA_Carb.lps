@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="12"/>
     <ManyBuildModesSelection Value="Default,&quot;macOS Apple Silicon&quot;,&quot;macOS Intel&quot;"/>
-    <BuildModes Active="Default"/>
+    <BuildModes Active="macOS Intel"/>
     <Units>
       <Unit>
         <Filename Value="SPINA_Carb.lpr"/>

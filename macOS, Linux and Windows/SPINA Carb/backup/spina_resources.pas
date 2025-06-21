@@ -81,7 +81,7 @@ const
   kPreferencesHint_de =
     'Die Voreinstellungsdatei wurde neu angelegt. Bitte überprüfen Sie Parameter und Maßeinheiten.';
   kPreferencesHint_en =
-    'A new preferences file has been created. Please check parameters and units of measurement.';
+    'A new preferences file has been created. Please check parameters and measurement units.';
 
   kBetaHint =
     'This version of SPINA Carb is beta software that is provided for purposes of testing.'
