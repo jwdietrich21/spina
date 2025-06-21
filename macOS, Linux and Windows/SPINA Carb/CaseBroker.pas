@@ -186,7 +186,8 @@ end;
 function RRFlag(theParameter: extended; theRanges: tReferenceLimits): string;
   {Adds predefined flag for results outside their respective reference ranges}
 begin
-  if (isNan(theRanges.ln) or isNan(theRanges.hn)) then
+  Result := '';
+  if isNan(theParameter) or isNan(theRanges.ln) or isNan(theRanges.hn) then
     Result := ''
   else if (theParameter < theRanges.ln) or (theParameter > theRanges.hn) then
     Result := REF_RANGE_FLAG;
@@ -244,12 +245,8 @@ end;
 function MarkedA(theParameter: extended; theRanges: tReferenceLimits;
   UoM1, Uom2: string; Precision: integer; Digits: integer): string;
   {Converts units and delivers formatted result for AIGR}
-var
-  LocalRange: tReferenceLimits;
 begin
-  LocalRange.ln := ConvertedAIGR(theRanges.ln, UoM1, Uom2);
-  LocalRange.hn := ConvertedAIGR(theRanges.hn, UoM1, Uom2);
-  Result := Marked(ConvertedAIGR(theParameter, UoM1, UoM2), LocalRange,
+  Result := Marked(ConvertedAIGR(theParameter, UoM1, UoM2), theRanges,
     Precision, Digits);
 end;
 

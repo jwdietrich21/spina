@@ -21,6 +21,7 @@ program SPINA_Carb;
 { See http://spina.medical-cybernetics.de for details }
 
 {$mode objfpc}{$H+}
+{$UNDEF debug}
 
 uses
   {$IFDEF UNIX}
@@ -33,7 +34,11 @@ uses
   MacOSAll,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
+  SysUtils, Forms,
+  {$IFDEF debug}
+  heaptrc,
+  {$ENDIF}
+  GUI, SPINA_Engine, UnitConverter, CaseBroker, ResultWindow, SPINATypes,
   SPINA_GUIServices, EnvironmentInfo, PrintCase, printer4lazarus,
   spina_aboutbox, HandlePreferences, setpreferences, HandleCDISC, Barcode,
   SPINA_Resources, HandleImpEx, ERR, EVN, HL7, MLLP, MSA, MSH, NK1, NTE, OBR,
