@@ -20,9 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
-        <CursorPos X="26" Y="2"/>
+        <TopLine Value="216"/>
+        <CursorPos X="39" Y="229"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -52,9 +52,10 @@
       <Unit>
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="238"/>
-        <CursorPos Y="249"/>
+        <TopLine Value="269"/>
+        <CursorPos X="64" Y="289"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -387,124 +388,123 @@
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="677" Column="24" TopLine="651"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="256" Column="3" TopLine="126"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="257" Column="31" TopLine="244"/>
+        <Filename Value="CaseBroker.pas"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="170" Column="27" TopLine="150"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="36" Column="17" TopLine="10"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="318" Column="31" TopLine="306"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="61" Column="23" TopLine="35"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="170" Column="14" TopLine="155"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="82" Column="29" TopLine="56"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="263" Column="31" TopLine="237"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="114" Column="25" TopLine="88"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="318" Column="31" TopLine="293"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="156" Column="88" TopLine="130"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="256" Column="14" TopLine="230"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="157" Column="56" TopLine="131"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="257" Column="45" TopLine="231"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="158" Column="44" TopLine="132"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="351" Column="33" TopLine="325"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="180" Column="70" TopLine="155"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="139" TopLine="139"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="181" Column="76" TopLine="156"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="170" Column="6" TopLine="145"/>
-      </Position>
-      <Position>
-        <Filename Value="spina_resources.pas"/>
-        <Caret Line="81" Column="22" TopLine="66"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="350" Column="29" TopLine="332"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="8" Column="11"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="25" Column="21"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="255" Column="27" TopLine="230"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Column="20"/>
-      </Position>
-      <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="252" Column="18" TopLine="242"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="220" Column="23" TopLine="232"/>
       </Position>
       <Position>
         <Filename Value="CaseBroker.pas"/>
         <Caret Line="62" Column="17" TopLine="46"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="25" Column="13"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="156" Column="27" TopLine="130"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="256" Column="15" TopLine="230"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="245" Column="17" TopLine="219"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="257" Column="45" TopLine="231"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="157" Column="67" TopLine="141"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="348" Column="15" TopLine="322"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="245" Column="17" TopLine="219"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="349" Column="22" TopLine="323"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="62" Column="17" TopLine="46"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="260" Column="30" TopLine="242"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="156" Column="27" TopLine="130"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="25" Column="9" TopLine="19"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="220" Column="23" TopLine="203"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="257" Column="49" TopLine="182"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="61" Column="23" TopLine="45"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="258" Column="45" TopLine="232"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="220" Column="23" TopLine="194"/>
       </Position>
       <Position>
-        <Filename Value="gui.pas"/>
-        <Caret Line="350" Column="15" TopLine="324"/>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="249" Column="33" TopLine="223"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="61" Column="23" TopLine="45"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="62" Column="17" TopLine="45"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="157" Column="67" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="249" Column="33" TopLine="219"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="61" Column="23" TopLine="45"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="220" Column="23" TopLine="194"/>
+      </Position>
+      <Position>
+        <Filename Value="CaseBroker.pas"/>
+        <Caret Line="290" Column="22" TopLine="269"/>
       </Position>
     </JumpHistory>
     <RunParams>

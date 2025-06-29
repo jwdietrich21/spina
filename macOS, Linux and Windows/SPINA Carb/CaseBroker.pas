@@ -239,7 +239,7 @@ begin
     kUnit4: factorOut := 1 / kInsulinConversionFactor / kGlucoseConversionFactor;
   end;
   factor := factorIn * factorOut;
-  result := Value * factor;
+  Result := Value * factor;
 end;
 
 function MarkedA(theParameter: extended; theRanges: tReferenceLimits;
@@ -286,7 +286,8 @@ begin
     kParOpen + RefMessage(gPreferences.ReferenceValues.QUICKI.ln,
     gPreferences.ReferenceValues.QUICKI.hn, gPreferences.ReferenceValues.QUICKI.UoM,
     4, 1) + kParClose + LineEnding + kAIGR + kS12Tab + kTAB + kTAB +
-    FloatToStrF(LabRecord.AIGR, ffFixed, 4, 1) + ' ' + kS4TAB +
+    FloatToStrF(ConvertedAIGR(LabRecord.AIGR, kEngineUoMs.AIGR,
+    gPreferences.ReferenceValues.AIGR.UoM), ffFixed, 4, 1) + ' ' + kS4TAB +
     kParOpen + RefMessage(gPreferences.ReferenceValues.AIGR.ln,
     gPreferences.ReferenceValues.AIGR.hn, gPreferences.ReferenceValues.AIGR.UoM,
     4, 1) + kParClose + LineEnding + kCGR + ' ' + kS10Tab + kTAB +
