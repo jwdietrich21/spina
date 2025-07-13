@@ -20,10 +20,9 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="5"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="234"/>
+      <BuildNr Value="236"/>
       <Language Value="0809"/>
-      <Attributes pvaDebug="True" pvaPreRelease="True"/>
-      <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Carb" InternalName="SPINA Carb 5.1.0 Cyclone (Beta)" LegalCopyright="© 1994-2025 J. W. Dietrich" OriginalFilename="SPINA Carb" ProductName="SPINA Carb" ProductVersion="5.1.0 Cyclone (Beta)"/>
+      <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Carb" InternalName="SPINA Carb 5.1.0 Cyclone" LegalCopyright="© 1994-2025 J. W. Dietrich" OriginalFilename="SPINA Carb" ProductName="SPINA Carb" ProductVersion="5.1.0 Cyclone"/>
     </VersionInfo>
     <BuildModes>
       <Item Name="Default" Default="True"/>
