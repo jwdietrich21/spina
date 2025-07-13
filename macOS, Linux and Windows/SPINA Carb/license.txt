@@ -6,7 +6,7 @@ SPINA Carb is intended for usage in science and research. Use for diagnostical p
 
 Source code of this software, intended for compilation with Lazarus / Free Pascal, is available at spina.medical-cybernetics.de.
 
-In case of enquiries please apply to johannes.dietrich@rub.de
+In case of enquiries please apply to johannes.dietrich@ruhr-uni-bochum.de
 
 
 
@@ -16,7 +16,7 @@ SPINA Carb ist für den Einsatz in Wissenschaft und Forschung bestimmt. Wenn Sie
 
 Der Quellcode dieser Software, der für die Übersetzung mit Lazarus / Free Pascal bestimmt ist, kann von spina.medical-cybernetics.de geladen werden.
 
-Bei allfälligen Fragen wenden Sie sich bitte an johannes.dietrich@rub.de
+Bei allfälligen Fragen wenden Sie sich bitte an johannes.dietrich@ruhr-uni-bochum.de
 
 
 http://spina.medical-cybernetics.de
@@ -25,7 +25,7 @@ http://spina.medical-cybernetics.de
 
 BSD License
 
-Copyright (c) 1994-2025, PD Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
+Copyright (c) 1994-2025, apl. Prof. Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
 
 All rights reserved.
 
@@ -65,7 +65,7 @@ We have invested a lot of time and effort in creating SPINA Carb, please cite it
 
 In order to cite SPINA Carb in publications use:
 
-J. W. Dietrich (1994-2025). SPINA Carb, software for structure parameter inference approach of insulin glucose homeostasis. http://spina.medical-cybernetics.de
+J. W. Dietrich (1994-2025). SPINA Carb, software for structure parameter inference approach of insulin glucose homeostasis. RRID:SCR_026848. doi: 10.5281/zenodo.15249620. http://spina.medical-cybernetics.de
 
 Additionally, you might want to read or cite one or several of the following papers:
 
@@ -74,5 +74,7 @@ Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO
 Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
 
 Bansal V, Winkelmann BR, Dietrich JW, Boehm BO. Whole-exome sequencing in familial type 2 diabetes identifies an atypical missense variant in the RyR2 gene. Front Endocrinol (Lausanne). 2024 Feb 20;15:1258982. doi: 10.3389/fendo.2024.1258982. PMID: 38444585; PMCID: PMC10913019.
+
+Dietrich JW. P4-Endokrinologie – Kybernetische Perspektiven eines neuen Ansatzes. Leibniz Online 2024; 54. doi: 10.53201/LEIBNIZONLINE54
 
 Abu Rached N, Dietrich JW, Ocker L, Stockfleth E, Haven Y, Myszkowski D, Bechara FG. Endotyping Insulin-Glucose Homeostasis in Hidradenitis Suppurativa: The Impact of Diabetes Mellitus and Inflammation. J Clin Med. 2025 Mar 21;14(7):2145. doi: 10.3390/jcm14072145. PMID: 40217596.

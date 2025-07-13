@@ -22,7 +22,7 @@ unit GUI;
 
 {$mode objfpc}{$H+}
 
-{$UNDEF BetaVersion}
+{$UNDEF BetaVersion} // Switch on for warnings on beta version
 
 interface
 

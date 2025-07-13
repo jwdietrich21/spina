@@ -71,7 +71,7 @@ See http://spina.medical-cybernetics.de for details
 		</dict>
 	</array>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.4.0</string>
+	<string>10.14.0</string>
   <key>NSHighResolutionCapable</key>
   <true/>
 </dict>
