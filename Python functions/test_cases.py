@@ -7,10 +7,10 @@
 
 # Version 5.1.0 (Cyclone)
 
-# (c) J. W. Dietrich, 1994 - 2024 
+# (c) J. W. Dietrich, 1994 - 2025 
 # (c) Ludwig Maximilian University of Munich 1995 - 2002 
 # (c) University of Ulm Hospitals 2002 - 2004 
-# (c) Ruhr University of Bochum 2005 - 2024 
+# (c) Ruhr University of Bochum 2005 - 2025 
 
 # This unit implements test cases
 
@@ -24,8 +24,12 @@ print('-------------------------');
 
 print('Test Case V1:')
 
-Glucose = 92 / GLUCOSECONVERSIONFACTOR
-Insulin = 1.2 * INSULINCONVERSIONFACTOR
+GlucoseC = 92
+InsulinC = 1.2
+Glucose = GlucoseC / GLUCOSECONVERSIONFACTOR
+Insulin = InsulinC * INSULINCONVERSIONFACTOR
+print('Glucose:', GlucoseC, 'mg/dL')
+print('Insulin:', InsulinC, 'mIU/L')
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -38,8 +42,12 @@ print()
 
 print('Scenario E1: Extreme values for insulin and glucose:')
 
-Glucose = 700 / GLUCOSECONVERSIONFACTOR
-Insulin = 200 * INSULINCONVERSIONFACTOR
+GlucoseC = 700
+InsulinC = 200
+Glucose = GlucoseC / GLUCOSECONVERSIONFACTOR
+Insulin = InsulinC * INSULINCONVERSIONFACTOR
+print('Glucose:', GlucoseC, 'mg/dL')
+print('Insulin:', InsulinC, 'mIU/L')
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -52,8 +60,12 @@ print()
 
 print('Scenario E2: Extreme values for insulin and glucose:')
 
-Glucose = 800 / GLUCOSECONVERSIONFACTOR
-Insulin = 0.1 * INSULINCONVERSIONFACTOR
+GlucoseC = 800
+InsulinC = 0.1
+Glucose = GlucoseC / GLUCOSECONVERSIONFACTOR
+Insulin = InsulinC * INSULINCONVERSIONFACTOR
+print('Glucose:', GlucoseC, 'mg/dL')
+print('Insulin:', InsulinC, 'mIU/L')
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -66,8 +78,12 @@ print()
 
 print('Scenario E3 Extreme values for insulin and glucose:')
 
-Glucose = 800 / GLUCOSECONVERSIONFACTOR
-Insulin = 0 * INSULINCONVERSIONFACTOR
+GlucoseC = 800
+InsulinC = 0
+Glucose = GlucoseC / GLUCOSECONVERSIONFACTOR
+Insulin = InsulinC * INSULINCONVERSIONFACTOR
+print('Glucose:', GlucoseC, 'mg/dL')
+print('Insulin:', InsulinC, 'mIU/L')
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
@@ -80,8 +96,12 @@ print()
 
 print('Scenario E4: Extreme values for insulin and glucose:')
 
-Glucose = 30 / GLUCOSECONVERSIONFACTOR
-Insulin = 1 * INSULINCONVERSIONFACTOR
+GlucoseC = 30
+InsulinC = 1
+Glucose = GlucoseC / GLUCOSECONVERSIONFACTOR
+Insulin = InsulinC * INSULINCONVERSIONFACTOR
+print('Glucose:', GlucoseC, 'mg/dL')
+print('Insulin:', InsulinC, 'mIU/L')
 print('SPINA-GBeta:', SPINA_GBeta(Insulin, Glucose), 'pmol/s')  
 print('SPINA-GR:', SPINA_GR(Insulin, Glucose), 'mol/s')  
 print('SPINA-DI:', SPINA_DI(Insulin, Glucose))  
