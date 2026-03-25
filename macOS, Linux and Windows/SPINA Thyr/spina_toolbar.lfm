@@ -16,10 +16,10 @@ object SPINAToolbar: TSPINAToolbar
   DefaultMonitor = dmMainForm
   DockSite = True
   Menu = MainMenu
+  LCLVersion = '4.6.0.0'
+  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '3.8.0.0'
-  Visible = True
   object ToolBar1: TToolBar
     Left = 0
     Height = 26
@@ -34,9 +34,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'NewToolButton'
       ImageIndex = 0
-      OnClick = NewToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = NewToolButtonClick
     end
     object OpenToolButton: TToolButton
       Left = 24
@@ -44,9 +44,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'OpenToolButton'
       ImageIndex = 1
-      OnClick = OpenToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = OpenToolButtonClick
     end
     object SaveToolButton: TToolButton
       Left = 47
@@ -54,9 +54,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'SaveToolButton'
       ImageIndex = 2
-      OnClick = SaveToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = SaveToolButtonClick
     end
     object SaveAsToolButton: TToolButton
       Left = 70
@@ -64,9 +64,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'SaveAsToolButton'
       ImageIndex = 3
-      OnClick = SaveAsToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = SaveAsToolButtonClick
     end
     object DividerTool1: TToolButton
       Left = 93
@@ -81,9 +81,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'PrintToolButton'
       ImageIndex = 4
-      OnClick = PrintToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = PrintToolButtonClick
     end
     object DividerTool2: TToolButton
       Left = 121
@@ -98,9 +98,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = '&Rückgängig'
       ImageIndex = 5
-      OnClick = UndoToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = UndoToolButtonClick
     end
     object CutToolButton: TToolButton
       Left = 149
@@ -108,9 +108,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = '&Ausschneiden'
       ImageIndex = 6
-      OnClick = CutToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = CutToolButtonClick
     end
     object CopyToolButton: TToolButton
       Left = 172
@@ -118,10 +118,10 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = '&Kopieren'
       ImageIndex = 7
-      OnClick = CopyToolButtonClick
       ParentShowHint = False
       ShowCaption = False
       ShowHint = True
+      OnClick = CopyToolButtonClick
     end
     object PasteToolButton: TToolButton
       Left = 195
@@ -129,9 +129,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = '&Einfügen'
       ImageIndex = 8
-      OnClick = PasteToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = PasteToolButtonClick
     end
     object DeleteToolButton: TToolButton
       Left = 218
@@ -139,9 +139,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = '&Löschen'
       ImageIndex = 9
-      OnClick = DeleteToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = DeleteToolButtonClick
     end
     object CopyResultToolButton: TToolButton
       Left = 241
@@ -149,9 +149,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'CopyResultToolButton'
       ImageIndex = 10
-      OnClick = CopyResultToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = CopyResultToolButtonClick
     end
     object DividerTool3: TToolButton
       Left = 264
@@ -166,9 +166,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'CaseEditorToolButton'
       ImageIndex = 11
-      OnClick = CaseItemClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = CaseItemClick
     end
     object DividerTool4: TToolButton
       Left = 292
@@ -183,9 +183,9 @@ object SPINAToolbar: TSPINAToolbar
       Top = 2
       Caption = 'InfoToolButton'
       ImageIndex = 12
-      OnClick = InfoToolButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = InfoToolButtonClick
     end
   end
   object SPINAThyrLabel: TLabel

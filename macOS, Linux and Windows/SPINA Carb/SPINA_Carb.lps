@@ -9,7 +9,7 @@
         <Filename Value="SPINA_Carb.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="31"/>
-        <CursorPos X="15" Y="3"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -20,9 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="15"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="34" Y="13"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -38,7 +37,7 @@
         <Filename Value="SPINA_Engine.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="15" Y="3"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -46,6 +45,7 @@
         <Filename Value="unitconverter.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitConverter"/>
+        <CursorPos X="30" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -53,7 +53,7 @@
         <Filename Value="CaseBroker.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="5"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -65,7 +65,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ResultWindow"/>
         <EditorIndex Value="13"/>
-        <CursorPos Y="4"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="199"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -75,7 +75,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINATypes"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="22" Y="210"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="199"/>
         <Loaded Value="True"/>
       </Unit>
@@ -85,7 +85,7 @@
         <UnitName Value="SPINA_GUIServices"/>
         <EditorIndex Value="11"/>
         <TopLine Value="25"/>
-        <CursorPos X="22" Y="31"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="197"/>
         <Loaded Value="True"/>
       </Unit>
@@ -104,7 +104,7 @@
         <UnitName Value="PrintCase"/>
         <EditorIndex Value="14"/>
         <TopLine Value="243"/>
-        <CursorPos X="32" Y="260"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="188"/>
         <Loaded Value="True"/>
       </Unit>
@@ -117,7 +117,7 @@
         <UnitName Value="SPINA_Aboutbox"/>
         <EditorIndex Value="12"/>
         <TopLine Value="15"/>
-        <CursorPos X="27" Y="36"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="183"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -127,7 +127,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandlePreferences"/>
         <EditorIndex Value="6"/>
-        <CursorPos X="28" Y="11"/>
+        <CursorPos X="34" Y="13"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -147,7 +147,7 @@
         <UnitName Value="Setpreferences"/>
         <EditorIndex Value="8"/>
         <TopLine Value="355"/>
-        <CursorPos X="5" Y="394"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="166"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -156,6 +156,7 @@
         <Filename Value="HandleCDISC.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
+        <CursorPos X="34" Y="13"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -179,9 +180,9 @@
         <Filename Value="spina_resources.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Resources"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="66"/>
-        <CursorPos X="22" Y="81"/>
+        <CursorPos Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -197,7 +198,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="HandleImpEx"/>
         <EditorIndex Value="19"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="34" Y="13"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -327,7 +328,7 @@
         <UnitName Value="LocaleServices"/>
         <EditorIndex Value="7"/>
         <TopLine Value="6"/>
-        <CursorPos X="30" Y="31"/>
+        <CursorPos X="34" Y="13"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -384,14 +385,7 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="28">
-      <Position>
-        <Filename Value="CaseBroker.pas"/>
-        <Caret Line="256" Column="3" TopLine="126"/>
-      </Position>
-      <Position>
-        <Filename Value="CaseBroker.pas"/>
-      </Position>
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="CaseBroker.pas"/>
         <Caret Line="36" Column="17" TopLine="10"/>
@@ -499,6 +493,17 @@
       <Position>
         <Filename Value="CaseBroker.pas"/>
         <Caret Line="290" Column="22" TopLine="269"/>
+      </Position>
+      <Position>
+        <Filename Value="SPINA_Engine.pas"/>
+        <Caret Line="3" Column="15"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="unitconverter.pas"/>
+        <Caret Line="14" Column="44"/>
       </Position>
     </JumpHistory>
     <RunParams>

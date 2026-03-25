@@ -349,7 +349,7 @@ LazarusResources.Add('THauptschirm','FORMDATA',[
   +#15#224'x'#248#7#240'x'#248#7#240'x'#252#7#240'x'#254#7#240#249#255#7#248#249
   +#255#135#252#253#255#255#255#255#255#255#255#255#255#255#255#255#255#255#255
   +#255#255#255#4'Menu'#7#8'MainMenu'#14'ParentBiDiMode'#8#8'Position'#7#14'poS'
-  +'creenCenter'#10'LCLVersion'#6#7'4.0.0.4'#10'OnActivate'#7#12'FormActivate'#8
+  +'creenCenter'#10'LCLVersion'#6#7'4.6.0.0'#10'OnActivate'#7#12'FormActivate'#8
   +'OnCreate'#7#10'FormCreate'#11'OnDropFiles'#7#13'FormDropFiles'#7'OnPaint'#7
   +#9'FormPaint'#6'OnShow'#7#8'FormShow'#19'OnWindowStateChange'#7#21'FormWindo'
   +'wStateChange'#0#9'TComboBox'#8'FT4Items'#4'Left'#3#128#0#6'Height'#2#20#3'T'

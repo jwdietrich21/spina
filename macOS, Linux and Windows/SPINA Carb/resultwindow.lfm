@@ -12,7 +12,7 @@ object ResultForm: TResultForm
   ClientWidth = 691
   FormStyle = fsSystemStayOnTop
   Position = poMainFormCenter
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.6.0.0'
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnShow = FormShow

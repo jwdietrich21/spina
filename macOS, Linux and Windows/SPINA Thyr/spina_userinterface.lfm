@@ -317,7 +317,7 @@ object Hauptschirm: THauptschirm
   Menu = MainMenu
   ParentBiDiMode = False
   Position = poScreenCenter
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.6.0.0'
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnDropFiles = FormDropFiles

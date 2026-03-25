@@ -7,8 +7,9 @@
       <Unit>
         <Filename Value="EngineUnitTests.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="19" Y="3"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
@@ -16,9 +17,8 @@
         <Filename Value="enginetestcases.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EngineTestCases"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="19" Y="2"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>

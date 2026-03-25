@@ -1583,7 +1583,7 @@ object MainForm: TMainForm
     D20000000049454E44AE426082
   }
   Menu = MainMenu1
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow

@@ -306,7 +306,7 @@ object AboutBox: TAboutBox
     FF07F8F9FF87FCFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
   }
   Position = poScreenCenter
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnPaint = FormPaint
@@ -334,8 +334,8 @@ object AboutBox: TAboutBox
     OnChange = TabsChange
     object TabSheet1: TTabSheet
       Caption = 'Version'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object SPINALabel: TImage
         Cursor = crArrow
         Left = 21
@@ -1718,7 +1718,7 @@ object AboutBox: TAboutBox
         Height = 13
         Top = 126
         Width = 79
-        Caption = '© 1997 – 2025'
+        Caption = '© 1997 – 2026'
         Font.Height = -11
         Font.Pitch = fpVariable
         ParentColor = False
@@ -9126,11 +9126,11 @@ object AboutBox: TAboutBox
     end
     object TabSheet2: TTabSheet
       Caption = 'Info'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object Memo1: TMemo
         Left = 5
-        Height = 273
+        Height = 275
         Top = 4
         Width = 408
         Anchors = [akTop, akLeft, akBottom]
@@ -9149,8 +9149,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet3: TTabSheet
       Caption = 'Acknowledgment'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object Label3: TLabel
         Left = 21
         Height = 16
@@ -9288,8 +9288,8 @@ object AboutBox: TAboutBox
     end
     object TabSheet4: TTabSheet
       Caption = 'Impressum'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object Memo2: TMemo
         Left = 5
         Height = 270
@@ -9299,7 +9299,7 @@ object AboutBox: TAboutBox
           'Impressum'
           'Angaben gemäß § 5 des Telemediengesetzes (TMG)'
           ''
-          'PD Dr. med. Johannes W. Dietrich'
+          'apl. Prof. Dr. med. Johannes W. Dietrich'
           ''
           'Katholisches Klinikum Bochum gGmbH'
           'Gudrunstraße 56'
@@ -9307,7 +9307,7 @@ object AboutBox: TAboutBox
           ''
           'Vertreten durch: '
           'Prof. Dr. Christoph Hanefeld (Sprecher)'
-          'Dr. Christian Raible'
+          'Dipl.-Kfm. Nicolas Schulenburg'
           ''
           'Registergericht: Amtsgericht Bochum, HRB 5128'
           'Institutionskennzeichen: IK 260590071'

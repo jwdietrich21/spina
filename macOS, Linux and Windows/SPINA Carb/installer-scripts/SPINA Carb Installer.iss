@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SPINA Carb"
-#define MyAppVersion "5.1.0"
+#define MyAppVersion "5.1.1"
 #define MyAppPublisher "FORMATIO RETICULARIS"
 #define MyAppURL "http://spina.sf.net"
 #define MyAppExeName "SPINA Carb.exe"

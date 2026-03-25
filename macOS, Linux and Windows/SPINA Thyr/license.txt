@@ -25,7 +25,7 @@ http://spina.medical-cybernetics.de
 
 BSD License
 
-Copyright (c) 1994-2024, PD Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
+Copyright (c) 1994-2026, apl. Prof. Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
 
 All rights reserved.
 
@@ -65,7 +65,7 @@ We have invested a lot of time and effort in creating SPINA Thyr, please cite it
 
 In order to cite SPINA Thyr in publications use:
 
-J. W. Dietrich (1994-2024). SPINA Thyr, software for structure parameter inference approach of thyroid function. RRID:SCR_014352. doi: 10.5281/zenodo.3596049. http://spina.medical-cybernetics.de
+J. W. Dietrich (1994-2026). SPINA Thyr, software for structure parameter inference approach of thyroid function. RRID:SCR_014352. doi: 10.5281/zenodo.3596049. http://spina.medical-cybernetics.de
 
 Additionally you might want to read or cite one or several of the following papers:
 
@@ -103,6 +103,13 @@ Hoermann R, Pekker MJ, Midgley JEM, Larisch R, Dietrich JW (2020). Triiodothyron
 
 Müller P, Dietrich JW, Lin T, Bejinariu A, Binnebößel S, Bergen F, Schmidt J, Müller SK, Chatzitomaris A, Kurt M, Gerguri S, Clasen L, Klein HH, Kelm M, Makimoto H. Usefulness of Serum Free Thyroxine Concentration to Predict Ventricular Arrhythmia Risk in Euthyroid Patients With Structural Heart Disease. Am J Cardiol. 2020 Apr 15;125(8):1162-1169. doi: 10.1016/j.amjcard.2020.01.019. Epub 2020 Jan 29. PMID: 32087999.
 
+Dietrich JW, Hoermann R, Midgley JEM, Bergen F, Müller P. The Two Faces of Janus: Why Thyrotropin as a Cardiovascular Risk Factor May Be an Ambiguous Target. Front Endocrinol (Lausanne). 2020 Oct 26;11:542710. doi: 10.3389/fendo.2020.542710. PMID: 33193077; PMCID: PMC7649136.
+
 Aweimer A, El-Battrawy I, Akin I, Borggrefe M, Mügge A, Patsalis PC, Urban A, Kummer M, Vasileva S, Stachon A, Hering S, Dietrich JW. Abnormal thyroid function is common in takotsubo syndrome and depends on two distinct mechanisms: results of a multicentre observational study. J Intern Med. 2021 May;289(5):675-687. doi: 10.1111/joim.13189. Epub 2020 Nov 12. PMID: 33179374.
 
-Dietrich JW, Hoermann R, Midgley JEM, Bergen F, Müller P. The Two Faces of Janus: Why Thyrotropin as a Cardiovascular Risk Factor May Be an Ambiguous Target. Front Endocrinol (Lausanne). 2020 Oct 26;11:542710. doi: 10.3389/fendo.2020.542710. PMID: 33193077; PMCID: PMC7649136.
+Aweimer A, Schiedat F, Schöne D, Landgrafe-Mende G, Bogossian H, Mügge A, Patsalis PC, Gotzmann M, Akin I, El-Battrawy I, Dietrich JW. Abnormal Cardiac Repolarization in Thyroid Diseases: Results of an Observational Study. Front Cardiovasc Med. 2021 Nov 23;8:738517. doi: 10.3389/fcvm.2021.738517. PMID: 34888359; PMCID: PMC8649843.
+
+Abu Rached N, Dietrich JW, Ocker L, Quast DR, Scheel C, Gambichler T, Bechara FG. Primary Thyroid Dysfunction Is Prevalent in Hidradenitis Suppurativa and Marked by a Signature of Hypothyroid Graves' Disease: A Case-Control Study. J Clin Med. 2023 Dec 4;12(23):7490. doi: 10.3390/jcm12237490. PMID: 38068542; PMCID: PMC10707714.
+
+Bazika-Gerasch B, Kumowski N, Enax-Krumova E, Kaisler M, Eitner LB, Maier C, Dietrich JW. Impaired autonomic function and somatosensory disturbance in patients with treated autoimmune thyroiditis. Sci Rep. 2024 May 29;14(1):12358. doi: 10.1038/s41598-024-63158-w. PMID: 38811750; PMCID: PMC11137073.
+

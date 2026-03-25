@@ -10,7 +10,7 @@ object AboutBox: TAboutBox
   ClientHeight = 390
   ClientWidth = 451
   Position = poScreenCenter
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnPaint = FormPaint
@@ -35,8 +35,8 @@ object AboutBox: TAboutBox
     TabOrder = 1
     object VersionTabSheet: TTabSheet
       Caption = 'Version'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object SPINALabel: TImage
         Left = 21
         Height = 81
@@ -2827,7 +2827,7 @@ object AboutBox: TAboutBox
         Height = 13
         Top = 122
         Width = 79
-        Caption = '© 1997 – 2025'
+        Caption = '© 1997 – 2026'
         Font.Height = -11
         Font.Pitch = fpVariable
         ParentColor = False
@@ -2958,13 +2958,13 @@ object AboutBox: TAboutBox
     end
     object MoreInfoTabSheet: TTabSheet
       Caption = 'Info'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object Memo1: TMemo
         Left = 5
-        Height = 273
+        Height = 275
         Top = 4
-        Width = 408
+        Width = 404
         Anchors = [akTop, akLeft, akRight, akBottom]
         Lines.Strings = (
           'Memo1'
@@ -2977,8 +2977,8 @@ object AboutBox: TAboutBox
     end
     object AcknowledgementTabSheet: TTabSheet
       Caption = 'Acknowledgment'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object ResLabel: TLabel
         Left = 21
         Height = 16
@@ -3056,19 +3056,19 @@ object AboutBox: TAboutBox
     end
     object ImprintTabSheet: TTabSheet
       Caption = 'Impressum'
-      ClientHeight = 289
-      ClientWidth = 418
+      ClientHeight = 291
+      ClientWidth = 414
       object Memo2: TMemo
         Left = 5
-        Height = 270
+        Height = 272
         Top = 4
-        Width = 408
+        Width = 404
         Anchors = [akTop, akLeft, akRight, akBottom]
         Lines.Strings = (
           'Impressum'
           'Angaben gemäß § 5 des Telemediengesetzes (TMG)'
           ''
-          'PD Dr. med. Johannes W. Dietrich'
+          'apl. Prof. Dr. med. Johannes W. Dietrich'
           ''
           'Katholisches Klinikum Bochum gGmbH'
           'Gudrunstraße 56'
@@ -3076,7 +3076,7 @@ object AboutBox: TAboutBox
           ''
           'Vertreten durch: '
           'Prof. Dr. Christoph Hanefeld (Sprecher)'
-          'Dr. Christian Raible'
+          'Dipl.-Kfm. Nicolas Schulenburg'
           ''
           'Registergericht: Amtsgericht Bochum, HRB 5128'
           'Institutionskennzeichen: IK 260590071'

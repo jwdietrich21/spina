@@ -10,10 +10,10 @@ unit SPINA_Engine;
 
 { Version 4.2.2 (Kontinuum) }
 
-{ (c) J. W. Dietrich, 1994 - 2025 }
+{ (c) J. W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { This unit implements the calculation engine }
 
@@ -289,8 +289,8 @@ begin
   end
   else
   begin
-    theCase.sTSHIs := gNotCalculable;
-    theCase.flaggedsTSHIs := gNotCalculable;
+    theCase.sGDs := gNotCalculable;
+    theCase.flaggedsGDs := gNotCalculable;
   end;
   if not isNaN(theCase.TSHI) then
   begin

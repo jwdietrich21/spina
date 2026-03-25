@@ -14,11 +14,11 @@ object ResultForm: TResultForm
   ClientWidth = 691
   Constraints.MinHeight = 212
   FormStyle = fsStayOnTop
+  Position = poMainFormCenter
+  LCLVersion = '4.6.0.0'
   OnActivate = UpdateResultDisplay
   OnCreate = FormCreate
   OnPaint = FormPaint
-  Position = poMainFormCenter
-  LCLVersion = '3.8.0.0'
   object Image1: TImage
     Left = 24
     Height = 80

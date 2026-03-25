@@ -9,12 +9,12 @@ of insulin glucose homeostasis
 Programm zur Berechnung von Strukturparametern
 des Insulin-Glukose-Regelkreises
 
-Version 5.1.0 (Cyclone)
+Version 5.1.1 (Cyclone)
 
-(c) J. W. Dietrich, 1994 - 2025
+(c) J. W. Dietrich, 1994 - 2026
 (c) Ludwig Maximilian University of Munich 1995 - 2002
 (c) University of Ulm Hospitals 2002-2004
-(c) Ruhr University of Bochum 2005 - 2025
+(c) Ruhr University of Bochum 2005 - 2026
 
 Source code released under the BSD License
 See http://spina.medical-cybernetics.de for details
@@ -26,7 +26,7 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleExecutable</key>
 	<string>SPINA Carb</string>
 	<key>CFBundleVersion</key>
-	<string>5.1.0</string>
+	<string>5.1.1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
   <key>CFBundleLocalizations</key>
@@ -40,11 +40,11 @@ See http://spina.medical-cybernetics.de for details
 	<key>CFBundleSignature</key>
 	<string>SPIc</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5.1.0</string>
+	<string>5.1.1</string>
 	<key>CFBundleGetInfoString</key>
-	<string>5.1.0, ©1994-2025 J. W. Dietrich</string>
+	<string>5.1.1, ©1994-2026 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>5.1.0, ©1994-2025 J. W. Dietrich</string>
+	<string>5.1.1, ©1994-2026 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sf.spina.carb</string>
 	<key>LSApplicationCategoryType</key>

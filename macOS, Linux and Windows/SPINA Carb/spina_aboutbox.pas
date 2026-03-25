@@ -8,12 +8,12 @@ unit SPINA_Aboutbox;
 { Programm zur Berechnung von Strukturparametern }
 { des Insulin-Glukose-Regelkreises }
 
-{ Version 5.1.0 (Cyclone) }
+{ Version 5.1.1 (Cyclone) }
 
-{ (c) J. W. Dietrich, 1994 - 2025 }
+{ (c) J. W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { About box }
 

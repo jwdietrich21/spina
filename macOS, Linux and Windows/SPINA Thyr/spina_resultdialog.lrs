@@ -6,12 +6,12 @@ LazarusResources.Add('TResultForm','FORMDATA',[
   +'e'#3#138#0#10'AlphaBlend'#9#15'AlphaBlendValue'#2#0#11'BorderIcons'#11#0#11
   +'BorderStyle'#7#12'bsToolWindow'#7'Caption'#6#11'   Ergebnis'#12'ClientHeigh'
   +'t'#3#212#0#11'ClientWidth'#3#179#2#21'Constraints.MinHeight'#3#212#0#9'Form'
-  +'Style'#7#11'fsStayOnTop'#10'OnActivate'#7#19'UpdateResultDisplay'#8'OnCreat'
-  +'e'#7#10'FormCreate'#7'OnPaint'#7#9'FormPaint'#8'Position'#7#16'poMainFormCe'
-  +'nter'#10'LCLVersion'#6#7'3.8.0.0'#0#6'TImage'#6'Image1'#4'Left'#2#24#6'Heig'
-  +'ht'#2'P'#3'Top'#2' '#5'Width'#2'R'#6'Center'#9#12'Picture.Data'#10#5'#'#0#0
-  +#23'TPortableNetworkGraphic'#233'"'#0#0#137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0
-  +#0#0#250#0#0#0#234#8#6#0#0#0#139':X'#166#0#0#9#127'iCCPICCProfile'#0#0'x'#156
+  +'Style'#7#11'fsStayOnTop'#8'Position'#7#16'poMainFormCenter'#10'LCLVersion'#6
+  +#7'4.6.0.0'#10'OnActivate'#7#19'UpdateResultDisplay'#8'OnCreate'#7#10'FormCr'
+  +'eate'#7'OnPaint'#7#9'FormPaint'#0#6'TImage'#6'Image1'#4'Left'#2#24#6'Height'
+  +#2'P'#3'Top'#2' '#5'Width'#2'R'#6'Center'#9#12'Picture.Data'#10#5'#'#0#0#23
+  +'TPortableNetworkGraphic'#233'"'#0#0#137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0
+  +#0#250#0#0#0#234#8#6#0#0#0#139':X'#166#0#0#9#127'iCCPICCProfile'#0#0'x'#156
   +#237#153'gP'#20#217#26#134'OwO'#14#12#204#12'C'#134'!'#14'A'#162#132#1'$'#231
   +'$A'#178#168#192#12#25'F'#24#146#2'&dq'#5'V'#16#17'I'#138' '#162#128#11#174
   +'.AVQ'#17#197#128'((`@w'#144'E@Y'#23'W'#17#21#149#29#244#199#222#170'{'#235

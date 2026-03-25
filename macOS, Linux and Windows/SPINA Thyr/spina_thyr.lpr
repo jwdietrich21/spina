@@ -10,10 +10,10 @@ program spina_thyr;
 
 { Version 4.2.2 (Kontinuum) }
 
-{ (c) J. W. Dietrich, 1994 - 2025 }
+{ (c) J. W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Main unit }
 
@@ -57,7 +57,7 @@ begin
   {$ENDIF}
   gCEcertified := false;
   GetMacDateFormats;
-  Application.Title:='SPINA Thyr';
+  Application.Title := 'SPINA Thyr';
   InitThyroidHormoneConversionFactors;
   Application.Initialize;
   Application.CreateForm(THauptschirm, Hauptschirm);

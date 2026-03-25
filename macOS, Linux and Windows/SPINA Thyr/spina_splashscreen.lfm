@@ -17,10 +17,10 @@ object SplashScreen: TSplashScreen
   ClientHeight = 344
   ClientWidth = 443
   FormStyle = fsSplash
-  OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stNever
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.6.0.0'
+  OnCreate = FormCreate
   object VersionLabel: TLabel
     Left = 32
     Height = 13

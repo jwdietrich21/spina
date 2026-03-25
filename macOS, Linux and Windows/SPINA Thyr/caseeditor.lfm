@@ -9,12 +9,12 @@ object CaseEditorForm: TCaseEditorForm
   Caption = 'Fall-Editor'
   ClientHeight = 386
   ClientWidth = 572
+  Position = poScreenCenter
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnDropFiles = FormDropFiles
   OnPaint = FormPaint
   OnShow = FormShow
-  Position = poScreenCenter
-  LCLVersion = '3.8.0.0'
   object Bevel2: TBevel
     Left = 24
     Height = 77
