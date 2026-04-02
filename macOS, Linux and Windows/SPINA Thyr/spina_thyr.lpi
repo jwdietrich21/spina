@@ -23,11 +23,11 @@
       <MajorVersionNr Value="4"/>
       <MinorVersionNr Value="2"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="884"/>
+      <BuildNr Value="885"/>
       <Attributes pvaDebug="True"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.2.2 Kontinuum" LegalCopyright="1994-2026 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.2.2"/>
     </VersionInfo>
-    <BuildModes Count="2" Active="macOS">
+    <BuildModes Count="2">
       <Item1 Name="default" Default="True"/>
       <Item2 Name="macOS">
         <CompilerOptions>
@@ -205,9 +205,8 @@ end;"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SPINA_AboutBox"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="230"/>
+        <TopLine Value="219"/>
         <CursorPos Y="254"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
@@ -1193,14 +1192,15 @@ end;"/>
         <Filename Value="localeservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LocaleServices"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="27"/>
-        <TopLine Value="95"/>
-        <CursorPos X="44" Y="16"/>
+        <TopLine Value="19"/>
+        <CursorPos X="30" Y="31"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit146>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="spina_types.pas"/>
         <Caret Line="142" Column="3" TopLine="115"/>
@@ -1313,6 +1313,10 @@ end;"/>
         <Filename Value="spina_aboutbox.pas"/>
         <Caret Line="16" Column="44"/>
       </Position28>
+      <Position29>
+        <Filename Value="spina_aboutbox.pas"/>
+        <Caret Line="254" TopLine="219"/>
+      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

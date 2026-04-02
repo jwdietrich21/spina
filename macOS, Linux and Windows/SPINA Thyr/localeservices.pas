@@ -28,7 +28,7 @@ unit LocaleServices;
 interface
 
 uses
-  Classes, SysUtils,
+  Classes, SysUtils, gettext,
   {$IFDEF Windows}
   Windows,
   {$ELSE}
