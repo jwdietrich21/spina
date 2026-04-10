@@ -23,23 +23,19 @@
       <MajorVersionNr Value="4"/>
       <MinorVersionNr Value="2"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="885"/>
+      <BuildNr Value="886"/>
       <Attributes pvaDebug="True"/>
       <StringTable Comments="Research use only" CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Thyr" InternalName="SPINA Thyr 4.2.2 Kontinuum" LegalCopyright="1994-2026 J. W. Dietrich" OriginalFilename="SPINA Thyr" ProductName="SPINA Thyr" ProductVersion="4.2.2"/>
     </VersionInfo>
-    <BuildModes Count="2">
-      <Item1 Name="default" Default="True"/>
-      <Item2 Name="macOS">
+    <BuildModes Count="5" Active="Deep Debugging">
+      <Item1 Name="Deep Debugging" Default="True"/>
+      <Item2 Name="macOS Apple Silicon">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
             <Filename Value="SPINA Thyr"/>
           </Target>
-          <Conditionals Value="if TargetOS = &apos;darwin&apos; then begin
-  UsageCustomOptions += &apos; -k-macosx_version_min -k10.4&apos;;
-  UsageCustomOptions += &apos; -XR/Developer/SDKs/MacOSX10.4u.sdk/&apos;;
-end;"/>
           <Parsing>
             <SyntaxOptions>
               <CStyleOperator Value="False"/>
@@ -53,13 +49,18 @@ end;"/>
               <OverflowChecks Value="True"/>
               <StackChecks Value="True"/>
             </Checks>
+            <TargetCPU Value="aarch64"/>
+            <TargetOS Value="darwin"/>
             <Optimizations>
               <OptimizationLevel Value="3"/>
             </Optimizations>
           </CodeGeneration>
           <Linking>
             <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
               <DebugInfoType Value="dsDwarf2Set"/>
+              <StripSymbols Value="True"/>
             </Debugging>
             <LinkSmart Value="True"/>
             <Options>
@@ -69,12 +70,139 @@ end;"/>
             </Options>
           </Linking>
           <Other>
-            <CustomOptions Value="//-k-macosx_version_min //-k10.4
-//-XR/Developer/SDKs/MacOSX10.4u.sdk/
--WM10.14"/>
+            <CustomOptions Value="-WM10.15"/>
           </Other>
         </CompilerOptions>
       </Item2>
+      <Item3 Name="macOS Intel Cocoa">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="SPINA Thyr"/>
+          </Target>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="darwin"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <StripSymbols Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-WM10.14"/>
+          </Other>
+        </CompilerOptions>
+      </Item3>
+      <Item4 Name="Windows 32 bit">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="SPINA Thyr"/>
+          </Target>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <StripSymbols Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item4>
+      <Item5 Name="Windows 64 bit">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="SPINA Thyr"/>
+          </Target>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="win64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <StripSymbols Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item5>
       <SharedMatrixOptions Count="2">
         <Item1 ID="577517658593" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
         <Item2 ID="588442355787" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
@@ -257,9 +385,10 @@ end;"/>
         <Filename Value="spina_engine.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPINA_Engine"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="17"/>
-        <TopLine Value="179"/>
-        <CursorPos Y="193"/>
+        <TopLine Value="208"/>
+        <CursorPos Y="223"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit18>
@@ -1192,7 +1321,6 @@ end;"/>
         <Filename Value="localeservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LocaleServices"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="27"/>
         <TopLine Value="19"/>
         <CursorPos X="30" Y="31"/>
@@ -1200,7 +1328,7 @@ end;"/>
         <Loaded Value="True"/>
       </Unit146>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="spina_types.pas"/>
         <Caret Line="142" Column="3" TopLine="115"/>
@@ -1317,6 +1445,10 @@ end;"/>
         <Filename Value="spina_aboutbox.pas"/>
         <Caret Line="254" TopLine="219"/>
       </Position29>
+      <Position30>
+        <Filename Value="localeservices.pas"/>
+        <Caret Line="31" Column="30" TopLine="19"/>
+      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1328,6 +1460,7 @@ end;"/>
     <Conditionals Value="if TargetOS = &apos;darwin&apos; then begin
   UsageCustomOptions += &apos; -k-macosx_version_min -k10.4&apos;;
   UsageCustomOptions += &apos; -XR/Developer/SDKs/MacOSX10.4u.sdk/&apos;;
+  CustomOptions := &apos;-WM10.15&apos;
 end;"/>
     <Parsing>
       <SyntaxOptions>
@@ -1343,7 +1476,7 @@ end;"/>
         <StackChecks Value="True"/>
       </Checks>
       <Optimizations>
-        <OptimizationLevel Value="3"/>
+        <OptimizationLevel Value="0"/>
       </Optimizations>
     </CodeGeneration>
     <Linking>
@@ -1357,10 +1490,6 @@ end;"/>
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CustomOptions Value="//-k-macosx_version_min //-k10.4
-//-XR/Developer/SDKs/MacOSX10.4u.sdk/"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Watches Count="1">

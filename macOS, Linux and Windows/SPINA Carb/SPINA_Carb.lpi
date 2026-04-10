@@ -21,12 +21,12 @@
       <MajorVersionNr Value="5"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="239"/>
+      <BuildNr Value="240"/>
       <Language Value="0809"/>
       <StringTable CompanyName="SPINA project, Formatio Reticularis and Ruhr University of Bochum" FileDescription="SPINA Carb" InternalName="SPINA Carb 5.1.1 Cyclone" LegalCopyright="© 1994-2026 J. W. Dietrich" OriginalFilename="SPINA Carb" ProductName="SPINA Carb" ProductVersion="5.1.1 Cyclone"/>
     </VersionInfo>
     <BuildModes>
-      <Item Name="Default" Default="True"/>
+      <Item Name="Deep Debugging" Default="True"/>
       <Item Name="macOS Apple Silicon">
         <CompilerOptions>
           <Version Value="11"/>
@@ -55,7 +55,7 @@
             <LinkSmart Value="True"/>
           </Linking>
           <Other>
-            <CustomOptions Value="-WM10.14"/>
+            <CustomOptions Value="-WM10.15"/>
           </Other>
         </CompilerOptions>
       </Item>
@@ -357,6 +357,8 @@
       <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
+    <Conditionals Value="if TargetOS = &apos;darwin&apos; then
+  CustomOptions := &apos;-WM10.15&apos;"/>
     <CodeGeneration>
       <SmartLinkUnit Value="True"/>
     </CodeGeneration>
