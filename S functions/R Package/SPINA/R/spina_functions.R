@@ -22,7 +22,7 @@ Glucose.conversion.factor <- 18; # derived from molar mass
 #'
 #' @examples
 #' SPINA.GBeta(63.01, 4.34)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
@@ -46,6 +46,30 @@ SPINA.GBeta <- function(Insulin, Glucose)
   return(GBeta);
 }
 
+#' Calculated insulin receptor gain (SPINA-GR)
+#'
+#' @param Insulin Insulin concentration in pmol/L
+#' @param Glucose Glucose concentration in mmol/L
+#'
+#' @returns This function returns the insulin receptor gain (SPINA-GR), a
+#' calculated biomarker of insulin sensitivity as a numeric result representing
+#' a single value or a vector, depending on the vector length of the arguments.
+#' Results are in mol/s.
+#' @export
+#'
+#' @examples
+#' SPINA.GR(63.01, 4.34)
+#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
+#'
+#' Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone of metabolite concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 SPINA.GR <- function(Insulin, Glucose)
   # Insulin in pmol/l, Glucose in mmol/l
 {
@@ -61,6 +85,29 @@ SPINA.GR <- function(Insulin, Glucose)
   - 1 / GE;
   return(GR);
 }
+
+#' Static disposition index (SPINA-DI)
+#'
+#' @param Insulin Insulin concentration in pmol/L
+#' @param Glucose Glucose concentration in mmol/L
+#'
+#' @returns This function returns the static disposition index (SPINA-DI), a
+#' representation of the loop gain of glucose homeostasis as a numeric result representing
+#' a single value or a vector, depending on the vector length of the arguments.
+#' @export
+#'
+#' @examples
+#' SPINA.DI(63.01, 4.34)
+#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
+#'
+#' Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone of metabolite concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
 
 SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 {
