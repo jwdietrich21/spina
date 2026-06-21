@@ -4,8 +4,9 @@ Version: 5.1.00
 Authors@R: 
     c(person("Johannes W.", "Dietrich", 
                      email = "johannes.dietrich@ruhr-uni-bochum.de",
-                     role = c("aut", "cph", "cre")))
-Description: Calculates constant structure parameters of endocrine homeostatic systems from equilibrium hormone and metabolite concentrations.
+                     role = c("aut", "cph", "cre")),
+                     person("Bernhard O.", "Boehm", role = "ctb"))
+Description: Calculates constant structure parameters of endocrine homeostatic systems from steady-state  hormone and metabolite concentrations.
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
