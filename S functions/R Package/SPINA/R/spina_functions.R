@@ -10,6 +10,27 @@
 Insulin.conversion.factor <- 6;  # A Voelund 1993, L. Heinemann 2010
 Glucose.conversion.factor <- 18; # derived from molar mass
 
+#' Data for SPINA
+#'
+#' Pilo: Data from Pilo et al. (1990)
+#'
+#' @name Pilo
+#' @docType data
+#' @format ## "Pilo"
+#' A data frame with 14 rows and 33 columns
+#' \describe{
+#'  \item{Sex}{Sex (f: female; m: male)}
+#'  \item{Age}{Age in years}
+#' }
+#'
+#' @source
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi 10.3389/fendo.2016.00057. PMID 27375554; PMCID PMC4899439.
+#'
+#' Pilo A, Iervasi G, Vitek F, Ferdeghini M, Cazzuola F, Bianchi R. Thyroidal and
+#' peripheral production of 3,5,3'-triiodothyronine in humans by multicompartmental
+#' analysis. Am J Physiol. 1990 Apr;258(4 Pt 1):E715-26. PMID 2333963.
+NULL
+
 #' Calculated secretory capacity of pancreatic beta cells (SPINA-GBeta)
 #'
 #' @param Insulin Insulin concentration in pmol/L

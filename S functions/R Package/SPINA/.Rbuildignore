@@ -2,3 +2,4 @@
 ^renv\.lock$
 ^SPINA\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
