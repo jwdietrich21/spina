@@ -12,7 +12,7 @@ SPINA.DI(Insulin, Glucose)
 \item{Glucose}{Glucose concentration in mmol/L}
 }
 \value{
-This function returns the static disposition index (SPINA-DI), a
+Returns the static disposition index (SPINA-DI), a
 representation of the loop gain of glucose homeostasis as a numeric result representing
 a single value or a vector, depending on the vector length of the arguments.
 }
@@ -24,7 +24,7 @@ This function is able to do vectorised calculations.
 }
 \note{
 The software functions described in this document are intended for research use only.
-Hormone of metabolite concentrations should have been obtained simultaneously in order to
+Hormone or metabolite concentrations should have been obtained simultaneously in order to
 avoid bias by transition effects.
 }
 \examples{

@@ -12,7 +12,7 @@ SPINA.GR(Insulin, Glucose)
 \item{Glucose}{Glucose concentration in mmol/L}
 }
 \value{
-This function returns the insulin receptor gain (SPINA-GR), a
+Returns the insulin receptor gain (SPINA-GR), a
 calculated biomarker of insulin sensitivity as a numeric result representing
 a single value or a vector, depending on the vector length of the arguments.
 Results are in mol/s.
@@ -25,7 +25,7 @@ This function is able to do vectorised calculations.
 }
 \note{
 The software functions described in this document are intended for research use only.
-Hormone of metabolite concentrations should have been obtained simultaneously in order to
+Hormone or metabolite concentrations should have been obtained simultaneously in order to
 avoid bias by transition effects.
 }
 \examples{

@@ -30,6 +30,7 @@ Glucose.conversion.factor <- 18; # derived from molar mass
 #' peripheral production of 3,5,3'-triiodothyronine in humans by multicompartmental
 #' analysis. Am J Physiol. 1990 Apr;258(4 Pt 1):E715-26. PMID 2333963.
 NULL
+
 #' Data for SPINA
 #'
 #' Vellore: Data from Dietrich et al. (2022 and 2024)
@@ -59,7 +60,7 @@ NULL
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
 #'
-#' @returns This function returns the secretory capacity of pancreatic beta cells
+#' @returns Returns the secretory capacity of pancreatic beta cells
 #' (SPINA-GBeta) as a numeric result representing a single value or a vector,
 #' depending on the vector length of the arguments. Results are in pmol/s.
 #' @export
@@ -74,7 +75,7 @@ NULL
 #' Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
 #' @note
 #' The software functions described in this document are intended for research use only.
-#' Hormone of metabolite concentrations should have been obtained simultaneously in order to
+#' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
 SPINA.GBeta <- function(Insulin, Glucose)
@@ -95,7 +96,7 @@ SPINA.GBeta <- function(Insulin, Glucose)
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
 #'
-#' @returns This function returns the insulin receptor gain (SPINA-GR), a
+#' @returns Returns the insulin receptor gain (SPINA-GR), a
 #' calculated biomarker of insulin sensitivity as a numeric result representing
 #' a single value or a vector, depending on the vector length of the arguments.
 #' Results are in mol/s.
@@ -111,7 +112,7 @@ SPINA.GBeta <- function(Insulin, Glucose)
 #' Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
 #' @note
 #' The software functions described in this document are intended for research use only.
-#' Hormone of metabolite concentrations should have been obtained simultaneously in order to
+#' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
 SPINA.GR <- function(Insulin, Glucose)
@@ -135,7 +136,7 @@ SPINA.GR <- function(Insulin, Glucose)
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
 #'
-#' @returns This function returns the static disposition index (SPINA-DI), a
+#' @returns Returns the static disposition index (SPINA-DI), a
 #' representation of the loop gain of glucose homeostasis as a numeric result representing
 #' a single value or a vector, depending on the vector length of the arguments.
 #' @export
@@ -150,7 +151,7 @@ SPINA.GR <- function(Insulin, Glucose)
 #' Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: 38169110; PMCID: PMC11418405.
 #' @note
 #' The software functions described in this document are intended for research use only.
-#' Hormone of metabolite concentrations should have been obtained simultaneously in order to
+#' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
 SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
@@ -159,11 +160,45 @@ SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
   return(DI);
 }
 
+#' Homeostasis model assessment: insulin resistance (HOMA-IR)
+#'
+#' @param Insulin Insulin concentration in pmol/L
+#' @param Glucose Glucose concentration in mmol/L
+#'
+#' @returns Returns the HOMA-IR index, a calculated biomarker for insulin resistance.
+#' @export
+#'
+#' @examples
+#' HOMA.IR(63.01, 4.34)
+#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @details This function is able to do vectorised calculations.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone or metabolite concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 {
   IR <- Glucose * Insulin / Insulin.conversion.factor / 22.5;
   return(IR);
 }
+
+#' Homeostasis model assessment: beta-cell function (HOMA-Beta)
+#'
+#' @param Insulin Insulin concentration in pmol/L
+#' @param Glucose Glucose concentration in mmol/L
+#'
+#' @returns Returns the HOMA-Beta index, a calculated biomarker for beta-cell function
+#' @export
+#'
+#' @examples
+#' HOMA.Beta(63.01, 4.34)
+#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @details This function is able to do vectorised calculations.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone or metabolite concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
 
 HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 {
@@ -172,11 +207,45 @@ HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
   return(Beta);
 }
 
+#' Homeostasis model assessment: insulin sensitivity (HOMA-IS)
+#'
+#' @param Insulin Insulin concentration in pmol/L
+#' @param Glucose Glucose concentration in mmol/L
+#'
+#' @returns Returns the HOMA-IS index, a calculated biomarker for insulin sensitivity
+#' @export
+#'
+#' @examples
+#' HOMA.IS(63.01, 4.34)
+#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @details This function is able to do vectorised calculations.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone or metabolite concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 {
   IS <- 1 / HOMA.IR(Insulin, Glucose);
   return(IS);
 }
+
+#' Quantitative insulin-sensitivity check index (QUICKI)
+#'
+#' @param Insulin Insulin concentration in pmol/L
+#' @param Glucose Glucose concentration in mmol/L
+#'
+#' @returns Returns the QUICKI index, a calculated biomarker for insulin sensitivity
+#' @export
+#'
+#' @examples
+#' QUICKI(63.01, 4.34)
+#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @details This function is able to do vectorised calculations.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone or metabolite concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
 
 QUICKI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 {
