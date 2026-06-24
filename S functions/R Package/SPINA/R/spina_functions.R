@@ -253,6 +253,27 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
   return(QUICKI);
 }
 
+#' Calculated thyroid's secretory capacity (SPINA-GT)
+#'
+#' @param TSH thyrotropin concentration in mIU/l
+#' @param FT4 free T4 concentration in pmol/l
+#'
+#' @returns Returns SPINA-GT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
+#' @export
+#'
+#' @examples
+#' estimated.GT(1.0, 16.4)
+#' @author Johannes W. Dietrich
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
+#'
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 estimated.GT <- function(TSH, FT4)
   # TSH in mU/l, FT4 in pmol/l
 {
