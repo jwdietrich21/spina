@@ -79,7 +79,7 @@ NULL
 #' avoid bias by transition effects.
 
 SPINA.GBeta <- function(Insulin, Glucose)
-  # Insulin expected in pmol/l, Glucose in mmol/l
+  # Insulin expected in pmol/L, Glucose in mmol/L
 {
   pico.factor <- 1e12;
   mili.factor <- 1e3
@@ -116,7 +116,7 @@ SPINA.GBeta <- function(Insulin, Glucose)
 #' avoid bias by transition effects.
 
 SPINA.GR <- function(Insulin, Glucose)
-  # Insulin in pmol/l, Glucose in mmol/l
+  # Insulin in pmol/L, Glucose in mmol/L
 {
   pico.factor <- 1e12;
   mili.factor <- 1e3;
@@ -154,7 +154,7 @@ SPINA.GR <- function(Insulin, Glucose)
 #' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
-SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
   DI <- SPINA.GBeta(Insulin, Glucose) * SPINA.GR(Insulin, Glucose);
   return(DI);
@@ -177,7 +177,7 @@ SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 #' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
-HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
   IR <- Glucose * Insulin / Insulin.conversion.factor / 22.5;
   return(IR);
@@ -200,7 +200,7 @@ HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 #' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
-HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
   Beta <- rep(NA, times = length(Insulin));
   Beta[which(Glucose > 3.5)] <- 20 * Insulin[which(Glucose > 3.5)] / Insulin.conversion.factor / (Glucose[which(Glucose > 3.5)] - 3.5);
@@ -224,7 +224,7 @@ HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 #' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
-HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
   IS <- 1 / HOMA.IR(Insulin, Glucose);
   return(IS);
@@ -247,7 +247,7 @@ HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 #' Hormone or metabolite concentrations should have been obtained simultaneously in order to
 #' avoid bias by transition effects.
 
-QUICKI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
+QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
   QUICKI <- 1 / (log10(Insulin / Insulin.conversion.factor) + log10(Glucose * Glucose.conversion.factor));
   return(QUICKI);
@@ -255,14 +255,14 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 
 #' Calculated thyroid's secretory capacity (SPINA-GT)
 #'
-#' @param TSH thyrotropin concentration in mIU/l
-#' @param FT4 free T4 concentration in pmol/l
+#' @param TSH thyrotropin concentration in mIU/L
+#' @param FT4 free T4 concentration in pmol/L
 #'
 #' @returns Returns SPINA-GT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
 #' @export
 #'
 #' @examples
-#' estimated.GT(1.0, 16.4)
+#' estimated.GT(1.0, 16.5)
 #' @author Johannes W. Dietrich
 #' @details This function is able to do vectorised calculations.
 #' @references
@@ -275,7 +275,7 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/l, Glucose in mmol/l
 #' avoid bias by transition effects.
 
 estimated.GT <- function(TSH, FT4)
-  # TSH in mU/l, FT4 in pmol/l
+  # TSH in mU/L, FT4 in pmol/L
 {
   pico.factor <- 1e12;
   alphaT <- 0.1;
@@ -292,8 +292,29 @@ estimated.GT <- function(TSH, FT4)
   return(GT);
 }
 
+#' Calculated step-up deiodinase activity (SPINA-GD)
+#'
+#' @param FT4 free T4 concentration in pmol/L
+#' @param FT3 free T3 concentration in pmol/L
+#'
+#' @returns Returns SPINA-GD, a calculated biomarker for the sum activity of peripheral step-up deiodinases
+#' @export
+#'
+#' @examples
+#' estimated.GD(16.5, 4.5)
+#' @author Johannes W. Dietrich
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
+#'
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 estimated.GD <- function(FT4, FT3)
-  # FT4 and FT3 in pmol/l
+  # FT4 and FT3 in pmol/L
 {
   pico.factor <- 1e12;
   nano.factor <- 1e9;
@@ -311,7 +332,7 @@ estimated.GD <- function(FT4, FT3)
 }
 
 estimated.GTT <- function(TSH, T4)
-  # TSH in mU/l, T4 in nmol/l
+  # TSH in mU/L, T4 in nmol/L
 {
   pico.factor <- 1e12;
   nano.factor <- 1e9;
@@ -325,7 +346,7 @@ estimated.GTT <- function(TSH, T4)
 }
 
 estimated.GDTT <- function(T4, T3)
-  # T4 and T3 in nmol/l
+  # T4 and T3 in nmol/L
 {
   pico.factor <- 1e12;
   nano.factor <- 1e9;
@@ -346,7 +367,7 @@ estimated.GDTT <- function(T4, T3)
 }
 
 estimated.TTSI <- function(TSH, FT4, lu)
-  # TSH in mU/l, FT4 in arbitrary unit
+  # TSH in mU/L, FT4 in arbitrary unit
   # lu: upper limit of FT4 reference range, same unit as FT4
 {
   TSH[which(TSH == 0)] = NA;
@@ -355,7 +376,7 @@ estimated.TTSI <- function(TSH, FT4, lu)
 }
 
 estimated.TSHI <- function(TSH, FT4)
-  # TSH in mU/l, FT4 in pmol/l
+  # TSH in mU/L, FT4 in pmol/L
 {
   beta <- -0.1345;
   TSH[which(TSH == 0)] = NA;
@@ -364,20 +385,41 @@ estimated.TSHI <- function(TSH, FT4)
 }
 
 estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676)
-  # TSH in mU/l, FT4 in pmol/l
+  # TSH in mU/L, FT4 in pmol/L
 {
   stshi <- (estimated.TSHI(TSH, FT4) - mean) / sd;
   return(stshi);
 }
 
 estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5)
-  # T4 and T3 in nmol/l
+  # T4 and T3 in nmol/L
 {
   sgd <- (estimated.GD(FT4, FT3) - mean) / sd;
   return(sgd);
 }
 
 # Alias functions renamed according to new nomenclature (SPINA-GT and SPINA-GD):
+
+#' Calculated thyroid's secretory capacity (SPINA-GT)
+#'
+#' @param TSH thyrotropin concentration in mIU/L
+#' @param FT4 free T4 concentration in pmol/L
+#'
+#' @returns Returns SPINA-GT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
+#' @export
+#'
+#' @examples
+#' SPINA.GT(1.0, 16.5)
+#' @author Johannes W. Dietrich
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
+#'
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
 
 SPINA.GT <- function(TSH, FT4) estimated.GT(TSH, FT4);
 SPINA.GD <- function(FT4, FT3) estimated.GD(FT4, FT3);
