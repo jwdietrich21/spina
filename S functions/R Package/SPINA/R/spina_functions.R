@@ -408,6 +408,31 @@ estimated.GDTT <- function(T4, T3)
   return(GD);
 }
 
+#' Thyrotroph thyroid hormone sensitivity index (TTSI)
+#'
+#' @param TSH thyrotropin concentration in mIU/L
+#' @param FT4 free T4 concentration in pmol/L
+#' @param lu upper limit of the reference interval of FT4 in pmol/L
+#'
+#' @returns Returns the TTSI, a calculated biomarker for the sensitivity of pituitary thyrotrophic cells to thyroxine
+#' @export
+#'
+#' @examples
+#' estimated.TTSI(1.0, 16.5, 18)
+#' @author Johannes W. Dietrich
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
+#'
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+#'
+#' Pohlenz J, Weiss RE, Macchia PE, Pannain S, Lau IT, Ho H, Refetoff S. Five new families with resistance to thyroid hormone not caused by mutations in the thyroid hormone receptor beta gene. J Clin Endocrinol Metab. 1999 Nov;84(11):3919-28. doi: 10.1210/jcem.84.11.6080. PMID: 10566629.
+#'
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 estimated.TTSI <- function(TSH, FT4, lu)
   # TSH in mU/L, FT4 in arbitrary unit
   # lu: upper limit of FT4 reference range, same unit as FT4
