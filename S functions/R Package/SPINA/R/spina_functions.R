@@ -331,6 +331,27 @@ estimated.GD <- function(FT4, FT3)
   return(GD);
 }
 
+#' Calculated thyroid's secretory capacity, based on total T4 (SPINA-GTT)
+#'
+#' @param TSH thyrotropin concentration in mIU/L
+#' @param T4 free T4 concentration in nmol/L
+#'
+#' @returns Returns SPINA-GTT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
+#' @export
+#'
+#' @examples
+#' estimated.GTT(1.0, 90)
+#' @author Johannes W. Dietrich
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
+#'
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 estimated.GTT <- function(TSH, T4)
   # TSH in mU/L, T4 in nmol/L
 {
