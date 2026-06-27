@@ -442,6 +442,30 @@ estimated.TTSI <- function(TSH, FT4, lu)
   return(ttsi);
 }
 
+#' Jostel's TSH index (TSHI, JTI)
+#'
+#' @param TSH thyrotropin concentration in mIU/L
+#' @param FT4 free T4 concentration in pmol/L
+#'
+#' @returns Returns the TSH index, a calculated biomarker for the thyrotropic function of the anterior pituitary gland
+#' @export
+#'
+#' @examples
+#' estimated.TSHI(1.0, 16.5)
+#' @author Johannes W. Dietrich
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
+#'
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+#'
+#' Jostel A, Ryder WD, Shalet SM. The use of thyroid function tests in the diagnosis of hypopituitarism: definition and evaluation of the TSH Index. Clin Endocrinol (Oxf). 2009 Oct;71(4):529-34. doi: 10.1111/j.1365-2265.2009.03534.x. Epub 2009 Feb 18. PMID: 19226261.
+#'
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 estimated.TSHI <- function(TSH, FT4)
   # TSH in mU/L, FT4 in pmol/L
 {
