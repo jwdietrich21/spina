@@ -608,6 +608,28 @@ SPINA.GD <- function(FT4, FT3) estimated.GD(FT4, FT3);
 #' avoid bias by transition effects.
 
 SPINA.GTT <- function(TSH, T4) estimated.GTT(TSH, T4);
+
+#' Calculated step-up deiodinase activity, based on total T4 and T3 (SPINA-GDTT)
+#'
+#' @param T4 total T4 concentration in nmol/L
+#' @param T3 tptaö T3 concentration in nmol/L
+#'
+#' @returns Returns SPINA-GD, a calculated biomarker for the sum activity of peripheral step-up deiodinases
+#' @export
+#'
+#' @examples
+#' SPINA.GDTT(90, 2.5)
+#' @author Johannes W. Dietrich
+#' @details This function is able to do vectorised calculations.
+#' @references
+#' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
+#'
+#' Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi: 10.3389/fendo.2016.00057. PMID: 27375554; PMCID: PMC4899439.
+#' @note
+#' The software functions described in this document are intended for research use only.
+#' Hormone concentrations should have been obtained simultaneously in order to
+#' avoid bias by transition effects.
+
 SPINA.GDTT <- function(T4, T3) estimated.GDTT(T4, T3);
 SPINA.sGD <- function(FT4, FT3, mean = 30, sd = 5) estimated.sGD(FT4, FT3, mean, sd);
 
