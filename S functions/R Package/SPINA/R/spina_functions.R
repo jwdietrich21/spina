@@ -21,6 +21,13 @@ Glucose.conversion.factor <- 18; # derived from molar mass
 #' \describe{
 #'  \item{Sex}{Sex (f: female; m: male)}
 #'  \item{Age}{Age in years}
+#'  \item{Body.Mass}{Body mass in kg}
+#'  \item{BSA}{Body surface area in m^2}
+#'  \item{IDV.T4}{initial distribution volume of thyroxine in mL}
+#'  \item{TT4}{Total T4 concentration in µg/dL}
+#'  \item{TT4.SI}{Total T4 concentration in nmol/L}
+#'  \item{TT3}{Total T3 concentration in ng/mL}
+#'  \item{TT3.SI}{Total T3 concentration in nmol/L}
 #' }
 #'
 #' @source
