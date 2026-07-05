@@ -4,7 +4,7 @@
 # thyroid and insulin-glucose homeostasis
 # in S, including the implementation in R
 # Version 5.1.0 (Cyclone)
-# Last Change 20260621 by J. W. D.
+# Last Change 20260705 by J. W. D.
 ##########################################
 
 Insulin.conversion.factor <- 6;  # A Voelund 1993, L. Heinemann 2010
@@ -76,6 +76,18 @@ NULL
 #' A data frame with 117 rows and 14 columns
 #' \describe{
 #'  \item{Age}{Age in years}
+#'  \item{Height}{Body height in cm}
+#'  \item{Body.Mass}{Body mass in kg}
+#'  \item{BMI}{Body mass index in kg/m^2}
+#'  \item{Fasting.Glucose}{Fasting glucose concentration in mg/dL}
+#'  \item{Fasting.Insulin}{Fasting insulin concentration in mIU/L}
+#'  \item{SPINA_GR}{Insulin receptor gain (SPINA-GR) in mol/s}
+#'  \item{SPINA_GBeta}{Secretory capacity of pancreatic beta-cells (SPINA-GBeta) in pmol/s}
+#'  \item{SPINA_DI}{Static disposition index (SPINA-DI)}
+#'  \item{HOMA_Beta}{Estimate of beta-cell function based on the Homeostasis Model Assessment (HOMA-Beta)}
+#'  \item{HOMA_IR}{Estimate of insulin resistance based on the Homeostasis Model Assessment (HOMA-IR)}
+#'  \item{HOMA_IS}{Estimate of insulin sensitivity based on the Homeostasis Model Assessment (HOMA-IS)}
+#'  \item{QUICKI_Score}{Quantitative Insulin Sensitivity Check Index (QUICKI)}
 #' }
 #'
 #' @source
