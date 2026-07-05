@@ -18,15 +18,42 @@ A data frame with 14 rows and 33 columns
 \item{TT4.SI}{Total T4 concentration in nmol/L}
 \item{TT3}{Total T3 concentration in ng/mL}
 \item{TT3.SI}{Total T3 concentration in nmol/L}
+\item{TSH}{Thyrotropin concentration in mIU/L}
+\item{SR.T4}{Thyroidal secretion rate for T4 in µg/day/m^2}
+\item{SR.T3}{Thyroidal secretion rate for T3 in µg/day/m^2}
+\item{CR.F.mean}{Rate of conversion from T4 to T3 in fast tissue pools in µg/day/m^2}
+\item{CR.S.mean}{Rate of conversion from T4 to T3 in slow tissue pools in µg/day/m^2}
+\item{CR.T.mean}{Rate of total conversion from T4 to T3 in µg/day/m^2}
+\item{PAR.T3}{Plasma appearance rate for T3 in µg/day/m^2}
+\item{PR.T3.mean}{Mean production rate for T3 in µg/day/m^2}
+\item{PR.T3}{Production rate for T3 in µg/day/m^2, calculated with alternative method (DiStefano et al. 1982)}
+\item{CR.S}{Rate of conversion from T4 to T3 in µg/day/m^2, calculated with alternative method (DiStefano et al. 1982)}
+\item{CR.6}{Ratio of conversion from T4 to T3 in in \%, computed using six-compartment model}
+\item{CR.2}{Ratio of conversion from T4 to T3 in in \%, computed using two-compartment model}
+\item{CR.0}{Ratio of conversion from T4 to T3 in in \%, computed using noncompartmental approach}
+\item{QP}{Mass of the plasma pool for T3 in in µg/m^2}
+\item{QF}{Mass of the fast tissue pool for T3 in in µg/m^2}
+\item{QS}{Mass of the slow tissue pool for T3 in in µg/m^2}
+\item{QT}{Mass of the total tissue pool for T3 in in µg/m^2}
+\item{SPINA_GT}{Thyroid's secretory capacity (SPINA-GT) in pmol/s}
+\item{SPINA_GD}{Sum activity of step-up deiodinases (SPINA-GD) in nmol/s}
 }
 }
 }
 \source{
-Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne). 2016 Jun 9;7:57. doi 10.3389/fendo.2016.00057. PMID 27375554; PMCID PMC4899439.
-
 Pilo A, Iervasi G, Vitek F, Ferdeghini M, Cazzuola F, Bianchi R. Thyroidal and
 peripheral production of 3,5,3'-triiodothyronine in humans by multicompartmental
 analysis. Am J Physiol. 1990 Apr;258(4 Pt 1):E715-26. PMID 2333963.
+
+DiStefano JJ 3rd, Jang M, Malone TK, Broutman M. Comprehensive kinetics of
+triiodothyronine production, distribution, and metabolism in blood and tissue
+pools of the rat using optimized blood-sampling protocols. Endocrinology. 1982
+Jan;110(1):198-213. doi: 10.1210/endo-110-1-198. PMID: 7053984.
+
+Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE,
+Hoermann R. Calculated Parameters of Thyroid Homeostasis: Emerging Tools for
+Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne).
+2016 Jun 9;7:57. doi 10.3389/fendo.2016.00057. PMID 27375554; PMCID PMC4899439.
 }
 \description{
 Pilo: Data from Pilo et al. (1990)
