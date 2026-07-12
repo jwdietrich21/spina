@@ -1,7 +1,10 @@
 bibentry(
   bibtype = "Manual",
-  title = "SPINA R Package",
+  title = "SPINA R Package: vectorised calculations for structure parameter inference approach in R",
   author = "Johannes W. Dietrich",
+  organization = "Ruhr University of Bochum",
+  address = "Bochum, NRW, Germany",
   year = 2026,
-  doi = "10.32614/CRAN.package.SPINA"
+  doi = "10.32614/CRAN.package.SPINA",
+  url = "http://spina.sf.net"
 )
