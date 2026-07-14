@@ -15,7 +15,9 @@ HOMA.Beta(Insulin, Glucose)
 Returns the HOMA-Beta index, a calculated biomarker for beta-cell function
 }
 \description{
-Homeostasis model assessment: beta-cell function (HOMA-Beta)
+This function calculates the beta-cell function (HOMA-Beta) from steady-state
+fasting concentrations of insulin and glucose. HOMA-Beta is one of the parameters
+provided by the homeostasis model assessment.
 }
 \details{
 This function is able to do vectorised calculations.

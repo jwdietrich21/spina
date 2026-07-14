@@ -19,7 +19,8 @@ estimated.sTSHI(TSH, FT4, mean = 2.7, sd = 0.676)
 Returns the the standardised TSH index, a calculated biomarker for the thyrotropic function of the anterior pituitary gland (z-transformed variant)
 }
 \description{
-Standardised Jostel's TSH index (sTSHI, sJTI)
+This function calculates Jostel's TSH index (TSHI, JTI) from steady-state
+concentrations of TSH and free T4. The result is delivered in standardised form (z-transformed).
 }
 \details{
 This function is able to do vectorised calculations.

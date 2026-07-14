@@ -15,7 +15,9 @@ HOMA.IR(Insulin, Glucose)
 Returns the HOMA-IR index, a calculated biomarker for insulin resistance.
 }
 \description{
-Homeostasis model assessment: insulin resistance (HOMA-IR)
+This function calculates the insulin resistance index (HOMA-IR) from steady-state
+fasting concentrations of insulin and glucose. HOMA-IR is one of the parameters
+provided by the homeostasis model assessment.
 }
 \details{
 This function is able to do vectorised calculations.

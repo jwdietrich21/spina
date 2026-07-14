@@ -18,7 +18,10 @@ a single value or a vector, depending on the vector length of the arguments.
 Results are in mol/s.
 }
 \description{
-Calculated insulin receptor gain (SPINA-GR)
+This function calculates the insulin receptor gain (SPINA-GR) from steady-state
+fasting concentrations of insulin and glucose. SPINA-GR is an inferred
+representation of GR, the maximum insulin signaling under stimulated conditions.
+This parameter is an implementation of the structure parameter inference approach (SPINA).
 }
 \details{
 This function is able to do vectorised calculations.

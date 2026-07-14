@@ -17,7 +17,11 @@ Returns the secretory capacity of pancreatic beta cells
 depending on the vector length of the arguments. Results are in pmol/s.
 }
 \description{
-Calculated secretory capacity of pancreatic beta cells (SPINA-GBeta)
+This function calculates the secretory capacity of pancreatic beta cells
+(SPINA-GBeta) from steady-state fasting concentrations of insulin and glucose.
+SPINA-GBeta is an inferred representation of GBeta, the maximum amount of insulin
+that can be produced by beta-cells under stimulated conditions.
+This parameter is an implementation of the structure parameter inference approach (SPINA).
 }
 \details{
 This function is able to do vectorised calculations.

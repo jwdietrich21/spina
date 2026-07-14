@@ -15,7 +15,8 @@ QUICKI(Insulin, Glucose)
 Returns the QUICKI index, a calculated biomarker for insulin sensitivity
 }
 \description{
-Quantitative insulin-sensitivity check index (QUICKI)
+This function calculates the quantitative insulin sensitivity check index (QUICKI)
+from steady-state fasting concentrations of insulin and glucose.
 }
 \details{
 This function is able to do vectorised calculations.

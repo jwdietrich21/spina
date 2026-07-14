@@ -104,6 +104,12 @@ NULL
 
 #' Calculated secretory capacity of pancreatic beta cells (SPINA-GBeta)
 #'
+#' This function calculates the secretory capacity of pancreatic beta cells
+#' (SPINA-GBeta) from steady-state fasting concentrations of insulin and glucose.
+#' SPINA-GBeta is an inferred representation of GBeta, the maximum amount of insulin
+#' that can be produced by beta-cells under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#'
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
 #'
@@ -134,11 +140,16 @@ SPINA.GBeta <- function(Insulin, Glucose)
   alphaI <- 0.2;
   dBeta <- 7e-3;
   GBeta <- pico.factor * betaI * Insulin / pico.factor * (dBeta + Glucose /
-                                                            mili.factor) / (alphaI * Glucose / mili.factor);
+           mili.factor) / (alphaI * Glucose / mili.factor);
   return(GBeta);
 }
 
 #' Calculated insulin receptor gain (SPINA-GR)
+#'
+#' This function calculates the insulin receptor gain (SPINA-GR) from steady-state
+#' fasting concentrations of insulin and glucose. SPINA-GR is an inferred
+#' representation of GR, the maximum insulin signaling under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
@@ -173,12 +184,17 @@ SPINA.GR <- function(Insulin, Glucose)
   DR <- 1.6e-9;
   GE <- 50;
   GR <- alphaG * P0 * (DR + Insulin / pico.factor) / (betaG * GE * Insulin /
-                                                        pico.factor * Glucose / mili.factor) - DR / (GE * Insulin / pico.factor)
-  - 1 / GE;
+        pico.factor * Glucose / mili.factor) - DR / (GE * Insulin / pico.factor)
+        - 1 / GE;
   return(GR);
 }
 
 #' Static disposition index (SPINA-DI)
+#'
+#' This function calculates the static disposition index (SPINA-DI) from steady-state
+#' fasting concentrations of insulin and glucose. SPINA-DI is an inferred
+#' representation of the loop gain of the homeostatic feedback control system.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
@@ -209,6 +225,10 @@ SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 
 #' Homeostasis model assessment: insulin resistance (HOMA-IR)
 #'
+#' This function calculates the insulin resistance index (HOMA-IR) from steady-state
+#' fasting concentrations of insulin and glucose. HOMA-IR is one of the parameters
+#' provided by the homeostasis model assessment.
+#'
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
 #'
@@ -231,6 +251,10 @@ HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 }
 
 #' Homeostasis model assessment: beta-cell function (HOMA-Beta)
+#'
+#' This function calculates the beta-cell function (HOMA-Beta) from steady-state
+#' fasting concentrations of insulin and glucose. HOMA-Beta is one of the parameters
+#' provided by the homeostasis model assessment.
 #'
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
@@ -256,6 +280,10 @@ HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 
 #' Homeostasis model assessment: insulin sensitivity (HOMA-IS)
 #'
+#' This function calculates the insulin sensitivity index (HOMA-IS) from steady-state
+#' fasting concentrations of insulin and glucose. HOMA-IS is one of the parameters
+#' provided by the homeostasis model assessment.
+#'
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
 #'
@@ -278,6 +306,9 @@ HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 }
 
 #' Quantitative insulin-sensitivity check index (QUICKI)
+#'
+#' This function calculates the quantitative insulin sensitivity check index (QUICKI)
+#' from steady-state fasting concentrations of insulin and glucose.
 #'
 #' @param Insulin Insulin concentration in pmol/L
 #' @param Glucose Glucose concentration in mmol/L
@@ -302,6 +333,12 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 
 #' Calculated thyroid's secretory capacity (SPINA-GT)
 #'
+#' This function calculates the secretory capacity of the thyroid gland for T4
+#' (SPINA-GT) from steady-state concentrations of TSH and free T4.
+#' SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
+#' that can be produced by the thyroid under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#'
 #' @param TSH thyrotropin concentration in mIU/L
 #' @param FT4 free T4 concentration in pmol/L
 #'
@@ -311,7 +348,8 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #' @examples
 #' estimated.GT(1.0, 16.5)
 #' @author Johannes W. Dietrich
-#' @details This function is able to do vectorised calculations.
+#' @details This function is able to do vectorised calculations. See [SPINA.GT] for a an implementation
+#' with a more modern nomenclature.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
 #'
@@ -341,6 +379,12 @@ estimated.GT <- function(TSH, FT4)
 
 #' Calculated step-up deiodinase activity (SPINA-GD)
 #'
+#' This function calculates the sum activity of peripheral step-up-deiodinases
+#' (SPINA-GD) from steady-state concentrations of free T4 and free T3.
+#' SPINA-GD is an inferred representation of GD, the total activity of the type 1
+#' deiodinase under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#'
 #' @param FT4 free T4 concentration in pmol/L
 #' @param FT3 free T3 concentration in pmol/L
 #'
@@ -350,7 +394,8 @@ estimated.GT <- function(TSH, FT4)
 #' @examples
 #' estimated.GD(16.5, 4.5)
 #' @author Johannes W. Dietrich
-#' @details This function is able to do vectorised calculations.
+#' @details This function is able to do vectorised calculations. See [SPINA.GD] for a an implementation
+#' with a more modern nomenclature.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
 #'
@@ -380,8 +425,14 @@ estimated.GD <- function(FT4, FT3)
 
 #' Calculated thyroid's secretory capacity, based on total T4 (SPINA-GTT)
 #'
+#' This function calculates the secretory capacity of the thyroid gland for T4
+#' (SPINA-GT) from steady-state concentrations of TSH and total T4.
+#' SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
+#' that can be produced by the thyroid under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#'
 #' @param TSH thyrotropin concentration in mIU/L
-#' @param T4 free T4 concentration in nmol/L
+#' @param T4 total T4 concentration in nmol/L
 #'
 #' @returns Returns SPINA-GTT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
 #' @export
@@ -389,7 +440,8 @@ estimated.GD <- function(FT4, FT3)
 #' @examples
 #' estimated.GTT(1.0, 90)
 #' @author Johannes W. Dietrich
-#' @details This function is able to do vectorised calculations.
+#' @details This function is able to do vectorised calculations. See [SPINA.GTT] for a an implementation
+#' with a more modern nomenclature.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
 #'
@@ -415,8 +467,14 @@ estimated.GTT <- function(TSH, T4)
 
 #' Calculated step-up deiodinase activity, based on total T4 and T3 (SPINA-GDTT)
 #'
+#' This function calculates the sum activity of peripheral step-up-deiodinases
+#' (SPINA-GD) from steady-state concentrations of total T4 and total T3.
+#' SPINA-GD is an inferred representation of GD, the total activity of the type 1
+#' deiodinase under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#'
 #' @param T4 total T4 concentration in nmol/L
-#' @param T3 tptaö T3 concentration in nmol/L
+#' @param T3 total T3 concentration in nmol/L
 #'
 #' @returns Returns SPINA-GD, a calculated biomarker for the sum activity of peripheral step-up deiodinases
 #' @export
@@ -424,7 +482,8 @@ estimated.GTT <- function(TSH, T4)
 #' @examples
 #' estimated.GDTT(90, 2.5)
 #' @author Johannes W. Dietrich
-#' @details This function is able to do vectorised calculations.
+#' @details This function is able to do vectorised calculations. See [SPINA.GDTT] for a an implementation
+#' with a more modern nomenclature.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
 #'
@@ -456,6 +515,10 @@ estimated.GDTT <- function(T4, T3)
 }
 
 #' Thyrotroph thyroid hormone sensitivity index (TTSI)
+#'
+#' This function calculates the thyrotroph thyroid hormone sensitivity index
+#' (TTSI) from steady-state concentrations of TSH and free T4. This parameter is also
+#' referred to as Thyrotroph T4 Resistance Index or TT4RI.
 #'
 #' @param TSH thyrotropin concentration in mIU/L
 #' @param FT4 free T4 concentration in pmol/L
@@ -491,6 +554,9 @@ estimated.TTSI <- function(TSH, FT4, lu)
 
 #' Jostel's TSH index (TSHI, JTI)
 #'
+#' This function calculates Jostel's TSH index (TSHI, JTI) from steady-state
+#' concentrations of TSH and free T4.
+#'
 #' @param TSH thyrotropin concentration in mIU/L
 #' @param FT4 free T4 concentration in pmol/L
 #'
@@ -523,6 +589,9 @@ estimated.TSHI <- function(TSH, FT4)
 }
 
 #' Standardised Jostel's TSH index (sTSHI, sJTI)
+#'
+#' This function calculates Jostel's TSH index (TSHI, JTI) from steady-state
+#' concentrations of TSH and free T4. The result is delivered in standardised form (z-transformed).
 #'
 #' @param TSH thyrotropin concentration in mIU/L
 #' @param FT4 free T4 concentration in pmol/L
@@ -557,6 +626,13 @@ estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676)
 
 #' Calculated standardised step-up deiodinase activity (SPINA-sGD)
 #'
+#' This function calculates the sum activity of peripheral step-up-deiodinases
+#' (SPINA-GD) from steady-state concentrations of free T4 and free T3.
+#' SPINA-GD is an inferred representation of GD, the total activity of the type 1
+#' deiodinase under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#' The result is delivered in standardised form (z-transformed).
+#'
 #' @param FT4 free T4 concentration in pmol/L
 #' @param FT3 free T3 concentration in pmol/L
 #' @param mean mean SPINA-GD (optional, default value 30)
@@ -568,7 +644,8 @@ estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676)
 #' @examples
 #' estimated.sGD(16.5, 4.5)
 #' @author Johannes W. Dietrich
-#' @details This function is able to do vectorised calculations.
+#' @details This function is able to do vectorised calculations. See [SPINA.sGD] for a an implementation
+#' with a more modern nomenclature.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
 #'
@@ -588,6 +665,12 @@ estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5)
 # Alias functions renamed according to new nomenclature (SPINA-GT and SPINA-GD):
 
 #' Calculated thyroid's secretory capacity (SPINA-GT)
+#'
+#' This function calculates the secretory capacity of the thyroid gland for T4
+#' (SPINA-GT) from steady-state concentrations of TSH and free T4.
+#' SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
+#' that can be produced by the thyroid under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param TSH thyrotropin concentration in mIU/L
 #' @param FT4 free T4 concentration in pmol/L
@@ -612,6 +695,12 @@ SPINA.GT <- function(TSH, FT4) estimated.GT(TSH, FT4);
 
 #' Calculated step-up deiodinase activity (SPINA-GD)
 #'
+#' This function calculates the sum activity of peripheral step-up-deiodinases
+#' (SPINA-GD) from steady-state concentrations of free T4 and free T3.
+#' SPINA-GD is an inferred representation of GD, the total activity of the type 1
+#' deiodinase under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#'
 #' @param FT4 free T4 concentration in pmol/L
 #' @param FT3 free T3 concentration in pmol/L
 #'
@@ -635,8 +724,14 @@ SPINA.GD <- function(FT4, FT3) estimated.GD(FT4, FT3);
 
 #' Calculated thyroid's secretory capacity, based on total T4 (SPINA-GTT)
 #'
+#' This function calculates the secretory capacity of the thyroid gland for T4
+#' (SPINA-GT) from steady-state concentrations of TSH and total T4.
+#' SPINA-GTT is an inferred representation of GT, the maximum amount of thyroxine
+#' that can be produced by the thyroid under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+
 #' @param TSH thyrotropin concentration in mIU/L
-#' @param T4 free T4 concentration in nmol/L
+#' @param T4 total T4 concentration in nmol/L
 #'
 #' @returns Returns SPINA-GTT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
 #' @export
@@ -657,6 +752,12 @@ SPINA.GD <- function(FT4, FT3) estimated.GD(FT4, FT3);
 SPINA.GTT <- function(TSH, T4) estimated.GTT(TSH, T4);
 
 #' Calculated step-up deiodinase activity, based on total T4 and T3 (SPINA-GDTT)
+#'
+#' This function calculates the sum activity of peripheral step-up-deiodinases
+#' (SPINA-GD) from steady-state concentrations of total T4 and total T3.
+#' SPINA-GD is an inferred representation of GD, the total activity of the type 1
+#' deiodinase under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param T4 total T4 concentration in nmol/L
 #' @param T3 tptaö T3 concentration in nmol/L
@@ -680,6 +781,13 @@ SPINA.GTT <- function(TSH, T4) estimated.GTT(TSH, T4);
 SPINA.GDTT <- function(T4, T3) estimated.GDTT(T4, T3);
 
 #' Calculated standardised step-up deiodinase activity (SPINA-sGD)
+#'
+#' This function calculates the sum activity of peripheral step-up-deiodinases
+#' (SPINA-GD) from steady-state concentrations of free T4 and free T3.
+#' SPINA-GD is an inferred representation of GD, the total activity of the type 1
+#' deiodinase under stimulated conditions.
+#' This parameter is an implementation of the structure parameter inference approach (SPINA).
+#' The result is delivered in standardised form (z-transformed).
 #'
 #' @param FT4 free T4 concentration in pmol/L
 #' @param FT3 free T3 concentration in pmol/L

@@ -15,7 +15,11 @@ SPINA.GD(FT4, FT3)
 Returns SPINA-GD, a calculated biomarker for the sum activity of peripheral step-up deiodinases
 }
 \description{
-Calculated step-up deiodinase activity (SPINA-GD)
+This function calculates the sum activity of peripheral step-up-deiodinases
+(SPINA-GD) from steady-state concentrations of free T4 and free T3.
+SPINA-GD is an inferred representation of GD, the total activity of the type 1
+deiodinase under stimulated conditions.
+This parameter is an implementation of the structure parameter inference approach (SPINA).
 }
 \details{
 This function is able to do vectorised calculations.

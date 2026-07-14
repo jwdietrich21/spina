@@ -15,7 +15,9 @@ HOMA.IS(Insulin, Glucose)
 Returns the HOMA-IS index, a calculated biomarker for insulin sensitivity
 }
 \description{
-Homeostasis model assessment: insulin sensitivity (HOMA-IS)
+This function calculates the insulin sensitivity index (HOMA-IS) from steady-state
+fasting concentrations of insulin and glucose. HOMA-IS is one of the parameters
+provided by the homeostasis model assessment.
 }
 \details{
 This function is able to do vectorised calculations.

@@ -15,7 +15,11 @@ SPINA.GT(TSH, FT4)
 Returns SPINA-GT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
 }
 \description{
-Calculated thyroid's secretory capacity (SPINA-GT)
+This function calculates the secretory capacity of the thyroid gland for T4
+(SPINA-GT) from steady-state concentrations of TSH and free T4.
+SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
+that can be produced by the thyroid under stimulated conditions.
+This parameter is an implementation of the structure parameter inference approach (SPINA).
 }
 \details{
 This function is able to do vectorised calculations.

@@ -9,13 +9,17 @@ SPINA.GTT(TSH, T4)
 \arguments{
 \item{TSH}{thyrotropin concentration in mIU/L}
 
-\item{T4}{free T4 concentration in nmol/L}
+\item{T4}{total T4 concentration in nmol/L}
 }
 \value{
 Returns SPINA-GTT, a calculated biomarker for thyroid's secretory capacity (aka thyroid output)
 }
 \description{
-Calculated thyroid's secretory capacity, based on total T4 (SPINA-GTT)
+This function calculates the secretory capacity of the thyroid gland for T4
+(SPINA-GT) from steady-state concentrations of TSH and total T4.
+SPINA-GTT is an inferred representation of GT, the maximum amount of thyroxine
+that can be produced by the thyroid under stimulated conditions.
+This parameter is an implementation of the structure parameter inference approach (SPINA).
 }
 \details{
 This function is able to do vectorised calculations.

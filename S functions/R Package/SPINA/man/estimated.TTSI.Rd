@@ -17,7 +17,9 @@ estimated.TTSI(TSH, FT4, lu)
 Returns the TTSI, a calculated biomarker for the sensitivity of pituitary thyrotrophic cells to thyroxine
 }
 \description{
-Thyrotroph thyroid hormone sensitivity index (TTSI)
+This function calculates the thyrotroph thyroid hormone sensitivity index
+(TTSI) from steady-state concentrations of TSH and free T4. This parameter is also
+referred to as Thyrotroph T4 Resistance Index or TT4RI.
 }
 \details{
 This function is able to do vectorised calculations.

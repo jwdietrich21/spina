@@ -15,7 +15,8 @@ estimated.TSHI(TSH, FT4)
 Returns the TSH index, a calculated biomarker for the thyrotropic function of the anterior pituitary gland
 }
 \description{
-Jostel's TSH index (TSHI, JTI)
+This function calculates Jostel's TSH index (TSHI, JTI) from steady-state
+concentrations of TSH and free T4.
 }
 \details{
 This function is able to do vectorised calculations.

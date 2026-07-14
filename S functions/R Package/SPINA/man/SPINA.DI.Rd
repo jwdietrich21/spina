@@ -17,7 +17,10 @@ representation of the loop gain of glucose homeostasis as a numeric result repre
 a single value or a vector, depending on the vector length of the arguments.
 }
 \description{
-Static disposition index (SPINA-DI)
+This function calculates the static disposition index (SPINA-DI) from steady-state
+fasting concentrations of insulin and glucose. SPINA-DI is an inferred
+representation of the loop gain of the homeostatic feedback control system.
+This parameter is an implementation of the structure parameter inference approach (SPINA).
 }
 \details{
 This function is able to do vectorised calculations.
