@@ -1,3 +1,13 @@
+##########################################
+# Testing suite for:
+# SPINA S functions, version for R package
+# Calculate structure parameters of
+# thyroid and insulin-glucose homeostasis
+# in S, including the implementation in R
+# Version 5.1.0 (Cyclone)
+# Last Change 20260716 by J. W. D.
+##########################################
+
 test_that("Scenario 9: SPINA-GT = 4.7 pmol/s, SPINA-GD = 25.22 nmol/s",
 {
   TSH <- 1;

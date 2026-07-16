@@ -3,7 +3,7 @@
 \docType{data}
 \name{Pilo}
 \alias{Pilo}
-\title{Data for SPINA}
+\title{Data for SPINA Thyr}
 \format{
 \subsection{"Pilo"}{
 

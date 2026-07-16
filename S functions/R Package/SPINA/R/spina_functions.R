@@ -1,16 +1,16 @@
 ##########################################
-# SPINA functions
+# SPINA S functions, version for R package
 # Calculate structure parameters of
 # thyroid and insulin-glucose homeostasis
 # in S, including the implementation in R
 # Version 5.1.0 (Cyclone)
-# Last Change 20260705 by J. W. D.
+# Last Change 20260716 by J. W. D.
 ##########################################
 
 Insulin.conversion.factor <- 6;  # A Voelund 1993, L. Heinemann 2010
 Glucose.conversion.factor <- 18; # derived from molar mass
 
-#' Data for SPINA
+#' Data for SPINA Thyr
 #'
 #' Pilo: Data from Pilo et al. (1990)
 #'
@@ -66,7 +66,7 @@ Glucose.conversion.factor <- 18; # derived from molar mass
 #'
 NULL
 
-#' Data for SPINA
+#' Data for SPINA Carb
 #'
 #' Vellore: Data from Dietrich et al. (2022 and 2024)
 #'
