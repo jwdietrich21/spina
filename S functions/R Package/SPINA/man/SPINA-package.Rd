@@ -6,6 +6,8 @@
 \alias{SPINA-package}
 \title{SPINA: Structure Parameter Inference Approach (SPINA)}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Calculates constant structure parameters of endocrine homeostatic systems from steady-state hormone and metabolite concentrations. Methods and equations for thyroid homeostasis (SPINA Thyr) have been described in Dietrich et al. (2012) \doi{10.1155/2012/351864} and Dietrich et al. (2016) \doi{10.3389/fendo.2016.00057}, and for glucose homeostasis (SPINA Carb) in Dietrich et al. (2022) \doi{10.1038/s41598-022-22531-3} and Dietrich et al. (2024) \doi{10.1111/1753-0407.13525}.
 }
 \seealso{

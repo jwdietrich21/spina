@@ -1,0 +1,55 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# SPINA <img src="man/figures/logo.png" align="right" height="139" alt="" />
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+SPINA (structure parameter inference approach) is a cybernetic method for advanced interpretation of laboratory results. It allows for calculating constant structure parameters of endocrine feedback control systems in vivo from hormone or metabolite concentrations that have been obtained from serum or plasma specimens. The method is based on mathematical and cybernetic modelling of processing structures 
+
+## Installation
+
+You can install the development version of SPINA by visting https://spina.sf.net and following the directions given there.
+
+## Examples
+
+These basic examples show how to use SPINA in your own S scripts with R:
+
+```{r example 1 (SPINA Thyr)}
+library(SPINA)
+
+TSH <- c(1, 3.24, 0.7);
+FT4 <- c(16.5, 7.7, 9);
+FT3 <- c(4.5, 28, 6.2);
+
+print(paste("SPINA-GT:", SPINA.GT(TSH, FT4)));
+print(paste("SPINA-GD:", SPINA.GD(FT4, FT3)));
+print(paste("SPINA-sGD:", SPINA.sGD(FT4, FT3)));
+
+```
+
+```{r example 2 (SPINA Carb)}
+library(SPINA)
+
+Insulin <- 63.01;
+Glucose <- 4.34;
+
+print(paste("SPINA-GBeta:", SPINA.GBeta(Insulin, Glucose)));
+print(paste("SPINA-GR:", SPINA.GR(Insulin, Glucose)));
+print(paste("SPINA-DI:", SPINA.DI(Insulin, Glucose)));
+
+```
+

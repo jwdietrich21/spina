@@ -336,7 +336,8 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #' This function calculates the secretory capacity of the thyroid gland for T4
 #' (SPINA-GT) from steady-state concentrations of TSH and free T4.
 #' SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
-#' that can be produced by the thyroid under stimulated conditions.
+#' that can be produced by the thyroid under stimulated conditions (also referred to as
+#' functional thyroid capacity).
 #' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param TSH thyrotropin concentration in mIU/L
@@ -669,7 +670,8 @@ estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5)
 #' This function calculates the secretory capacity of the thyroid gland for T4
 #' (SPINA-GT) from steady-state concentrations of TSH and free T4.
 #' SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
-#' that can be produced by the thyroid under stimulated conditions.
+#' that can be produced by the thyroid under stimulated conditions (also referred to as
+#' functional thyroid capacity).
 #' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param TSH thyrotropin concentration in mIU/L
