@@ -1,0 +1,19 @@
+---
+title: "Handbook and Reference for SPINA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Handbook and Reference for SPINA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(SPINA)
+```

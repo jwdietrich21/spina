@@ -1,16 +1,16 @@
 ##########################################
-# SPINA S functions, version for R package
+# SPINA functions
 # Calculate structure parameters of
 # thyroid and insulin-glucose homeostasis
 # in S, including the implementation in R
 # Version 5.1.0 (Cyclone)
-# Last Change 20260716 by J. W. D.
+# Last Change 20260728 by J. W. D.
 ##########################################
 
 Insulin.conversion.factor <- 6;  # A Voelund 1993, L. Heinemann 2010
 Glucose.conversion.factor <- 18; # derived from molar mass
 
-#' Data for SPINA Thyr
+#' Data for SPINA
 #'
 #' Pilo: Data from Pilo et al. (1990)
 #'
@@ -66,7 +66,7 @@ Glucose.conversion.factor <- 18; # derived from molar mass
 #'
 NULL
 
-#' Data for SPINA Carb
+#' Data for SPINA
 #'
 #' Vellore: Data from Dietrich et al. (2022 and 2024)
 #'
@@ -336,8 +336,7 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #' This function calculates the secretory capacity of the thyroid gland for T4
 #' (SPINA-GT) from steady-state concentrations of TSH and free T4.
 #' SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
-#' that can be produced by the thyroid under stimulated conditions (also referred to as
-#' functional thyroid capacity).
+#' that can be produced by the thyroid under stimulated conditions.
 #' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param TSH thyrotropin concentration in mIU/L
@@ -670,8 +669,7 @@ estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5)
 #' This function calculates the secretory capacity of the thyroid gland for T4
 #' (SPINA-GT) from steady-state concentrations of TSH and free T4.
 #' SPINA-GT is an inferred representation of GT, the maximum amount of thyroxine
-#' that can be produced by the thyroid under stimulated conditions (also referred to as
-#' functional thyroid capacity).
+#' that can be produced by the thyroid under stimulated conditions.
 #' This parameter is an implementation of the structure parameter inference approach (SPINA).
 #'
 #' @param TSH thyrotropin concentration in mIU/L
