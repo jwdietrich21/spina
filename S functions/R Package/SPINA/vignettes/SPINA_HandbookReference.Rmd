@@ -7,6 +7,26 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+## Preface
+
+SPINA (structure parameter inference approach) is a cybernetic method for advanced interpretation of laboratory results. It allows for calculating constant structure parameters of endocrine feedback control systems in vivo from hormone or metabolite concentrations that have been obtained from serum or plasma specimens. The method is based on mathematical and cybernetic modelling of processing structures [1-3].
+
+First successful implementations apply to the evaluation of thyroid function (SPINA Thyr) and insulin-glucose homeostasis (SPINA Carb). The methodology allows for calculating the thyroid's maximum secretory capacity (GT or SPINA-GT) and the sum activity of peripheral 5'-deiodinases (GD or SPINA-GD) from levels of TSH, (F)T4 and (F)T3 that have been determined once only. A similar method delivers estimates for beta cell function (SPINA-GBeta) and insulin receptor gain (SPINA-GR) from fasting insulin and glucose concentrations. SPINA-GBeta and SPINA-GR provide the basis for an advanced disposition index (SPINA-DI).
+
+SPINA Thyr has been evaluated in clinical trials covering more than 10 000 subjects with various disorders of thyroid homeostasis [4]. SPINA-GT has been demonstrated to correlate with thyroid function [5, 6] and gland volume as obtained via ultrasonography [7]. Its retest reliability is higher than that of TSH, FT4 or FT3 [8].
+
+SPINA-GD is reduced in nonthyroidal illness syndrome (NTIS) [9-11] and increased in states of step-up hyperdeiodination [12], and it correlated in two large trials with TSH levels, thus mirroring intracellular cAMP levels [13, 14].
+
+These structure parameters may therefore contribute to diagnosis of rare or at least less obvious thyroid disorders.
+
+SPINA-GBeta and SPINA-GR could be demonstrated to correlate with more elaborate measures of insulin-glucose homeostasis including oral glucose tolerance testing and glucose clamp technique [3]. The disposition index SPINA-DI has advantages in diagnostic power over other methods for the diagnosis of diabetes mellitus or prediabetes [15].
+
+In addition to SPINA-GT and SPINA-GD SPINA Thyr is able to calculate TTSI and Jostel’s TSH index, two static function tests for the assessment of pituitary function [16, 17]. SPINA Carb delivers HOMA and QUICKI estimates as well.
+
+The functions described in this document can calculate structure parameters of thyroid and insulin-glucose homeostasis in statistical environments based on the statistical language S (e.g. the R® platform). As separate solutions stand-alone versions of SPINA are available for desktop computing platforms including macOS, Windows and Linux. These versions are not documented in this vignette.
+
+## Usage
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -15,5 +35,50 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(SPINA)
+library(SPINA);
+
+TSH <- c(1, 3.24, 0.7);
+FT4 <- c(16.5, 7.7, 9);
+FT3 <- c(4.5, 28, 6.2);
+
+estimated.GT(TSH, FT4);
+
+estimated.GD(FT4, FT3);
+
+#estimated.GTT(TSH, T4)
+
+#estimated.GDTT(T4, T3)
+
+#estimated.TTSI(TSH, FT4, lu)
+
+#estimated.TSHI(TSH, FT4)
+
+#estimated.sTSHI(TSH, FT4, mean = 2.7, sd = 0.676)
+
+#estimated.sGD(FT4, FT3, mean = 30, sd = 5)
+
+SPINA.GT(TSH, FT4)
+
+SPINA.GD(FT4, FT3)
+
+#SPINA.GTT(TSH, T4)
+
+#SPINA.GDTT(T4, T3)
+
+SPINA.sGD(FT4, FT3, mean = 30, sd = 5)
+
+#SPINA.GBeta(Insulin, Glucose)
+
+#SPINA.GR(Insulin, Glucose)
+
+#SPINA.DI(Insulin, Glucose)
+
+#HOMA.IR(Insulin, Glucose)
+
+#HOMA.Beta(Insulin, Glucose)
+
+#HOMA.IS(Insulin, Glucose)
+
+#QUICKI(Insulin, Glucose)
+
 ```

@@ -3,7 +3,7 @@
 \docType{data}
 \name{Vellore}
 \alias{Vellore}
-\title{Data for SPINA Carb}
+\title{Data for SPINA}
 \format{
 \subsection{"Vellore"}{
 
