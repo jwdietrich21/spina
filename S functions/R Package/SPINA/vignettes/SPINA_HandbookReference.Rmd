@@ -72,18 +72,21 @@ SPINA.GTT(TSH, T4)
 
 SPINA.GDTT(T4, T3)
 
-#SPINA.GBeta(Insulin, Glucose)
+Insulin <- 63.01;
+Glucose <- 4.34;
 
-#SPINA.GR(Insulin, Glucose)
+SPINA.GBeta(Insulin, Glucose)
 
-#SPINA.DI(Insulin, Glucose)
+SPINA.GR(Insulin, Glucose)
 
-#HOMA.IR(Insulin, Glucose)
+SPINA.DI(Insulin, Glucose)
 
-#HOMA.Beta(Insulin, Glucose)
+HOMA.IR(Insulin, Glucose)
 
-#HOMA.IS(Insulin, Glucose)
+HOMA.Beta(Insulin, Glucose)
 
-#QUICKI(Insulin, Glucose)
+HOMA.IS(Insulin, Glucose)
+
+QUICKI(Insulin, Glucose)
 
 ```
