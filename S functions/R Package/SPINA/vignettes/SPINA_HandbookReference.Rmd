@@ -90,3 +90,28 @@ HOMA.IS(Insulin, Glucose)
 QUICKI(Insulin, Glucose)
 
 ```
+
+## Arguments
+
+| Parameter | Explanation                                                                                                                                     |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| TSH       | Thyrotropin (TSH) concentration in mIU/L or µIU/mL, resp.                                                                                       |
+| FT4       | Free thyroxine (FT4) concentration in pmol/L. FT4 may be in an arbitrary unit for TTSI calculation, provided that it is in the same unit as lu. |
+| FT3       | Free triiodothyronine (FT3) concentration in pmol/L                                                                                             |
+| T4        | Total T4 (TT4) concentration in nmol/L                                                                                                          |
+| T3        | Total T3 (TT3) concentration in pmol/L                                                                                                          |
+| lu        | upper limit of FT4 reference range (should be in the same unit of measurement as the FT4 concentration)                                         |
+| mean      | mean value of population sample for standardised (z-transformed) tests.                                                                         |
+| sd        | standard deviation of population sample for standardised (z-transformed) tests.                                                                 |
+| Insulin   | Plasma or serum insulin concentration in pmol/L                                                                                                 |
+| Glucose   | Plasma or serum glucose concentration in mmol/L                                                                                                 |
+
+Details
+
+These functions deliver estimates for thyroid’s secretory capacity (SPINA-GT), total step-up deiodinase activity (SPINA-GD), Jostel’s TSH index (TSHI) and thyrotroph thyroid hormone sensitivity index (TTSI), and for the secretory capacity of pancreatic beta cells (SPINA-GBeta), insulin receptor gain (SPINA-GR), a static disposition index (SPINA-DI) as well as corresponding HOMA and QUICKI approaches (HOMA-Beta, HOMA-IR, HOMA-IS and QUICKI). The functions `estimated.sGD` and `estimated.sTSHI` return standardised (z-transformed) representations of SPINA-GD and Jostel’s TSH index, respectively.
+
+The functions `estimated.GT`, `estimated.GD`, `estimated.sGD`, `estimated.TSHI`, `estimated.sTSHI` and `estimated.TTSI` expect concentrations of free thyroid hormones. By contrast, the functions `estimated.GTT` and `estimated.GDTT` require total hormone concentrations.
+
+`SPINA.GT`, `SPINA.GD`, `SPINA.GTT`, `SPINA.GDTT` and `SPINA.sGD` are alias function for `estimated.GT`, `estimated.GD`, `estimated.GTT`, `estimated.GDTT` and `estimated.sGD`, respectively.
+
+All functions support vectorised calculations.
