@@ -106,7 +106,7 @@ QUICKI(Insulin, Glucose)
 | Insulin   | Plasma or serum insulin concentration in pmol/L                                                                                                 |
 | Glucose   | Plasma or serum glucose concentration in mmol/L                                                                                                 |
 
-Details
+## Details
 
 These functions deliver estimates for thyroid’s secretory capacity (SPINA-GT), total step-up deiodinase activity (SPINA-GD), Jostel’s TSH index (TSHI) and thyrotroph thyroid hormone sensitivity index (TTSI), and for the secretory capacity of pancreatic beta cells (SPINA-GBeta), insulin receptor gain (SPINA-GR), a static disposition index (SPINA-DI) as well as corresponding HOMA and QUICKI approaches (HOMA-Beta, HOMA-IR, HOMA-IS and QUICKI). The functions `estimated.sGD` and `estimated.sTSHI` return standardised (z-transformed) representations of SPINA-GD and Jostel’s TSH index, respectively.
 
@@ -115,3 +115,134 @@ The functions `estimated.GT`, `estimated.GD`, `estimated.sGD`, `estimated.TSHI`,
 `SPINA.GT`, `SPINA.GD`, `SPINA.GTT`, `SPINA.GDTT` and `SPINA.sGD` are alias function for `estimated.GT`, `estimated.GD`, `estimated.GTT`, `estimated.GDTT` and `estimated.sGD`, respectively.
 
 All functions support vectorised calculations.
+
+## Value
+
+Every function returns a numeric result representing a single "scalar" value or a vector, depending on the vector length of the arguments.
+
+## Examples
+
+```{r}
+library(SPINA);
+
+TSH <- c(1, 3.24, 0.7);
+FT4 <- c(16.5, 7.7, 9);
+FT3 <- c(4.5, 28, 6.2);
+
+print(paste("GT^:", SPINA.GT(TSH, FT4)));
+print(paste("GD^:", SPINA.GD(FT4, FT3)));
+print(paste("sGD^:", SPINA.sGD(FT4, FT3)));
+
+# Source:
+# Pilo A, Iervasi G, Vitek F, Ferdeghini M, Cazzuola F,
+# Bianchi R. Thyroidal and peripheral production of 
+# 3,5,3'-triiodothyronine in humans by multicompartmental 
+# analysis. Am J Physiol. 1990 Apr;258(4 Pt 1):E715-26. 
+# PMID 2333963.
+
+# BSA: body surface area in m^2
+# IDV: initial distribution volume
+# TT4: total T4 in mcg/dl
+# TT3: total T3 in ng/ml
+# FT4: free T4 in pg/ml
+# FT3: free T3 in pg/ml
+# TT4.SI: total T4 in nmol/l
+# TT3.SI: total T3 in nmol/l
+# FT4.SI: free T4 in pmol/l
+# FT3.SI: free T3 in pmol/l
+# SR: secretion rate
+# CR.F, CR.S and CR.T: conversion rate (fast pool, slow pool and total)
+# PAR: plasma apperance rate
+# PR: production rate
+# CR.6, CR.2, CR.0: conversion ratio from 6-compartment, 2-compartment and noncompartmental model
+
+t3.mc <- data.frame(Sex = c("m", "f", "m", "m", "m", "m", "m", "m", "f", "m", "f", "m", "f", "f"), 
+Age = c(54, 43, 31, 65, 44, 26, 27, 19, 53, 36, 48, 20, 44, 59),
+Body.Mass = c(83, 68.5, 83, 69, 75, 73, 82, 63, 66.5, 72, 53, 65.5, 63, 60),
+BSA = c(2.02, 1.7, 2.02, 1.73, 1.8, 1.9, 1.98, 1.8, 1.69, 1.81, 1.49, 1.79, 1.75, 1.57),
+IDV.T4 = c(3801, 2272, 2686, 2726, 2632, 2804, 2770, 3119, 2749, 2860, 2467, 3624, 2965, 2327),
+TT4 = c(8, 10.4, 7.9, 8, 8.8, 6.5, 7.7, 7.2, 6.6, 8.3, 9.5, 6.5, 7.9, 9.6),
+TT4.SI = c(8, 10.4, 7.9, 8, 8.8, 6.5, 7.7, 7.2, 6.6, 8.3, 9.5, 6.5, 7.9, 9.6) * 12.87,
+TT3 = c(1.23, 1.1, 1.32, 1.03, 1.33, 1.07, 1.4, 1.2, 1.36, 1.08, 1.21, 1.26, 1.21, 1.02),
+TT3.SI = c(1.23, 1.1, 1.32, 1.03, 1.33, 1.07, 1.4, 1.2, 1.36, 1.08, 1.21, 1.26, 1.21, 1.02) * 1.54,
+FT4 = c(10.1, 10.5, 8.8, 13.1, 11.1, 8.8, 10.2, 8.9, 6.9, 9, 10.5, 10.4, 11.8, 8.4),
+FT4.SI = c(10.1, 10.5, 8.8, 13.1, 11.1, 8.8, 10.2, 8.9, 6.9, 9, 10.5, 10.4, 11.8, 8.4) * 1.287,
+FT3 = c(4.3, 5.7, 4.3, 4.4, 3.5, 3.4, 4.1, 4.1, 3.6, 2.6, 3.8, 4.1, 5, 4.3),
+FT3.SI = c(4.3, 5.7, 4.3, 4.4, 3.5, 3.4, 4.1, 4.1, 3.6, 2.6, 3.8, 4.1, 5, 4.3) * 1.54,
+TSH = c(1.2, 1.4, 1, 1.8, 1.5, 1.5, 2, 1.9, 1.4, 1.8, 1.1, 1.3, 2, 1.5),
+SR.T4 = c(44.5, 55.5, 45.3, 59.3, 59.2, 41.5, 50.9, 57.7, 54.3, 51.8, 76.5, 61.1, 65.7, 62.9), 
+SR.T3 = c(1.98, 4.45, 7.05, 3.14, 5.95, 5.31, 3.51, 4.15, 0.91, 1.4, 2.89, 2.47, 2.64, 0.88),
+CR.F.mean = c(12.3, 6.71, 8.73, 9.32, 8.75, 9.14, 10.6, 9.35, 7.9, 12.6, 13.1, 17.3, 14.5, 9.07),
+CR.S.mean = c(3.7, 1.11, 1.06, 0.18, 1.2, 0.52, 0.4, 6.74, 3.39, 0.38, 1.55, 2.02, 2.37, 3.64),
+CR.T.mean = c(12.3, 6.71, 8.73, 9.32, 8.75, 9.14, 10.6, 9.35, 7.9, 12.6, 13.1, 17.3, 14.5, 9.07) + c(3.7, 1.11, 1.06, 0.18, 1.2, 0.52, 0.4, 6.74, 3.39, 0.38, 1.55, 2.02, 2.37, 3.64),
+PAR.T3 = c(16.7, 11.8, 16.4, 12.4, 15.5, 14.7, 14.2, 18.8, 11.4, 14.1, 16.9, 21.1, 18.5, 12.6),
+PR.T3.mean = c(18, 12.3, 16.8, 12.6, 15.9, 15, 14.5, 20.2, 12.2, 14.4, 17.5, 21.8, 19.5, 13.6),
+PR.T3 = c(20, 14.4, 18.9, 15.2, 17.6, 17.3, 16.1, 21.2, 12.9, 16.3, 19.8, 24.1, 22.4, 14.6),
+CR.S = c(12.3, 9.02, 11.7, 9.51, 10.6, 10.5, 9.5, 12.8, 7.74, 9.78, 12.2, 14.4, 13.9, 8.87),
+CR.6 = c(42.9, 16.9, 25.8, 19.2, 20.1, 27.8, 25.8, 33.4, 24.8, 30, 22.8, 37.9, 30.7, 24.1),
+CR.2 = c(41, 16.5, 25.7, 19.4, 19.9, 27.8, 25.8, 31.3, 23.9, 30.1, 22.7, 37.6, 30.2, 23.1),
+CR.0 = c(39.3, 15.6, 24.2, 18.5, 19.1, 26.9, 25.2, 30.8, 22.5, 29.1, 21.5, 35, 28.5, 22.5),
+QP = c(2.31, 1.47, 1.76, 1.62, 1.95, 1.58, 1.96, 2.08, 2.21, 1.71, 2, 2.55, 2.06, 1.51),
+QF = c(3.22, 2.85, 2.86, 3.55, 2.55, 3.04, 2.87, 3.66, 3.31, 2.9, 3.18, 3.94, 4.35, 2.82),
+QS = c(25.8, 18.3, 22.6, 19, 15.4, 14.2, 14.8, 19.4, 18, 18.7, 15.4, 30.1, 25.7, 17.8),
+QT = c(31.3, 22.6, 27.3, 24, 19.9, 18.8, 19.6, 25.2, 23.5, 23.3, 20.6, 36.6, 32.2, 22.2)
+)
+
+t3.mc$GT <- SPINA.GT(t3.mc$TSH, t3.mc$FT4.SI);
+t3.mc$GD <- SPINA.GD(t3.mc$FT4.SI, t3.mc$FT3.SI);
+
+print(t3.mc$GT);
+print(t3.mc$GD);
+
+Insulin <- 63.01;
+Glucose <- 4.34;
+
+print(paste("GBeta^:", SPINA.GBeta(Insulin, Glucose)));
+print(paste("GR^:", SPINA.GR(Insulin, Glucose)));
+print(paste("DI:", SPINA.DI(Insulin, Glucose)));
+
+```
+
+## Important hints
+
+The software functions described in this document are intended for research use only.
+
+Concentrations of hormones and metabolites should have been obtained simultaneously in order to avoid bias by transition effects.
+
+Calculating GT in patients who are treated with levothyroxine (L-T4) is of little if any value. Likewise, it is not recommended to calculate GD in patients who receive substitution therapy with liothyronine (L-T3) or triiodothyroacetate (TRIAC) or to calculate SPINA-GBeta (including its derivative SPINA-DI) in persons on insulin therapy. It may be interesting, however, to obtain a value for the unaffected structural parameter in affected cases, e.g. for SPINA-GD in patients on L-T4 substitution or for SPINA-GR in persons on insulin (provided a sufficient delay after administration of short-term insulin).
+
+Usage of SPINA implies that you agree to its license and conditions with respect of the council directive 93/42/EEC of the European Union. This information is included with the license file that comes with SPINA Functions, and it is available online from http://spina.sf.net.
+
+## References
+
+1. Dietrich JW, Boehm BO: Equilibrium behaviour of feedback-coupled physiological saturation kinetics. In: Cybernetics and Systems 2006. Volume 1, edn. Edited by Trappl R. Vienna: Austrian Society for Cybernetic Studies; 2006: 269-274.
+2. Dietrich JW, Tesche A, Pickardt CR, Mitzdorf U: Thyrotropic Feedback Control: Evidence for an Additional Ultrashort Feedback Loop from Fractal Analysis. Cybernetics and Systems 2004, 35(4):315-331.
+3. Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N: SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep 2022, 12(1):17659.
+4. Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, Hoermann R: Calculated Parameters of Thyroid Homeostasis: Emerging Tools for Differential Diagnosis and Clinical Research. Front Endocrinol (Lausanne) 2016, 7:57.
+5. Dietrich JW: Thyreotoxische Krise [Thyroid storm]. Medizinische Klinik, Intensivmedizin und Notfallmedizin 2012, 107(6):448-453.
+6. Midgley JE, Hoermann R, Larisch R, Dietrich JW: Physiological states and functional relation between thyrotropin and free thyroxine in thyroid health and disease: in vivo and in silico data suggest a hierarchical model. Journal of clinical pathology 2013.
+7. Dietrich JW: Der Hypophysen-Schilddrüsen-Regelkreis. Entwicklung und klinische Anwendung eines nichtlinearen Modells, vol. 2. Berlin: Logos-Verlag; 2002.
+8. Dietrich JW, Landgrafe G, Fotiadou EH: TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. Journal of thyroid research 2012, 2012:351864.
+9. Liu S, Ren J, Zhao Y, Han G, Hong Z, Yan D, Chen J, Gu G, Wang G, Wang X et al: Nonthyroidal illness syndrome: is it far away from Crohn's disease? Journal of clinical gastroenterology 2013, 47(2):153-159.
+10. Rosolowska-Huszcz D, Kozlowska L, Rydzewski A: Influence of low protein diet on nonthyroidal illness syndrome in chronic renal failure. Endocrine 2005, 27(3):283-288.
+11. Han G, Ren J, Liu S, Gu G, Ren H, Yan D, Chen J, Wang G, Zhou B, Wu X et al: Nonthyroidal illness syndrome in enterocutaneous fistulas. American journal of surgery 2013, 206(3):386-392.
+12. Chatzitomaris A, Hoermann R, Midgley JE, Hering S, Urban A, Dietrich B, Abood A, Klein HH, Dietrich JW: Thyroid Allostasis-Adaptive Responses of Thyrotropic Feedback Control to Conditions of Strain, Stress, and Developmental Programming. Front Endocrinol (Lausanne) 2017, 8:163.
+13. Hoermann R, Midgley JE, Larisch R, Dietrich JW: Is pituitary TSH an adequate measure of thyroid hormone-controlled homoeostasis during thyroxine treatment? European journal of endocrinology / European Federation of Endocrine Societies 2013, 168(2):271-280.
+14. Hoermann R, Midgley JE, Giacobino A, Eckl WA, Wahl HG, Dietrich JW, Larisch R: Homeostatic equilibria between free thyroid hormones and pituitary thyrotropin are modulated by various influences including age, body mass index and treatment. Clinical endocrinology 2014, 81(6):907-915.
+15. Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO: A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes 2024.
+16. Jostel A, Ryder WD, Shalet SM: The use of thyroid function tests in the diagnosis of hypopituitarism: definition and evaluation of the TSH Index. Clinical endocrinology 2009, 71(4):529-534.
+17. Pohlenz J, Weiss RE, Macchia PE, Pannain S, Lau IT, Ho H, Refetoff S: Five new families with resistance to thyroid hormone not caused by mutations in the thyroid hormone receptor beta gene. The Journal of clinical endocrinology and metabolism 1999, 84(11):3919-3928.
+18.	Pilo A, Iervasi G, Vitek F, Ferdeghini M, Cazzuola F, Bianchi R: Thyroidal and peripheral production of 3,5,3'-triiodothyronine in humans by multicompartmental analysis. Am J Physiol 1990, 258(4 Pt 1):E715-726.
+
+## Contact information
+
+Prof. Dr. med. Johannes W. Dietrich [1, 2, 3, 4, 5]
+
+1. Sektion Diabetologie, Endokrinologie und Stoffwechsel, St. Josef-Hospital, Ruhr University of Bochum, Gudrunstr. 56, D-44791 Bochum, NRW, Germany
+2. Diabeteszentrum Bochum/Hattingen, Klinik Blankenstein, Im Vogelsang 5–11, D-45527 Hattingen, NRW, Germany
+3. Zentrum für Seltene Endokrine Erkrankungen (ZSE), Centrum für Seltene Erkrankungen Ruhr (CeSER), Alexandrinenstr. 5, D-44791 Bochum, NRW, Germany
+4. Zentrum für Diabetestechnologie (ZDT), Katholisches Klinikum Bochum, Im Vogelsang 5–11, D-45527 Hattingen, NRW, Germany
+5. Zentrum für Schilddrüsenmedizin, Ruhr University of Bochum, Gudrunstr. 56, D-44791 Bochum, NRW, Germany
+
+
+More information is available from http://spina.sf.net.
