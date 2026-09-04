@@ -134,6 +134,7 @@ NULL
 SPINA.GBeta <- function(Insulin, Glucose)
   # Insulin expected in pmol/L, Glucose in mmol/L
 {
+  stopifnot(Insulin >= 0, Glucose >= 0);
   pico.factor <- 1e12;
   mili.factor <- 1e3
   betaI <- 3.4e-3;
@@ -176,6 +177,7 @@ SPINA.GBeta <- function(Insulin, Glucose)
 SPINA.GR <- function(Insulin, Glucose)
   # Insulin in pmol/L, Glucose in mmol/L
 {
+  stopifnot(Insulin >= 0, Glucose >= 0);
   pico.factor <- 1e12;
   mili.factor <- 1e3;
   alphaG <- 0.11;
@@ -246,6 +248,7 @@ SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 
 HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
+  stopifnot(Insulin >= 0, Glucose >= 0);
   IR <- Glucose * Insulin / Insulin.conversion.factor / 22.5;
   return(IR);
 }
@@ -273,6 +276,7 @@ HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 
 HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
+  stopifnot(Insulin >= 0, Glucose >= 0);
   Beta <- rep(NA, times = length(Insulin));
   Beta[which(Glucose > 3.5)] <- 20 * Insulin[which(Glucose > 3.5)] / Insulin.conversion.factor / (Glucose[which(Glucose > 3.5)] - 3.5);
   return(Beta);
@@ -301,6 +305,7 @@ HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 
 HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
+  stopifnot(Insulin >= 0, Glucose >= 0);
   IS <- 1 / HOMA.IR(Insulin, Glucose);
   return(IS);
 }
@@ -327,6 +332,7 @@ HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 
 QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 {
+  stopifnot(Insulin >= 0, Glucose >= 0);
   QUICKI <- 1 / (log10(Insulin / Insulin.conversion.factor) + log10(Glucose * Glucose.conversion.factor));
   return(QUICKI);
 }
@@ -362,6 +368,7 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 estimated.GT <- function(TSH, FT4)
   # TSH in mU/L, FT4 in pmol/L
 {
+  stopifnot(TSH >= 0, FT4 >= 0);
   pico.factor <- 1e12;
   alphaT <- 0.1;
   betaT <- 1.1e-6;
@@ -408,6 +415,7 @@ estimated.GT <- function(TSH, FT4)
 estimated.GD <- function(FT4, FT3)
   # FT4 and FT3 in pmol/L
 {
+  stopifnot(FT4 >= 0, FT3 >= 0);
   pico.factor <- 1e12;
   nano.factor <- 1e9;
   TBG <- 3e-7;
@@ -454,6 +462,7 @@ estimated.GD <- function(FT4, FT3)
 estimated.GTT <- function(TSH, T4)
   # TSH in mU/L, T4 in nmol/L
 {
+  stopifnot(TSH >= 0, T4 >= 0);
   pico.factor <- 1e12;
   nano.factor <- 1e9;
   alphaT <- 0.1;
@@ -496,6 +505,7 @@ estimated.GTT <- function(TSH, T4)
 estimated.GDTT <- function(T4, T3)
   # T4 and T3 in nmol/L
 {
+  stopifnot(T4 >= 0, T3 >= 0);
   pico.factor <- 1e12;
   nano.factor <- 1e9;
   TBG <- 3e-7;
@@ -547,6 +557,7 @@ estimated.TTSI <- function(TSH, FT4, lu)
   # TSH in mU/L, FT4 in arbitrary unit
   # lu: upper limit of FT4 reference range, same unit as FT4
 {
+  stopifnot(TSH >= 0, FT4 >= 0, lu > 0);
   TSH[which(TSH == 0)] = NA;
   ttsi <- 100 * TSH * FT4 / lu;
   return(ttsi);
@@ -582,6 +593,7 @@ estimated.TTSI <- function(TSH, FT4, lu)
 estimated.TSHI <- function(TSH, FT4)
   # TSH in mU/L, FT4 in pmol/L
 {
+  stopifnot(TSH >= 0, FT4 >= 0);
   beta <- -0.1345;
   TSH[which(TSH == 0)] = NA;
   tshi <- log(TSH) - beta * FT4;
@@ -620,6 +632,7 @@ estimated.TSHI <- function(TSH, FT4)
 estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676)
   # TSH in mU/L, FT4 in pmol/L
 {
+  stopifnot(TSH >= 0, FT4 >= 0);
   stshi <- (estimated.TSHI(TSH, FT4) - mean) / sd;
   return(stshi);
 }
@@ -658,6 +671,7 @@ estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676)
 estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5)
   # T4 and T3 in nmol/L
 {
+  stopifnot(FT4 >= 0, FT3 >= 0);
   sgd <- (estimated.GD(FT4, FT3) - mean) / sd;
   return(sgd);
 }

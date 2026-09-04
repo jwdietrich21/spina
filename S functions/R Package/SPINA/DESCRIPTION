@@ -8,6 +8,7 @@ Authors@R:
                      email = "johannes.dietrich@ruhr-uni-bochum.de",
                      role = c("aut", "cph", "cre"), 
                      comment = c(ORCID = "0000-0002-1185-3549")),
+                     person("Eleni", "Karamitrou", role = "ctb"),
                      person("Bernhard O.", "Boehm", role = "ctb", 
                      comment = c(ORCID = "0000-0002-2706-7710")))
 Maintainer: Johannes W. Dietrich <johannes.dietrich@ruhr-uni-bochum.de>
