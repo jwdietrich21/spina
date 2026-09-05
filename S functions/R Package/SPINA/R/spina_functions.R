@@ -120,7 +120,7 @@ NULL
 #'
 #' @examples
 #' SPINA.GBeta(63.01, 4.34)
-#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @author Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
@@ -163,7 +163,7 @@ SPINA.GBeta <- function(Insulin, Glucose)
 #'
 #' @examples
 #' SPINA.GR(63.01, 4.34)
-#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @author Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
@@ -208,7 +208,7 @@ SPINA.GR <- function(Insulin, Glucose)
 #'
 #' @examples
 #' SPINA.DI(63.01, 4.34)
-#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @author Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.
@@ -239,7 +239,7 @@ SPINA.DI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #'
 #' @examples
 #' HOMA.IR(63.01, 4.34)
-#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @author Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @note
 #' The software functions described in this document are intended for research use only.
@@ -267,7 +267,7 @@ HOMA.IR <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #'
 #' @examples
 #' HOMA.Beta(63.01, 4.34)
-#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @author Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @note
 #' The software functions described in this document are intended for research use only.
@@ -296,7 +296,7 @@ HOMA.Beta <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #'
 #' @examples
 #' HOMA.IS(63.01, 4.34)
-#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @author Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @note
 #' The software functions described in this document are intended for research use only.
@@ -323,7 +323,7 @@ HOMA.IS <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #'
 #' @examples
 #' QUICKI(63.01, 4.34)
-#' @author Johannes W. Dietrich, Bernhard O. Boehm
+#' @author Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 #' @details This function is able to do vectorised calculations.
 #' @note
 #' The software functions described in this document are intended for research use only.
@@ -353,7 +353,7 @@ QUICKI <- function(Insulin, Glucose) # Insulin in pmol/L, Glucose in mmol/L
 #'
 #' @examples
 #' estimated.GT(1.0, 16.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations. See [SPINA.GT] for a an implementation
 #' with a more modern nomenclature.
 #' @references
@@ -400,7 +400,7 @@ estimated.GT <- function(TSH, FT4)
 #'
 #' @examples
 #' estimated.GD(16.5, 4.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations. See [SPINA.GD] for a an implementation
 #' with a more modern nomenclature.
 #' @references
@@ -447,7 +447,7 @@ estimated.GD <- function(FT4, FT3)
 #'
 #' @examples
 #' estimated.GTT(1.0, 90)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations. See [SPINA.GTT] for a an implementation
 #' with a more modern nomenclature.
 #' @references
@@ -490,7 +490,7 @@ estimated.GTT <- function(TSH, T4)
 #'
 #' @examples
 #' estimated.GDTT(90, 2.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations. See [SPINA.GDTT] for a an implementation
 #' with a more modern nomenclature.
 #' @references
@@ -539,7 +539,7 @@ estimated.GDTT <- function(T4, T3)
 #'
 #' @examples
 #' estimated.TTSI(1.0, 16.5, 18)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
@@ -576,7 +576,7 @@ estimated.TTSI <- function(TSH, FT4, lu)
 #'
 #' @examples
 #' estimated.TSHI(1.0, 16.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
@@ -615,7 +615,7 @@ estimated.TSHI <- function(TSH, FT4)
 #'
 #' @examples
 #' estimated.sTSHI(1.0, 16.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
@@ -656,7 +656,7 @@ estimated.sTSHI <- function(TSH, FT4, mean = 2.7, sd = 0.676)
 #'
 #' @examples
 #' estimated.sGD(16.5, 4.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations. See [SPINA.sGD] for a an implementation
 #' with a more modern nomenclature.
 #' @references
@@ -694,7 +694,7 @@ estimated.sGD <- function(FT4, FT3, mean = 30, sd = 5)
 #'
 #' @examples
 #' SPINA.GT(1.0, 16.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
@@ -723,7 +723,7 @@ SPINA.GT <- function(TSH, FT4) estimated.GT(TSH, FT4);
 #'
 #' @examples
 #' SPINA.GD(16.5, 4.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
@@ -752,7 +752,7 @@ SPINA.GD <- function(FT4, FT3) estimated.GD(FT4, FT3);
 #'
 #' @examples
 #' SPINA.GTT(1.0, 90)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
@@ -781,7 +781,7 @@ SPINA.GTT <- function(TSH, T4) estimated.GTT(TSH, T4);
 #'
 #' @examples
 #' SPINA.GDTT(90, 2.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.
@@ -813,7 +813,7 @@ SPINA.GDTT <- function(T4, T3) estimated.GDTT(T4, T3);
 #'
 #' @examples
 #' SPINA.sGD(16.5, 4.5)
-#' @author Johannes W. Dietrich
+#' @author Johannes W. Dietrich, Eleni Karamitrou
 #' @details This function is able to do vectorised calculations.
 #' @references
 #' Dietrich JW, Landgrafe G, Fotiadou EH. TSH and Thyrotropic Agonists: Key Actors in Thyroid Homeostasis. J Thyroid Res. 2012;2012:351864. doi: 10.1155/2012/351864. Epub 2012 Dec 30. PMID: 23365787; PMCID: PMC3544290.

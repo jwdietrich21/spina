@@ -37,5 +37,5 @@ Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, 
 Jostel A, Ryder WD, Shalet SM. The use of thyroid function tests in the diagnosis of hypopituitarism: definition and evaluation of the TSH Index. Clin Endocrinol (Oxf). 2009 Oct;71(4):529-34. doi: 10.1111/j.1365-2265.2009.03534.x. Epub 2009 Feb 18. PMID: 19226261.
 }
 \author{
-Johannes W. Dietrich
+Johannes W. Dietrich, Eleni Karamitrou
 }

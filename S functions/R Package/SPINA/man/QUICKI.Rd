@@ -30,5 +30,5 @@ avoid bias by transition effects.
 QUICKI(63.01, 4.34)
 }
 \author{
-Johannes W. Dietrich, Bernhard O. Boehm
+Johannes W. Dietrich, Eleni Karamitrou, Bernhard O. Boehm
 }

@@ -40,5 +40,5 @@ Dietrich JW, Landgrafe-Mende G, Wiora E, Chatzitomaris A, Klein HH, Midgley JE, 
 Pohlenz J, Weiss RE, Macchia PE, Pannain S, Lau IT, Ho H, Refetoff S. Five new families with resistance to thyroid hormone not caused by mutations in the thyroid hormone receptor beta gene. J Clin Endocrinol Metab. 1999 Nov;84(11):3919-28. doi: 10.1210/jcem.84.11.6080. PMID: 10566629.
 }
 \author{
-Johannes W. Dietrich
+Johannes W. Dietrich, Eleni Karamitrou
 }
