@@ -99,7 +99,7 @@ QUICKI(Insulin, Glucose)
 | FT4       | Free thyroxine (FT4) concentration in pmol/L. FT4 may be in an arbitrary unit for TTSI calculation, provided that it is in the same unit as lu. |
 | FT3       | Free triiodothyronine (FT3) concentration in pmol/L                                                                                             |
 | T4        | Total T4 (TT4) concentration in nmol/L                                                                                                          |
-| T3        | Total T3 (TT3) concentration in pmol/L                                                                                                          |
+| T3        | Total T3 (TT3) concentration in nmol/L                                                                                                          |
 | lu        | upper limit of FT4 reference range (should be in the same unit of measurement as the FT4 concentration)                                         |
 | mean      | mean value of population sample for standardised (z-transformed) tests.                                                                         |
 | sd        | standard deviation of population sample for standardised (z-transformed) tests.                                                                 |

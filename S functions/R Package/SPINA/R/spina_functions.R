@@ -4,7 +4,7 @@
 # thyroid and insulin-glucose homeostasis
 # in S, including the implementation in R
 # Version 5.1.0 (Cyclone)
-# Last Change 20260803 by J. W. D.
+# Last Change 20260905 by J. W. D.
 ##########################################
 
 Insulin.conversion.factor <- 6;  # A Voelund 1993, L. Heinemann 2010
