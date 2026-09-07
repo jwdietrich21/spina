@@ -28,7 +28,7 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Eleni Karamitrou [contributor]
+  \item Eleni Karamitrou (\href{https://orcid.org/0009-0002-3539-2035}{ORCID}) [contributor]
   \item Bernhard O. Boehm (\href{https://orcid.org/0000-0002-2706-7710}{ORCID}) [contributor]
 }
 
