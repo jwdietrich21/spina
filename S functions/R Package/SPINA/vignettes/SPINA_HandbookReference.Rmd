@@ -110,6 +110,22 @@ QUICKI(Insulin, Glucose)
 
 These functions deliver estimates for thyroid’s secretory capacity (SPINA-GT), total step-up deiodinase activity (SPINA-GD), Jostel’s TSH index (TSHI) and thyrotroph thyroid hormone sensitivity index (TTSI), and for the secretory capacity of pancreatic beta cells (SPINA-GBeta), insulin receptor gain (SPINA-GR), a static disposition index (SPINA-DI) as well as corresponding HOMA and QUICKI approaches (HOMA-Beta, HOMA-IR, HOMA-IS and QUICKI). The functions `estimated.sGD` and `estimated.sTSHI` return standardised (z-transformed) representations of SPINA-GD and Jostel’s TSH index, respectively.
 
+| Structure Parameter | S/R Function               | Explanation                                        | Reference Range    |
+|---------------------|----------------------------|----------------------------------------------------|--------------------|
+| SPINA-GT            | SPINA.GT or estimated.GT   | Thyroid's secretory capacity                       | 1.41 – 8,67 pmol/s |
+| SPINA-GD            | SPINA.GD or estimated.GD   | Sum activity of peripheral step-up deiodinases     | 20 – 40 nmol/s     |
+| SPINA-sGT           | SPINA.SGD or estimated.sGD | z-transformed variant of SPINA-GD                  | –2 – +2            |
+| TSHI                | estimated.TSHI             | Jostel's TSH index                                 | 1.3 – 4.1          |
+| sTSHI               | estimated.sTSHI            | Standardised TSH index                             | –2 – +2            |
+| TTSI                | estimated.TTSI             | Thyrotroph Thyroid Hormone Sensitivity Index       | 100 – 150          |
+| SPINA-GBeta         | SPINA.GBeta                | Secretory capacity of pancreatic beta-cells        | 0.64 – 3.73 pmol/s |
+| SPINA-GR            | SPINA.GR                   | Insulin receptor gain                              | 1.41 – 9.00 mol/s  |
+| SPINA-DI            | SPINA.DI                   | Static disposition index                           | 4.01 – 7.65        |
+| HOMA-Beta           | HOMA.Beta                  | Homeostasis model assessment – beta-cell function  | 45.4 – 179.4       |
+| HOMA-IR             | HOMA.IR                    | Homeostasis model assessment – insulin resistance  | < 2.5              |
+| HOMA-IS             | HOMA.IS                    | Homeostasis model assessment – insulin sensitivity | > 0.4              |
+| QUICKI              | QUICKI                     | Quantitativ insulin sensitivity check index        | > 0.4              |
+
 The functions `estimated.GT`, `estimated.GD`, `estimated.sGD`, `estimated.TSHI`, `estimated.sTSHI` and `estimated.TTSI` expect concentrations of free thyroid hormones. By contrast, the functions `estimated.GTT` and `estimated.GDTT` require total hormone concentrations.
 
 `SPINA.GT`, `SPINA.GD`, `SPINA.GTT`, `SPINA.GDTT` and `SPINA.sGD` are alias function for `estimated.GT`, `estimated.GD`, `estimated.GTT`, `estimated.GDTT` and `estimated.sGD`, respectively.
