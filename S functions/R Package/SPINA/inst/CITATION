@@ -6,5 +6,5 @@ bibentry(
   address = "Bochum, NRW, Germany",
   year = 2026,
   doi = "10.32614/CRAN.package.SPINA",
-  url = "http://spina.sf.net"
+  url = "https://spina.sourceforge.net"
 )

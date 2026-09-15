@@ -13,7 +13,7 @@ Calculates constant structure parameters of endocrine homeostatic systems from s
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://spina.sf.net/}
+  \item \url{https://spina.sourceforge.net}
   \item Report bugs at \url{https://sourceforge.net/p/spina/bugs/}
 }
 

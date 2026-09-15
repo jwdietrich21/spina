@@ -19,7 +19,7 @@ mathematical and cybernetic modelling of processing structures
 ## Installation
 
 You can install the development version of SPINA by visting
-<https://spina.sf.net> and following the directions given there.
+<https://spina.sourceforge.net> and following the directions given there.
 
 ## Examples
 

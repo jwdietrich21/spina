@@ -228,7 +228,7 @@ Concentrations of hormones and metabolites should have been obtained simultaneou
 
 Calculating GT in patients who are treated with levothyroxine (L-T4) is of little if any value. Likewise, it is not recommended to calculate GD in patients who receive substitution therapy with liothyronine (L-T3) or triiodothyroacetate (TRIAC) or to calculate SPINA-GBeta (including its derivative SPINA-DI) in persons on insulin therapy. It may be interesting, however, to obtain a value for the unaffected structural parameter in affected cases, e.g. for SPINA-GD in patients on L-T4 substitution or for SPINA-GR in persons on insulin (provided a sufficient delay after administration of short-term insulin).
 
-Usage of SPINA implies that you agree to its license and conditions with respect of the council directive 93/42/EEC of the European Union. This information is included with the license file that comes with SPINA Functions, and it is available online from http://spina.sf.net.
+Usage of SPINA implies that you agree to its license and conditions with respect of the council directive 93/42/EEC of the European Union. This information is included with the license file that comes with SPINA Functions, and it is available online from https://spina.sourceforge.net.
 
 ## References
 
@@ -262,4 +262,4 @@ Prof. Dr. med. Johannes W. Dietrich [1, 2, 3, 4, 5]
 5. Zentrum für Schilddrüsenmedizin, Ruhr University of Bochum, Gudrunstr. 56, D-44791 Bochum, NRW, Germany
 
 
-More information is available from http://spina.sf.net.
+More information is available from https://spina.sourceforge.net.

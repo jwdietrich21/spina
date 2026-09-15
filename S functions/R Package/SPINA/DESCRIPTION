@@ -1,7 +1,7 @@
 Package: SPINA
 Type: Package
 Version: 5.1.0
-Date: 2026-08-03
+Date: 2026-09-15
 Title: Structure Parameter Inference Approach (SPINA)
 Authors@R: 
     c(person("Johannes W.", "Dietrich", 
@@ -18,14 +18,17 @@ License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
-URL: http://spina.sf.net/
+URL: https://spina.sourceforge.net
 BugReports: https://sourceforge.net/p/spina/bugs/
-Depends: 
-    R (>= 3.5)
+Depends: R (>= 3.5)
 LazyData: true
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2026-09-15 15:58:50 UTC; johannes
+Author: Johannes W. Dietrich [aut, cph, cre] (ORCID:
+    <https://orcid.org/0000-0002-1185-3549>),
+  Eleni Karamitrou [ctb] (ORCID: <https://orcid.org/0009-0002-3539-2035>),
+  Bernhard O. Boehm [ctb] (ORCID:
+    <https://orcid.org/0000-0002-2706-7710>)
